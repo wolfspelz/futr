@@ -64,7 +64,6 @@ div.my-footer {
 a.my-brand-text {
     background-color: unset;
     font-size: 1.5rem;
-    display: inline-block;
     max-width: 70%;
     filter: unset;
 }
@@ -101,7 +100,15 @@ ul.my-site-menu {
                 background-color: var(--main-link-hilite-box-color);
             }
 
+.my-sm, .my-md, .my-lg {
+    display: none;
+}
+
 @media (max-width: 700px) {
+    .my-sm {
+        display: inline-block;
+    }
+
     ul.my-site-menu {
     }
 
@@ -119,11 +126,19 @@ ul.my-site-menu {
     html {
         font-size: 16px;
     }
+
+    .my-md {
+        display: inline-block;
+    }
 }
 
 @media (min-width: 1000px) {
     html {
         font-size: 18px;
+    }
+
+    .my-lg {
+        display: inline-block;
     }
 }
 
