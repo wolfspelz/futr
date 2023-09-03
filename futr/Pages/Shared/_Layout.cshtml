@@ -22,14 +22,16 @@
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
+
 <body>
     <div class="my-header">
-        <a class="my-brand-text" asp-area="" asp-page="/Index">futr</a>
-        <ul>
-            <li class="my-menu-item">
+        <a class="my-brand-text" asp-area="" asp-page="/Index">Fictional Universe Taxonomy Research Project - FUTR</a>
+
+        <ul class="my-site-menu">
+            <li>
                 <a asp-area="" asp-page="/Index">Home</a>
             </li>
-            <li class="my-menu-item">
+            <li>
                 <a asp-area="" asp-page="/Privacy">Privacy</a>
             </li>
         </ul>
@@ -39,8 +41,16 @@
         @RenderBody()
     </div>
 
-    <div class="my-header">
-        &copy; 2023 - futr - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <div class="my-footer">
+        <p>
+            &copy; 2023 
+            - 
+            futr 
+            - 
+            <a asp-area="" asp-page="/Privacy">Impressum</a>
+           -
+           <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </p>
     </div>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
