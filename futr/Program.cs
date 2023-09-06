@@ -1,18 +1,43 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Orleans.Storage;
+using System.Text.Json;
 
 namespace futr;
 
 public class Program
 {
+    public class SystemTextJsonSerializer : IGrainStorageSerializer
+    {
+        public BinaryData Serialize<T>(T input)
+        {
+            return new BinaryData(JsonSerializer.SerializeToUtf8Bytes(input));
+        }
+
+        public T Deserialize<T>(BinaryData input)
+        {
+            return input.ToObjectFromJson<T>()!;
+        }
+    }
+
     public static void Main(string[] args)
     {
+        var myConfig = new MyConfig();
+        var myLogger = new NullCallbackLogger();
+
+
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Host.UseOrleans(siloBuilder => {
             siloBuilder.UseLocalhostClustering();
-            siloBuilder.AddMemoryGrainStorage("main");
+            siloBuilder.AddAzureTableGrainStorage(
+                name: MyGlobals.StorageName,
+                configureOptions: options => {
+                    options.ConfigureTableServiceClient(myConfig.AzureTableConnectionString);
+                    options.GrainStorageSerializer = new SystemTextJsonSerializer();
+                }
+            );
         });
 
         builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -31,9 +56,6 @@ public class Program
                 .AddSupportedCultures(supportedCultures)
                 .AddSupportedUICultures(supportedCultures);
         });
-
-        var myConfig = new MyConfig();
-        var myLogger = new NullCallbackLogger();
 
         var myApp = new MyApp {
             Config = myConfig,
@@ -70,7 +92,7 @@ public class Program
 
         app.MapRazorPages();
         app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
-        
+
         app.UseForwardedHeaders(new ForwardedHeadersOptions {
             ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
         });

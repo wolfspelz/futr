@@ -143,9 +143,6 @@ ul.my-site-menu {
 }
 
 @media (min-width: 1400px) {
-    html {
-        //font-size: 20px;
-    }
 }
 
 html {
