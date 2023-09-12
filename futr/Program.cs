@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Options;
+using Orleans.Configuration;
 using Orleans.Storage;
 using System.Text.Json;
 
@@ -30,14 +32,28 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Host.UseOrleans(siloBuilder => {
-            siloBuilder.UseLocalhostClustering();
-            siloBuilder.AddAzureTableGrainStorage(
-                name: MyGlobals.StorageName,
-                configureOptions: options => {
-                    options.ConfigureTableServiceClient(myConfig.AzureTableConnectionString);
-                    options.GrainStorageSerializer = new SystemTextJsonSerializer();
-                }
+            siloBuilder.UseLocalhostClustering(
+                11111, 
+                30000, 
+                null, 
+                myConfig.ServiceId,
+                myConfig.ClusterId
             );
+
+            //siloBuilder.AddAzureTableGrainStorage(
+            //    name: MyGlobals.StorageName,
+            //    configureOptions: options => {
+            //        options.ConfigureTableServiceClient(myConfig.AzureTableConnectionString);
+            //        options.GrainStorageSerializer = new SystemTextJsonSerializer();
+            //    }
+            //);
+
+            siloBuilder.AddCosmosGrainStorage(
+            MyGlobals.StorageName,
+            builder => builder.Configure<IOptions<ClusterOptions>>((options, silo) => {
+                options.ConfigureCosmosClient(myConfig.CosmosDbConnectionString);
+                options.IsResourceCreationEnabled = true;
+            }));
         });
 
         builder.Services.AddRazorPages().AddRazorRuntimeCompilation();

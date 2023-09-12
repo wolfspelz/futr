@@ -11,7 +11,10 @@ public sealed class UniverseGrain : Grain, IUniverseGrain
         [PersistentState(
             stateName: "Universe",
             storageName: MyGlobals.StorageName)]
-            IPersistentState<Universe> state) => _state = state;
+            IPersistentState<Universe> state)
+    {
+        _state = state;
+    }
 
     public async Task Set(string id, Universe universe)
     {
