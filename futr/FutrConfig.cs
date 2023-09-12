@@ -1,9 +1,9 @@
 ﻿namespace futr;
 
-public class MyConfig : MemoryCallbackConfig
+public class FutrConfig : FutrConfigBag
 {
+    public bool IsDevelopment = false;
     public string AppName = "FUTR";
-    public string SiteName = "Fictional Universe Taxonomy Research";
     public string ServiceId = "futr";
     public string ClusterId = "local";
     public string AzureTableConnectionString = "UseDevelopmentStorage=true";

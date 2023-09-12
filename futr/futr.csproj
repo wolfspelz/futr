@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ConfigSharp\ConfigSharp.csproj" />
     <ProjectReference Include="..\JsonPath\JsonPath.csproj" />
     <ProjectReference Include="..\n3q.FrameworkTools\n3q.FrameworkTools.csproj" />
     <ProjectReference Include="..\n3q.Tools\n3q.Tools.csproj" />
@@ -34,6 +35,12 @@
 
   <ItemGroup>
     <None Include="Pages\Universe.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="BaseConfig.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>

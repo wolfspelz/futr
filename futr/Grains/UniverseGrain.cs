@@ -10,7 +10,7 @@ public sealed class UniverseGrain : Grain, IUniverseGrain
     public UniverseGrain(
         [PersistentState(
             stateName: "Universe",
-            storageName: MyGlobals.StorageName)]
+            storageName: FutrGlobals.StorageName)]
             IPersistentState<UniverseState> state)
     {
         _state = state;

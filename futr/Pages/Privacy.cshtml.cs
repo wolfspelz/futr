@@ -1,14 +1,13 @@
 ﻿namespace futr.Pages
 {
-    public class PrivacyModel : MyPageModel
+    public class PrivacyModel : FutrPageModel
     {
-        public PrivacyModel(MyApp app) : base(app, "Privacy")
+        public PrivacyModel(FutrApp app) : base(app, "Privacy")
         {
         }
 
         public void OnGet()
         {
-            Log.Info("");
         }
     }
 }

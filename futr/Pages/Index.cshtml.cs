@@ -1,14 +1,12 @@
 ﻿using futr.GrainInterfaces;
-using Orleans.Runtime;
-using System.Runtime.CompilerServices;
 
 namespace futr.Pages
 {
-    public class IndexModel : MyPageModel
+    public class IndexModel : FutrPageModel
     {
         private readonly IGrainFactory Grains;
 
-        public IndexModel(MyApp app, IGrainFactory grains) : base(app, "Index")
+        public IndexModel(FutrApp app, IGrainFactory grains) : base(app, "Index")
         {
             Grains = grains;
         }

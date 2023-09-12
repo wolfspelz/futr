@@ -1,18 +1,15 @@
-using AutoMapper;
 using futr.GrainInterfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using YamlDotNet.Core.Tokens;
 
 namespace futr.Pages
 {
-    public class UniverseModel : MyPageModel
+    public class UniverseModel : FutrPageModel
     {
         private readonly IGrainFactory _grains;
 
         public Universe? Universe { get; private set; }
 
-        public UniverseModel(MyApp app, IGrainFactory grains) : base(app, "Universe")
+        public UniverseModel(FutrApp app, IGrainFactory grains) : base(app, "Universe")
         {
             _grains = grains;
         }

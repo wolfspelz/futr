@@ -1,6 +1,6 @@
 ﻿namespace futr;
 
-public class MyGlobals
+public class FutrGlobals
 {
     public const string StorageName = "futr";
 }

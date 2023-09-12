@@ -27,9 +27,10 @@ public class Program
 
     public static void Main(string[] args)
     {
-        var myConfig = new MyConfig();
-        var myLogger = new NullCallbackLogger();
+        var myConfig = new FutrConfig();
+        myConfig.Include(nameof(BaseConfig) + ".cs");
 
+        var myLogger = new NullCallbackLogger();
 
         var builder = WebApplication.CreateBuilder(args);
 
@@ -51,7 +52,7 @@ public class Program
             //);
 
             siloBuilder.AddCosmosGrainStorage(
-            MyGlobals.StorageName,
+            FutrGlobals.StorageName,
             builder => builder.Configure<IOptions<ClusterOptions>>((options, silo) => {
                 options.ConfigureCosmosClient(myConfig.CosmosDbConnectionString);
                 options.IsResourceCreationEnabled = true;
@@ -84,7 +85,7 @@ public class Program
             })
         );
 
-        var myApp = new MyApp {
+        var myApp = new FutrApp {
             Config = myConfig,
             Log = myLogger,
             Mapper = mapper,

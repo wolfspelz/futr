@@ -2,9 +2,9 @@
 
 namespace futr;
 
-public class MyApp
+public class FutrApp
 {
-    public MyConfig Config = new();
+    public FutrConfig Config = new();
     public ICallbackLogger Log = new NullCallbackLogger();
     public Mapper Mapper = new(new MapperConfiguration(config => { }));
 }
