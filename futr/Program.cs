@@ -52,11 +52,12 @@ public class Program
             //);
 
             siloBuilder.AddCosmosGrainStorage(
-            FutrGlobals.StorageName,
-            builder => builder.Configure<IOptions<ClusterOptions>>((options, silo) => {
-                options.ConfigureCosmosClient(myConfig.CosmosDbConnectionString);
-                options.IsResourceCreationEnabled = true;
-            }));
+                FutrGlobals.StorageName,
+                builder => builder.Configure<IOptions<ClusterOptions>>((options, silo) => {
+                    options.ConfigureCosmosClient(myConfig.CosmosDbConnectionString);
+                    options.IsResourceCreationEnabled = true;
+                })
+            );
         });
 
         builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
