@@ -36,8 +36,8 @@ public class Program
 
         builder.Host.UseOrleans(siloBuilder => {
             siloBuilder.UseLocalhostClustering(
-                11111,
-                30000,
+                myConfig.SiloPort,
+                myConfig.GatewayPort,
                 null,
                 myConfig.ServiceId,
                 myConfig.ClusterId

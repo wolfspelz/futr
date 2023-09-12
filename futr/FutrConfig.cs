@@ -4,6 +4,8 @@ public class FutrConfig : FutrConfigBag
 {
     public bool IsDevelopment = false;
     public string AppName = "FUTR";
+    public int SiloPort = 11111;
+    public int GatewayPort = 30000;
     public string ServiceId = "futr";
     public string ClusterId = "local";
     public string AzureTableConnectionString = "UseDevelopmentStorage=true";
