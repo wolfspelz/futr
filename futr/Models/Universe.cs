@@ -1,11 +1,11 @@
 ﻿namespace futr.Models;
 
-[GenerateSerializer]
 public class Universe
 {
-    [Id(0)]
-    public string? Name { get; set; }
+    public const string TagSeparator = ",";
 
-    [Id(1)]
-    public string? Description { get; set; }
+    public string? Id { get; set; }
+    public string? Name { get; set; }
+    public string Description { get; set; } = "";
+    public string Tags { get; set; } = "";
 }

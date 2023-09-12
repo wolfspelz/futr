@@ -5,25 +5,37 @@ namespace futr.Grains;
 
 public sealed class UniverseGrain : Grain, IUniverseGrain
 {
-    private readonly IPersistentState<Universe> _state;
+    private readonly IPersistentState<UniverseState> _state;
 
     public UniverseGrain(
         [PersistentState(
             stateName: "Universe",
             storageName: MyGlobals.StorageName)]
-            IPersistentState<Universe> state)
+            IPersistentState<UniverseState> state)
     {
         _state = state;
     }
 
-    public async Task Set(string id, Universe universe)
+    public Task<UniverseState> Get()
     {
+        return Task.FromResult(_state.State);
+    }
+
+    public async Task Set(UniverseState universe)
+    {
+        universe.Id = this.GetPrimaryKeyString();
         _state.State = universe;
         await _state.WriteStateAsync();
     }
 
-    public Task<Universe> Get()
+    public async Task Delete()
     {
-        return Task.FromResult(_state.State);
+        try {
+            await _state.ClearStateAsync();
+        } catch (Exception) {
+            // Ignore non-existent state
+        }
+
+        this.DeactivateOnIdle();
     }
 }

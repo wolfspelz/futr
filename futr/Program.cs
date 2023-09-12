@@ -1,3 +1,5 @@
+using AutoMapper;
+using futr.GrainInterfaces;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -33,9 +35,9 @@ public class Program
 
         builder.Host.UseOrleans(siloBuilder => {
             siloBuilder.UseLocalhostClustering(
-                11111, 
-                30000, 
-                null, 
+                11111,
+                30000,
+                null,
                 myConfig.ServiceId,
                 myConfig.ClusterId
             );
@@ -73,9 +75,19 @@ public class Program
                 .AddSupportedUICultures(supportedCultures);
         });
 
+        var mapper = new Mapper(
+            new MapperConfiguration(cfg => {
+                cfg.CreateMap<UniverseState, Universe>()
+                    .ForMember(dest => dest.Tags, act => act.MapFrom(src => String.Join(Universe.TagSeparator + " ", src.Tags)));
+                cfg.CreateMap<Universe, UniverseState>()
+                    .ForMember(dest => dest.Tags, act => act.MapFrom(src => src.Tags.Split(Universe.TagSeparator, StringSplitOptions.None).Select(x => x.Trim()).ToArray()));
+            })
+        );
+
         var myApp = new MyApp {
             Config = myConfig,
             Log = myLogger,
+            Mapper = mapper,
         };
         builder.Services.AddSingleton(myApp);
 
@@ -115,4 +127,5 @@ public class Program
 
         app.Run();
     }
+
 }

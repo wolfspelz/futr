@@ -13,26 +13,24 @@ namespace futr.Pages
             Grains = grains;
         }
 
-        public Universe? Universe { get; private set; }
+        public UniverseState? Universe { get; private set; }
 
-        public async Task OnGet()
+        public void OnGet()
         {
-            Log.Info("");
+            //var id = "galdev";
 
-            var id = "galdev";
+            //var universe = Grains.GetGrain<IUniverseGrain>(id);
 
-            var universe = Grains.GetGrain<IUniverseGrain>(id);
+            //var firstValue = await universe.Get();
 
-            var firstValue = await universe.Get();
+            //await universe.Set(new UniverseState {
+            //    Name = "Galactic Developments",
+            //    Description = "A universe for testing purposes.",
+            //});
 
-            await universe.Set(id, new Universe {
-                Name = "Galactic Developments",
-                Description = "A universe for testing purposes.",
-            });
+            //var secondValue = await universe.Get();
 
-            var secondValue = await universe.Get();
-
-            Universe = secondValue;
+            //Universe = secondValue;
         }
     }
 }
