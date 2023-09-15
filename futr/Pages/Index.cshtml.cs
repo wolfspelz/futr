@@ -11,7 +11,7 @@ namespace futr.Pages
             Grains = grains;
         }
 
-        public UniverseState? Universe { get; private set; }
+        public GrainInterfaces.UniverseState? Universe { get; private set; }
 
         public void OnGet()
         {

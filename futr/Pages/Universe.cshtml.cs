@@ -7,7 +7,7 @@ namespace futr.Pages
     {
         private readonly IGrainFactory _grains;
 
-        public Universe? Universe { get; private set; }
+        public Models.Universe? Universe { get; private set; }
 
         public UniverseModel(FutrApp app, IGrainFactory grains) : base(app, "Universe")
         {
@@ -18,13 +18,15 @@ namespace futr.Pages
         {
             var grain = _grains.GetGrain<IUniverseGrain>(id);
             var state = await grain.Get();
-            Universe = App.Mapper.Map<Universe>(state);
+            Universe = App.Mapper.Map<Models.Universe>(state);
         }
 
-        public async Task<IActionResult> OnPost(Universe universe)
+        public async Task<IActionResult> OnPost(Models.Universe universe)
         {
+            AssertClaim(FutrRoles.SiteEditor);
+
             var grain = _grains.GetGrain<IUniverseGrain>(universe.Id);
-            var state = App.Mapper.Map<UniverseState>(universe);
+            var state = App.Mapper.Map<GrainInterfaces.UniverseState>(universe);
             await grain.Set(state);
 
             //var index = 
@@ -34,6 +36,8 @@ namespace futr.Pages
 
         public async Task<IActionResult> OnPostDelete(string id)
         {
+            AssertClaim("SiteEditor");
+
             var grain = _grains.GetGrain<IUniverseGrain>(id);
             await grain.Delete();
             return RedirectToPage("./Index");

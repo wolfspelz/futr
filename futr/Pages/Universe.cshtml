@@ -1,9 +1,15 @@
 ﻿@page "{id?}"
+@using Microsoft.AspNetCore.Http
 @model futr.Pages.UniverseModel
 @{
 }
 
-<h1>Universe</h1>
+@* 
+@{HttpContext.Session.SetString("SessionKey", "SessionValue3");}
+SesssionValue: @HttpContext.Session.GetString("SessionKey")
+*@
+ 
+ <h1>Universe</h1>
 
 <h2>CRU</h2>
 <form method="post">

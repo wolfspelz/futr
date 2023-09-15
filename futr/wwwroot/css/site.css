@@ -20,6 +20,12 @@ html {
     background-size: cover;
 }
 
+input[type="password"], input[type="text"], input[type="button"], button {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
 body {
     margin: 0;
     margin-bottom: 60px;
@@ -131,6 +137,10 @@ ul.my-site-menu {
         font-size: 16px;
     }
 
+    input[type="password"], input[type="text"], input[type="button"], button {
+        font-size: 16px;
+    }
+
     .my-md {
         display: inline-block;
     }
@@ -138,6 +148,10 @@ ul.my-site-menu {
 
 @media (min-width: 1000px) {
     html {
+        font-size: 18px;
+    }
+
+    input[type="password"], input[type="text"], input[type="button"], button {
         font-size: 18px;
     }
 
