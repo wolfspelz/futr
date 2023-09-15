@@ -31,7 +31,7 @@ public sealed class UniverseGrain : Grain, IUniverseGrain
     public async Task Delete()
     {
         await DeleteStorage();
-        await InvalidateMemory();
+        await Deactivate();
     }
 
     public async Task DeleteStorage()
@@ -43,7 +43,7 @@ public sealed class UniverseGrain : Grain, IUniverseGrain
         }
     }
 
-    public async Task InvalidateMemory()
+    public async Task Deactivate()
     {
         this.DeactivateOnIdle();
         await Task.CompletedTask;

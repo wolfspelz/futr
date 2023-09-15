@@ -23,5 +23,5 @@ public interface IUniverseGrain : IGrainWithStringKey
  
     Task Delete();
     Task DeleteStorage();
-    Task InvalidateMemory();
+    Task Deactivate();
 }

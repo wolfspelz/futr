@@ -24,6 +24,7 @@ body {
     margin: 0;
     margin-bottom: 60px;
     padding: 0;
+    overflow-y: scroll;
 }
 
 h1 {
@@ -31,7 +32,7 @@ h1 {
     font-size: 1.5rem;
 }
 
-input[type="password"], input[type="text"], input[type="button"], button {
+input[type="password"], input[type="text"], input[type="button"], input[type="submit"], button {
     font-size: 14px;
     font-weight: 400;
     font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -59,24 +60,24 @@ a {
         top: 2px;
     }
 
-button, a.button {
-    padding: 0.4em 0.7em;
-    margin: 0 0.5em;
-    color: var(--main-text-color);
-    background-color: var(--main-text-box-color);
-    border: none;
-}
-
-    button:hover, a.button:hover {
-        color: var(--main-link-hilite-color);
-        background-color: var(--main-link-hilite-box-color);
+    button, a.button {
+        padding: 0.4em 0.7em;
+        margin: 0 0.5em;
+        color: var(--main-text-color);
+        background-color: var(--main-text-box-color);
+        border: none;
     }
 
-    button:active, a.button:active {
-        position: relative;
-        left: 2px;
-        top: 2px;
-    }
+        button:hover, a.button:hover {
+            color: var(--main-link-hilite-color);
+            background-color: var(--main-link-hilite-box-color);
+        }
+
+        button:active, a.button:active {
+            position: relative;
+            left: 2px;
+            top: 2px;
+        }
 
 div.my-header {
     padding: 1.8rem 1rem 0 1rem;
@@ -142,6 +143,10 @@ ul.my-site-menu {
 }
 
 @media (max-width: 700px) {
+    body {
+        overflow: auto;
+    }
+
     .my-sm {
         display: inline-block;
     }
@@ -164,7 +169,7 @@ ul.my-site-menu {
         font-size: 16px;
     }
 
-    input[type="password"], input[type="text"], input[type="button"], button {
+    input[type="password"], input[type="text"], input[type="button"], input[type="submit"], button {
         font-size: 16px;
     }
 
@@ -178,7 +183,7 @@ ul.my-site-menu {
         font-size: 18px;
     }
 
-    input[type="password"], input[type="text"], input[type="button"], button {
+    input[type="password"], input[type="text"], input[type="button"], input[type="submit"], button {
         font-size: 18px;
     }
 
@@ -189,4 +194,3 @@ ul.my-site-menu {
 
 @media (min-width: 1400px) {
 }
-

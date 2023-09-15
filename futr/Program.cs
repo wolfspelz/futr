@@ -100,6 +100,8 @@ public class Program
         };
         builder.Services.AddSingleton(myApp);
 
+        builder.Services.AddTransient<ICommandline>(sp => new FutrCommandline(myApp));
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

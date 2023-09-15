@@ -1,0 +1,351 @@
+﻿@page
+@using futr.Pages
+@model futr.Pages.CommandlineModel
+@{
+    var commandList = new Dictionary<string, Dictionary<string, CommandDetail>>();
+    @foreach (var pair in Model.Commands) {
+        var group = "General";
+        var cmd = pair.Key;
+        var parts = pair.Key.Split(new[] { '_', '.' }, 2, StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length == 2) {
+            group = parts[0];
+            if (group == "Dev") { group = "General"; }
+            cmd = parts[1];
+        }
+        if (!commandList.ContainsKey(group)) { commandList[group] = new Dictionary<string, CommandDetail>(); }
+        commandList[group].Add(cmd, pair.Value);
+    }
+}
+
+<div id="iMain">
+    <div class="cMenuTitle">
+        @foreach (var pair in commandList) {
+            var group = pair.Key;
+            <div class="cGroupTitle cTextButton" data-group="@group">@group</div>
+        }
+    </div>
+
+    <div class="cMenuBody">
+        @foreach (var pair in commandList) {
+            var group = pair.Key;
+            <div class="cGroupBody cGroupBody-@group" data-group="@group">
+                @foreach (var pair2 in pair.Value) {
+                    var detail = pair2.Value;
+                    var cmd = pair2.Key;
+                    <div class="cCommandItem">
+                        <a href="#" class="cTextButton cLabel" data-cmd="@Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(@detail.Template))" title="@detail.Arguments">@(group)_@(cmd)</a>
+                        <a href="#" class="cTextButton cInsert" data-cmd="@Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(@detail.Template))" title="Insert command">@Html.Raw(@Model.Symbols.Insert)</a>
+                        @if (detail.ImmediateExecute) {
+                            <a href="#" class="cTextButton cExecute" data-cmd="@Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(@detail.Template))" title="Execute command">@Html.Raw(@Model.Symbols.Execute)</a>
+                        }
+                    </div>
+                }
+            </div>
+        }
+
+        <div>Favorites</div>
+        <div id="iFavorites" class="cCommandGroup"></div>
+    </div>
+
+    <div id="iIn">
+        @Html.TextArea("cmdline", "", new { id = "iCommandline", rows = "2" })
+        <form id="iForm" method="post">
+            <div>
+                <input type="hidden" id="arg" name="arg" value="" />
+            </div>
+            <div>
+                <input type="submit" id="iSubmit" value="Enter" />
+                <input type="button" id="iClearInput" value="Clear input" />
+                <input type="button" id="iClearOutput" value="Clear output" />
+                <span class="cSpinner" id="iSpinner"></span>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <div id="iOut">
+        </div>
+    </div>
+
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/commandline.css" />
+}
+
+@section Scripts {
+    <script type="text/JavaScript" src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/JavaScript">
+
+        $(function () {
+
+            let permGroup = null;
+            $('.cGroupTitle').on({
+                mouseenter: (ev) => {
+                    $('.cPermVisible').removeClass('cPermVisible');
+                    $('.cGroupBody-' + $(ev.target).data('group')).addClass('cTmpVisible');
+                },
+                mouseleave: (ev) => {
+                    if (permGroup) { $('.cGroupBody-' + permGroup).addClass('cPermVisible'); }
+                    $('.cGroupBody-' + $(ev.target).data('group')).removeClass('cTmpVisible');
+                },
+                click: (ev) => {
+                    let group = $(ev.target).data('group');
+                    $('.cPermVisible').removeClass('cPermVisible');
+                    $('.cGroupTitle').removeClass('cSelected');
+                    if (permGroup == group) {
+                        permGroup = null;
+                    } else {
+                        permGroup = group;
+                        $('.cGroupBody-' + group).addClass('cPermVisible');
+                        $(ev.target).addClass('cSelected');
+                    }
+                },
+            });
+        });
+
+        var g_nCnt = 0;
+
+        function SetInput(text) {
+            $('#iCommandline').val(text);
+        }
+
+        function GetInput() {
+            return $('#iCommandline').val();
+        }
+
+        function FocusInput() {
+            $('#iCommandline')[0].focus();
+        }
+
+        function ClearInput() {
+            $('#iCommandline').val('');
+        }
+
+        function ClearOutput() {
+            $('#iOut').empty();
+        }
+
+        function HasLinefeed(cmd) {
+            return cmd.indexOf('\n') >= 0;
+        }
+
+        function AddOutput(cmd, text) {
+            g_nCnt++;
+            let sId = 'iTransaction' + g_nCnt;
+            cmd = (text.indexOf('_silent') >= 0 ? '' : cmd);
+            let cmdTagName = HasLinefeed(cmd) ? 'pre' : 'span';
+            let shortenedCmd = (cmd.length > 400 ? 'SHORTENED: ' + cmd.substr(0, 200) + '...' + cmd.substr(cmd.length - 200) : cmd);
+            let js = ''
+                + '<div id="' + sId + '" class="cTransaction" style="display: none;">'
+                + '  <div class="cOriginalCommand">'
+                + '  <span class="cButtons">'
+                + '    <a href="#" class="cTextButton cDelete" data-transaction="' + sId + '" title="Delete">@Html.Raw(@Model.Symbols.Delete)</a>'
+                + '    <a href="#" class="cTextButton cInsert" data-cmd="' + btoa(cmd) + '" title="Insert command">@Html.Raw(@Model.Symbols.Insert)</a>'
+                + '    <a href="#" class="cTextButton cExecute" data-cmd="' + btoa(cmd) + '" title="Execute command">@Html.Raw(@Model.Symbols.Execute)</a>'
+                + '    <a href="#" class="cTextButton cSave" data-cmd="' + btoa(cmd) + '" title="Save favorite">@Html.Raw(@Model.Symbols.Save)</a>'
+                + '  </span>'
+                + '  <' + cmdTagName + ' class="cCommand">' + shortenedCmd + '</' + cmdTagName + '>'
+                + '  </div>'
+                + '  <div class="cResult">'
+                + text
+                + '  </div>'
+                + '</div>';
+
+            $('#iOut').prepend(js);
+
+            $('#' + sId).slideToggle(100);
+
+            $('#' + sId + ' .cDelete').on('click', function (evt) {
+                DeleteTransaction($(evt.target).data('transaction'));
+                return false;
+            });
+
+            $('#' + sId + ' .cSave').on('click', function (evt) {
+                SaveFavorite(atob($(evt.target).data('cmd')));
+                FocusInput();
+                return false;
+            });
+
+            $('#' + sId + ' .cInsert').on('click', function (evt) {
+                SetInput(atob($(evt.target).data('cmd')));
+                FocusInput();
+                return false;
+            });
+
+            $('#' + sId + ' .cExecute').on('click', function (evt) {
+                Run(atob($(evt.target).data('cmd')));
+                FocusInput();
+                return false;
+            });
+        }
+
+        function DeleteTransaction(id) {
+            $('#' + id).remove();
+        }
+
+        function SetFavorites(text) {
+            $('#iFavorites .cFavorites').remove();
+            $('#iFavorites').html(text);
+
+            $('#iFavorites .cDelete').on('click', function (evt) {
+                DeleteFavorite($(evt.target).data('key'));
+                FocusInput();
+                return false;
+            });
+
+            $('#iFavorites .cTop').on('click', function (evt) {
+                UpFavorite($(evt.target).data('key'));
+                FocusInput();
+                return false;
+            });
+
+            $('#iFavorites .cInsert').on('click', function (evt) {
+                SetInput(atob($(evt.target).data('cmd')));
+                FocusInput();
+                return false;
+            });
+
+            $('#iFavorites .cExecute').on('click', function (evt) {
+                Run(atob($(evt.target).data('cmd')));
+                return false;
+            });
+        }
+
+        // Ajax
+
+        function Run(cmd) {
+            PostForm('Run', cmd, function (html) {
+                AddOutput(cmd, html);
+                ClearInput();
+                FocusInput();
+            });
+        }
+
+        function GetFavorites() {
+            PostForm('GetFavorites', '', function (html) {
+                SetFavorites(html);
+                FocusInput();
+            });
+        }
+
+        function SaveFavorite(cmd) {
+            PostForm('SaveFavorite', cmd, function (html) {
+                SetFavorites(html);
+                FocusInput();
+            });
+        }
+
+        function DeleteFavorite(key) {
+            PostForm('DeleteFavorite', key, function (html) {
+                SetFavorites(html);
+                FocusInput();
+            });
+        }
+
+        function UpFavorite(key) {
+            PostForm('UpFavorite', key, function (html) {
+                SetFavorites(html);
+                FocusInput();
+            });
+        }
+
+        function PostForm(handler, arg, callback) {
+            $('#arg').val(arg);
+
+            let postData = $('#iForm').serialize();
+
+            try {
+                $('#iSpinner').css('visibility', 'visible');
+                let url = '@Model.HttpContext.Request.Path?handler=' + handler;
+                fetch(url, {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: postData,
+                    redirect: 'error'
+                }).then(httpResponse => {
+                    if (httpResponse.ok) {
+                        return httpResponse.text();
+                    } else {
+                        throw httpResponse;
+                    }
+                }).then(text => {
+                    $('#iSpinner').css('visibility', 'hidden');
+                    callback(text);
+                }).catch(ex => {
+                    $('#iSpinner').css('visibility', 'hidden');
+                    console.log('PostForm', 'catch', ex);
+                    callback((ex.message ? ex.message : '') + ' ' + JSON.stringify(ex));
+                });
+            } catch (ex) {
+                $('#iSpinner').css('visibility', 'hidden');
+                console.log('PostForm', 'exception', ex);
+                callback((ex.message ? ex.message : '') + ' ' + JSON.stringify(ex));
+            }
+        }
+
+        // wire up
+
+        $(function () {
+            $('#iSubmit').on('click', function (evt) {
+                Run(GetInput());
+                return false;
+            });
+        });
+
+        $(function () {
+            $('#iCommandline').on('keydown', function (evt) {
+                if (evt.which == 13 && evt.ctrlKey) {
+                    Run(GetInput());
+                    return false;
+                }
+            });
+        });
+
+        $(function () {
+            $('#iClearInput').on('click', function (evt) {
+                ClearInput();
+                FocusInput();
+                return false;
+            });
+        });
+
+        $(function () {
+            $('#iClearOutput').on('click', function (evt) {
+                ClearOutput();
+                FocusInput();
+                return false;
+            });
+        });
+
+        $(function () {
+            $('.cCommandItem .cLabel').on('click', function (evt) {
+                SetInput(atob($(evt.target).data('cmd')));
+                FocusInput();
+                return false;
+            });
+        });
+
+        $(function () {
+            $('.cInsert').on('click', function (evt) {
+                SetInput(atob($(evt.target).data('cmd')));
+                FocusInput();
+                return false;
+            });
+        });
+
+        $(function () {
+            $('.cExecute').on('click', function (evt) {
+                Run(atob($(evt.target).data('cmd')));
+                return false;
+            });
+        });
+
+        GetFavorites();
+
+    </script>
+}
