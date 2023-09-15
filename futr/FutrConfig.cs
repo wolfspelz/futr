@@ -13,4 +13,5 @@ public class FutrConfig : FutrConfigBag
     public Dictionary<string, FutrRoles> AccessTokens = new() {
         ["token"] = new FutrRoles("Heiner", new[] { FutrRoles.SiteAdmin, FutrRoles.SiteEditor }),
     };
+    public int WebSesssionTimeoutSec = 20 * 60;
 }
