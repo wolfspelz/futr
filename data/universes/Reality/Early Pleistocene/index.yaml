@@ -1,0 +1,22 @@
+type: civilization
+date: -1.2e6
+title: Homo Early Pleistocene (1.2 Mio. before current)
+metrics:
+  Population:
+    value: 18500
+    min: 10000
+    max: 26000
+    confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    comment: By taking the first source that comes up
+    references: 
+        - https://www.pnas.org/doi/10.1073/pnas.0909000107
+  Kardashev:
+    value: 0.23
+    min: 0.15
+    max: 0.45
+    confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    comment: |
+        At 3000 kcal per day just by food. 
+        Disregarding sunlight as always. 
+        At how much power does a camp fire run?
+        If the population were in the millions instead of in the 10.000s then we are easily at K 0.4 just by warm bodies.
