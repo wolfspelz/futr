@@ -89,7 +89,7 @@ public class Program
                 cfg.CreateMap<UniverseState, Universe>()
                     .ForMember(dest => dest.Tags, act => act.MapFrom(src => String.Join(Universe.TagSeparator + " ", src.Tags)));
                 cfg.CreateMap<Universe, UniverseState>()
-                    .ForMember(dest => dest.Tags, act => act.MapFrom(src => src.Tags.Split(Universe.TagSeparator, StringSplitOptions.None).Select(x => x.Trim()).ToArray()));
+                    .ForMember(dest => dest.Tags, act => act.MapFrom(src => src.Tags.Split(Universe.TagSeparator, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray()));
             })
         );
 

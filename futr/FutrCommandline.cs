@@ -50,7 +50,8 @@ public class FutrCommandline: Commandline, ICommandline
             Description = description, 
             Tags = tags,
         };
-        Grains.GetGrain<IUniverseGrain>(id).Set(Mapper.Map<UniverseState>(universe)).Wait();
+        var universeState = Mapper.Map<UniverseState>(universe);
+        Grains.GetGrain<IUniverseGrain>(id).Set(universeState).Wait();
         return $"Domain={universe.Id}";
     }
 

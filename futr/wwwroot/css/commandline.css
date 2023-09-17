@@ -27,9 +27,23 @@ body {
     }
 
     #iMain input[type="button"], #iMain input[type="submit"] {
+        all: unset;
         font-family: monospace;
         font-size: 12px;
+        text-decoration: none;
+        background-color: #DDDDDD;
+        color: #000000;
+        padding: 1px 6px;
+        border-radius: 5px;
     }
+
+        #iMain input[type="button"]:hover, #iMain input[type="submit"]:hover {
+            filter: brightness(0.8);
+        }
+
+        #iMain input[type="button"]:active, #iMain input[type="submit"]:active {
+            filter: brightness(0.5);
+        }
 
     #iMain textarea {
         width: 100%;
