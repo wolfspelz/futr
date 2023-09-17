@@ -6,5 +6,5 @@ public interface ICommandline
 
     Commandline.HandlerMap GetHandlers();
     string Run(string script);
-    bool HasRole(Commandline.Handler handler);
+    bool IsAuthorizedForHandler(Commandline.Handler handler);
 }

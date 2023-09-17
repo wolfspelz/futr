@@ -58,6 +58,10 @@ public class CommandlineModel : FutrPageModel
     {
         _commandline = commandline;
         _grains = grains;
+
+        if (_commandline is FutrCommandline futrCommandline) {
+            futrCommandline.Grains = grains;
+        }
     }
 
     public void InitCommandline()
@@ -70,7 +74,7 @@ public class CommandlineModel : FutrPageModel
         InitCommandline();
         foreach (var pair in _commandline.GetHandlers()) {
             var handler = pair.Value;
-            if (_commandline.HasRole(handler)) {
+            if (_commandline.IsAuthorizedForHandler(handler)) {
                 Commands.Add(pair.Key, new CommandDetail {
                     Name = pair.Key,
                     Description = handler.Description,

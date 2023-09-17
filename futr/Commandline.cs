@@ -40,14 +40,14 @@ public class Commandline
         ArgumentFormatters.Add(FormatStringAsArgument);
     }
 
-    public virtual bool HasRole(Handler handler)
+    public virtual bool IsAuthorizedForHandler(Handler handler)
     {
         return handler.Role == nameof(Role.CommandlinePublic);
     }
 
-    public void AssertRole(Handler handler)
+    public void AssertRoleForHandler(Handler handler)
     {
-        if (!HasRole(handler)) {
+        if (!IsAuthorizedForHandler(handler)) {
             throw new Exception("Access denied");
         }
     }
@@ -219,7 +219,7 @@ public class Commandline
 
         var handler = GetHandlers()[method];
 
-        AssertRole(handler);
+        AssertRoleForHandler(handler);
 
         var result = handler.Function(actualArgs);
         if (result is Task<object> taskResult) {
