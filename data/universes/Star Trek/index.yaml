@@ -1,0 +1,15 @@
+type: universe
+title: Star Trek
+tags: [index]
+logos:
+    - https://en.wikipedia.org/wiki/Star_Trek#/media/File:Star_Trek_TOS_logo.svg
+    - https://www.giantfreakinrobot.com/wp-content/uploads/2022/01/star-trek-logo.jpeg
+gallery:
+    - https://images.prismic.io/star-trek-untold/YTc3NDMxMGUtNjI2ZC00OGRmLWEwNDgtOTBjOTc4NjY1NDlj_st_quiz_header_which_captain_are_you_01_option1.jpg
+    - https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg
+civilizations:
+    - Star Trek Federation 2270
+    - Star Trek Vulcans 2063
+factions:
+    - Federation of Planets
+    - Vulcans

@@ -1,0 +1,6 @@
+type: metric
+title: Kardashev Rating
+tags: [index]
+dataType: number
+unit: Kardashev
+range: 0-3

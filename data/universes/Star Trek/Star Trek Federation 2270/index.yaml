@@ -1,0 +1,17 @@
+type: civilization
+faction: Federation of Planets
+date: 2270
+title: Star Trek Federation 2270
+metrics:
+  Planets:
+    value: 150
+    min: 100
+    max: 200
+  Population:
+    value: 100e9
+    min: 30e9
+    max: 1000e9
+  Kardashev:
+    value: 1
+    min: 0.9
+    max: 1.1

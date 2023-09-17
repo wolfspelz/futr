@@ -1,0 +1,4 @@
+type: metric
+title: Total Population
+dataType: number
+unit: People
