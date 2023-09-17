@@ -1,0 +1,24 @@
+type: civilization
+date: 1
+title: Classic Age around year 1
+readme: |
+    Still hunter gatherers but many towns and cities in populated parts of the world. Basically Han China and the Romans plus many regional Bronze Age powers.
+metrics:
+  Population:
+    value: 200e6
+    min: 13e6
+    max: 250e6
+    confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    comment: Quick Wikipedia reearch. Error bars guestimated.
+    references: 
+        - https://en.wikipedia.org/wiki/Prehistoric_demography
+  Kardashev:
+    value: 0.46
+    min: 0.4
+    max: 0.5
+    confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    comment: |
+        Pottery, no energy consuming industry.
+        Manual labor (not changing per capita consumption), some animal labor, few wind and water mills.
+        Still 200 W for most people. 
+        Total might be 250 W.

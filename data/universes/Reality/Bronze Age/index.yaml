@@ -1,0 +1,23 @@
+type: civilization
+date: -2000
+title: Bronze Age (2.000 BCE)
+readme: |
+    Still hunter gatherers and small commnities, but there have been cities for thousands of years.
+metrics:
+  Population:
+    value: 20e6
+    min: 10e6
+    max: 40e6
+    confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    comment: Quick Wikipedia reearch. Error bars guestimated.
+    references: 
+        - https://en.wikipedia.org/wiki/Prehistoric_demography
+  Kardashev:
+    value: 0.36
+    min: 0.3
+    max: 0.4
+    confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    comment: |
+        Life a bit easier, less calories, but ovens, and some transport by animals. 
+        Pottery, no energy consuming industry.
+        Still 200 W.

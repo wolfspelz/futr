@@ -1,0 +1,21 @@
+type: civilization
+date: -1.2e6
+title: Homo Stone Age (10.000 BCE)
+readme: |
+    Modern humans, hunter gatherers, some slowly moving to settlements.
+metrics:
+  Population:
+    value: 3e6
+    min: 1e6
+    max: 10e6
+    confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    comment: Quick Wikipedia reearch. Error bars guestimated.
+    references: 
+        - https://en.wikipedia.org/wiki/Prehistoric_demography
+  Kardashev:
+    value: 0.28
+    min: 0.2
+    max: 0.35
+    confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    comment: |
+        Still on a 3000 kcal per day diet. 
