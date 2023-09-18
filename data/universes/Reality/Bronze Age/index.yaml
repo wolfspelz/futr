@@ -18,6 +18,7 @@ metrics:
     max: 0.4
     confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: |
-        Life a bit easier, less calories, but ovens, and some transport by animals. 
+        Life a bit easier, less calories. 
         Pottery, no energy consuming industry.
+        But some ovens and plow pulling farm animals. 
         Still 200 W.

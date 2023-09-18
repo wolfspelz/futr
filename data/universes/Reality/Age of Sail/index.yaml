@@ -1,23 +1,22 @@
 type: civilization
-date: -50000
-title: Human Stone Age (50.000 BCE)
+date: 1
+title: Age of Sail (1700)
 readme: |
-    Modern humans, Cro-Magnon, hunter gatherers. Neanderthals still thriving.
+    Quite modern technology, big ships, metal working, mills, early industrial structures.
 metrics:
   Population:
-    value: 50000
-    min: 10000
-    max: 100000
+    value: 800e6
+    min: 600e6
+    max: 1e9
     confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: Quick Wikipedia reearch. Error bars guestimated.
     references: 
         - https://en.wikipedia.org/wiki/Prehistoric_demography
   Kardashev:
-    value: 0.1
-    min: 0.05
-    max: 0.15
+    value: 0.54
+    min: 0.5
+    max: 0.6
     confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: |
-        Still on a 3000 kcal per day diet. 
-        Energy consumption rounded up to 200 W including heating/cooking.
-        Using the 50 k long time population average.
+        There are big ships and cannons, but the majority of the people lives like 2000 years ago: still 300 W.
+        Yet, there are much more people. 

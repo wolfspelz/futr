@@ -1,23 +1,23 @@
 type: civilization
-date: -50000
-title: Human Stone Age (50.000 BCE)
+date: 1
+title: Industrialization (1850)
 readme: |
-    Modern humans, Cro-Magnon, hunter gatherers. Neanderthals still thriving.
+    Steam engine, power loom.
 metrics:
   Population:
-    value: 50000
-    min: 10000
-    max: 100000
+    value: 1e9
+    min: 0.8e9
+    max: 1.2e9
     confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: Quick Wikipedia reearch. Error bars guestimated.
     references: 
         - https://en.wikipedia.org/wiki/Prehistoric_demography
   Kardashev:
-    value: 0.1
-    min: 0.05
-    max: 0.15
+    value: 0.56
+    min: 0.5
+    max: 0.63
     confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    references: 
+       - https://ourworldindata.org/energy-production-consumption
     comment: |
-        Still on a 3000 kcal per day diet. 
-        Energy consumption rounded up to 200 W including heating/cooking.
-        Using the 50 k long time population average.
+        Using the 300 W baseline from the Age of Sail and adding 20% coal power according to the source 350 W.

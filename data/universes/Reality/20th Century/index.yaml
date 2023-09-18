@@ -1,23 +1,23 @@
 type: civilization
-date: -50000
-title: Human Stone Age (50.000 BCE)
+date: 1
+title: Mid 20th Century (1950)
 readme: |
-    Modern humans, Cro-Magnon, hunter gatherers. Neanderthals still thriving.
+    Diesel engines, huge industrial plants, coal power plants.
 metrics:
   Population:
-    value: 50000
-    min: 10000
-    max: 100000
+    value: 1.15e9
+    min: 1.1e9
+    max: 1.2e9
     confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: Quick Wikipedia reearch. Error bars guestimated.
     references: 
         - https://en.wikipedia.org/wiki/Prehistoric_demography
   Kardashev:
-    value: 0.1
-    min: 0.05
-    max: 0.15
+    value: 0.65
+    min: 0.55
+    max: 0.70
     confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    references: 
+       - https://ourworldindata.org/energy-production-consumption
     comment: |
-        Still on a 3000 kcal per day diet. 
-        Energy consumption rounded up to 200 W including heating/cooking.
-        Using the 50 k long time population average.
+        88 k TWh in 1980.
