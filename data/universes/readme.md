@@ -4,7 +4,7 @@
 
 This is the place for Universes / Franchises.
 
-A Universe contains Civilizations each with their own description.
+A Universe contains Civilizations each with their own description. Each Universe a folder with its associated Civilizations. 
 
 A Civilizations is a fraction of a Universe. It may be the entire galaxy or just a single species in a certain year. 
 
