@@ -33,7 +33,7 @@ Civilizations list various Metrics. This is the main content. Metrics are the va
 - PANEC
 - Galactic Developments
 
-...and much much more
+...and much much more. [Tell us](https://discordapp.com/channels/1136704642986811423/1153448297915220058).
 
 See also:
 - [List of Science Fiction Universes](https://en.wikipedia.org/wiki/List_of_science_fiction_universes)
@@ -54,7 +54,7 @@ From Star Trek:
 - Star Trek Borg 2367 (Wolf 359), 
 - Star Trek Alpha Quadrant 2400, 
 
-usw.
+more? [Tell us](https://discordapp.com/channels/1136704642986811423/1153448297915220058).
 
 From Perryversum:
 
@@ -64,7 +64,7 @@ From Perryversum:
 - Perry Rhodan Lemurer (-50.000)
 - Perry Rhodan Kosmische Hanse (3588)
 
-usw.
+more? [Tell us](https://discordapp.com/channels/1136704642986811423/1153448297915220058).
 
 From Galactic Developments:
 
