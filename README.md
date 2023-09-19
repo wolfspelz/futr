@@ -10,7 +10,7 @@ Science Fiction and Fantasy universe statistics.
 
 See the [data](data/universes).
 
-We are currently collecting data to learn abiut the requirements. 
+We are currently collecting data to learn about the requirements and data structures of this project. 
 
 ## Contribute
 
