@@ -12,9 +12,9 @@ and [Universes](universes) - the universes we all know and love
 
 The best way to contribute is to
 
-- [clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository),
+- [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the repository,
 - make changes,
-- then make a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- then make a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
 I understand this looks like a coder's only domain, but let's debunk some myths about GitHub:
 
