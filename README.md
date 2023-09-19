@@ -4,13 +4,15 @@ The FUTR-Project
 
 ## About
 
-Science Fiction and Fantasy universe statistics
+Science Fiction and Fantasy universe statistics.
 
 ## Data
 
-See the [data](data/universes)
+See the [data](data/universes).
 
 We are currently collecting data to learn abiut the requirements. 
+
+## Contribute
 
 Feel free to clone, add, and pull request.
 
@@ -20,8 +22,8 @@ We will add a pretty web site that shows all the data, statistics, comparisons, 
 
 ## Comments
 
-For the time being, please use the github [issues](https://github.com/wolfspelz/futr/issues)
+For the time being, please use the github [issues](https://github.com/wolfspelz/futr/issues).
 
-If you are more the Discord-type: check out the [FUTR section](https://discordapp.com/channels/1136704642986811423/1153448297915220058)
+If you are more the Discord-type: check out the [FUTR channel](https://discordapp.com/channels/1136704642986811423/1153448297915220058) of the Galactic Developments Discord.
 
 ![Future FUTR Web site screenshot](assets/empty-screenshot.png)
