@@ -31,5 +31,6 @@ What we use from the GitHub Toolset without having to program or setup anything:
 - Secure user accounts
 - Editorial process (by merge request and branch based access rights)
 - Discussion forum (with discussions linked to changes)
-- (later) Project management (in form of the agile board) 
-- (later) Deployment pipeline
+- (latr) Project management (in form of the agile board) 
+- (latr) Deployment pipeline
+- (latr) Static site generators integrate well with GitHub
