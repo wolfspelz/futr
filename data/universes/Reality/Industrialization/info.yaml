@@ -1,25 +1,23 @@
-type: civilization
-date: 1
-title: 1980s
+title: Industrialization (1850)
+tags: []
+date: 1850
 readme: |
-    Nuclear power, globalization, mass market industrial products like cars, TVs, washing machines.
+    Steam engine, power loom.
 metrics:
   Population:
-    value: 4e9
-    min: 3.5e9
-    max: 4.5e9
+    value: 1e9
+    min: 0.8e9
+    max: 1.2e9
     confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: Quick Wikipedia reearch. Error bars guestimated.
     references: 
         - https://en.wikipedia.org/wiki/Prehistoric_demography
   Kardashev:
-    value: 0.7
-    min: 0.67
-    max: 0.73
+    value: 0.56
+    min: 0.5
+    max: 0.63
     confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     references: 
        - https://ourworldindata.org/energy-production-consumption
     comment: |
-        Accourding to the source power consumption is 4 times the biomass baseline: 1200 W. 
-        The source also tells 28564 TWh in 1950, which amounts to 2800 W per person. 
-        Taking the latter. 
+        Using the 300 W baseline from the Age of Sail and adding 20% coal power according to the source 350 W.

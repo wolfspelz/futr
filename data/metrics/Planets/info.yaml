@@ -1,5 +1,4 @@
-type: metric
 title: Number of Inhabited Planets
 tags: [index, new]
-dataType: number
+type: number
 unit: Planets

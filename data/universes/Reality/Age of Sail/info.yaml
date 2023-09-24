@@ -1,23 +1,22 @@
-type: civilization
-date: 1
-title: Industrialization (1850)
+title: Age of Sail (1700)
+tags: []
+date: 1700
 readme: |
-    Steam engine, power loom.
+    Quite modern technology, big ships, metal working, mills, early industrial structures.
 metrics:
   Population:
-    value: 1e9
-    min: 0.8e9
-    max: 1.2e9
+    value: 800e6
+    min: 600e6
+    max: 1e9
     confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: Quick Wikipedia reearch. Error bars guestimated.
     references: 
         - https://en.wikipedia.org/wiki/Prehistoric_demography
   Kardashev:
-    value: 0.56
+    value: 0.54
     min: 0.5
-    max: 0.63
+    max: 0.6
     confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
-    references: 
-       - https://ourworldindata.org/energy-production-consumption
     comment: |
-        Using the 300 W baseline from the Age of Sail and adding 20% coal power according to the source 350 W.
+        There are big ships and cannons, but the majority of the people lives like 2000 years ago: still 300 W.
+        Yet, there are much more people. 

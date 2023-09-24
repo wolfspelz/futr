@@ -1,4 +1,4 @@
-type: metric
 title: Total Population
-dataType: number
+tags: []
+type: number
 unit: People

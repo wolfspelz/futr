@@ -8,6 +8,8 @@ it has [Metrics](metrics) - a myriad cool ways to measure universes
 
 and [Universes](universes) - the universes we all know and love
 
+and [Factions](factions) - the factions and peoples of those universes.
+
 ## Contribute
 
 The best way to contribute is to

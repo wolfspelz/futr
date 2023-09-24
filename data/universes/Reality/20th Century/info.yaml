@@ -1,22 +1,23 @@
-type: civilization
-date: 1
-title: Age of Sail (1700)
+title: Mid 20th Century (1950)
+tags: []
+date: 1950
 readme: |
-    Quite modern technology, big ships, metal working, mills, early industrial structures.
+    Diesel engines, huge industrial plants, coal power plants.
 metrics:
   Population:
-    value: 800e6
-    min: 600e6
-    max: 1e9
+    value: 1.15e9
+    min: 1.1e9
+    max: 1.2e9
     confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: Quick Wikipedia reearch. Error bars guestimated.
     references: 
         - https://en.wikipedia.org/wiki/Prehistoric_demography
   Kardashev:
-    value: 0.54
-    min: 0.5
-    max: 0.6
+    value: 0.65
+    min: 0.55
+    max: 0.70
     confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    references: 
+       - https://ourworldindata.org/energy-production-consumption
     comment: |
-        There are big ships and cannons, but the majority of the people lives like 2000 years ago: still 300 W.
-        Yet, there are much more people. 
+        88 k TWh in 1980.

@@ -1,23 +1,25 @@
-type: civilization
-date: 1
-title: Mid 20th Century (1950)
+title: 1980s
+tags: []
+date: 1980
 readme: |
-    Diesel engines, huge industrial plants, coal power plants.
+    Nuclear power, globalization, mass market industrial products like cars, TVs, washing machines.
 metrics:
   Population:
-    value: 1.15e9
-    min: 1.1e9
-    max: 1.2e9
+    value: 4e9
+    min: 3.5e9
+    max: 4.5e9
     confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: Quick Wikipedia reearch. Error bars guestimated.
     references: 
         - https://en.wikipedia.org/wiki/Prehistoric_demography
   Kardashev:
-    value: 0.65
-    min: 0.55
-    max: 0.70
+    value: 0.7
+    min: 0.67
+    max: 0.73
     confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     references: 
        - https://ourworldindata.org/energy-production-consumption
     comment: |
-        88 k TWh in 1980.
+        Accourding to the source power consumption is 4 times the biomass baseline: 1200 W. 
+        The source also tells 28564 TWh in 1950, which amounts to 2800 W per person. 
+        Taking the latter. 

@@ -1,7 +1,7 @@
-type: civilization
+title: Federation 2373
+tags: [index, hilite]
 faction: Federation of Planets
 date: 2373
-title: Star Trek Federation 2373
 metrics:
   Planets:
     value: 150

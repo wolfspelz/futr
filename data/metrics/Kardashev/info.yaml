@@ -1,6 +1,5 @@
-type: metric
 title: Kardashev Rating
-tags: [index]
-dataType: number
+tags: [index, hilite]
+type: number
 unit: Kardashev
 range: 0-3
