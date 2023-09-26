@@ -1,4 +1,6 @@
-﻿namespace futr;
+﻿using System.IO;
+
+namespace futr;
 
 public class FutrData
 {
@@ -8,7 +10,11 @@ public class FutrData
     public string MetricsSubfolder = "metrics";
     public string UniversesSubfolder = "universes";
     public string FactionsSubfolder = "_factions";
-    public string InfoFileName = "info.yaml";
+    public string YamlInfoFileName = "info.yaml";
+    public string AlternativeYamlInfoFileName = "info.yml";
+    public string ReadmeFileName = "readme.md";
+
+    private Dictionary<string, Metric> _metrics = new();
 
     public FutrData()
     {
@@ -24,10 +30,29 @@ public class FutrData
     public void LoadMetrics(string folderPath)
     {
         Log.Info($"folder={folderPath}");
-        var metrics = StructureProvider.EnumerateFolders(folderPath);
-        foreach (var metricId in metrics) {
-            var metricInfoPath = Path.Combine(folderPath, metricId, InfoFileName);
-            var metricData = DataProvider.GetData(metricInfoPath);
+
+        var folders = StructureProvider.EnumerateFolders(folderPath);
+        foreach (var path in folders) {
+            string metricId = Path.GetFileName(path);
+            var infoPath = Path.Combine(folderPath, metricId, YamlInfoFileName);
+            if (!File.Exists(infoPath)) {
+                infoPath = Path.Combine(folderPath, metricId, AlternativeYamlInfoFileName);
+            }
+            if (!File.Exists(infoPath)) {
+                Log.Warning($"Metric {metricId} does not have an info.yaml file.");
+                continue;
+            }
+            var infoData = DataProvider.GetData(infoPath);
+            var metric = new Metric(metricId).fromYaml(infoData);
+
+            var readmePath = Path.Combine(folderPath, metricId, ReadmeFileName);
+            readmePath = FindCaseInsensitiveFile(readmePath);
+            if (File.Exists(readmePath)) {
+                var readmeData = DataProvider.GetData(readmePath);
+                metric.Description = readmeData;
+            }
+
+            _metrics.Add(metricId, metric);
         }
     }
 
@@ -36,11 +61,27 @@ public class FutrData
         Log.Info($"folder={folderPath}");
     }
 
+    public string FindCaseInsensitiveFile(string path)
+    {
+        string? directory = Path.GetDirectoryName(path);
+        if (!string.IsNullOrEmpty(directory)) {
+            string lowerFilename = Path.GetFileName(path).ToLower();
+
+            foreach (string filePath in StructureProvider.EnumerateFiles(directory)) {
+                var fileName = System.IO.Path.GetFileName(filePath);
+                if (fileName.ToLower() == lowerFilename) {
+                    return Path.Combine(directory, fileName);
+                }
+            }
+        }
+
+        return path;
+    }
+
     public Universe? GetUniverse(string id)
     {
-        return new Universe {
-            Id = id,
-            Name = "Galactic Developments",
+        return new Universe(id) {
+            Title = "Galactic Developments",
             Description = "A universe for testing purposes.",
         };
     }

@@ -35,6 +35,7 @@ public class Program
             Config = myConfig,
             Log = myLogger,
         };
+        myApp.Data.Load(myConfig.DataFolder);
         builder.Services.AddSingleton(myApp);
 
         var app = builder.Build();
