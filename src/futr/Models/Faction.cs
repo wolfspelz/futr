@@ -1,11 +1,10 @@
 ﻿namespace futr.Models;
 
-public class Universe : BaseModel
+public class Faction : BaseModel
 {
-    public Dictionary<string, Civilization> Civilizations = new();
-    public Dictionary<string, Faction> Factions = new();
+    //public string Type { get; set; } = "";
 
-    public Universe(string id) : base(id)
+    public Faction(string id) : base(id)
     {
     }
 
