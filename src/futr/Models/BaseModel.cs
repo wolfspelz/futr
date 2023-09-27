@@ -11,6 +11,7 @@ public class BaseModel
     public string[] Icons = new string[0];
     public string[] Images = new string[0];
     public string Error { get; set; } = "";
+    public string SeoName { get; set; } = "";
 
     protected JsonPath.Node? node { get; set; }
 

@@ -6,17 +6,17 @@
     <ul>
         @foreach (var metric in Model.Metrics) {
             <li>
-                <a asp-page="Metric" asp-route-id="@metric.Id">@metric.Title</a>
+                <a asp-page="Metric" asp-route-id="@metric.SeoName">@metric.Title</a>
             </li>
         }
     </ul>
 } else {
     <h1>@Model.Metric.Title</h1>
     <div class="my-textblock">
-        <p><span>Tags</span>: <span>@string.Join(", ", Model.Metric.Tags)</span></p>
-        <p><span>Type</span>: <span>@Model.Metric.Type</span></p>
-        <p><span>Unit</span>: <span>@Model.Metric.Unit</span></p>
-        <p><span>Range</span>: <span>@Model.Metric.Range</span></p>
+        <div><span>Tags</span>: <span>@string.Join(", ", Model.Metric.Tags)</span></div>
+        <div><span>Type</span>: <span>@Model.Metric.Type</span></div>
+        <div><span>Unit</span>: <span>@Model.Metric.Unit</span></div>
+        <div><span>Range</span>: <span>@Model.Metric.Range</span></div>
     </div>
     <div class="my-textblock" id="iDescription">
         <span id="iDescriptionSource">@Model.Metric.Description</span>

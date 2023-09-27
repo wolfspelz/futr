@@ -3,7 +3,8 @@
 public class FutrConfig : FutrConfigBag
 {
     public bool IsDevelopment = false;
-    public string AppName = "FUTR";
+    public string AppTitle = "Fictional Universe Taxonomy Research";
+    public string AppAcronym = "FUTR";
     public int SiloPort = 11111;
     public int GatewayPort = 30000;
     public string ServiceId = "futr";

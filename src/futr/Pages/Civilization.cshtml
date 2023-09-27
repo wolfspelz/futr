@@ -1,0 +1,38 @@
+﻿@page "{id?}"
+@model futr.Pages.CivilizationModel
+
+@if (@Model.Civilization != null) {
+    <h1>@Model.Civilization.Title</h1>
+
+    <div class="my-textblock">
+        <div><span>Tags</span>: <span>@string.Join(", ", Model.Civilization.Tags)</span></div>
+        <div>
+            <span>Universe</span>:
+            <span>
+                <a asp-page="Universe" asp-route-id="@Model.Civilization.Universe.SeoName">@Model.Civilization.Universe.Title</a>
+            </span>
+        </div>
+    </div>
+
+    <div class="my-textblock">
+        <h2>Datapoints</h2>
+        @foreach (var datapoint in Model.Civilization.Datapoints) {
+            <div>
+                <h3>@datapoint.Metric</h3>
+                <div>
+                    <span>Value</span>: <span>@datapoint.Value</span>
+                    (<span>@datapoint.Min</span> -
+                    <span>@datapoint.Max</span>)
+                </div>
+                <div><span>Confidence</span>: <span>@datapoint.Confidence</span></div>
+                <div style="margin-top: 0.5em; white-space: pre-wrap">@datapoint.Comment</div>
+            </div>
+        }
+    </div>
+
+    <div class="my-textblock" id="iDescription">
+        <span id="iDescriptionSource">@Model.Civilization.Description</span>
+    </div>
+
+    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+}

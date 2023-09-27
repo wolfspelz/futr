@@ -2,13 +2,16 @@
 
 public partial class Civilization : BaseModel
 {
+    public Universe Universe { get; set; }
+
     public string Faction { get; set; } = "";
     public string Date { get; set; } = "";
 
     public List<Datapoint> Datapoints = new();
 
-    public Civilization(string id) : base(id)
+    public Civilization(Universe universe, string id) : base(id)
     {
+        Universe = universe;
     }
 
     public new JsonPath.Node fromYaml(string yaml)

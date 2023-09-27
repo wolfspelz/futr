@@ -2,10 +2,13 @@
 
 public class Faction : BaseModel
 {
+    public Universe Universe { get; set; }
+
     //public string Type { get; set; } = "";
 
-    public Faction(string id) : base(id)
+    public Faction(Universe universe, string id) : base(id)
     {
+        Universe = universe;
     }
 
     public new JsonPath.Node fromYaml(string yaml)

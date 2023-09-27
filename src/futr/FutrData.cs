@@ -16,6 +16,8 @@ public class FutrData
 
     private Dictionary<string, Metric> _metrics = new();
     private Dictionary<string, Universe> _universes = new();
+    private Dictionary<string, Civilization> _civilizations = new();
+    private Dictionary<string, Faction> _factions = new();
 
     public FutrData()
     {
@@ -27,6 +29,27 @@ public class FutrData
 
         LoadMetrics(Path.Combine(folderPath, MetricsSubfolder));
         LoadUniverses(Path.Combine(folderPath, UniversesSubfolder));
+
+        RegisterCivilizations();
+        RegisterFactions();
+    }
+
+    private void RegisterCivilizations()
+    {
+        foreach (var universe in _universes.Values) {
+            foreach (var civilization in universe.Civilizations.Values) {
+                _civilizations.Add(civilization.SeoName, civilization);
+            }
+        }
+    }
+
+    private void RegisterFactions()
+    {
+        foreach (var universe in _universes.Values) {
+            foreach (var faction in universe.Factions.Values) {
+                _factions.Add(faction.SeoName, faction);
+            }
+        }
     }
 
     private void LoadMetrics(string folderPath)
@@ -37,6 +60,7 @@ public class FutrData
         foreach (var path in folders) {
             string metricId = Path.GetFileName(path).Trim();
             var metric = LoadMetric(folderPath, metricId);
+            metric.SeoName = metricId;
             _metrics.Add(metricId, metric);
         }
     }
@@ -74,6 +98,7 @@ public class FutrData
         foreach (var path in folders) {
             var universeId = Path.GetFileName(path).Trim();
             var universe = LoadUniverse(folderPath, universeId);
+            universe.SeoName = universeId;
             _universes.Add(universeId, universe);
         }
     }
@@ -108,7 +133,8 @@ public class FutrData
                 continue;
             }
 
-            var civilization = LoadCivilization(universeFolderPath, civilizationId);
+            var civilization = LoadCivilization(universe, universeFolderPath, civilizationId);
+            civilization.SeoName = $"{universeId} {civilizationId}";
             universe.Civilizations.Add(civilizationId, civilization);
         }
 
@@ -116,16 +142,17 @@ public class FutrData
         var factionSubFolders = StructureProvider.EnumerateFolders(factionFolderPath);
         foreach (var factionSubPath in factionSubFolders) {
             var factionId = Path.GetFileName(factionSubPath).Trim();
-            var faction = LoadFaction(factionFolderPath, factionId);
+            var faction = LoadFaction(universe, factionFolderPath, factionId);
+            faction.SeoName = $"{universeId} {factionId}";
             universe.Factions.Add(factionId, faction);
         }
 
         return universe;
     }
 
-    private Faction LoadFaction(string folderPath, string factionId)
+    private Faction LoadFaction(Universe universe, string folderPath, string factionId)
     {
-        var faction = new Faction(factionId);
+        var faction = new Faction(universe, factionId);
 
         var infoPath = Path.Combine(folderPath, factionId, YamlInfoFileName);
         if (!DataProvider.HasData(infoPath)) {
@@ -148,9 +175,9 @@ public class FutrData
         return faction;
     }
 
-    private Civilization LoadCivilization(string folderPath, string civilizationId)
+    private Civilization LoadCivilization(Universe universe, string folderPath, string civilizationId)
     {
-        var civilization = new Civilization(civilizationId);
+        var civilization = new Civilization(universe, civilizationId);
 
         var civilizationInfoPath = Path.Combine(folderPath, civilizationId, YamlInfoFileName);
         if (!DataProvider.HasData(civilizationInfoPath)) {
@@ -190,18 +217,34 @@ public class FutrData
         return path;
     }
 
-    public Universe? GetUniverse(string id)
-    {
-        return new Universe(id) {
-            Title = "Galactic Developments",
-            Description = "A universe for testing purposes.",
-        };
-    }
-
     public Metric? GetMetric(string id)
     {
         if (_metrics.ContainsKey(id)) {
             return _metrics[id];
+        }
+        return null;
+    }
+
+    public Universe? GetUniverse(string id)
+    {
+        if (_universes.ContainsKey(id)) {
+            return _universes[id];
+        }
+        return null;
+    }
+
+    public Faction? GetFaction(string id)
+    {
+        if (_factions.ContainsKey(id)) {
+            return _factions[id];
+        }
+        return null;
+    }
+
+    public Civilization? GetCivilization(string id)
+    {
+        if (_civilizations.ContainsKey(id)) {
+            return _civilizations[id];
         }
         return null;
     }
@@ -212,6 +255,17 @@ public class FutrData
 
         foreach (var metric in _metrics.Values) {
             result.Add(metric);
+        }
+
+        return result;
+    }
+
+    public List<Universe> GetUniverses()
+    {
+        var result = new List<Universe>();
+
+        foreach (var universe in _universes.Values) {
+            result.Add(universe);
         }
 
         return result;
