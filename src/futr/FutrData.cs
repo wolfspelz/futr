@@ -1,11 +1,9 @@
-﻿using System.IO;
-
-namespace futr;
+﻿namespace futr;
 
 public class FutrData
 {
     public IDataProvider DataProvider = new TabConvertingFileDataProvider();
-    public IStructureProvider StructureProvider = new FileStructureProvider();
+    public IDataStructureProvider StructureProvider = new FileStructureProvider();
     public ICallbackLogger Log = new NullCallbackLogger();
     public string MetricsSubfolder = "metrics";
     public string UniversesSubfolder = "universes";
@@ -35,10 +33,10 @@ public class FutrData
         foreach (var path in folders) {
             string metricId = Path.GetFileName(path);
             var infoPath = Path.Combine(folderPath, metricId, YamlInfoFileName);
-            if (!File.Exists(infoPath)) {
+            if (!DataProvider.HasData(infoPath)) {
                 infoPath = Path.Combine(folderPath, metricId, AlternativeYamlInfoFileName);
             }
-            if (!File.Exists(infoPath)) {
+            if (!DataProvider.HasData(infoPath)) {
                 Log.Warning($"Metric {metricId} does not have an info.yaml file.");
                 continue;
             }
@@ -47,7 +45,7 @@ public class FutrData
 
             var readmePath = Path.Combine(folderPath, metricId, ReadmeFileName);
             readmePath = FindCaseInsensitiveFile(readmePath);
-            if (File.Exists(readmePath)) {
+            if (DataProvider.HasData(readmePath)) {
                 var readmeData = DataProvider.GetData(readmePath);
                 metric.Description = readmeData;
             }
@@ -84,5 +82,24 @@ public class FutrData
             Title = "Galactic Developments",
             Description = "A universe for testing purposes.",
         };
+    }
+
+    public Metric? GetMetric(string id)
+    {
+        if (_metrics.ContainsKey(id)) {
+            return _metrics[id];
+        }
+        return null;
+    }
+
+    public List<Metric> GetMetrics()
+    {
+        var result = new List<Metric>();
+
+        foreach (var metric in _metrics.Values) {
+            result.Add(metric);
+        }
+
+        return result;
     }
 }

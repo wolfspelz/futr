@@ -1,0 +1,24 @@
+﻿@page "{id?}"
+@model futr.Pages.MetricModel
+
+@if (string.IsNullOrEmpty(Model.Id)) {
+    <h1>Metrics</h1>
+    <ul>
+        @foreach (var metric in Model.Metrics) {
+            <li>
+                <a asp-page="Metric" asp-route-id="@metric.Id">@metric.Title</a>
+            </li>
+        }
+    </ul>
+} else {
+    <h1>@Model.Metric.Title</h1>
+    <p>@string.Join(", ", Model.Metric.Tags)</p>
+    <p>@Model.Metric.Type</p>
+    <p>@Model.Metric.Unit</p>
+    <p>@Model.Metric.Range</p>
+    <div id="iDescriptionTarget">
+        <pre id="iDescriptionSource">@Model.Metric.Description</pre>
+    </div>
+
+    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescriptionTarget"})
+}

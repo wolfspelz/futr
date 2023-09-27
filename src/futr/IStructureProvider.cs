@@ -1,6 +1,6 @@
 ﻿namespace futr;
 
-public interface IStructureProvider
+public interface IDataStructureProvider
 {
     IEnumerable<string> EnumerateFolders(string root);
     IEnumerable<string> EnumerateFiles(string root);

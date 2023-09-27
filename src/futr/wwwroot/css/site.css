@@ -94,7 +94,7 @@ div.my-footer {
     bottom: 0;
     width: 100%;
     min-height: 60px;
-    /*background-color: var(--main-text-box-color);*/
+    background-color: var(--main-text-box-color);
     box-shadow: 0 0 0.5em #333333;
     color: var(--main-text-color);
     text-align: center;

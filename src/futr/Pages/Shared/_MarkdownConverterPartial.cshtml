@@ -17,7 +17,7 @@
             const targetElem = document.getElementById(targetId);
             targetElem.innerHTML = targetText;
         }
-        markdown2Html('iSource', 'iTarget');
+        markdown2Html('@Model.Source', '@Model.Target');
     })();
 </script>
 <!-- End MarkdownConverter -->
