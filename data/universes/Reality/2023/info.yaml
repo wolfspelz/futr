@@ -3,17 +3,17 @@ tags: []
 date: 2023
 readme: |
     The world as we know it.
-metrics:
+datapoints:
   Population:
     value: 8.1e9
     min: 8e9
     max: 8.2e9
-    confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
   Kardashev:
     value: 0.73
     min: 0.71
     max: 0.75
-    confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     references: 
         - https://ourworldindata.org/energy-production-consumption
         - https://en.wikipedia.org/wiki/List_of_countries_by_energy_consumption_per_capita

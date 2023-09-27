@@ -41,7 +41,8 @@ public class FutrData
                 continue;
             }
             var infoData = DataProvider.GetData(infoPath);
-            var metric = new Metric(metricId).fromYaml(infoData);
+            var metric = new Metric(metricId);
+            metric.fromYaml(infoData);
 
             var readmePath = Path.Combine(folderPath, metricId, ReadmeFileName);
             readmePath = FindCaseInsensitiveFile(readmePath);

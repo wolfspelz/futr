@@ -1,17 +1,19 @@
 ﻿namespace futr.Models;
 
-public class Universe
+public class Universe : BaseModel
 {
-    public const string TagSeparator = ",";
+    public Dictionary<string, Civilization> Civilizations = new();
 
-    public string Id { get; set; }
-    public string Title { get; set; }
-    public string Tags { get; set; } = "";
-    public string Description { get; set; } = "";
-
-    public Universe(string id)
+    public Universe(string id) : base(id)
     {
-        Id = id;
-        Title = id;
+    }
+
+    public new JsonPath.Node fromYaml(string yaml)
+    {
+        var node = base.fromYaml(yaml);
+
+        //Type = node["type"].AsString.Trim();
+
+        return node;
     }
 }

@@ -2,12 +2,12 @@ title: Federation 2373
 tags: [index, hilite]
 faction: Federation of Planets
 date: 2373
-metrics:
+datapoints:
   Planets:
     value: 150
     min: 100
     max: 200
-    confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: Though Kirk states in 2267 that humanity was on "a thousand planets and spreading out", we'll go with a later quote from the franchise. 
     references: 
         - https://en.wikipedia.org/wiki/United_Federation_of_Planets
@@ -15,13 +15,13 @@ metrics:
     value: 100e9
     min: 30e9
     max: 1000e9
-    confidenceLevel: informedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    confidence: informedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: A billion per planet sounds small considering the Earth, but there are also less densely populated planets and not every planet is the home of a major species.
   Kardashev:
     value: 1
     min: 0.9
     max: 1.1
-    confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
     comment: |
         Assuming 100 billion people and an average of 100 kW power consumption per person which is a wild guess. 
         100 kW is 5-10 times early 21st century Earth, because "future".
