@@ -1,7 +1,7 @@
 :root {
     --main-text-color: #000000;
     --main-text-shadow-color: #ffffff;
-    --main-text-box-color: rgba(255,255,255,0.3);
+    --main-text-box-color: rgba(255,255,255,0.6);
     --main-link-hilite-color: #000000;
     --main-link-box-color: rgba(255,255,255,0.4);
     --main-link-hilite-box-color: rgba(255,255,255,0.5);
@@ -94,10 +94,17 @@ div.my-footer {
     bottom: 0;
     width: 100%;
     min-height: 60px;
-    background-color: var(--main-text-box-color);
+    /*background-color: var(--main-text-box-color);*/
     box-shadow: 0 0 0.5em #333333;
     color: var(--main-text-color);
     text-align: center;
+}
+
+div.my-textblock {
+    padding: 0 0.5em;
+    margin-bottom: 1em;
+    background-color: var(--main-text-box-color);
+    display: inline-block;
 }
 
 a.my-brand-text {

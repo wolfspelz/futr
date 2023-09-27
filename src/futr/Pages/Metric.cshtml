@@ -12,13 +12,15 @@
     </ul>
 } else {
     <h1>@Model.Metric.Title</h1>
-    <p>@string.Join(", ", Model.Metric.Tags)</p>
-    <p>@Model.Metric.Type</p>
-    <p>@Model.Metric.Unit</p>
-    <p>@Model.Metric.Range</p>
-    <div id="iDescriptionTarget">
-        <pre id="iDescriptionSource">@Model.Metric.Description</pre>
+    <div class="my-textblock">
+        <p><span>Tags</span>: <span>@string.Join(", ", Model.Metric.Tags)</span></p>
+        <p><span>Type</span>: <span>@Model.Metric.Type</span></p>
+        <p><span>Unit</span>: <span>@Model.Metric.Unit</span></p>
+        <p><span>Range</span>: <span>@Model.Metric.Range</span></p>
+    </div>
+    <div class="my-textblock" id="iDescription">
+        <span id="iDescriptionSource">@Model.Metric.Description</span>
     </div>
 
-    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescriptionTarget"})
+    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
 }
