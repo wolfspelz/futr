@@ -27,15 +27,15 @@
 
 <body>
     <div class="my-header">
-        <a class="my-brand-text my-md" asp-area="" asp-page="/Index">Fictional Universe Taxonomy Research - FUTR Project</a>
-        <a class="my-brand-text my-sm" asp-area="" asp-page="/Index">Fictional Universe Taxonomy Research</a>
+        <a class="my-brand-text my-md" asp-area="" asp-page="/Index">@Model.Config.AppTitle - @Model.Config.AppAcronym Project</a>
+        <a class="my-brand-text my-sm" asp-area="" asp-page="/Index">@Model.Config.AppTitle</a>
 
         <ul class="my-site-menu">
             <li>
                 <a class="button" asp-area="" asp-page="/Index">Home</a>
             </li>
             <li>
-                <a class="button" asp-area="" asp-page="/Privacy">Privacy</a>
+                <a class="button" asp-area="" asp-page="/Universe">Universes</a>
             </li>
         </ul>
     </div>
@@ -48,7 +48,7 @@
         <p>
             &copy; 2023 
             - 
-            Fictional Universe Taxonomy Research
+            @Model.Config.AppTitle
             - 
             <a asp-area="" asp-page="/Privacy">Impressum</a>
            -

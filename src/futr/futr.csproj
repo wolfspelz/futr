@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Civilization.cshtml" />
+    <Content Remove="Pages\Faction.cshtml" />
+    <Content Remove="Pages\Metric.cshtml" />
     <Content Remove="Pages\Universe.cshtml" />
   </ItemGroup>
 
@@ -30,6 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\Civilization.cshtml" />
+    <None Include="Pages\Faction.cshtml" />
+    <None Include="Pages\Metric.cshtml" />
     <None Include="Pages\Universe.cshtml" />
   </ItemGroup>
 

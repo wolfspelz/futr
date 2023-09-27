@@ -3,21 +3,21 @@ tags: []
 date: 1850
 readme: |
     Steam engine, power loom.
-metrics:
-  Population:
-    value: 1e9
-    min: 0.8e9
-    max: 1.2e9
-    confidenceLevel: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
-    comment: Quick Wikipedia reearch. Error bars guestimated.
-    references: 
-        - https://en.wikipedia.org/wiki/Prehistoric_demography
-  Kardashev:
-    value: 0.56
-    min: 0.5
-    max: 0.63
-    confidenceLevel: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
-    references: 
-       - https://ourworldindata.org/energy-production-consumption
-    comment: |
-        Using the 300 W baseline from the Age of Sail and adding 20% coal power according to the source 350 W.
+datapoints:
+    - metric: Population
+      value: 1e9
+      min: 0.8e9
+      max: 1.2e9
+      confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+      comment: Quick Wikipedia reearch. Error bars guestimated.
+      references: 
+          - https://en.wikipedia.org/wiki/Prehistoric_demography
+    - metric: Kardashev
+      value: 0.56
+      min: 0.5
+      max: 0.63
+      confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+      references: 
+         - https://ourworldindata.org/energy-production-consumption
+      comment: |
+          Using the 300 W baseline from the Age of Sail and adding 20% coal power according to the source 350 W.

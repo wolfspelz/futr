@@ -2,9 +2,9 @@ title: Vulcans 2063
 tags: []
 faction: Vulcans
 date: 2063
-metrics:
-  Planets:
-    value: 1
-    min: 1
-    max: 2
+datapoints:
+    - metric: Planets
+      value: 1
+      min: 1
+      max: 2
 

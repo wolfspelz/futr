@@ -1,11 +1,11 @@
 ﻿<!-- Begin MarkdownConverter -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+<script src="/lib/showdown-1.9.1.min.js"></script>
 <script>
     (function () {
         function markdown2Html(sourceId, targetId) {
             const converter = new showdown.Converter({
                 noHeaderId: true,
-                headerLevelStart: 3,
+                headerLevelStart: 2,
                 simplifiedAutoLink: true,
                 tables: true,
                 requireSpaceBeforeHeadingText: true,
@@ -17,7 +17,7 @@
             const targetElem = document.getElementById(targetId);
             targetElem.innerHTML = targetText;
         }
-        markdown2Html('iSource', 'iTarget');
+        markdown2Html('@Model.Source', '@Model.Target');
     })();
 </script>
 <!-- End MarkdownConverter -->

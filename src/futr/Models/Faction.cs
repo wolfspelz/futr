@@ -1,12 +1,14 @@
 ﻿namespace futr.Models;
 
-public class Universe : BaseModel
+public class Faction : BaseModel
 {
-    public Dictionary<string, Civilization> Civilizations = new();
-    public Dictionary<string, Faction> Factions = new();
+    public Universe Universe { get; set; }
 
-    public Universe(string id) : base(id)
+    //public string Type { get; set; } = "";
+
+    public Faction(Universe universe, string id) : base(id)
     {
+        Universe = universe;
     }
 
     public new JsonPath.Node fromYaml(string yaml)

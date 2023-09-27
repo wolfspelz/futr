@@ -17,6 +17,6 @@ public class FutrPageModel : PageModel
         Log = App.Log;
         Config = App.Config;
         UiCultureName = Thread.CurrentThread.CurrentUICulture.Name;
-        I18n = new TextProvider(new ReadonlyFileDataProvider(), Config.AppName, UiCultureName, textName);
+        I18n = new TextProvider(new ReadonlyFileDataProvider(), Config.AppAcronym, UiCultureName, textName);
     }
 }
