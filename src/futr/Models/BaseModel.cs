@@ -29,7 +29,7 @@ public class BaseModel
             Title = title;
         }
 
-        Tags = node["tags"].AsList.Select(n => n.AsString).ToArray();
+        Tags = node["tags"].AsList.Select(n => n.AsString.Trim()).ToArray();
         Description = node["readme"].AsString;
         Icons = node["icons"].AsList.Select(n => n.AsString).ToArray();
         Images = node["images"].AsList.Select(n => n.AsString).ToArray();

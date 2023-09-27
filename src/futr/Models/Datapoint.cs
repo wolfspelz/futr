@@ -4,6 +4,7 @@ public class Datapoint
 {
     public enum ConfidenceLevel { Canon, Calculated, InformedGuess, CalculatedGuess, WildGuess, Unknown }
 
+    public string Metric { get; set; }
     public string Value { get; set; }
     public string Min { get; set; }
     public string Max { get; set; }
@@ -12,8 +13,9 @@ public class Datapoint
     public string[] References = new string[0];
     public string Error { get; set; } = "";
 
-    public Datapoint(string value, string min, string max, string confidence)
+    public Datapoint(string metric, string value, string min, string max, string confidence)
     {
+        Metric = metric;
         Value = value;
         Min = min;
         Max = max;

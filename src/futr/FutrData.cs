@@ -13,6 +13,7 @@ public class FutrData
     public string ReadmeFileName = "readme.md";
 
     private Dictionary<string, Metric> _metrics = new();
+    private Dictionary<string, Universe> _universes = new();
 
     public FutrData()
     {
@@ -31,18 +32,19 @@ public class FutrData
 
         var folders = StructureProvider.EnumerateFolders(folderPath);
         foreach (var path in folders) {
-            string metricId = Path.GetFileName(path);
+            string metricId = Path.GetFileName(path).Trim();
+            var metric = new Metric(metricId);
+
             var infoPath = Path.Combine(folderPath, metricId, YamlInfoFileName);
             if (!DataProvider.HasData(infoPath)) {
                 infoPath = Path.Combine(folderPath, metricId, AlternativeYamlInfoFileName);
             }
-            if (!DataProvider.HasData(infoPath)) {
+            if (DataProvider.HasData(infoPath)) {
+                var infoData = DataProvider.GetData(infoPath);
+                metric.fromYaml(infoData);
+            } else {
                 Log.Warning($"Metric {metricId} does not have an info.yaml file.");
-                continue;
             }
-            var infoData = DataProvider.GetData(infoPath);
-            var metric = new Metric(metricId);
-            metric.fromYaml(infoData);
 
             var readmePath = Path.Combine(folderPath, metricId, ReadmeFileName);
             readmePath = FindCaseInsensitiveFile(readmePath);
@@ -58,6 +60,63 @@ public class FutrData
     public void LoadUniverses(string folderPath)
     {
         Log.Info($"folder={folderPath}");
+
+        var folders = StructureProvider.EnumerateFolders(folderPath);
+        foreach (var path in folders) {
+            var universeId = Path.GetFileName(path).Trim();
+            var universe = new Universe(universeId);
+
+            var infoPath = Path.Combine(folderPath, universeId, YamlInfoFileName);
+            if (!DataProvider.HasData(infoPath)) {
+                infoPath = Path.Combine(folderPath, universeId, AlternativeYamlInfoFileName);
+            }
+            if (DataProvider.HasData(infoPath)) {
+                var infoData = DataProvider.GetData(infoPath);
+                universe.fromYaml(infoData);
+            } else {
+                Log.Warning($"Universe {universeId} does not have an info.yaml file.");
+            }
+
+            var readmePath = Path.Combine(folderPath, universeId, ReadmeFileName);
+            readmePath = FindCaseInsensitiveFile(readmePath);
+            if (DataProvider.HasData(readmePath)) {
+                var readmeData = DataProvider.GetData(readmePath);
+                universe.Description = readmeData;
+            }
+
+            var universeFolderPath = Path.Combine(folderPath, universeId);
+            var universeSubFolders = StructureProvider.EnumerateFolders(universeFolderPath);
+            foreach (var universeSubPath in universeSubFolders) {
+                var civilizationId = Path.GetFileName(universeSubPath).Trim();
+                if (civilizationId.StartsWith("_")) {
+                    continue;
+                }
+
+                var civilization = new Civilization(civilizationId);
+
+                var civilizationInfoPath = Path.Combine(universeFolderPath, civilizationId, YamlInfoFileName);
+                if (!DataProvider.HasData(civilizationInfoPath)) {
+                    civilizationInfoPath = Path.Combine(universeFolderPath, civilizationId, AlternativeYamlInfoFileName);
+                }
+                if (DataProvider.HasData(civilizationInfoPath)) {
+                    var civilizationInfoData = DataProvider.GetData(civilizationInfoPath);
+                    civilization.fromYaml(civilizationInfoData);
+                } else {
+                    Log.Warning($"Civilization {civilizationId} does not have an info.yaml file.");
+                }
+
+                var civilizationReadmePath = Path.Combine(universeFolderPath, civilizationId, ReadmeFileName);
+                civilizationReadmePath = FindCaseInsensitiveFile(civilizationReadmePath);
+                if (DataProvider.HasData(civilizationReadmePath)) {
+                    var civilizationReadmeData = DataProvider.GetData(civilizationReadmePath);
+                    civilization.Description = civilizationReadmeData;
+                }
+
+                universe.Civilizations.Add(civilizationId, civilization);
+            }
+
+            _universes.Add(universeId, universe);
+        }
     }
 
     public string FindCaseInsensitiveFile(string path)

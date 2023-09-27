@@ -4,23 +4,23 @@ date: 2023
 readme: |
     The world as we know it.
 datapoints:
-  Population:
-    value: 8.1e9
-    min: 8e9
-    max: 8.2e9
-    confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
-  Kardashev:
-    value: 0.73
-    min: 0.71
-    max: 0.75
-    confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
-    references: 
-        - https://ourworldindata.org/energy-production-consumption
-        - https://en.wikipedia.org/wiki/List_of_countries_by_energy_consumption_per_capita
-    comment: |
-        180 k TWh in 2023 (= 20.000.000.000.000 J)
-        World average: 2.500 kW per person.
-        USA: 10 kW per person.
-        Germany: 5 kW per person.
-        China: 3 kW per person.
-        India: 0.8 kW per person.
+    - metric: Population
+      value: 8.1e9
+      min: 8e9
+      max: 8.2e9
+      confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+    - metric: Kardashev
+      value: 0.73
+      min: 0.71
+      max: 0.75
+      confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+      references: 
+          - https://ourworldindata.org/energy-production-consumption
+          - https://en.wikipedia.org/wiki/List_of_countries_by_energy_consumption_per_capita
+      comment: |
+          180 k TWh in 2023 (= 20.000.000.000.000 J)
+          World average: 2.500 kW per person.
+          USA: 10 kW per person.
+          Germany: 5 kW per person.
+          China: 3 kW per person.
+          India: 0.8 kW per person.

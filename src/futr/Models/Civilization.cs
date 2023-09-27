@@ -5,7 +5,7 @@ public partial class Civilization : BaseModel
     public string Faction { get; set; } = "";
     public string Date { get; set; } = "";
 
-    public Dictionary<string, Datapoint> Datapoints = new();
+    public List<Datapoint> Datapoints = new();
 
     public Civilization(string id) : base(id)
     {
@@ -18,19 +18,20 @@ public partial class Civilization : BaseModel
         Faction = node["faction"].AsString.Trim();
         Date = node["date"].AsString.Trim();
 
-        var datapoints = node["metrics"].AsDictionary;
-        foreach (var (metric, data) in datapoints) {
+        var datapoints = node["datapoints"].AsList;
+        foreach (var data in datapoints) {
+            var metricId = data["metric"].AsString.Trim();
             var value = data["value"].AsString.Trim();
             var min = data["min"].AsString.Trim();
             var max = data["max"].AsString.Trim();
-            var confidence = data["value"].AsString.Trim();
+            var confidence = data["confidence"].AsString.Trim();
 
-            var datapoint = new Datapoint(value, min, max, confidence);
+            var datapoint = new Datapoint(metricId, value, min, max, confidence);
 
             datapoint.Comment = data["comment"].AsString.Trim();
             datapoint.References = data["references"].AsList.Select(n => n.AsString).ToArray();
 
-            Datapoints.Add(metric, datapoint);
+            Datapoints.Add(datapoint);
         }
 
         return node;
