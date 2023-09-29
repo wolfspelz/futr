@@ -67,6 +67,8 @@ public class Program
         localizationOptions.RequestCultureProviders.Insert(2, new AcceptLanguageHeaderRequestCultureProvider());
         app.UseRequestLocalization(localizationOptions); // Sets Thread.CurrentThread.CurrentUICulture
 
+        app.UseRouteDebugger();
+        
         app.UseCors();
         app.UseRouting();
 
