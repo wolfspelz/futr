@@ -21,14 +21,14 @@
     <meta name="twitter:image" content="@(ViewData["MetaImage"])" />
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.png" />
 
     @RenderSection("Styles", required: false)
 </head>
 
 <body>
     <div class="my-header">
-        <a class="my-brand-text my-md" asp-area="" asp-page="/Index">@Model.Config.AppTitle - @Model.Config.AppAcronym Project</a>
-        <a class="my-brand-text my-sm" asp-area="" asp-page="/Index">@Model.Config.AppTitle</a>
+        <a class="my-brand-text" asp-area="" asp-page="/Index">@Model.Config.AppTitle</a>
 
         <ul class="my-site-menu">
             <li>
