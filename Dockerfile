@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 COPY . ./
-RUN dotnet publish src/futr/futr.csproj -c Debug -o out
+RUN dotnet publish src/futr/futr.csproj -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 COPY data /data
