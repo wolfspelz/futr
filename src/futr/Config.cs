@@ -1,6 +1,6 @@
 ﻿namespace futr;
 
-public class BaseConfig : FutrConfig
+public class Config : FutrConfig
 {
     public void Load()
     {

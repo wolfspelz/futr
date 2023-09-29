@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using n3q.FrameworkTools;
 
 namespace futr;
 
@@ -19,4 +20,28 @@ public class FutrPageModel : PageModel
         UiCultureName = Thread.CurrentThread.CurrentUICulture.Name;
         I18n = new TextProvider(new ReadonlyFileDataProvider(), Config.AppAcronym, UiCultureName, textName);
     }
+
+    public override async Task OnPageHandlerExecutionAsync(PageHandlerExecutingContext context, PageHandlerExecutionDelegate next)
+    {
+        try {
+            var data = new LogData();
+
+            if (context.HandlerArguments.Count > 0) {
+                data[LogData.Key.Arguments] = new LogData(context.HandlerArguments);
+            }
+
+            var request = context.HttpContext.Request;
+            data[LogData.Key.Uri] = request.Method
+                + " " + request.Path + request.QueryString
+                + " " + request.Protocol
+                ;
+            Log.SetTraceIdentifier(context.HttpContext);
+            Log.Info($"{nameof(FutrPageModel)}", data, context.ActionDescriptor.DisplayName, "");
+        } catch (Exception ex) {
+            Log.Error(ex);
+        }
+
+        await next.Invoke();
+    }
+
 }

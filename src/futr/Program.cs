@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using n3q.FrameworkTools;
 
 namespace futr;
 
@@ -9,11 +10,12 @@ public class Program
     public static void Main(string[] args)
     {
         var myConfig = new FutrConfig();
-        myConfig.Include(nameof(BaseConfig) + ".cs");
-
-        var myLogger = new NullCallbackLogger();
+        myConfig.Include(nameof(Config) + ".cs");
 
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Logging.ClearProviders();
+        builder.Logging.AddConsole();
 
         builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
         builder.Services.AddControllers();
@@ -33,13 +35,17 @@ public class Program
 
         var myApp = new FutrApp {
             Config = myConfig,
-            Log = myLogger,
         };
-        myApp.Data.Load(myConfig.DataFolder);
-        myApp.Data.Log = myLogger;
         builder.Services.AddSingleton(myApp);
 
         var app = builder.Build();
+
+        //var myLogger = new NullCallbackLogger();
+        var myLogger = new MicrosoftLoggingCallbackLogger(app.Services.GetService<ILogger<Futr>>());
+        app.Services.GetRequiredService<FutrApp>().Log = myLogger;
+
+        myApp.Data.Log = myLogger;
+        myApp.Data.Load(myConfig.DataFolder);
 
         // Configure the HTTP request pipeline.
         //if (!app.Environment.IsDevelopment()) {
@@ -63,6 +69,13 @@ public class Program
 
         app.UseCors();
         app.UseRouting();
+
+        app.Use(next => context =>
+        {
+            Console.WriteLine($"Middleware: Endpoint: {context.GetEndpoint()?.DisplayName}");
+            return next(context);
+        });
+        
         app.UseAuthentication();
         app.UseAuthorization();
 
@@ -76,4 +89,5 @@ public class Program
         app.Run();
     }
 
+    public class Futr { }
 }

@@ -50,6 +50,7 @@ namespace n3q.Tools
             public const string User = "user";
             public const string TraceId = "trace";
             public const string ObjectId = "id";
+            public const string Uri = "uri";
         }
 
         public static string Join<T>(IDictionary<string, T> values)

@@ -25,7 +25,7 @@ public class FutrData
 
     public void Load(string folderPath)
     {
-        Log.Info($"folder={folderPath}");
+        Log.Info($"{folderPath}");
 
         LoadMetrics(Path.Combine(folderPath, MetricsSubfolder));
         LoadUniverses(Path.Combine(folderPath, UniversesSubfolder));
@@ -54,7 +54,7 @@ public class FutrData
 
     private void LoadMetrics(string folderPath)
     {
-        Log.Info($"folder={folderPath}");
+        Log.Info($"{folderPath}");
 
         var folders = StructureProvider.EnumerateFolders(folderPath);
         foreach (var path in folders) {
@@ -67,6 +67,8 @@ public class FutrData
 
     private Metric LoadMetric(string folderPath, string metricId)
     {
+        Log.Info($"{folderPath}/{metricId}");
+
         var metric = new Metric(metricId);
 
         var infoPath = Path.Combine(folderPath, metricId, YamlInfoFileName);
@@ -92,7 +94,7 @@ public class FutrData
 
     private void LoadUniverses(string folderPath)
     {
-        Log.Info($"folder={folderPath}");
+        Log.Info($"{folderPath}");
 
         var folders = StructureProvider.EnumerateFolders(folderPath);
         foreach (var path in folders) {
@@ -105,6 +107,7 @@ public class FutrData
 
     private Universe LoadUniverse(string folderPath, string universeId)
     {
+        Log.Info($"{folderPath}/{universeId}");
         var universe = new Universe(universeId);
 
         var infoPath = Path.Combine(folderPath, universeId, YamlInfoFileName);
@@ -152,6 +155,7 @@ public class FutrData
 
     private Faction LoadFaction(Universe universe, string folderPath, string factionId)
     {
+        Log.Info($"{folderPath}/{factionId}");
         var faction = new Faction(universe, factionId);
 
         var infoPath = Path.Combine(folderPath, factionId, YamlInfoFileName);
@@ -177,6 +181,7 @@ public class FutrData
 
     private Civilization LoadCivilization(Universe universe, string folderPath, string civilizationId)
     {
+        Log.Info($"{folderPath}/{civilizationId}");
         var civilization = new Civilization(universe, civilizationId);
 
         var civilizationInfoPath = Path.Combine(folderPath, civilizationId, YamlInfoFileName);
