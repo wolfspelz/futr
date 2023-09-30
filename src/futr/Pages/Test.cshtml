@@ -17,4 +17,9 @@
     @foreach (var (factionId, faction) in Model.Universe.Factions) {
         <a asp-page="Faction" asp-route-id="@faction.SeoName">@faction.Title</a>
     }
+    <div id="iDescription">
+        <span id="iDescriptionSource">@Model.Universe.Description</span>
+    </div>
+
+    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
 }
