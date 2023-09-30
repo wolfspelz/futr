@@ -1,13 +1,23 @@
-﻿namespace futr.Pages
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace futr.Pages;
+
+public class TestModel : FutrPageModel
 {
-    public class TestModel : FutrPageModel
+    public string Text = "0";
+
+    public TestModel(FutrApp app) : base(app, nameof(TestModel))
     {
-        public TestModel(FutrApp app) : base(app, nameof(TestModel))
-        {
+    }
+
+    public IActionResult OnGet(string? id)
+    {
+        if (id == null) {
+            Text = "null";
+        } else {
+            Text = id;
         }
 
-        public void OnGet()
-        {
-        }
+        return Page();
     }
 }
