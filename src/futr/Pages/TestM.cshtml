@@ -1,0 +1,26 @@
+﻿@page "{id?}"
+@model TestMModel
+
+@if (string.IsNullOrEmpty(Model.Id)) {
+    <h1>Metrics</h1>
+    <ul>
+        @foreach (var metric in Model.Metrics) {
+            <li>
+                <a asp-page="TestM" asp-route-id="@metric.SeoName">@metric.Title</a>
+            </li>
+        }
+    </ul>
+} else {
+    <h1>@Model.Metric.Title</h1>
+    <div class="my-textblock">
+        <div><span>Tags</span>: <span>@string.Join(", ", Model.Metric.Tags)</span></div>
+        <div><span>Type</span>: <span>@Model.Metric.Type</span></div>
+        <div><span>Unit</span>: <span>@Model.Metric.Unit</span></div>
+        <div><span>Range</span>: <span>@Model.Metric.Range</span></div>
+    </div>
+    <div class="my-textblock" id="iDescription">
+        <span id="iDescriptionSource">@Model.Metric.Description</span>
+    </div>
+
+    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+}

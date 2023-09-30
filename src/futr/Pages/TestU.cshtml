@@ -1,12 +1,12 @@
 ﻿@page "{id?}"
-@model TestModel
+@model TestUModel
 
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Universes</h1>
     <ul>
         @foreach (var universe in Model.Universes) {
             <li>
-                <a asp-page="Test" asp-route-id="@universe.SeoName">@universe.Title</a>
+                <a asp-page="TestU" asp-route-id="@universe.SeoName">@universe.Title</a>
             </li>
         }
     </ul>
