@@ -6,4 +6,13 @@
 
 <div>Hello Test</div>
 
-<div>@Model.Text</div>
+<div>@Model.Id</div>
+
+@if (string.IsNullOrEmpty(Model.Id)) {
+    <h1>Universes</h1>
+    @foreach (var universe in Model.Universes) {
+        <a asp-page="Universe" asp-route-id="@universe.SeoName">@universe.Title</a>
+    }
+} else {
+    <h1>@Model.Universe.Title</h1>
+}
