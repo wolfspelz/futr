@@ -14,6 +14,7 @@ public class FutrPageModel : PageModel
 
     public FutrPageModel(FutrApp app, string textName)
     {
+        textName = textName.EndsWith("Model") ? textName.Substring(0, textName.Length - "Model".Length) : textName;
         App = app;
         Log = App.Log;
         Config = App.Config;
