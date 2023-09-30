@@ -2,12 +2,12 @@
 
 namespace futr.Pages;
 
-public class TestCModel : FutrPageModel
+public class FactionModel : FutrPageModel
 {
     public string Id { get; private set; } = "";
-    public Models.Civilization? Civilization { get; private set; }
+    public Models.Faction? Faction { get; private set; }
 
-    public TestCModel(FutrApp app) : base(app, nameof(TestCModel)) { }
+    public FactionModel(FutrApp app) : base(app, nameof(FactionModel)) { }
 
     public IActionResult OnGet(string? id)
     {
@@ -15,11 +15,11 @@ public class TestCModel : FutrPageModel
             return NotFound();
         } else {
             Id = id;
-            var civilization = App.Data.GetCivilization(id);
-            if (civilization == null) {
+            var faction = App.Data.GetFaction(id);
+            if (faction == null) {
                 return NotFound();
             }
-            Civilization = civilization;
+            Faction = faction;
         }
 
         return Page();
