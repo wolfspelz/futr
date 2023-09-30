@@ -1,0 +1,22 @@
+﻿@page "{id?}"
+@model TestFModel
+
+@if (@Model.Faction != null) {
+    <h1>@Model.Faction.Title</h1>
+
+    <div class="my-textblock">
+        <div><span>Tags</span>: <span>@string.Join(", ", Model.Faction.Tags)</span></div>
+        <div>
+            <span>Universe</span>:
+            <span>
+                <a asp-page="TestU" asp-route-id="@Model.Faction.Universe.SeoName">@Model.Faction.Universe.Title</a>
+            </span>
+        </div>
+    </div>
+
+    <div class="my-textblock" id="iDescription">
+        <span id="iDescriptionSource">@Model.Faction.Description</span>
+    </div>
+
+    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+}

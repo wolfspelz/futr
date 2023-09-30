@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace futr.Pages
 {
-    public class CivilizationModel : FutrPageModel
+    public class TestCModel : FutrPageModel
     {
         public string Id { get; private set; } = "";
         public Models.Civilization? Civilization { get; private set; }
 
-        public CivilizationModel(FutrApp app) : base(app, "Civilization") { }
+        public TestCModel(FutrApp app) : base(app, nameof(TestCModel)) { }
 
         public IActionResult OnGet(string? id)
         {

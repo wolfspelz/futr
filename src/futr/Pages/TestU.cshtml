@@ -21,7 +21,7 @@
         <ul>
             @foreach (var (civilizationId, civilization) in Model.Universe.Civilizations) {
                 <li>
-                    <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Title</a>
+                    <a asp-page="TestC" asp-route-id="@civilization.SeoName">@civilization.Title</a>
                 </li>
             }
         </ul>
@@ -32,7 +32,7 @@
         <ul>
             @foreach (var (factionId, faction) in Model.Universe.Factions) {
                 <li>
-                    <a asp-page="Faction" asp-route-id="@faction.SeoName">@faction.Title</a>
+                    <a asp-page="TestF" asp-route-id="@faction.SeoName">@faction.Title</a>
                 </li>
             }
         </ul>
