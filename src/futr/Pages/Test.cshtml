@@ -1,12 +1,5 @@
 ﻿@page "{id?}"
 @model TestModel
-@{
-    ViewData["Title"] = "Test";
-}
-
-<div>Hello Test</div>
-
-<div>@Model.Id</div>
 
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Universes</h1>
@@ -15,4 +8,13 @@
     }
 } else {
     <h1>@Model.Universe.Title</h1>
+    <div><span>Tags</span>: <span>@string.Join(", ", Model.Universe.Tags)</span></div>
+    <h2>Civilizations</h2>
+    @foreach (var (civilizationId, civilization) in Model.Universe.Civilizations) {
+        <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Title</a>
+    }
+    <h2>Factions</h2>
+    @foreach (var (factionId, faction) in Model.Universe.Factions) {
+        <a asp-page="Faction" asp-route-id="@faction.SeoName">@faction.Title</a>
+    }
 }
