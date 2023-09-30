@@ -1,29 +1,28 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace futr.Pages
+namespace futr.Pages;
+
+public class UniverseModel : FutrPageModel
 {
-    public class UniverseModel : FutrPageModel
+    public string Id { get; private set; } = "";
+    public Models.Universe Universe { get; private set; } = new Universe("");
+    public List<Models.Universe> Universes { get; private set; } = new();
+
+    public UniverseModel(FutrApp app) : base(app, "Universe") { }
+
+    public IActionResult OnGet(string? id)
     {
-        public string Id { get; private set; } = "";
-        public Models.Universe Universe { get; private set; } = new Universe("");
-        public List<Models.Universe> Universes { get; private set; } = new();
-
-        public UniverseModel(FutrApp app) : base(app, "Universe") { }
-
-        public IActionResult OnGet(string? id)
-        {
-            if (id == null) {
-                Universes = App.Data.GetUniverses();
-            } else {
-                Id = id;
-                var universe = App.Data.GetUniverse(id);
-                if (universe == null) {
-                    return NotFound();
-                }
-                Universe = universe;
+        if (id == null) {
+            Universes = App.Data.GetUniverses();
+        } else {
+            Id = id;
+            var universe = App.Data.GetUniverse(id);
+            if (universe == null) {
+                return NotFound();
             }
-
-            return Page();
+            Universe = universe;
         }
+
+        return Page();
     }
 }
