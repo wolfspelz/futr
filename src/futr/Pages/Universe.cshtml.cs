@@ -2,13 +2,13 @@
 
 namespace futr.Pages;
 
-public class TestUModel : FutrPageModel
+public class UniverseModel : FutrPageModel
 {
     public string Id { get; private set; } = "";
     public Models.Universe Universe { get; private set; } = new Universe("");
     public List<Models.Universe> Universes { get; private set; } = new();
 
-    public TestUModel(FutrApp app) : base(app, nameof(TestUModel)) { }
+    public UniverseModel(FutrApp app) : base(app, nameof(UniverseModel)) { }
 
     public IActionResult OnGet(string? id)
     {
