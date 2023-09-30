@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Faction.cshtml" />
-    <Content Remove="Pages\Metric.cshtml" />
-    <Content Remove="Pages\TestC.cshtml" />
-    <Content Remove="Pages\Universe.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Edi.RouteDebugger" Version="1.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.10" />
   </ItemGroup>
@@ -23,21 +16,6 @@
     <ProjectReference Include="..\JsonPath\JsonPath.csproj" />
     <ProjectReference Include="..\n3q.FrameworkTools\n3q.FrameworkTools.csproj" />
     <ProjectReference Include="..\n3q.Tools\n3q.Tools.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Universe.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Universe.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\TestC.cshtml" />
-    <None Include="Pages\Faction.cshtml" />
-    <None Include="Pages\Metric.cshtml" />
-    <None Include="Pages\Universe.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
