@@ -1,5 +1,12 @@
 ﻿@page "{id?}"
 @model UniverseModel
+@{
+    @if (string.IsNullOrEmpty(Model.Id)) {
+        ViewData["Title"] = "Universes";
+    } else {
+        ViewData["Title"] = "Universe " + Model.Universe.Title;
+    }
+}
 
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Universes</h1>
@@ -19,7 +26,7 @@
     <div class="my-textblock">
         <h2>Civilizations</h2>
         <ul>
-            @foreach (var (civilizationId, civilization) in Model.Universe.Civilizations) {
+            @foreach (var civilization in Model.Universe.Civilizations.Select(pair => pair.Value).OrderBy(x => x.Year)) {
                 <li>
                     <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Title</a>
                 </li>

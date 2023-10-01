@@ -1,5 +1,10 @@
 ﻿@page "{id?}"
 @model FactionModel
+@{
+    @if (Model.Faction != null) {
+        ViewData["Title"] = "Faction " + Model.Faction.Title;
+    }
+}
 
 @if (@Model.Faction != null) {
     <h1>@Model.Faction.Title</h1>

@@ -5,7 +5,23 @@ public partial class Civilization : BaseModel
     public Universe Universe { get; set; }
 
     public string Faction { get; set; } = "";
-    public string Date { get; set; } = "";
+
+    private string _date = "";
+    public long Year { get; set; } = long.MinValue;
+    public string Date
+    {
+        get {
+            return _date;
+        }
+        set {
+            if (long.TryParse(value, out var year)) {
+                Year = year;
+            } else if (double.TryParse(value, out var yearDouble)) {
+                Year = (long)yearDouble;
+            }
+            _date = value;
+        }
+    }
 
     public List<Datapoint> Datapoints = new();
 

@@ -1,5 +1,10 @@
 ﻿@page "{id?}"
 @model CivilizationModel
+@{
+    @if (Model.Civilization != null) {
+        ViewData["Title"] = "Civilization " + Model.Civilization.Title;
+    }
+}
 
 @if (@Model.Civilization != null) {
     <h1>@Model.Civilization.Title</h1>

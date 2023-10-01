@@ -1,6 +1,12 @@
 ﻿@page "{id?}"
 @model MetricModel
-
+@{
+    @if (string.IsNullOrEmpty(Model.Id)) {
+        ViewData["Title"] = "Metrics";
+    } else {
+        ViewData["Title"] = "Metric " + Model.Metric.Title;
+    }
+}
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Metrics</h1>
     <ul>
