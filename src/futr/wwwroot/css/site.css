@@ -120,7 +120,7 @@ div.my-footer {
 }
 
 div.my-textblock {
-    padding: 0 0.5em 0.1em 0.5em;
+    padding: 0 0.5em 0.1em 0;
     margin-bottom: 1em;
     /*background-color: var(--main-text-box-color);*/
     /*display: inline-block;*/
@@ -164,6 +164,10 @@ ul.my-site-menu {
                 filter: unset;
                 background-color: var(--main-link-hilite-box-color);
             }
+
+.my-gallery img {
+    max-height: 10em;
+}
 
 .my-sm, .my-md, .my-lg {
     display: none;

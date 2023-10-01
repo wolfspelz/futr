@@ -19,6 +19,14 @@
         </div>
     </div>
 
+    @if (Model.Civilization.Images.Length > 0) {
+        <div class="my-gallery">
+            @foreach (var image in Model.Civilization.Images) {
+                <img src="@image" />
+            }
+        </div>
+    }
+
     <div class="my-textblock">
         <h2>Datapoints</h2>
         @foreach (var datapoint in Model.Civilization.Datapoints) {
@@ -29,8 +37,11 @@
                     (<span>@datapoint.Min</span> -
                     <span>@datapoint.Max</span>)
                 </div>
+
                 <div><span>Confidence</span>: <span>@datapoint.Confidence</span></div>
+
                 <div style="margin-top: 0.5em; white-space: pre-wrap">@datapoint.Comment</div>
+
                 @if (datapoint.References.Length > 0) {
                     <ul>
                         @foreach (var reference in datapoint.References) {

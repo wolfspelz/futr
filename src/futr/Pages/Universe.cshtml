@@ -23,6 +23,14 @@
         <div><span>Tags</span>: <span>@string.Join(", ", Model.Universe.Tags)</span></div>
     </div>
 
+    @if (Model.Universe.Images.Length > 0) {
+        <div class="my-gallery">
+            @foreach (var image in Model.Universe.Images) {
+                <img src="@image" />
+            }
+        </div>
+    }
+
     <div class="my-textblock">
         <h2>Civilizations</h2>
         <ul>
