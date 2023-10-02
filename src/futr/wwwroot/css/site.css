@@ -169,6 +169,12 @@ ul.my-site-menu {
     max-height: 10em;
 }
 
+.my-tag {
+    padding: 0 0.5em;
+    border-radius: 0.5em;
+    background-color: rgba(128,128,128,0.2);
+}
+
 .my-sm, .my-md, .my-lg {
     display: none;
 }

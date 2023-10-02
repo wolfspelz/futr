@@ -20,7 +20,24 @@
 } else {
     <h1>@Model.Universe.Title</h1>
     <div class="my-textblock">
-        <div><span>Tags</span>: <span>@string.Join(", ", Model.Universe.Tags)</span></div>
+        <div>
+            <span>Tags</span>:
+            @foreach (var tag in Model.Universe.Tags) {
+                <span class="my-tag">@tag</span>
+            }
+        </div>
+        <div>
+            <span>Edited</span>:
+            @foreach (var editor in Model.Universe.Editors) {
+                <a class="my-editor" href="@("http://github.com/" + editor)">@editor</a>
+            }
+        </div>
+        <div>
+            <span>Approved</span>:
+            @foreach (var approver in Model.Universe.Approvers) {
+                <a class="my-approver" href="@("http://github.com/" + approver)">@approver</a>
+            }
+        </div>
     </div>
 
     @if (Model.Universe.Images.Length > 0) {

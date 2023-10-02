@@ -15,6 +15,13 @@ public class Faction : BaseModel
     {
         var node = base.fromYaml(yaml);
 
+        if (Editors.Length == 0) {
+            Editors = Universe.Editors;
+        }
+        if (Approvers.Length == 0) {
+            Approvers = Universe.Approvers;
+        }
+
         //Type = node["type"].AsString.Trim();
 
         return node;

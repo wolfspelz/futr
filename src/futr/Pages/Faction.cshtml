@@ -10,7 +10,24 @@
     <h1>@Model.Faction.Title</h1>
 
     <div class="my-textblock">
-        <div><span>Tags</span>: <span>@string.Join(", ", Model.Faction.Tags)</span></div>
+        <div>
+            <span>Tags</span>:
+            @foreach (var tag in Model.Faction.Tags) {
+                <span class="my-tag">@tag</span>
+            }
+        </div>
+        <div>
+            <span>Edited</span>:
+            @foreach (var editor in Model.Faction.Editors) {
+                <a class="my-editor" href="@("http://github.com/" + editor)">@editor</a>
+            }
+        </div>
+        <div>
+            <span>Approved</span>:
+            @foreach (var approver in Model.Faction.Approvers) {
+                <a class="my-approver" href="@("http://github.com/" + approver)">@approver</a>
+            }
+        </div>
         <div>
             <span>Universe</span>:
             <span>

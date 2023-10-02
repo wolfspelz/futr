@@ -10,6 +10,8 @@ public class BaseModel
     public string Description { get; set; } = "";
     public string[] Icons = new string[0];
     public string[] Images = new string[0];
+    public string[] Editors = new string[0];
+    public string[] Approvers = new string[0];
     public string Error { get; set; } = "";
     public string SeoName { get; set; } = "";
 
@@ -34,6 +36,8 @@ public class BaseModel
         Description = node["readme"].AsString;
         Icons = node["icons"].AsList.Select(n => n.AsString).ToArray();
         Images = node["images"].AsList.Select(n => n.AsString).ToArray();
+        Editors = node["editors"].AsList.Select(n => n.AsString).ToArray();
+        Approvers = node["approvers"].AsList.Select(n => n.AsString).ToArray();
 
         return node;
     }

@@ -34,6 +34,13 @@ public partial class Civilization : BaseModel
     {
         var node = base.fromYaml(yaml);
 
+        if (Editors.Length == 0) {
+            Editors = Universe.Editors;
+        }
+        if (Approvers.Length == 0) {
+            Approvers = Universe.Approvers;
+        }
+
         Faction = node["faction"].AsString.Trim();
         Date = node["date"].AsString.Trim();
 
