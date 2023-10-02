@@ -1,0 +1,5 @@
+﻿<div class="my-textblock" id="iDescription">
+    <span id="iDescriptionSource">@Model.Description</span>
+</div>
+
+@await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})

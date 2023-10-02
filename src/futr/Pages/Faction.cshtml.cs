@@ -4,8 +4,7 @@ namespace futr.Pages;
 
 public class FactionModel : FutrPageModel
 {
-    public string Id { get; private set; } = "";
-    public Models.Faction? Faction { get; private set; }
+    public Models.Faction? Item { get; private set; }
 
     public FactionModel(FutrApp app) : base(app, nameof(FactionModel)) { }
 
@@ -14,12 +13,11 @@ public class FactionModel : FutrPageModel
         if (id == null) {
             return NotFound();
         } else {
-            Id = id;
-            var faction = App.Data.GetFaction(id);
-            if (faction == null) {
+            var item = App.Data.GetFaction(id);
+            if (item == null) {
                 return NotFound();
             }
-            Faction = faction;
+            Item = item;
         }
 
         return Page();

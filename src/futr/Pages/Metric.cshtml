@@ -4,29 +4,28 @@
     @if (string.IsNullOrEmpty(Model.Id)) {
         ViewData["Title"] = "Metrics";
     } else {
-        ViewData["Title"] = "Metric " + Model.Metric.Title;
+        ViewData["Title"] = "Metric " + Model.Item.Title;
     }
 }
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Metrics</h1>
     <ul>
-        @foreach (var metric in Model.Metrics) {
+        @foreach (var metric in Model.List) {
             <li>
                 <a asp-page="Metric" asp-route-id="@metric.SeoName">@metric.Title</a>
             </li>
         }
     </ul>
 } else {
-    <h1>@Model.Metric.Title</h1>
+    <h1>@Model.Item.Title</h1>
+
+    @await Html.PartialAsync("_BaseModelProperties", Model.Item)
+
     <div class="my-textblock">
-        <div><span>Tags</span>: <span>@string.Join(", ", Model.Metric.Tags)</span></div>
-        <div><span>Type</span>: <span>@Model.Metric.Type</span></div>
-        <div><span>Unit</span>: <span>@Model.Metric.Unit</span></div>
-        <div><span>Range</span>: <span>@Model.Metric.Range</span></div>
-    </div>
-    <div class="my-textblock" id="iDescription">
-        <span id="iDescriptionSource">@Model.Metric.Description</span>
+        <div><span>Type</span>: <span>@Model.Item.Type</span></div>
+        <div><span>Unit</span>: <span>@Model.Item.Unit</span></div>
+        <div><span>Range</span>: <span>@Model.Item.Range</span></div>
     </div>
 
-    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+    @await Html.PartialAsync("_BaseModelDescription", Model.Item)
 }

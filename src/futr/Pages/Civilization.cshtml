@@ -1,52 +1,26 @@
 ﻿@page "{id?}"
 @model CivilizationModel
 @{
-    @if (Model.Civilization != null) {
-        ViewData["Title"] = "Civilization " + Model.Civilization.Title;
+    @if (Model.Item != null) {
+        ViewData["Title"] = "Civilization " + Model.Item.Title;
     }
 }
 
-@if (@Model.Civilization != null) {
-    <h1>@Model.Civilization.Title</h1>
+@if (@Model.Item != null) {
+    <h1>@Model.Item.Title</h1>
 
     <div class="my-textblock">
-        <div>
-            <span>Tags</span>:
-            @foreach (var tag in Model.Civilization.Tags) {
-                <span class="my-tag">@tag</span>
-            }
-        </div>
-        <div>
-            <span>Edited</span>:
-            @foreach (var editor in Model.Civilization.Editors) {
-                <a class="my-editor" href="@("http://github.com/" + editor)">@editor</a>
-            }
-        </div>
-        <div>
-            <span>Approved</span>:
-            @foreach (var approver in Model.Civilization.Approvers) {
-                <a class="my-approver" href="@("http://github.com/" + approver)">@approver</a>
-            }
-        </div>
-        <div>
-            <span>Universe</span>:
-            <span>
-                <a asp-page="Universe" asp-route-id="@Model.Civilization.Universe.SeoName">@Model.Civilization.Universe.Title</a>
-            </span>
-        </div>
+        <span>Universe</span>:
+        <span>
+            <a asp-page="Universe" asp-route-id="@Model.Item.Universe.SeoName">@Model.Item.Universe.Title</a>
+        </span>
     </div>
 
-    @if (Model.Civilization.Images.Length > 0) {
-        <div class="my-gallery">
-            @foreach (var image in Model.Civilization.Images) {
-                <img src="@image" />
-            }
-        </div>
-    }
+    @await Html.PartialAsync("_BaseModelProperties", Model.Item)
 
     <div class="my-textblock">
         <h2>Datapoints</h2>
-        @foreach (var datapoint in Model.Civilization.Datapoints) {
+        @foreach (var datapoint in Model.Item.Datapoints) {
             <div>
                 <h3>@datapoint.Metric</h3>
                 <div>
@@ -72,9 +46,5 @@
         }
     </div>
 
-    <div class="my-textblock" id="iDescription">
-        <span id="iDescriptionSource">@Model.Civilization.Description</span>
-    </div>
-
-    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+    @await Html.PartialAsync("_BaseModelDescription", Model.Item)
 }

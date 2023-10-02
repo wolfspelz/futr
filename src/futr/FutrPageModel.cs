@@ -14,12 +14,22 @@ public class FutrPageModel : PageModel
 
     public FutrPageModel(FutrApp app, string textName)
     {
-        textName = textName.EndsWith("Model") ? textName.Substring(0, textName.Length - "Model".Length) : textName;
         App = app;
         Log = App.Log;
         Config = App.Config;
         UiCultureName = Thread.CurrentThread.CurrentUICulture.Name;
-        I18n = new TextProvider(new ReadonlyFileDataProvider(), Config.AppAcronym, UiCultureName, textName);
+        I18n = new TextProvider(new ReadonlyFileDataProvider(), Config.AppAcronym, UiCultureName, StripSuffix(textName));
+    }
+
+    private string[] StrippedSuffixes = new [] { "PageModel", "Model", "Page" };
+    private string StripSuffix(string name)
+    {
+        foreach (var suffix in StrippedSuffixes) {
+            if (name.EndsWith(suffix)) {
+                return name.Substring(0, name.Length - suffix.Length);
+            }
+        }
+        return name;
     }
 
     public override async Task OnPageHandlerExecutionAsync(PageHandlerExecutingContext context, PageHandlerExecutionDelegate next)

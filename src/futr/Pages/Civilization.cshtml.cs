@@ -4,8 +4,7 @@ namespace futr.Pages;
 
 public class CivilizationModel : FutrPageModel
 {
-    public string Id { get; private set; } = "";
-    public Models.Civilization? Civilization { get; private set; }
+    public Models.Civilization? Item { get; private set; }
 
     public CivilizationModel(FutrApp app) : base(app, nameof(CivilizationModel)) { }
 
@@ -14,12 +13,11 @@ public class CivilizationModel : FutrPageModel
         if (id == null) {
             return NotFound();
         } else {
-            Id = id;
-            var civilization = App.Data.GetCivilization(id);
-            if (civilization == null) {
+            var item = App.Data.GetCivilization(id);
+            if (item == null) {
                 return NotFound();
             }
-            Civilization = civilization;
+            Item = item;
         }
 
         return Page();

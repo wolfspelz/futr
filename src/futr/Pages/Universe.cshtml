@@ -4,54 +4,28 @@
     @if (string.IsNullOrEmpty(Model.Id)) {
         ViewData["Title"] = "Universes";
     } else {
-        ViewData["Title"] = "Universe " + Model.Universe.Title;
+        ViewData["Title"] = "Universe " + Model.Item.Title;
     }
 }
 
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Universes</h1>
     <ul>
-        @foreach (var universe in Model.Universes) {
+        @foreach (var universe in Model.List) {
             <li>
                 <a asp-page="Universe" asp-route-id="@universe.SeoName">@universe.Title</a>
             </li>
         }
     </ul>
 } else {
-    <h1>@Model.Universe.Title</h1>
-    <div class="my-textblock">
-        <div>
-            <span>Tags</span>:
-            @foreach (var tag in Model.Universe.Tags) {
-                <span class="my-tag">@tag</span>
-            }
-        </div>
-        <div>
-            <span>Edited</span>:
-            @foreach (var editor in Model.Universe.Editors) {
-                <a class="my-editor" href="@("http://github.com/" + editor)">@editor</a>
-            }
-        </div>
-        <div>
-            <span>Approved</span>:
-            @foreach (var approver in Model.Universe.Approvers) {
-                <a class="my-approver" href="@("http://github.com/" + approver)">@approver</a>
-            }
-        </div>
-    </div>
+    <h1>@Model.Item.Title</h1>
 
-    @if (Model.Universe.Images.Length > 0) {
-        <div class="my-gallery">
-            @foreach (var image in Model.Universe.Images) {
-                <img src="@image" />
-            }
-        </div>
-    }
+    @await Html.PartialAsync("_BaseModelProperties", Model.Item)
 
     <div class="my-textblock">
         <h2>Civilizations</h2>
         <ul>
-            @foreach (var civilization in Model.Universe.Civilizations.Select(pair => pair.Value).OrderBy(x => x.Year)) {
+            @foreach (var civilization in Model.Item.Civilizations.Select(pair => pair.Value).OrderBy(x => x.Year)) {
                 <li>
                     <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Title</a>
                 </li>
@@ -62,7 +36,7 @@
     <div class="my-textblock">
         <h2>Factions</h2>
         <ul>
-            @foreach (var (factionId, faction) in Model.Universe.Factions) {
+            @foreach (var (factionId, faction) in Model.Item.Factions) {
                 <li>
                     <a asp-page="Faction" asp-route-id="@faction.SeoName">@faction.Title</a>
                 </li>
@@ -70,9 +44,5 @@
         </ul>
     </div>
 
-    <div class="my-textblock" id="iDescription">
-        <span id="iDescriptionSource">@Model.Universe.Description</span>
-    </div>
-
-    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+    @await Html.PartialAsync("_BaseModelDescription", Model.Item)
 }
