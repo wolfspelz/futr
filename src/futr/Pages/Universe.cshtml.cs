@@ -15,6 +15,9 @@ public class UniverseModel : FutrPageModel
         if (id == null) {
             List = App.Data.GetUniverses();
         } else {
+            if (IdSuggestsImage(id)) {
+                return Redirect("/image" + HttpContext.Request.Path);
+            }
             Id = id;
             var universe = App.Data.GetUniverse(id);
             if (universe == null) {
@@ -24,5 +27,10 @@ public class UniverseModel : FutrPageModel
         }
 
         return Page();
+    }
+
+    private bool IdSuggestsImage(string id)
+    {
+        return id.EndsWith(".png") || id.EndsWith(".jpg") || id.EndsWith(".jpeg");
     }
 }

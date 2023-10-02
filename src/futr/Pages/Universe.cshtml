@@ -10,13 +10,16 @@
 
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Universes</h1>
-    <ul>
-        @foreach (var universe in Model.List) {
-            <li>
-                <a asp-page="Universe" asp-route-id="@universe.SeoName">@universe.Title</a>
-            </li>
-        }
-    </ul>
+
+    @foreach (var universe in Model.List.OrderBy(x => x.Order)) {
+        <div class="my-tile">
+            <a asp-page="Universe" asp-route-id="@universe.SeoName"><img src="@(universe.Images.FirstOrDefault() ?? "/images/universe-default.jpg")" /></a>
+            <div class="my-title">
+                @universe.Title
+            </div>
+        </div>
+    }
+
 } else {
     <h1>@Model.Item.Title</h1>
 
@@ -52,16 +55,16 @@
         </div>
     </div>
 
-    <div class="my-textblock">
-        <h2>Factions</h2>
-        <ul>
+    @if (Model.Item.Factions.Count() > 0) {
+        <div class="my-textblock">
+            <h2>Factions</h2>
             @foreach (var (factionId, faction) in Model.Item.Factions) {
-                <li>
+                <div>
                     <a asp-page="Faction" asp-route-id="@faction.SeoName">@faction.Title</a>
-                </li>
+                </div>
             }
-        </ul>
-    </div>
+        </div>
+    }
 
     @await Html.PartialAsync("_BaseModelDescription", Model.Item)
 }

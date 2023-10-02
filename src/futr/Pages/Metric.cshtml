@@ -9,13 +9,11 @@
 }
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Metrics</h1>
-    <ul>
-        @foreach (var metric in Model.List) {
-            <li>
+        @foreach (var metric in Model.List.OrderBy(x => x.Order)) {
+            <div>
                 <a asp-page="Metric" asp-route-id="@metric.SeoName">@metric.Title</a>
-            </li>
+            </div>
         }
-    </ul>
 } else {
     <h1>@Model.Item.Title</h1>
 

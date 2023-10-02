@@ -7,6 +7,7 @@ public class BaseModel
     public string? Id { get; set; }
     public string? Title { get; set; }
     public string[] Tags = Array.Empty<string>();
+    public string Order { get; set; } = "m";
     public string Description { get; set; } = "";
     public string[] Icons = Array.Empty<string>();
     public string[] Images = Array.Empty<string>();
@@ -31,6 +32,12 @@ public class BaseModel
         if (title != "") {
             Title = title;
         }
+
+        var order = node["order"].AsString.Trim();
+        if (order == "") {
+            order = "m";
+        }
+        Order = order + "-" + Title;
 
         Tags = node["tags"].AsList.Select(n => n.AsString.Trim()).ToArray();
         Description = node["readme"].AsString;
