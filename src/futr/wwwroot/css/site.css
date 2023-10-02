@@ -175,6 +175,32 @@ ul.my-site-menu {
     background-color: rgba(128,128,128,0.2);
 }
 
+.my-table {
+    display: table;
+    text-align: right
+}
+
+    .my-table .my-table-row {
+        display: table-row;
+    }
+
+    .my-table .my-table-column-even {
+        background-color: rgba(255,255,255,0.3);
+    }
+
+    .my-table .my-table-column-odd {
+        background-color: rgba(128,128,128,0.1);
+    }
+
+    .my-table .my-table-row .my-table-cell {
+        display: table-cell;
+        padding: 0.1em 0.2em;
+    }
+
+    .my-table .my-table-head .my-table-cell {
+        font-weight: 700;
+    }
+
 .my-sm, .my-md, .my-lg {
     display: none;
 }

@@ -23,14 +23,33 @@
     @await Html.PartialAsync("_BaseModelProperties", Model.Item)
 
     <div class="my-textblock">
-        <h2>Civilizations</h2>
-        <ul>
+        <div class="my-table">
+            <div class="my-table-row my-table-head">
+                <div class="my-table-cell">
+                    <h2>Civilizations</h2>
+                </div>
+                @foreach (var metric in Model.Item.CommonMetrics) {
+                    <div class="my-table-cell">
+                        @metric
+                    </div>
+                }
+            </div>
             @foreach (var civilization in Model.Item.Civilizations.Select(pair => pair.Value).OrderBy(x => x.Year)) {
-                <li>
-                    <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Title</a>
-                </li>
+                <div class="my-table-row">
+                    <div class="my-table-cell">
+                        <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Title</a>
+                    </div>
+                    @{
+                        var cnt = 0;
+                    }
+                    @foreach (var metric in Model.Item.CommonMetrics) {
+                        <div class="my-table-cell my-table-column-@(cnt++%2 == 0?"even":"odd")">
+                            @civilization.Datapoints.Where(x => x.Metric == metric).Select(x => x.Value).FirstOrDefault()
+                        </div>
+                    }
+                </div>
             }
-        </ul>
+        </div>
     </div>
 
     <div class="my-textblock">

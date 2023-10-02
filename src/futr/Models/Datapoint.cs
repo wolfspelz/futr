@@ -10,7 +10,7 @@ public class Datapoint
     public string Max { get; set; }
     public ConfidenceLevel Confidence { get; set; }
     public string Comment { get; set; } = "";
-    public string[] References = new string[0];
+    public string[] References = Array.Empty<string>();
     public string Error { get; set; } = "";
 
     public Datapoint(string metric, string value, string min, string max, string confidence)

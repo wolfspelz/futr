@@ -6,12 +6,12 @@ public class BaseModel
 
     public string? Id { get; set; }
     public string? Title { get; set; }
-    public string[] Tags = new string[0];
+    public string[] Tags = Array.Empty<string>();
     public string Description { get; set; } = "";
-    public string[] Icons = new string[0];
-    public string[] Images = new string[0];
-    public string[] Editors = new string[0];
-    public string[] Approvers = new string[0];
+    public string[] Icons = Array.Empty<string>();
+    public string[] Images = Array.Empty<string>();
+    public string[] Editors = Array.Empty<string>();
+    public string[] Approvers = Array.Empty<string>();
     public string Error { get; set; } = "";
     public string SeoName { get; set; } = "";
 
