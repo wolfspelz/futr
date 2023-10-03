@@ -8,6 +8,7 @@ public class BaseModel
     public string? Title { get; set; }
     public string[] Tags = Array.Empty<string>();
     public string Order { get; set; } = "m";
+    public string Tile { get; set; } = "";
     public string Description { get; set; } = "";
     public string[] Icons = Array.Empty<string>();
     public string[] Images = Array.Empty<string>();
@@ -41,6 +42,7 @@ public class BaseModel
 
         Tags = node["tags"].AsList.Select(n => n.AsString.Trim()).ToArray();
         Description = node["readme"].AsString;
+        Tile = node["tile"].AsString;
         Icons = node["icons"].AsList.Select(n => n.AsString).ToArray();
         Images = node["images"].AsList.Select(n => n.AsString).ToArray();
         Editors = node["editors"].AsList.Select(n => n.AsString).ToArray();
