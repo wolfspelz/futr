@@ -31,7 +31,7 @@
                 <div class="my-table-cell">
                     <h2>Civilizations</h2>
                 </div>
-                @foreach (var metric in Model.Item.CommonMetrics) {
+                @foreach (var metric in Model.Item.ShowcaseMetrics) {
                     <div class="my-table-cell">
                         @metric
                     </div>
@@ -45,7 +45,7 @@
                     @{
                         var cnt = 0;
                     }
-                    @foreach (var metric in Model.Item.CommonMetrics) {
+                    @foreach (var metric in Model.Item.ShowcaseMetrics) {
                         <div class="my-table-cell my-table-column-@(cnt++%2 == 0?"even":"odd")">
                             @civilization.Datapoints.Where(x => x.Metric == metric).Select(x => x.Value).FirstOrDefault()
                         </div>

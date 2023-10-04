@@ -18,8 +18,8 @@
     ImgSrc = "/images/Index/universes.jpg",
     ImgAlt = "Universes",
     Title = "Universes",
-    Text = 
-    "These are the universes. Find your favourite franchises, your world, your setting.<br/><br/>"
+    Text =
+    "These are the universes. <br/>Find your favourite franchises, your world, your setting.<br/><br/>"
     + "<a href='/Universe'>Find all universes here <img src='/images/Index/next.png' style='width: 1em' /></a>",
     Link = "/Universe",
     TitleHasLink = true,
@@ -54,12 +54,15 @@
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    ImgSrc = "/images/Index/contribute.jpg",
+    ImgAlt = "Collaboration",
     Title = "Contributing",
-    Text = "Miss a universe of civilization?<br/><br/>"
-    + "<a href='https://github.com/wolfspelz/futr/data/universes'>Check out the list of proposals <img src='/images/Index/next.png' style='width: 1em' /></a><br/><br/>"
-    + "<a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>Propose a universe in discord <img src='/images/Index/next.png' style='width: 1em' /></a><br/><br/>"
-    + "<a href='https://github.com/wolfspelz/futr/data'>Even better: fork, edit, pull-request on GitHub <img src='/images/Index/next.png' style='width: 1em' /></a>",
-    Link = "https://github.com/wolfspelz/futr/data",
+    Text = ""
+    + "<p>Missing a universe or a civilization?</p>"
+    + "<p><a href='https://github.com/wolfspelz/futr/tree/main/data/universes'>Check out the list of proposals <img src='/images/Index/next.png' style='width: 1em' /></a></p>"
+    + "<p><a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>Propose a universe in discord <img src='/images/Index/next.png' style='width: 1em' /></a></p>"
+    + "<p><a href='https://docs.github.com/en/get-started/quickstart/fork-a-repo#propose-changes-to-someone-elses-project'>Even better: fork, edit, pull-request on GitHub <img src='/images/Index/next.png' style='width: 1em' /></a></p>",
+    Link = "https://github.com/wolfspelz/futr",
     TitleHasLink = true,
     })
 
@@ -67,7 +70,7 @@
     ImgSrc = "/images/Index/software.jpg",
     ImgAlt = "Screen",
     Title = "Open Source Project",
-    Text = 
+    Text =
     "<ul>" + string.Join("\n", new[] {
     "Source: <a href='https://github.com/wolfspelz/futr/'>GitHub</a>",
     "dotnet, docker, github actions, nginx",

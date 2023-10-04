@@ -4,7 +4,7 @@ public class Universe : BaseModel
 {
     public Dictionary<string, Civilization> Civilizations = new();
     public Dictionary<string, Faction> Factions = new();
-    public string[] CommonMetrics { get; private set; } = Array.Empty<string>();
+    public string[] ShowcaseMetrics { get; private set; } = Array.Empty<string>();
 
     public Universe(string id) : base(id)
     {
@@ -14,7 +14,7 @@ public class Universe : BaseModel
     {
         var node = base.fromYaml(yaml);
 
-        CommonMetrics = node["commonmetrics"].AsList.Select(n => n.AsString.Trim()).ToArray();
+        ShowcaseMetrics = node["showcasemetrics"].AsList.Select(n => n.AsString.Trim()).ToArray();
 
         return node;
     }

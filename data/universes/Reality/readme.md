@@ -8,4 +8,4 @@ The [Apollo Program](https://tvtropes.org/pmwiki/pmwiki.php/UsefulNotes/NASA), [
 
 ## Kardashev Ratings 
 
-![Humanity's Kardashev ratings from the assumed beginnings to now](HumanityKardashev.jpg "Kardashev ratings from the assumed beginnings to now")
+![Humanity's Kardashev ratings from the assumed beginnings to now](https://github.com/wolfspelz/futr/raw/main/data/universes/Reality/HumanityKardashev.jpg "Kardashev ratings from the assumed beginnings to now")
