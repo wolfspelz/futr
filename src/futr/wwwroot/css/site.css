@@ -34,6 +34,9 @@ body {
 h1 {
     color: var(--main-text-color);
     font-size: 1.5rem;
+    margin-block-start: unset;
+    margin-block-end: unset;
+    margin: 0.3em 0;
 }
 
 h2 {
@@ -41,16 +44,22 @@ h2 {
     font-size: 1.2rem;
     margin-block-start: unset;
     margin-block-end: unset;
+    margin: 0.3em 0;
 }
 
 h3 {
     color: var(--main-text-color);
     font-size: 1.1rem;
+    margin-block-start: unset;
+    margin-block-end: unset;
+    margin: 0.3em 0;
 }
 
 h4 {
     color: var(--main-text-color);
     font-size: 1.0rem;
+    margin-block-start: unset;
+    margin-block-end: unset;
 }
 
 ul {
@@ -359,8 +368,12 @@ div.my-card-content {
     background-color: rgba(255,255,255,0.5);
 }
 
+div.my-card-image img {
+    max-width: 100%
+}
+
 @media (max-width: 800px) {
-    div.my-card {
+    div .my-card {
         width: 50%;
     }
 }

@@ -1,41 +1,29 @@
 ﻿<div class="my-card">
-    @{
-        var cardId = "iCard" + "njfhz3184ofhaj";
-    }
-    @if (Model.ImgSrc != "") {
-        @if (Model.Link != "") {
-            <a href="@Model.Link"><img class="my-card-img-top" src="@Model.ImgSrc" data-toggle="modal" data-target="#@(cardId)"></a>
-        } else {
-            <img class="my-card-img-top" src="@Model.ImgSrc" data-toggle="modal" data-target="#@(cardId)">
-        }
-        <div id="iCard@(cardId)" class="my-modal my-fade" tabindex="-1" role="dialog">
-            <div class="my-modal-dialog my-modal-dialog-centered" style="max-width: 800px;">
-                <div class="my-modal-content">
-                    <div class="my-modal-body">
-                        <img src="@Model.ImgSrc" alt="@Model.ImgAlt" >
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-    <div class="my-card-body">
-        @if (Model.Title != "") {
-            <h3 class="my-card-title">
-                @if (Model.TitleHasLink) {
-                    <a href="@Model.Link">@Model.Title</a>
+    <div class="my-card-content">
+        @if (Model.ImgSrc != "") {
+            <div class="my-card-image">
+                @if (Model.Link != "") {
+                    <a href="@Model.Link"><img src="@Model.ImgSrc" alt="@Model.ImgAlt" /></a>
                 } else {
-                    @if (Model.Anchor != "") {
-                        <a name="@Model.Anchor">@Model.Title</a>
-                    } else {
-                        @Model.Title
-                    }
+                    <img src="@Model.ImgSrc" alt="@Model.ImgAlt" />
                 }
-            </h3>
+            </div>
         }
-        @if (Model.TextHasLink) {
-            <p><a href="@Model.Link">@Html.Raw(@Model.Text)</a></p>
-        } else {
-            <p>@Html.Raw(Model.Text)</p>
+        @if (Model.Title != "") {
+            <div class="my-card-head">
+                @if (Model.TitleHasLink) {
+                    <a href="@Model.Link"><h3>@Model.Title</h3></a>
+                } else {
+                    <h3>@Model.Title</h3>
+                }
+            </div>
         }
+        <div class="my-card-body">
+            @if (Model.TextHasLink) {
+                <a href="@Model.Link">@Html.Raw(Model.Text)</a>
+            } else {
+                @Html.Raw(Model.Text)
+            }
+        </div>
     </div>
 </div>
