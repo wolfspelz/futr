@@ -373,6 +373,14 @@ div.my-card-image img {
     max-width: 100%
 }
 
+div.my-card-body p,
+div.my-card-body dl,
+div.my-card-body ul,
+div.my-card-body ol {
+    margin-block-start: 0;
+    margin-block-end: 0.7em;
+}
+
 @media (max-width: 800px) {
     div .my-card {
         width: 50%;
