@@ -147,7 +147,7 @@ div.my-textblock {
 
 a.my-brand-text {
     display: inline-block;
-    max-width: 70%;
+    /*max-width: 70%;*/
     background-color: unset;
     font-size: 2rem;
     font-weight: 700;
@@ -352,15 +352,16 @@ div.my-tile {
 
 div.my-card-container {
     font-size: 0;
+    /*display: -webkit-inline-box;*/
 }
 
 div.my-card {
     display: inline-block;
     vertical-align: top;
-    width: 33%;
-    margin: 0 0 0.3em 0;
-    padding: 0.5em;
+    width: 33.333%;
+    padding: 0.4em;
     font-size: 16px;
+    /*background-color: rgba(0,0,0,0.5);*/
 }
 
 div.my-card-content {

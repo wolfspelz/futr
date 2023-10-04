@@ -30,14 +30,14 @@
     <div class="my-header">
         <a class="my-brand-text" asp-area="" asp-page="/Index">@Model.Config.AppTitle</a>
 
-        <ul class="my-site-menu">
+@*         <ul class="my-site-menu">
             <li>
                 <a class="button" asp-area="" asp-page="/Universe" asp-route-id="">Universes</a>
             </li>
             <li>
                 <a class="button" asp-area="" asp-page="/Metric" asp-route-id="">Metrics</a>
             </li>
-        </ul>
+        </ul> *@
     </div>
 
     <div class="my-main">
@@ -48,7 +48,7 @@
         <p>
             &copy; 2023 
             - 
-            @Model.Config.AppTitle
+            @Model.Config.LongAppTitle
             - 
             <a asp-area="" asp-page="/Privacy">Impressum</a>
            -
