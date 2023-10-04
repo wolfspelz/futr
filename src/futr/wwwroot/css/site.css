@@ -147,7 +147,7 @@ div.my-textblock {
 
 a.my-brand-text {
     display: inline-block;
-    /*max-width: 70%;*/
+    max-width: 70%;
     background-color: unset;
     font-size: 2rem;
     font-weight: 700;
