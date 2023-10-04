@@ -10,13 +10,13 @@ Each Metric is a folder containing:
 
 ## File Format 
 
-index.yaml:
+info.yaml:
 
 |Property|Value|Description|
 |-------|--------|-------|
 | type |  metric              |  file type  |
 | title |  Kardashev Rating   |   title/name to appear on a future web site |
-| tags |  [index]             |  tags control how this metric is listed/highlighted, etc.  |
+| tags |  [fav, new]             |  tags control how this metric is listed/highlighted, etc.  |
 | dataType |  number          |   most values will be numbers, but there might be other value sets |
 | unit |  Kardashev           |  the unit of measure (in this case: one Kardashev level  |
 | range |  0-3                |  number range  |

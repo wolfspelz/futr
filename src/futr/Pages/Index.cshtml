@@ -5,7 +5,7 @@
 }
 
 @section Styles {
-  <style>
+    <style>
         div.my-main {
             padding: 1em 0.6em 0.5em 0.6em;
         }
@@ -15,30 +15,79 @@
 <div class="my-card-container">
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
-    ImgSrc="https://images.prismic.io/star-trek-untold/YTc3NDMxMGUtNjI2ZC00OGRmLWEwNDgtOTBjOTc4NjY1NDlj_st_quiz_header_which_captain_are_you_01_option1.jpg",
-    ImgAlt="Star Trek Captains",
-    Title="sakdfjasiefj aosiefj aslkfjies",
-    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    Link="https://www.galactic-developments.de/",
+    ImgSrc = "/images/Index/universes.jpg",
+    ImgAlt = "Universes",
+    Title = "Universes",
+    Text = 
+    "These are the universes. Find your favourite franchises, your world, your setting.<br/><br/>"
+    + "<a href='/Universe'>Find all universes here <img src='/images/Index/next.png' style='width: 1em' /></a>",
+    Link = "/Universe",
     TitleHasLink = true,
-    TextHasLink = true,
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
-    Title="sakdfjasiefj aosiefj aslkfjies",
-    Text="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    ImgSrc = "/images/Index/discord.png",
+    ImgAlt = "Discord",
+    Title = "Discord",
+    Text = "Talk about universes and how to measure stuff. Request new measurements and comparisons. Is there any universe still missing?",
+    Link = "https://discordapp.com/channels/1136704642986811423/1153448297915220058",
+    TitleHasLink = true,
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
-    ImgSrc="https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg",
-    ImgAlt="Enterprise",
-    Title="sakdfjasiefj aosiefj aslkfjies",
+    ImgSrc = "/images/Index/new-universes.jpg",
+    ImgAlt = "Newsroom",
+    Title = "New Universes",
+    Text= string.Join("<br/>", Model.App.Data.Universes
+    .Where(x => x.Value.Tags.Contains("new"))
+    .Select(pair => $"<a href='/Universe/{pair.Value.SeoName}'>{pair.Value.Title}</a>"))
+    + "<br/><br/>...more to come. You can help.",
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
-    ImgSrc="https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg",
-    ImgAlt="Enterprise",
-    Text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+    ImgSrc = "/images/Index/new-civilizations.jpg",
+    ImgAlt = "Newsroom",
+    Title = "New Civilizations",
+    Text= string.Join("<br/>", Model.App.Data.Civilizations
+    .Where(x => x.Value.Tags.Contains("new"))
+    .Select(pair => $"<a href='/Civilization/{pair.Value.SeoName}'>{pair.Value.Title}</a>")),
+    })
+
+    @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    Title = "Contributing",
+    Text = "Miss a universe of civilization?<br/><br/>"
+    + "<a href='https://github.com/wolfspelz/futr/data/universes'>Check out the list of proposals <img src='/images/Index/next.png' style='width: 1em' /></a><br/><br/>"
+    + "<a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>Propose a universe in discord <img src='/images/Index/next.png' style='width: 1em' /></a><br/><br/>"
+    + "<a href='https://github.com/wolfspelz/futr/data'>Even better: fork, edit, pull-request on GitHub <img src='/images/Index/next.png' style='width: 1em' /></a>",
+    Link = "https://github.com/wolfspelz/futr/data",
+    TitleHasLink = true,
+    })
+
+    @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    ImgSrc = "/images/Index/software.jpg",
+    ImgAlt = "Screen",
+    Title = "Open Source Project",
+    Text = 
+    "<ul>" + string.Join("\n", new[] {
+    "Source: <a href='https://github.com/wolfspelz/futr/'>GitHub</a>",
+    "dotnet, docker, github actions, nginx",
+    "The C# IDE is our CMS",
+    "GitHub Actions is our deployment",
+    "A git-push to main and it's online",
+    "<a href='https://github.com/wolfspelz/futr/data'>Content</a> in YAML and Markdown files",
+    "<a href='https://github.com/wolfspelz/futr/issues'>Issues</a>",
+    }.Select(x => $"<li>{x}</li>")) + "</ul>",
+    Link = "https://github.com/wolfspelz/futr/tree/main/data",
+    TitleHasLink = true,
+    })
+
+    @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    ImgSrc = "/images/Index/metrics.jpg",
+    ImgAlt = "Metrics",
+    Title = "Metrics",
+    Text = "This is how we gauge universes, civiliztions and factions. Some have many planets or ring worlds, others might be measured by their progress to higher spheres of existance. This is not a competition.",
+    Link = "/Metric",
+    TitleHasLink = true,
     })
 
 </div>
