@@ -1,9 +1,15 @@
 ﻿namespace futr.Models;
 
+public class LinkModel
+{
+    public string Link { get; internal set; } = "";
+    public string Text { get; internal set; } = "";
+}
+
 public class ImageModel
 {
     public string Link { get; internal set; } = "";
-    public string Caption { get; internal set; } = "";
+    public string Text { get; internal set; } = "";
 }
 
 public class BaseModel
@@ -18,6 +24,7 @@ public class BaseModel
     public string Description { get; set; } = "";
     public List<string> Icons = new();
     public List<ImageModel> Images = new();
+    public List<LinkModel> Links = new();
     public List<string> Editors = new();
     public List<string> Approvers = new();
     public string Error { get; set; } = "";
@@ -53,18 +60,32 @@ public class BaseModel
         Editors = node["editors"].AsList.Select(n => n.AsString).ToList();
         Approvers = node["approvers"].AsList.Select(n => n.AsString).ToList();
 
-        //Images = node["images"].AsList.Select(n => n.AsString).ToList();
-        var imageList = node["images"].AsList;
-        foreach (var imageNode in imageList)
         {
-            var image = new ImageModel();
-            if (imageNode.IsDictionary) {
-                image.Link = imageNode["link"].AsString;
-                image.Caption = imageNode["caption"].AsString;
-            } else {
-                image.Link = imageNode.AsString;
+            var imageList = node["images"].AsList;
+            foreach (var imageNode in imageList) {
+                var image = new ImageModel();
+                if (imageNode.IsDictionary) {
+                    image.Link = imageNode["link"].AsString;
+                    image.Text = imageNode["text"].AsString;
+                } else {
+                    image.Link = imageNode.AsString;
+                }
+                Images.Add(image);
             }
-            Images.Add(image);
+        }
+
+        {
+            var linkList = node["links"].AsList;
+            foreach (var imageNode in linkList) {
+                var link = new LinkModel();
+                if (imageNode.IsDictionary) {
+                    link.Link = imageNode["link"].AsString;
+                    link.Text = imageNode["text"].AsString;
+                } else {
+                    link.Link = imageNode.AsString;
+                }
+                Links.Add(link);
+            }
         }
 
         return node;

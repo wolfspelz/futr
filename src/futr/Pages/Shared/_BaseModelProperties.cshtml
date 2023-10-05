@@ -1,44 +1,53 @@
 ﻿@if (Model is Models.BaseModel model) {
 
     <div class="my-textblock">
-        <div>
-            <span>Tags</span>:
-            @if (model.Tags.Count == 0) {
-                <text>-</text>
-            } else {
+
+        @if (model.Tags.Count > 0) {
+            <div>
+                <span>Tags</span>:
                 @foreach (var tag in model.Tags) {
                     <span class="my-tag">@tag</span>
                 }
-            }
-        </div>
-        <div>
-            <span>Edited</span>:
-            @if (model.Editors.Count == 0) {
-                <text>-</text>
-            } else {
+            </div>
+        }
+
+        @if (model.Editors.Count > 0) {
+            <div>
+                <span>Edited</span>:
                 @foreach (var editor in model.Editors) {
                     <a class="my-editor" href="@("http://github.com/" + editor)">@editor</a>
                 }
-            }
-        </div>
-        <div>
-            <span>Approved</span>:
-            @if (model.Approvers.Count == 0) {
-                <text>-</text>
-            } else {
+            </div>
+        }
+
+        @if (model.Approvers.Count > 0) {
+            <div>
+                <span>Approved</span>:
                 @foreach (var approver in model.Approvers) {
                     <a class="my-approver" href="@("http://github.com/" + approver)">@approver</a>
                 }
-            }
-        </div>
+            </div>
+        }
+
+        @if (model.Links.Count > 0) {
+            <div>
+                <span>Links</span>:
+                <ul>
+                    @foreach (var link in model.Links.Take(20)) {
+                        <li><a class="my-link" href="@link.Link">@link.Text</a></li>
+                    }
+                </ul>
+            </div>
+        }
+
     </div>
 
-    @if (model.Images != null && model.Images.Count > 0) {
+    @if (model.Images.Count > 0) {
         <div class="my-gallery">
             @foreach (var image in model.Images.Take(10)) {
                 <div class="my-frame">
                     <img src="@image.Link" />
-                    <div class="my-caption">@image.Caption</div>
+                    <div class="my-caption">@image.Text</div>
                 </div>
             }
         </div>
