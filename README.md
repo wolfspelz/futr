@@ -22,8 +22,6 @@ For the time being, please use the github [issues](https://github.com/wolfspelz/
 
 If you are more the Discord-type: check out the [FUTR channel](https://discordapp.com/channels/1136704642986811423/1153448297915220058) of the Galactic Developments Discord.
 
-## Later
+## Web Site
 
-We will add a pretty web site that shows all the data, statistics, comparisons, tables and charts in a convenient way.
-
-![Future FUTR Web site screenshot](assets/empty-screenshot.png)
+The shiny web site: [futr.space](https://futr.space)
