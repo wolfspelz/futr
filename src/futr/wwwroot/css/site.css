@@ -97,7 +97,7 @@ a {
 }
 
     a:hover, a:active {
-        filter: brightness(0.9);
+        filter: brightness(0.8);
         left: 2px;
         top: 2px;
     }
