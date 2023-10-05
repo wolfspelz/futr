@@ -1,5 +1,9 @@
-﻿<div class="my-textblock" id="iDescription">
-    <span id="iDescriptionSource">@Model.Description</span>
-</div>
+﻿@if (Model is Models.BaseModel model) {
 
-@await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+    <div class="my-textblock" id="iDescription">
+        <span id="iDescriptionSource">@(model.Description)</span>
+    </div>
+
+    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+
+}

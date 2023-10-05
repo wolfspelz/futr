@@ -195,6 +195,16 @@ div.my-gallery img {
     display: flow;
 }
 
+div.my-gallery .my-caption {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    text-align: right;
+    font-size: small;
+    color: #ffffff;
+    filter: drop-shadow(1px 1px 3px #000000);
+}
+
 .my-tag {
     padding: 0 0.5em;
     border-radius: 0.5em;

@@ -3,7 +3,8 @@ tags: [new, index]
 tile: https://github.com/wolfspelz/futr/raw/main/data/universes/Reality/earth-tile.jpg
 showcaseMetrics: [Population, Kardashev]
 images:
-    - https://upload.wikimedia.org/wikipedia/commons/5/50/Neanderthal_Flintworkers_%28Knight%2C_1920%29.jpg
+    - link: https://upload.wikimedia.org/wikipedia/commons/5/50/Neanderthal_Flintworkers_%28Knight%2C_1920%29.jpg
+      caption: Le Moustier Neanderthals (Charles R. Knight, 1920)
     - https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Stott_Park_Bobbin_Mill_Steam_Engine.jpg/440px-Stott_Park_Bobbin_Mill_Steam_Engine.jpg
     - https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Kerncentrale_Doel_in_werking.jpg/520px-Kerncentrale_Doel_in_werking.jpg
     - https://upload.wikimedia.org/wikipedia/en/e/e6/JointEuropeanTorus_internal.jpg

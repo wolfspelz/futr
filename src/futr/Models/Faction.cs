@@ -15,10 +15,10 @@ public class Faction : BaseModel
     {
         var node = base.fromYaml(yaml);
 
-        if (Editors.Length == 0) {
+        if (Editors.Count == 0) {
             Editors = Universe.Editors;
         }
-        if (Approvers.Length == 0) {
+        if (Approvers.Count == 0) {
             Approvers = Universe.Approvers;
         }
 

@@ -3,7 +3,7 @@
     <div class="my-textblock">
         <div>
             <span>Tags</span>:
-            @if (model.Tags.Length == 0) {
+            @if (model.Tags.Count == 0) {
                 <text>-</text>
             } else {
                 @foreach (var tag in model.Tags) {
@@ -13,7 +13,7 @@
         </div>
         <div>
             <span>Edited</span>:
-            @if (model.Editors.Length == 0) {
+            @if (model.Editors.Count == 0) {
                 <text>-</text>
             } else {
                 @foreach (var editor in model.Editors) {
@@ -23,7 +23,7 @@
         </div>
         <div>
             <span>Approved</span>:
-            @if (model.Approvers.Length == 0) {
+            @if (model.Approvers.Count == 0) {
                 <text>-</text>
             } else {
                 @foreach (var approver in model.Approvers) {
@@ -33,11 +33,12 @@
         </div>
     </div>
 
-    @if (model.Images != null && model.Images.Length > 0) {
+    @if (model.Images != null && model.Images.Count > 0) {
         <div class="my-gallery">
             @foreach (var image in model.Images.Take(10)) {
                 <div class="my-frame">
-                    <img src="@image" />
+                    <img src="@image.Link" />
+                    <div class="my-caption">@image.Caption</div>
                 </div>
             }
         </div>
