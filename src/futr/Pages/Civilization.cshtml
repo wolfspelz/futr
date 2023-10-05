@@ -3,6 +3,10 @@
 @{
     @if (Model.Item != null) {
         ViewData["Title"] = "Civilization " + Model.Item.Title;
+        ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - Civilization " + Model.Item.Title;
+        ViewData["MetaDescription"] = Model.Item.Description.Replace("\r", " ").Replace("\n", " ");
+        ViewData["MetaImage"] = "/images/cover.jpg";
+        ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
     }
 }
 

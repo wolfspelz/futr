@@ -3,8 +3,16 @@
 @{
     @if (string.IsNullOrEmpty(Model.Id)) {
         ViewData["Title"] = "Universes";
+        ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - All Universes";
+        ViewData["MetaDescription"] = "Universes include: " + string.Join(", ", Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order).Select(x => x.Title).ToArray());
+        ViewData["MetaImage"] = "/images/cover.jpg";
+        ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
     } else {
         ViewData["Title"] = "Universe " + Model.Item.Title;
+        ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - Universe " + Model.Item.Title;
+        ViewData["MetaDescription"] = Model.Item.Description.Replace("\r", " ").Replace("\n", " ");
+        ViewData["MetaImage"] = "/images/cover.jpg";
+        ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
     }
 }
 

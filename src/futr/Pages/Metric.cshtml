@@ -3,10 +3,19 @@
 @{
     @if (string.IsNullOrEmpty(Model.Id)) {
         ViewData["Title"] = "Metrics";
+        ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - All Metrics";
+        ViewData["MetaDescription"] = "Metrics include: " + string.Join("^, ", Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order).Select(x => x.Title).ToArray());
+        ViewData["MetaImage"] = "/images/cover.jpg";
+        ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
     } else {
         ViewData["Title"] = "Metric " + Model.Item.Title;
+        ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - Universe " + Model.Item.Title;
+        ViewData["MetaDescription"] = Model.Item.Description.Replace("\r", " ").Replace("\n", " ");
+        ViewData["MetaImage"] = "/images/cover.jpg";
+        ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
     }
 }
+
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Metrics</h1>
         @foreach (var metric in Model.List.OrderBy(x => x.Order)) {

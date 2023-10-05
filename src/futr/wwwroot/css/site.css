@@ -137,7 +137,7 @@ div.my-footer {
 div.my-textblock {
     padding: 0.3em 0.8em 0.3em 0.5em;
     margin-bottom: 1em;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.4);
     /* display: inline-block; */
     /* filter: drop-shadow(0px 0px 10px #ffffff); */
     /* backdrop-filter: opacity(0.5); */
@@ -182,9 +182,17 @@ ul.my-site-menu {
                 background-color: var(--main-link-hilite-box-color);
             }
 
-.my-gallery img {
+div.my-frame {
+    display: inline-block;
+    margin: 0.2em 0.3em;
+    padding: 0.5em;
+    background-color: rgba(255,255,255,0.4);
+    filter: drop-shadow(0px 0px 8px #ffffff);
+}
+
+div.my-gallery img {
     max-height: 10em;
-    margin-bottom: 0.5em;
+    display: flow;
 }
 
 .my-tag {
@@ -366,7 +374,9 @@ div.my-card {
 
 div.my-card-content {
     padding: 0.5em;
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 0.5em;
+    filter: drop-shadow(0px 0px 8px #ffffff);
 }
 
 div.my-card-image img {
