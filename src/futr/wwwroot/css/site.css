@@ -197,7 +197,7 @@ span.my-next-arrow {
 }
 
 div.my-gallery {
-    margin-bottom: 1em;
+    margin: 0 -0.3em 1em -0.3em;
 }
 
 div.my-frame {
