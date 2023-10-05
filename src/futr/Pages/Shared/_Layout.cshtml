@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="@(ViewData["MetaTitle"])" />
     <meta name="twitter:description" content="@(ViewData["MetaDescription"])" />
-    <meta name="twitter:image" content="@(ViewData["MetaImage"])" />
+    <meta name="twitter:image" content="@("https://" + Context.Request.Host)@(ViewData["MetaImage"])" />
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="icon" type="image/x-icon" href="~/images/favicon.png" />
