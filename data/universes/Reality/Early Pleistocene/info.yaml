@@ -3,6 +3,9 @@ tags: []
 date: -1.2e6
 readme: |
     Homo habilis and/or Homo erectus (you tell me if you want to have it exactly)
+images:
+    - link: https://raw.githubusercontent.com/wolfspelz/futr/main/data/universes/Reality/Early%20Pleistocene/cavemenfamily.jpg
+      text: (Generated image, may be not scientifically correct)
 datapoints:
     - metric: Population
       value: 18500
