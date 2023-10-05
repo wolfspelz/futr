@@ -25,7 +25,7 @@
     Title = "All Universes",
     Text =
     "These are the universes. <br/>Find your favourite franchises, your world, your setting.<br/><br/>"
-    + "<a href='/Universe'>Find all universes here <img src='/images/Index/next.png' style='width: 1em' /></a>",
+    + "<a href='/Universe'>Find all universes here <span class='my-next-arrow'/></a>",
     Link = "/Universe",
     TitleHasLink = true,
     })
@@ -65,9 +65,9 @@
     Title = "Contributing",
     Text = ""
     + "<p>Missing a universe or a civilization?</p>"
-    + "<p><a href='https://github.com/wolfspelz/futr/tree/main/data/universes'>Check out the list of proposals <img src='/images/Index/next.png' style='width: 1em' /></a></p>"
-    + "<p><a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>Propose a universe in discord <img src='/images/Index/next.png' style='width: 1em' /></a></p>"
-    + "<p>Even better:<br/><a href='https://docs.github.com/en/get-started/quickstart/fork-a-repo#propose-changes-to-someone-elses-project'>fork, edit, pull-request on GitHub <img src='/images/Index/next.png' style='width: 1em' /></a></p>",
+    + "<p><a href='https://github.com/wolfspelz/futr/tree/main/data/universes'>Check out the list of proposals <span class='my-next-arrow'/></a></p>"
+    + "<p><a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>Propose a universe in discord <span class='my-next-arrow'/></a></p>"
+    + "<p>Even better:<br/><a href='https://docs.github.com/en/get-started/quickstart/fork-a-repo#propose-changes-to-someone-elses-project'>fork, edit, pull-request on GitHub <span class='my-next-arrow'/></a></p>",
     Link = "https://github.com/wolfspelz/futr",
     TitleHasLink = true,
     })
@@ -82,9 +82,8 @@
     "dotnet, docker, github actions, nginx",
     "The C# IDE is our CMS",
     "GitHub Actions is our deployment",
-    "A git-push to main and it's online",
     "<a href='https://github.com/wolfspelz/futr/data'>Content</a> in YAML and Markdown files",
-    "<a href='https://github.com/wolfspelz/futr/issues'>Issues</a>",
+    "<a href='https://github.com/wolfspelz/futr/issues'>Built-in issue tracker</a>",
     }.Select(x => $"<li>{x}</li>")) + "</ul>",
     Link = "https://github.com/wolfspelz/futr/tree/main/data",
     TitleHasLink = true,
@@ -98,7 +97,7 @@
     + "<p>This is how we gauge universes, civiliztions and factions.</p>"
     + "<p>Some have many planets or ring worlds, others might be measured by their progress to higher spheres of existance.</p>"
     + "<p>This is not a competition, though.</p>"
-    + "<p><a href='/Metric'>The metrics <img src='/images/Index/next.png' style='width: 1em' /></a></p>",
+    + "<p><a href='/Metric'>The metrics <span class='my-next-arrow'/></a></p>",
     Link = "/Metric",
     TitleHasLink = true,
     })
