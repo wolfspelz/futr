@@ -11,7 +11,7 @@
     <meta name="description" content="@(ViewData["MetaDescription"])" />
     <meta property="og:title" content="@(ViewData["MetaTitle"])" />
     <meta property="og:description" content="@(ViewData["MetaDescription"])" />
-    <meta property="og:image" content="@(ViewData["MetaImage"])" />
+    <meta property="og:image" content="@("https://" + Context.Request.Host)@(ViewData["MetaImage"])" />
     <meta property="og:image:alt" content="@(ViewData["MetaImageAlt"])" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="@("https://" + Context.Request.Host + Context.Request.Path + Context.Request.QueryString)" />
