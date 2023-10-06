@@ -139,8 +139,10 @@ public class FutrData
             }
 
             var civilization = LoadCivilization(universe, universeFolderPath, civilizationId);
-            civilization.SeoName = $"{universeId} {civilizationId}";
-            universe.Civilizations.Add(civilizationId, civilization);
+            if (civilization != null) {
+                civilization.SeoName = $"{universeId} {civilizationId}";
+                universe.Civilizations.Add(civilizationId, civilization);
+            }
         }
 
         var factionFolderPath = Path.Combine(universeFolderPath, FactionsSubfolder);
@@ -181,7 +183,7 @@ public class FutrData
         return faction;
     }
 
-    private Civilization LoadCivilization(Universe universe, string folderPath, string civilizationId)
+    private Civilization? LoadCivilization(Universe universe, string folderPath, string civilizationId)
     {
         Log.Info($"{folderPath}/{civilizationId}");
         var civilization = new Civilization(universe, civilizationId);
@@ -194,7 +196,8 @@ public class FutrData
             var civilizationInfoData = DataProvider.GetData(civilizationInfoPath);
             civilization.fromYaml(civilizationInfoData);
         } else {
-            Log.Warning($"Civilization {civilizationId} does not have an info.yaml file.");
+            Log.Warning($"Civilization {civilizationId} does not have an info.yaml file. Ignoring.");
+            return null;
         }
 
         var civilizationReadmePath = Path.Combine(folderPath, civilizationId, ReadmeFileName);
