@@ -1,18 +1,19 @@
 tags: [fav, new, index]
 faction: Diamond Network
+order: s
 date: 10600
 images: 
     - https://www.orionsarm.com/im_store/Diamond_Network%20Altern.png
 datapoints:
     - metric: Population
-      value: 33e12
-      min: 21e12
-      max: 46e12
+      min: 20e12
+      value: 30e12
+      max: 50e12
       confidence: canon
       comment: |
           Hyper intelligent AIs only. 
-          [5 to 11 trillion](https://www.orionsarm.com/eg-topic/45cfcf367a09f) on the first toposophic level. 
-          Using the Banks-Scheme which counts higher intelligence logarithmically and estimating a [factor of 15.000](https://www.orionsarm.com/eg-topic/492d6aa0a549a) for the first toposophic level.
+          5 to 11 trillion on the first toposophic level. 
+          Using the Banks-Scheme which counts higher intelligence logarithmically and a factor of 10.000 to 100.000 for the first toposophic (which is not much compared to Banks' Culture-Minds).
       references: 
           - https://www.orionsarm.com/eg-topic/45cfcf367a09f
           - https://www.orionsarm.com/eg-topic/492d6aa0a549a

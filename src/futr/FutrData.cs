@@ -11,7 +11,6 @@ public class FutrData
     public string UniversesSubfolder = "universes";
     public string FactionsSubfolder = "_factions";
     public string YamlInfoFileName = "info.yaml";
-    public string AlternativeYamlInfoFileName = "info.yml";
     public string ReadmeFileName = "readme.md";
 
     public Dictionary<string, Metric> Metrics = new();
@@ -73,10 +72,7 @@ public class FutrData
 
         var metric = new Metric(metricId);
 
-        var infoPath = Path.Combine(folderPath, metricId, YamlInfoFileName);
-        if (!DataProvider.HasData(infoPath)) {
-            infoPath = Path.Combine(folderPath, metricId, AlternativeYamlInfoFileName);
-        }
+        var infoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, metricId, YamlInfoFileName));
         if (DataProvider.HasData(infoPath)) {
             var infoData = DataProvider.GetData(infoPath);
             metric.fromYaml(infoData);
@@ -84,8 +80,7 @@ public class FutrData
             Log.Warning($"Metric {metricId} does not have an info.yaml file.");
         }
 
-        var readmePath = Path.Combine(folderPath, metricId, ReadmeFileName);
-        readmePath = FindCaseInsensitiveFile(readmePath);
+        var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, metricId, ReadmeFileName));
         if (DataProvider.HasData(readmePath)) {
             var readmeData = DataProvider.GetData(readmePath);
             metric.Description = readmeData;
@@ -112,10 +107,7 @@ public class FutrData
         Log.Info($"{folderPath}/{universeId}");
         var universe = new Universe(universeId);
 
-        var infoPath = Path.Combine(folderPath, universeId, YamlInfoFileName);
-        if (!DataProvider.HasData(infoPath)) {
-            infoPath = Path.Combine(folderPath, universeId, AlternativeYamlInfoFileName);
-        }
+        var infoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, universeId, YamlInfoFileName));
         if (DataProvider.HasData(infoPath)) {
             var infoData = DataProvider.GetData(infoPath);
             universe.fromYaml(infoData);
@@ -123,8 +115,7 @@ public class FutrData
             Log.Warning($"Universe {universeId} does not have an info.yaml file.");
         }
 
-        var readmePath = Path.Combine(folderPath, universeId, ReadmeFileName);
-        readmePath = FindCaseInsensitiveFile(readmePath);
+        var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, universeId, ReadmeFileName));
         if (DataProvider.HasData(readmePath)) {
             var readmeData = DataProvider.GetData(readmePath);
             universe.Description = readmeData;
@@ -150,8 +141,10 @@ public class FutrData
         foreach (var factionSubPath in factionSubFolders) {
             var factionId = Path.GetFileName(factionSubPath).Trim();
             var faction = LoadFaction(universe, factionFolderPath, factionId);
-            faction.SeoName = $"{universeId} {factionId}";
-            universe.Factions.Add(factionId, faction);
+            if (faction != null) {
+                faction.SeoName = $"{universeId} {factionId}";
+                universe.Factions.Add(factionId, faction);
+            }
         }
 
         return universe;
@@ -162,10 +155,7 @@ public class FutrData
         Log.Info($"{folderPath}/{factionId}");
         var faction = new Faction(universe, factionId);
 
-        var infoPath = Path.Combine(folderPath, factionId, YamlInfoFileName);
-        if (!DataProvider.HasData(infoPath)) {
-            infoPath = Path.Combine(folderPath, factionId, AlternativeYamlInfoFileName);
-        }
+        var infoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, factionId, YamlInfoFileName));
         if (DataProvider.HasData(infoPath)) {
             var infoData = DataProvider.GetData(infoPath);
             faction.fromYaml(infoData);
@@ -173,8 +163,7 @@ public class FutrData
             Log.Warning($"Faction {factionId} does not have an info.yaml file.");
         }
 
-        var readmePath = Path.Combine(folderPath, factionId, ReadmeFileName);
-        readmePath = FindCaseInsensitiveFile(readmePath);
+        var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, factionId, ReadmeFileName));
         if (DataProvider.HasData(readmePath)) {
             var readmeData = DataProvider.GetData(readmePath);
             faction.Description = readmeData;
@@ -183,25 +172,20 @@ public class FutrData
         return faction;
     }
 
-    private Civilization? LoadCivilization(Universe universe, string folderPath, string civilizationId)
+    private Civilization LoadCivilization(Universe universe, string folderPath, string civilizationId)
     {
         Log.Info($"{folderPath}/{civilizationId}");
         var civilization = new Civilization(universe, civilizationId);
 
-        var civilizationInfoPath = Path.Combine(folderPath, civilizationId, YamlInfoFileName);
-        if (!DataProvider.HasData(civilizationInfoPath)) {
-            civilizationInfoPath = Path.Combine(folderPath, civilizationId, AlternativeYamlInfoFileName);
-        }
+        var civilizationInfoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, civilizationId, YamlInfoFileName));
         if (DataProvider.HasData(civilizationInfoPath)) {
             var civilizationInfoData = DataProvider.GetData(civilizationInfoPath);
             civilization.fromYaml(civilizationInfoData);
         } else {
             Log.Warning($"Civilization {civilizationId} does not have an info.yaml file. Ignoring.");
-            return null;
         }
 
-        var civilizationReadmePath = Path.Combine(folderPath, civilizationId, ReadmeFileName);
-        civilizationReadmePath = FindCaseInsensitiveFile(civilizationReadmePath);
+        var civilizationReadmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, civilizationId, ReadmeFileName));
         if (DataProvider.HasData(civilizationReadmePath)) {
             var civilizationReadmeData = DataProvider.GetData(civilizationReadmePath);
             civilization.Description = civilizationReadmeData;

@@ -83,6 +83,7 @@ public class BaseModel
                     link.Text = imageNode["text"].AsString;
                 } else {
                     link.Link = imageNode.AsString;
+                    link.Text = link.Link;
                 }
                 Links.Add(link);
             }

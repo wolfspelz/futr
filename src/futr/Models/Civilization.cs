@@ -37,8 +37,11 @@ public partial class Civilization : BaseModel
         if (Editors.Count == 0) {
             Editors = Universe.Editors;
         }
-        if (Approvers.Count == 0) {
-            Approvers = Universe.Approvers;
+        //if (Approvers.Count == 0) {
+        //    Approvers = Universe.Approvers;
+        //}
+        if (string.IsNullOrEmpty(Order)) {
+            Order = Universe.Order;
         }
 
         Faction = node["faction"].AsString.Trim();

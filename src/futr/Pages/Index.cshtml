@@ -31,21 +31,13 @@
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
-    ImgSrc = "/images/Index/discord.png",
-    ImgAlt = "Discord",
-    Title = "Discord",
-    Text = "Talk about universes and how to measure stuff. Request new measurements and comparisons. Is there any universe still missing?",
-    Link = "https://discordapp.com/channels/1136704642986811423/1153448297915220058",
-    TitleHasLink = true,
-    })
-
-    @await Html.PartialAsync("_Card", new Shared.Card.Model{
     ImgSrc = "/images/Index/new-universes.jpg",
     ImgAlt = "Newsroom",
     Title = "New Universes",
     Text= string.Join("<br/>", Model.App.Data.Universes
     .Where(x => x.Value.Tags.Contains("new"))
-    .Select(pair => $"<a href='/Universe/{pair.Value.SeoName}'>{pair.Value.Title}</a>"))
+    .OrderBy(x => x.Value.Order)
+    .Select(pair => $"<a href='/Universe/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.Title}</a>"))
     + "<br/><br/>...more to come. ",
     })
 
@@ -55,8 +47,18 @@
     Title = "New Civilizations",
     Text= string.Join("<br/>", Model.App.Data.Civilizations
     .Where(x => x.Value.Tags.Contains("new"))
-    .Select(pair => $"<a href='/Civilization/{pair.Value.SeoName}'>{pair.Value.Title}</a>"))
+    .OrderBy(x => x.Value.Order)
+    .Select(pair => $"<a href='/Civilization/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.Title}</a>"))
     + "<br/><br/>...more to come. ",
+    })
+
+    @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    ImgSrc = "/images/Index/discord.png",
+    ImgAlt = "Discord",
+    Title = "Discord",
+    Text = "Talk about universes and how to measure stuff. Request new measurements and comparisons. Is there any universe still missing?",
+    Link = "https://discordapp.com/channels/1136704642986811423/1153448297915220058",
+    TitleHasLink = true,
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
