@@ -97,7 +97,7 @@ a {
 }
 
     a:hover, a:active {
-        filter: brightness(0.9);
+        filter: brightness(0.8);
         left: 2px;
         top: 2px;
     }
@@ -197,7 +197,7 @@ span.my-next-arrow {
 }
 
 div.my-gallery {
-    margin-bottom: 1em;
+    margin: 0 -0.3em 1em -0.3em;
 }
 
 div.my-frame {

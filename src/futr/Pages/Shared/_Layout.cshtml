@@ -11,14 +11,14 @@
     <meta name="description" content="@(ViewData["MetaDescription"])" />
     <meta property="og:title" content="@(ViewData["MetaTitle"])" />
     <meta property="og:description" content="@(ViewData["MetaDescription"])" />
-    <meta property="og:image" content="@(ViewData["MetaImage"])" />
+    <meta property="og:image" content="@("https://" + Context.Request.Host)@(ViewData["MetaImage"])" />
     <meta property="og:image:alt" content="@(ViewData["MetaImageAlt"])" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="@("https://" + Context.Request.Host + Context.Request.Path + Context.Request.QueryString)" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="@(ViewData["MetaTitle"])" />
     <meta name="twitter:description" content="@(ViewData["MetaDescription"])" />
-    <meta name="twitter:image" content="@(ViewData["MetaImage"])" />
+    <meta name="twitter:image" content="@("https://" + Context.Request.Host)@(ViewData["MetaImage"])" />
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="icon" type="image/x-icon" href="~/images/favicon.png" />
