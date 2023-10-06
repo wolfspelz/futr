@@ -1,6 +1,8 @@
 tags: [fav, new, index]
 faction: Diamond Network
 date: 10600
+images: 
+    - https://www.orionsarm.com/im_store/Diamond_Network%20Altern.png
 datapoints:
     - metric: Population
       value: 33e12
