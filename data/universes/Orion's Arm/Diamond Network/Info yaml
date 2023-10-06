@@ -1,0 +1,16 @@
+tags: [fav, new, index]
+faction: Diamond Network
+date: 10600
+datapoints:
+    - metric: Population
+      value: 33e12
+      min: 21e12
+      max: 46e12
+      confidence: canon
+      comment: |
+          Hyper intelligent AIs only. 
+          [5 to 11 trillion](https://www.orionsarm.com/eg-topic/45cfcf367a09f) on the first toposophic level. 
+          Using the Banks-Scheme which counts higher intelligence logarithmically and estimating a [factor of 15.000](https://www.orionsarm.com/eg-topic/492d6aa0a549a) for the first toposophic level.
+      references: 
+          - https://www.orionsarm.com/eg-topic/45cfcf367a09f
+          - https://www.orionsarm.com/eg-topic/492d6aa0a549a
