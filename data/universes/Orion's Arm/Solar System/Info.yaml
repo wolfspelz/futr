@@ -6,7 +6,7 @@ links:
     - https://orionsarm.com/eg-article/48f915a959b12
 images: 
     - link: https://orionsarm.com/im_store/med_solsys.jpg
-    - text: Image from Steve Bowers (© 2023 Orion's Arm Universe Project Inc.)
+      text: Image from Steve Bowers (© 2023 Orion's Arm Universe Project Inc.)
 datapoints:
     - metric: Population
       min: 6,967,434,000,000
