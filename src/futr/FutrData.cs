@@ -7,6 +7,7 @@ public class FutrData
     public IDataProvider DataProvider = new TabConvertingFileDataProvider();
     public IDataStructureProvider StructureProvider = new FileStructureProvider();
     public ICallbackLogger Log = new NullCallbackLogger();
+    public string FolderPath = ".";
     public string MetricsSubfolder = "metrics";
     public string UniversesSubfolder = "universes";
     public string FactionsSubfolder = "_factions";
@@ -18,8 +19,6 @@ public class FutrData
     public Dictionary<string, Civilization> Civilizations = new();
     public Dictionary<string, Faction> Factions = new();
 
-    public Dictionary<string, List<BaseModel>> Tagged = new();
-
     public FutrData()
     {
     }
@@ -27,12 +26,29 @@ public class FutrData
     public void Load(string folderPath)
     {
         Log.Info($"{folderPath}");
+        FolderPath = folderPath;
 
         LoadMetrics(Path.Combine(folderPath, MetricsSubfolder));
         LoadUniverses(Path.Combine(folderPath, UniversesSubfolder));
 
         RegisterCivilizations();
         RegisterFactions();
+    }
+
+    public void Unload()
+    {
+        Log.Info("");
+
+        Metrics = new();
+        Universes = new();
+        Civilizations = new();
+        Factions = new();
+    }
+
+    public void Reload()
+    {
+        Unload();
+        Load(FolderPath);
     }
 
     private void RegisterCivilizations()
@@ -264,4 +280,5 @@ public class FutrData
 
         return result;
     }
+
 }
