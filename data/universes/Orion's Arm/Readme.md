@@ -1,1 +1,1 @@
-10.000 years in the future
+A setting 10.000 years in the future. A massive shared universe, heavily AI oriented and physically as [realistic as possible](https://orionsarm.com/page/514). Major claim: the singularity is just the beginning. 
