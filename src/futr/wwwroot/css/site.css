@@ -260,8 +260,8 @@ div.my-tile .my-title {
 
 @media (max-width: 700px) {
     div.my-tile {
-        width: 200px;
-        height: 112px;
+        width: 180px;
+        height: 100px;
     }
 }
 
