@@ -48,7 +48,7 @@
     Text= string.Join("<br/>", Model.App.Data.Civilizations
     .Where(x => x.Value.Tags.Contains("new"))
     .OrderBy(x => x.Value.Order)
-    .Select(pair => $"<a href='/Civilization/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.Title}</a>"))
+    .Select(pair => $"<a href='/Civilization/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.SeoName}</a>"))
     + "<br/><br/>...more to come. ",
     })
 

@@ -1,0 +1,17 @@
+tags: [fav, new, index]
+faction: Solar System
+order: s
+date: 10600
+links:
+    - https://orionsarm.com/eg-article/48f915a959b12
+images: 
+    - link: https://orionsarm.com/im_store/med_solsys.jpg
+    - text: Image from Steve Bowers (© 2023 Orion's Arm Universe Project Inc.)
+datapoints:
+    - metric: Population
+      min: 6,967,434,000,000
+      value: 6,967,435,000,000
+      max: 6,967,436,000,000
+      confidence: canon
+      references: 
+          - https://orionsarm.com/eg-article/48f915a959b12

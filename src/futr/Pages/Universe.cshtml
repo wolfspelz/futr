@@ -48,7 +48,7 @@
             @foreach (var civilization in Model.Item.Civilizations.Select(pair => pair.Value).OrderBy(x => x.Year)) {
                 <div class="my-table-row">
                     <div class="my-table-cell">
-                        <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Title</a>
+                        <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Id</a>:
                     </div>
                     @{
                         var cnt = 0;
