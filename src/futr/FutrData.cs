@@ -31,8 +31,10 @@ public class FutrData
         LoadMetrics(Path.Combine(folderPath, MetricsSubfolder));
         LoadUniverses(Path.Combine(folderPath, UniversesSubfolder));
 
-        RegisterCivilizations();
-        RegisterFactions();
+        ExtractCivilizations();
+        ExtractFactions();
+
+        CheckUsedMetrics();
     }
 
     public void Unload()
@@ -51,7 +53,20 @@ public class FutrData
         Load(FolderPath);
     }
 
-    private void RegisterCivilizations()
+    private void CheckUsedMetrics()
+    {
+        foreach (var universe in Universes.Values) {
+            foreach (var civilization in universe.Civilizations.Values) {
+                foreach(var datapoint in civilization.Datapoints) {
+                    if (!Metrics.ContainsKey(datapoint.Metric)) {
+                        Log.Warning($"Metric {datapoint.Metric} is used by {civilization.SeoName} but does not exist.");
+                    }
+                }
+            }
+        }
+    }
+
+    private void ExtractCivilizations()
     {
         foreach (var universe in Universes.Values) {
             foreach (var civilization in universe.Civilizations.Values) {
@@ -60,7 +75,7 @@ public class FutrData
         }
     }
 
-    private void RegisterFactions()
+    private void ExtractFactions()
     {
         foreach (var universe in Universes.Values) {
             foreach (var faction in universe.Factions.Values) {

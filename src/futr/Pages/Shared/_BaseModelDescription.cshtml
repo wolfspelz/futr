@@ -1,9 +1,11 @@
 ﻿@if (Model is Models.BaseModel model) {
 
-    <div class="my-textblock" id="iDescription">
-        <span id="iDescriptionSource">@(model.Description)</span>
-    </div>
+    if (!string.IsNullOrEmpty(model.Description)) {
+        <div class="my-textblock" id="iDescription">
+            <span id="iDescriptionSource">@(model.Description)</span>
+        </div>
 
-    @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+        @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
+    }
 
 }

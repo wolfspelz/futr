@@ -1,0 +1,53 @@
+tags: [index]
+date: 10600
+links:
+    - https://www.orionsarm.com/eg-article/4caf0ce9584d0
+images: 
+    - link: https://www.orionsarm.com/im_store/Regionsmap1538062741.JPG
+      text: Image from Steve Bowers (© 2023 Orion's Arm Universe Project Inc.)
+datapoints:
+    - metric: Bio Population
+      min: 50e15
+      value: 78e15
+      max: 100e15
+      confidence: canon
+      references: 
+          - https://www.orionsarm.com/eg-topic/45b1774e4ba77
+    - metric: Mech Population
+      min: 250e15
+      value: 310e15
+      max: 400e15
+      confidence: canon
+      references: 
+          - https://www.orionsarm.com/eg-topic/45b1774e4ba77
+    - metric: Embodied Population
+      min: 300e15
+      value: 390e15
+      max: 450e15
+      confidence: canon
+      references: 
+          - https://www.orionsarm.com/eg-topic/45b1774e4ba77
+    - metric:  Population
+      min: 300e15
+      value: 390e15
+      max: 450e15
+      confidence: canon
+      comment: Same as Embodied Population
+    - metric: Virtual Population
+      min: 300e18
+      value: 1000e18
+      max: 3000e18
+      confidence: canon
+      comment: |
+          Counting only Modosophonts, not Transsapients 
+          - because higher toposophics do not make much of a dent compared to the S<1 population
+          - using the Banks-Scheme which counts higher intelligence logarithmically, 
+          - because transsapient populations scale down by a factor of about 1000 per level
+          - while the logarithm of the intelligence/awareness/saphens) growth per level is between 4 and 8, 
+          - using a per level intelligence factor between 10 k and 100 mio., 
+          - considering that 15 k is given for the first level 
+          - and applying that to all other levels
+          - which is for sure wrong, but better than nothing for an estimate that uses a log scale anyway.
+      references: 
+          - https://www.orionsarm.com/eg-topic/45b1774e4ba77
+          - https://www.orionsarm.com/eg-topic/492d6aa0a549a

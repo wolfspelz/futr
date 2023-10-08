@@ -35,17 +35,20 @@
 
                 <div><span>Confidence</span>: <span>@datapoint.Confidence</span></div>
 
-                <div style="margin-top: 0.5em; white-space: pre-wrap">@datapoint.Comment</div>
-
                 @if (datapoint.References.Length > 0) {
-                    <ul>
-                        @foreach (var reference in datapoint.References) {
-                            <li>
-                                <a href="@reference">@reference</a>
-                            </li>
-                        }
-                    </ul>
+                    <div>
+                        <span>References</span>:
+                        <ul>
+                            @foreach (var reference in datapoint.References) {
+                                <li>
+                                    <a href="@reference">@reference</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
                 }
+
+                <div style="margin-top: 0.5em; white-space: pre-wrap">@datapoint.Comment</div>
             </div>
         }
     </div>
