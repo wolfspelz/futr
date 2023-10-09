@@ -58,7 +58,22 @@ public partial class Civilization : BaseModel
             var datapoint = new Datapoint(metricId, value, min, max, confidence);
 
             datapoint.Comment = data["comment"].AsString.Trim();
-            datapoint.References = data["references"].AsList.Select(n => n.AsString).ToArray();
+
+            //datapoint.References = data["references"].AsList.Select(n => n.AsString).ToArray();
+            {
+                var referenceList = data["references"].AsList;
+                foreach (var referenceNode in referenceList) {
+                    var reference = new ReferenceModel();
+                    if (referenceNode.IsDictionary) {
+                        reference.Link = referenceNode["link"].AsString;
+                        reference.Text = referenceNode["text"].AsString;
+                    } else {
+                        reference.Link = referenceNode.AsString;
+                        reference.Text = reference.Link;
+                    }
+                    datapoint.References.Add(reference);
+                }
+            }
 
             Datapoints.Add(datapoint);
         }

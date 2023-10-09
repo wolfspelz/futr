@@ -22,36 +22,21 @@
 
     @await Html.PartialAsync("_BaseModelProperties", Model.Item)
 
-    <div class="my-textblock">
-        <h2>Datapoints</h2>
-        @foreach (var datapoint in Model.Item.Datapoints) {
-            <div>
-                <h3>@datapoint.Metric</h3>
-                <div>
-                    <span>Value</span>: <span>@datapoint.Value</span>
-                    (<span>@datapoint.Min</span> -
-                    <span>@datapoint.Max</span>)
-                </div>
-
-                <div><span>Confidence</span>: <span>@datapoint.Confidence</span></div>
-
-                @if (datapoint.References.Length > 0) {
-                    <div>
-                        <span>References</span>:
-                        <ul>
-                            @foreach (var reference in datapoint.References) {
-                                <li>
-                                    <a href="@reference">@reference</a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                }
-
-                <div style="margin-top: 0.5em; white-space: pre-wrap">@datapoint.Comment</div>
-            </div>
-        }
-    </div>
+    @foreach (var datapoint in Model.Item.Datapoints) {
+        @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    Title = $"{datapoint.Metric}",
+    Text = ""
+    + $"<p>"
+    + $"<span>Value</span>: <span>{datapoint.Value}</span><br/>"
+    + $"<span>Min</span>: <span>{datapoint.Min}</span><br/>"
+    + $"<span>Max</span>: <span>{datapoint.Max}</span><br/>"
+    + $"<span>Confidence</span>: <span>{datapoint.Confidence}</span>"
+    + $"</p>"
+    + $"<div style='margin-top: 0.5em; white-space: pre-wrap'>{string.Join("", datapoint.Comment.Replace("\r\n", "\n").Split(new char[]{'\n'}).Select(x => $"<p>{x}</p>").ToArray())}</div>"
+    + (datapoint.References.Count() < 1 ? "" : "<p><span>References</span>:<ul>" + string.Join("", datapoint.References.Select(x => $"<li><a href='{x.Link}''>{x.Text}</a></li>").ToArray()) + "</ul></p>")
+    ,
+    })
+    }
 
     @await Html.PartialAsync("_BaseModelDescription", Model.Item)
 }

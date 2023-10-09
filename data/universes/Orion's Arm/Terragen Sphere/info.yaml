@@ -12,21 +12,24 @@ datapoints:
       max: 100e15
       confidence: canon
       references: 
-          - https://www.orionsarm.com/eg-topic/45b1774e4ba77
+          - link: https://www.orionsarm.com/eg-topic/45b1774e4ba77
+            text: Sophonts
     - metric: Mech Population
       min: 250e15
       value: 310e15
       max: 400e15
       confidence: canon
       references: 
-          - https://www.orionsarm.com/eg-topic/45b1774e4ba77
+          - link: https://www.orionsarm.com/eg-topic/45b1774e4ba77
+            text: Sophonts
     - metric: Embodied Population
       min: 300e15
       value: 390e15
       max: 450e15
       confidence: canon
       references: 
-          - https://www.orionsarm.com/eg-topic/45b1774e4ba77
+          - link: https://www.orionsarm.com/eg-topic/45b1774e4ba77
+            text: Sophonts
     - metric:  Population
       min: 300e15
       value: 390e15
@@ -49,5 +52,7 @@ datapoints:
           - and applying that to all other levels
           - which is for sure wrong, but better than nothing for an estimate that uses a log scale anyway.
       references: 
-          - https://www.orionsarm.com/eg-topic/45b1774e4ba77
-          - https://www.orionsarm.com/eg-topic/492d6aa0a549a
+          - link: https://www.orionsarm.com/eg-topic/45b1774e4ba77
+            text: Sophonts
+          - link: https://www.orionsarm.com/eg-topic/492d6aa0a549a
+            text: First Toposophic - Basic Transapients
