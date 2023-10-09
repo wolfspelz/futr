@@ -46,7 +46,8 @@
         <div class="my-gallery">
             @foreach (var image in model.Images.Take(10)) {
                 <div class="my-frame">
-                    <a href="@image.Link"><img src="@image.Link" /></a>
+                    <a href="@image.Page"><img src="@image.Link" alt="@image.Text" title="@image.Text
+@image.Page" /></a>
                     <div class="my-caption">@image.Text</div>
                 </div>
             }

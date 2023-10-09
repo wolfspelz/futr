@@ -10,6 +10,7 @@ public class ImageModel
 {
     public string Link { get; internal set; } = "";
     public string Text { get; internal set; } = "";
+    public string Page { get; internal set; } = "";
 }
 
 public class BaseModel
@@ -67,8 +68,12 @@ public class BaseModel
                 if (imageNode.IsDictionary) {
                     image.Link = imageNode["link"].AsString;
                     image.Text = imageNode["text"].AsString;
+                    image.Page = imageNode["page"].AsString;
                 } else {
                     image.Link = imageNode.AsString;
+                }
+                if (image.Page == "") {
+                    image.Page = image.Link;
                 }
                 Images.Add(image);
             }
