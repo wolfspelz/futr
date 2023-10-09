@@ -1,8 +1,6 @@
 title: Reality
 tags: [new, index]
 tile: https://github.com/wolfspelz/futr/raw/main/data/universes/Reality/earth-tile.jpg
-showcaseMetrics: [Population, Kardashev]
-editors: [wolfspelz]
 images:
     - link: https://upload.wikimedia.org/wikipedia/commons/5/50/Neanderthal_Flintworkers_%28Knight%2C_1920%29.jpg
       text: Le Moustier Neanderthals (Charles R. Knight, 1920)
@@ -15,3 +13,5 @@ links:
       text: RealLife (tvtropes)
     - link: https://en.wikipedia.org/wiki/Human
       text: Human (Wikipedia)
+editors: [wolfspelz]
+showcaseMetrics: [Population, Kardashev]
