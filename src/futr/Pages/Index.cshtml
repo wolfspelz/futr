@@ -38,7 +38,7 @@
     .Where(x => x.Value.Tags.Contains("new"))
     .OrderBy(x => x.Value.Order)
     .Select(pair => $"<a href='/Universe/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.Title}</a>"))
-    + "<br/><br/>...more to come. ",
+    + "<br/><br/>...more to come.",
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
@@ -49,7 +49,7 @@
     .Where(x => x.Value.Tags.Contains("new"))
     .OrderBy(x => x.Value.Order)
     .Select(pair => $"<a href='/Civilization/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.SeoName}</a>"))
-    + "<br/><br/>...more to come. ",
+    + "<br/><br/>...more to come.",
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
@@ -80,12 +80,12 @@
     Title = "Open Source Project",
     Text =
     "<ul>" + string.Join("\n", new[] {
-    "Source: <a href='https://github.com/wolfspelz/futr/'>GitHub</a>",
+    "Source: <a href='https://github.com/wolfspelz/futr/'>GitHub <span class='my-next-arrow'/></a>",
     "dotnet, docker, github actions, nginx",
     "The C# IDE is our CMS",
     "GitHub Actions is our deployment",
-    "<a href='https://github.com/wolfspelz/futr/data'>Content</a> in YAML and Markdown files",
-    "<a href='https://github.com/wolfspelz/futr/issues'>Built-in issue tracker</a>",
+    "<a href='https://github.com/wolfspelz/futr/data'>Content <span class='my-next-arrow'/></a> in YAML and Markdown files",
+    "<a href='https://github.com/wolfspelz/futr/issues'>Built-in issue tracker <span class='my-next-arrow'/></a>",
     }.Select(x => $"<li>{x}</li>")) + "</ul>",
     Link = "https://github.com/wolfspelz/futr/tree/main/data",
     TitleHasLink = true,
@@ -102,6 +102,49 @@
     + "<p><a href='/Metric'>The metrics <span class='my-next-arrow'/></a></p>",
     Link = "/Metric",
     TitleHasLink = true,
+    })
+
+    @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    ImgSrc = "/images/Index/book-shelf.jpg",
+    ImgAlt = "Bookshelf",
+    Title = "Universes We Want:",
+    Text = "<p>" + string.Join(", ", new [] {
+    "Star Wars",
+    "Star Trek",
+    "Babylon 5",
+    "Dune",
+    "Perryversum",
+    "The Culture (Banks)",
+    "Known Space (Niven)",
+    "Honorverse",
+    "The Verse (Firefly)",
+    "Eve Online",
+    "Alliance–Union (C. J. Cherryh)",
+    "Technic Civilization (Poul Anderson)",
+    "Zones of Thought (Vernor Vinge)",
+    "TRAVELLER 2300 AD",
+    "TRAVELLER Classic",
+    "TRAVELLER TNE",
+    "TRAVELLER Mongoose 2nd Ed",
+    "PANEC",
+    "Galactic Developments",
+    }.Select(x => $"{x}"))
+    + "</p>"
+    + "<p>There is so much more.</p>"
+    + "<p>Tell us <a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>here <span class='my-next-arrow'/></a> or <a href='https://docs.github.com/en/get-started/quickstart/fork-a-repo#propose-changes-to-someone-elses-project'>contribute on GitHub <span class='my-next-arrow'/></a></p>"
+    ,
+    })
+
+    @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    ImgSrc = "/images/Index/book-wall.jpg",
+    ImgAlt = "Bookwall",
+    Title = "Inspiration",
+    Text = "<p>Here are lists for your inspiration. Which of these do we really need? All of them?</p>"
+    + "<p>"
+    + "<a href='https://en.wikipedia.org/wiki/List_of_science_fiction_universes'>List of Science Fiction Universes <span class='my-next-arrow'/></a><br/>"
+    + "<a href='https://en.wikipedia.org/wiki/Category:Science_fiction_franchises'>Science Fiction Franchises <span class='my-next-arrow'/></a>"
+    + "</p>"
+    ,
     })
 
 </div>
