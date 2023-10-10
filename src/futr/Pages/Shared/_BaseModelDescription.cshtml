@@ -8,4 +8,26 @@
         @await Html.PartialAsync("_MarkdownConverterPartial", new Shared._MarkdownConverterPartial.Model() { Source = "iDescriptionSource", Target = "iDescription"})
     }
 
+    @if (model.Editors.Count > 0 || model.Approvers.Count > 0) {
+        <div class="my-textblock">
+            @if (model.Editors.Count > 0) {
+                <div>
+                    <span>Edited</span>:
+                    @foreach (var editor in model.Editors) {
+                        <a class="my-editor" href="@("http://github.com/" + editor)">@editor</a>
+                    }
+                </div>
+            }
+
+            @if (model.Approvers.Count > 0) {
+                <div>
+                    <span>Approved</span>:
+                    @foreach (var approver in model.Approvers) {
+                        <a class="my-approver" href="@("http://github.com/" + approver)">@approver</a>
+                    }
+                </div>
+            }
+        </div>
+    }
+
 }

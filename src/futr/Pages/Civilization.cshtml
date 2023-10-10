@@ -14,9 +14,9 @@
     <h1>@Model.Item.Title</h1>
 
     <div class="my-textblock">
-        <span>Universe</span>:
+        <span>Parent universe</span>:
         <span>
-            <a asp-page="Universe" asp-route-id="@Model.Item.Universe.SeoName">@Model.Item.Universe.Title</a>
+            <a asp-page="Universe" asp-route-id="@Model.Item.Universe.SeoName">@Model.Item.Universe.Title <span class='my-up-arrow' /></a>
         </span>
     </div>
 
