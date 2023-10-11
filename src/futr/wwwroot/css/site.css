@@ -331,6 +331,10 @@ div.my-card-content {
     filter: drop-shadow(0px 0px 8px #ffffff);
 }
 
+div.my-card-image {
+    margin: 0 0 0.3em 0;
+}
+
 div.my-card-image img {
     max-width: 100%
 }
@@ -341,6 +345,10 @@ div.my-card-body ul,
 div.my-card-body ol {
     margin-block-start: 0;
     margin-block-end: 0.7em;
+}
+
+div.my-card-head h3 {
+    margin: 0em 0 0.3em 0;
 }
 
 div.my-card-body a {
