@@ -3,21 +3,3 @@ tags: []
 date: 1700
 readme: |
     Quite modern technology, big ships, metal working, mills, early industrial structures.
-datapoints:
-    - metric: Population
-      value: 800e6
-      min: 600e6
-      max: 1e9
-      confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
-      comment: Quick Wikipedia research. Error bars guestimated.
-      references: 
-          - link: https://en.wikipedia.org/wiki/Prehistoric_demography
-            text: Prehistoric Demography (Wikipedia)
-    - metric: Kardashev
-      value: 0.54
-      min: 0.5
-      max: 0.6
-      confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
-      comment: |
-          There are big ships and cannons, but the majority of the people lives like 2000 years ago: still 300 W.
-          Yet, there are much more people. 

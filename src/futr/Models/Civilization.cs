@@ -23,60 +23,25 @@ public partial class Civilization : BaseModel
         }
     }
 
-    public List<Datapoint> Datapoints = new();
+    public Dictionary<string, Datapoint> Datapoints = new();
 
-    public Civilization(Universe universe, string id) : base(id)
+    public Civilization(string id, Universe universe) : base(id)
     {
         Universe = universe;
     }
 
     public new JsonPath.Node fromYaml(string yaml)
     {
+        Order = Universe.Order;
+
         var node = base.fromYaml(yaml);
 
         if (Editors.Count == 0) {
             Editors = Universe.Editors;
         }
-        //if (Approvers.Count == 0) {
-        //    Approvers = Universe.Approvers;
-        //}
-        if (string.IsNullOrEmpty(Order)) {
-            Order = Universe.Order;
-        }
 
         Faction = node["faction"].AsString.Trim();
         Date = node["date"].AsString.Trim();
-
-        var datapoints = node["datapoints"].AsList;
-        foreach (var data in datapoints) {
-            var metricId = data["metric"].AsString.Trim();
-            var value = data["value"].AsString.Trim();
-            var min = data["min"].AsString.Trim();
-            var max = data["max"].AsString.Trim();
-            var confidence = data["confidence"].AsString.Trim();
-
-            var datapoint = new Datapoint(metricId, value, min, max, confidence);
-
-            datapoint.Comment = data["comment"].AsString.Trim();
-
-            //datapoint.References = data["references"].AsList.Select(n => n.AsString).ToArray();
-            {
-                var referenceList = data["references"].AsList;
-                foreach (var referenceNode in referenceList) {
-                    var reference = new ReferenceModel();
-                    if (referenceNode.IsDictionary) {
-                        reference.Link = referenceNode["link"].AsString;
-                        reference.Text = referenceNode["text"].AsString;
-                    } else {
-                        reference.Link = referenceNode.AsString;
-                        reference.Text = reference.Link;
-                    }
-                    datapoint.References.Add(reference);
-                }
-            }
-
-            Datapoints.Add(datapoint);
-        }
 
         return node;
     }

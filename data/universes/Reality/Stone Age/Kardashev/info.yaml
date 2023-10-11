@@ -1,0 +1,8 @@
+value: 0.1
+min: 0.05
+max: 0.15
+confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+readme: |
+    Still on a 3000 kcal per day diet. 
+    Energy consumption rounded up to 200 W including heating/cooking.
+    Using the 50 k long time population average.

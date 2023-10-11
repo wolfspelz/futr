@@ -57,7 +57,7 @@ public class FutrData
     {
         foreach (var universe in Universes.Values) {
             foreach (var civilization in universe.Civilizations.Values) {
-                foreach(var datapoint in civilization.Datapoints) {
+                foreach(var (datapointId, datapoint) in civilization.Datapoints) {
                     if (!Metrics.ContainsKey(datapoint.Metric)) {
                         Log.Warning($"Metric {datapoint.Metric} is used by {civilization.SeoName} but does not exist.");
                     }
@@ -114,7 +114,7 @@ public class FutrData
         var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, metricId, ReadmeFileName));
         if (DataProvider.HasData(readmePath)) {
             var readmeData = DataProvider.GetData(readmePath);
-            metric.Description = readmeData;
+            metric.Readme = readmeData;
         }
 
         return metric;
@@ -149,7 +149,7 @@ public class FutrData
         var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, universeId, ReadmeFileName));
         if (DataProvider.HasData(readmePath)) {
             var readmeData = DataProvider.GetData(readmePath);
-            universe.Description = readmeData;
+            universe.Readme = readmeData;
         }
 
         var universeFolderPath = Path.Combine(folderPath, universeId);
@@ -184,7 +184,7 @@ public class FutrData
     private Faction LoadFaction(Universe universe, string folderPath, string factionId)
     {
         Log.Info($"{folderPath}/{factionId}");
-        var faction = new Faction(universe, factionId);
+        var faction = new Faction(factionId, universe);
 
         var infoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, factionId, YamlInfoFileName));
         if (DataProvider.HasData(infoPath)) {
@@ -197,7 +197,7 @@ public class FutrData
         var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, factionId, ReadmeFileName));
         if (DataProvider.HasData(readmePath)) {
             var readmeData = DataProvider.GetData(readmePath);
-            faction.Description = readmeData;
+            faction.Readme = readmeData;
         }
 
         return faction;
@@ -206,7 +206,7 @@ public class FutrData
     private Civilization LoadCivilization(Universe universe, string folderPath, string civilizationId)
     {
         Log.Info($"{folderPath}/{civilizationId}");
-        var civilization = new Civilization(universe, civilizationId);
+        var civilization = new Civilization(civilizationId, universe);
 
         var civilizationInfoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, civilizationId, YamlInfoFileName));
         if (DataProvider.HasData(civilizationInfoPath)) {
@@ -219,10 +219,50 @@ public class FutrData
         var civilizationReadmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, civilizationId, ReadmeFileName));
         if (DataProvider.HasData(civilizationReadmePath)) {
             var civilizationReadmeData = DataProvider.GetData(civilizationReadmePath);
-            civilization.Description = civilizationReadmeData;
+            civilization.Readme = civilizationReadmeData;
+        }
+
+        {
+            var civilizationFolderPath = Path.Combine(folderPath, civilizationId);
+            var civilizationSubFolders = StructureProvider.EnumerateFolders(civilizationFolderPath);
+            foreach (var civilizationSubPath in civilizationSubFolders) {
+                var datapointId = Path.GetFileName(civilizationSubPath).Trim();
+                if (datapointId.StartsWith("_")) {
+                    continue;
+                }
+
+                var datapoint = LoadDatapoint(civilization, civilizationFolderPath, datapointId);
+                if (datapoint != null) {
+                    datapoint.SeoName = $"{universe.Id} {civilizationId} {datapointId}";
+                    civilization.Datapoints.Add(datapointId, datapoint);
+                }
+            }
+
         }
 
         return civilization;
+    }
+
+    private Datapoint LoadDatapoint(Civilization civilization, string folderPath, string datapointId)
+    {
+        Log.Info($"{folderPath}/{datapointId}");
+        var datapoint = new Datapoint(datapointId, civilization);
+
+        var infoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, datapointId, YamlInfoFileName));
+        if (DataProvider.HasData(infoPath)) {
+            var infoData = DataProvider.GetData(infoPath);
+            datapoint.fromYaml(infoData);
+        } else {
+            Log.Warning($"Datapoint {datapointId} does not have an info.yaml file.");
+        }
+
+        var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, datapointId, ReadmeFileName));
+        if (DataProvider.HasData(readmePath)) {
+            var readmeData = DataProvider.GetData(readmePath);
+            datapoint.Readme = readmeData;
+        }
+
+        return datapoint;
     }
 
     public string FindCaseInsensitiveFile(string path)

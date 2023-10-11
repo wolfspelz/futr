@@ -3,22 +3,3 @@ tags: []
 date: -50000
 readme: |
     Modern humans, Cro-Magnon, hunter gatherers. Neanderthals still thriving.
-datapoints:
-    - metric: Population
-      value: 50000
-      min: 10000
-      max: 100000
-      confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
-      comment: Quick Wikipedia research. Error bars guestimated.
-      references: 
-          - link: https://en.wikipedia.org/wiki/Prehistoric_demography
-            text: Prehistoric Demography (Wikipedia)
-    - metric: Kardashev
-      value: 0.1
-      min: 0.05
-      max: 0.15
-      confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
-      comment: |
-          Still on a 3000 kcal per day diet. 
-          Energy consumption rounded up to 200 W including heating/cooking.
-          Using the 50 k long time population average.

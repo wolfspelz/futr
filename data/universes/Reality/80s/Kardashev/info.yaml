@@ -1,0 +1,10 @@
+value: 0.7
+min: 0.67
+max: 0.73
+confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+references: 
+   - https://ourworldindata.org/energy-production-consumption
+readme: |
+    Accourding to the source power consumption is 4 times the biomass baseline: 1200 W. 
+    The source also tells 28564 TWh in 1950, which amounts to 2800 W per person. 
+    Taking the latter. 

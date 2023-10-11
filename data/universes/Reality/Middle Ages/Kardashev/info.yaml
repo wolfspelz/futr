@@ -1,0 +1,9 @@
+value: 0.48
+min: 0.4
+max: 0.55
+confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+readme: |
+    Pottery (ovens), metal working, wind/water mills.
+    On the other hand, the majority still lives in the countryside like in the Bronze Age.
+
+    Total might be 300 W. But this is just a guess to indicate progress, could be 200 W or 400 W.

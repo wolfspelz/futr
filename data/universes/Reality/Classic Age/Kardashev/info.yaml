@@ -1,0 +1,9 @@
+value: 0.46
+min: 0.4
+max: 0.5
+confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+readme: |
+    Pottery (ovens), but no other energy consuming industry.
+    Manual labor (not changing per capita consumption), some animal labor, few wind and water mills.
+    Still 200 W for most people. 
+    Total might be 250 W.

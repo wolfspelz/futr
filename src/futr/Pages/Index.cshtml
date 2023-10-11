@@ -77,7 +77,7 @@
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
     ImgSrc = "/images/Index/software.jpg",
     ImgAlt = "Screen",
-    Title = "Open Source Project",
+    Title = "An Open Source Project",
     Text =
     "<ul>" + string.Join("\n", new[] {
     "Source: <a href='https://github.com/wolfspelz/futr/'>GitHub <span class='my-next-arrow'/></a>",
@@ -138,6 +138,7 @@
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
     ImgSrc = "/images/Index/book-wall.jpg",
     ImgAlt = "Bookwall",
+    // ImgCaption = "(via pixabay)",
     Title = "Inspiration",
     Text = "<p>Here are lists for your inspiration. Which of these do we really need? All of them?</p>"
     + "<p>"
