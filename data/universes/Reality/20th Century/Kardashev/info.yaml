@@ -1,0 +1,8 @@
+value: 0.65
+min: 0.55
+max: 0.70
+confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+references: 
+   - https://ourworldindata.org/energy-production-consumption
+readme: |
+    88 k TWh in 1980.

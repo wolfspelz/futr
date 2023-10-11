@@ -4,7 +4,7 @@
     @if (Model.Item != null) {
         ViewData["Title"] = "Civilization " + Model.Item.Title;
         ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - Civilization " + Model.Item.Title;
-        ViewData["MetaDescription"] = Model.Item.Description.Replace("\r", " ").Replace("\n", " ");
+        ViewData["MetaDescription"] = Model.Item.Readme.Replace("\r", " ").Replace("\n", " ");
         ViewData["MetaImage"] = "/images/cover.jpg";
         ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
     }
@@ -22,8 +22,10 @@
 
     @await Html.PartialAsync("_BaseModelProperties", Model.Item)
 
-    @foreach (var datapoint in Model.Item.Datapoints) {
-        @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    <div class="my-card-container">
+
+        @foreach (var (datapointId, datapoint) in Model.Item.Datapoints) {
+            @await Html.PartialAsync("_Card", new Shared.Card.Model{
     Title = $"{datapoint.Metric}",
     Text = ""
     + $"<p>"
@@ -32,11 +34,12 @@
     + $"<span>Max</span>: <span>{datapoint.Max}</span><br/>"
     + $"<span>Confidence</span>: <span>{datapoint.Confidence}</span>"
     + $"</p>"
-    + $"<div style='margin-top: 0.5em; white-space: pre-wrap'>{string.Join("", datapoint.Comment.Replace("\r\n", "\n").Split(new char[]{'\n'}).Select(x => $"<p>{x}</p>").ToArray())}</div>"
+    + $"<div style='margin-top: 0.5em; white-space: pre-wrap'>{string.Join("", datapoint.Readme.Replace("\r\n", "\n").Split(new char[]{'\n'}).Select(x => $"<p>{x}</p>").ToArray())}</div>"
     + (datapoint.References.Count() < 1 ? "" : "<p><span>References</span>:<ul>" + string.Join("", datapoint.References.Select(x => $"<li><a href='{x.Link}''>{x.Text}</a></li>").ToArray()) + "</ul></p>")
     ,
     })
-    }
+        }
+    </div>
 
     @await Html.PartialAsync("_BaseModelDescription", Model.Item)
 }

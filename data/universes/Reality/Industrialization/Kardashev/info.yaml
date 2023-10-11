@@ -1,0 +1,8 @@
+value: 0.56
+min: 0.5
+max: 0.63
+confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+references: 
+   - https://ourworldindata.org/energy-production-consumption
+readme: |
+    Using the 300 W baseline from the Age of Sail and adding 20% coal power according to the source 350 W.

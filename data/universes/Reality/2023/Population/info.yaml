@@ -1,0 +1,4 @@
+value: 8.1e9
+min: 8e9
+max: 8.2e9
+confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)

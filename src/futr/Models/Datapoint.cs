@@ -1,24 +1,40 @@
-﻿namespace futr.Models;
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
 
-public class Datapoint
+namespace futr.Models;
+
+public partial class Datapoint : BaseModel
 {
     public enum ConfidenceLevel { Canon, Calculated, InformedGuess, CalculatedGuess, WildGuess, Unknown }
 
-    public string Metric { get; set; }
-    public string Value { get; set; }
-    public string Min { get; set; }
-    public string Max { get; set; }
-    public ConfidenceLevel Confidence { get; set; }
-    public string Comment { get; set; } = "";
-    public List<ReferenceModel> References = new();
-    public string Error { get; set; } = "";
+    public Civilization Civilization { get; set; }
 
-    public Datapoint(string metric, string value, string min, string max, string confidence)
+    public string Metric { get; set; }
+    public string Value { get; set; } = "";
+    public string Min { get; set; } = "";
+    public string Max { get; set; } = "";
+    public ConfidenceLevel Confidence { get; set; } = ConfidenceLevel.Unknown;
+
+    public Datapoint(string id, Civilization civilization) : base(id)
     {
-        Metric = metric;
-        Value = value;
-        Min = min;
-        Max = max;
+        Metric = id;
+        Civilization = civilization;
+    }
+
+    public new JsonPath.Node fromYaml(string yaml)
+    {
+        Order = Civilization.Order;
+
+        var node = base.fromYaml(yaml);
+
+        if (Editors.Count == 0) {
+            Editors = Civilization.Editors;
+        }
+
+        Value = node["value"].AsString.Trim();
+        Min = node["min"].AsString.Trim();
+        Max = node["max"].AsString.Trim();
+
+        var confidence = node["confidence"].AsString.Trim();
         Confidence = confidence.Trim().ToLower() switch {
             "canon" => ConfidenceLevel.Canon,
             "calculated" => ConfidenceLevel.Calculated,
@@ -30,8 +46,7 @@ public class Datapoint
             "wild guess" => ConfidenceLevel.WildGuess,
             _ => ConfidenceLevel.Unknown
         };
-        if (Confidence == ConfidenceLevel.Unknown) {
-            Error += $"[Unknown confidence level: {confidence}]";
-        }
+        
+        return node;
     }
 }

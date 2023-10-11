@@ -12,5 +12,6 @@ public class Card
         public bool TextHasLink { get; set; } = false;
         public string ImgSrc { get; set; } = "";
         public string ImgAlt { get; set; } = "";
+        public string ImgCaption { get; set; } = "";
     }
 }

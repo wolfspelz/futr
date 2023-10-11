@@ -29,7 +29,7 @@
     @if (model.Images.Count > 0) {
         <div class="my-gallery">
             @foreach (var image in model.Images.Take(10)) {
-                <div class="my-frame">
+                <div class="my-gallery-image">
                     <a href="@image.Page">
                         <img src="@image.Link" alt="@image.Text" title="@image.Text
 @image.Page" />

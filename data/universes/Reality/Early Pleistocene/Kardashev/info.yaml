@@ -1,0 +1,14 @@
+value: 0.057
+min: 0.04
+max: 0.25
+confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+readme: |
+    At a 3000 kcal per day diet. 
+    That makes 130 W.
+    Plus 70 W for open fires, cooking, etc. to make a round 200 W figure.
+    Disregarding sunlight as always. 
+
+    At how much power does a camp fire run? Also camp fire may have a 1% efficiency. 
+    Do we count the useful warmth as "energy use" or do we include 99% waste heat?
+
+    If the population were in the millions instead of in the 10.000s then we are easily at K 0.4 just by warm bodies.

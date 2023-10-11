@@ -6,7 +6,7 @@ public class Faction : BaseModel
 
     //public string Type { get; set; } = "";
 
-    public Faction(Universe universe, string id) : base(id)
+    public Faction(string id, Universe universe) : base(id)
     {
         Universe = universe;
     }
