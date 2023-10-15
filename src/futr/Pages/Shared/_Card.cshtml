@@ -2,13 +2,15 @@
     <div class="my-card-content">
         @if (Model.ImgSrc != "") {
             <div class="my-card-image">
-                @if (Model.Link != "") {
-                    <a href="@Model.Link"><img src="@Model.ImgSrc" alt="@Model.ImgAlt" /></a>
-                    @* <div class="my-x">@Model.ImgCaption</div> *@
-                } else {
-                    <img src="@Model.ImgSrc" alt="@Model.ImgAlt" />
-                    @* <div class="my-x">@Model.ImgCaption</div> *@
-                }
+                <div class="my-image">
+                    @if (Model.Link != "") {
+                        <a href="@Model.Link"><img src="@Model.ImgSrc" alt="@Model.ImgAlt" /></a>
+                        <div class="my-caption">@Model.ImgCaption</div>
+                    } else {
+                        <img src="@Model.ImgSrc" alt="@Model.ImgAlt" />
+                        <div class="my-caption">@Model.ImgCaption</div>
+                    }
+                </div>
             </div>
         }
         @if (Model.Title != "") {

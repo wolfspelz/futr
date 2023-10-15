@@ -173,6 +173,25 @@ span.my-up-arrow {
     background-size: contain;
 }
 
+div.my-image {
+    position: relative;
+}
+
+    div.my-image img {
+        max-width: 100%;
+        display: flow;
+    }
+
+    div.my-image .my-caption {
+        position: absolute;
+        right: 0.3rem;
+        bottom: 0.3rem;
+        text-align: right;
+        font-size: small;
+        color: #ffffff;
+        filter: drop-shadow(1px 1px 3px #000000);
+    }
+
 div.my-gallery {
     margin: 0 -6px 10px -6px;
 }
@@ -188,18 +207,7 @@ div.my-gallery-image {
 
     div.my-gallery-image img {
         max-height: 10em;
-        display: flow;
     }
-
-div.my-caption {
-    position: absolute;
-    right: 0.6rem;
-    bottom: 0.6rem;
-    text-align: right;
-    font-size: small;
-    color: #ffffff;
-    filter: drop-shadow(1px 1px 3px #000000);
-}
 
 .my-tag {
     padding: 0 0.5em;
@@ -249,20 +257,20 @@ div.my-tile {
     overflow: hidden;
 }
 
-div.my-tile img {
-    width: 100%;
-    height: 100%;
-}
+    div.my-tile img {
+        width: 100%;
+        height: 100%;
+    }
 
-div.my-tile .my-title {
-    position: absolute;
-    left: 0.5em;
-    top: 0.5em;
-    filter: invert(1) drop-shadow(1px 1px 4px rgba(0,0,0,0.8));
-    color: #000000;
-    font-weight: 600;
-    font-size: 20px;
-}
+    div.my-tile .my-title {
+        position: absolute;
+        left: 0.5em;
+        top: 0.5em;
+        filter: invert(1) drop-shadow(1px 1px 4px rgba(0,0,0,0.8));
+        color: #000000;
+        font-weight: 600;
+        font-size: 20px;
+    }
 
 @media (max-width: 700px) {
     body {
@@ -333,10 +341,7 @@ div.my-card-content {
 
 div.my-card-image {
     margin: 0 0 0.3em 0;
-}
-
-div.my-card-image img {
-    max-width: 100%
+    position: relative;
 }
 
 div.my-card-body p,

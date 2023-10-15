@@ -30,11 +30,13 @@
         <div class="my-gallery">
             @foreach (var image in model.Images.Take(10)) {
                 <div class="my-gallery-image">
-                    <a href="@image.Page">
-                        <img src="@image.Link" alt="@image.Text" title="@image.Text
+                    <div class="my-image">
+                        <a href="@image.Page">
+                            <img src="@image.Link" alt="@image.Text" title="@image.Text
 @image.Page" />
-                    </a>
-                    <div class="my-caption">@image.Text</div>
+                        </a>
+                        <div class="my-caption">@image.Text</div>
+                    </div>
                 </div>
             }
         </div>
