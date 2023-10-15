@@ -206,7 +206,7 @@ div.my-gallery-image {
 }
 
     div.my-gallery-image img {
-        max-height: 10em;
+        height: 10em;
     }
 
 .my-tag {
