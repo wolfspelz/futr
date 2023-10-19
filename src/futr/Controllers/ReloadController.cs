@@ -12,7 +12,7 @@ namespace futr.Controllers
             App.Data.Reload();
 
             return new ContentResult {
-                Content = "ok"
+                Content = $"{DateTime.UtcNow}"
             };
         }
     }

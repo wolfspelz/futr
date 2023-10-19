@@ -6,8 +6,8 @@ A universe contains civilizations each with their own description.
 
 Each universe is a folder with:
 - descriptions: 
-    - info.yaml
-    - readme.md
+  - info.yaml
+  - readme.md
 - civilization folders
 - optional: a folder with factions
 
