@@ -18,11 +18,11 @@
 
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Metrics</h1>
-        @foreach (var metric in Model.List.OrderBy(x => x.Order)) {
-            <div>
-                <a asp-page="Metric" asp-route-id="@metric.SeoName">@metric.Title</a>
-            </div>
-        }
+    @foreach (var metric in Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order)) {
+        <div>
+            <a asp-page="Metric" asp-route-id="@metric.SeoName">@metric.Title</a>
+        </div>
+    }
 } else {
     <h1>@Model.Item.Title</h1>
 
@@ -31,7 +31,9 @@
     <div class="my-textblock">
         <div><span>Type</span>: <span>@Model.Item.Type</span></div>
         <div><span>Unit</span>: <span>@Model.Item.Unit</span></div>
-        <div><span>Range</span>: <span>@Model.Item.Range</span></div>
+        @if (!string.IsNullOrEmpty(Model.Item.Range)) {
+            <div><span>Range</span>: <span>@Model.Item.Range</span></div>
+        }
     </div>
 
     @await Html.PartialAsync("_BaseModelReadme", Model.Item)
