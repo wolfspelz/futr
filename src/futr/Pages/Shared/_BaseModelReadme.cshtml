@@ -1,0 +1,13 @@
+﻿@if (Model is Models.BaseModel model) {
+
+    if (!string.IsNullOrEmpty(model.Readme)) {
+        <div class="my-textblock" id="iReadmeHtml">
+            <span id="iReadmeMD">@(model.Readme)</span>
+        </div>
+
+        @await Html.PartialAsync("_MarkdownConverter", new _MarkdownConverter.Model() {
+            Conversions = new _MarkdownConverter.ConversionMap { ["iReadmeMD"] = new _MarkdownConverter.Conversion("iReadmeHtml") { Options = new _MarkdownConverter.ConversionOptions() { ["a"] = true } }}
+        })
+    }
+
+}

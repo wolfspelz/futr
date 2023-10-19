@@ -2,13 +2,14 @@
 <script src="/lib/showdown-1.9.1.min.js"></script>
 <script>
     (function () {
-        function markdown2Html(sourceId, targetId) {
+        function markdown2Html(sourceId, targetId, options) {
             const converter = new showdown.Converter({
                 noHeaderId: true,
-                headerLevelStart: 2,
+                headerLevelStart: options.headerLevelStart ?? 2 ,
                 simplifiedAutoLink: true,
                 tables: true,
                 requireSpaceBeforeHeadingText: true,
+                ghCodeBlocks: true,
                 //openLinksInNewWindow: true,
             });
             const srcElem = document.getElementById(sourceId);
@@ -17,7 +18,14 @@
             const targetElem = document.getElementById(targetId);
             targetElem.innerHTML = targetText;
         }
-        markdown2Html('@Model.Source', '@Model.Target');
+        @foreach (var pair in Model.Conversions) {
+            <text>
+            { 
+                const options = @Html.Raw(Json.Serialize(pair.Value.Options));
+                markdown2Html('@pair.Key', '@pair.Value.Target', options);
+            }
+        </text>
+    }
     })();
 </script>
 <!-- End MarkdownConverter -->

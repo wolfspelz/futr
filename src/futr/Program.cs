@@ -68,22 +68,21 @@ public class Program
         app.UseRequestLocalization(localizationOptions); // Sets Thread.CurrentThread.CurrentUICulture
 
         app.UseRouteDebugger();
-        
+
         app.UseCors();
         app.UseRouting();
 
-        app.Use(next => context =>
-        {
+        app.Use(next => context => {
             Console.WriteLine($"Middleware: Endpoint: {context.GetEndpoint()?.DisplayName}");
             return next(context);
         });
-        
+
         app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapRazorPages();
         app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
-        
+
         app.UseForwardedHeaders(new ForwardedHeadersOptions {
             ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
         });

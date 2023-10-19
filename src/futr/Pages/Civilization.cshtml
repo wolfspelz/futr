@@ -1,4 +1,5 @@
 ﻿@page "{id?}"
+@using futr.Pages.Shared;
 @model CivilizationModel
 @{
     @if (Model.Item != null) {
@@ -8,6 +9,8 @@
         ViewData["MetaImage"] = "/images/cover.jpg";
         ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
     }
+
+    var MarkdownConversions = new _MarkdownConverter.ConversionMap();
 }
 
 @if (@Model.Item != null) {
@@ -24,22 +27,48 @@
 
     <div class="my-card-container">
 
+        @{
+            var datapointCounter = 0;
+        }
         @foreach (var (datapointId, datapoint) in Model.Item.Datapoints) {
+            var readme = "";
+            if (!string.IsNullOrEmpty(datapoint.Readme)) {
+                datapointCounter++;
+                readme += "<div id='iDatapointHtml" + datapointCounter + "'><span id='iDatapointMD" + datapointCounter + "'>";
+                readme += datapoint.Readme;
+                readme += "</span></div>";
+                MarkdownConversions["iDatapointMD" + datapointCounter] = new _MarkdownConverter.Conversion("iDatapointHtml" + datapointCounter) {
+                            Options = new _MarkdownConverter.ConversionOptions() {
+                                ["headerLevelStart"] = 4,
+                            }
+                        };
+            }
+
+
             @await Html.PartialAsync("_Card", new Shared.Card.Model{
     Title = $"{datapoint.Metric}",
     Text = ""
-    + $"<p>"
-    + $"<span>Value</span>: <span>{datapoint.Value}</span><br/>"
-    + $"<span>Min</span>: <span>{datapoint.Min}</span><br/>"
-    + $"<span>Max</span>: <span>{datapoint.Max}</span><br/>"
-    + $"<span>Confidence</span>: <span>{datapoint.Confidence}</span>"
-    + $"</p>"
-    + $"<div style='margin-top: 0.5em; white-space: pre-wrap'>{string.Join("", datapoint.Readme.Replace("\r\n", "\n").Split(new char[]{'\n'}).Select(x => $"<p>{x}</p>").ToArray())}</div>"
-    + (datapoint.References.Count() < 1 ? "" : "<p><span>References</span>:<ul>" + string.Join("", datapoint.References.Select(x => $"<li><a href='{x.Link}''>{x.Text}</a></li>").ToArray()) + "</ul></p>")
+    + $"<p>\n"
+    + $"<span>Value</span>: <span>{datapoint.Value}</span><br/>\n"
+    + $"<span>Min</span>: <span>{datapoint.Min}</span><br/>\n"
+    + $"<span>Max</span>: <span>{datapoint.Max}</span><br/>\n"
+    + $"<span>Confidence</span>: <span>{datapoint.Confidence}</span>\n"
+    + $"</p>\n"
+    + (datapoint.References.Count() < 1 ? "" : "<p>\n<span>References</span>:\n<ul>\n" + string.Join("", datapoint.References.Select(x => $"<li><a href='{x.Link}''>{x.Text}</a></li>\n").ToArray()) + "</ul>\n</p>\n")
+    // + $"<div style='margin-top: 0.5em; white-space: pre-wrap'>{string.Join("", datapoint.Readme.Replace("\r\n", "\n").Split(new char[]{'\n'}).Select(x => $"<p>{x}</p>").ToArray())}</div>"
+    + readme
     ,
     })
         }
     </div>
 
-    @await Html.PartialAsync("_BaseModelDescription", Model.Item)
+    if (!string.IsNullOrEmpty(Model.Item.Readme)) {
+        MarkdownConversions["iReadmeMD"] = new _MarkdownConverter.Conversion("iReadmeHtml");
+
+        <div class="my-textblock" id="iReadmeHtml">
+            <span id="iReadmeMD">@(Model.Item.Readme)</span>
+        </div>
+    }
+
+    @await Html.PartialAsync("_MarkdownConverter", new _MarkdownConverter.Model() { Conversions = MarkdownConversions })
 }
