@@ -16,6 +16,10 @@ We are currently collecting data to learn about the requirements and data struct
 
 Feel free to clone, add, and pull request.
 
+Check out the [Sample Universe](https://github.com/wolfspelz/futr/tree/main/data/universes/Sample%20Universe) 
+with one [Sample Civilization](https://github.com/wolfspelz/futr/tree/main/data/universes/Sample%20Universe/Sample%20Civilization) 
+and a [Sample Datapoint](https://github.com/wolfspelz/futr/tree/main/data/universes/Sample%20Universe/Sample%20Civilization/Sample%20Datapoint).
+
 ## Comments
 
 For the time being, please use the github [issues](https://github.com/wolfspelz/futr/issues).
