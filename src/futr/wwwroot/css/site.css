@@ -266,10 +266,11 @@ div.my-tile {
         position: absolute;
         left: 0.5em;
         top: 0.5em;
-        filter: invert(1) drop-shadow(1px 1px 4px rgba(0,0,0,0.8));
+        filter: invert(1) drop-shadow(1px 1px 4px #000000);
         color: #000000;
         font-weight: 600;
         font-size: 20px;
+        background-color: rgba(255,255,255,0.2);
     }
 
 @media (max-width: 700px) {
