@@ -154,7 +154,7 @@ a.my-brand-text {
     background-color: unset;
     font-size: 2rem;
     font-weight: 700;
-    filter: invert(1) drop-shadow(2px 2px 5px rgba(0,0,0,0.7));
+    filter: invert(1) drop-shadow(1px 1px 1px rgba(0,0,0,0.7));
 }
 
 span.my-next-arrow {
