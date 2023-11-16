@@ -21,7 +21,7 @@
 
     @foreach (var universe in Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order)) {
         <div class="my-tile">
-            <a asp-page="Universe" asp-route-id="@universe.SeoName"><img src="@(string.IsNullOrEmpty(universe.Tile) ? "/images/universe-default.jpg": universe.Tile)" /></a>
+            <a asp-page="Universe" asp-route-id="@universe.SeoName"><img src="@(string.IsNullOrEmpty(universe.Tile) ? "/images/universe-default-tile.jpg": universe.Tile)" /></a>
             <div class="my-title">
                 @universe.Title
             </div>

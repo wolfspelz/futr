@@ -20,6 +20,16 @@
 <div class="my-card-container">
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
+    ImgSrc = "/images/Index/sunrise-in-orbit-of-ring-planet.jpg",
+    ImgAlt = "Sunrise in orbit",
+    Title = "Mission",
+    Text = ""
+    + "<p>The Fictional Universe Taxonomy Research project collects statistics about civilizations in science fiction universes.</p>"
+    + "<p>How many planets do they have? How big is their fleet? Can they do time travel? What is their technological level, their live expectancy, their wealth distribution?</p>"
+    + "<p>Our mission is to characterize the fictional universes we love by numbers and make them comparable.</p>"
+    })
+
+    @await Html.PartialAsync("_Card", new Shared.Card.Model{
     ImgSrc = "/images/Index/universes.jpg",
     ImgAlt = "Universes",
     Title = "All Universes",
