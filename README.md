@@ -28,4 +28,4 @@ If you are more the Discord-type: check out the [FUTR channel](https://discordap
 
 ## Web Site
 
-The shiny web site: [futr.space](https://futr.space)
+The shiny web site: [futr.space](https://www.futr.space)
