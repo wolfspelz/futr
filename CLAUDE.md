@@ -35,7 +35,7 @@ docker run -p 80:80 futr
 
 ## Project Architecture
 
-**ASP.NET Razor Pages web application** (.NET 7) serving civilization statistics from YAML files.
+**ASP.NET Razor Pages web application** (.NET 8) serving civilization statistics from YAML files.
 
 ### Solution Structure
 - `src/futr/` - Main web application (Razor Pages)

@@ -461,7 +461,7 @@ namespace n3q.Tools.Test
             // Arrange
             var countFiles = 0;
             var cwd = Directory.GetCurrentDirectory();
-            var dirPath = Path.Combine(cwd, @"..\..\..\data\Sax\Xml");
+            var dirPath = Path.Combine(cwd, "..", "..", "..", "data", "Sax", "Xml");
             foreach (var filePath in Directory.EnumerateFiles(dirPath, "*.xml", SearchOption.TopDirectoryOnly).OrderBy(x => x)) {
                 countFiles++;
                 var xml = File.ReadAllText(filePath);
@@ -492,7 +492,7 @@ namespace n3q.Tools.Test
             var base64Prefix = "BASE64 ";
             var countFiles = 0;
             var cwd = Directory.GetCurrentDirectory();
-            var srcDir = Path.Combine(cwd, @"..\..\..\data\Sax\Log");
+            var srcDir = Path.Combine(cwd, "..", "..", "..", "data", "Sax", "Log");
             foreach (var filePath in Directory.EnumerateFiles(srcDir, "*.txt", SearchOption.TopDirectoryOnly).OrderBy(x => x)) {
                 countFiles++;
                 var txt = File.ReadAllText(filePath);
