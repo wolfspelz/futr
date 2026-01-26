@@ -8,7 +8,26 @@ it has [Metrics](metrics) - a myriad cool ways to measure universes
 
 and [Universes](universes) - the universes we all know and love
 
-and [Factions](factions) - the factions and peoples of those universes.
+Universes have named peoples or planets or empires called "factions". 
+Factions may be very large, covering the entire galaxy or even a large part of the universe.
+On the other hand, they may be very small down to a single individual. 
+That all depends on the univese, your interests, and available data.
+
+The state of factions will usually change over time. 
+Hence we disinguish between varying states of factions, calling a certain state of a faction a "civilization". 
+Very often a point in time identifies the state of a faction in a universe.
+
+Metrics are used to describe civilizations.
+
+So, putting it all together, 
+the Star Trek universe
+has a faction called Federation of Planets
+which at the time of Picard, around 2373, constitues a civilization
+with ca. 150 member worlds. That would be an interesting
+metric
+of the civilization
+of the faction
+in the universe. 
 
 ## Contribute
 
