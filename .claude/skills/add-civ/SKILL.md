@@ -40,7 +40,7 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
    - New metrics (if any)
    - Faction info
    - Civilization info
-   - Datapoints with values, ranges, confidence, sources
+   - Datapoints with values, ranges, confidence, sources AND comparable figures from other civilizations of the same universe or different universes if appropriate
 2. Ask user to approve or adjust values
 3. Iterate until user is satisfied
 
