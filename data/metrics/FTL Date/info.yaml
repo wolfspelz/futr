@@ -1,0 +1,7 @@
+title: First FTL Date
+tags: [index]
+type: number
+unit: Year
+readme: |
+  The year when this civilization first achieved faster-than-light travel
+  (warp drive, hyperdrive, jump drive, etc.).

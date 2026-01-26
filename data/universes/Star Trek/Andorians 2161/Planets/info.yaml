@@ -1,0 +1,13 @@
+value: 14
+min: 10
+max: 16
+confidence: informedGuess
+references:
+  - link: https://memory-beta.fandom.com/wiki/Andorian_Empire
+    text: "Memory Beta - Andorian Empire"
+readme: |
+  The Andorian Empire at its height possessed 13 colonies outside the home system,
+  plus the homeworld Andoria (a moon of the gas giant Olith in the Procyon system).
+
+  Known colonies include: Alrond, Cimera III, Weytahn (disputed with Vulcans),
+  Threllvia IV, and others. Total count is 14 (13 colonies + 1 homeworld).

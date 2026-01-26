@@ -1,0 +1,19 @@
+value: 0.9
+min: 0.85
+max: 0.95
+confidence: calculatedGuess
+references:
+  - link: https://memory-alpha.fandom.com/wiki/Andorian
+    text: "Memory Alpha - Andorian"
+  - link: https://www.ex-astris-scientia.org/inconsistencies/22nd-cent-tech.htm
+    text: "Ex Astris Scientia - 22nd Century Technology"
+  - link: https://en.wikipedia.org/wiki/Kardashev_scale
+    text: "Wikipedia - Kardashev Scale"
+readme: |
+  Estimated Kardashev level for a warp-capable civilization with ~1000 years of
+  FTL travel history. The Andorians achieved warp in ~1154 AD and by 2161 had
+  14 inhabited worlds with Kumari-class ships exceeding warp 5.
+
+  For comparison: Earth 2023 (single planet, no FTL) = K0.73. Federation 2373
+  (150 worlds, replicators) = K1.0. The Andorians fall between these as an
+  established interstellar civilization approaching Type I status.

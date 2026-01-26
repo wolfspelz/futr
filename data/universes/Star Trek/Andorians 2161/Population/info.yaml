@@ -1,0 +1,14 @@
+value: 8e9
+min: 5e9
+max: 11e9
+confidence: informedGuess
+references:
+  - link: https://memory-beta.fandom.com/wiki/Andorian_Empire
+    text: "Memory Beta - Andorian Empire"
+  - link: https://wiki.fed-space.com/index.php?title=Andoria
+    text: "Federation Space Wiki - Andoria"
+readme: |
+  No canon population figure exists. Non-canon sources cite ranges of 5-11 billion.
+  Federation Space Wiki states Andoria alone has 5 billion Andorians.
+  Memory Beta references 11 billion at the empire's height across all colonies.
+  8 billion is used as a reasonable midpoint estimate for 2161.

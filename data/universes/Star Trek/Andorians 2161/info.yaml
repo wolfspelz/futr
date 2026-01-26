@@ -1,0 +1,25 @@
+title: Andorians 2161
+date: 2161
+faction: Andorian Empire
+tags: [index]
+images:
+  - link: https://static.wikia.nocookie.net/memoryalpha/images/d/df/Andorian_battle_cruiser%2C_forward.jpg/revision/latest?cb=20080918173741&path-prefix=en
+    text: "Kumari-class battle cruiser of the Imperial Guard"
+    page: https://memory-alpha.fandom.com/wiki/Andorian_battle_cruiser
+  - link: https://static.wikia.nocookie.net/memoryalpha/images/5/50/Andorian_surface.jpg/revision/latest?cb=20050212125142&path-prefix=en
+    text: "The frozen surface of Andoria"
+    page: https://memory-alpha.fandom.com/wiki/Andoria
+links:
+  - link: https://memory-alpha.fandom.com/wiki/Andorian_history
+    text: "Memory Alpha - Andorian History"
+readme: |
+  The Andorian Empire at the founding of the United Federation of Planets.
+
+  After the Earth-Romulan War (2156-2160), the Andorians joined Earth, Vulcan,
+  and Tellar as founding members of the Federation on August 12, 2161 in
+  San Francisco. Commander Thy'lek Shran of the Imperial Guard and Captain
+  Jonathan Archer of Enterprise NX-01 were instrumental in forging the alliance.
+
+  At this time, the Andorian Empire consisted of their homeworld (the icy moon
+  Andoria) and approximately 13 colonies. The Imperial Guard operated Kumari-class
+  battle cruisers capable of speeds exceeding warp 5.

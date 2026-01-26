@@ -1,0 +1,12 @@
+value: 1154
+confidence: informedGuess
+references:
+  - link: https://www.trekbbs.com/threads/when-did-different-species-achieve-space-travel-warp.126164/
+    text: "Trek BBS - Species Warp Dates Discussion"
+readme: |
+  According to the non-canon reference book "Star Trek Star Charts" (2002),
+  the Andorians achieved warp capability in 1154 AD (Earth calendar).
+
+  This makes them one of the oldest warp-capable civilizations in the Alpha
+  Quadrant, predating humans by approximately 900 years (Earth achieved warp
+  in 2063). For comparison: Vulcans achieved warp ~320 AD, Klingons ~930 AD.

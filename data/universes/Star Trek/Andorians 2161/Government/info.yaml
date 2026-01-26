@@ -1,0 +1,15 @@
+value: Constitutional Monarchy
+confidence: canon
+references:
+  - link: https://memory-beta.fandom.com/wiki/Andorian_Empire
+    text: "Memory Beta - Andorian Empire"
+  - link: https://memory-beta.fandom.com/wiki/Parliament_Andoria
+    text: "Memory Beta - Parliament Andoria"
+readme: |
+  The Andorian Empire is a constitutional monarchy established in the 19th century
+  when Thalisar the Last unified the warring clans. She deliberately died childless
+  and created the parliamentary democracy that has governed Andoria since.
+
+  The position of head of state is symbolically empty, represented by the Empty
+  Throne in the Parliament Andoria Complex. The head of government is the
+  Chancellor (or Presider), determined by the majority party in Parliament.
