@@ -1,12 +1,9 @@
 title: Andorian Empire
 tags: [index]
 images:
-  - link: https://static.wikia.nocookie.net/memoryalpha/images/5/5b/Shras.jpg/revision/latest?cb=20130219172918&path-prefix=en
-    text: "Shras, Andorian ambassador (2268)"
-    page: https://memory-alpha.fandom.com/wiki/Andorian
-  - link: https://static.wikia.nocookie.net/memoryalpha/images/f/fd/Andoria.jpg/revision/latest?cb=20071230140751&path-prefix=en
-    text: "Andoria from orbit"
-    page: https://memory-alpha.fandom.com/wiki/Andoria
+  - link: https://upload.wikimedia.org/wikipedia/commons/0/03/StarTrek.Andorian.01.jpg
+    text: "Andorian at Star Trek Experience"
+    page: https://commons.wikimedia.org/wiki/File:StarTrek.Andorian.01.jpg
 links:
   - link: https://memory-alpha.fandom.com/wiki/Andorian
     text: "Memory Alpha - Andorian"
