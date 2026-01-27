@@ -68,10 +68,16 @@ BaseModel (common fields: Id, Title, Tags, Order, Tile, Readme, Images, Links, R
 - The `order` field controls display sorting (lower values appear first)
 
 ### Entity Relationships
-```
-METRICS ←──────── DATAPOINTS ←──────── CIVILIZATIONS ←──────── UNIVERSES
-(what)            (values)             (when/who)              (where)
-                                            ↑
-                                       FACTIONS
-                                    (political groups)
+```mermaid
+graph RL
+    UNIVERSE["Universes <br/>The lore"]
+    FACTION["Factions <br/>named entity/group/people/organization in a universe"]
+    CIVILIZATION["Civilizations <br/>faction at a time ina universe"]
+    METRIC["Metrics <br/>Definitions of available datapoints and possible values"]
+    DATAPOINT["Datapoints <br/>values"]
+    
+    UNIVERSE --> FACTION
+    FACTION --> CIVILIZATION
+    CIVILIZATION --> DATAPOINT
+    METRIC --> DATAPOINT
 ```
