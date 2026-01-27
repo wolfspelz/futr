@@ -3,12 +3,9 @@ date: 2161
 faction: Andorian Empire
 tags: [index, new]
 images:
-  - link: https://static.wikia.nocookie.net/memoryalpha/images/d/df/Andorian_battle_cruiser%2C_forward.jpg/revision/latest?cb=20080918173741&path-prefix=en
-    text: "Kumari-class battle cruiser of the Imperial Guard"
-    page: https://memory-alpha.fandom.com/wiki/Andorian_battle_cruiser
-  - link: https://static.wikia.nocookie.net/memoryalpha/images/5/50/Andorian_surface.jpg/revision/latest?cb=20050212125142&path-prefix=en
-    text: "The frozen surface of Andoria"
-    page: https://memory-alpha.fandom.com/wiki/Andoria
+  - link: https://upload.wikimedia.org/wikipedia/commons/0/03/StarTrek.Andorian.01.jpg
+    text: "Andorian at Star Trek Experience"
+    page: https://commons.wikimedia.org/wiki/File:StarTrek.Andorian.01.jpg
 links:
   - link: https://memory-alpha.fandom.com/wiki/Andorian_history
     text: "Memory Alpha - Andorian History"
