@@ -182,6 +182,9 @@ Fandom wikis (Memory Alpha, Wookieepedia, etc.) block external image embedding v
 3. **Official promotional images** - Press kits, official sites with permissive policies
 4. **Internet Archive** - Historical images, screenshots
 
+**Never use:**
+- Cosplay or fan costume images
+
 **Always:**
 - Verify the image can be embedded (test in browser from different origin)
 - Prefer PNG/JPG over WebP for compatibility
