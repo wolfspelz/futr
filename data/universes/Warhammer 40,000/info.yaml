@@ -1,0 +1,12 @@
+title: Warhammer 40,000
+tags: [index]
+showcaseMetrics: [Population, Planets, Government]
+links:
+  - link: https://warhammer40000.com/
+    text: "Official Website"
+  - link: https://wh40k.lexicanum.com/wiki/Main_Page
+    text: "Lexicanum Wiki"
+readme: |
+  Warhammer 40,000 is a tabletop miniature wargame created by Games Workshop, set in a dystopian
+  science-fantasy universe in the 41st Millennium. The galaxy is home to countless warring factions
+  including the Imperium of Man, Orks, Eldar, Tyranids, Necrons, Tau, and the forces of Chaos.

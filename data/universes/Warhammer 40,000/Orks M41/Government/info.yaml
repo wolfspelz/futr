@@ -1,0 +1,13 @@
+value: Tribal Kratocracy
+confidence: canon
+references:
+  - link: https://wh40k.lexicanum.com/wiki/Ork
+    text: "Ork - Lexicanum"
+  - link: https://warhammer40k.fandom.com/wiki/Orks
+    text: "Orks - Warhammer 40k Wiki"
+readme: |
+  Ork society is governed by a simple principle: might makes right. The biggest, strongest Ork leads
+  as Warboss. Society is organized into mobs, warbands, and tribes, with no central government.
+  Occasionally a powerful Warboss unites multiple tribes into a Waaagh!, a combined migration and
+  holy war, but these coalitions dissolve when the leader is killed. The system is a kratocracy
+  (rule by the strong) organized along tribal lines.

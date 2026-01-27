@@ -1,0 +1,16 @@
+value: 5e16
+min: 5e15
+max: 1e17
+confidence: wildGuess
+references:
+  - link: https://warhammer40k.fandom.com/wiki/Orks
+    text: "Orks - Warhammer 40k Wiki"
+  - link: https://www.quora.com/What-is-the-estimated-number-of-Orks-in-the-Warhammer-40K-universe
+    text: "Quora - Ork Population Estimates"
+readme: |
+  No canon population figure exists. Lore states Orks are the most numerous sapient species in the
+  galaxy, outnumbering even humanity. The Imperium of Man has roughly quadrillions of humans across
+  about one million worlds. Fan estimates for Orks range from tens of quadrillions to quintillions,
+  based on the number of Ork-inhabited worlds (more than the Imperium's million) and estimated
+  populations per world. The extreme uncertainty reflects the lore's deliberate vagueness and the
+  boom-bust nature of Ork populations driven by WAAAGH! cycles.

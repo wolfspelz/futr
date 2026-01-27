@@ -1,0 +1,16 @@
+value: 2e6
+min: 1e6
+max: 10e6
+confidence: calculatedGuess
+references:
+  - link: https://wh40k.lexicanum.com/wiki/Ork_Domains
+    text: "Ork Domains - Lexicanum"
+  - link: https://warhammer40k.fandom.com/wiki/Ork_Empire
+    text: "Ork Empire - Warhammer 40k Wiki"
+readme: |
+  No canon number of Ork-controlled worlds exists. The lore states Orks inhabit more worlds than the
+  Imperium of Man, which controls approximately one million planets. Ork territory is fragmented
+  across thousands of independent empires, warbands, and feral Ork worlds. The estimate of 2 million
+  accounts for the stated superiority over Imperial territory plus the many feral Ork worlds that
+  persist on planets where Orks have ever fought, since their fungal spores are nearly impossible to
+  fully eradicate.
