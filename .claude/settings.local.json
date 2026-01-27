@@ -1,9 +1,11 @@
 {
   "permissions": {
     "allow": [
+      "WebSearch",
       "WebFetch(domain:memory-alpha.fandom.com)",
       "WebFetch(domain:commons.wikimedia.org)",
-      "WebFetch(domain:en.wikipedia.org)"
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:wh40k.lexicanum.com)"
     ]
   }
 }
