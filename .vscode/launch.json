@@ -8,7 +8,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/src/futr/bin/Debug/net8.0/futr.dll",
             "args": [],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/src/futr",
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"

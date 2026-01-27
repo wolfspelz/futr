@@ -173,6 +173,24 @@ readme: |
 - Use consistent units across the project
 - Images should have proper attribution (text + page fields)
 
+### Image Sources
+Fandom wikis (Memory Alpha, Wookieepedia, etc.) block external image embedding via CSP headers. **Do NOT use Fandom image URLs** for `tile`, `icons`, or `images` fields.
+
+**Preferred image sources:**
+1. **Wikimedia Commons** - Free, embeddable, well-licensed images
+2. **Wikipedia** - Direct image links (upload.wikimedia.org)
+3. **Official promotional images** - Press kits, official sites with permissive policies
+4. **Internet Archive** - Historical images, screenshots
+
+**Always:**
+- Verify the image can be embedded (test in browser from different origin)
+- Prefer PNG/JPG over WebP for compatibility
+- Include `page` field linking to the source page for attribution
+
+**Fandom wikis are fine for:**
+- `links` and `references` fields (text links, not embedded images)
+- Research and fact-checking
+
 ### Common Metrics to Research
 For any civilization, try to find:
 1. Population (total, and breakdown by type if available)
