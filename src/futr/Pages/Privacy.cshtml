@@ -255,4 +255,10 @@ Erstellt mit https://datenschutz-generator.de/ von RA Dr. Thomas Schwenke
 </pre>
 </div>
 
-@await Html.PartialAsync("_MarkdownConverter", new Shared._MarkdownConverter.Model())
+@await Html.PartialAsync("_MarkdownConverter", new Shared._MarkdownConverter.Model
+{
+    Conversions = new Shared._MarkdownConverter.ConversionMap
+    {
+        ["iSource"] = new Shared._MarkdownConverter.Conversion("iTarget")
+    }
+})
