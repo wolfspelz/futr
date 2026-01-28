@@ -1,6 +1,6 @@
 ﻿namespace futr.Models;
 
-public partial class Civilization : BaseModel
+public class Civilization : BaseModel
 {
     public Universe Universe { get; set; }
 

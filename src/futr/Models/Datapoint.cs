@@ -2,7 +2,7 @@
 
 namespace futr.Models;
 
-public partial class Datapoint : BaseModel
+public class Datapoint : BaseModel
 {
     public enum ConfidenceLevel { Canon, Calculated, InformedGuess, CalculatedGuess, WildGuess, Unknown }
 

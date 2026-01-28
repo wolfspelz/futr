@@ -1,7 +1,9 @@
 ---
 paths:
   - "src/**/*"
-  - "*.csproj"
+  - "**/*.cs"
+  - "**/*.cshtml"
+  - "**/*.csproj"
   - "*.sln"
   - "Dockerfile"
 ---
