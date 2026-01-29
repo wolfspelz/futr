@@ -1,12 +1,12 @@
 ﻿namespace futr.Models;
 
-public class Faction : BaseModel
+public class Polity : BaseModel
 {
     public Universe Universe { get; set; }
 
     //public string Type { get; set; } = "";
 
-    public Faction(string id, Universe universe) : base(id)
+    public Polity(string id, Universe universe) : base(id)
     {
         Universe = universe;
     }

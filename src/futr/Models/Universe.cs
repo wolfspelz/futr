@@ -3,7 +3,7 @@
 public class Universe : BaseModel
 {
     public Dictionary<string, Civilization> Civilizations = new();
-    public Dictionary<string, Faction> Factions = new();
+    public Dictionary<string, Polity> Polities = new();
     public string[] ShowcaseMetrics { get; private set; } = Array.Empty<string>();
 
     public Universe(string id) : base(id)

@@ -5,23 +5,13 @@ paths:
 
 # Content & Research
 
-## Conceptual Model
-
-**Universes** contain **factions** (named peoples, planets, or empires). Factions can range from galaxy-spanning civilizations to a single individual—it depends on the universe, your interests, and available data.
-
-A **civilization** is a faction at a specific point in time. Since factions change over time, we capture snapshots as civilizations (e.g., "Federation 2373" is the Federation of Planets in the year 2373).
-
-**Metrics** describe civilizations with measurable data.
-
-**Example:** Star Trek (universe) → Federation of Planets (faction) → Federation 2373 (civilization) → 150 member worlds (metric: Planets)
-
 ## Data Directory Structure
 ```
 data/
 ├── metrics/{MetricName}/info.yaml
 └── universes/{UniverseName}/
     ├── info.yaml
-    ├── _factions/{FactionName}/info.yaml
+    ├── _polities/{PolityName}/info.yaml
     └── {CivilizationName}/
         ├── info.yaml
         └── {MetricName}/info.yaml  (datapoint)
@@ -74,7 +64,7 @@ readme: |
   Markdown description
 ```
 
-### Faction (`data/universes/{Universe}/_factions/{FactionName}/info.yaml`)
+### Polity (`data/universes/{Universe}/_polities/{PolityName}/info.yaml`)
 ```yaml
 title: Federation of Planets
 tags: [index]
@@ -94,7 +84,7 @@ readme: |
 ```yaml
 title: Federation 2373         # Display name (often includes year)
 date: 2373                     # Year or time period (required)
-faction: Federation of Planets # Reference to faction folder name (optional)
+polity: Federation of Planets  # Reference to polity folder name (optional)
 tags: [index, fav]
 order: 100.0
 images:
@@ -143,14 +133,14 @@ readme: |
 1. Research the universe thoroughly (official wikis, fan wikis, source material)
 2. Create folder: `data/universes/{UniverseName}/`
 3. Create `info.yaml` with title, images, links to official sources
-4. Create `_factions/` subfolder for major political/cultural groups
+4. Create `_polities/` subfolder for major political/cultural groups
 5. Create civilization snapshots at key historical moments
 
 ### Adding Civilizations
 1. Choose meaningful time points (major events, peak eras, transitions)
-2. Folder name convention: `{FactionOrCivName} {Year}` (e.g., "Federation 2373")
+2. Folder name convention: `{PolityOrCivName} {Year}` (e.g., "Federation 2373")
 3. Must have `date` field that can be parsed as a year
-4. Reference faction if applicable
+4. Reference polity if applicable
 
 ### Adding Datapoints
 1. **Always cite references** - every value needs sources

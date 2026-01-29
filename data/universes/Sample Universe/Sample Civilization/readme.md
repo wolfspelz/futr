@@ -2,10 +2,10 @@
 
 A civilization is a fraction of a Universe. It may be the entire galaxy or just a single species in a certain year.
 
-A civilization contains datapoints each with their own description. 
+A civilization contains datapoints each with their own description.
 
 Each civilization is a folder with:
-- descriptions: 
+- descriptions:
     - info.yaml
     - readme.md
 - datapoints folders
@@ -25,7 +25,7 @@ date: {Year}
 Full:
 ```
 date: {Year in CE}
-faction: {Faction name}
+polity: {Polity name}
 title: {Name to overrride the folder name}
 tags: {List of tags (new: appear in what's new, index: appear in index, e.g. [new, index]}
 order: {Numerical order controlling the position lists, float, 0 is default, -1000.0 mean show early in lists, 1000.0 means show late}
@@ -35,7 +35,7 @@ links:
       text: {Link text}
     - link: {Page URL}
       text: {Link text}
-images: 
+images:
     - link: {Image URL}
       text: {Image caption incl. copyright}
       page: {Image source page}

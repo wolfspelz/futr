@@ -1,0 +1,15 @@
+title: Sample Polity
+tags: []
+images:
+    - link: {Image URL}
+      text: {Image caption incl. copyright}
+      page: {Image source page}
+links:
+    - link: {Page URL}
+      text: {Link text}
+editors: [wolfspelz]
+readme: |
+    A polity is a named entity, group, people, or organization in a universe.
+
+    Polities can range from galaxy-spanning empires to a single individual.
+    A civilization is a polity at a specific point in time.

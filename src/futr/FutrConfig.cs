@@ -7,5 +7,5 @@ public class FutrConfig : FutrConfigBag
     public string AppTitle = "Fictional Universe Taxonomy Research";
     public string AppAcronym = "FUTR";
     public int WebSesssionTimeoutSec = 20 * 60;
-    public string DataFolder = "../../data";
+    public string DataFolder = "/data";
 }

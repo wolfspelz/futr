@@ -2,18 +2,18 @@
 
 namespace futr.Pages;
 
-public class FactionModel : FutrPageModel
+public class PolityModel : FutrPageModel
 {
-    public Models.Faction? Item { get; private set; }
+    public Models.Polity? Item { get; private set; }
 
-    public FactionModel(FutrApp app) : base(app, nameof(FactionModel)) { }
+    public PolityModel(FutrApp app) : base(app, nameof(PolityModel)) { }
 
     public IActionResult OnGet(string? id)
     {
         if (id == null) {
             return NotFound();
         } else {
-            var item = App.Data.GetFaction(id);
+            var item = App.Data.GetPolity(id);
             if (item == null) {
                 return NotFound();
             }

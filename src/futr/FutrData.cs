@@ -10,14 +10,14 @@ public class FutrData
     public string FolderPath = ".";
     public string MetricsSubfolder = "metrics";
     public string UniversesSubfolder = "universes";
-    public string FactionsSubfolder = "_factions";
+    public string PolitiesSubfolder = "_polities";
     public string YamlInfoFileName = "info.yaml";
     public string ReadmeFileName = "readme.md";
 
     public Dictionary<string, Metric> Metrics = new();
     public Dictionary<string, Universe> Universes = new();
     public Dictionary<string, Civilization> Civilizations = new();
-    public Dictionary<string, Faction> Factions = new();
+    public Dictionary<string, Polity> Polities = new();
 
     public FutrData()
     {
@@ -32,7 +32,7 @@ public class FutrData
         LoadUniverses(Path.Combine(folderPath, UniversesSubfolder));
 
         ExtractCivilizations();
-        ExtractFactions();
+        ExtractPolities();
 
         CheckUsedMetrics();
     }
@@ -44,7 +44,7 @@ public class FutrData
         Metrics = new();
         Universes = new();
         Civilizations = new();
-        Factions = new();
+        Polities = new();
     }
 
     public void Reload()
@@ -75,11 +75,11 @@ public class FutrData
         }
     }
 
-    private void ExtractFactions()
+    private void ExtractPolities()
     {
         foreach (var universe in Universes.Values) {
-            foreach (var faction in universe.Factions.Values) {
-                Factions.Add(faction.SeoName, faction);
+            foreach (var polity in universe.Polities.Values) {
+                Polities.Add(polity.SeoName, polity);
             }
         }
     }
@@ -167,40 +167,40 @@ public class FutrData
             }
         }
 
-        var factionFolderPath = Path.Combine(universeFolderPath, FactionsSubfolder);
-        var factionSubFolders = StructureProvider.EnumerateFolders(factionFolderPath);
-        foreach (var factionSubPath in factionSubFolders) {
-            var factionId = Path.GetFileName(factionSubPath).Trim();
-            var faction = LoadFaction(universe, factionFolderPath, factionId);
-            if (faction != null) {
-                faction.SeoName = $"{universeId} {factionId}";
-                universe.Factions.Add(factionId, faction);
+        var polityFolderPath = Path.Combine(universeFolderPath, PolitiesSubfolder);
+        var politySubFolders = StructureProvider.EnumerateFolders(polityFolderPath);
+        foreach (var politySubPath in politySubFolders) {
+            var polityId = Path.GetFileName(politySubPath).Trim();
+            var polity = LoadPolity(universe, polityFolderPath, polityId);
+            if (polity != null) {
+                polity.SeoName = $"{universeId} {polityId}";
+                universe.Polities.Add(polityId, polity);
             }
         }
 
         return universe;
     }
 
-    private Faction LoadFaction(Universe universe, string folderPath, string factionId)
+    private Polity LoadPolity(Universe universe, string folderPath, string polityId)
     {
-        Log.Info($"{folderPath}/{factionId}");
-        var faction = new Faction(factionId, universe);
+        Log.Info($"{folderPath}/{polityId}");
+        var polity = new Polity(polityId, universe);
 
-        var infoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, factionId, YamlInfoFileName));
+        var infoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, polityId, YamlInfoFileName));
         if (DataProvider.HasData(infoPath)) {
             var infoData = DataProvider.GetData(infoPath);
-            faction.fromYaml(infoData);
+            polity.fromYaml(infoData);
         } else {
-            Log.Warning($"Faction {factionId} does not have an info.yaml file.");
+            Log.Warning($"Polity {polityId} does not have an info.yaml file.");
         }
 
-        var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, factionId, ReadmeFileName));
+        var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, polityId, ReadmeFileName));
         if (DataProvider.HasData(readmePath)) {
             var readmeData = DataProvider.GetData(readmePath);
-            faction.Readme = readmeData;
+            polity.Readme = readmeData;
         }
 
-        return faction;
+        return polity;
     }
 
     private Civilization LoadCivilization(Universe universe, string folderPath, string civilizationId)
@@ -298,10 +298,10 @@ public class FutrData
         return null;
     }
 
-    public Faction? GetFaction(string id)
+    public Polity? GetPolity(string id)
     {
-        if (Factions.ContainsKey(id)) {
-            return Factions[id];
+        if (Polities.ContainsKey(id)) {
+            return Polities[id];
         }
         return null;
     }

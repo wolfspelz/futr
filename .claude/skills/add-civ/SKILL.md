@@ -6,18 +6,18 @@ argument-hint: [civilization-spec]
 
 # Add Civilization - Interactive Research Session
 
-Research and add a new civilization (faction at a point in time) to the FUTR database.
+Research and add a new civilization (polity at a point in time) to the FUTR database.
 
 ## Input
-The user provides a **civilization specification** - a hint at universe, faction, and time frame.
+The user provides a **civilization specification** - a hint at universe, polity, and time frame.
 Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at fall of Coruscant"
 
 ## Workflow
 
 ### Step 1: Identifying
 1. Research the specification online to verify it's unambiguous
-2. Identify: Universe, Faction, Civilization name, Date
-3. Check if the universe/faction already exists in `data/universes/`
+2. Identify: Universe, Polity, Civilization name, Date
+3. Check if the universe/polity already exists in `data/universes/`
 4. Ask clarifying questions if the specification is ambiguous
 5. Confirm the identified civilization with the user
 
@@ -38,7 +38,7 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 ### Step 4: Review
 1. Present all proposed data in tables:
    - New metrics (if any)
-   - Faction info
+   - Polity info
    - Civilization info
    - Datapoints with values, ranges, confidence, sources AND comparable figures from other civilizations of the same universe or different universes if appropriate
 2. Ask user to approve or adjust values
@@ -46,14 +46,14 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 
 ### Step 5: Additional Research
 1. Find images (from Memory Alpha, wikis, official sources)
-2. Write descriptions for faction and civilization readme fields
+2. Write descriptions for polity and civilization readme fields
 3. Gather links to official/wiki pages
 4. Ensure all info.yaml fields can be populated
 
 ### Step 6: Implementation
 1. Create directories and info.yaml files:
    - `data/metrics/{NewMetric}/info.yaml` (if new metrics)
-   - `data/universes/{Universe}/_factions/{Faction}/info.yaml` (if new faction)
+   - `data/universes/{Universe}/_polities/{Polity}/info.yaml` (if new polity)
    - `data/universes/{Universe}/{Civilization}/info.yaml`
    - `data/universes/{Universe}/{Civilization}/{Metric}/info.yaml` (datapoints)
 2. Verify all files created
@@ -78,9 +78,9 @@ readme: |
 
 **Civilization:**
 ```yaml
-title: Faction Year
+title: Polity Year
 date: 2161
-faction: Faction Name
+polity: Polity Name
 tags: [index]
 images:
   - link: https://...

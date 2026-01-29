@@ -21,3 +21,30 @@ Additional context is loaded automatically based on what you're working on:
 
 - **Web development** (`src/`, `*.csproj`, `Dockerfile`): See `.claude/rules/development.md`
 - **Content/research** (`data/`): See `.claude/rules/content.md`
+
+## Project Information
+
+## Conceptual Model
+
+**Universes** contain **polities** (named peoples, planets, or empires). Polities can range from galaxy-spanning civilizations to a single individual—it depends on the universe, your interests, and available data.
+
+A **civilization** is a polity at a specific point in time. Since polities change over time, we capture snapshots as civilizations (e.g., "Federation 2373" is the Federation of Planets in the year 2373).
+
+**Metrics** describe civilizations with measurable data.
+
+**Example:** Star Trek (universe) → Federation of Planets (polity) → Federation 2373 (civilization) → 150 member worlds (datapoint using metric: Planets)
+
+### Entity Relationships
+```mermaid
+graph RL
+    UNIVERSE["Universes:<br/>The lore"]
+    POLITY["Polities:<br/>Named entity/group/people/organization in a universe"]
+    CIVILIZATION["Civilizations:<br/>Polity at a time in a universe"]
+    METRIC["Metrics:<br/>Definitions of available datapoints and possible values"]
+    DATAPOINT["Datapoints:<br/>values"]
+
+    UNIVERSE --> POLITY
+    POLITY --> CIVILIZATION
+    CIVILIZATION --> DATAPOINT
+    METRIC --> DATAPOINT
+```

@@ -1,15 +1,15 @@
-# Sample Universe 
+# Sample Universe
 
 A fictional universe, the entire franchise across space and time where all stories happen.
 
-A universe contains civilizations each with their own description. 
+A universe contains civilizations each with their own description.
 
 Each universe is a folder with:
-- descriptions: 
+- descriptions:
   - info.yaml
   - readme.md
 - civilization folders
-- optional: a folder with factions
+- optional: a folder with polities
 
 The name of the folder becomes the name of the universe.
 
@@ -36,7 +36,7 @@ links:
       text: {Link text}
     - link: {Page URL}
       text: {Link text}
-images: 
+images:
     - link: {Image URL}
       text: {Image caption incl. copyright}
       page: {Image source page}

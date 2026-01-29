@@ -8,26 +8,26 @@ it has [Metrics](metrics) - a myriad cool ways to measure universes
 
 and [Universes](universes) - the universes we all know and love
 
-Universes have named peoples or planets or empires called "factions". 
-Factions may be very large, covering the entire galaxy or even a large part of the universe.
-On the other hand, they may be very small down to a single individual. 
+Universes have named peoples or planets or empires called "polities".
+Polities may be very large, covering the entire galaxy or even a large part of the universe.
+On the other hand, they may be very small down to a single individual.
 That all depends on the univese, your interests, and available data.
 
-The state of factions will usually change over time. 
-Hence we disinguish between varying states of factions, calling a certain state of a faction a "civilization". 
-Very often a point in time identifies the state of a faction in a universe.
+The state of polities will usually change over time.
+Hence we disinguish between varying states of polities, calling a certain state of a polity a "civilization".
+Very often a point in time identifies the state of a polity in a universe.
 
 Metrics are used to describe civilizations.
 
-So, putting it all together, 
+So, putting it all together,
 the Star Trek universe
-has a faction called Federation of Planets
+has a polity called Federation of Planets
 which at the time of Picard, around 2373, constitues a civilization
 with ca. 150 member worlds. That would be an interesting
 metric
 of the civilization
-of the faction
-in the universe. 
+of the polity
+in the universe.
 
 ## Contribute
 
@@ -48,10 +48,10 @@ I understand this looks like a coder's only domain, but let's debunk some myths 
 What we use from the GitHub Toolset without having to program or setup anything:
 
 - Text editor (just markup, but good enough)
-- Versions, version history, and rollback 
+- Versions, version history, and rollback
 - Secure user accounts
 - Editorial process (by merge request and branch based access rights)
 - Discussion forum (with discussions linked to changes)
-- (latr) Project management (in form of the agile board) 
+- (latr) Project management (in form of the agile board)
 - (latr) Deployment pipeline
 - (latr) Static site generators integrate well with GitHub

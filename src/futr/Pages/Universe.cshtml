@@ -66,12 +66,12 @@
         </div>
     </div>
 
-    @if (Model.Item.Factions.Count() > 0) {
+    @if (Model.Item.Polities.Count() > 0) {
         <div class="my-textblock">
-            <h2>Factions</h2>
-            @foreach (var (factionId, faction) in Model.Item.Factions) {
+            <h2>Polities</h2>
+            @foreach (var (polityId, polity) in Model.Item.Polities) {
                 <div>
-                    <a asp-page="Faction" asp-route-id="@faction.SeoName">@faction.Title</a>
+                    <a asp-page="Polity" asp-route-id="@polity.SeoName">@polity.Title</a>
                 </div>
             }
         </div>

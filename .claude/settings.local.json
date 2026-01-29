@@ -7,7 +7,10 @@
       "WebFetch(domain:en.wikipedia.org)",
       "WebFetch(domain:wh40k.lexicanum.com)",
       "Bash(find:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(dotnet build:*)",
+      "Bash(ls:*)",
+      "Bash(dotnet test:*)"
     ]
   }
 }

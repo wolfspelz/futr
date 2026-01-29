@@ -6,6 +6,6 @@ The "Solar System" is often referred to as "Solsys," and it serves as a central 
 
 - Posthuman Entities: Posthumans, beings who have evolved beyond typical human capabilities through genetic engineering, cybernetics, and other enhancements, are common in Solsys. These entities often possess extended lifespans and unique abilities, contributing to the diversity of the setting.
 
-- Political Complexity: The solar system is divided into various political factions, mega-corporations, and alliances, all vying for power and influence. This political complexity shapes the societal landscape of Solsys, leading to conflicts and alliances among these entities.
+- Political Complexity: The solar system is divided into various political polities, mega-corporations, and alliances, all vying for power and influence. This political complexity shapes the societal landscape of Solsys, leading to conflicts and alliances among these entities.
 
 - Exploration and Discovery: Solsys is a hub for exploration and discovery, with expeditions to distant star systems and encounters with alien civilizations. It is a place of constant scientific exploration and expansion into the cosmos.

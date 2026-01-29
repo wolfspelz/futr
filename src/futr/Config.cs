@@ -9,7 +9,7 @@ public class Config : FutrConfig
 
         if (Setup == "dev") {
             IsDevelopment = true;
-        } else {
+            DataFolder = "../../data";  // Relative to src/futr/
         }
 
         AdditionalConfigRoot = System.Environment.GetEnvironmentVariable(ConfigRootEnvironmentVariableName) ?? AdditionalConfigRoot;

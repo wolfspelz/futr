@@ -48,38 +48,24 @@ docker run -p 80:80 futr
 2. Load universes from `data/universes/*/info.yaml`
 3. For each universe, load civilizations (non-`_` prefixed subfolders)
 4. For each civilization, load datapoints (metric values)
-5. Load factions from `_factions/` subfolder
+5. Load polities from `_polities/` subfolder
 6. Validate all referenced metrics exist
 
 ### Model Hierarchy
 ```
 BaseModel (common fields: Id, Title, Tags, Order, Tile, Readme, Images, Links, References)
 ├── Metric (Type, Unit, Range)
-├── Universe (Civilizations dict, Factions dict, ShowcaseMetrics)
-├── Civilization (Universe ref, Faction ref, Date/Year, Datapoints dict)
-├── Faction (Universe ref)
+├── Universe (Civilizations dict, Polities dict, ShowcaseMetrics)
+├── Civilization (Universe ref, Polity ref, Date/Year, Datapoints dict)
+├── Polity (Universe ref)
 └── Datapoint (Civilization ref, Metric, Value, Min, Max, Confidence enum)
 ```
 
 ### Key Conventions
 - Folder names become entity IDs and URL slugs (use spaces, not underscores)
-- `_` prefix folders are special (e.g., `_factions/`)
+- `_` prefix folders are special (e.g., `_polities/`)
 - File lookup is case-insensitive
 - `readme.md` content merged into entity's Readme field
 - Images should use HTTPS URLs
 - The `order` field controls display sorting (lower values appear first)
 
-### Entity Relationships
-```mermaid
-graph RL
-    UNIVERSE["Universes <br/>The lore"]
-    FACTION["Factions <br/>named entity/group/people/organization in a universe"]
-    CIVILIZATION["Civilizations <br/>faction at a time ina universe"]
-    METRIC["Metrics <br/>Definitions of available datapoints and possible values"]
-    DATAPOINT["Datapoints <br/>values"]
-    
-    UNIVERSE --> FACTION
-    FACTION --> CIVILIZATION
-    CIVILIZATION --> DATAPOINT
-    METRIC --> DATAPOINT
-```
