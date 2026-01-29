@@ -1,0 +1,60 @@
+{
+	"name": "FUTR Dev Container",
+	"image": "mcr.microsoft.com/dotnet/sdk:8.0",
+	
+	// Configure tool-specific properties
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csharp",
+				"ms-dotnettools.csdevkit",
+				"kreativ-software.csharpextensions",
+				"jchannon.csharpextensions",
+				"redhat.vscode-yaml"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash"
+			}
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally
+	"forwardPorts": [5000, 5001, 80],
+
+	// Use 'postCreateCommand' to run commands after the container is created
+	"postCreateCommand": "dotnet restore futr.sln",
+
+	// Configure container creation
+	"workspaceFolder": "/workspace",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+
+	// Set container user (use root or omit to use default)
+	"remoteUser": "root",
+
+	// Run arguments for the container
+	"runArgs": [
+		"--name=futr-dev"
+	],
+
+	// Features to add to the dev container
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": true,
+			"installOhMyZsh": true,
+			"upgradePackages": true,
+			"username": "vscode",
+			"userUid": "1000",
+			"userGid": "1000"
+		},
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest",
+			"ppa": true
+		}
+	},
+
+	// Environment variables
+	"containerEnv": {
+		"ASPNETCORE_ENVIRONMENT": "Development",
+		"DOTNET_USE_POLLING_FILE_WATCHER": "true"
+	}
+}

@@ -1,7 +1,6 @@
 title: Government Type
 tags: [index]
-type: string
-unit: ""
+type: text
 readme: |
   The form of government or political system of a civilization.
   Examples: Democracy, Monarchy, Constitutional Monarchy, Theocracy, etc.

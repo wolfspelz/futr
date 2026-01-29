@@ -17,7 +17,7 @@ Write something about the civilization.
 
 ## info.yaml
 
-Minimlistic:
+Minimalistic:
 ```
 date: {Year}
 ```

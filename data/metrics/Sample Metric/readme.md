@@ -21,15 +21,15 @@ The list is also a nice reference and idea collection for new universes.
 
 ## info.yaml
 
-Minimlistic:
+Minimalistic:
 ```
-type: {Data type: currently only "number"}
+type: {Data type: "number" or "text"}
 unit: {The unit that is described by the metric, e.g. "Planets"}
 ```
 
 Full:
 ```
-type: {Data type: currently only "number"}
+type: {Data type: "number" or "text"}
 unit: {The unit that is described by the metric, e.g. "Planets"}
 tags: {List of tags (new: appear in what's new, index: appear in index, e.g. [new, index]}
 order: {Numerical order controlling the position lists, float, 0 is default, -1000.0 mean show early in lists, 1000.0 means show late}

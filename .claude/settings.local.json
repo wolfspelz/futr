@@ -10,7 +10,9 @@
       "Bash(curl:*)",
       "Bash(dotnet build:*)",
       "Bash(ls:*)",
-      "Bash(dotnet test:*)"
+      "Bash(dotnet test:*)",
+      "Bash(for f in /home/hwolf/dev/futr/data/**/*.yaml)",
+      "Bash(grep:*)"
     ]
   }
 }
