@@ -1,6 +1,11 @@
 title: Warhammer 40,000
 tags: [index, new]
 showcaseMetrics: [Population, Planets, Government]
+tile: https://assets.warhammer-community.com/warhammer40000.png
+images:
+  - link: https://assets.warhammer-community.com/warhammer40000.png
+    text: Warhammer 40,000 logo
+    page: https://www.warhammer-community.com/press-room/logos/
 links:
   - link: https://warhammer40000.com/
     text: "Official Website"
