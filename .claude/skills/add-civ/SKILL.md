@@ -50,6 +50,7 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 2. Write descriptions for polity and civilization readme fields
 3. Gather links to official/wiki pages
 4. Ensure all info.yaml fields can be populated
+5. **Proxy images from Wikimedia/Wikipedia** if they block external embedding (see Image Proxy section below)
 
 ### Step 6: Implementation
 1. Create directories and info.yaml files:
@@ -96,3 +97,25 @@ readme: |
 - Cross-check Kardashev against Earth 2023 (K=0.73) for sanity
 - Use existing metrics when possible before creating new ones
 - Images should be from canonical/official sources when available
+
+## Image Proxy
+
+Wikimedia/Wikipedia images often block external embedding. Download these to a local proxy folder:
+
+**Pattern:**
+- Original URL: `https://upload.wikimedia.org/wikipedia/commons/d/d5/Example_Image.PNG`
+- Local path: `data/proxy/upload.wikimedia.org/wikipedia-commons-d-d5-Example_Image.PNG`
+- Reference in YAML: `/data/proxy/upload.wikimedia.org/wikipedia-commons-d-d5-Example_Image.PNG`
+
+**Steps:**
+1. Download the image: `curl -L -o "data/proxy/upload.wikimedia.org/wikipedia-commons-{path}-{filename}" "{url}"`
+2. Reference with local path in the `link` field
+3. Keep the original Wikimedia Commons page in the `page` field for attribution
+
+**Example:**
+```yaml
+images:
+  - link: /data/proxy/upload.wikimedia.org/wikipedia-commons-d-d5-The_Honor_Harrington_Universe.PNG
+    text: Map of the Honorverse
+    page: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
+```
