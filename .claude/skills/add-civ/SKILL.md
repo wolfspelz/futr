@@ -104,18 +104,21 @@ Wikimedia/Wikipedia images often block external embedding. Download these to a l
 
 **Pattern:**
 - Original URL: `https://upload.wikimedia.org/wikipedia/commons/d/d5/Example_Image.PNG`
-- Local path: `data/proxy/upload.wikimedia.org/wikipedia-commons-d-d5-Example_Image.PNG`
-- Reference in YAML: `/data/proxy/upload.wikimedia.org/wikipedia-commons-d-d5-Example_Image.PNG`
+- Local path: `data/proxy/upload.wikimedia.org/wikipedia/commons/d/d5/Example_Image.PNG`
+- Reference in YAML: `/proxy/upload.wikimedia.org/wikipedia/commons/d/d5/Example_Image.PNG`
+
+The local path mirrors the original URL structure (preserving slashes).
 
 **Steps:**
-1. Download the image: `curl -L -o "data/proxy/upload.wikimedia.org/wikipedia-commons-{path}-{filename}" "{url}"`
-2. Reference with local path in the `link` field
-3. Keep the original Wikimedia Commons page in the `page` field for attribution
+1. Create directory: `mkdir -p "data/proxy/{host}/{path}"`
+2. Download the image: `curl -L -o "data/proxy/{host}/{path}/{filename}" "{url}"`
+3. Reference with `/proxy/...` URL in the `link` field (served by ProxyController)
+4. Keep the original Wikimedia Commons page in the `page` field for attribution
 
 **Example:**
 ```yaml
 images:
-  - link: /data/proxy/upload.wikimedia.org/wikipedia-commons-d-d5-The_Honor_Harrington_Universe.PNG
+  - link: /proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG
     text: Map of the Honorverse
     page: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
 ```
