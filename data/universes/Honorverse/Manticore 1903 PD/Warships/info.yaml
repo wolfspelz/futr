@@ -1,0 +1,22 @@
+value: 1621
+min: 1500
+max: 1700
+confidence: canon
+references:
+  - link: https://honorverse.fandom.com/wiki/Royal_Manticoran_Navy
+    text: Honorverse Wiki - Royal Manticoran Navy
+readme: |
+  Royal Manticoran Navy fleet composition prior to the First Havenite-Manticoran War:
+
+  | Ship Class        | Units |
+  |-------------------|-------|
+  | Superdreadnoughts | 188   |
+  | Dreadnoughts      | 121   |
+  | Battlecruisers    | 199   |
+  | Heavy Cruisers    | 333   |
+  | Light Cruisers    | 295   |
+  | Destroyers        | 485   |
+  | **Total**         | 1,621 |
+
+  Total tonnage: 2,318.6 megatons. This represents the RMN's strength just before
+  the war began in 1905 PD, making it essentially representative of 1903 PD strength.

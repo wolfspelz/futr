@@ -1,0 +1,14 @@
+value: 2
+confidence: canon
+references:
+  - link: https://honorverse.fandom.com/wiki/Star_Kingdom_of_Manticore
+    text: Honorverse Wiki - Star Kingdom of Manticore
+  - link: https://honorverse.fandom.com/wiki/Basilisk_System
+    text: Honorverse Wiki - Basilisk System
+readme: |
+  By 1903 PD, the Star Kingdom of Manticore controlled two star systems:
+  1. The Manticore Binary System (home system with three inhabited planets)
+  2. The Basilisk System (annexed in 1865 PD to control the wormhole terminus)
+
+  The Endicott System (Masada) came under military occupation during 1903 PD
+  following the events of "Honor of the Queen," but was not yet formally incorporated.

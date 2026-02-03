@@ -1,0 +1,21 @@
+title: Honorverse
+tags: [index]
+images:
+  - link: https://upload.wikimedia.org/wikipedia/commons/6/64/The_Honor_Harrington_Universe.PNG
+    text: Map of the Honorverse
+    page: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
+links:
+  - link: https://www.baen.com/allbooks/category/index/id/2044
+    text: Baen Books - Honor Harrington Series
+  - link: https://honorverse.fandom.com/
+    text: Honorverse Wiki
+  - link: https://en.wikipedia.org/wiki/Honorverse
+    text: Wikipedia - Honorverse
+showcaseMetrics: [Population, Planets, Kardashev, Warships]
+readme: |
+  David Weber's military science fiction universe, centered on the career of Honor Harrington.
+  Set in the far future where humanity has spread across the galaxy using hyperspace travel
+  and wormhole networks. The series draws parallels to the Age of Sail, with the Star Kingdom
+  of Manticore echoing Imperial Britain and the People's Republic of Haven resembling
+  Revolutionary/Napoleonic France. Features detailed space naval combat, political intrigue,
+  and a richly developed interstellar civilization spanning thousands of worlds.

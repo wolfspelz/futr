@@ -1,0 +1,25 @@
+value: 1.1
+min: 1.0
+max: 1.2
+confidence: calculatedGuess
+references:
+  - link: https://honorverse.fandom.com/wiki/Manticore_Wormhole_Junction
+    text: Honorverse Wiki - Manticore Wormhole Junction
+  - link: https://honorverse.fandom.com/wiki/Gross_system_product
+    text: Honorverse Wiki - Gross System Product
+readme: |
+  Estimated based on economic output relative to Sol System in 1900 PD:
+
+  - Manticore's GSP was 78% of Sol's GSP (the highest in human space)
+  - Manticore achieved this with ~3.2 billion people vs Sol's 10+ billion
+  - Per-capita economic output approximately 2-3x Sol's
+  - Technology includes interstellar travel, fusion power, and advanced industry
+
+  Sol System in 1900 PD is clearly well beyond modern Earth (K=0.73) as an
+  interstellar hub, estimated at K~1.1-1.3. Manticore at 78% of that economic
+  output with 1/3 the population indicates very high energy usage per capita.
+
+  However, neither civilization harvests stellar-scale energy (not Type II),
+  placing Manticore solidly in the Type I range at approximately K=1.1.
+
+  For comparison: Earth 2023 = 0.73 K, Federation 2373 = 1.7 K

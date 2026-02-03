@@ -1,0 +1,17 @@
+value: 3.2e9
+min: 2.8e9
+max: 3.5e9
+confidence: informedGuess
+references:
+  - link: https://honorverse.fandom.com/wiki/Manticore_System
+    text: Honorverse Wiki - Manticore System
+  - link: https://honorverse.fandom.com/wiki/Sphinx
+    text: Honorverse Wiki - Sphinx
+  - link: https://honorverse.fandom.com/wiki/Gryphon
+    text: Honorverse Wiki - Gryphon
+readme: |
+  Estimated total population across the three inhabited planets of the Manticore System
+  (Manticore, Sphinx, Gryphon) plus asteroid belt populations. By 1922 PD the system
+  had ~3.6 billion; by 1920 PD Sphinx had 1.2 billion and Gryphon had ~575 million
+  (planet) plus 298 million in asteroid belts. Extrapolating backward to 1903 PD
+  suggests approximately 3.2 billion total, with most residing in the Manticore-A subsystem.

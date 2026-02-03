@@ -1,0 +1,12 @@
+value: 3
+confidence: canon
+references:
+  - link: https://honorverse.fandom.com/wiki/Manticore_System
+    text: Honorverse Wiki - Manticore System
+readme: |
+  The Manticore Binary System contains three inhabited planets:
+  - Manticore (capital world, Manticore-A III)
+  - Sphinx (Manticore-A IV, homeworld of treecats)
+  - Gryphon (Manticore-B IV, only habitable world in the B subsystem)
+  All three were settled by the original colonists who arrived aboard the sublight
+  colony ship Jason in 1416 PD.

@@ -1,0 +1,7 @@
+title: Star Systems Controlled
+tags: [index]
+type: number
+unit: Systems
+readme: |
+  The number of star systems under the control or sovereignty of a civilization.
+  Includes home systems, colonies, protectorates, and occupied territories.

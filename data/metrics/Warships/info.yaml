@@ -1,0 +1,8 @@
+title: Military Warships
+tags: [index]
+type: number
+unit: Ships
+readme: |
+  The total number of military vessels in a civilization's navy or space fleet.
+  Includes all classes of combat ships (capital ships, cruisers, destroyers, etc.)
+  but excludes purely civilian or auxiliary vessels.
