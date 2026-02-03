@@ -1,13 +1,7 @@
-﻿@if (Model is Models.BaseModel model) {
-
+﻿@if (Model is futr.Models.BaseModel model) {
     if (!string.IsNullOrEmpty(model.Readme)) {
-        <div class="my-textblock" id="iReadmeHtml">
-            <span id="iReadmeMD">@(model.Readme)</span>
+        <div class="my-textblock">
+            @Html.Raw(futr.MarkdownHelper.ToHtml(model.Readme))
         </div>
-
-        @await Html.PartialAsync("_MarkdownConverter", new _MarkdownConverter.Model() {
-            Conversions = new _MarkdownConverter.ConversionMap { ["iReadmeMD"] = new _MarkdownConverter.Conversion("iReadmeHtml") { Options = new _MarkdownConverter.ConversionOptions() { ["a"] = true } }}
-        })
     }
-
 }

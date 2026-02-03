@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Edi.RouteDebugger" Version="1.6.0" />
     <PackageReference Include="JsonPath" Version="2.1.0" />
+    <PackageReference Include="Markdig" Version="0.37.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.0" />
   </ItemGroup>
 
