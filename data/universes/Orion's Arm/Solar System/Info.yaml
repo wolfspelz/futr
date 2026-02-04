@@ -4,7 +4,10 @@ date: 10600
 links:
     - src: https://orionsarm.com/eg-article/48f915a959b12
       text: Solsys
-images: 
+images:
     - src: https://orionsarm.com/im_store/med_solsys.jpg
-      text: Image from Steve Bowers (© 2023 Orion's Arm Universe Project Inc.)
+      text: Solsys
       link: https://orionsarm.com/eg-article/48f915a959b12
+      author: Steve Bowers
+      license: All rights reserved
+      legal: © Orion's Arm Universe Project
