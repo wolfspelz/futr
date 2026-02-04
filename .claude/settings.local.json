@@ -23,7 +23,9 @@
       "WebFetch(domain:www.deviantart.com)",
       "WebFetch(domain:mythcreants.com)",
       "Bash(code --command workbench.action.debug.start:*)",
-      "WebFetch(domain:40k.gallery)"
+      "WebFetch(domain:40k.gallery)",
+      "WebFetch(domain:www.orionsarm.com)",
+      "Bash(git mv:*)"
     ]
   }
 }
