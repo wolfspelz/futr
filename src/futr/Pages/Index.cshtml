@@ -46,7 +46,8 @@
     Title = "New Universes",
     Text= string.Join("<br/>", Model.App.Data.Universes
     .Where(x => x.Value.Tags.Contains("new"))
-    .OrderByDescending(x => x.Value.Created)
+    .OrderByDescending(x => x.Value.Order)
+    .ThenByDescending(x => x.Value.Created)
     .Select(pair => $"<a href='/Universe/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.Title}</a>")),
     Link = "/Universe",
     })
@@ -57,7 +58,8 @@
     Title = "New Civilizations",
     Text= string.Join("<br/>", Model.App.Data.Civilizations
     .Where(x => x.Value.Tags.Contains("new"))
-    .OrderByDescending(x => x.Value.Created)
+    .OrderByDescending(x => x.Value.Order)
+    .ThenByDescending(x => x.Value.Created)
     .Select(pair => $"<a href='/Civilization/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.SeoName}</a>")),
     })
 
