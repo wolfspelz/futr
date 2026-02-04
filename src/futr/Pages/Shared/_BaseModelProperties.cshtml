@@ -31,9 +31,9 @@
             @foreach (var image in model.Images.Take(10)) {
                 <div class="my-gallery-image">
                     <div class="my-image">
-                        <a href="@image.Page">
+                        <a href="@image.Link">
                             <img src="@image.Src" alt="@image.Text" title="@image.Text
-@image.Page@(string.IsNullOrEmpty(image.Author) ? "" : $"\nAuthor: {image.Author}")@(string.IsNullOrEmpty(image.License) ? "" : $"\nLicense: {image.License}")@(string.IsNullOrEmpty(image.Legal) ? "" : $"\nLegal: {image.Legal}")" />
+@image.Link@(string.IsNullOrEmpty(image.Author) ? "" : $"\nAuthor: {image.Author}")@(string.IsNullOrEmpty(image.License) ? "" : $"\nLicense: {image.License}")@(string.IsNullOrEmpty(image.Legal) ? "" : $"\nLegal: {image.Legal}")" />
                         </a>
                         <div class="my-caption">@image.Text</div>
                     </div>

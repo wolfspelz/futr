@@ -6,7 +6,7 @@ tags: [index]
 images:
   - src: https://upload.wikimedia.org/wikipedia/commons/0/03/StarTrek.Andorian.01.jpg
     text: "Andorian at Star Trek Experience"
-    page: https://commons.wikimedia.org/wiki/File:StarTrek.Andorian.01.jpg
+    link: https://commons.wikimedia.org/wiki/File:StarTrek.Andorian.01.jpg
 links:
   - src: https://memory-alpha.fandom.com/wiki/Andorian
     text: "Memory Alpha - Andorian"

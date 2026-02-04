@@ -8,16 +8,16 @@ tags: [index, new]
 images:
   - src: https://upload.wikimedia.org/wikipedia/commons/0/03/StarTrek.Andorian.01.jpg
     text: "Andorian at Star Trek Experience"
-    page: https://commons.wikimedia.org/wiki/File:StarTrek.Andorian.01.jpg
+    link: https://commons.wikimedia.org/wiki/File:StarTrek.Andorian.01.jpg
   - src: https://upload.wikimedia.org/wikipedia/commons/a/ab/Fictional_Planet_Andoria.png
     text: "Artist's impression of the planet Andoria"
-    page: https://commons.wikimedia.org/wiki/File:Fictional_Planet_Andoria.png
+    link: https://commons.wikimedia.org/wiki/File:Fictional_Planet_Andoria.png
   - src: https://upload.wikimedia.org/wikipedia/commons/7/7c/Andorian_Flag.svg
     text: "Andorian flag as depicted in Star Trek: Discovery"
-    page: https://commons.wikimedia.org/wiki/File:Andorian_Flag.svg
+    link: https://commons.wikimedia.org/wiki/File:Andorian_Flag.svg
   - src: https://upload.wikimedia.org/wikipedia/commons/b/b0/Noun_Andorian_14247.svg
     text: "Andorian species silhouette"
-    page: https://commons.wikimedia.org/wiki/File:Noun_Andorian_14247.svg
+    link: https://commons.wikimedia.org/wiki/File:Noun_Andorian_14247.svg
 links:
   - src: https://memory-alpha.fandom.com/wiki/Andorian_history
     text: "Memory Alpha - Andorian History"

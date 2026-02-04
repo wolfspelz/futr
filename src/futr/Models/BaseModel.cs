@@ -69,7 +69,7 @@ public class BaseModel
                 if (imageNode.IsDictionary) {
                     image.Src = imageNode["src"].AsString;
                     image.Text = imageNode["text"].AsString;
-                    image.Page = imageNode["page"].AsString;
+                    image.Link = imageNode["link"].AsString;
                     image.Author = imageNode["author"].AsString;
                     image.License = imageNode["license"].AsString;
                     image.Legal = imageNode["legal"].AsString;
@@ -77,8 +77,8 @@ public class BaseModel
                 } else {
                     image.Src = imageNode.AsString;
                 }
-                if (image.Page == "") {
-                    image.Page = image.Src;
+                if (image.Link == "") {
+                    image.Link = image.Src;
                 }
                 Images.Add(image);
                 if (image.Tags.Contains("main")) {

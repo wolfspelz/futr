@@ -40,14 +40,14 @@ links:
 images:
     - src: {Image URL}
       text: {Image caption}
-      page: {Image source page}
+      link: {Image source page and link target}
       author: {Creator/artist name}
       license: {Short license identifier, e.g. CC BY-SA 4.0}
       legal: {Full license text or URL}
       tags: [main]  # "main" = primary/tile image for lists
     - src: {Image URL}
       text: {Image caption}
-      page: {Image source page}
+      link: {Image source page and link target}
 readme: |
     Readme text in case there is no readme.md file.
     More readme text. This is a YAML multiline text.

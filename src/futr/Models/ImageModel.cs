@@ -4,7 +4,7 @@ public class ImageModel
 {
     public string Src { get; internal set; } = "";
     public string Text { get; internal set; } = "";
-    public string Page { get; internal set; } = "";
+    public string Link { get; internal set; } = "";
     public string Author { get; internal set; } = "";
     public string License { get; internal set; } = "";
     public string Legal { get; internal set; } = "";

@@ -6,14 +6,14 @@ tags: [index, new]
 images:
   - src: https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png
     text: Honor Harrington - On Basilisk Station cover
-    page: https://mythcreants.com/blog/five-ways-the-honorverse-builds-an-immersive-world/
+    link: https://mythcreants.com/blog/five-ways-the-honorverse-builds-an-immersive-world/
     tags: [main]
   - src: https://www.baen.com/media/catalog/product/0/7/0743435710-med.jpg
     text: On Basilisk Station - first Honor Harrington novel
-    page: https://www.baen.com/on-basilisk-station.html
+    link: https://www.baen.com/on-basilisk-station.html
   - src: /proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG
     text: Map of the Honorverse
-    page: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
+    link: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
 links:
   - src: https://www.baen.com/allbooks/category/index/id/2044
     text: Baen Books - Honor Harrington Series

@@ -8,7 +8,7 @@ tags: [index, new]
 images:
   - src: https://www.baen.com/media/catalog/product/0/7/0743435729-med.jpg
     text: The Honor of the Queen book cover
-    page: https://www.baen.com/the-honor-of-the-queen.html
+    link: https://www.baen.com/the-honor-of-the-queen.html
 links:
   - src: https://honorverse.fandom.com/wiki/Timeline
     text: Honorverse Timeline

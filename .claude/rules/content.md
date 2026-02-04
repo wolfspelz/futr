@@ -31,7 +31,7 @@ icons: [https://...]           # Icon URLs
 images:
   - src: https://...          # Direct image URL
     text: "Caption"            # Image description
-    page: https://source       # Source page URL (required)
+    link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Licensed under Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/"
@@ -57,7 +57,7 @@ icons: [https://...]
 images:
   - src: https://...          # Direct image URL
     text: "Caption"            # Image description
-    page: https://source       # Source page URL (required)
+    link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Full license text or URL"
@@ -78,7 +78,7 @@ order: 0.0
 images:
   - src: https://...          # Direct image URL
     text: "Caption"            # Image description
-    page: https://source       # Source page URL (required)
+    link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Full license text or URL"
@@ -101,7 +101,7 @@ order: 100.0
 images:
   - src: https://...          # Direct image URL
     text: "Caption"            # Image description
-    page: https://source       # Source page URL (required)
+    link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Full license text or URL"
@@ -130,7 +130,7 @@ references:                    # REQUIRED: must cite sources
 images:
   - src: https://...          # Direct image URL
     text: "Supporting image"   # Image description
-    page: https://source       # Source page URL (required)
+    link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Full license text or URL"
@@ -200,7 +200,7 @@ Fandom wikis (Memory Alpha, Wookieepedia, etc.) block external image embedding v
 - Verify the image can be embedded (test in browser from different origin)
 - Prefer PNG/JPG over WebP for compatibility
 - Include full attribution:
-  - `page`: Source page URL (required)
+  - `link`: Source page URL (required)
   - `author`: Creator/artist name (required if known)
   - `license`: Short identifier (e.g., "CC BY-SA 4.0", "Public Domain", "Fair Use")
   - `legal`: Full license text or license URL

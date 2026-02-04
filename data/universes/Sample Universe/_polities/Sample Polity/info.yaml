@@ -6,7 +6,7 @@ tags: []
 images:
     - src: https://github.com/wolfspelz/galdev/blob/main/code/galdevweb/GaldevWeb/wwwroot/images/Index/woman-cockpit.jpg?raw=true
       text: Sample polity image
-      page: https://www.galactic-developments.de/
+      link: https://www.galactic-developments.de/
       author: Sample Artist
       license: CC BY-SA 4.0
       legal: "https://creativecommons.org/licenses/by-sa/4.0/"
