@@ -60,7 +60,8 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
    - `data/universes/{Universe}/{Civilization}/info.yaml` (include `tags: [index, new]`)
    - `data/universes/{Universe}/{Civilization}/{Metric}/info.yaml` (datapoints)
 2. Verify all files created
-3. Commit with message: "add {Civilization} civilization"
+3. Check if `.claude/settings.local.json` was modified (new permissions added during research)
+4. Commit all changes together (data files + settings if modified) with message: "add {Civilization} civilization"
 
 ## YAML Schemas Reference
 

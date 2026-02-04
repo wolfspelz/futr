@@ -17,7 +17,9 @@
       "WebFetch(domain:wiki.honor-harrington.de)",
       "WebFetch(domain:www.baen.com)",
       "WebFetch(domain:www.warhammer-community.com)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "WebFetch(domain:www.perrypedia.de)",
+      "WebFetch(domain:de.wikipedia.org)"
     ]
   }
 }
