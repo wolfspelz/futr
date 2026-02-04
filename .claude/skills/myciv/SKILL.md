@@ -45,17 +45,23 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 2. Ask user to approve or adjust values
 3. Iterate until user is satisfied
 
-### Step 5: Additional Research
-1. Find images (from Memory Alpha, wikis, official sources)
-2. **For each image, research and document:**
-   - `author`: Creator/artist name
-   - `license`: Short identifier (e.g., "CC BY-SA 4.0", "Public Domain", "Fair Use")
-   - `legal`: Full license text or license URL
-   - `page`: Source page for attribution
-3. Write descriptions for polity and civilization readme fields
-4. Gather links to official/wiki pages
-5. Ensure all info.yaml fields can be populated
-6. **Proxy images from Wikimedia/Wikipedia** if they block external embedding (see Image Proxy section below)
+### Step 5: Image Research & Attribution (REQUIRED)
+1. Find images (from Wikimedia Commons, Wikipedia, official sources)
+2. **For EVERY image, you MUST research and document all attribution fields:**
+   - `src`: Direct image URL (or `/proxy/...` path for downloaded images)
+   - `link`: Source page URL for attribution (e.g., Wikimedia Commons file page, publisher page)
+   - `author`: Creator/artist name (search for the artist - e.g., book cover artists, map creators)
+   - `license`: Short identifier (e.g., "CC BY-SA 4.0", "Public Domain", "© Publisher" for copyrighted works)
+   - `legal`: Full license text or URL (e.g., "https://creativecommons.org/licenses/by-sa/4.0/" or "Copyrighted by [Publisher]. Used for commentary under Fair Use.")
+3. **Research strategy for attribution:**
+   - Wikimedia Commons: Fetch the file page to find author and license info
+   - Book covers: Search for "[book title] cover artist" - publishers like Baen often use known artists
+   - Fan wiki images: Check the file page for upload info and licensing
+   - Official art: Note the copyright holder (studio, publisher) and use Fair Use rationale
+4. **If attribution is incomplete**, ask the user whether to: (a) add the image anyway with "Unknown" for missing fields, (b) skip the image, or (c) search for a different image
+5. Write descriptions for polity and civilization readme fields
+6. Gather links to official/wiki pages
+7. **Proxy images from Wikimedia/Wikipedia** if they block external embedding (see Image Proxy section below)
 
 ### Step 6: Implementation
 1. Create directories and info.yaml files:
@@ -98,16 +104,16 @@ title: Universe Name
 created: 2026-02-04
 changed: 2026-02-04
 tags: [index, new]  # always add 'new' tag for new universes
-tile: https://...  # image for universe tile on home page
 images:
-  - link: https://...
+  - src: https://...           # Direct image URL
     text: "Caption"
-    page: https://source-page
-    author: "Artist Name"
-    license: "CC BY-SA 4.0"
-    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
+    link: https://source-page  # Source page for attribution
+    author: "Artist Name"      # REQUIRED: Research the actual artist
+    license: "CC BY-SA 4.0"    # REQUIRED: License identifier
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"  # REQUIRED: License URL or Fair Use text
+    tags: [main]               # "main" = primary/tile image
 links:
-  - link: https://...
+  - src: https://...
     text: "Official/Wiki link"
 readme: |
   Description of the universe.
@@ -122,12 +128,13 @@ date: 2161
 polity: Polity Name
 tags: [index, new]  # always add 'new' tag for new civilizations
 images:
-  - link: https://...
+  - src: https://...           # Direct image URL
     text: "Caption"
-    page: https://source-page
-    author: "Artist Name"
-    license: "CC BY-SA 4.0"
-    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
+    link: https://source-page  # Source page for attribution
+    author: "Artist Name"      # REQUIRED: Research the actual artist
+    license: "CC BY-SA 4.0"    # REQUIRED: License identifier
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"  # REQUIRED: License URL or Fair Use text
+    tags: [main]               # "main" = primary/tile image
 readme: |
   Description of this civilization snapshot.
 ```
@@ -137,7 +144,10 @@ readme: |
 - Cross-check Kardashev against Earth 2023 (K=0.73) for sanity
 - Use existing metrics when possible before creating new ones
 - Images should be from canonical/official sources when available
-- **All images MUST have attribution** — `page`, `author` (if known), `license`, `legal`
+- **All images MUST have complete attribution** — `src`, `link`, `author`, `license`, `legal` are ALL required fields
+  - `author`: Research the actual creator (artist name, photographer, etc.) — do not skip this step
+  - `license`: Use standard identifiers like "CC BY-SA 4.0", "Public Domain", "© [Publisher]"
+  - `legal`: Provide license URL or Fair Use rationale for copyrighted works
 - **New universes and civilizations MUST have `tags: [index, new]`** — the "new" tag marks recently added content
 - **All info.yaml files MUST have `created` and `changed` dates** — use today's date for new files
 
@@ -155,16 +165,16 @@ The local path mirrors the original URL structure (preserving slashes).
 **Steps:**
 1. Create directory: `mkdir -p "data/proxy/{host}/{path}"`
 2. Download the image: `curl -L -o "data/proxy/{host}/{path}/{filename}" "{url}"`
-3. Reference with `/proxy/...` URL in the `link` field (served by ProxyController)
-4. Keep the original Wikimedia Commons page in the `page` field for attribution
+3. Reference with `/proxy/...` URL in the `src` field (served by ProxyController)
+4. Keep the original Wikimedia Commons page in the `link` field for attribution
 
 **Example:**
 ```yaml
 images:
-  - link: /proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG
     text: Map of the Honorverse
-    page: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
-    author: "Wikipedia user"
+    link: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
+    author: "Michał Świerczek"  # Research the actual author from Wikimedia Commons page
     license: "CC BY-SA 3.0"
     legal: "https://creativecommons.org/licenses/by-sa/3.0/"
 ```
