@@ -1,6 +1,7 @@
 title: Total Population
 created: 2023-09-17
 changed: 2023-10-05
+order: 0
 tags: [index]
 type: number
 unit: People

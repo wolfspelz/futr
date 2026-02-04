@@ -1,6 +1,7 @@
 title: Kardashev Rating
 created: 2023-09-17
 changed: 2023-10-05
+order: 0
 tags: [fav, index]
 type: number
 unit: Kardashev
