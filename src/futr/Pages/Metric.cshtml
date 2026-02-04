@@ -18,11 +18,13 @@
 
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Metrics</h1>
-    @foreach (var metric in Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order)) {
-        <div>
-            <a asp-page="Metric" asp-route-id="@metric.SeoName">@metric.Title</a>
-        </div>
-    }
+    <div class="my-textblock">
+        @foreach (var metric in Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order)) {
+            <div>
+                <a asp-page="Metric" asp-route-id="@metric.SeoName">@metric.Title</a>
+            </div>
+        }
+    </div>
 } else {
     <h1>@Model.Item.Title</h1>
 
