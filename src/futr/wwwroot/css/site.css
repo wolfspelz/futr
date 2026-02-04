@@ -173,22 +173,6 @@ a.my-brand-text {
     filter: invert(1) drop-shadow(1px 1px 1px rgba(0,0,0,0.7));
 }
 
-span.my-next-arrow {
-    display: inline-block;
-    width: 0.7em;
-    height: 0.7em;
-    background-image: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="256" height="256" viewBox="0 0 256 256"%3E%3Cpath fill="%23808080" d="M240 128a15.74 15.74 0 0 1-7.6 13.51L88.32 229.65a16 16 0 0 1-16.2.3A15.86 15.86 0 0 1 64 216.13V39.87a15.86 15.86 0 0 1 8.12-13.82a16 16 0 0 1 16.2.3l144.08 88.14A15.74 15.74 0 0 1 240 128Z"%2F%3E%3C%2Fsvg%3E');
-    background-size: contain;
-}
-
-span.my-up-arrow {
-    display: inline-block;
-    width: 0.7em;
-    height: 0.7em;
-    background-image: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cpath fill="currentColor" fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"%2F%3E%3C%2Fsvg%3E');
-    background-size: contain;
-}
-
 div.my-image {
     position: relative;
 }
