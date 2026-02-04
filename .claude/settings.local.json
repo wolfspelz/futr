@@ -16,7 +16,8 @@
       "WebFetch(domain:honorverse.fandom.com)",
       "WebFetch(domain:wiki.honor-harrington.de)",
       "WebFetch(domain:www.baen.com)",
-      "WebFetch(domain:www.warhammer-community.com)"
+      "WebFetch(domain:www.warhammer-community.com)",
+      "Bash(cat:*)"
     ]
   }
 }
