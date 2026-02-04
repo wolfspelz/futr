@@ -1,0 +1,27 @@
+title: Imperium of Man
+created: 2026-02-04
+changed: 2026-02-04
+order: 0
+tags: [index]
+images:
+  - src: https://wh40k.lexicanum.com/mediawiki/images/f/f1/Imperial_Eagle.jpg
+    text: The Imperial Aquila, symbol of the Imperium
+    link: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
+    author: Games Workshop
+    license: © Games Workshop
+    legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
+    tags: [main]
+links:
+  - src: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
+    text: "Imperium of Man - Lexicanum"
+  - src: https://warhammer40k.fandom.com/wiki/Imperium_of_Man
+    text: "Imperium of Man - Warhammer 40k Wiki"
+readme: |
+  The Imperium of Man is the galaxy-spanning interstellar empire ruled by the immortal
+  God-Emperor of Mankind from the Golden Throne on Terra. Founded during the Great Crusade
+  in the 30th Millennium, the Imperium is the largest and most powerful human civilization
+  in history, encompassing approximately one million worlds across the Milky Way galaxy.
+
+  The Imperium is a theocratic totalitarian state, nominally ruled by the Emperor but
+  actually governed by the High Lords of Terra and the vast bureaucracy of the Adeptus Terra.
+  It exists in a state of perpetual war against alien species, Chaos, and internal heresy.

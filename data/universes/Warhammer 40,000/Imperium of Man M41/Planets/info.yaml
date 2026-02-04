@@ -1,0 +1,26 @@
+created: 2026-02-04
+changed: 2026-02-04
+value: 1e6
+min: 5e5
+max: 1.5e6
+confidence: canon
+tags: [index]
+references:
+  - link: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
+    text: "Imperium of Man - Lexicanum"
+  - link: https://warhammer40k.fandom.com/wiki/Planets_of_Warhammer_40,000
+    text: "Planets of Warhammer 40,000 - Warhammer 40k Wiki"
+readme: |
+  The Imperium is canonically described as ruling "a million worlds" across approximately
+  two-thirds of the Milky Way galaxy. This figure is repeatedly stated in official sources.
+
+  World types include:
+  - Hive Worlds (~32,000): Dense population centers
+  - Forge Worlds: Industrial/manufacturing centers of the Adeptus Mechanicus
+  - Agri-Worlds: Agricultural production
+  - Civilised Worlds: Standard human settlements
+  - Feudal/Feral Worlds: Low-technology planets
+  - Death Worlds: Extremely hostile environments
+  - Shrine Worlds: Religious significance
+
+  The actual number fluctuates as worlds are lost to war, rediscovered, or founded.

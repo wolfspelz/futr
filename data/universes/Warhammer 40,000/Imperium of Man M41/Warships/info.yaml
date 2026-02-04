@@ -1,0 +1,34 @@
+created: 2026-02-04
+changed: 2026-02-04
+value: 5e5
+min: 2.5e5
+max: 1e6
+confidence: informedGuess
+tags: [index]
+references:
+  - link: https://wh40k.lexicanum.com/wiki/Imperial_Navy
+    text: "Imperial Navy - Lexicanum"
+  - link: https://forums.spacebattles.com/threads/size-of-the-iom-navy-warhammer-40k.129121/
+    text: "SpaceBattles - Size of the Imperial Navy"
+  - link: https://warhammer40k.fandom.com/wiki/Navis_Imperialis
+    text: "Navis Imperialis - Warhammer 40k Wiki"
+readme: |
+  The Imperial Navy (Navis Imperialis) operates hundreds of thousands of warships across
+  the galaxy. Exact numbers are deliberately vague in lore, with estimates ranging from
+  250,000 to over 1 million vessels of all classes.
+
+  Fleet composition by ship class:
+  - Battleships: 6-8 km length, billions of tons displacement
+  - Grand Cruisers: Large capital ships
+  - Cruisers: 5-6 km length, form the backbone of most fleets
+  - Escorts: 0.75-3 km length (frigates, destroyers)
+
+  The average sector fleet comprises 50-75 vessels. With roughly 10,000 sectors in the
+  Imperium, this implies a minimum of 500,000-750,000 warships.
+
+  This count excludes:
+  - Adeptus Mechanicus vessels
+  - Space Marine Chapter fleets
+  - Inquisitorial vessels
+  - Rogue Trader ships
+  - Civilian/merchant fleet

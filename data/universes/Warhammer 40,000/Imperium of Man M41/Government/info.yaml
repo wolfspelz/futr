@@ -1,0 +1,27 @@
+created: 2026-02-04
+changed: 2026-02-04
+value: Theocratic Oligarchy
+confidence: canon
+tags: [index]
+references:
+  - link: https://wh40k.lexicanum.com/wiki/Senatorum_Imperialis
+    text: "Senatorum Imperialis - Lexicanum"
+  - link: https://wh40k.lexicanum.com/wiki/Adeptus_Terra
+    text: "Adeptus Terra - Lexicanum"
+  - link: https://warhammer40k.fandom.com/wiki/High_Lords_of_Terra
+    text: "High Lords of Terra - Warhammer 40k Wiki"
+readme: |
+  The Imperium is nominally an absolute theocratic monarchy with the God-Emperor as supreme
+  ruler. In practice, since the Emperor's internment on the Golden Throne after the Horus
+  Heresy, it functions as a theocratic oligarchy.
+
+  Governing structure:
+  - The Emperor: Nominally supreme, but interred and unable to communicate directly
+  - Senatorum Imperialis: The 12 High Lords of Terra who rule in the Emperor's name
+  - Adeptus Terra: The vast bureaucratic priesthood that administers the Imperium
+  - Ecclesiarchy: The state religion (Imperial Cult) worshipping the Emperor as a god
+
+  Key institutions outside direct Adeptus Terra control:
+  - Adeptus Mechanicus: Semi-autonomous tech-priests with their own religious hierarchy
+  - Inquisition: Independent authority to act in the Emperor's name
+  - Adeptus Astartes: Space Marine Chapters with significant autonomy

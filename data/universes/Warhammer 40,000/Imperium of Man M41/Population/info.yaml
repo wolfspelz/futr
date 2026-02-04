@@ -1,0 +1,24 @@
+created: 2026-02-04
+changed: 2026-02-04
+value: 1e16
+min: 5e15
+max: 2e16
+confidence: informedGuess
+tags: [index]
+references:
+  - link: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
+    text: "Imperium of Man - Lexicanum"
+  - link: https://wh40k.lexicanum.com/wiki/Hive_World
+    text: "Hive World - Lexicanum"
+  - link: https://warhammer40k.fandom.com/wiki/Imperium_of_Man
+    text: "Imperium of Man - Warhammer 40k Wiki"
+readme: |
+  The total human population of the Imperium is estimated at 10-20 quadrillion (1-2 × 10^16).
+
+  The population is extremely unevenly distributed:
+  - ~32,000 Hive Worlds with 50 billion to 2 trillion inhabitants each (~8 × 10^15 total)
+  - ~968,000 other worlds (agri-worlds, feudal worlds, forge worlds, etc.) with much smaller populations
+
+  The Administratum does not maintain accurate census data across the entire Imperium due to
+  its vast scale and bureaucratic inefficiency. These figures are estimates based on known
+  hive world populations and extrapolation.

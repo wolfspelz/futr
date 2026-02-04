@@ -1,0 +1,27 @@
+created: 2026-02-04
+changed: 2026-02-04
+value: 1.6
+min: 1.5
+max: 1.8
+confidence: calculatedGuess
+tags: [index]
+references:
+  - link: https://forums.spacebattles.com/threads/where-does-40k-iom-sit-on-the-kardashev-scale.689194/
+    text: "SpaceBattles - Kardashev Scale Discussion"
+  - link: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
+    text: "Imperium of Man - Lexicanum"
+readme: |
+  Calculated assuming approximately 1 MW average energy consumption per person, accounting
+  for personal use, industrial output, void ship operations, and military expenditure.
+
+  Calculation:
+  - Population: 1.5 × 10^16
+  - Per capita energy: 1 × 10^6 W (1 MW)
+  - Total power: 1.5 × 10^22 W
+  - Kardashev: K = (log₁₀(1.5 × 10^22) - 6) / 10 = 1.62
+
+  The Imperium does NOT harness stellar output directly (no Dyson spheres), placing it
+  below a true Type II civilization. However, its massive industrial base across a million
+  worlds, enormous military apparatus, and warp-capable fleet represent significant energy
+  output well beyond planetary scale. The Imperium at 1 MW
+  per capita represents ~430× Earth's current per-capita energy consumption.

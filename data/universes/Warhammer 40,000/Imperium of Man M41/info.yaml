@@ -1,0 +1,35 @@
+title: Imperium of Man M41
+created: 2026-02-04
+changed: 2026-02-04
+order: 0
+date: 41000
+polity: Imperium of Man
+tags: [index, new]
+images:
+  - src: https://wh40k.lexicanum.com/mediawiki/images/e/e8/God-Emperor.jpg
+    text: The God-Emperor entombed upon the Golden Throne
+    link: https://wh40k.lexicanum.com/wiki/Emperor_of_Mankind
+    author: John Blanche
+    license: © Games Workshop
+    legal: Copyrighted artwork by John Blanche for Games Workshop. Used for commentary and educational purposes under Fair Use.
+    tags: [main]
+  - src: https://wh40k.lexicanum.com/mediawiki/images/3/35/ImperiumMap7th.jpg
+    text: Map of the Imperium before the Great Rift
+    link: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
+    author: Games Workshop
+    license: © Games Workshop
+    legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
+links:
+  - src: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
+    text: "Imperium of Man - Lexicanum"
+readme: |
+  The Imperium of Man at the end of the 41st Millennium (circa 999.M41), representing the
+  classic "grimdark" setting of Warhammer 40,000. The God-Emperor has been interred on the
+  Golden Throne for over 10,000 years, kept alive only by the daily sacrifice of thousands
+  of psykers. The High Lords of Terra rule in His name while the Imperium faces existential
+  threats from all sides: the forces of Chaos, Ork WAAAGH!s, Tyranid hive fleets, Necron
+  awakening, and countless other xenos species.
+
+  This era represents the Imperium at its most desperate—technologically stagnant, spiritually
+  fanatical, and stretched impossibly thin across a million worlds. The Astronomican still
+  shines, but the Time of Ending approaches.
