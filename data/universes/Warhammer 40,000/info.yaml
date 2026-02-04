@@ -4,11 +4,11 @@ changed: 2026-02-04
 order: 0
 tags: [index, new]
 showcaseMetrics: [Population, Planets, Government]
-tile: https://assets.warhammer-community.com/warhammer40000.png
+tile: https://assets.warhammer-community.com/sm-desktop.jpg
 images:
-  - link: https://assets.warhammer-community.com/warhammer40000.png
-    text: Warhammer 40,000 logo
-    page: https://www.warhammer-community.com/press-room/logos/
+  - link: https://assets.warhammer-community.com/sm-desktop.jpg
+    text: Space Marines wallpaper
+    page: https://www.warhammer-community.com/en-gb/articles/omgjr6bi/warhammer-40000-and-warhammer-age-of-sigmar-wallpapers/
 links:
   - link: https://warhammer40000.com/
     text: "Official Website"
