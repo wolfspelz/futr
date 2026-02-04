@@ -20,7 +20,10 @@
       "Bash(cat:*)",
       "WebFetch(domain:www.perrypedia.de)",
       "WebFetch(domain:de.wikipedia.org)",
-      "WebFetch(domain:www.deviantart.com)"
+      "WebFetch(domain:www.deviantart.com)",
+      "WebFetch(domain:mythcreants.com)",
+      "Bash(code --command workbench.action.debug.start:*)",
+      "WebFetch(domain:40k.gallery)"
     ]
   }
 }
