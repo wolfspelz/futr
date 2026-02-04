@@ -47,10 +47,15 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 
 ### Step 5: Additional Research
 1. Find images (from Memory Alpha, wikis, official sources)
-2. Write descriptions for polity and civilization readme fields
-3. Gather links to official/wiki pages
-4. Ensure all info.yaml fields can be populated
-5. **Proxy images from Wikimedia/Wikipedia** if they block external embedding (see Image Proxy section below)
+2. **For each image, research and document:**
+   - `author`: Creator/artist name
+   - `license`: Short identifier (e.g., "CC BY-SA 4.0", "Public Domain", "Fair Use")
+   - `legal`: Full license text or license URL
+   - `page`: Source page for attribution
+3. Write descriptions for polity and civilization readme fields
+4. Gather links to official/wiki pages
+5. Ensure all info.yaml fields can be populated
+6. **Proxy images from Wikimedia/Wikipedia** if they block external embedding (see Image Proxy section below)
 
 ### Step 6: Implementation
 1. Create directories and info.yaml files:
@@ -98,6 +103,9 @@ images:
   - link: https://...
     text: "Caption"
     page: https://source-page
+    author: "Artist Name"
+    license: "CC BY-SA 4.0"
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
 links:
   - link: https://...
     text: "Official/Wiki link"
@@ -117,6 +125,9 @@ images:
   - link: https://...
     text: "Caption"
     page: https://source-page
+    author: "Artist Name"
+    license: "CC BY-SA 4.0"
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
 readme: |
   Description of this civilization snapshot.
 ```
@@ -126,6 +137,7 @@ readme: |
 - Cross-check Kardashev against Earth 2023 (K=0.73) for sanity
 - Use existing metrics when possible before creating new ones
 - Images should be from canonical/official sources when available
+- **All images MUST have attribution** — `page`, `author` (if known), `license`, `legal`
 - **New universes and civilizations MUST have `tags: [index, new]`** — the "new" tag marks recently added content
 - **All info.yaml files MUST have `created` and `changed` dates** — use today's date for new files
 
@@ -152,4 +164,7 @@ images:
   - link: /proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG
     text: Map of the Honorverse
     page: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
+    author: "Wikipedia user"
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
 ```

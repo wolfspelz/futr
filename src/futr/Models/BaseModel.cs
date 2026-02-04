@@ -71,6 +71,9 @@ public class BaseModel
                     image.Link = imageNode["link"].AsString;
                     image.Text = imageNode["text"].AsString;
                     image.Page = imageNode["page"].AsString;
+                    image.Author = imageNode["author"].AsString;
+                    image.License = imageNode["license"].AsString;
+                    image.Legal = imageNode["legal"].AsString;
                 } else {
                     image.Link = imageNode.AsString;
                 }

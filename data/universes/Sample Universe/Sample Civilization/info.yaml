@@ -1,4 +1,11 @@
 created: 2023-10-19
-changed: 2023-10-19
+changed: 2026-02-04
 order: 0
 date: 2550
+images:
+    - link: https://github.com/wolfspelz/galdev/blob/main/code/galdevweb/GaldevWeb/wwwroot/images/Index/woman-cockpit.jpg?raw=true
+      text: Sample civilization image
+      page: https://www.galactic-developments.de/
+      author: Sample Artist
+      license: CC BY-SA 4.0
+      legal: "https://creativecommons.org/licenses/by-sa/4.0/"

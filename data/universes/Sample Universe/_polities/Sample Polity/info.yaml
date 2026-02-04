@@ -1,12 +1,15 @@
 title: Sample Polity
 created: 2026-01-29
-changed: 2026-01-29
+changed: 2026-02-04
 order: 0
 tags: []
-# images:
-#     - link: {Image URL}
-#       text: {Image caption incl. copyright}
-#       page: {Image source page}
+images:
+    - link: https://github.com/wolfspelz/galdev/blob/main/code/galdevweb/GaldevWeb/wwwroot/images/Index/woman-cockpit.jpg?raw=true
+      text: Sample polity image
+      page: https://www.galactic-developments.de/
+      author: Sample Artist
+      license: CC BY-SA 4.0
+      legal: "https://creativecommons.org/licenses/by-sa/4.0/"
 # links:
 #     - link: {Page URL}
 #       text: {Link text}

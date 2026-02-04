@@ -30,9 +30,12 @@ order: 0.0                     # Sort order (lower = earlier)
 tile: https://example.com/img  # Main image URL
 icons: [https://...]           # Icon URLs
 images:
-  - link: https://...
-    text: "Caption"
-    page: https://source
+  - link: https://...          # Direct image URL
+    text: "Caption"            # Image description
+    page: https://source       # Source page URL (required)
+    author: "Artist Name"      # Creator/artist (required if known)
+    license: "CC BY-SA 4.0"    # Short license identifier
+    legal: "Licensed under Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/"
 links:
   - link: https://...
     text: "Link text"
@@ -53,9 +56,12 @@ tile: https://...
 showcaseMetrics: [Population, Planets, Kardashev]  # Metrics shown in tables
 icons: [https://...]
 images:
-  - link: https://...
-    text: "Caption"
-    page: https://source
+  - link: https://...          # Direct image URL
+    text: "Caption"            # Image description
+    page: https://source       # Source page URL (required)
+    author: "Artist Name"      # Creator/artist (required if known)
+    license: "CC BY-SA 4.0"    # Short license identifier
+    legal: "Full license text or URL"
 links:
   - link: https://official-site.com
     text: "Official Website"
@@ -70,8 +76,12 @@ title: Federation of Planets
 tags: [index]
 order: 0.0
 images:
-  - link: https://...
-    text: "Caption"
+  - link: https://...          # Direct image URL
+    text: "Caption"            # Image description
+    page: https://source       # Source page URL (required)
+    author: "Artist Name"      # Creator/artist (required if known)
+    license: "CC BY-SA 4.0"    # Short license identifier
+    legal: "Full license text or URL"
 links:
   - link: https://...
     text: "Wiki link"
@@ -88,8 +98,12 @@ polity: Federation of Planets  # Reference to polity folder name (optional)
 tags: [index, fav]
 order: 100.0
 images:
-  - link: https://...
-    text: "Caption"
+  - link: https://...          # Direct image URL
+    text: "Caption"            # Image description
+    page: https://source       # Source page URL (required)
+    author: "Artist Name"      # Creator/artist (required if known)
+    license: "CC BY-SA 4.0"    # Short license identifier
+    legal: "Full license text or URL"
 links:
   - link: https://...
     text: "Link text"
@@ -112,8 +126,12 @@ references:                    # REQUIRED: must cite sources
   - link: https://memory-alpha.fandom.com/...
     text: "Memory Alpha"
 images:
-  - link: https://...
-    text: "Supporting image"
+  - link: https://...          # Direct image URL
+    text: "Supporting image"   # Image description
+    page: https://source       # Source page URL (required)
+    author: "Artist Name"      # Creator/artist (required if known)
+    license: "CC BY-SA 4.0"    # Short license identifier
+    legal: "Full license text or URL"
 editors: [github_username]
 readme: |
   Explain HOW the value was derived.
@@ -161,7 +179,7 @@ readme: |
 - Calculations should be shown in readme
 - Uncertainty should be reflected in min/max and confidence level
 - Use consistent units across the project
-- Images should have proper attribution (text + page fields)
+- Images should have proper attribution (page, author, license, legal fields)
 
 ### Image Sources
 Fandom wikis (Memory Alpha, Wookieepedia, etc.) block external image embedding via CSP headers. **Do NOT use Fandom image URLs** for `tile`, `icons`, or `images` fields.
@@ -178,7 +196,11 @@ Fandom wikis (Memory Alpha, Wookieepedia, etc.) block external image embedding v
 **Always:**
 - Verify the image can be embedded (test in browser from different origin)
 - Prefer PNG/JPG over WebP for compatibility
-- Include `page` field linking to the source page for attribution
+- Include full attribution:
+  - `page`: Source page URL (required)
+  - `author`: Creator/artist name (required if known)
+  - `license`: Short identifier (e.g., "CC BY-SA 4.0", "Public Domain", "Fair Use")
+  - `legal`: Full license text or license URL
 
 **Fandom wikis are fine for:**
 - `links` and `references` fields (text links, not embedded images)
