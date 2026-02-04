@@ -36,8 +36,8 @@
     Text = ""
     + $"<p>\n"
     + $"<span>Value</span>: <span>{datapoint.Value}</span><br/>\n"
-    + $"<span>Min</span>: <span>{datapoint.Min}</span><br/>\n"
-    + $"<span>Max</span>: <span>{datapoint.Max}</span><br/>\n"
+    + (string.IsNullOrEmpty(datapoint.Min) ? "" : $"<span>Min</span>: <span>{datapoint.Min}</span><br/>\n")
+    + (string.IsNullOrEmpty(datapoint.Max) ? "" : $"<span>Max</span>: <span>{datapoint.Max}</span><br/>\n")
     + $"<span>Confidence</span>: <span>{datapoint.Confidence}</span>\n"
     + $"</p>\n"
     + (datapoint.References.Count() < 1 ? "" : "<p>\n<span>References</span>:\n<ul>\n" + string.Join("", datapoint.References.Select(x => $"<li><a href='{x.Link}''>{x.Text}</a></li>\n").ToArray()) + "</ul>\n</p>\n")
