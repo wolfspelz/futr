@@ -4,7 +4,7 @@
     @if (string.IsNullOrEmpty(Model.Id)) {
         ViewData["Title"] = "Universes";
         ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - All Universes";
-        ViewData["MetaDescription"] = "Universes include: " + string.Join(", ", Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order).Select(x => x.Title).ToArray());
+        ViewData["MetaDescription"] = "Universes include: " + string.Join(", ", Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Title).Select(x => x.Title).ToArray());
         ViewData["MetaImage"] = "/images/cover.jpg";
         ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
     } else {
@@ -19,7 +19,7 @@
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Universes</h1>
 
-    @foreach (var universe in Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order)) {
+    @foreach (var universe in Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Title)) {
         <div class="my-tile">
             <a asp-page="Universe" asp-route-id="@universe.SeoName"><img src="@(string.IsNullOrEmpty(universe.Tile) ? "/images/universe-default-tile.jpg": universe.Tile)" /></a>
             <div class="my-title">
