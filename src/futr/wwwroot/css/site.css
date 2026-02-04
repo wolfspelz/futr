@@ -4,7 +4,7 @@
     --main-text-box-color: rgba(255,255,255,0.5);
     --main-link-hilite-color: #000000;
     --main-link-box-color: rgba(255,255,255,0.4);
-    --main-link-underline-color: rgba(0,0,0,0.3);
+    --main-link-underline-color: rgba(0,100,180,0.4);
     --main-link-hilite-box-color: rgba(255,255,255,0.5);
     --main-bg-color: #ffffff;
 }
@@ -97,9 +97,11 @@ a {
     background-color: var(--main-link-box-color);
 }
 
-.my-main a {
+.my-main a,
+.my-footer a {
     text-decoration: underline;
     text-decoration-color: var(--main-link-underline-color);
+    text-underline-offset: 2px;
     background-color: unset;
 }
 
