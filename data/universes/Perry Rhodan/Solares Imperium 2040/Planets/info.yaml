@@ -1,0 +1,24 @@
+created: 2026-02-04
+changed: 2026-02-04
+value: 6
+min: 5
+max: 8
+confidence: informedGuess
+references:
+  - link: https://www.perrypedia.de/wiki/Solares_Imperium
+    text: Perrypedia - Solares Imperium
+readme: |
+  Besiedelte Welten im Jahr 2040:
+
+  Solsystem:
+  - Terra (Erde)
+  - Mars
+  - Venus
+  - Jupitermonde (diverse)
+
+  Interstellare Kolonien (weit von Terra entfernt, um die Position der Erde geheim zu halten):
+  - Siga (seit 2003)
+  - Ertrus (seit 2026)
+  - Plophos (seit 2028)
+
+  Epsal wird erst 2045 besiedelt.

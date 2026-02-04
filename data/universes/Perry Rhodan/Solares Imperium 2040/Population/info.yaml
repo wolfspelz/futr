@@ -1,0 +1,17 @@
+created: 2026-02-04
+changed: 2026-02-04
+value: 9e9
+min: 8e9
+max: 10e9
+confidence: informedGuess
+references:
+  - link: https://www.perrypedia.de/wiki/Solares_Imperium
+    text: Perrypedia - Solares Imperium
+  - link: https://www.perrypedia.de/wiki/Terra
+    text: Perrypedia - Terra
+readme: |
+  Geschätzt basierend auf realer Weltbevölkerungsprognose für 2040 (~9 Mrd).
+
+  Unter der vereinten Weltregierung seit 1982 und mit arkonidischer Technologie herrschen stabile, friedliche Bedingungen, die das Bevölkerungswachstum fördern.
+
+  Hinzu kommen einige zehntausend Siedler auf den Kolonien Siga (seit 2003), Ertrus (seit 2026) und Plophos (seit 2028) sowie auf Mars, Venus und den Jupitermonden.
