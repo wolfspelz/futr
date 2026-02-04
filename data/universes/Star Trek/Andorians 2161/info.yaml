@@ -9,15 +9,27 @@ images:
   - src: https://upload.wikimedia.org/wikipedia/commons/0/03/StarTrek.Andorian.01.jpg
     text: "Andorian at Star Trek Experience"
     link: https://commons.wikimedia.org/wiki/File:StarTrek.Andorian.01.jpg
+    author: Unknown
+    license: CC BY 2.0
+    legal: "Licensed under Creative Commons Attribution 2.0: https://creativecommons.org/licenses/by/2.0/"
   - src: https://upload.wikimedia.org/wikipedia/commons/a/ab/Fictional_Planet_Andoria.png
     text: "Artist's impression of the planet Andoria"
     link: https://commons.wikimedia.org/wiki/File:Fictional_Planet_Andoria.png
+    author: Wikipedia user Tdadamemd
+    license: CC BY-SA 3.0
+    legal: "Licensed under Creative Commons Attribution-ShareAlike 3.0: https://creativecommons.org/licenses/by-sa/3.0/"
   - src: https://upload.wikimedia.org/wikipedia/commons/7/7c/Andorian_Flag.svg
     text: "Andorian flag as depicted in Star Trek: Discovery"
     link: https://commons.wikimedia.org/wiki/File:Andorian_Flag.svg
+    author: Shisma
+    license: CC BY-SA 4.0
+    legal: "Licensed under Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/"
   - src: https://upload.wikimedia.org/wikipedia/commons/b/b0/Noun_Andorian_14247.svg
     text: "Andorian species silhouette"
     link: https://commons.wikimedia.org/wiki/File:Noun_Andorian_14247.svg
+    author: The Noun Project
+    license: CC BY 3.0
+    legal: "Licensed under Creative Commons Attribution 3.0: https://creativecommons.org/licenses/by/3.0/"
 links:
   - src: https://memory-alpha.fandom.com/wiki/Andorian_history
     text: "Memory Alpha - Andorian History"

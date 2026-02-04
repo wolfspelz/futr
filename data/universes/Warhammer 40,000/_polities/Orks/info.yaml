@@ -7,15 +7,27 @@ images:
   - src: https://assets.warhammer-community.com/articles/3f4b8f62-4868-4f77-ba82-0485dbe02395/fec57fwytce4xdle.jpg
     text: Ork Boyz
     link: https://www.warhammer-community.com/en-gb/articles/7cJUmBPc/warhammer-40000-faction-focus-orks/
+    author: Games Workshop
+    license: © Games Workshop
+    legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
   - src: https://wh40k.lexicanum.com/mediawiki/images/b/ba/OrkMob.jpg
     text: An Ork Mob
     link: https://wh40k.lexicanum.com/wiki/Ork
+    author: Games Workshop
+    license: © Games Workshop
+    legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
   - src: https://wh40k.lexicanum.com/mediawiki/images/b/bd/OrksvsBAClean.jpg
     text: Orks battle Blood Angels Space Marines
     link: https://wh40k.lexicanum.com/wiki/Ork
+    author: Games Workshop
+    license: © Games Workshop
+    legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
   - src: https://wh40k.lexicanum.com/mediawiki/images/f/fa/BattlewagonArt.jpg
     text: Ork Battlewagon
     link: https://wh40k.lexicanum.com/wiki/Ork
+    author: Games Workshop
+    license: © Games Workshop
+    legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
 links:
   - src: https://wh40k.lexicanum.com/wiki/Ork
     text: "Ork - Lexicanum"

@@ -9,9 +9,17 @@ icons:
 images:
     - src: https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg
       text: The iconic starship
+      link: https://www.popularmechanics.com/
+      author: CBS/Paramount
+      license: © Paramount Global
+      legal: Copyrighted by Paramount Global. Used for commentary and educational purposes under Fair Use.
       tags: [main]
     - src: https://images.prismic.io/star-trek-untold/YTc3NDMxMGUtNjI2ZC00OGRmLWEwNDgtOTBjOTc4NjY1NDlj_st_quiz_header_which_captain_are_you_01_option1.jpg
       text: Captains
+      link: https://www.startrek.com/
+      author: CBS/Paramount
+      license: © Paramount Global
+      legal: Copyrighted by Paramount Global. Used for commentary and educational purposes under Fair Use.
 links:
     - src: https://www.startrek.com/en-un
       text: Official website
