@@ -6,7 +6,7 @@ polity: Solares Imperium
 tags: [index, new]
 order: 0
 links:
-  - src: https://www.perrypedia.de/wiki/Der_Einsame_der_Zeit
+  - link: https://www.perrypedia.de/wiki/Der_Einsame_der_Zeit
     text: "Perrypedia: Der Einsame der Zeit (Heft 50)"
 readme: |
   Das Solare Imperium im Jahr 2040, zum Zeitpunkt von Atlans Erwachen aus 69-jährigem Tiefschlaf (Perry Rhodan Heft 50, "Der Einsame der Zeit").

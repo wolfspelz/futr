@@ -15,9 +15,9 @@ images:
     - https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Kerncentrale_Doel_in_werking.jpg/520px-Kerncentrale_Doel_in_werking.jpg
     - https://upload.wikimedia.org/wikipedia/en/e/e6/JointEuropeanTorus_internal.jpg
 links:
-    - src: https://tvtropes.org/pmwiki/pmwiki.php/Main/RealLife
+    - link: https://tvtropes.org/pmwiki/pmwiki.php/Main/RealLife
       text: RealLife (tvtropes)
-    - src: https://en.wikipedia.org/wiki/Human
+    - link: https://en.wikipedia.org/wiki/Human
       text: Human (Wikipedia)
 editors: [wolfspelz]
 showcaseMetrics: [Population, Kardashev]

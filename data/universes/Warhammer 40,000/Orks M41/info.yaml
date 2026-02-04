@@ -25,7 +25,7 @@ images:
     license: © Games Workshop
     legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
 links:
-  - src: https://wh40k.lexicanum.com/wiki/Ork
+  - link: https://wh40k.lexicanum.com/wiki/Ork
     text: "Ork - Lexicanum"
 readme: |
   The Orks in the 41st Millennium are the most numerous sapient species in the galaxy, scattered

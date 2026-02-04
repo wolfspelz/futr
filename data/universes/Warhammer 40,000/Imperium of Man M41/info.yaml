@@ -20,7 +20,7 @@ images:
     license: © Games Workshop
     legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
 links:
-  - src: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
+  - link: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
     text: "Imperium of Man - Lexicanum"
 readme: |
   The Imperium of Man at the end of the 41st Millennium (circa 999.M41), representing the

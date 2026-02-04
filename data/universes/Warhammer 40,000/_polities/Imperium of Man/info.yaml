@@ -12,9 +12,9 @@ images:
     legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
     tags: [main]
 links:
-  - src: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
+  - link: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
     text: "Imperium of Man - Lexicanum"
-  - src: https://warhammer40k.fandom.com/wiki/Imperium_of_Man
+  - link: https://warhammer40k.fandom.com/wiki/Imperium_of_Man
     text: "Imperium of Man - Warhammer 40k Wiki"
 readme: |
   The Imperium of Man is the galaxy-spanning interstellar empire ruled by the immortal

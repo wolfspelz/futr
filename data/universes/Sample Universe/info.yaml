@@ -16,8 +16,8 @@ images:
       license: CC BY-SA 4.0
       legal: "Licensed under Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/"
 links:
-    - src: https://www.galactic-developments.de/
+    - link: https://www.galactic-developments.de/
       text: Official website
-    - src: https://www.galactic-developments.de/Timeline/supernova-3308-Supernova
+    - link: https://www.galactic-developments.de/Timeline/supernova-3308-Supernova
       text: "Supernova: literally a hilite event"
 editors: [wolfspelz]

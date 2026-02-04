@@ -29,9 +29,9 @@ images:
     license: © Games Workshop
     legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
 links:
-  - src: https://wh40k.lexicanum.com/wiki/Ork
+  - link: https://wh40k.lexicanum.com/wiki/Ork
     text: "Ork - Lexicanum"
-  - src: https://warhammer40k.fandom.com/wiki/Orks
+  - link: https://warhammer40k.fandom.com/wiki/Orks
     text: "Orks - Warhammer 40k Wiki"
 readme: |
   The Orks are a savage, warlike, green-skinned species possessing traits of both animals and fungi.

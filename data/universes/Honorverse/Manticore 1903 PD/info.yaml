@@ -13,9 +13,9 @@ images:
     license: © Baen Books
     legal: Copyrighted book cover art by David Mattingly for Baen Books. Used for commentary and educational purposes under Fair Use.
 links:
-  - src: https://honorverse.fandom.com/wiki/Timeline
+  - link: https://honorverse.fandom.com/wiki/Timeline
     text: Honorverse Timeline
-  - src: https://en.wikipedia.org/wiki/The_Honor_of_the_Queen
+  - link: https://en.wikipedia.org/wiki/The_Honor_of_the_Queen
     text: Wikipedia - The Honor of the Queen
 readme: |
   The Star Kingdom of Manticore during the events of "The Honor of the Queen" (1903 PD),

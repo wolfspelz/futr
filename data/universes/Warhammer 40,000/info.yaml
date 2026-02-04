@@ -31,9 +31,9 @@ images:
     license: © Games Workshop
     legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
 links:
-  - src: https://warhammer40000.com/
+  - link: https://warhammer40000.com/
     text: "Official Website"
-  - src: https://wh40k.lexicanum.com/wiki/Main_Page
+  - link: https://wh40k.lexicanum.com/wiki/Main_Page
     text: "Lexicanum Wiki"
 readme: |
   Warhammer 40,000 is a tabletop miniature wargame created by Games Workshop, set in a dystopian

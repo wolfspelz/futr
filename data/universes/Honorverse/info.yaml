@@ -24,11 +24,11 @@ images:
     license: CC BY-SA 3.0
     legal: "Licensed under Creative Commons Attribution-ShareAlike 3.0: https://creativecommons.org/licenses/by-sa/3.0/"
 links:
-  - src: https://www.baen.com/allbooks/category/index/id/2044
+  - link: https://www.baen.com/allbooks/category/index/id/2044
     text: Baen Books - Honor Harrington Series
-  - src: https://honorverse.fandom.com/
+  - link: https://honorverse.fandom.com/
     text: Honorverse Wiki
-  - src: https://en.wikipedia.org/wiki/Honorverse
+  - link: https://en.wikipedia.org/wiki/Honorverse
     text: Wikipedia - Honorverse
 showcaseMetrics: [Population, Planets, Kardashev, Warships]
 readme: |

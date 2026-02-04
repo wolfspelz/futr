@@ -31,7 +31,7 @@ images:
     license: CC BY 3.0
     legal: "Licensed under Creative Commons Attribution 3.0: https://creativecommons.org/licenses/by/3.0/"
 links:
-  - src: https://memory-alpha.fandom.com/wiki/Andorian_history
+  - link: https://memory-alpha.fandom.com/wiki/Andorian_history
     text: "Memory Alpha - Andorian History"
 readme: |
   The Andorian Empire at the founding of the United Federation of Planets.

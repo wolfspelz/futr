@@ -11,9 +11,9 @@ images:
     license: CC BY 2.0
     legal: "Licensed under Creative Commons Attribution 2.0: https://creativecommons.org/licenses/by/2.0/"
 links:
-  - src: https://memory-alpha.fandom.com/wiki/Andorian
+  - link: https://memory-alpha.fandom.com/wiki/Andorian
     text: "Memory Alpha - Andorian"
-  - src: https://memory-alpha.fandom.com/wiki/Andorian_Empire
+  - link: https://memory-alpha.fandom.com/wiki/Andorian_Empire
     text: "Memory Alpha - Andorian Empire"
 readme: |
   A constitutional monarchy of blue-skinned, antenna-bearing humanoids from the

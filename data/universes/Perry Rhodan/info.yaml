@@ -4,11 +4,11 @@ changed: 2026-02-04
 tags: [index, new]
 order: 500
 links:
-  - src: https://www.perrypedia.de/
+  - link: https://www.perrypedia.de/
     text: Perrypedia (Wiki)
-  - src: https://perry-rhodan.net/
+  - link: https://perry-rhodan.net/
     text: Official Website
-  - src: https://en.wikipedia.org/wiki/Perry_Rhodan
+  - link: https://en.wikipedia.org/wiki/Perry_Rhodan
     text: Wikipedia
 readme: |
   Perry Rhodan ist eine deutsche Science-Fiction-Serie, die seit dem 8. September 1961 wöchentlich erscheint. Mit über 2 Milliarden verkauften Heften weltweit ist sie die erfolgreichste SF-Buchreihe der Welt.

@@ -21,9 +21,9 @@ images:
       license: © Paramount Global
       legal: Copyrighted by Paramount Global. Used for commentary and educational purposes under Fair Use.
 links:
-    - src: https://www.startrek.com/en-un
+    - link: https://www.startrek.com/en-un
       text: Official website
-    - src: https://en.wikipedia.org/wiki/Star_Trek
+    - link: https://en.wikipedia.org/wiki/Star_Trek
       text: Star Trek on Wikipedia
 editors: [wolfspelz]
 showcaseMetrics: [Planets, Kardashev]
