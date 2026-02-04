@@ -6,13 +6,13 @@ date: 1903
 polity: Star Kingdom of Manticore
 tags: [index, new]
 images:
-  - link: https://www.baen.com/media/catalog/product/0/7/0743435729-med.jpg
+  - src: https://www.baen.com/media/catalog/product/0/7/0743435729-med.jpg
     text: The Honor of the Queen book cover
     page: https://www.baen.com/the-honor-of-the-queen.html
 links:
-  - link: https://honorverse.fandom.com/wiki/Timeline
+  - src: https://honorverse.fandom.com/wiki/Timeline
     text: Honorverse Timeline
-  - link: https://en.wikipedia.org/wiki/The_Honor_of_the_Queen
+  - src: https://en.wikipedia.org/wiki/The_Honor_of_the_Queen
     text: Wikipedia - The Honor of the Queen
 readme: |
   The Star Kingdom of Manticore during the events of "The Honor of the Queen" (1903 PD),

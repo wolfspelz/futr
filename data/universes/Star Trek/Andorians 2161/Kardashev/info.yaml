@@ -6,11 +6,11 @@ min: 0.85
 max: 0.95
 confidence: calculatedGuess
 references:
-  - link: https://memory-alpha.fandom.com/wiki/Andorian
+  - src: https://memory-alpha.fandom.com/wiki/Andorian
     text: "Memory Alpha - Andorian"
-  - link: https://www.ex-astris-scientia.org/inconsistencies/22nd-cent-tech.htm
+  - src: https://www.ex-astris-scientia.org/inconsistencies/22nd-cent-tech.htm
     text: "Ex Astris Scientia - 22nd Century Technology"
-  - link: https://en.wikipedia.org/wiki/Kardashev_scale
+  - src: https://en.wikipedia.org/wiki/Kardashev_scale
     text: "Wikipedia - Kardashev Scale"
 readme: |
   Estimated Kardashev level for a warp-capable civilization with ~1000 years of

@@ -29,7 +29,7 @@ tags: [index, fav]             # index=show in index, fav=featured
 order: 0.0                     # Sort order (lower = earlier)
 icons: [https://...]           # Icon URLs
 images:
-  - link: https://...          # Direct image URL
+  - src: https://...          # Direct image URL
     text: "Caption"            # Image description
     page: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
@@ -37,10 +37,10 @@ images:
     legal: "Licensed under Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/"
     tags: [main]               # "main" = primary/tile image for lists
 links:
-  - link: https://...
+  - src: https://...
     text: "Link text"
 references:
-  - link: https://...
+  - src: https://...
     text: "Reference text"
 editors: [github_username]
 readme: |
@@ -55,7 +55,7 @@ order: -1000                   # Negative = sort earlier
 showcaseMetrics: [Population, Planets, Kardashev]  # Metrics shown in tables
 icons: [https://...]
 images:
-  - link: https://...          # Direct image URL
+  - src: https://...          # Direct image URL
     text: "Caption"            # Image description
     page: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
@@ -76,7 +76,7 @@ title: Federation of Planets
 tags: [index]
 order: 0.0
 images:
-  - link: https://...          # Direct image URL
+  - src: https://...          # Direct image URL
     text: "Caption"            # Image description
     page: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
@@ -84,7 +84,7 @@ images:
     legal: "Full license text or URL"
     tags: [main]               # "main" = primary/tile image for lists
 links:
-  - link: https://...
+  - src: https://...
     text: "Wiki link"
 editors: [github_username]
 readme: |
@@ -99,7 +99,7 @@ polity: Federation of Planets  # Reference to polity folder name (optional)
 tags: [index, fav]
 order: 100.0
 images:
-  - link: https://...          # Direct image URL
+  - src: https://...          # Direct image URL
     text: "Caption"            # Image description
     page: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
@@ -107,7 +107,7 @@ images:
     legal: "Full license text or URL"
     tags: [main]               # "main" = primary/tile image for lists
 links:
-  - link: https://...
+  - src: https://...
     text: "Link text"
 editors: [github_username]
 readme: |
@@ -128,7 +128,7 @@ references:                    # REQUIRED: must cite sources
   - link: https://memory-alpha.fandom.com/...
     text: "Memory Alpha"
 images:
-  - link: https://...          # Direct image URL
+  - src: https://...          # Direct image URL
     text: "Supporting image"   # Image description
     page: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)

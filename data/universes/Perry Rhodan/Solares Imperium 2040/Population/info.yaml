@@ -5,9 +5,9 @@ min: 8e9
 max: 10e9
 confidence: informedGuess
 references:
-  - link: https://www.perrypedia.de/wiki/Solares_Imperium
+  - src: https://www.perrypedia.de/wiki/Solares_Imperium
     text: Perrypedia - Solares Imperium
-  - link: https://www.perrypedia.de/wiki/Terra
+  - src: https://www.perrypedia.de/wiki/Terra
     text: Perrypedia - Terra
 readme: |
   Geschätzt basierend auf realer Weltbevölkerungsprognose für 2040 (~9 Mrd).

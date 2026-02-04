@@ -6,9 +6,9 @@ min: 5e9
 max: 11e9
 confidence: informedGuess
 references:
-  - link: https://memory-beta.fandom.com/wiki/Andorian_Empire
+  - src: https://memory-beta.fandom.com/wiki/Andorian_Empire
     text: "Memory Beta - Andorian Empire"
-  - link: https://wiki.fed-space.com/index.php?title=Andoria
+  - src: https://wiki.fed-space.com/index.php?title=Andoria
     text: "Federation Space Wiki - Andoria"
 readme: |
   No canon population figure exists. Non-canon sources cite ranges of 5-11 billion.

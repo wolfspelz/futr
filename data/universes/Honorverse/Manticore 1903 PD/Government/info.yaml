@@ -4,9 +4,9 @@ order: 0
 value: Constitutional Monarchy
 confidence: canon
 references:
-  - link: https://honorverse.fandom.com/wiki/Star_Kingdom_of_Manticore
+  - src: https://honorverse.fandom.com/wiki/Star_Kingdom_of_Manticore
     text: Honorverse Wiki - Star Kingdom of Manticore
-  - link: https://honorverse.fandom.com/wiki/Parliament_of_Manticore
+  - src: https://honorverse.fandom.com/wiki/Parliament_of_Manticore
     text: Honorverse Wiki - Parliament of Manticore
 readme: |
   The Star Kingdom operates as a constitutional monarchy established in 1485 PD

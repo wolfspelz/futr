@@ -4,7 +4,7 @@ changed: 2026-02-04
 order: 0
 tags: [index]
 links:
-  - link: https://honorverse.fandom.com/wiki/Star_Kingdom_of_Manticore
+  - src: https://honorverse.fandom.com/wiki/Star_Kingdom_of_Manticore
     text: Honorverse Wiki - Star Kingdom of Manticore
 readme: |
   A constitutional monarchy founded in 1485 PD in the Manticore Binary System, located

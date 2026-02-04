@@ -4,9 +4,9 @@ order: 0
 value: Tribal Kratocracy
 confidence: canon
 references:
-  - link: https://wh40k.lexicanum.com/wiki/Ork
+  - src: https://wh40k.lexicanum.com/wiki/Ork
     text: "Ork - Lexicanum"
-  - link: https://warhammer40k.fandom.com/wiki/Orks
+  - src: https://warhammer40k.fandom.com/wiki/Orks
     text: "Orks - Warhammer 40k Wiki"
 readme: |
   Ork society is governed by a simple principle: might makes right. The biggest, strongest Ork leads

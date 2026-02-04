@@ -5,23 +5,23 @@ order: 0
 tags: [index, new]
 showcaseMetrics: [Population, Planets, Government]
 images:
-  - link: https://assets.warhammer-community.com/sm-desktop.jpg
+  - src: https://assets.warhammer-community.com/sm-desktop.jpg
     text: Space Marines wallpaper
     page: https://www.warhammer-community.com/en-gb/articles/omgjr6bi/warhammer-40000-and-warhammer-age-of-sigmar-wallpapers/
     tags: [main]
-  - link: https://wh40k.lexicanum.com/mediawiki/images/d/dd/Horus_vs_The_Emperor.jpg
+  - src: https://wh40k.lexicanum.com/mediawiki/images/d/dd/Horus_vs_The_Emperor.jpg
     text: The Emperor confronting Horus
     page: https://wh40k.lexicanum.com/wiki/Emperor_of_Mankind
-  - link: https://wh40k.lexicanum.com/mediawiki/images/e/e8/God-Emperor.jpg
+  - src: https://wh40k.lexicanum.com/mediawiki/images/e/e8/God-Emperor.jpg
     text: The Emperor on the Golden Throne
     page: https://wh40k.lexicanum.com/wiki/Emperor_of_Mankind
-  - link: https://wh40k.lexicanum.com/mediawiki/images/7/7c/9thEdMap.jpg
+  - src: https://wh40k.lexicanum.com/mediawiki/images/7/7c/9thEdMap.jpg
     text: Galaxy map of the Imperium
     page: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
 links:
-  - link: https://warhammer40000.com/
+  - src: https://warhammer40000.com/
     text: "Official Website"
-  - link: https://wh40k.lexicanum.com/wiki/Main_Page
+  - src: https://wh40k.lexicanum.com/wiki/Main_Page
     text: "Lexicanum Wiki"
 readme: |
   Warhammer 40,000 is a tabletop miniature wargame created by Games Workshop, set in a dystopian

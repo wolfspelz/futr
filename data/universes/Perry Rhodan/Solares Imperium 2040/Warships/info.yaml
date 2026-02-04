@@ -5,7 +5,7 @@ min: 3000
 max: 4000
 confidence: calculatedGuess
 references:
-  - link: https://www.perrypedia.de/wiki/Solare_Flotte
+  - src: https://www.perrypedia.de/wiki/Solare_Flotte
     text: Perrypedia - Solare Flotte
 readme: |
   Anfang 2044 wurde die Flottenstärke mit ca. 4000-4700 Einheiten angegeben. Für 2040 wird ein etwas niedrigerer Wert geschätzt.

@@ -4,13 +4,13 @@ changed: 2026-01-29
 order: 0
 tags: [index]
 images:
-  - link: https://upload.wikimedia.org/wikipedia/commons/0/03/StarTrek.Andorian.01.jpg
+  - src: https://upload.wikimedia.org/wikipedia/commons/0/03/StarTrek.Andorian.01.jpg
     text: "Andorian at Star Trek Experience"
     page: https://commons.wikimedia.org/wiki/File:StarTrek.Andorian.01.jpg
 links:
-  - link: https://memory-alpha.fandom.com/wiki/Andorian
+  - src: https://memory-alpha.fandom.com/wiki/Andorian
     text: "Memory Alpha - Andorian"
-  - link: https://memory-alpha.fandom.com/wiki/Andorian_Empire
+  - src: https://memory-alpha.fandom.com/wiki/Andorian_Empire
     text: "Memory Alpha - Andorian Empire"
 readme: |
   A constitutional monarchy of blue-skinned, antenna-bearing humanoids from the

@@ -67,7 +67,7 @@ public class BaseModel
             foreach (var imageNode in imageList) {
                 var image = new ImageModel();
                 if (imageNode.IsDictionary) {
-                    image.Link = imageNode["link"].AsString;
+                    image.Src = imageNode["src"].AsString;
                     image.Text = imageNode["text"].AsString;
                     image.Page = imageNode["page"].AsString;
                     image.Author = imageNode["author"].AsString;
@@ -75,10 +75,10 @@ public class BaseModel
                     image.Legal = imageNode["legal"].AsString;
                     image.Tags = imageNode["tags"].AsList.Select(n => n.AsString).ToList();
                 } else {
-                    image.Link = imageNode.AsString;
+                    image.Src = imageNode.AsString;
                 }
                 if (image.Page == "") {
-                    image.Page = image.Link;
+                    image.Page = image.Src;
                 }
                 Images.Add(image);
                 if (image.Tags.Contains("main")) {

@@ -6,7 +6,7 @@ min: 1500
 max: 1700
 confidence: canon
 references:
-  - link: https://honorverse.fandom.com/wiki/Royal_Manticoran_Navy
+  - src: https://honorverse.fandom.com/wiki/Royal_Manticoran_Navy
     text: Honorverse Wiki - Royal Manticoran Navy
 readme: |
   Royal Manticoran Navy fleet composition prior to the First Havenite-Manticoran War:

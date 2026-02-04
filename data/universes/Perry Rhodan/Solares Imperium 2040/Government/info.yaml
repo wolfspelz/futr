@@ -3,9 +3,9 @@ changed: 2026-02-04
 value: Parliamentary Democracy
 confidence: canon
 references:
-  - link: https://www.perrypedia.de/wiki/Solares_Imperium
+  - src: https://www.perrypedia.de/wiki/Solares_Imperium
     text: Perrypedia - Solares Imperium
-  - link: https://www.perrypedia.de/wiki/Erster_Administrator
+  - src: https://www.perrypedia.de/wiki/Erster_Administrator
     text: Perrypedia - Erster Administrator
 readme: |
   Der Erste Administrator (Perry Rhodan) wird alle sechs Jahre demokratisch vom Solaren Parlament gewählt. Er ist Regierungschef, Staatsoberhaupt und Oberbefehlshaber aller Streitkräfte.

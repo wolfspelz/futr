@@ -4,7 +4,7 @@ order: 0
 value: 3
 confidence: canon
 references:
-  - link: https://honorverse.fandom.com/wiki/Manticore_System
+  - src: https://honorverse.fandom.com/wiki/Manticore_System
     text: Honorverse Wiki - Manticore System
 readme: |
   The Manticore Binary System contains three inhabited planets:

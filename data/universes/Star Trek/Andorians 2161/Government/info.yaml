@@ -4,9 +4,9 @@ order: 0
 value: Constitutional Monarchy
 confidence: canon
 references:
-  - link: https://memory-beta.fandom.com/wiki/Andorian_Empire
+  - src: https://memory-beta.fandom.com/wiki/Andorian_Empire
     text: "Memory Beta - Andorian Empire"
-  - link: https://memory-beta.fandom.com/wiki/Parliament_Andoria
+  - src: https://memory-beta.fandom.com/wiki/Parliament_Andoria
     text: "Memory Beta - Parliament Andoria"
 readme: |
   The Andorian Empire is a constitutional monarchy established in the 19th century

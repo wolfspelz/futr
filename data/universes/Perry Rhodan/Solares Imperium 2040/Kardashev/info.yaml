@@ -5,9 +5,9 @@ min: 0.85
 max: 1.0
 confidence: calculatedGuess
 references:
-  - link: https://www.perrypedia.de/wiki/Transitionstriebwerk
+  - src: https://www.perrypedia.de/wiki/Transitionstriebwerk
     text: Perrypedia - Transitionstriebwerk
-  - link: https://www.perrypedia.de/wiki/Solares_Imperium
+  - src: https://www.perrypedia.de/wiki/Solares_Imperium
     text: Perrypedia - Solares Imperium
 readme: |
   Das Solare Imperium 2040 verfügt über FTL-Technologie (Transitionsantrieb von den Arkoniden) und interstellare Kolonien, befindet sich aber noch in früher Expansion.

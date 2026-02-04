@@ -6,7 +6,7 @@ min: 10
 max: 16
 confidence: informedGuess
 references:
-  - link: https://memory-beta.fandom.com/wiki/Andorian_Empire
+  - src: https://memory-beta.fandom.com/wiki/Andorian_Empire
     text: "Memory Beta - Andorian Empire"
 readme: |
   The Andorian Empire at its height possessed 13 colonies outside the home system,

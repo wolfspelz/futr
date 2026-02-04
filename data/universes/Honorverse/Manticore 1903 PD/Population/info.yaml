@@ -6,11 +6,11 @@ min: 2.8e9
 max: 3.5e9
 confidence: informedGuess
 references:
-  - link: https://honorverse.fandom.com/wiki/Manticore_System
+  - src: https://honorverse.fandom.com/wiki/Manticore_System
     text: Honorverse Wiki - Manticore System
-  - link: https://honorverse.fandom.com/wiki/Sphinx
+  - src: https://honorverse.fandom.com/wiki/Sphinx
     text: Honorverse Wiki - Sphinx
-  - link: https://honorverse.fandom.com/wiki/Gryphon
+  - src: https://honorverse.fandom.com/wiki/Gryphon
     text: Honorverse Wiki - Gryphon
 readme: |
   Estimated total population across the three inhabited planets of the Manticore System

@@ -6,17 +6,17 @@ date: 41000
 polity: Orks
 tags: [index, new]
 images:
-  - link: https://assets.warhammer-community.com/articles/3f4b8f62-4868-4f77-ba82-0485dbe02395/r7sfbpmqkmto3u62.jpg
+  - src: https://assets.warhammer-community.com/articles/3f4b8f62-4868-4f77-ba82-0485dbe02395/r7sfbpmqkmto3u62.jpg
     text: Ork WAAAGH!
     page: https://www.warhammer-community.com/en-gb/articles/7cJUmBPc/warhammer-40000-faction-focus-orks/
-  - link: https://wh40k.lexicanum.com/mediawiki/images/a/a5/OrkActivity8th.jpg
+  - src: https://wh40k.lexicanum.com/mediawiki/images/a/a5/OrkActivity8th.jpg
     text: Primary Ork Domains in the galaxy
     page: https://wh40k.lexicanum.com/wiki/Ork
-  - link: https://wh40k.lexicanum.com/mediawiki/images/8/8f/Orks9thArt.jpg
+  - src: https://wh40k.lexicanum.com/mediawiki/images/8/8f/Orks9thArt.jpg
     text: Orks artwork
     page: https://wh40k.lexicanum.com/wiki/Ork
 links:
-  - link: https://wh40k.lexicanum.com/wiki/Ork
+  - src: https://wh40k.lexicanum.com/wiki/Ork
     text: "Ork - Lexicanum"
 readme: |
   The Orks in the 41st Millennium are the most numerous sapient species in the galaxy, scattered

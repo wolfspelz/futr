@@ -1,32 +1,32 @@
 tags: [new, index]
 order: 0
 links:
-    - link: https://www.orionsarm.com/
+    - src: https://www.orionsarm.com/
       text: Orion's Arm Universe Project
 images:
-    - link: https://www.orionsarm.com/im_store/OA_logo_original.jpg
+    - src: https://www.orionsarm.com/im_store/OA_logo_original.jpg
       text: Orion's Arm logo
       page: https://www.orionsarm.com/
       tags: [main]
-    - link: https://www.orionsarm.com/im_store/med_voidfactory1.jpg
+    - src: https://www.orionsarm.com/im_store/med_voidfactory1.jpg
       page: https://www.orionsarm.com/eg-article/56a75bc63a599
       text: Void Factory (Image from Steve Bowers)
-    - link: https://www.orionsarm.com/im_store/med_fractaldyson.jpg
+    - src: https://www.orionsarm.com/im_store/med_fractaldyson.jpg
       text: Fractal Dyson (Image from Steve Bowers)
       page: https://www.orionsarm.com/eg-article/464f4fa30794f
-    - link: https://www.orionsarm.com/im_store/med_interior1.jpg
+    - src: https://www.orionsarm.com/im_store/med_interior1.jpg
       text: Technology (Image from Steve Bowers)
       page: https://www.orionsarm.com/eg-topic/45b175dbc0d73
-    - link: https://www.orionsarm.com/im_store/timelinemain.jpg
+    - src: https://www.orionsarm.com/im_store/timelinemain.jpg
       text: History (Image from Bernd Helfert)
       page: https://www.orionsarm.com/eg-topic/45b170f9e0941
-    - link: https://www.orionsarm.com/im_store/aigodmanifesting1230731523.jpg
+    - src: https://www.orionsarm.com/im_store/aigodmanifesting1230731523.jpg
       text: Famous AIs and Hyperturings (Image from Anders Sandberg)
       page: https://www.orionsarm.com/page/576
-    - link: https://www.orionsarm.com/im_store/med_Mars+Lens+Flare.jpg
+    - src: https://www.orionsarm.com/im_store/med_Mars+Lens+Flare.jpg
       text: Intro (Image from Arik)
       page: https://www.orionsarm.com/xcms.php?r=oa-intro
-    - link: https://www.orionsarm.com/im_store/med_autofabricator.jpg
+    - src: https://www.orionsarm.com/im_store/med_autofabricator.jpg
       text: AutoFab (Image from Keith Wigdor and Midjourney AI)
       page: https://www.orionsarm.com/eg-article/45eafe5718a34
 editors: [wolfspelz]

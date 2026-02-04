@@ -3,7 +3,7 @@ changed: 2026-02-04
 order: 0
 date: 2550
 images:
-    - link: https://github.com/wolfspelz/galdev/blob/main/code/galdevweb/GaldevWeb/wwwroot/images/Index/woman-cockpit.jpg?raw=true
+    - src: https://github.com/wolfspelz/galdev/blob/main/code/galdevweb/GaldevWeb/wwwroot/images/Index/woman-cockpit.jpg?raw=true
       text: Sample civilization image
       page: https://www.galactic-developments.de/
       author: Sample Artist

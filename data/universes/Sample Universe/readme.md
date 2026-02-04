@@ -21,7 +21,7 @@ Write something about the universe.
 Minimalistic:
 ```
 images:
-    - link: {Image URL}
+    - src: {Image URL}
       tags: [main]
 ```
 
@@ -38,14 +38,14 @@ links:
     - link: {Page URL}
       text: {Link text}
 images:
-    - link: {Image URL}
+    - src: {Image URL}
       text: {Image caption}
       page: {Image source page}
       author: {Creator/artist name}
       license: {Short license identifier, e.g. CC BY-SA 4.0}
       legal: {Full license text or URL}
       tags: [main]  # "main" = primary/tile image for lists
-    - link: {Image URL}
+    - src: {Image URL}
       text: {Image caption}
       page: {Image source page}
 readme: |

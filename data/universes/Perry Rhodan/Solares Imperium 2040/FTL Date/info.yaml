@@ -3,9 +3,9 @@ changed: 2026-02-04
 value: 1971
 confidence: canon
 references:
-  - link: https://www.perrypedia.de/wiki/Transitionstriebwerk
+  - src: https://www.perrypedia.de/wiki/Transitionstriebwerk
     text: Perrypedia - Transitionstriebwerk
-  - link: https://en.wikipedia.org/wiki/Perry_Rhodan
+  - src: https://en.wikipedia.org/wiki/Perry_Rhodan
     text: Wikipedia - Perry Rhodan
 readme: |
   1971 landete Perry Rhodan auf dem Mond und traf dort auf notgelandete Arkoniden. Von ihnen erhielt die Menschheit Zugang zum Transitionsantrieb, der Sprünge durch den fünfdimensionalen Hyperraum ermöglicht.

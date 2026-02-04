@@ -4,9 +4,9 @@ order: 0
 value: 2
 confidence: canon
 references:
-  - link: https://honorverse.fandom.com/wiki/Star_Kingdom_of_Manticore
+  - src: https://honorverse.fandom.com/wiki/Star_Kingdom_of_Manticore
     text: Honorverse Wiki - Star Kingdom of Manticore
-  - link: https://honorverse.fandom.com/wiki/Basilisk_System
+  - src: https://honorverse.fandom.com/wiki/Basilisk_System
     text: Honorverse Wiki - Basilisk System
 readme: |
   By 1903 PD, the Star Kingdom of Manticore controlled two star systems:

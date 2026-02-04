@@ -6,9 +6,9 @@ min: 1e6
 max: 10e6
 confidence: calculatedGuess
 references:
-  - link: https://wh40k.lexicanum.com/wiki/Ork_Domains
+  - src: https://wh40k.lexicanum.com/wiki/Ork_Domains
     text: "Ork Domains - Lexicanum"
-  - link: https://warhammer40k.fandom.com/wiki/Ork_Empire
+  - src: https://warhammer40k.fandom.com/wiki/Ork_Empire
     text: "Ork Empire - Warhammer 40k Wiki"
 readme: |
   No canon number of Ork-controlled worlds exists. The lore states Orks inhabit more worlds than the

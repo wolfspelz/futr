@@ -6,9 +6,9 @@ min: 1.0
 max: 1.2
 confidence: calculatedGuess
 references:
-  - link: https://honorverse.fandom.com/wiki/Manticore_Wormhole_Junction
+  - src: https://honorverse.fandom.com/wiki/Manticore_Wormhole_Junction
     text: Honorverse Wiki - Manticore Wormhole Junction
-  - link: https://honorverse.fandom.com/wiki/Gross_system_product
+  - src: https://honorverse.fandom.com/wiki/Gross_system_product
     text: Honorverse Wiki - Gross System Product
 readme: |
   Estimated based on economic output relative to Sol System in 1900 PD:

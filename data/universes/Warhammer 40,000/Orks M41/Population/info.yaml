@@ -6,9 +6,9 @@ min: 5e15
 max: 1e17
 confidence: wildGuess
 references:
-  - link: https://warhammer40k.fandom.com/wiki/Orks
+  - src: https://warhammer40k.fandom.com/wiki/Orks
     text: "Orks - Warhammer 40k Wiki"
-  - link: https://www.quora.com/What-is-the-estimated-number-of-Orks-in-the-Warhammer-40K-universe
+  - src: https://www.quora.com/What-is-the-estimated-number-of-Orks-in-the-Warhammer-40K-universe
     text: "Quora - Ork Population Estimates"
 readme: |
   No canon population figure exists. Lore states Orks are the most numerous sapient species in the

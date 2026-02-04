@@ -2,22 +2,22 @@ created: 2023-10-19
 changed: 2026-02-04
 order: 0
 images:
-    - link: https://github.com/wolfspelz/galdev/blob/main/code/galdevweb/GaldevWeb/wwwroot/images/site/logo.jpg?raw=true
+    - src: https://github.com/wolfspelz/galdev/blob/main/code/galdevweb/GaldevWeb/wwwroot/images/site/logo.jpg?raw=true
       text: Sample Universe logo
       page: https://www.galactic-developments.de/
       author: Sample Artist
       license: CC BY-SA 4.0
       legal: "Licensed under Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/"
       tags: [main]
-    - link: https://github.com/wolfspelz/galdev/blob/main/code/galdevweb/GaldevWeb/wwwroot/images/Index/woman-cockpit.jpg?raw=true
+    - src: https://github.com/wolfspelz/galdev/blob/main/code/galdevweb/GaldevWeb/wwwroot/images/Index/woman-cockpit.jpg?raw=true
       text: A cool image that represents the universe
       page: https://www.galactic-developments.de/
       author: Sample Artist
       license: CC BY-SA 4.0
       legal: "Licensed under Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/"
 links:
-    - link: https://www.galactic-developments.de/
+    - src: https://www.galactic-developments.de/
       text: Official website
-    - link: https://www.galactic-developments.de/Timeline/supernova-3308-Supernova
+    - src: https://www.galactic-developments.de/Timeline/supernova-3308-Supernova
       text: "Supernova: literally a hilite event"
 editors: [wolfspelz]

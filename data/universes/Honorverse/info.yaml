@@ -4,22 +4,22 @@ changed: 2026-02-04
 order: 0
 tags: [index, new]
 images:
-  - link: https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png
+  - src: https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png
     text: Honor Harrington - On Basilisk Station cover
-    page: https://mythcreants.com/blog/how-to-make-your-first-chapter-engaging/
+    page: https://mythcreants.com/blog/five-ways-the-honorverse-builds-an-immersive-world/
     tags: [main]
-  - link: https://www.baen.com/media/catalog/product/0/7/0743435710-med.jpg
+  - src: https://www.baen.com/media/catalog/product/0/7/0743435710-med.jpg
     text: On Basilisk Station - first Honor Harrington novel
     page: https://www.baen.com/on-basilisk-station.html
-  - link: /proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG
     text: Map of the Honorverse
     page: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
 links:
-  - link: https://www.baen.com/allbooks/category/index/id/2044
+  - src: https://www.baen.com/allbooks/category/index/id/2044
     text: Baen Books - Honor Harrington Series
-  - link: https://honorverse.fandom.com/
+  - src: https://honorverse.fandom.com/
     text: Honorverse Wiki
-  - link: https://en.wikipedia.org/wiki/Honorverse
+  - src: https://en.wikipedia.org/wiki/Honorverse
     text: Wikipedia - Honorverse
 showcaseMetrics: [Population, Planets, Kardashev, Warships]
 readme: |
