@@ -3,8 +3,11 @@ created: 2026-02-04
 changed: 2026-02-04
 order: 0
 tags: [index, new]
-tile: https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png
 images:
+  - link: https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png
+    text: Honor Harrington - On Basilisk Station cover
+    page: https://mythcreants.com/blog/how-to-make-your-first-chapter-engaging/
+    tags: [main]
   - link: https://www.baen.com/media/catalog/product/0/7/0743435710-med.jpg
     text: On Basilisk Station - first Honor Harrington novel
     page: https://www.baen.com/on-basilisk-station.html

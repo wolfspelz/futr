@@ -1,10 +1,13 @@
 tags: [new, index]
 order: 0
-tile: https://www.orionsarm.com/im_store/OA_logo_original.jpg
-links: 
+links:
     - link: https://www.orionsarm.com/
       text: Orion's Arm Universe Project
 images:
+    - link: https://www.orionsarm.com/im_store/OA_logo_original.jpg
+      text: Orion's Arm logo
+      page: https://www.orionsarm.com/
+      tags: [main]
     - link: https://www.orionsarm.com/im_store/med_voidfactory1.jpg
       page: https://www.orionsarm.com/eg-article/56a75bc63a599
       text: Void Factory (Image from Steve Bowers)

@@ -27,7 +27,6 @@ unit: People                   # Unit of measurement
 range: "0-1e12"                # Optional range
 tags: [index, fav]             # index=show in index, fav=featured
 order: 0.0                     # Sort order (lower = earlier)
-tile: https://example.com/img  # Main image URL
 icons: [https://...]           # Icon URLs
 images:
   - link: https://...          # Direct image URL
@@ -36,6 +35,7 @@ images:
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Licensed under Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/"
+    tags: [main]               # "main" = primary/tile image for lists
 links:
   - link: https://...
     text: "Link text"
@@ -52,7 +52,6 @@ readme: |
 title: Star Trek
 tags: [index, fav]
 order: -1000                   # Negative = sort earlier
-tile: https://...
 showcaseMetrics: [Population, Planets, Kardashev]  # Metrics shown in tables
 icons: [https://...]
 images:
@@ -62,6 +61,7 @@ images:
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Full license text or URL"
+    tags: [main]               # "main" = primary/tile image for lists
 links:
   - link: https://official-site.com
     text: "Official Website"
@@ -82,6 +82,7 @@ images:
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Full license text or URL"
+    tags: [main]               # "main" = primary/tile image for lists
 links:
   - link: https://...
     text: "Wiki link"
@@ -104,6 +105,7 @@ images:
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Full license text or URL"
+    tags: [main]               # "main" = primary/tile image for lists
 links:
   - link: https://...
     text: "Link text"
@@ -132,6 +134,7 @@ images:
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
     legal: "Full license text or URL"
+    tags: [main]               # "main" = primary/tile image for lists
 editors: [github_username]
 readme: |
   Explain HOW the value was derived.
@@ -182,7 +185,7 @@ readme: |
 - Images should have proper attribution (page, author, license, legal fields)
 
 ### Image Sources
-Fandom wikis (Memory Alpha, Wookieepedia, etc.) block external image embedding via CSP headers. **Do NOT use Fandom image URLs** for `tile`, `icons`, or `images` fields.
+Fandom wikis (Memory Alpha, Wookieepedia, etc.) block external image embedding via CSP headers. **Do NOT use Fandom image URLs** for `icons` or `images` fields.
 
 **Preferred image sources:**
 1. **Wikimedia Commons** - Free, embeddable, well-licensed images

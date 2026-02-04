@@ -12,7 +12,7 @@ public class BaseModel
     public DateTime Changed { get; set; } = DateTime.MinValue;
     public List<string> Tags = new();
     public double Order { get; set; } = 0.0;
-    public string Tile { get; set; } = "";
+    public ImageModel? Tile { get; set; }
     public string Readme { get; set; } = "";
     public List<string> Icons = new();
     public List<ImageModel> Images = new();
@@ -57,7 +57,6 @@ public class BaseModel
             Order = node["order"].AsFloat;
         }
 
-        Tile = node["tile"].AsString;
         Readme = node["readme"].AsString;
         Icons = node["icons"].AsList.Select(n => n.AsString).ToList();
         Editors = node["editors"].AsList.Select(n => n.AsString).ToList();
@@ -74,6 +73,7 @@ public class BaseModel
                     image.Author = imageNode["author"].AsString;
                     image.License = imageNode["license"].AsString;
                     image.Legal = imageNode["legal"].AsString;
+                    image.Tags = imageNode["tags"].AsList.Select(n => n.AsString).ToList();
                 } else {
                     image.Link = imageNode.AsString;
                 }
@@ -81,6 +81,12 @@ public class BaseModel
                     image.Page = image.Link;
                 }
                 Images.Add(image);
+                if (image.Tags.Contains("main")) {
+                    Tile = image;
+                }
+            }
+            if (Tile == null && Images.Count > 0) {
+                Tile = Images[0];
             }
         }
 

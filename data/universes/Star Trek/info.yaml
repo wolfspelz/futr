@@ -3,13 +3,13 @@ created: 2023-09-17
 changed: 2026-01-27
 tags: [fav, new, index]
 order: 1000
-tile: https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg
 icons:
     - https://en.wikipedia.org/wiki/Star_Trek#/media/File:Star_Trek_TOS_logo.svg
     - https://www.giantfreakinrobot.com/wp-content/uploads/2022/01/star-trek-logo.jpeg
 images:
     - link: https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg
       text: The iconic starship
+      tags: [main]
     - link: https://images.prismic.io/star-trek-untold/YTc3NDMxMGUtNjI2ZC00OGRmLWEwNDgtOTBjOTc4NjY1NDlj_st_quiz_header_which_captain_are_you_01_option1.jpg
       text: Captains
 links:

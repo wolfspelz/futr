@@ -3,8 +3,11 @@ created: 2023-09-24
 changed: 2023-10-09
 order: 0
 tags: [new, index]
-tile: https://github.com/wolfspelz/futr/raw/main/data/universes/Reality/earth-tile.jpg
 images:
+    - link: https://github.com/wolfspelz/futr/raw/main/data/universes/Reality/earth-tile.jpg
+      text: Earth
+      page: https://github.com/wolfspelz/futr/blob/main/data/universes/Reality/earth-tile.jpg
+      tags: [main]
     - link: https://upload.wikimedia.org/wikipedia/commons/5/50/Neanderthal_Flintworkers_%28Knight%2C_1920%29.jpg
       text: Le Moustier Neanderthals (Charles R. Knight, 1920)
       page: https://en.wikipedia.org/wiki/File:Neanderthal_Flintworkers_(Knight,_1920).jpg

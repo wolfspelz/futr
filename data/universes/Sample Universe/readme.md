@@ -20,12 +20,13 @@ Write something about the universe.
 
 Minimalistic:
 ```
-tile: {Image URL}
+images:
+    - link: {Image URL}
+      tags: [main]
 ```
 
 Full:
 ```
-tile: {Image URL of an image that represents the universe in a large list of image tiles}
 showcaseMetrics: {list of names of metrics that will be shown on the universe page as a table for all civilizations, e.g. [Population, Planets, Your Metric]
 title: {Name to overrride the folder name}
 tags: {List of tags (new: appear in what's new, index: appear in index, e.g. [new, index]}
@@ -38,10 +39,14 @@ links:
       text: {Link text}
 images:
     - link: {Image URL}
-      text: {Image caption incl. copyright}
+      text: {Image caption}
       page: {Image source page}
+      author: {Creator/artist name}
+      license: {Short license identifier, e.g. CC BY-SA 4.0}
+      legal: {Full license text or URL}
+      tags: [main]  # "main" = primary/tile image for lists
     - link: {Image URL}
-      text: {Image caption incl. copyright}
+      text: {Image caption}
       page: {Image source page}
 readme: |
     Readme text in case there is no readme.md file.
