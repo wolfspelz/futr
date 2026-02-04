@@ -42,7 +42,7 @@
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
     ImgSrc = "/images/Index/new-universes.jpg",
-    ImgAlt = "Newsroom",
+    ImgAlt = "New Universes",
     Title = "New Universes",
     Text= string.Join("<br/>", Model.App.Data.Universes
     .Where(x => x.Value.Tags.Contains("new"))
@@ -50,6 +50,7 @@
     .ThenByDescending(x => x.Value.Created)
     .Select(pair => $"<a href='/Universe/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.Title}</a>")),
     Link = "/Universe",
+    TitleHasLink = true,
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
