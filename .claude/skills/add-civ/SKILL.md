@@ -66,8 +66,15 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 
 See `.claude/rules/content.md` for full schemas. Key fields:
 
+### Timestamps
+All info.yaml files MUST have `created` and `changed` date fields (format: `YYYY-MM-DD`):
+- **New files**: Set both `created` and `changed` to today's date
+- **Modified files**: Update only `changed` to today's date (never change `created`)
+
 **Datapoint:**
 ```yaml
+created: 2026-02-04
+changed: 2026-02-04
 value: 8e9
 min: 5e9
 max: 11e9
@@ -82,6 +89,8 @@ readme: |
 **Universe (if new):**
 ```yaml
 title: Universe Name
+created: 2026-02-04
+changed: 2026-02-04
 tags: [index, new]  # always add 'new' tag for new universes
 tile: https://...  # image for universe tile on home page
 images:
@@ -98,6 +107,8 @@ readme: |
 **Civilization:**
 ```yaml
 title: Polity Year
+created: 2026-02-04
+changed: 2026-02-04
 date: 2161
 polity: Polity Name
 tags: [index, new]  # always add 'new' tag for new civilizations
@@ -115,6 +126,7 @@ readme: |
 - Use existing metrics when possible before creating new ones
 - Images should be from canonical/official sources when available
 - **New universes and civilizations MUST have `tags: [index, new]`** — the "new" tag marks recently added content
+- **All info.yaml files MUST have `created` and `changed` dates** — use today's date for new files
 
 ## Image Proxy
 
