@@ -60,7 +60,7 @@
     .Where(x => x.Value.Tags.Contains("new"))
     .OrderByDescending(x => x.Value.Order)
     .ThenByDescending(x => x.Value.Created)
-    .Select(pair => $"<a href='/Civilization/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.SeoName}</a>")),
+    .Select(pair => $"<a href='/Civilization/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.Universe.Title}: {pair.Value.Title}</a>")),
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
