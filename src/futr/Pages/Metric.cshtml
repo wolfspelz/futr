@@ -26,7 +26,7 @@
 } else {
     <h1>@Model.Item.Title</h1>
 
-    @await Html.PartialAsync("_BaseModelProperties", Model.Item)
+    @await Html.PartialAsync("_ModelTagsLinksImages", Model.Item)
 
     <div class="my-textblock">
         <div><span>Type</span>: <span>@Model.Item.Type</span></div>

@@ -32,7 +32,7 @@
 } else {
     <h1>@Model.Item.Title</h1>
 
-    @await Html.PartialAsync("_BaseModelProperties", Model.Item)
+    @await Html.PartialAsync("_ModelTagsLinksImages", Model.Item)
 
     @await Html.PartialAsync("_PolityList", Model.Item.Polities.Values.AsEnumerable())
 
