@@ -256,6 +256,7 @@ div.my-tile {
     width: 240px;
     height: 135px;
     overflow: hidden;
+    border-radius: 0.5em;
 }
 
     div.my-tile img {
