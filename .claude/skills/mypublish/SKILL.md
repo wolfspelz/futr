@@ -1,5 +1,5 @@
 ---
-name: deploy
+name: mypublish
 description: Rebase deployment branch onto main and push to trigger deployment
 ---
 

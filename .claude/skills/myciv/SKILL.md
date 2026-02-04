@@ -1,5 +1,5 @@
 ---
-name: add-civ
+name: myciv
 description: Interactive research session to add a new civilization to FUTR
 argument-hint: [civilization-spec]
 ---
