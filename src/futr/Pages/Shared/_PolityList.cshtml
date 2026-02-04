@@ -1,0 +1,12 @@
+@model IEnumerable<futr.Models.Polity>
+
+@if (Model.Any()) {
+    <div class="my-textblock">
+        <h2>Polities</h2>
+        @foreach (var polity in Model) {
+            <div>
+                <a asp-page="Polity" asp-route-id="@polity.SeoName">@polity.Title</a>
+            </div>
+        }
+    </div>
+}

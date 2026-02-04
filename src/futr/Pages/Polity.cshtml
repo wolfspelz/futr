@@ -22,5 +22,7 @@
 
     @await Html.PartialAsync("_BaseModelProperties", Model.Item)
 
+    @await Html.PartialAsync("_CivilizationList", (Model.Item.Universe.Civilizations.Values.Where(c => c.Polity == Model.Item.Id), Model.Item.Universe.ShowcaseMetrics))
+
     @await Html.PartialAsync("_BaseModelReadme", Model.Item)
 }

@@ -1,0 +1,36 @@
+@model (IEnumerable<futr.Models.Civilization> Civilizations, string[] ShowcaseMetrics)
+
+@if (Model.Civilizations.Any()) {
+    <div class="my-textblock">
+        <div class="my-table">
+            <div class="my-table-row my-table-head">
+                <div class="my-table-cell">
+                    <h2>Civilizations</h2>
+                </div>
+                @foreach (var metric in Model.ShowcaseMetrics) {
+                    <div class="my-table-cell">
+                        @metric
+                    </div>
+                }
+            </div>
+            @foreach (var civilization in Model.Civilizations.OrderBy(x => x.Year)) {
+                <div class="my-table-row">
+                    <div class="my-table-cell">
+                        <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Id</a>
+                        @if (Model.ShowcaseMetrics.Length > 0) {
+                            <text>:</text>
+                        }
+                    </div>
+                    @{
+                        var cnt = 0;
+                    }
+                    @foreach (var metric in Model.ShowcaseMetrics) {
+                        <div class="my-table-cell my-table-column-@(cnt++%2 == 0?"even":"odd")">
+                            @civilization.Datapoints.Where(pair => pair.Value.Metric == metric).Select(pair => pair.Value.Value).FirstOrDefault()
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}
