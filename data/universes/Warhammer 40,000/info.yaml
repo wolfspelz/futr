@@ -9,6 +9,15 @@ images:
   - link: https://assets.warhammer-community.com/sm-desktop.jpg
     text: Space Marines wallpaper
     page: https://www.warhammer-community.com/en-gb/articles/omgjr6bi/warhammer-40000-and-warhammer-age-of-sigmar-wallpapers/
+  - link: https://wh40k.lexicanum.com/mediawiki/images/d/dd/Horus_vs_The_Emperor.jpg
+    text: The Emperor confronting Horus
+    page: https://wh40k.lexicanum.com/wiki/Emperor_of_Mankind
+  - link: https://wh40k.lexicanum.com/mediawiki/images/e/e8/God-Emperor.jpg
+    text: The Emperor on the Golden Throne
+    page: https://wh40k.lexicanum.com/wiki/Emperor_of_Mankind
+  - link: https://wh40k.lexicanum.com/mediawiki/images/7/7c/9thEdMap.jpg
+    text: Galaxy map of the Imperium
+    page: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
 links:
   - link: https://warhammer40000.com/
     text: "Official Website"
