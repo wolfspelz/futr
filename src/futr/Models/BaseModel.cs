@@ -8,6 +8,8 @@ public class BaseModel
 
     public string? Id { get; set; }
     public string? Title { get; set; }
+    public DateTime Created { get; set; } = DateTime.MinValue;
+    public DateTime Changed { get; set; } = DateTime.MinValue;
     public List<string> Tags = new();
     public double Order { get; set; } = 0.0;
     public string Tile { get; set; } = "";
@@ -39,6 +41,16 @@ public class BaseModel
         }
 
         Tags = node["tags"].AsList.Select(n => n.AsString.Trim()).ToList();
+
+        var created = node["created"].AsString.Trim();
+        if (created != "" && DateTime.TryParse(created, out var createdDate)) {
+            Created = createdDate;
+        }
+
+        var changed = node["changed"].AsString.Trim();
+        if (changed != "" && DateTime.TryParse(changed, out var changedDate)) {
+            Changed = changedDate;
+        }
 
         var order = node["order"].AsString.Trim();
         if (order != "") {
