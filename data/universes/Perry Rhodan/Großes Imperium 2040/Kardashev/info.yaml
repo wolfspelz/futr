@@ -1,0 +1,28 @@
+created: 2026-02-05
+changed: 2026-02-05
+value: 1.6
+min: 1.4
+max: 1.8
+confidence: calculatedGuess
+references:
+  - link: https://www.perrypedia.de/wiki/Gro%C3%9Fes_Imperium
+    text: "Perrypedia: Großes Imperium"
+  - link: https://en.wikipedia.org/wiki/Kardashev_scale
+    text: "Wikipedia: Kardashev scale"
+readme: |
+  Berechnung basierend auf Infrastruktur und Bevölkerung:
+
+  Komponenten:
+  - Wohnbevölkerung: 50e12 Menschen × 10 kW (5× Erde pro Kopf) = 5e17 W
+  - Industrie: 100.000 Planeten × 100 TW = 1e22 W
+  - Militär: 100.000 Kriegsschiffe × 100 GW (Friedenszeit) = 1e16 W
+  - Infrastruktur: FTL-Baken, Stationen, Kommunikation = ~1e20 W
+
+  Gesamt: ~10^22 W
+
+  Pro-Kopf-Äquivalent: 10^22 W ÷ 50e12 = 200 kW/Person
+  (Erde 2023: 2.200 W/Person → ~100× Erde)
+
+  Kardashev-Formel: K = (log₁₀(P) - 6) / 10 = (22 - 6) / 10 = 1.6
+
+  Anmerkung: Die Zivilisation ist im Niedergang. Der Robotregent verwaltet Erhaltung, nicht Expansion. Das Imperium hat Typ-II-Fähigkeiten, nutzt aber nur Typ-1.6-Niveau aufgrund gesellschaftlicher Dekadenz.

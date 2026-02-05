@@ -30,7 +30,12 @@
       "WebFetch(domain:people.uncw.edu)",
       "WebFetch(domain:upload.wikimedia.org)",
       "WebFetch(domain:www.artstation.com)",
-      "WebFetch(domain:www.deutschlandfunkkultur.de)"
+      "WebFetch(domain:www.deutschlandfunkkultur.de)",
+      "WebFetch(domain:www.perrypedia.proc.org)",
+      "WebFetch(domain:science.nasa.gov)",
+      "WebFetch(domain:boardgamegeek.com)",
+      "WebFetch(domain:www.behance.net)",
+      "WebFetch(domain:www.phuturama.de)"
     ],
     "defaultMode": "acceptEdits"
   }

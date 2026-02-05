@@ -1,0 +1,22 @@
+created: 2026-02-05
+changed: 2026-02-05
+value: 100000
+min: 100000
+max: 150000
+confidence: informedGuess
+references:
+  - link: https://www.perrypedia.de/wiki/Arkonidische_Flotte
+    text: "Perrypedia: Arkonidische Flotte"
+  - link: https://www.perrypedia.de/wiki/Robotregent
+    text: "Perrypedia: Robotregent"
+readme: |
+  Die arkonidische Flotte um 2047 umfasste etwa 100.000 Großraumer und 50.000 Frachter, Tender und Docks.
+
+  Schiffsklassen:
+  - Superschlachtschiffe (UNIVERSUM-Klasse): 1.500 m Durchmesser, über 2.000 Einheiten bis 2044
+  - Schlachtschiffe (Imperiums-/TUSSAN-Klasse): 800 m
+  - Schlachtkreuzer (FUSUF-Klasse): 500 m
+  - Schwere Kreuzer: 200-250 m
+  - Leichte Kreuzer: 100 m
+
+  2040 transferierte der Robotregent 75% seiner Kriegsflotte an Perry Rhodan zur Bekämpfung der Druuf.

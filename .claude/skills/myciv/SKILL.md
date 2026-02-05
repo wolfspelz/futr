@@ -46,7 +46,7 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 3. Iterate until user is satisfied
 
 **Datapoints Comparison Table Format:**
-For EVERY datapoint, show comparable values from existing civilizations to help maintain consistency, for example (apply this to the all metrics shown):
+For EVERY datapoint, show comparable values from existing civilizations to help maintain consistency, for example (apply this to all shown metrics):
 
 | Metric | Value | Confidence | Comparisons (same universe) | Comparisons (other universes) |
 |--------|-------|------------|----------------------------|-------------------------------|
@@ -58,6 +58,24 @@ For EVERY datapoint, show comparable values from existing civilizations to help 
 - Prioritize comparisons from the same universe first
 - Include Earth 2023 as baseline reference where applicable
 - These comparisons are for validation only—do NOT include them in readme fields or files
+
+**Kardashev Calculation Rationale (REQUIRED):**
+For every Kardashev value, show the calculation rationale including per-person power consumption:
+
+1. **Calculate total power**: Estimate civilization's total energy consumption in Watts
+2. **Calculate per-person power**: Total power ÷ Population = Watts per person
+3. **Compare to Earth 2023 baseline**: Earth uses ~18 TW for 8.1e9 people = ~2,200 W/person
+4. **Apply Kardashev formula**: K = log₁₀(Power) / 10 - 0.6 (where Power is in Watts)
+   - Type I = 10^16 W (~1.2e6 W/person for 8e9 people)
+   - Type II = 10^26 W (full stellar output)
+5. **Show the math**: Present the calculation transparently so it can be verified
+
+Example rationale:
+```
+Population: 50e12, Estimated power: 10^24 W
+Per-person: 10^24 / 50e12 = 2e10 W/person (vs Earth 2023: 2,200 W/person → 9 million× more)
+Kardashev: log₁₀(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
+```
 
 ### Step 5: Image Research & Attribution (REQUIRED)
 1. Find images (from Wikimedia Commons, Wikipedia, official sources)

@@ -1,0 +1,10 @@
+title: Civilization Age
+created: 2026-02-05
+changed: 2026-02-05
+order: 0
+tags: [index]
+type: number
+unit: Years
+readme: |
+  The age of a civilization in years since its founding or emergence as a distinct entity.
+  For civilizations with negative founding dates (BCE), the age is calculated from that date to the snapshot year.

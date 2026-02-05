@@ -1,0 +1,10 @@
+title: Territory
+created: 2026-02-05
+changed: 2026-02-05
+order: 0
+tags: [index]
+type: number
+unit: Light-years
+readme: |
+  The diameter or extent of a civilization's controlled territory in light-years.
+  Measures the spatial reach of a civilization's sovereignty or influence.
