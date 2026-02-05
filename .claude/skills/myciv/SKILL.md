@@ -32,7 +32,7 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 1. Research specific values for each selected metric
 2. Determine confidence levels: canon > calculated > informedGuess > calculatedGuess > wildGuess
 3. Find min/max ranges where uncertain
-4. **Cross-check values against existing data** (e.g., compare Kardashev to Earth 2023 = 0.73) — these comparisons are for validation only, do not include them in readme fields
+4. **Cross-check values against existing data** (e.g., compare Kardashev to Earth 2023 = 0.73 and other civiliztions, but also show other comparisons of other metrics) — these comparisons are for validation only, do not include them in readme fields
 5. **In-universe comparisons**: When sources compare to places that share real-world names (e.g., "Sol System", "Earth", "Mars"), assume they refer to the in-universe version at the same time period—not real-world data. Research the in-universe reference to properly contextualize the comparison.
 6. Gather reference URLs for all values
 

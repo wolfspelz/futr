@@ -19,8 +19,8 @@ Do not ask for these commands in this folder: ls, grep, find, tree
 
 Additional context is loaded automatically based on what you're working on:
 
-- **Web development** (`src/`, `*.csproj`, `Dockerfile`): See `.claude/rules/development.md`
-- **Content/research** (`data/`): See `.claude/rules/content.md`
+- **Web development** (`src/`, `*.csproj`, `*.css`, `*.js`, `*.cs`, `*.cshtml`, `Dockerfile`): See `.claude/rules/development.md`
+- **Content/research** (`data/`, `images`, `readme`, `info`, `yaml`): See `.claude/rules/content.md`
 
 ## Project Information
 
@@ -36,7 +36,7 @@ A **civilization** is a polity at a specific point in time. Since polities chang
 
 ### Entity Relationships
 ```mermaid
-graph RL
+graph LR
     UNIVERSE["Universes:<br/>The lore"]
     POLITY["Polities:<br/>Named entity/group/people/organization in a universe"]
     CIVILIZATION["Civilizations:<br/>Polity at a time in a universe"]

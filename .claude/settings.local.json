@@ -1,6 +1,5 @@
 {
   "permissions": {
-    "defaultMode": "acceptEdits",
     "allow": [
       "WebSearch",
       "WebFetch(domain:memory-alpha.fandom.com)",
@@ -26,7 +25,13 @@
       "Bash(code --command workbench.action.debug.start:*)",
       "WebFetch(domain:40k.gallery)",
       "WebFetch(domain:www.orionsarm.com)",
-      "Bash(git mv:*)"
-    ]
+      "Bash(git mv:*)",
+      "WebFetch(domain:archive.org)",
+      "WebFetch(domain:people.uncw.edu)",
+      "WebFetch(domain:upload.wikimedia.org)",
+      "WebFetch(domain:www.artstation.com)",
+      "WebFetch(domain:www.deutschlandfunkkultur.de)"
+    ],
+    "defaultMode": "acceptEdits"
   }
 }
