@@ -35,7 +35,8 @@
       "WebFetch(domain:science.nasa.gov)",
       "WebFetch(domain:boardgamegeek.com)",
       "WebFetch(domain:www.behance.net)",
-      "WebFetch(domain:www.phuturama.de)"
+      "WebFetch(domain:www.phuturama.de)",
+      "Bash(git add:*)"
     ],
     "defaultMode": "acceptEdits"
   }
