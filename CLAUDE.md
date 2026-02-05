@@ -48,3 +48,22 @@ graph LR
     CIVILIZATION --> DATAPOINT
     METRIC --> DATAPOINT
 ```
+
+## Current Display Concept
+
+To make things easier and better understandable, the Polity is shown as a second class citizen and Civilizations hang directly under Universe.
+
+```mermaid
+graph LR
+    UNIVERSE
+    POLITY
+    CIVILIZATION
+    METRIC
+    DATAPOINT
+
+    UNIVERSE --> CIVILIZATION
+    UNIVERSE --> POLITY
+    POLITY --> CIVILIZATION
+    CIVILIZATION --> DATAPOINT
+    METRIC --> DATAPOINT
+```
