@@ -41,9 +41,23 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
    - New metrics (if any)
    - Polity info
    - Civilization info
-   - Datapoints with values, ranges, confidence, sources AND comparable figures from other civilizations (for validation only—do not include comparisons in final readme fields)
+   - **Datapoints table with comparisons** (see format below)
 2. Ask user to approve or adjust values
 3. Iterate until user is satisfied
+
+**Datapoints Comparison Table Format:**
+For EVERY datapoint, show comparable values from existing civilizations to help maintain consistency, for example (apply this to the all metrics shown):
+
+| Metric | Value | Confidence | Comparisons (same universe) | Comparisons (other universes) |
+|--------|-------|------------|----------------------------|-------------------------------|
+| Population | 8e9 | canon | Empire 2040: 25e9 | Earth 2023: 8e9, Federation 2373: 1e12 |
+| Kardashev | 0.85 | calculated | Empire 2040: 1.2 | Earth 2023: 0.73, Federation 2373: 2.1 |
+| Planets | 12 | canon | Empire 2040: 150 | Federation 2373: 150 |
+
+- Query existing civilizations in `data/universes/` for comparison data
+- Prioritize comparisons from the same universe first
+- Include Earth 2023 as baseline reference where applicable
+- These comparisons are for validation only—do NOT include them in readme fields or files
 
 ### Step 5: Image Research & Attribution (REQUIRED)
 1. Find images (from Wikimedia Commons, Wikipedia, official sources)

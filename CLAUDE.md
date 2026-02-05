@@ -49,7 +49,7 @@ graph LR
     METRIC --> DATAPOINT
 ```
 
-## Current Display Concept
+### Current Display Concept
 
 To make things easier and better understandable, the Polity is shown as a second class citizen and Civilizations hang directly under Universe.
 
