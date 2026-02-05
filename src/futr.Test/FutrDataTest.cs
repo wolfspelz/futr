@@ -45,7 +45,8 @@ public class FutrDataTest
     {
         var civ = _data.GetCivilization("Star Trek Federation 2373");
         Assert.IsNotNull(civ);
-        Assert.AreEqual("Federation of Planets", civ.Polity);
+        Assert.IsNotNull(civ.Polity);
+        Assert.AreEqual("Federation of Planets", civ.Polity.Id);
     }
 
     [TestMethod]

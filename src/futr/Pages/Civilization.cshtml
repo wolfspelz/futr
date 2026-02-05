@@ -15,11 +15,20 @@
     <h1>@Model.Item.Title</h1>
 
     <div class="my-textblock">
-        <span>Parent universe</span>:
+        <span>Universe</span>:
         <span>
             <a asp-page="Universe" asp-route-id="@Model.Item.Universe.SeoName">@Model.Item.Universe.Title</a>
         </span>
     </div>
+
+    @if (Model.Item.Polity != null) {
+        <div class="my-textblock">
+            <span>Polity</span>:
+            <span>
+                <a asp-page="Polity" asp-route-id="@Model.Item.Polity.SeoName">@Model.Item.Polity.Title</a>
+            </span>
+        </div>
+    }
 
     @await Html.PartialAsync("_ModelTagsLinksImages", Model.Item)
 

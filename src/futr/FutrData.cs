@@ -33,6 +33,7 @@ public class FutrData
 
         ExtractCivilizations();
         ExtractPolities();
+        LinkCivilizationsToPolities();
 
         CheckUsedMetrics();
     }
@@ -80,6 +81,17 @@ public class FutrData
         foreach (var universe in Universes.Values) {
             foreach (var polity in universe.Polities.Values) {
                 Polities.Add(polity.SeoName, polity);
+            }
+        }
+    }
+
+    private void LinkCivilizationsToPolities()
+    {
+        foreach (var universe in Universes.Values) {
+            foreach (var civilization in universe.Civilizations.Values) {
+                if (!string.IsNullOrEmpty(civilization.PolityId) && universe.Polities.TryGetValue(civilization.PolityId, out var polity)) {
+                    civilization.Polity = polity;
+                }
             }
         }
     }
