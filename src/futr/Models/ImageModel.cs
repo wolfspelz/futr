@@ -8,5 +8,6 @@ public class ImageModel
     public string Author { get; internal set; } = "";
     public string License { get; internal set; } = "";
     public string Legal { get; internal set; } = "";
+    public string Permission { get; internal set; } = "";
     public List<string> Tags { get; internal set; } = new();
 }

@@ -33,7 +33,8 @@
                     <div class="my-image">
                         <a href="@image.Link">
                             <img src="@image.Src" alt="@image.Text" title="@image.Text
-@image.Link@(string.IsNullOrEmpty(image.Author) ? "" : $"\nAuthor: {image.Author}")@(string.IsNullOrEmpty(image.License) ? "" : $"\nLicense: {image.License}")@(string.IsNullOrEmpty(image.Legal) ? "" : $"\nLegal: {image.Legal}")" />
+
+Source: @image.Link@(string.IsNullOrEmpty(image.Author) ? "" : $"\nAuthor: {image.Author}")@(string.IsNullOrEmpty(image.License) ? "" : $"\nLicense: {image.License}")@(string.IsNullOrEmpty(image.Legal) ? "" : $"\nLegal: {image.Legal}")@(string.IsNullOrEmpty(image.Permission) ? "" : $"\nPermission: {image.Permission}")" />
                         </a>
                         <div class="my-caption">@image.Text</div>
                     </div>

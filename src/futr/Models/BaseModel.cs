@@ -73,6 +73,7 @@ public class BaseModel
                     image.Author = imageNode["author"].AsString;
                     image.License = imageNode["license"].AsString;
                     image.Legal = imageNode["legal"].AsString;
+                    image.Permission = imageNode["permission"].AsString;
                     image.Tags = imageNode["tags"].AsList.Select(n => n.AsString).ToList();
                 } else {
                     image.Src = imageNode.AsString;

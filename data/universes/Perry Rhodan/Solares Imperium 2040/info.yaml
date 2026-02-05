@@ -5,6 +5,15 @@ date: 2040
 polity: Solares Imperium
 tags: [index, new]
 order: 0
+images:
+  - src: /proxy/deviantart.com/martechi/ships-for-eternity.png
+    text: Ships for eternity - Kugelraumer fleet
+    link: https://www.deviantart.com/martechi/art/Ships-for-eternity-Perry-Rhodan-891195618
+    author: Martechi
+    license: Fan Art
+    legal: Fan art used for reference purposes with attribution. Original at DeviantArt.
+    permission: request
+    tags: [main]
 links:
   - link: https://www.perrypedia.de/wiki/Der_Einsame_der_Zeit
     text: "Perrypedia: Der Einsame der Zeit (Heft 50)"

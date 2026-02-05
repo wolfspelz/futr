@@ -3,6 +3,14 @@ created: 2026-02-04
 changed: 2026-02-04
 tags: [index, new]
 order: 500
+images:
+  - src: https://bilder.deutschlandfunk.de/FI/LE/_6/95/FILE_6956b8ec0aa62e22df94fb3c00647812/perry-rhodan-jpg-100-1920x1080.jpg
+    text: Perry Rhodan - Noch immer im Weltraum unterwegs
+    link: https://www.deutschlandfunkkultur.de/perry-rhodans-unendliche-weltraumreise-3000-hefte-und-kein-100.html
+    author: Pabel-Moewig Verlag
+    license: Press/Editorial
+    legal: "picture-alliance / dpa / WeltCon. Handout from Pabel-Moewig Verlag."
+    tags: [main]
 links:
   - link: https://www.perrypedia.de/
     text: Perrypedia (Wiki)
