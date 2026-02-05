@@ -102,9 +102,14 @@ Kardashev: log₁₀(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
    - `data/universes/{Universe}/_polities/{Polity}/info.yaml` (if new polity)
    - `data/universes/{Universe}/{Civilization}/info.yaml` (include `tags: [index, new]`)
    - `data/universes/{Universe}/{Civilization}/{Metric}/info.yaml` (datapoints)
-2. Verify all files created
-3. Check if `.claude/settings.local.json` was modified (new permissions added during research)
-4. Commit all changes together (data files + settings if modified) with message: "add {Civilization} civilization"
+2. **Update `showcaseMetrics` in Universe info.yaml** (REQUIRED):
+   - Check which metrics have datapoints across multiple civilizations in this universe
+   - Update `showcaseMetrics` list to include all metrics that enable comparisons
+   - This ensures the comparison table shows maximum data
+   - Example: `showcaseMetrics: [Population, Kardashev, Planets, Star Systems, Warships]`
+3. Verify all files created
+4. Check if `.claude/settings.local.json` was modified (new permissions added during research)
+5. Commit all changes together (data files + settings if modified) with message: "add {Civilization} civilization"
 
 ## YAML Schemas Reference
 
@@ -175,6 +180,7 @@ readme: |
 - All datapoints MUST have references
 - Cross-check Kardashev against Earth 2023 (K=0.73) for sanity
 - Use existing metrics when possible before creating new ones
+- **Always update `showcaseMetrics`** in universe info.yaml to include all metrics with datapoints — this enables comparison tables
 - Images should be from canonical/official sources when available
 - **All images MUST have complete attribution** — `src`, `link`, `author`, `license`, `legal` are ALL required fields
   - `author`: Research the actual creator (artist name, photographer, etc.) — do not skip this step
