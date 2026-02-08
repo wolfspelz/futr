@@ -28,6 +28,29 @@ data/
 ## Markdown in Readmes
 - Headings are offset by +2 levels: `#` renders as `<h3>`, `##` as `<h4>`, etc.
 - Always start with `#` for top-level headings in readme fields and files 
+- Continue with `#` for main sections in readme files considering that:
+  - `##` will be really small at effecitvely `<h4>`
+  - The page alreads has a page header and the readme part being embedded into the page does not need its own main heading
+  - use `##` only if really necessary to sub-devide a section of the readme even further
+
+### Readme Example
+
+```markdown
+The Federation of Planets is a union of various species in the Milky Way Galaxy.
+
+# Membership
+
+The Federation was founded in 2161 by United Earth, the Vulcan High Command,
+the Andorian Empire, and the Tellarite Confederacy. Member worlds share
+resources and knowledge and maintain peace within their territories.
+
+# Starfleet
+
+Starfleet is the exploratory and defensive arm of the Federation.
+```
+
+Note: no top-level heading (the page already has one), `#` for sections, `##` only if really needed.
+
 ## Timestamps
 All info.yaml files MUST have `created` and `changed` date fields (format: `YYYY-MM-DD`):
 - **New files**: Set both `created` and `changed` to today's date
