@@ -19,7 +19,8 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 2. Identify: Universe, Polity, Civilization name, Date
 3. Check if the universe/polity already exists in `data/universes/`
 4. Ask clarifying questions if the specification is ambiguous
-5. Confirm the identified civilization with the user
+5. **Ask the user which language** all texts (readme fields, descriptions, image captions) should be written in (e.g., English or German)
+6. Confirm the identified civilization and language with the user
 
 ### Step 2: General Research
 1. Search for descriptive and metric data about the civilization
@@ -175,6 +176,12 @@ images:
 readme: |
   Description of this civilization snapshot.
 ```
+
+## Writing Style
+- **All descriptions and readme texts MUST be written in present tense** (historisches Präsens / historical present), regardless of language. Example: "Das Imperium umfasst 50.000 Welten" (not "umfasste"), "The Empire controls 150 worlds" (not "controlled").
+- **Never use em dashes** (—). Use commas, periods, or restructure sentences instead.
+- **In-universe perspective**: Write all descriptions (universe, polity, civilization readmes) from an in-universe point of view, as if recorded by an accomplished historian within that universe. No publishing details, no meta-references to books, episodes, or authors. Focus on events, peoples, politics, and technology as historical facts.
+- Write in the language confirmed with the user in Step 1.
 
 ## Quality Checks
 - All datapoints MUST have references

@@ -36,8 +36,15 @@
       "WebFetch(domain:boardgamegeek.com)",
       "WebFetch(domain:www.behance.net)",
       "WebFetch(domain:www.phuturama.de)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(claude --version:*)",
+      "Bash(npm show:*)",
+      "WebFetch(domain:tvtropes.org)",
+      "WebFetch(domain:perryrhodan.fandom.com)",
+      "WebFetch(domain:www.crest-datei.de)",
+      "Bash(GIT_AUTHOR_DATE=\"2026-02-08T22:13:00\" GIT_COMMITTER_DATE=\"2026-02-08T22:13:00\" git commit:*)"
     ],
     "defaultMode": "acceptEdits"
-  }
+  },
+  "outputStyle": "default"
 }
