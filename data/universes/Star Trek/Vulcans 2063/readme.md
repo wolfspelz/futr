@@ -1,6 +1,3 @@
 # Vulcans around the Year 2063 (First Contact)
-The year 2063 is a pivotal moment in Star Trek lore. It's the year when humans achieve their first warp flight, catching the attention of the Vulcans. 
-This leads to the "First Contact" between humans and Vulcans. 
-In the movie "Star Trek: First Contact," the Vulcan ship lands in Bozeman, Montana, after detecting the warp flight of the Phoenix, piloted by Zefram Cochrane. 
-This event marks the beginning of a new era for humanity, as they are introduced to the interstellar community. 
-The Vulcans play a crucial role in helping humanity rebuild and advance after the devastating Third World War.
+
+In 2063, Zefram Cochrane's first warp flight in the Phoenix attracts a passing Vulcan survey ship. The Vulcans land in Bozeman, Montana, making this the first official contact between humans and an alien species. Earth is still recovering from the Third World War, and the Vulcans take on an advisory role, helping humanity rebuild over the following decades. From the Vulcan perspective, humans are a volatile but promising species worth monitoring.

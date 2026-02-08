@@ -1,4 +1,1 @@
-# Star Trek Universe
-The Star Trek universe is a vast sci-fi setting that explores the adventures of various starship crews as they navigate interstellar diplomacy, discovery, and conflict in a future where humanity is part of a larger galactic community. 
-Central to its ethos is the belief in a better future for mankind, where diversity is celebrated and challenges are met with intelligence and cooperation. 
-Through its various series and movies, it delves into complex moral dilemmas, the potential and pitfalls of technology, and the enduring human spirit.
+The Star Trek universe follows various starship crews as they navigate interstellar diplomacy, discovery, and conflict in a future where humanity belongs to a larger galactic community. The Federation operates on the principle that cooperation between species beats conquest, though this conviction gets tested regularly by Klingons, Romulans, the Borg, and the Dominion. The setting spans from the 22nd century (Enterprise) through the 24th (TNG, DS9, Voyager) and into the 32nd century (Discovery).
