@@ -1,6 +1,6 @@
 # Universes
 
-## Structure
+# Structure
 
 This is the place for Universes / Franchises.
 
@@ -10,7 +10,7 @@ A Civilization is a fraction of a Universe. It may be the entire galaxy or just 
 
 Civilizations list various Metrics. This is the main content. Metrics are the values that describe the Civilization in a Universe.
 
-## List of Universes
+# List of Universes
 
 - Star Wars
 - Star Trek
@@ -39,7 +39,7 @@ See also:
 - [List of Science Fiction Universes](https://en.wikipedia.org/wiki/List_of_science_fiction_universes)
 - [Science Fiction Franchises](https://en.wikipedia.org/wiki/Category:Science_fiction_franchises)
 
-## List of Civilizations
+# List of Civilizations
 
 Each Universe has many Civilizations.
 

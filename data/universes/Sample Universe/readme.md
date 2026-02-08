@@ -16,7 +16,7 @@ The name of the folder becomes the name of the universe.
 Write something about the universe.
 (This line checks that the markdown supports simple line breaks)
 
-## info.yaml
+# info.yaml
 
 Minimalistic:
 ```

@@ -15,7 +15,7 @@ The name of the folder becomes the name of the universe.
 
 Write something about the civilization.
 
-## info.yaml
+# info.yaml
 
 Minimalistic:
 ```

@@ -13,13 +13,13 @@ The name of the folder is the name of the metric.
 
 Explain the metric.
 
-## Reason
+# Reason
 
 In general metrics could be universe or civilization specific. 
 But having a list of known metrics for the project allows to compare different civilizations maybe even across universes.
 The list is also a nice reference and idea collection for new universes. 
 
-## info.yaml
+# info.yaml
 
 Minimalistic:
 ```

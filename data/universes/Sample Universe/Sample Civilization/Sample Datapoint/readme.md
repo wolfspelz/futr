@@ -11,7 +11,7 @@ The name of the folder is the name of the metric for which this datapoint has a 
 
 Explain the reasoning for the value of the datapoint.
 
-## info.yaml
+# info.yaml
 
 Minimalistic:
 ```

@@ -8,7 +8,7 @@ Each Metric is a folder containing:
 - a readme (Markdown): readme.md
 - optionally additional files like images used by the readme
 
-## File Format 
+# File Format 
 
 info.yaml:
 
@@ -21,7 +21,7 @@ info.yaml:
 | unit |  Kardashev           |  the unit of measure (in this case: one Kardashev level  |
 | range |  0-3                |  number range  |
 
-## Examples
+# Examples
 
 - Population
 - Population (Humans)
