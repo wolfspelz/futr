@@ -122,6 +122,7 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 - **In-universe perspective**: Write all descriptions (universe, polity, civilization readmes) from an in-universe point of view, as if recorded by an accomplished historian within that universe. No publishing details, no meta-references to books, episodes, or authors. Focus on events, peoples, politics, and technology as historical facts.
 - **Readme/description length**: Descriptions must be at least 1/4 page and at most 1 page long (roughly 75-300 words).
 - Write in the language confirmed with the user in Step 1. (Of course keep all YAML keywords in English.)
+- **After writing all readme texts, use the `humanizer` skill to refine them** before including them in YAML files.
 
 ## Research Sources (by priority)
 1. **Official sources** - Creator-sanctioned content (Memory Alpha, Wookieepedia verified)
