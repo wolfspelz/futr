@@ -44,10 +44,11 @@
     ImgSrc = "/images/Index/new-universes.jpg",
     ImgAlt = "New Universes",
     Title = "New Universes",
-    Text= string.Join("<br/>", Model.App.Data.Universes
+    Text= string.Join(", ", Model.App.Data.Universes
     .Where(x => x.Value.Tags.Contains("new"))
     .OrderByDescending(x => x.Value.Order)
     .ThenByDescending(x => x.Value.Created)
+    .Take(50)
     .Select(pair => $"<a href='/Universe/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.Title}</a>")),
     Link = "/Universe",
     TitleHasLink = true,
@@ -61,15 +62,20 @@
     .Where(x => x.Value.Tags.Contains("new"))
     .OrderByDescending(x => x.Value.Order)
     .ThenByDescending(x => x.Value.Created)
+    .Take(20)
     .Select(pair => $"<a href='/Civilization/{Uri.EscapeDataString(pair.Value.SeoName)}'>{pair.Value.Universe.Title}: {pair.Value.Title}</a>")),
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
-    ImgSrc = "/images/Index/discord.png",
-    ImgAlt = "Discord",
-    Title = "Discord",
-    Text = "Talk about universes and how to measure stuff. Request new measurements and comparisons. Is there any universe still missing?",
-    Link = "https://discordapp.com/channels/1136704642986811423/1153448297915220058",
+    ImgSrc = "/images/Index/metrics.jpg",
+    ImgAlt = "Metrics",
+    Title = "Metrics",
+    Text = ""
+    + "<p>This is how we gauge universes, civilizations and polities.</p>"
+    + "<p>Some have many planets or ring worlds, others might be measured by their progress to higher spheres of existence.</p>"
+    + "<p>This is not a competition, though.</p>"
+    + "<p><a href='/Metric'>The metrics</a></p>",
+    Link = "/Metric",
     TitleHasLink = true,
     })
 
@@ -105,15 +111,11 @@
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
-    ImgSrc = "/images/Index/metrics.jpg",
-    ImgAlt = "Metrics",
-    Title = "Metrics",
-    Text = ""
-    + "<p>This is how we gauge universes, civilizations and polities.</p>"
-    + "<p>Some have many planets or ring worlds, others might be measured by their progress to higher spheres of existence.</p>"
-    + "<p>This is not a competition, though.</p>"
-    + "<p><a href='/Metric'>The metrics</a></p>",
-    Link = "/Metric",
+    ImgSrc = "/images/Index/discord.png",
+    ImgAlt = "Discord",
+    Title = "Discord",
+    Text = "Talk about universes and how to measure stuff. Request new measurements and comparisons. Is there any universe still missing?",
+    Link = "https://discordapp.com/channels/1136704642986811423/1153448297915220058",
     TitleHasLink = true,
     })
 
