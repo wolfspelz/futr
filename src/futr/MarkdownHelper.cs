@@ -8,6 +8,7 @@ namespace futr;
 public static class MarkdownHelper
 {
     private static readonly MarkdownPipeline Pipeline = new MarkdownPipelineBuilder()
+        .UsePipeTables()
         .Use<HeadingLevelExtension>()
         .Build();
 
