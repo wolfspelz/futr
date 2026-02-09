@@ -1,0 +1,12 @@
+title: Tech Summary
+created: 2026-02-09
+changed: 2026-02-09
+order: 0
+tags: [index]
+type: text
+readme: |
+  A short text summary of a civilization's technology level.
+  One word or a brief phrase, max one short sentence.
+
+  Examples: "Stone Age", "Industrial", "Early Interstellar",
+  "FTL-capable spacefaring", "Post-Singularity", "Godlike".

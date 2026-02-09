@@ -1,0 +1,34 @@
+title: TechLevel
+created: 2026-02-09
+changed: 2026-02-09
+order: 0
+tags: [index]
+type: number
+unit: TL
+range: 1-20
+readme: |
+  Technology Level measures a civilization's technological capability — what it can build and do.
+  Complements Kardashev Rating (energy) and Tech Summary (text description).
+  Scale unifies GURPS TL (0-16), Orion's Arm toposophic levels (S0-S6),
+  and Perry Rhodan's cosmic hierarchy.
+
+  - **1 — Pre-Tool.** Proto-tool use, no fire. (GURPS TL0-)
+  - **2 — Stone Age.** Fire, stone tools, language, agriculture. (GURPS TL0-1)
+  - **3 — Bronze/Iron.** Metalworking, writing, sailing. (GURPS TL2-3)
+  - **4 — Medieval.** Steel, navigation, printing, gunpowder. (GURPS TL3-4)
+  - **5 — Industrial.** Steam, electricity, mass production. (GURPS TL5-6)
+  - **6 — Information.** Computers, nuclear, early space, internet. (GURPS TL7-8)
+  - **7 — Interplanetary.** Fusion, habitats, system colonization. (GURPS TL8-9)
+  - **8 — Advanced Interplanetary.** Mature system civilization, generation ships, sleeper ships, sub-light interstellar. (GURPS TL9)
+  - **9 — Early Interstellar.** FTL, first colonies, multi-star presence. (GURPS TL9-10)
+  - **10 — Interstellar.** Mature FTL empires, force fields, antigrav. (GURPS TL10-11)
+  - **11 — Advanced Interstellar.** Terraforming, thousands of worlds, advanced AI. (GURPS TL12-13)
+  - **12 — Galactic.** Galaxy-spanning civilization. (GURPS TL13+)
+  - **13 — Intergalactic.** Multi-galaxy presence, intergalactic travel. (beyond GURPS)
+  - **14 — Megastructure.** Dyson swarms, ringworlds, stellar engineering, nanotech. (GURPS TL14-15, OA S0)
+  - **15 — Matrioshka.** Computational megastructures, full uploading, post-biological. (GURPS TL16+, OA S1)
+  - **16 — Exotic Matter.** Magmatter, wormhole networks, industrial transmutation. (OA S2-S3)
+  - **17 — Spacetime Engineering.** Void factories, reactionless drives, metric engineering, archailects. (OA S3-S5, PR Superintelligences)
+  - **18 — Cosmic.** Pocket universes, multiverse traversal, higher-dimensional existence. (OA S6, PR Kosmokraten, Thez)
+  - **19 — Omniscient.** Universe creation, beyond causality. (Q Continuum)
+  - **20 — Absolute.** Beyond the concept of universes. Theoretical maximum, omnipotent-tier.
