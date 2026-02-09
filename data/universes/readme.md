@@ -23,7 +23,7 @@ Civilizations list various Metrics. This is the main content. Metrics are the va
 - Honorverse
 - Firefly: The Verse 
 - Eve Online
-- Alliance–Union (C. J. Cherryh)
+- Alliance-Union (C. J. Cherryh)
 - Technic Civilization (Poul Anderson)
 - Zones of Thought (Vernor Vinge)
 - TRAVELLER 2300 AD

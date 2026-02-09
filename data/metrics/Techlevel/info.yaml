@@ -53,7 +53,7 @@ readme: |
 
   | TL | GURPS | Orion's Arm | d20 Modern |
   |---|---|---|---|
-  | 1 | sub-TL0 | — | PL0- |
+  | 1 | sub-TL0 | - | PL0- |
   | 2 | TL0 | Primtech | PL0 |
   | 3 | TL1-3 | Lotech | PL1-2 |
   | 4 | TL4 | Midtech | PL2-3 |
@@ -61,13 +61,13 @@ readme: |
   | 6 | TL7-8 | Hitech | PL5 |
   | 7 | TL9-10 | late Hitech | PL6 |
   | 8 | TL10-11 | Ultratech (S0) | PL7-8 |
-  | 9 | TL12 | — (no FTL in OA) | PL7-8 |
+  | 9 | TL12 | - (no FTL in OA) | PL7-8 |
   | 10 | post-TL12 | S1 | PL9 |
-  | 11 | — | S2 | — |
-  | 12 | — | S3-S4 | — |
-  | 13 | — | S4-S5 | — |
-  | 14 | — | S6 | — |
-  | 15 | — | — | — |
+  | 11 | - | S2 | - |
+  | 12 | - | S3-S4 | - |
+  | 13 | - | S4-S5 | - |
+  | 14 | - | S6 | - |
+  | 15 | - | - | - |
 
   # Examples by Level
 

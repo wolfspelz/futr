@@ -26,7 +26,7 @@ Additional context is loaded automatically based on what you're working on:
 
 ## Conceptual Model
 
-**Universes** contain **polities** (named peoples, planets, or empires). Polities can range from galaxy-spanning civilizations to a single individual—it depends on the universe, your interests, and available data.
+**Universes** contain **polities** (named peoples, planets, or empires). Polities can range from galaxy-spanning civilizations to a single individual. It depends on the universe, your interests, and available data.
 
 A **civilization** is a polity at a specific point in time. Since polities change over time, we capture snapshots as civilizations (e.g., "Federation 2373" is the Federation of Planets in the year 2373).
 
