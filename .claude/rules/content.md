@@ -193,7 +193,6 @@ Ordered from most to least reliable:
 
 **Image requirements:**
 - Verify the image can be embedded (test from different origin)
-- Prefer PNG/JPG over WebP for compatibility
 - All images MUST have complete attribution: `src`, `link`, `author`, `license`, `legal`
 
 ## Image Proxy
