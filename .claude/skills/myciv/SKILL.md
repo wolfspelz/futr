@@ -84,6 +84,7 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 
 ### Step 5: Image Research & Attribution (REQUIRED)
 1. Find images (see content.md for approved sources and proxy instructions)
+   - **Try to find 5 images for each item** (universe, polity, civilization). Search broadly: maps, logos/emblems, key characters, ships/technology, artwork, book/media covers, battle scenes, cities/locations, flags/symbols, etc. Present all candidates to the user for selection.
 2. **For EVERY image, research and document all attribution fields:**
    - `src`: Direct image URL (or `/proxy/...` path for proxied images)
    - `link`: Source page URL for attribution (e.g., Wikimedia Commons file page, publisher page)
@@ -117,7 +118,7 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 
 ## Writing Style
 - **All descriptions and readme texts MUST be written in present tense** (historisches Prasens / historical present), regardless of language. Example: "Das Imperium umfasst 50.000 Welten" (not "umfasste"), "The Empire controls 150 worlds" (not "controlled").
-- **Never use em dashes**. Use commas, periods, or restructure sentences instead.
+- **Use em dashes (Gedankenstrich) rarely**. Prefer commas, periods, or restructured sentences.
 - **In-universe perspective**: Write all descriptions (universe, polity, civilization readmes) from an in-universe point of view, as if recorded by an accomplished historian within that universe. No publishing details, no meta-references to books, episodes, or authors. Focus on events, peoples, politics, and technology as historical facts.
 - **Readme/description length**: Descriptions must be at least 1/4 page and at most 1 page long (roughly 75-300 words).
 - Write in the language confirmed with the user in Step 1. (Of course keep all YAML keywords in English.)
