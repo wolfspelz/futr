@@ -8,6 +8,8 @@ type: number
 unit: TL
 range: 1-20
 readme: |
+  # Description
+
   Class measures a civilization's overall capability: what it can build, do, and reach.
   Complements Kardashev Rating (energy) and Tech Summary (text description).
   Scale unifies GURPS TL (0-16), Orion's Arm toposophic levels (S0-S6),
@@ -19,6 +21,8 @@ readme: |
   may run on relatively mundane FTL jump drives at Class 11-12 (e.g. Foundation's Galactic
   Empire, Traveller's Third Imperium). You can have pocket-universe technology without
   owning a galaxy, and own the galaxy with boring hyperdrives.
+
+  # Classes
 
   - **1: Pre-Tool.** Proto-tool use, no fire.
   - **2: Stone Age.** Fire, stone tools, language, agriculture.
@@ -41,7 +45,35 @@ readme: |
   - **19: Omniscient.** Universe creation, beyond causality.
   - **20: Absolute.** Beyond the concept of universes. Theoretical maximum, omnipotent-tier.
 
-  ### Examples by Level
+  # References
+
+  Comparison & aggregation:
+  - [Atomic Rockets: Tech Level](https://www.projectrho.com/public_html/rocket/techlevel.php) — comprehensive comparison of multiple tech level systems for hard SF worldbuilding
+  - [Frank Mitchell: Tech Levels: A Comparison](https://frank-mitchell.com/rpg/techlevels/) — side-by-side comparison of RPG tech level scales
+  - [Traveller: Tech Level Comparison Chart](https://wiki.travellerrpg.com/Tech_Level_Comparison_Chart) — cross-references Traveller TL against GURPS, d20 Future, and real-world history
+  - [TV Tropes: Technology Levels](https://tvtropes.org/pmwiki/pmwiki.php/Main/TechnologyLevels) — examples of the trope across dozens of fictional works
+
+  Tabletop RPGs:
+  - [Traveller RPG: Technology Level](https://wiki.travellerrpg.com/Technology_Level) — TL 0-33, the original sci-fi RPG tech scale (1977)
+  - [GURPS: Technology Levels (Classic)](https://gurps.fandom.com/wiki/Technology_Levels_(Classic)) — TL 0-16+, Steve Jackson Games
+  - [d20 Future: Progress Levels](https://opengamecontent.fandom.com/wiki/D20_Modern_SRD/Future_Progress_Levels) — PL 0-8, from TSR's Alternity adapted by WotC
+  - [Stars Without Number: Tech Levels](https://swansong.fandom.com/wiki/Tech_Level_System) — TL 0-5, Kevin Crawford's OSR sci-fi RPG
+  - [Doctor Who RPG: Technology Levels](https://dwaitas.proboards.com/thread/3001/technology-levels) — TL 1-10, Cubicle 7
+
+  Video games:
+  - [Stellaris: Technology](https://stellaris.fandom.com/wiki/Technology) — six tiers (T0-T5) across Engineering, Physics, Society
+  - [Civilization VI: Technology](https://civilization.fandom.com/wiki/Technology_(Civ6)) — the archetypal tech tree from Ancient to Information era
+
+  In-universe classification systems:
+  - [Halo: Technological Achievement Tiers](https://www.halopedia.org/Technological_Achievement_Tiers) — Tier 7 (Pre-Industrial) to Tier 0 (Transsentient)
+  - [Orion's Arm: Toposophic Levels](https://www.orionsarm.com/eg-topic/45b3dcfe2226a) — S0-S6, intelligence/cognitive capability classification
+  - [The Culture: Recognised Civilisationary Levels](https://theculture.fandom.com/wiki/Recognised_Civilisationary_Levels) — Iain Banks' in-universe civilization scale
+  - [Star Wars: Technology Level](https://starwars.fandom.com/wiki/Technology_level) — Legends/RPG world classification
+
+  Theoretical frameworks:
+  - [Kardashev Scale](https://en.wikipedia.org/wiki/Kardashev_scale) — Type I-III+ by energy consumption (1964), plus Barrow, Sagan, and Zubrin extensions
+
+  # Examples by Level
 
   **1: Pre-Tool**
   - Reality: Early Pleistocene (~1.2M BCE): Homo habilis/erectus, proto-tool use, no fire control
