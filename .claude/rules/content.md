@@ -3,12 +3,13 @@ paths:
   - "data/**/*"
 ---
 
-# Content & Research
+# Content Structure & Organization
 
 ## Data Directory Structure
 ```
 data/
 ├── metrics/{MetricName}/info.yaml
+├── proxy/{host}/{path}/{filename}          # Proxied images (see Image Proxy)
 └── universes/{UniverseName}/
     ├── info.yaml
     ├── _polities/{PolityName}/info.yaml
@@ -17,11 +18,25 @@ data/
         └── {MetricName}/info.yaml  (datapoint)
 ```
 
+## Naming Conventions
+- **Universe folder**: Universe name (e.g., `Star Trek`, `Orions Arm`)
+- **Civilization folder**: `{PolityOrCivName} {Year}` (e.g., `Federation 2373`)
+- **Polity folder**: `_polities/{PolityName}` (e.g., `_polities/Federation of Planets`)
+- **Metric datapoint folder**: Must match an existing metric name in `data/metrics/`
+- **Civilization `date` field**: Must be parseable as a year
+
+## Timestamps
+All info.yaml files MUST have `created` and `changed` date fields (format: `YYYY-MM-DD`):
+- **New files**: Set both `created` and `changed` to today's date
+- **Modified files**: Update only `changed` to today's date (never change `created`)
+
 ## YAML Schemas
 
 ### Metric (`data/metrics/{MetricName}/info.yaml`)
 ```yaml
 title: Population              # Display name
+created: 2026-02-04
+changed: 2026-02-04
 type: number                   # Data type
 unit: People                   # Unit of measurement
 range: "0-1e12"                # Optional range
@@ -29,12 +44,12 @@ tags: [index, fav]             # index=show in index, fav=featured
 order: 0.0                     # Sort order (lower = earlier)
 icons: [https://...]           # Icon URLs
 images:
-  - src: https://...          # Direct image URL
+  - src: https://...           # Direct image URL
     text: "Caption"            # Image description
     link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
     license: "CC BY-SA 4.0"    # Short license identifier
-    legal: "Licensed under Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/"
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
     tags: [main]               # "main" = primary/tile image for lists
 links:
   - src: https://...
@@ -50,12 +65,14 @@ readme: |
 ### Universe (`data/universes/{UniverseName}/info.yaml`)
 ```yaml
 title: Star Trek
+created: 2026-02-04
+changed: 2026-02-04
 tags: [index, fav]
 order: -1000                   # Negative = sort earlier
 showcaseMetrics: [Population, Planets, Kardashev]  # Metrics shown in tables
 icons: [https://...]
 images:
-  - src: https://...          # Direct image URL
+  - src: https://...           # Direct image URL
     text: "Caption"            # Image description
     link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
@@ -73,10 +90,12 @@ readme: |
 ### Polity (`data/universes/{Universe}/_polities/{PolityName}/info.yaml`)
 ```yaml
 title: Federation of Planets
+created: 2026-02-04
+changed: 2026-02-04
 tags: [index]
 order: 0.0
 images:
-  - src: https://...          # Direct image URL
+  - src: https://...           # Direct image URL
     text: "Caption"            # Image description
     link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
@@ -94,12 +113,14 @@ readme: |
 ### Civilization (`data/universes/{Universe}/{CivilizationName}/info.yaml`)
 ```yaml
 title: Federation 2373         # Display name (often includes year)
+created: 2026-02-04
+changed: 2026-02-04
 date: 2373                     # Year or time period (required)
 polity: Federation of Planets  # Reference to polity folder name (optional)
 tags: [index, fav]
 order: 100.0
 images:
-  - src: https://...          # Direct image URL
+  - src: https://...           # Direct image URL
     text: "Caption"            # Image description
     link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
@@ -116,6 +137,8 @@ readme: |
 
 ### Datapoint (`data/universes/{Universe}/{Civilization}/{Metric}/info.yaml`)
 ```yaml
+created: 2026-02-04
+changed: 2026-02-04
 value: 150                     # Main measured value (required)
 min: 100                       # Lower bound (1 std deviation)
 max: 200                       # Upper bound (1 std deviation)
@@ -128,7 +151,7 @@ references:                    # REQUIRED: must cite sources
   - link: https://memory-alpha.fandom.com/...
     text: "Memory Alpha"
 images:
-  - src: https://...          # Direct image URL
+  - src: https://...           # Direct image URL
     text: "Supporting image"   # Image description
     link: https://source       # Source page URL (required)
     author: "Artist Name"      # Creator/artist (required if known)
@@ -148,46 +171,9 @@ readme: |
 - `calculatedGuess` - Calculation with uncertain assumptions
 - `wildGuess` - Rough estimation with limited basis
 
-## Guidelines for Agentic Research
+## Image Sources
 
-### Adding New Universes
-1. Research the universe thoroughly (official wikis, fan wikis, source material)
-2. Create folder: `data/universes/{UniverseName}/`
-3. Create `info.yaml` with title, images, links to official sources
-4. Create `_polities/` subfolder for major political/cultural groups
-5. Create civilization snapshots at key historical moments
-
-### Adding Civilizations
-1. Choose meaningful time points (major events, peak eras, transitions)
-2. Folder name convention: `{PolityOrCivName} {Year}` (e.g., "Federation 2373")
-3. Must have `date` field that can be parsed as a year
-4. Reference polity if applicable
-
-### Adding Datapoints
-1. **Always cite references** - every value needs sources
-2. Prefer canon > calculated > informedGuess > wildGuess
-3. Include min/max bounds when uncertain
-4. Explain reasoning in readme field
-5. Metric folder name must match existing metric in `data/metrics/`
-
-### Research Sources (by priority)
-1. **Official sources** - Creator-sanctioned content (Memory Alpha, Wookieepedia verified)
-2. **Fan wikis** - Memory Alpha, Wookieepedia, various fandom wikis
-3. **Original works** - Books, shows, movies, games
-4. **Scholarly analysis** - Academic papers on fictional universes
-5. **Fan calculations** - Well-reasoned community estimates
-
-### Quality Standards
-- All values must have at least one reference
-- Calculations should be shown in readme
-- Uncertainty should be reflected in min/max and confidence level
-- Use consistent units across the project
-- Images should have proper attribution (page, author, license, legal fields)
-
-### Image Sources
-Fandom wikis (Memory Alpha, Wookieepedia, etc.) block external image embedding via CSP headers. **Do NOT use Fandom image URLs** for `icons` or `images` fields.
-
-**Preferred image sources:**
+**Preferred sources:**
 1. **Wikimedia Commons** - Free, embeddable, well-licensed images
 2. **Wikipedia** - Direct image links (upload.wikimedia.org)
 3. **Official promotional images** - Press kits, official sites with permissive policies
@@ -195,25 +181,41 @@ Fandom wikis (Memory Alpha, Wookieepedia, etc.) block external image embedding v
 
 **Never use:**
 - Cosplay or fan costume images
-
-**Always:**
-- Verify the image can be embedded (test in browser from different origin)
-- Prefer PNG/JPG over WebP for compatibility
-- Include full attribution:
-  - `link`: Source page URL (required)
-  - `author`: Creator/artist name (required if known)
-  - `license`: Short identifier (e.g., "CC BY-SA 4.0", "Public Domain", "Fair Use")
-  - `legal`: Full license text or license URL
+- Fandom wiki image URLs for embedding (they block external embedding via CSP)
 
 **Fandom wikis are fine for:**
 - `links` and `references` fields (text links, not embedded images)
 - Research and fact-checking
 
-### Common Metrics to Research
-For any civilization, try to find:
-1. Population (total, and breakdown by type if available)
-2. Kardashev level (energy usage, technological capability)
-3. Number of inhabited planets/worlds
-4. Territory size (if measurable)
-5. Age of civilization
-6. Key dates (founding, major events)
+**Image requirements:**
+- Verify the image can be embedded (test from different origin)
+- Prefer PNG/JPG over WebP for compatibility
+- All images MUST have complete attribution: `src`, `link`, `author`, `license`, `legal`
+
+## Image Proxy
+
+Wikimedia/Wikipedia images often block external embedding. Download these to a local proxy folder.
+
+**Pattern:**
+- Original URL: `https://upload.wikimedia.org/wikipedia/commons/d/d5/Example_Image.PNG`
+- Local path: `data/proxy/upload.wikimedia.org/wikipedia/commons/d/d5/Example_Image.PNG`
+- Reference in YAML: `/proxy/upload.wikimedia.org/wikipedia/commons/d/d5/Example_Image.PNG`
+
+The local path mirrors the original URL structure (preserving slashes).
+
+**Steps:**
+1. Create directory: `mkdir -p "data/proxy/{host}/{path}"`
+2. Download the image: `curl -L -o "data/proxy/{host}/{path}/{filename}" "{url}"`
+3. Reference with `/proxy/...` URL in the `src` field (served by ProxyController)
+4. Keep the original Wikimedia Commons page in the `link` field for attribution
+
+**Example:**
+```yaml
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG
+    text: Map of the Honorverse
+    link: https://commons.wikimedia.org/wiki/File:The_Honor_Harrington_Universe.PNG
+    author: "Michał Świerczek"
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+```
