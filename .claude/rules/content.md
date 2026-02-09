@@ -61,7 +61,7 @@ references:
   - src: https://...
     text: "Reference text"
 editors: [github_username]
-readme: |
+readme: |                        # Optional, readme.md file prevails
   Markdown description
 ```
 
@@ -86,7 +86,7 @@ links:
   - link: https://official-site.com
     text: "Official Website"
 editors: [github_username]
-readme: |
+readme: |                        # Optional, readme.md file prevails
   Markdown description
 ```
 
@@ -109,7 +109,7 @@ links:
   - src: https://...
     text: "Wiki link"
 editors: [github_username]
-readme: |
+readme: |                        # Optional, readme.md file prevails
   Markdown description
 ```
 
@@ -134,7 +134,7 @@ links:
   - src: https://...
     text: "Link text"
 editors: [github_username]
-readme: |
+readme: |                        # Optional, readme.md file prevails
   Markdown description
 ```
 
@@ -162,7 +162,7 @@ images:
     legal: "Full license text or URL"
     tags: [main]               # "main" = primary/tile image for lists
 editors: [github_username]
-readme: |
+readme: |                        # Optional, readme.md file prevails
   Explain HOW the value was derived.
   Include calculations if applicable.
 ```
