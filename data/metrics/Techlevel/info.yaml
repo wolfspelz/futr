@@ -1,0 +1,171 @@
+title: Techlevel
+created: 2026-02-09
+changed: 2026-02-09
+editors: [anthropic-claude]
+order: 0.1
+tags: [index]
+type: number
+unit: TL
+range: 1-15
+readme: |
+  # Concept
+
+  Techlevel measures the difficulty and sophistication of a civilization's most advanced
+  individual technology. Complements Class (overall capability including reach) and
+  Kardashev Rating (energy use).
+
+  **Key principle:** Only the hardest-to-invent and/or most advanced technology matters, 
+  not the scale or reach or quantity of a civilization.
+  - A single lab with a fusion reactor rates the same as a civilization with thousands of planets with thousands of 
+  fusion reactors each. 
+  - A Matrioshka brain built from fusion-powered processors is TL 7
+  (Fusion), not higher, unless it uses it's brain power to create exotic substrates like magmatter (TL 11) for orbitals and ringworlds
+  A Dyson sphere is just solar panels at scale (TL 7), not a separate tech level.
+
+  Magic, psionics, and other non-technological capabilities are rated by the equivalent
+  technological effect they achieve (e.g. psionic teleportation = TL 10).
+
+  # Levels
+
+  | TL | Name | Defining Technologies |
+  |---|---|---|
+  | 1 | Pre-Tool | No manufactured tools, no controlled fire. Found objects, instinct only. |
+  | 2 | Primitive | Controlled fire, shaped stone/bone/wood tools, language, simple agriculture. |
+  | 3 | Metal | Smelting metals (bronze, iron, steel), writing, the wheel, sailing vessels, architecture. |
+  | 4 | Mechanical | Complex machines (clockwork, windmills), gunpowder, printing, optics, precision instruments. |
+  | 5 | Industrial | Heat engines (steam, combustion), electrical power, mass production, telegraphy, chemistry. |
+  | 6 | Atomic | Nuclear fission, electronic computing, semiconductor electronics, rocketry, early spaceflight, incl. early fusion power. |
+  | 7 | Fusion | Controlled fusion, general AI, advanced bioengineering, mature in-system spaceflight. |
+  | 8 | Nanotech | Molecular nanotechnology (dry nano), antimatter production, utility fog, programmable matter, relativistic drives. |
+  | 9 | FTL | Faster-than-light travel, energy shields/force fields, directed energy weapons, artificial gravity, subspace communication. Includes psionics-enabled FTL. |
+  | 10 | Matter Mastery | Matter-energy conversion on demand (replicators, transporters), holographic matter, industrial transmutation. Includes psionic teleportation/transmutation. |
+  | 11 | Exotic Matter | Creation and engineering of exotic matter: magnetic monopoles, magmatter, monopole-catalyzed conversion technology. |
+  | 12 | Wormhole Engineering | Creation of traversable wormholes, basic spacetime metric manipulation, weylforge technology. |
+  | 13 | Spacetime Mastery | Advanced metric engineering: void factories, reactionless drives (void bubbles), metric weapons, W-brains, Halo drives. |
+  | 14 | Universe Engineering | Pocket/basement universe creation, higher-dimensional manipulation, dimensional transcendence. |
+  | 15 | Transcendent | Alteration of physical constants, universe-scale reality manipulation, omnipotent-tier capabilities. |
+
+  # Cross-Reference to Other Scales
+
+  | TL | GURPS | Orion's Arm | d20 Modern |
+  |---|---|---|---|
+  | 1 | sub-TL0 | — | PL0- |
+  | 2 | TL0 | Primtech | PL0 |
+  | 3 | TL1-3 | Lotech | PL1-2 |
+  | 4 | TL4 | Midtech | PL2-3 |
+  | 5 | TL5-6 | Midtech | PL4 |
+  | 6 | TL7-8 | Hitech | PL5 |
+  | 7 | TL9-10 | late Hitech | PL6 |
+  | 8 | TL10-11 | Ultratech (S0) | PL7-8 |
+  | 9 | TL12 | — (no FTL in OA) | PL7-8 |
+  | 10 | post-TL12 | S1 | PL9 |
+  | 11 | — | S2 | — |
+  | 12 | — | S3-S4 | — |
+  | 13 | — | S4-S5 | — |
+  | 14 | — | S6 | — |
+  | 15 | — | — | — |
+
+  # Examples by Level
+
+  **1: Pre-Tool**
+  - Reality: Early Pleistocene (~1.2M BCE): Homo habilis/erectus, proto-tool use, no fire
+  - Known Space: Grogs: sessile telepaths, no manipulative organs
+  - Known Space: Bandersnatchi: intelligent but physically unable to build
+
+  **2: Primitive**
+  - Reality: Stone Age (~50,000 BCE): fire, stone tools, language, agriculture
+  - Star Wars: Tusken Raiders: nomadic, gaffi sticks, scavenged metal
+  - Star Trek: Mintakans: basic tools, no metalworking
+
+  **3: Metal**
+  - Reality: Bronze Age (~2000 BCE): bronze smelting, writing, sailing, cities
+  - Reality: Classic Age (~1 CE): iron working, engineering, road networks
+  - Star Wars: Ewoks: organized tribal villages, catapults, log traps
+  - Star Trek: Barkonians: iron-age village
+
+  **4: Mechanical**
+  - Reality: Middle Ages (~1000 CE): steel, gunpowder arriving, navigation
+  - Reality: Age of Sail (~1700 CE): printing, gunpowder weapons, mills
+  - Zones of Thought: Tines: castles, swords, early gunpowder
+  - Star Trek: Ba'ku: deliberately abandoned higher tech
+
+  **5: Industrial**
+  - Reality: Industrialization (~1850 CE): steam, electricity, mass production
+  - Zones of Thought: Spiders: early 20th-century industrial equivalent
+  - Firefly: Rim Worlds: frontier settlements with 19th-century conditions
+
+  **6: Atomic**
+  - Reality: 20th Century (~1950 CE): nuclear fission, electronic computing, jet aircraft
+  - Reality: 1980s: nuclear power, PCs, satellites, Space Shuttle
+  - Reality: 2023: internet, AI, nuclear, ISS
+  - Star Trek: Earth pre-2063: nuclear weapons, computing, post-WWIII
+
+  **7: Fusion**
+  - Firefly: Alliance / Core Worlds: terraforming, mature system civilization, no FTL
+  - Galactic Developments: Early Solar era (~2090s-2200s): orbital habitats, fusion economy
+  - Zones of Thought: Slow Zone civilizations: capped by local physics, computers but no strong AI
+
+  **8: Nanotech**
+  - Revelation Space: Ultras/Conjoiners: relativistic lighthuggers, advanced nanotech, no FTL
+  - Orion's Arm: Baseline humans (S0): nanotech, utility fog, antimatter, no FTL
+  - Zones of Thought: Qeng Ho: sub-light traders, millennia of accumulated tech knowledge
+  - Halo: UNSC pre-war: early unreliable FTL, MAC weapons, SPARTAN augmentation
+
+  **9: FTL**
+  - Star Trek: Andorians 2161: Warp 5+, shields, particle weapons
+  - Star Trek: Vulcans 2063: mature warp-capable, established interstellar presence
+  - Perry Rhodan: Solares Imperium 2040: transition drive FTL, impulse weapons
+  - Honorverse: Manticore 1903 PD: hyperspace FTL, impeller wedge gravitics, no replicators
+  - Babylon 5: Earth Alliance: FTL via jump gates, particle weapons
+  - Babylon 5: Minbari Federation: magnetogravitic drives, stealth
+  - Halo: Covenant: plasma weapons, reverse-engineered Forerunner FTL
+  - Mass Effect: Citadel Council: mass relays, kinetic barriers
+  - Warhammer 40K: Tau Empire: pulse weapons, limited FTL
+
+  **10: Matter Mastery**
+  - Star Trek: Federation 2373: replicators, transporters, holographic matter
+  - Perry Rhodan: Posbis 2114: transmitter technology, Transformkanone
+  - Perry Rhodan: Großes Imperium 2040: transmitter networks (matter teleportation)
+  - Warhammer 40K: Imperium of Man M41: teleportarium (stagnant, barely understood)
+  - Warhammer 40K: Orks M41: teleporta (WAAAGH!-powered psychic tech)
+  - Star Trek: Borg Collective: nanoprobes, adaptive assimilation, transwarp
+  - Star Wars: Galactic Empire: Death Star superlaser (total planetary conversion)
+  - Dune: Spacing Guild: foldspace FTL (prescient navigators bypass need for computers)
+
+  **11: Exotic Matter**
+  - Orion's Arm: S2 Transapients: monopole production, conversion power, magmatter basics
+  - Orion's Arm: Hildemar's Knots: exotic-matter biology on neutron stars
+  - Star Wars: Celestials: moved stars and black holes through hyperspace
+  - Halo: Forerunners: Halo Array, Shield Worlds, slipspace mastery, stellar engineering
+  - Warhammer 40K: Necrons (War in Heaven peak): inertialess drives, Dolmen Gates
+
+  **12: Wormhole Engineering**
+  - Orion's Arm: S3-S4 Archailects: traversable wormholes, weylforge, displacement drives
+  - Hyperion: TechnoCore: farcaster wormhole network
+  - Babylon 5: Vorlons/Shadows: planet killers, hyperspace pioneers
+  - Doctor Who: Daleks: time travel, void ships
+
+  **13: Spacetime Mastery**
+  - The Culture: gridfire, hyperspace, effectors, displacement, Orbitals
+  - Orion's Arm: S4-S5 Great Archailects: W-brains, Halo drives, void bubbles
+  - Perry Rhodan: Superintelligences (ES, ESTARTU): cosmic-scale manipulation
+  - Zones of Thought: Powers (Transcend): manipulate zone boundaries
+  - Star Trek: Prophets/Wormhole Aliens: non-linear time, stable wormhole creation
+  - Star Trek: Organians: non-corporeal, immobilize fleets across interstellar distances
+  - Doctor Who: Time Lords (as depicted): TARDISes, regeneration, dimensional transcendence
+  - Stargate: Ancients (ascended): higher plane, manipulate reality across spacetime
+  - Xeelee Sequence: Xeelee: Bolder's Ring (cosmic strings, millions of light-years)
+  - Xeelee Sequence: Xeelee (upper end): engineered own evolution back 13 billion years
+
+  **14: Universe Engineering**
+  - Orion's Arm: S6 Greatest Archailects: pocket/basement universes, void ships
+  - Perry Rhodan: Kosmokraten: multiverse-scale, higher-dimensional
+  - Warhammer 40K: Chaos Gods: Immaterial pocket-universe realms
+  - Doctor Who: Time Lords (peak): Eye of Harmony, Web of Time
+  - Halo: Precursors: neural physics, manipulate fabric of universe
+  - The Culture: Excession entity: inter-universal, pre-dates the universe
+
+  **15: Transcendent**
+  - Star Trek: Q Continuum: omnipotent, alter universal constants, create pocket realities
+  - Perry Rhodan: GESETZ / the LAW: the fundamental principle governing all existence
+  - Star Trek: Douwd: destroyed 50 billion beings instantaneously with a thought

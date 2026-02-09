@@ -24,26 +24,28 @@ readme: |
 
   # Classes
 
-  - **1: Pre-Tool.** Proto-tool use, no fire.
-  - **2: Stone Age.** Fire, stone tools, language, agriculture.
-  - **3: Bronze/Iron.** Metalworking, writing, sailing.
-  - **4: Medieval.** Steel, navigation, printing, gunpowder.
-  - **5: Industrial.** Steam, electricity, mass production.
-  - **6: Information.** Computers, nuclear, early space, internet.
-  - **7: Interplanetary.** Fusion, habitats, system colonization.
-  - **8: Advanced Interplanetary.** Mature system civilization, significant sub-light interstellar.
-  - **9: Interstellar Pocket.** FTL, first colonies, multi-star presence.
-  - **10: Interstellar Dominion.** Mature FTL empires, force fields, antigrav.
-  - **11: Galactic Superpower.** Terraforming, thousands of worlds, advanced AI.
-  - **12: Galactic.** Galaxy-spanning civilization.
-  - **13: Intergalactic.** Multi-galaxy presence, intergalactic travel.
-  - **14: Megastructure.** Dyson swarms, ringworlds, stellar engineering, nanotech.
-  - **15: Matrioshka.** Computational megastructures, full uploading, post-biological.
-  - **16: Exotic Matter.** Magmatter, wormhole networks, industrial transmutation.
-  - **17: Spacetime Engineering.** Void factories, reactionless drives, metric engineering, archailects.
-  - **18: Cosmic.** Pocket universes, multiverse traversal, higher-dimensional existence.
-  - **19: Omniscient.** Universe creation, beyond causality.
-  - **20: Absolute.** Beyond the concept of universes. Theoretical maximum, omnipotent-tier.
+  | Class | Name | Description |
+  |---|---|---|
+  | 1 | Pre-Tool | Proto-tool use, no fire. |
+  | 2 | Stone Age | Fire, stone tools, language, agriculture. |
+  | 3 | Bronze/Iron | Metalworking, writing, sailing. |
+  | 4 | Medieval | Steel, navigation, printing, gunpowder. |
+  | 5 | Industrial | Steam, electricity, mass production. |
+  | 6 | Information | Computers, nuclear, early space, internet. |
+  | 7 | Interplanetary | Fusion, habitats, system colonization. |
+  | 8 | Advanced Interplanetary | Mature system civilization, significant sub-light interstellar. |
+  | 9 | Interstellar Pocket | FTL, first colonies, multi-star presence. |
+  | 10 | Interstellar Dominion | Mature FTL empires, force fields, antigrav. |
+  | 11 | Galactic Superpower | Terraforming, thousands of worlds, advanced AI. |
+  | 12 | Galactic | Galaxy-spanning civilization. |
+  | 13 | Intergalactic | Multi-galaxy presence, intergalactic travel. |
+  | 14 | Megastructure | Dyson swarms, ringworlds, stellar engineering, nanotech. |
+  | 15 | Matrioshka | Computational megastructures, full uploading, post-biological. |
+  | 16 | Exotic Matter | Magmatter, wormhole networks, industrial transmutation. |
+  | 17 | Spacetime Engineering | Void factories, reactionless drives, metric engineering, archailects. |
+  | 18 | Cosmic | Pocket universes, multiverse traversal, higher-dimensional existence. |
+  | 19 | Omniscient | Universe creation, beyond causality. |
+  | 20 | Absolute | Beyond the concept of universes. Theoretical maximum, omnipotent-tier. |
 
   # References
 
