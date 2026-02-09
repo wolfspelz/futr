@@ -32,9 +32,28 @@
 
     <div class="my-textblock">
         <div><span>Type</span>: <span>@Model.Item.Type</span></div>
-        <div><span>Unit</span>: <span>@Model.Item.Unit</span></div>
+        @if (!string.IsNullOrEmpty(Model.Item.Unit)) {
+            <div><span>Unit</span>: <span>@Model.Item.Unit</span></div>
+        }
         @if (!string.IsNullOrEmpty(Model.Item.Range)) {
             <div><span>Range</span>: <span>@Model.Item.Range</span></div>
+        }
+    </div>
+
+    <div class="my-textblock">
+        <h2>Civilizations</h2>
+        @foreach (var group in Model.App.Data.Civilizations.Values
+            .Where(c => c.Datapoints.ContainsKey(Model.Item.SeoName))
+            .OrderByDescending(c => c.Order)
+            .ThenBy(c => c.Universe.Title)
+            .ThenBy(c => c.Year)
+            .GroupBy(c => c.Universe)) {
+            <div><a asp-page="/Universe" asp-route-id="@group.Key.SeoName">@group.Key.Title</a></div>
+            @foreach (var civ in group) {
+                <div style="padding-left: 1.5em">
+                    <a asp-page="/Civilization" asp-route-id="@civ.SeoName">@civ.Title</a>: @civ.Datapoints[Model.Item.SeoName].Value
+                </div>
+            }
         }
     </div>
 
