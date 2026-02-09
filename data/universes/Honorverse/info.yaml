@@ -30,7 +30,7 @@ links:
     text: Honorverse Wiki
   - link: https://en.wikipedia.org/wiki/Honorverse
     text: Wikipedia - Honorverse
-showcaseMetrics: [Population, Planets, Kardashev, Warships, Techlevel]
+showcaseMetrics: [Population, Planets, Kardashev, Warships, Techlevel, Class]
 readme: |
   David Weber's military science fiction universe, centered on the career of Honor Harrington.
   Set in the far future where humanity has spread across the galaxy using hyperspace travel

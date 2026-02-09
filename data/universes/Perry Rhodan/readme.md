@@ -1,7 +1,5 @@
 # Perry Rhodan: Chronik der Milchstraße
 
-*Aufgezeichnet für die Archive der Lokalen Gruppe*
-
 ## Die Galaxis und ihre Ordnung
 
 Die Milchstraße, eine Spiralgalaxie von 100.000 Lichtjahren Durchmesser, beherbergt geschätzte 20 Millionen intelligente Spezies. Ihr Zentrum birgt das Schwarze Loch Dengejaa Uveso und das legendäre Sonnensechseck, ein Transmittersystem aus sechs kreisförmig angeordneten Sternen, das den Weg zwischen den Galaxien öffnet. Die Galaxis gliedert sich in Westside (Terraner), Northside (Arkoniden), Eastside (Blues) und die politisch zersplitterte Southside.

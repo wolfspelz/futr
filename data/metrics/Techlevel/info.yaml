@@ -15,12 +15,16 @@ readme: |
   Kardashev Rating (energy use).
 
   **Key principle:** Only the hardest-to-invent and/or most advanced technology matters, 
-  not the scale or reach or quantity of a civilization.
-  - A single lab with a fusion reactor rates the same as a civilization with thousands of planets with thousands of 
-  fusion reactors each. 
+  not the scale or reach or quantity of a civilization:
   - A Matrioshka brain built from fusion-powered processors is TL 7
-  (Fusion), not higher, unless it uses it's brain power to create exotic substrates like magmatter (TL 11) for orbitals and ringworlds
-  A Dyson sphere is just solar panels at scale (TL 7), not a separate tech level.
+  (Fusion), unless it uses its brain power to create exotic substrates like magmatter 
+  (TL 11) for orbitals and ringworlds
+  - A Dyson sphere is just solar panels at scale (TL 7), not a separate tech level.
+  - A galactic empire with millions of planets and quadrillions of inhabitants may be
+  TL 9 for its antimatter-powered FTL drive, while a single elder entity hiding behind
+  an artificial black hole could be TL 12.
+  - A modest space colony with a fusion reactor rates the same TL 7 as a civilization
+  where thousands of star systems are traveled by billions of fusion-powered sublight starships.
 
   Magic, psionics, and other non-technological capabilities are rated by the equivalent
   technological effect they achieve (e.g. psionic teleportation = TL 10).
