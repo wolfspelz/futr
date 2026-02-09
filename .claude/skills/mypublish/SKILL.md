@@ -9,14 +9,15 @@ Rebase the `deployment` branch onto `main` and push to trigger the deployment pi
 
 ## Steps
 
-1. Fetch latest from origin
-2. Checkout `deployment` branch
-3. Rebase onto `main`
-4. Force push with lease
-5. Switch back to `main`
+1. Push `main` to origin
+2. Fetch latest from origin
+3. Checkout `deployment` branch
+4. Rebase onto `main`
+5. Force push with lease
+6. Switch back to `main`
 
 ## Command
 
 ```bash
-git fetch origin && git checkout deployment && git rebase main && git push --force-with-lease && git checkout main
+git push origin main && git fetch origin && git checkout deployment && git rebase main && git push --force-with-lease && git checkout main
 ```
