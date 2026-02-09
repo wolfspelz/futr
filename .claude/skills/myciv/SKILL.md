@@ -133,10 +133,11 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 For any civilization, try to find data on:
 1. Population (total, and breakdown by type if available)
 2. Kardashev level (energy usage, technological capability)
-3. Number of inhabited planets/worlds
-4. Territory size (if measurable) and Location
-5. Age of civilization
-6. Key dates (founding, major events)
+3. TechLevel (unified 1-20 scale) and Tech Summary (short text description)
+4. Number of inhabited planets/worlds
+5. Territory size (if measurable) and Location
+6. Age of civilization
+7. Key dates (founding, major events)
 
 ## Quality Checks
 - All datapoints MUST have references
