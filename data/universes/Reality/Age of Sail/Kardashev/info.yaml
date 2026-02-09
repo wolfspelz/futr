@@ -4,7 +4,7 @@ order: 0
 value: 0.54
 min: 0.5
 max: 0.6
-confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: calculatedGuess
 readme: |
     There are big ships and cannons, but the majority of the people lives like 2000 years ago: still 300 W.
     Yet, there are much more people. 

@@ -4,7 +4,7 @@ order: 0
 value: 1
 min: 0.9
 max: 1.1
-confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: calculatedGuess
 readme: |
     Assuming 100 billion people and an average of 100 kW power consumption per person which is a wild guess. 
 

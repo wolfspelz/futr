@@ -4,7 +4,7 @@ order: 0
 value: 0.56
 min: 0.5
 max: 0.63
-confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: calculatedGuess
 references: 
    - https://ourworldindata.org/energy-production-consumption
 readme: |

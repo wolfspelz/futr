@@ -4,7 +4,7 @@ order: 0
 value: 0.48
 min: 0.4
 max: 0.55
-confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: calculatedGuess
 readme: |
     Pottery (ovens), metal working, wind/water mills.
     On the other hand, the majority still lives in the countryside like in the Bronze Age.

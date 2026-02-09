@@ -4,7 +4,7 @@ order: 0
 value: 4e9
 min: 3.5e9
 max: 4.5e9
-confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: canon
 readme: Quick Wikipedia research. Error bars guestimated.
 references: 
     - src: https://en.wikipedia.org/wiki/Prehistoric_demography

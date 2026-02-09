@@ -4,5 +4,5 @@ order: 0
 value: 100e9
 min: 30e9
 max: 1000e9
-confidence: informedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: informedGuess
 readme: A billion per planet sounds small considering the Earth, but there are also less densely populated planets and not every planet is the home of a major species.

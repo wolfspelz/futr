@@ -4,7 +4,7 @@ order: 0
 value: 0.057
 min: 0.04
 max: 0.25
-confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: calculatedGuess
 readme: |
     At a 3000 kcal per day diet. 
     That makes 130 W.

@@ -2,7 +2,7 @@
 
 A metric is a way to measure a civilization.
 
-Metrics are used by civiliations 
+Metrics are used by civilizations 
 
 Each metric is a folder with:
 - descriptions: 

@@ -4,7 +4,7 @@ order: 0
 value: 150
 min: 100
 max: 200
-confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: canon
 readme: Though Kirk states in 2267 that humanity was on "a thousand planets and spreading out", we'll go with a later quote from the franchise. 
 references:
     - src: https://en.wikipedia.org/wiki/United_Federation_of_Planets

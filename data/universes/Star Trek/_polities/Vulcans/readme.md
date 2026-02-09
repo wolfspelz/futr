@@ -1,5 +1,5 @@
 # Vulcans
-The Vulcans are a humanoid species from the plant Vulcan. 
+The Vulcans are a humanoid species from the planet Vulcan. 
 They are known for their logical and stoic nature.
 - Physical Appearance: Vulcans are similar in appearance to humans but have pointed ears. 
 Their blood is based on copper, which gives it a green color.

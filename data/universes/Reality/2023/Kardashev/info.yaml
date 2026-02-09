@@ -4,7 +4,7 @@ order: 0
 value: 0.73
 min: 0.71
 max: 0.75
-confidence: calculatedGuess # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: calculatedGuess
 references: 
     - https://ourworldindata.org/energy-production-consumption
     - https://en.wikipedia.org/wiki/List_of_countries_by_energy_consumption_per_capita

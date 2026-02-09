@@ -4,7 +4,7 @@ order: 0
 value: 18500
 min: 10000
 max: 26000
-confidence: canon # (canon, calculated, informedGuess, calculatedGuess, wildGuess)
+confidence: canon
 readme: |
     # Reason
     By taking the first source that comes up

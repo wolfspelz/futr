@@ -13,13 +13,13 @@ Explain the reasoning for the value of the datapoint.
 
 ## info.yaml
 
-Minimlistic:
+Minimalistic:
 ```
 value: {This is the main value, e.g. the United Federation of Planets has 150 planets in 2373}
 min: {A lower limit for the value, because values are never exact. One standard deviation, e.g. the United Federation of Planets might have only 120 planets in 2373}
-min: {An upper limit for the value, because values are never exact. One standard deviation, e.g. the United Federation of Planets might haveeven 180 planets in 2373}
+max: {An upper limit for the value, because values are never exact. One standard deviation, e.g. the United Federation of Planets might have even 180 planets in 2373}
 confidence: {Confidence label. How confident are you as a label, not a number. Allowed values: canon, calculated, informedGuess, calculatedGuess, wildGuess}
-references: 
+references:
     - link: {Link to the source. Values must be documented and "proven" by references}
       text: {Link text}
 ```
@@ -28,7 +28,7 @@ Full:
 ```
 value: {This is the main value, e.g. the United Federation of Planets has 150 planets in 2373}
 min: {A lower limit for the value, because values are never exact. One standard deviation, e.g. the United Federation of Planets might have only 120 planets in 2373}
-min: {An upper limit for the value, because values are never exact. One standard deviation, e.g. the United Federation of Planets might haveeven 180 planets in 2373}
+max: {An upper limit for the value, because values are never exact. One standard deviation, e.g. the United Federation of Planets might have even 180 planets in 2373}
 confidence: {Confidence label. How confident are you as a label, not a number. Allowed values: canon, calculated, informedGuess, calculatedGuess, wildGuess}
 references: 
     - link: {Link to the source. Values must be documented and "proven" by references}
