@@ -9,7 +9,7 @@
                 </div>
                 @foreach (var metric in Model.ShowcaseMetrics) {
                     <div class="my-table-cell">
-                        @metric
+                        <a asp-page="/Metric" asp-route-id="@metric">@metric</a>
                     </div>
                 }
             </div>
