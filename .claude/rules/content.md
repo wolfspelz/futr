@@ -25,6 +25,9 @@ data/
 - **Metric datapoint folder**: Must match an existing metric name in `data/metrics/`
 - **Civilization `date` field**: Must be parseable as a year
 
+## Markdown in Readmes
+- Headings are offset by +2 levels: `#` renders as `<h3>`, `##` as `<h4>`, etc.
+- Always start with `#` for top-level headings in readme fields and files 
 ## Timestamps
 All info.yaml files MUST have `created` and `changed` date fields (format: `YYYY-MM-DD`):
 - **New files**: Set both `created` and `changed` to today's date
