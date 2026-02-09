@@ -20,4 +20,4 @@ links:
     - link: https://en.wikipedia.org/wiki/Human
       text: Human (Wikipedia)
 editors: [wolfspelz]
-showcaseMetrics: [Population, Kardashev]
+showcaseMetrics: [Population, Kardashev, Techlevel]

@@ -3,7 +3,7 @@ created: 2026-01-27
 changed: 2026-02-04
 order: 0
 tags: [index, new]
-showcaseMetrics: [Population, Planets, Government]
+showcaseMetrics: [Population, Planets, Government, Techlevel]
 images:
   - src: https://assets.warhammer-community.com/sm-desktop.jpg
     text: Space Marines wallpaper

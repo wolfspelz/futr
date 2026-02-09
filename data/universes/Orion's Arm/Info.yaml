@@ -54,4 +54,4 @@ images:
       license: All rights reserved
       legal: © Orion's Arm Universe Project
 editors: [wolfspelz]
-showcaseMetrics: [Population]
+showcaseMetrics: [Population, Techlevel]
