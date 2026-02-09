@@ -13,6 +13,13 @@ readme: |
   Scale unifies GURPS TL (0-16), Orion's Arm toposophic levels (S0-S6),
   and Perry Rhodan's cosmic hierarchy.
 
+  Note: The scale names suggest a correlation between tech grade and territorial reach,
+  but these are independent axes. A single-system civilization or even an individual
+  can be godlike at TL 18-19 (e.g. Q, Douwd, Lorien), while galaxy-spanning empires
+  may run on relatively mundane FTL jump drives at TL 11-12 (e.g. Foundation's Galactic
+  Empire, Traveller's Third Imperium). You can have pocket-universe technology without
+  owning a galaxy, and own the galaxy with boring hyperdrives.
+
   - **1: Pre-Tool.** Proto-tool use, no fire.
   - **2: Stone Age.** Fire, stone tools, language, agriculture.
   - **3: Bronze/Iron.** Metalworking, writing, sailing.
@@ -21,9 +28,9 @@ readme: |
   - **6: Information.** Computers, nuclear, early space, internet.
   - **7: Interplanetary.** Fusion, habitats, system colonization.
   - **8: Advanced Interplanetary.** Mature system civilization, significant sub-light interstellar.
-  - **9: Early Interstellar.** FTL, first colonies, multi-star presence.
-  - **10: Interstellar.** Mature FTL empires, force fields, antigrav.
-  - **11: Advanced Interstellar.** Terraforming, thousands of worlds, advanced AI.
+  - **9: Interstellar Pocket.** FTL, first colonies, multi-star presence.
+  - **10: Interstellar Dominion.** Mature FTL empires, force fields, antigrav.
+  - **11: Galactic Superpower.** Terraforming, thousands of worlds, advanced AI.
   - **12: Galactic.** Galaxy-spanning civilization.
   - **13: Intergalactic.** Multi-galaxy presence, intergalactic travel.
   - **14: Megastructure.** Dyson swarms, ringworlds, stellar engineering, nanotech.
@@ -91,7 +98,7 @@ readme: |
   - Known Space: Kdatlyno: spacefaring but dependent on others for interstellar travel
   - Galactic Developments: Mid Solar era (~2200s-2300s): mature solar system, metric impulse proof-of-concept
 
-  **9: Early Interstellar**
+  **9: Interstellar Pocket**
   - Star Trek: United Earth (~2150s, Enterprise era): Warp 5, handful of colonies, early exploration
   - Babylon 5: Earth Alliance (2258): FTL via purchased jump gates, 20,000+ ships
   - Babylon 5: Narn Regime: reverse-engineered Centauri tech, weakest major power
@@ -111,13 +118,13 @@ readme: |
   - Revelation Space: Conjoiners, Demarchists: no FTL, advanced nanotech and neural networking
   - Uplift: Humanity/Earthclan: centuries behind galactic powers, independently developed inferior starships
   - Warhammer 40K: Tau Empire: rapidly advancing, pulse weapons, limited FTL, ~100 worlds
-  - Galactic Developments: Early Interstellar era (~2300s-2500s): novel space drives, first colonies
+  - Galactic Developments: Interstellar Pocket era (~2300s-2500s): novel space drives, first colonies
   - Foundation: Foundation (early): nuclear tech miniaturized beyond Imperial capability, small territory
   - Technic Civilization: Polesotechnic League: FTL hyperdrive, gravitics, multi-star trade federation
   - Technic Civilization: Ythrians / Domain of Ythri: own interstellar domain, peer to humans
   - Hyperion: Hegemony of Man: 200+ worlds connected by farcaster network
 
-  **10: Interstellar**
+  **10: Interstellar Dominion**
   - Star Trek: Federation (TOS ~2260s, TNG ~2370s): mature FTL, shields, phasers, hundreds of worlds
   - Star Trek: Klingon Empire, Romulan Star Empire, Cardassian Union: Federation-peer powers
   - Star Wars: Rebel Alliance / New Republic, Chiss Ascendancy, Mandalorians
@@ -140,7 +147,7 @@ readme: |
   - Hamilton: Commonwealth (early, Pandora's Star era): wormhole-connected worlds, rejuvenation
   - Galactic Developments: Interstellar era humans, Dellians, Erui
 
-  **11: Advanced Interstellar**
+  **11: Galactic Superpower**
   - Star Trek: Borg Collective: transwarp conduits, nanoprobes, thousands of systems, the Unicomplex
   - Star Trek: Dominion: vast Gamma Quadrant empire, bioengineered soldiers, polaron weapons
   - Star Trek: Federation 32nd century: programmable matter, personal transporters, spore drive
