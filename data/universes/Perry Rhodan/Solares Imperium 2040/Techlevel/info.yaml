@@ -4,7 +4,15 @@ tags: [index]
 value: 9
 confidence: informedGuess
 editors: [anthropic-claude]
+references:
+  - link: https://www.perrypedia.de/wiki/Transitionstriebwerk
+    text: "Perrypedia - Transitionstriebwerk"
+  - link: https://www.perrypedia.de/wiki/Solares_Imperium
+    text: "Perrypedia - Solares Imperium"
 readme: |
-  TL 9 FTL. Transition drive (Transitionstriebwerk) from reverse-engineered Arkonide technology.
-  Hardest tech: FTL transition drive, impulse beam weapons, structural field generators.
-  No transmitter technology yet at this early stage. Solare Flotte just forming.
+  TL 9 FTL. Transition drive (Transitionstriebwerk) derived from Arkonide technology.
+  First Terran transition flight 1975 (Perry Rhodan in the GOOD HOPE to Vega).
+  Strukturkompensator acquired 1983 from Goszuls Planet, improving transition capability.
+  Hardest tech: FTL transition drive (1,000-5,000 ly range per jump), impulse weapons,
+  structural field generators. Terrans encountered transmitters in 1975 (Vega system)
+  but do not yet have widespread transmitter technology at this stage.

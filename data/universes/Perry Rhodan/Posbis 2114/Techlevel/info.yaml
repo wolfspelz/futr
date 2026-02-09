@@ -4,6 +4,13 @@ tags: [index]
 value: 10
 confidence: informedGuess
 editors: [anthropic-claude]
+references:
+  - link: https://www.perrypedia.de/wiki/Posbis
+    text: "Perrypedia - Posbis"
+  - link: https://www.perrypedia.de/wiki/Transformkanone
+    text: "Perrypedia - Transformkanone"
+  - link: https://www.perrypedia.de/wiki/Transmitter
+    text: "Perrypedia - Transmitter"
 readme: |
   TL 10 Matter Mastery. Transmitter technology (matter teleportation), Transformkanone.
   Hardest tech: transmitter-based matter teleportation and the Transformkanone
