@@ -49,7 +49,16 @@
       "WebFetch(domain:www.reddit.com)",
       "WebFetch(domain:pr-materiequelle.de)",
       "WebFetch(domain:www.pr-materiequelle.de)",
-      "WebFetch(domain:www.rz-journal.de)"
+      "WebFetch(domain:www.rz-journal.de)",
+      "Bash(done)",
+      "WebFetch(domain:starwars.fandom.com)",
+      "WebFetch(domain:theculture.fandom.com)",
+      "WebFetch(domain:www.halopedia.org)",
+      "WebFetch(domain:www.projectrho.com)",
+      "WebFetch(domain:dmreference.com)",
+      "WebFetch(domain:stellaris.fandom.com)",
+      "Bash(git commit:*)",
+      "WebFetch(domain:orionsarm.com)"
     ],
     "defaultMode": "acceptEdits"
   },
