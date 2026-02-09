@@ -80,17 +80,31 @@
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
-    ImgSrc = "/images/Index/contribute.jpg",
-    ImgAlt = "Collaboration",
-    ImgCaption = "(StockSnap via pixabay)",
-    Title = "Contributing",
-    Text = ""
-    + "<p>Missing a universe or a civilization?</p>"
-    + "<p><a href='https://github.com/wolfspelz/futr/tree/main/data/universes'>Check out the list of proposals</a></p>"
-    + "<p><a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>Propose a universe in discord</a></p>"
-    + "<p>Even better:<br/><a href='https://docs.github.com/en/get-started/quickstart/fork-a-repo#propose-changes-to-someone-elses-project'>fork, edit, pull-request on GitHub</a></p>",
-    Link = "https://github.com/wolfspelz/futr",
-    TitleHasLink = true,
+    ImgSrc = "/images/Index/book-shelf.jpg",
+    ImgAlt = "Bookshelf",
+    Title = "Universes We Want",
+    Text = "<p>" + string.Join(", ", new [] {
+    "Star Wars",
+    "Star Trek",
+    "Babylon 5",
+    "Dune",
+    "Perryversum",
+    "The Culture (Banks)",
+    "Known Space (Niven)",
+    "Honorverse",
+    "The Verse (Firefly)",
+    "Eve Online",
+    "Alliance–Union (C. J. Cherryh)",
+    "Technic Civilization (Poul Anderson)",
+    "Zones of Thought (Vernor Vinge)",
+    "TRAVELLER",
+    "PANEC",
+    "Galactic Developments",
+    }.Select(x => $"{x}"))
+    + "</p>"
+    + "<p>There is so much more.</p>"
+    + "<p>Tell us <a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>here</a> or <a href='https://docs.github.com/en/get-started/quickstart/fork-a-repo#propose-changes-to-someone-elses-project'>contribute on GitHub</a></p>"
+    ,
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
@@ -120,31 +134,17 @@
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
-    ImgSrc = "/images/Index/book-shelf.jpg",
-    ImgAlt = "Bookshelf",
-    Title = "Universes We Want:",
-    Text = "<p>" + string.Join(", ", new [] {
-    "Star Wars",
-    "Star Trek",
-    "Babylon 5",
-    "Dune",
-    "Perryversum",
-    "The Culture (Banks)",
-    "Known Space (Niven)",
-    "Honorverse",
-    "The Verse (Firefly)",
-    "Eve Online",
-    "Alliance–Union (C. J. Cherryh)",
-    "Technic Civilization (Poul Anderson)",
-    "Zones of Thought (Vernor Vinge)",
-    "TRAVELLER",
-    "PANEC",
-    "Galactic Developments",
-    }.Select(x => $"{x}"))
-    + "</p>"
-    + "<p>There is so much more.</p>"
-    + "<p>Tell us <a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>here</a> or <a href='https://docs.github.com/en/get-started/quickstart/fork-a-repo#propose-changes-to-someone-elses-project'>contribute on GitHub</a></p>"
-    ,
+    ImgSrc = "/images/Index/contribute.jpg",
+    ImgAlt = "Collaboration",
+    ImgCaption = "(StockSnap via pixabay)",
+    Title = "Contributing",
+    Text = ""
+    + "<p>Missing a universe or a civilization?</p>"
+    + "<p><a href='https://github.com/wolfspelz/futr/tree/main/data/universes'>Check out the list of proposals</a></p>"
+    + "<p><a href='https://discordapp.com/channels/1136704642986811423/1153448297915220058'>Propose a universe in discord</a></p>"
+    + "<p>Even better:<br/><a href='https://docs.github.com/en/get-started/quickstart/fork-a-repo#propose-changes-to-someone-elses-project'>fork, edit, pull-request on GitHub</a></p>",
+    Link = "https://github.com/wolfspelz/futr",
+    TitleHasLink = true,
     })
 
     @await Html.PartialAsync("_Card", new Shared.Card.Model{
