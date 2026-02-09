@@ -1,0 +1,19 @@
+created: 2026-02-09
+changed: 2026-02-09
+value: 40000
+min: 30000
+max: 40000
+confidence: informedGuess
+references:
+  - link: https://www.perrypedia.de/wiki/Posbis
+    text: Perrypedia - Posbis
+  - link: https://www.perrypedia.de/wiki/Robotiker_von_Mechanica
+    text: Perrypedia - Robotiker von Mechanica
+  - link: https://www.perrypedia.de/wiki/Laurins
+    text: Perrypedia - Laurins
+readme: |
+  Die Posbis werden ca. 38.000 v. Chr. von den Robotikern von Mechanica im Auftrag der Laurins erschaffen. Laut dem Bericht des Zentralplasmas (2114) liegt die Erschaffung rund 40.000 Jahre zurück.
+
+  Es besteht ein kanonischer Widerspruch: Der Laurin-Bericht (2402) datiert die Erschaffung auf ca. 28.000 v. Chr. (rund 30.000 Jahre vor 2402). Die Silberbände lassen das ältere Datum aus, um die Inkonsistenz zu entschärfen.
+
+  Der Wert von 40.000 Jahren folgt dem Bericht des Zentralplasmas als Primärquelle, da es sich um die eigene Geschichtsschreibung der Posbis handelt. Das Minimum von 30.000 Jahren berücksichtigt die alternative Laurin-Datierung.

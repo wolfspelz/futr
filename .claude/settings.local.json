@@ -42,7 +42,14 @@
       "WebFetch(domain:tvtropes.org)",
       "WebFetch(domain:perryrhodan.fandom.com)",
       "WebFetch(domain:www.crest-datei.de)",
-      "Bash(GIT_AUTHOR_DATE=\"2026-02-08T22:13:00\" GIT_COMMITTER_DATE=\"2026-02-08T22:13:00\" git commit:*)"
+      "Bash(GIT_AUTHOR_DATE=\"2026-02-08T22:13:00\" GIT_COMMITTER_DATE=\"2026-02-08T22:13:00\" git commit:*)",
+      "WebFetch(domain:frank-mitchell.com)",
+      "WebFetch(domain:wiki.travellerrpg.com)",
+      "WebFetch(domain:gurps.fandom.com)",
+      "WebFetch(domain:www.reddit.com)",
+      "WebFetch(domain:pr-materiequelle.de)",
+      "WebFetch(domain:www.pr-materiequelle.de)",
+      "WebFetch(domain:www.rz-journal.de)"
     ],
     "defaultMode": "acceptEdits"
   },

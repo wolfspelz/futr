@@ -1,0 +1,23 @@
+created: 2026-02-09
+changed: 2026-02-09
+value: 5
+min: 3
+max: 10
+confidence: calculatedGuess
+references:
+  - link: https://www.perrypedia.de/wiki/Hundertsonnenwelt
+    text: Perrypedia - Hundertsonnenwelt
+  - link: https://www.perrypedia.de/wiki/Everblack
+    text: Perrypedia - Everblack
+  - link: https://www.perrypedia.de/wiki/Frago
+    text: Perrypedia - Frago
+  - link: https://www.perrypedia.de/wiki/Chort
+    text: Perrypedia - Chort
+  - link: https://www.perrypedia.de/wiki/Culsu
+    text: Perrypedia - Culsu
+readme: |
+  Die Posbis kontrollieren mehrere Dunkelwelten im intergalaktischen Void. Namentlich bekannt sind: Hundertsonnenwelt (Zentrale), Everblack (Rüstungswelt, 2113 entdeckt), Frago (Produktionswelt, im Bürgerkrieg 2114 zerstört), Chort (Industriewelt), Culsu (Werftplanet) und Rundron (Stützpunkt).
+
+  Allerdings vernichtet der Bürgerkrieg nach der Hassschaltungs-Zerstörung 90% aller Posbi-Basen. Frago wird vollständig zerstört. Die Perrypedia vermerkt zudem, dass die Terraner nie alle Posbi-Welten lokalisieren können.
+
+  Der Wert von 5 berücksichtigt die schweren Verluste im Bürgerkrieg: Hundertsonnenwelt und Everblack sind bestätigt aktiv, der Status der übrigen Welten ist unsicher.

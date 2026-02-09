@@ -1,0 +1,23 @@
+created: 2026-02-09
+changed: 2026-02-09
+value: 1.3
+min: 1.1
+max: 1.5
+confidence: calculatedGuess
+references:
+  - link: https://www.perrypedia.de/wiki/Hundertsonnenwelt
+    text: Perrypedia - Hundertsonnenwelt
+  - link: https://www.perrypedia.de/wiki/Atomsonne
+    text: Perrypedia - Atomsonne
+  - link: https://www.perrypedia.de/wiki/Fragmentraumschiff
+    text: Perrypedia - Fragmentraumschiff
+readme: |
+  Berechnung basierend auf den 200 Atomsonnen der Hundertsonnenwelt plus Flotte und Industriewelten.
+
+  Die Hundertsonnenwelt (Durchmesser 12.948 km, erdähnlich) wird von 200 Atomsonnen in 100.000 km Höhe auf 23°C gehalten. Aus der Stefan-Boltzmann-Gleichung und der Geometrie ergibt sich eine Gesamtleistung der Atomsonnen von ca. 5,6 x 10^18 W.
+
+  Hinzu kommt der Energiebedarf der Flotte (Zehntausende FTL-fähige Fragmentraumer mit je 2.000-3.000 m Kantenlänge), der Industriewelten (Everblack, Culsu u.a.) und der Waffensysteme (Transformkanonen, 5-D-Relativschirme). Geschätzte Gesamtleistung: ca. 10^19 W.
+
+  Kardashev = log10(10^19) / 10 - 0,6 = 1,9 - 0,6 = 1,3
+
+  Pro Einheit (bei geschätzten 10^8 Posbis): 10^11 W/Einheit. Zum Vergleich: Erde 2023 verbraucht ca. 2.200 W/Person. Die Posbis nutzen ca. 45 Millionen Mal mehr Energie pro Einheit, was für eine Maschinenzivilisation mit kilometergroßen Raumschiffen plausibel ist.

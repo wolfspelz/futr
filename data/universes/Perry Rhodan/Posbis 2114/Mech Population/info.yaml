@@ -1,0 +1,21 @@
+created: 2026-02-09
+changed: 2026-02-09
+value: 1e8
+min: 1e7
+max: 1e9
+confidence: wildGuess
+references:
+  - link: https://www.perrypedia.de/wiki/Posbis
+    text: Perrypedia - Posbis
+  - link: https://www.perrypedia.de/wiki/Fragmentraumschiff
+    text: Perrypedia - Fragmentraumschiff
+  - link: https://www.perrypedia.de/wiki/Chort
+    text: Perrypedia - Chort
+readme: |
+  Keine kanonischen Gesamtzahlen für 2114 vorhanden. Schätzung basierend auf folgenden Anhaltspunkten:
+
+  Allein die Dunkelwelt Chort beherbergt 800.000 Posbis (Daten aus 427 NGZ). Jedes Fragmentraumschiff hat eine Besatzung von Tausenden Einheiten plus einen Plasmakommandanten. Die Gesamtflotte umfasst nach dem Bürgerkrieg geschätzt Zehntausende Schiffe.
+
+  Allerdings vernichtet der Bürgerkrieg nach Zerstörung der Hassschaltung 90% aller Posbi-Basen im intergalaktischen Void. Vor dem Bürgerkrieg ist die Population deutlich höher. Der Wert bezieht sich auf den Zustand nach dem Pakt mit Terra, also nach den schweren Verlusten.
+
+  Zum Vergleich: Bis 1304 NGZ (ca. 1200 Jahre später) umkreisen 300.000 Fragmentraumer die Hundertsonnenwelt, was auf eine Population von mehreren Milliarden Posbi-Einheiten hindeutet. 2114 liegt die Zahl nach dem Bürgerkrieg deutlich niedriger.
