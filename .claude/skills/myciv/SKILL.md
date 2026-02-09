@@ -36,7 +36,7 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 1. Research specific values for each selected metric
 2. Determine confidence levels
 3. Find min/max ranges where uncertain
-   - **Canon values**: Consider whether min/max are needed. If the canon value is exact and certain, omit min and max. If the canon source gives an approximate or rounded number (e.g., "about 50,000 worlds"), estimate plausible min/max ranges, since canon does not always mean precise.
+   - **Canon/semiCanon values**: Consider whether min/max are needed. If the value is exact and certain, omit min and max. If the source gives an approximate or rounded number (e.g., "about 50,000 worlds"), estimate plausible min/max ranges, since canon does not always mean precise. Use `semiCanon` for values from secondary sources (RPG sourcebooks, technical manuals, creator interviews, decanonized material).
 4. **Cross-check values against existing data** (e.g., compare Kardashev to Earth 2023 = 0.73 and other civilizations, but also show other comparisons of other metrics) -- these comparisons are for validation only, do not include them in readme fields
 5. **In-universe comparisons**: When sources compare to places that share real-world names (e.g., "Sol System", "Earth", "Mars"), assume they refer to the in-universe version at the same time period, not real-world data. Research the in-universe reference to properly contextualize the comparison.
 6. Gather reference URLs for all values

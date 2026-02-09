@@ -165,11 +165,15 @@ readme: |
 ```
 
 ### Confidence Levels
-- `canon` - From official canon sources (movies, shows, books)
-- `calculated` - Mathematically derived from other known values
-- `informedGuess` - Educated estimate based on research
-- `calculatedGuess` - Calculation with uncertain assumptions
-- `wildGuess` - Rough estimation with limited basis
+
+Ordered from most to least reliable:
+
+- `canon` - Directly stated in official primary canon sources (movies, TV shows, published novels in the main series). The value is explicitly given, not interpreted.
+- `semiCanon` - From secondary canon sources that are not fully authoritative: RPG sourcebooks, technical manuals, creator interviews, companion guides, decanonized material (e.g., Star Wars Legends), or spinoff series with ambiguous canon status.
+- `calculated` - Mathematically derived from canon or semiCanon values using straightforward formulas. The inputs are reliable, only the derivation step is added.
+- `informedGuess` - Educated estimate based on substantial research. No direct source states the value, but multiple contextual clues point toward it.
+- `calculatedGuess` - A calculation where one or more inputs are themselves guesses. The math is sound but the assumptions are uncertain.
+- `wildGuess` - Rough order-of-magnitude estimation with little supporting evidence. Used when a value is needed but sources are scarce or contradictory.
 
 ## Image Sources
 
