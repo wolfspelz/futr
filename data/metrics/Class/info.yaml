@@ -1,0 +1,299 @@
+title: Class
+created: 2026-02-09
+changed: 2026-02-09
+editors: [anthropic-claude]
+order: 0
+tags: [index]
+type: number
+unit: TL
+range: 1-20
+readme: |
+  Class measures a civilization's overall capability: what it can build, do, and reach.
+  Complements Kardashev Rating (energy) and Tech Summary (text description).
+  Scale unifies GURPS TL (0-16), Orion's Arm toposophic levels (S0-S6),
+  and Perry Rhodan's cosmic hierarchy.
+
+  Note: The scale names suggest a correlation between tech grade and territorial reach,
+  but these are independent axes. A single-system civilization or even an individual
+  can be godlike at Class 18-19 (e.g. Q, Douwd, Lorien), while galaxy-spanning empires
+  may run on relatively mundane FTL jump drives at Class 11-12 (e.g. Foundation's Galactic
+  Empire, Traveller's Third Imperium). You can have pocket-universe technology without
+  owning a galaxy, and own the galaxy with boring hyperdrives.
+
+  - **1: Pre-Tool.** Proto-tool use, no fire.
+  - **2: Stone Age.** Fire, stone tools, language, agriculture.
+  - **3: Bronze/Iron.** Metalworking, writing, sailing.
+  - **4: Medieval.** Steel, navigation, printing, gunpowder.
+  - **5: Industrial.** Steam, electricity, mass production.
+  - **6: Information.** Computers, nuclear, early space, internet.
+  - **7: Interplanetary.** Fusion, habitats, system colonization.
+  - **8: Advanced Interplanetary.** Mature system civilization, significant sub-light interstellar.
+  - **9: Interstellar Pocket.** FTL, first colonies, multi-star presence.
+  - **10: Interstellar Dominion.** Mature FTL empires, force fields, antigrav.
+  - **11: Galactic Superpower.** Terraforming, thousands of worlds, advanced AI.
+  - **12: Galactic.** Galaxy-spanning civilization.
+  - **13: Intergalactic.** Multi-galaxy presence, intergalactic travel.
+  - **14: Megastructure.** Dyson swarms, ringworlds, stellar engineering, nanotech.
+  - **15: Matrioshka.** Computational megastructures, full uploading, post-biological.
+  - **16: Exotic Matter.** Magmatter, wormhole networks, industrial transmutation.
+  - **17: Spacetime Engineering.** Void factories, reactionless drives, metric engineering, archailects.
+  - **18: Cosmic.** Pocket universes, multiverse traversal, higher-dimensional existence.
+  - **19: Omniscient.** Universe creation, beyond causality.
+  - **20: Absolute.** Beyond the concept of universes. Theoretical maximum, omnipotent-tier.
+
+  ### Examples by Level
+
+  **1: Pre-Tool**
+  - Reality: Early Pleistocene (~1.2M BCE): Homo habilis/erectus, proto-tool use, no fire control
+  - Known Space: Grogs: sessile telepaths, no manipulative organs, no tool use
+  - Known Space: Bandersnatchi: intelligent but physically incapable of building technology
+
+  **2: Stone Age**
+  - Reality: Stone Age (~50,000 BCE): modern humans, Cro-Magnon, fire, stone tools, language
+  - Star Wars: Tusken Raiders: nomadic, gaffi sticks, some scavenged metal weapons
+  - Star Trek: Mintakans: proto-Vulcan humanoids, basic tools, no metalworking
+  - Traveller: Various TL0 worlds: hunter-gatherer societies
+
+  **3: Bronze/Iron**
+  - Reality: Bronze Age (~2000 BCE): metalworking, writing, sailing, cities
+  - Reality: Classic Age (~1 CE): Roman Empire, Han China, iron working, engineering, road networks
+  - Star Wars: Ewoks: spears, catapults, log traps, organized tribal villages
+  - Star Trek: Barkonians: iron-age village, basic governance
+  - Traveller: TL1-2 worlds: agricultural societies with early metals
+
+  **4: Medieval**
+  - Reality: Middle Ages (~1000 CE): steel, widespread metalworking, navigation, gunpowder arriving
+  - Reality: Age of Sail (~1700 CE): big ships, mills, printing, gunpowder weapons
+  - Star Trek: Ba'ku: deliberately abandoned warp technology, live as agrarian pacifists
+  - Zones of Thought: Tines: medieval pack-mind aliens, castles, swords, early gunpowder
+  - Orion's Arm: To'ul'h at first contact: late agricultural/early industrial on a Venus-like world
+  - Technic Civilization: Long Night regressed worlds: former starfaring colonies that lost technology
+
+  **5: Industrial**
+  - Reality: Industrialization (~1850 CE): steam engine, power loom, mass production, electricity emerging
+  - Reality: Mid 20th Century (~1950 CE): diesel, huge industrial plants, nuclear and computers just emerging
+  - Zones of Thought: Spiders: early 20th-century industrial equivalent, on cusp of atomic power
+  - Firefly: Rim Worlds: frontier settlements with 19th-century conditions plus imported spaceflight
+  - Galactic Developments: late 21st century humans: early orbital economy, lunar settlements
+
+  **6: Information**
+  - Reality: 1980s: nuclear power established, personal computers, space program mature, globalization
+  - Reality: 2023: internet, smartphones, AI, nuclear power, ISS, full Information Age
+  - Star Trek: Earth pre-2063: nuclear weapons, computing, early spaceflight, post-WWIII
+  - Star Trek: Malcorians: near-warp civilization with nuclear and sublight technology
+  - Zones of Thought: Slow Zone civilizations: capped by local physics, computers but no strong AI
+
+  **7: Interplanetary**
+  - Star Trek: Earth post-First Contact (~2063-2100): Warp 1, mostly single-system, Mars colony
+  - Firefly: Border Planets: intermediate technology, functional terraforming, basic spaceflight
+  - Firefly: Independents/Browncoats: functional interplanetary military, a generation behind the Alliance
+  - Galactic Developments: Early Solar era (~2090s-2200s): orbital habitats, lunar colonization
+  - Honorverse: Neobarb frontier worlds: single-system, limited spacefaring capability
+
+  **8: Advanced Interplanetary**
+  - Firefly: Alliance / Core Worlds: mature system-wide civilization, hundreds of terraformed worlds, no FTL
+  - Zones of Thought: Qeng Ho: sub-light interstellar traders with cryosleep, millennia of knowledge
+  - Halo: UNSC pre-war: early unreliable FTL, MAC weapons, SPARTAN program
+  - Revelation Space: Ultras: relativistic lighthugger traders, no FTL, advanced nanotech
+  - Known Space: Kdatlyno: spacefaring but dependent on others for interstellar travel
+  - Galactic Developments: Mid Solar era (~2200s-2300s): mature solar system, metric impulse proof-of-concept
+
+  **9: Interstellar Pocket**
+  - Star Trek: United Earth (~2150s, Enterprise era): Warp 5, handful of colonies, early exploration
+  - Babylon 5: Earth Alliance (2258): FTL via purchased jump gates, 20,000+ ships
+  - Babylon 5: Narn Regime: reverse-engineered Centauri tech, weakest major power
+  - Babylon 5: Drazi, Brakiri, Pak'ma'ra, League of Non-Aligned Worlds
+  - Dune: Fremen: desert survival biotech specialists within an interstellar civilization
+  - Perry Rhodan: Terrans at First Contact (1971-1984): reverse-engineered Arkonide FTL
+  - Perry Rhodan: Topsider: small three-system interstellar power
+  - Known Space: Kzinti Empire: gravity polarizers, multi-star conquest, no indigenous FTL
+  - Honorverse: Silesian Confederacy, Torch: loose governance, piracy-ridden or brand-new nations
+  - Alliance-Union: Earth Company: FTL jump, conservative, increasingly irrelevant
+  - Alliance-Union: Alliance (Pell): FTL trade confederation, no advanced tech edge
+  - Traveller: Vilani First Imperium: stagnated at Jump-2 for millennia
+  - Traveller: Vargr Extents, Sword Worlds: balkanized or small-scale interstellar states
+  - Traveller: 2300 AD humanity: hard SF, stutterwarp limited to 7.7 ly per trip
+  - Halo: UNSC post-war: improved slipspace drives, reverse-engineered Covenant/Forerunner tech
+  - Mass Effect: Systems Alliance: recently achieved FTL via Prothean archives, growing colonies
+  - Revelation Space: Conjoiners, Demarchists: no FTL, advanced nanotech and neural networking
+  - Uplift: Humanity/Earthclan: centuries behind galactic powers, independently developed inferior starships
+  - Warhammer 40K: Tau Empire: rapidly advancing, pulse weapons, limited FTL, ~100 worlds
+  - Galactic Developments: Interstellar Pocket era (~2300s-2500s): novel space drives, first colonies
+  - Foundation: Foundation (early): nuclear tech miniaturized beyond Imperial capability, small territory
+  - Technic Civilization: Polesotechnic League: FTL hyperdrive, gravitics, multi-star trade federation
+  - Technic Civilization: Ythrians / Domain of Ythri: own interstellar domain, peer to humans
+  - Hyperion: Hegemony of Man: 200+ worlds connected by farcaster network
+
+  **10: Interstellar Dominion**
+  - Star Trek: Federation (TOS ~2260s, TNG ~2370s): mature FTL, shields, phasers, hundreds of worlds
+  - Star Trek: Klingon Empire, Romulan Star Empire, Cardassian Union: Federation-peer powers
+  - Star Wars: Rebel Alliance / New Republic, Chiss Ascendancy, Mandalorians
+  - Babylon 5: Centauri Republic: old mature empire, artificial gravity, sold jump tech to Earth
+  - Babylon 5: Minbari Federation: most advanced younger race, magnetogravitic drives, stealth
+  - Dune: House Atreides, House Harkonnen, House Corrino: full Imperial tech, shields, atomics, Mentats
+  - Perry Rhodan: Terrans Solar Empire (early), Arkonides declining, Blues/Gataser, Springer, Akonen
+  - Known Space: United Nations of Earth: hyperdrive, transfer booths, boosterspice, dozens of colonies
+  - Known Space: Pak Protectors: built the Ringworld from a disassembled gas giant, scrith manufacture
+  - Honorverse: Star Empire of Manticore: FTL, multi-drive missiles, grav-pulse comms, wormhole junction
+  - Honorverse: Republic of Haven, Solarian League, Andermani, Grayson, Beowulf, Mesa
+  - Alliance-Union: Union (Cyteen): mature FTL empire plus advanced cloning and tape conditioning
+  - Alliance-Union: Compact species: Kif, Stsho, Mahendo'sat; multi-species interstellar trade
+  - Traveller: Solomani Confederation, Aslan Hierate, Droyne (modern)
+  - EVE Online: Amarr Empire, Caldari State, Gallente Federation, Minmatar Republic
+  - Halo: Covenant: reverse-engineered Forerunner tech, plasma weapons, multi-species FTL empire
+  - Mass Effect: Citadel Council (Asari, Turians, Salarians): mass relays, hundreds of worlds
+  - Stargate: Goa'uld: parasitic species using stolen Ancient-derived technology
+  - Warhammer 40K: Imperium of Man (41st Millennium): million worlds but technologically stagnant
+  - Hamilton: Commonwealth (early, Pandora's Star era): wormhole-connected worlds, rejuvenation
+  - Galactic Developments: Interstellar era humans, Dellians, Erui
+
+  **11: Galactic Superpower**
+  - Star Trek: Borg Collective: transwarp conduits, nanoprobes, thousands of systems, the Unicomplex
+  - Star Trek: Dominion: vast Gamma Quadrant empire, bioengineered soldiers, polaron weapons
+  - Star Trek: Federation 32nd century: programmable matter, personal transporters, spore drive
+  - Star Wars: Galactic Republic (Clone Wars era): galaxy-wide FTL, cloning, terraforming
+  - Star Wars: Yuuzhan Vong: intergalactic biotech invaders, worldshaping capability
+  - Dune: Spacing Guild: foldspace instantaneous FTL, prescient navigators, galactic transport monopoly
+  - Dune: Ixians: no-ships, no-globes, navigation machines, pushing Butlerian Jihad limits
+  - Perry Rhodan: Arkonides at height: tens of thousands of worlds, Robot Regent, transmitter network
+  - Perry Rhodan: Terrans Solar Empire (late): Paratron shields, intergalactic Dimesexta drives
+  - Perry Rhodan: Maahks, Posbis, Halutians: powerful military species with advanced specialties
+  - Alliance-Union: Knnn: centuries ahead of all Compact races, unique FTL manipulation
+  - Technic Civilization: Terran Empire: 4 million star systems, centralized navy
+  - Traveller: Third Imperium, Zhodani Consulate: Jump-6, TL15 worlds, thousands of systems
+  - Traveller: K'kree (Two Thousand Worlds), Hiver Federation, Darrians (peak)
+  - EVE Online: Jove Empire, CONCORD, Sleepers, Drifters, Triglavians, Sansha's Nation
+  - Warhammer 40K: Tyranids: intergalactic bio-ships, synaptic networks, galactic-scale superorganism
+  - Galactic Developments: Late era humans, Chinti Swarms
+  - Foundation: Galactic Empire (declining), Foundation (later), Second Foundation
+  - Hyperion: Ousters: space-dwelling humans with genetic modifications
+  - Doctor Who: Cybermen: interstellar presence, cybernetic conversion technology
+  - Hitchhiker's Guide: Vogons: interstellar bureaucratic civilization, hyperspace fleet
+
+  **12: Galactic**
+  - Star Trek: Species 8472: bioships destroy Borg, mastery of an entire separate dimension
+  - Star Trek: Iconians: galaxy-spanning gateway network, persisted 200,000 years
+  - Star Wars: Galactic Empire: Death Star planetary destruction, galaxy-spanning control
+  - Star Wars: First Order: Starkiller Base (stellar energy harvesting, multi-planet destruction)
+  - Dune: Thinking Machines / Omnius: galaxy-spanning AI empire, self-replicating probes
+  - Perry Rhodan: Terrans NGZ era (peak): galactic-scale operations, intergalactic expeditions
+  - Known Space: Thrintun/Tnuctipun: galaxy-spanning empire via telepathic mind control, true technological geniuses, stasis fields, galaxy-scale bioengineering
+  - Zones of Thought: Upper Beyond civilizations: approaching edge of Transcendence
+  - Foundation: Galactic Empire (peak): 25 million inhabited worlds, hyperdrives, ecumenopolis Trantor
+  - Mass Effect: Reapers: synthetic-organic starships, built mass relay network, cyclic harvesting
+  - Uplift: Typical Galactic patron races: Library-derived technology, galactic political structures
+  - Hitchhiker's Guide: Galactic civilization: Infinite Improbability Drive, routine planet destruction
+  - Galactic Developments: Kisori / Golden Empire: ancient civilization with automated interstellar industry
+
+  **13: Intergalactic**
+  - Star Trek: Nacene/Caretaker: extragalactic origin, transport ships 70,000 light-years instantly
+  - Star Trek: V'Ger: 82 AU energy cloud, can digitize entire planets
+  - Star Trek: Whale Probe: system-wide power disruption, unknown intergalactic origin
+  - Star Wars: Rakata / Infinite Empire: Force-tech fusion, Star Forge, system-destroying weapons
+  - Perry Rhodan: The Swarm: 8,000 light-year mobile megastructure, galactic-scale manipulation
+  - Perry Rhodan: Cynos: paramodulation, 1.6 million year civilization
+  - Mass Effect: Leviathans: telepathic galaxy domination, created the Reapers
+  - Uplift: Senior Galactic races: Five Galaxies civilization, billions of years old
+  - Stargate: Replicators: self-replicating machines, intergalactic presence, existential threat to Asgard
+  - Foundation: Gaia: planetary group consciousness, extending awareness across vast distances
+
+  **14: Megastructure**
+  - Star Trek: Tkon Empire: moved entire stars, portal guardians persisted hundreds of millennia
+  - Star Trek: Sphere Builders: transdimensional, built spheres reshaping physics across the Delphic Expanse
+  - Orion's Arm: Baseline humans / nearbaselines (S0): Dyson swarms, nanotech, stellar engineering
+  - Known Space: Pierson's Puppeteers: Fleet of Worlds (5 planets in rosette at near-c), General Products hulls
+  - Babylon 5: Vorlon Empire: planet killers, sentient organic ships, species-scale genetic engineering
+  - Babylon 5: Shadows: planet killers, hyperspace pioneers, adaptive organic technology
+  - Perry Rhodan: Porleyter (Rainbow Engineers): 13 million years serving Kosmokraten
+  - Perry Rhodan: Pangalaktische Statistiker: cosmic observation across 50 million light-years
+  - Perry Rhodan: Knights of the Deep: access to Kosmokraten technology, galactic agents
+  - Traveller: Ancients: rosette worlds, partial Dyson spheres, nova triggers, species engineering
+  - Warhammer 40K: Necrons (41st Millennium): Celestial Orrery, World Engines, living metal
+  - Warhammer 40K: Imperium Dark Age of Technology: Men of Iron (sentient AI), STCs, planet-killers
+  - Stargate: Ancients/Alterans (pre-ascension): Stargate network, city-ships, Zero Point Energy
+  - Stargate: Asgard: beaming tech, plasma beams, advanced hyperdrives, cloning
+  - Hamilton: Raiel: Dark Fortress technology, force fields containing entire star systems
+  - Hamilton: Anomine (pre-ascension): star-system-scale force fields, planetary FTL drives
+  - Revelation Space: Inhibitors/Wolves: can kill stars in at least 15 different ways
+  - Doctor Who: Daleks: time travel, void ships, galaxy-spanning empire
+  - Xeelee Sequence: Humans (late era): Dyson-scale structures, galactic war against Xeelee
+
+  **15: Matrioshka**
+  - Star Trek: Progenitors / Ancient Humanoids: galaxy-wide DNA seeding program over 4.5 billion years
+  - Orion's Arm: First Transapients (S1): Matrioshka-level computation, post-biological existence
+  - Babylon 5: Thirdspace Aliens: interdimensional, older than Vorlons, unique shields and FTL
+  - Babylon 5: Kirishiac Lords: hyper-dense armor, gravitic weaponry, brutal First Ones
+  - Perry Rhodan: Seven Mighty Ones: 1,126 km Spore Ships, Cosmic Castles, seeded galaxies with life
+  - Perry Rhodan: Servants of Matter: command Cosmic Factories, extract Ultimate Matter
+  - Warhammer 40K: Eldar pre-Fall: wraithbone psycho-technology, Infinity Circuits, Webway mastery
+  - Foundation: Galaxia (concept): galaxy-scale consciousness, every atom unified into one superorganism
+  - Hyperion: TechnoCore: farcaster wormhole network, parasitic AI in the Void Which Binds
+
+  **16: Exotic Matter**
+  - Star Wars: Celestials / Architects: moved stars and black holes through hyperspace, built star systems
+  - Orion's Arm: S2 Transapients: magmatter engineering, early wormhole technology, planet-scale
+  - Orion's Arm: S3 Transapients (lower): crude wormholes, basic metric engineering
+  - Orion's Arm: Hildemar's Knots: exotic-matter biology on neutron star surfaces
+  - Babylon 5: Walkers of Sigma 957: casually relocate moons, scientific instruments as weapons
+  - Babylon 5: The Triad: construct vessels from cosmic energy by will alone
+  - Known Space: Outsiders: technology beyond hyperdrive, reactionless planetary thrusters, galactic-scale gardeners
+  - Perry Rhodan: Seven Mighty Ones, Servants of Matter: Ultimate Matter extraction, Cosmic Factories
+  - Warhammer 40K: Necrons (War in Heaven peak): Celestial Orrery, inertialess drives, Dolmen Gates
+  - Halo: Forerunners: Halo Array, Shield Worlds, Ark, slipspace mastery, stellar engineering
+  - Hyperion: TechnoCore (upper end): seeking to build universe-spanning Ultimate Intelligence
+  - Hitchhiker's Guide: Magratheans: custom planet construction as a commercial service
+  - Doctor Who: Daleks (peak): Reality Bomb capable of disrupting all atomic bonds
+
+  **17: Spacetime Engineering**
+  - Star Trek: Prophets / Wormhole Aliens: non-linear time, created stable wormhole, possess bodies across space
+  - Star Trek: Organians: non-corporeal, immobilize entire fleets across interstellar distances
+  - Star Trek: Metrons, Thasians, Trelane's species: casual mastery of matter, energy, and space
+  - Star Wars: The Ones of Mortis: reality-warping Force powers, directed megastructure construction
+  - Star Wars: Force Priestesses: immortal, consciousness preservation, dimensional existence
+  - Star Wars: Abeloth: multi-body existence, dimensional manipulation, near-indestructible
+  - Orion's Arm: S4 Lesser Archailects: reactionless drives, advanced wormholes, trillions of times faster
+  - Orion's Arm: S5 Great Archailects: W-brains, Halo drives, spacetime metric applications
+  - Orion's Arm: NoCoZo: ruled by S4-S5 cartel (Invisible Hand), market-based libertarian economy
+  - The Culture: Culture: gridfire (dimensional rift weapon), hyperspace, effectors, Orbitals
+  - The Culture: Homomda: slightly more advanced than the Culture
+  - The Culture: Gzilt: near-Culture level, about to Sublime
+  - The Culture: Elder civilizations (Dra'Azon): could Sublime, chose not to, supremely potent
+  - Babylon 5: Lorien: the very first sentient being, temporal manipulation, life/death transcendence
+  - Perry Rhodan: Superintelligences (ES, ESTARTU, Kaiserin von Therm, BARDIOC, SEELENQUELL)
+  - Perry Rhodan: DORIFER: cosmic computer, 50 million light-year jurisdiction, manipulates constants
+  - Zones of Thought: Powers (Transcend): post-singularity, manipulate zone boundaries
+  - Warhammer 40K: Old Ones: created Webway, engineered Eldar and Krork, psychic reality engineering
+  - Halo: Forerunners (upper end), Flood Key Minds: controlled Precursor neural physics artifacts
+  - Doctor Who: Time Lords (as depicted): TARDISes, regeneration, dimensional transcendence
+  - Stargate: Ancients (ascended), Ori: higher plane of existence, manipulate reality across spacetime
+  - Hamilton: Anomine (post-physical): transcended conventional spacetime
+  - Uplift: Progenitors: the first uplifters (2+ billion years ago), believed ascended to higher plane
+
+  **18: Cosmic**
+  - Star Trek: Douwd: destroyed entire Husnock species (50 billion) instantaneously with a thought
+  - Orion's Arm: S6 Greatest Archailects: pocket/basement universes, void bubbles, 10^18-10^20x baseline
+  - Orion's Arm: Sephirotic Empires (S6-ruled): Keter, Solar Dominion, Terragen Federation
+  - The Culture: The Sublimed: higher-dimensional existence, beyond material constraints
+  - Perry Rhodan: Kosmokraten (Cosmocrats): multiverse-scale, higher-dimensional, galaxy igniters
+  - Perry Rhodan: Chaotarchen (Lords of Chaos): equal and opposite to Kosmokraten, TRAITOR column
+  - Perry Rhodan: Si Kitu: neutral High Power, unaligned third force
+  - Perry Rhodan: Thez: above Kosmokraten, closer to Horizon of the LAW
+  - Zones of Thought: The Blight: galaxy-threatening Power, mind-virus across civilizations
+  - Zones of Thought: Countermeasure: manipulates fundamental physics zones of the galaxy
+  - Halo: Precursors: neural physics, manipulate fabric of universe through thought, created life
+  - Warhammer 40K: C'tan pre-shattering: Star Gods, extinguish suns, bend reality
+  - Warhammer 40K: Chaos Gods: Immaterial beings, pocket universe realms, effectively immortal
+  - Doctor Who: Time Lords (peak): Eye of Harmony, the Matrix, Web of Time
+  - Xeelee Sequence: Xeelee: Bolder's Ring (cosmic strings, millions of light-years across)
+  - Xeelee Sequence: Photino Birds: dark matter beings, universal-scale stellar manipulation
+  - Hyperion: Lions, Tigers, and Bears: transcendent intelligences in the Void Which Binds
+
+  **19: Omniscient**
+  - Star Trek: Q Continuum: omnipotent, alter universal constants, create pocket realities, manipulate time
+  - The Culture: Excession entity: inter-universal, pre-dates the universe, bridge between universes
+  - Perry Rhodan: GESETZ / the LAW: the fundamental principle governing all existence (19-20)
+  - Orion's Arm: The Leviathan: 10 light-years across, 100 billion solar masses, galaxy converted to mobile megastructure
+  - Xeelee Sequence: Xeelee (upper end): engineered own evolution back 13 billion years via closed timelike curves
+
+  **20: Absolute**
+  - (Theoretical maximum: no civilization clearly demonstrated at this level; it represents the logical boundary of the scale)
