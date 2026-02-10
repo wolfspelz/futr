@@ -128,9 +128,126 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 1. **Official sources** - Creator-sanctioned content (Memory Alpha, Wookieepedia verified)
 2. **Fan wikis** - Memory Alpha, Wookieepedia, various fandom wikis
 3. **TV Tropes** - tvtropes.org for trope classification, scale comparisons (especially https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit for Kardashev analysis), and cross-universe references. Search via `https://tvtropes.org/pmwiki/search_result.php#gsc.tab=0&gsc.q=<query>` replacing `<query>` with the search term.
-4. **Original works** - Books, shows, movies, games
-5. **Scholarly analysis** - Academic papers on fictional universes
-6. **Fan calculations** - Well-reasoned community estimates
+4. **Atomic Rockets** - projectrho.com for hard-science worldbuilding data, formulas, and tech classification. Search via `https://www.google.com/search?q=<query>&sitesearch=projectrho.com%2Fpublic_html%2Frocket` replacing `<query>` with the search term.
+5. **Original works** - Books, shows, movies, games
+6. **Scholarly analysis** - Academic papers on fictional universes
+7. **Fan calculations** - Well-reasoned community estimates
+
+## TV Tropes Reference Pages by Metric
+
+When researching a civilization, check these TV Tropes pages for cross-universe comparisons and community-sourced data. Start with the universe page, then check metric-specific pages.
+
+### Universe Pages (start here)
+All FUTR-tracked universes have dedicated pages:
+- Star Trek: https://tvtropes.org/pmwiki/pmwiki.php/Franchise/StarTrek
+- Star Wars: https://tvtropes.org/pmwiki/pmwiki.php/Franchise/StarWars
+- Warhammer 40K: https://tvtropes.org/pmwiki/pmwiki.php/Franchise/Warhammer40000
+- Halo: https://tvtropes.org/pmwiki/pmwiki.php/Franchise/Halo
+- Honorverse: https://tvtropes.org/pmwiki/pmwiki.php/Literature/HonorHarrington
+- The Culture: https://tvtropes.org/pmwiki/pmwiki.php/Literature/TheCulture
+- Orion's Arm: https://tvtropes.org/pmwiki/pmwiki.php/Website/OrionsArm
+- Perry Rhodan: https://tvtropes.org/pmwiki/pmwiki.php/Literature/PerryRhodan
+- Stellaris: https://tvtropes.org/pmwiki/pmwiki.php/VideoGame/Stellaris
+- Traveller: https://tvtropes.org/pmwiki/pmwiki.php/TabletopGame/Traveller
+
+### Kardashev
+- https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit — hundreds of civilizations pre-categorized Type 0 through IV+ with wattage thresholds
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/DysonSphere — civilizations with Dyson spheres (instant Type II+ indicator)
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/RingWorldPlanet — megastructure builders
+
+### Techlevel / Tech Summary
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/TechnologyLevels — franchise-specific tech tier systems (e.g. Halo's 7-tier Forerunner scale)
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/HigherTechSpecies — relative tech rankings within a universe
+- https://tvtropes.org/pmwiki/pmwiki.php/SlidingScale/MohsScaleOfScienceFictionHardness — how "hard" a universe's science is (calibrates tech claims)
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/SchizoTech — civilizations with inconsistent tech levels
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/LostTechnology — post-collapse civilizations with degraded tech
+
+### Class
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/GalacticSuperpower — galaxy-spanning polities (Class 15+)
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/SufficientlyAdvancedAlien — godlike civilizations (highest Class)
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/VestigialEmpire — declining civilizations with shrinking reach
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/StandardSciFiHistory — civilization development stages
+
+### Population
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/AbsurdlyHugePopulation — fiction's population numbers with franchise examples
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/CityPlanet — ecumenopolis population data (Coruscant, Trantor)
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/SciFiWritersHaveNoSenseOfScale — flags implausible numbers, useful for sanity checks
+
+### Planets / Star Systems / Territory
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/GalacticSuperpower — territory and planet counts for major empires
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/SpaceSector — how fiction divides territory into sectors
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/ColonizedSolarSystem — single-system civilizations
+
+### FTL
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/FasterThanLightTravel — master page categorizing FTL methods
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/FasterThanLightIndex — index of all FTL-related tropes
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/SubspaceOrHyperspace — specific FTL implementations per franchise
+
+### Government
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/TheEmpire — militaristic expansionist empires
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/TheFederation — democratic multi-species unions
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/HegemonicEmpire — soft-power empires
+
+### Warships
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/StandardSciFiFleet — fleet composition tropes
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/SpaceNavy — military space forces
+
+### Civilization Age
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/Precursors — ancient advanced civilizations and their capabilities
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/TheCycleOfEmpires — rise/peak/decline patterns, helps identify snapshot timing
+
+## Atomic Rockets Reference Pages by Metric
+
+Hard-science worldbuilding reference with formulas, calculations, and tech classification systems. Base URL: `https://www.projectrho.com/public_html/rocket/`
+
+### Kardashev
+- `techlevel.php` — Kardashev scale definitions, Traveller RPG TLs, linear vs branched tech trees
+- `location.php` — megastructures (ringworlds, pocket universes, Big Dumb Objects)
+- `alientech.php` — apes-or-angels spectrum, probability of tech gaps between civilizations
+
+### Techlevel / Tech Summary
+- `techlevel.php` — core tech level discussion, franchise-specific tier systems (Traveller, Star Hero)
+- `scisociety4.php` — divergent tech paths (green/bio vs gray/mechanical, Shaper/Mechanist)
+- `engineintro.php` — Drive Table comparing all engine types by performance (chemical through antimatter)
+- `fasterlight.php` + `fasterlight2.php` — FTL drive classification with 3 formal taxonomies (Landis, EMF, Peetes Com)
+
+### Class
+- `techlevel.php` — Kardashev and Traveller scales as class proxies
+- `stellarempire.php` — empire typologies (Stross, Eisler, Pournelle axes), governance models
+- `futurehistory.php` — 9 civilization development stages (solar exploration through transcendence)
+- `alientech.php` — forerunner civilizations, Clarke's apes-or-angels framework
+
+### Population
+- `empiremap.php` — star density formula (N = R^3 * 0.017), habitable planet formula (N = R^3 * 0.0022)
+- `stellarcolony.php` — population growth models (Malthusian exponential, logistic)
+- `spacecolony.php` — habitat capacities (O'Neill: 25K-2M, Cole bubbles: up to 10M)
+- `modelhistory.php` — mathematical civilization projections (Barnes model, HANDY collapse model)
+
+### Planets / Star Systems / Territory
+- `empiremap.php` — star count formulas by radius, expansion rate models, colonization economics
+- `colonysite.php` — habitable planet density per cubic light-year
+- `planetroles.php` — planet function taxonomy (Capital, Factory, Farm, Military, Mine, Gate, Penal)
+- `telecommunication.php` — how communication speed constrains maximum empire size
+
+### FTL
+- `fasterlight.php` — FTL physics, causality violations, warp vs jump classification
+- `fasterlight2.php` — 3 classification taxonomies: Landis (discontinuous/continuous), EMF (Type 0-III+X), Peetes Com (2x2 matrix)
+- `telecommunication.php` — FTL comms framework (2x2: FTL travel yes/no x FTL comms yes/no)
+
+### Government
+- `stellarempire.php` — historical empire models mapped to SF (Aztec, Mongol, British trade, etc.)
+- `empiredyn.php` — empire rise/fall dynamics, energy-shift instability theory
+- `telecommunication.php` — comms speed determines centralization vs autonomy
+
+### Warships
+- `astromilitary.php` — fleet organization hierarchy (Task Element through Fleet), ship classification
+- `spacewarship.php` — warship design types (laserstar, kinetistar, carrier, lancer, patrol)
+- `spacewar.php` — warfare motivations, strategic considerations
+
+### Civilization Age
+- `futurehistory.php` — 9-stage development framework
+- `modelhistory.php` — mathematical timeline projections (8 tech surges over 300 years)
+- `empiredyn.php` — empire duration data, rise/fall cycle patterns
 
 ## Common Metrics to Research
 For any civilization, try to find data on:

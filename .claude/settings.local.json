@@ -61,7 +61,8 @@
       "WebFetch(domain:orionsarm.com)",
       "Skill(humanizer)",
       "Edit",
-      "Write"
+      "Write",
+      "WebFetch(domain:www.google.com)"
     ],
     "defaultMode": "acceptEdits"
   },
