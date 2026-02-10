@@ -124,14 +124,20 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 - Write in the language confirmed with the user in Step 1. (Of course keep all YAML keywords in English.)
 - **After writing all readme texts, use the `humanizer` skill to refine them** before including them in YAML files.
 
+## Finding New Universes
+When looking for civilizations to add, these lists are good starting points:
+- https://en.wikipedia.org/wiki/List_of_science_fiction_universes
+- https://en.wikipedia.org/wiki/Category:Science_fiction_franchises
+
 ## Research Sources (by priority)
 1. **Official sources** - Creator-sanctioned content (Memory Alpha, Wookieepedia verified)
 2. **Fan wikis** - Memory Alpha, Wookieepedia, various fandom wikis
-3. **TV Tropes** - tvtropes.org for trope classification, scale comparisons (especially https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit for Kardashev analysis), and cross-universe references. Search via `https://tvtropes.org/pmwiki/search_result.php#gsc.tab=0&gsc.q=<query>` replacing `<query>` with the search term.
-4. **Atomic Rockets** - projectrho.com for hard-science worldbuilding data, formulas, and tech classification. Search via `https://www.google.com/search?q=<query>&sitesearch=projectrho.com%2Fpublic_html%2Frocket` replacing `<query>` with the search term.
-5. **Original works** - Books, shows, movies, games
-6. **Scholarly analysis** - Academic papers on fictional universes
-7. **Fan calculations** - Well-reasoned community estimates
+3. **Wikipedia universe lists** - Check if the universe appears on https://en.wikipedia.org/wiki/List_of_science_fiction_universes or https://en.wikipedia.org/wiki/Category:Science_fiction_franchises for overview info and cross-references
+4. **TV Tropes** - tvtropes.org for trope classification, scale comparisons (especially https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit for Kardashev analysis), and cross-universe references. Search via `https://tvtropes.org/pmwiki/search_result.php#gsc.tab=0&gsc.q=<query>` replacing `<query>` with the search term.
+5. **Atomic Rockets** - projectrho.com for hard-science worldbuilding data, formulas, and tech classification. Search via `https://www.google.com/search?q=<query>&sitesearch=projectrho.com%2Fpublic_html%2Frocket` replacing `<query>` with the search term.
+6. **Original works** - Books, shows, movies, games
+7. **Scholarly analysis** - Academic papers on fictional universes
+8. **Fan calculations** - Well-reasoned community estimates
 
 ## TV Tropes Reference Pages by Metric
 
