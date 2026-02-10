@@ -127,7 +127,7 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 ## Research Sources (by priority)
 1. **Official sources** - Creator-sanctioned content (Memory Alpha, Wookieepedia verified)
 2. **Fan wikis** - Memory Alpha, Wookieepedia, various fandom wikis
-3. **TV Tropes** - tvtropes.org for trope classification, scale comparisons (especially https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit for Kardashev analysis), and cross-universe references
+3. **TV Tropes** - tvtropes.org for trope classification, scale comparisons (especially https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit for Kardashev analysis), and cross-universe references. Search via `https://tvtropes.org/pmwiki/search_result.php#gsc.tab=0&gsc.q=<query>` replacing `<query>` with the search term.
 4. **Original works** - Books, shows, movies, games
 5. **Scholarly analysis** - Academic papers on fictional universes
 6. **Fan calculations** - Well-reasoned community estimates
