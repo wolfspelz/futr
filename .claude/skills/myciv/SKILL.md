@@ -127,9 +127,10 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 ## Research Sources (by priority)
 1. **Official sources** - Creator-sanctioned content (Memory Alpha, Wookieepedia verified)
 2. **Fan wikis** - Memory Alpha, Wookieepedia, various fandom wikis
-3. **Original works** - Books, shows, movies, games
-4. **Scholarly analysis** - Academic papers on fictional universes
-5. **Fan calculations** - Well-reasoned community estimates
+3. **TV Tropes** - tvtropes.org for trope classification, scale comparisons (especially https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit for Kardashev analysis), and cross-universe references
+4. **Original works** - Books, shows, movies, games
+5. **Scholarly analysis** - Academic papers on fictional universes
+6. **Fan calculations** - Well-reasoned community estimates
 
 ## Common Metrics to Research
 For any civilization, try to find data on:

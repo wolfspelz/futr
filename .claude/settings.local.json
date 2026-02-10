@@ -59,7 +59,9 @@
       "WebFetch(domain:stellaris.fandom.com)",
       "Bash(git commit:*)",
       "WebFetch(domain:orionsarm.com)",
-      "Skill(humanizer)"
+      "Skill(humanizer)",
+      "Edit",
+      "Write"
     ],
     "defaultMode": "acceptEdits"
   },
