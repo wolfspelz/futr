@@ -43,6 +43,64 @@ links:
     text: Wikipedia - The Expanse (novel series)
   - link: https://en.wikipedia.org/wiki/The_Expanse_(TV_series)
     text: Wikipedia - The Expanse (TV series)
+sources:
+  # Expanse Wiki - core articles
+  - https://expanse.fandom.com/wiki/Earth
+  - https://expanse.fandom.com/wiki/Mars
+  - https://expanse.fandom.com/wiki/Luna
+  - https://expanse.fandom.com/wiki/Sol_system
+  - https://expanse.fandom.com/wiki/Asteroid_Belt
+  - https://expanse.fandom.com/wiki/Ceres
+  - https://expanse.fandom.com/wiki/Eros
+  - https://expanse.fandom.com/wiki/Ganymede
+  - https://expanse.fandom.com/wiki/Timeline_and_chronology
+  - https://expanse.fandom.com/wiki/History
+  - https://expanse.fandom.com/wiki/List_of_nations_by_different_criteria
+  - https://expanse.fandom.com/wiki/Basic_Assistance
+  # Expanse Wiki - factions & government
+  - https://expanse.fandom.com/wiki/United_Nations
+  - https://expanse.fandom.com/wiki/Martian_Congressional_Republic
+  - https://expanse.fandom.com/wiki/Outer_Planets_Alliance
+  # Expanse Wiki - technology
+  - https://expanse.fandom.com/wiki/Epstein_Drive
+  - https://expanse.fandom.com/wiki/Fusion_drive
+  - https://expanse.fandom.com/wiki/Railgun
+  - https://expanse.fandom.com/wiki/Missile
+  - https://expanse.fandom.com/wiki/Scale_of_Technological_Sophistication
+  - https://expanse.fandom.com/wiki/Drive
+  - https://expanse.fandom.com/wiki/Solomon_Epstein_(Books)
+  - https://expanse.fandom.com/wiki/Solomon_Epstein_(TV)
+  # Expanse Wiki - military
+  - https://expanse.fandom.com/wiki/United_Nations_Navy
+  - https://expanse.fandom.com/wiki/Martian_Congressional_Republic_Navy
+  - https://expanse.fandom.com/wiki/OPA_Navy
+  - https://expanse.fandom.com/wiki/MCRN_Home_fleet
+  - https://expanse.fandom.com/wiki/UN-MCR_War_(TV)
+  # Expanse Wiki - ship classes
+  - https://expanse.fandom.com/wiki/Donnager-class_dreadnought_(Books)
+  - https://expanse.fandom.com/wiki/Leonidas-class_battleship
+  - https://expanse.fandom.com/wiki/Morrigan-class_patrol_destroyer
+  - https://expanse.fandom.com/wiki/Munroe-class_light_destroyer
+  - https://expanse.fandom.com/wiki/Corvette-class_light_frigate_(Books)
+  - https://expanse.fandom.com/wiki/Raptor-class_fast_attack_cruiser
+  - https://expanse.fandom.com/wiki/Truman-class_dreadnought_(Books)
+  - https://expanse.fandom.com/wiki/Xerxes-class_battleship
+  # Expanse Wiki - alien tech & later events
+  - https://expanse.fandom.com/wiki/Protomolecule
+  - https://expanse.fandom.com/wiki/Ring_network
+  - https://expanse.fandom.com/wiki/Ring_Builders
+  - https://expanse.fandom.com/wiki/Laconian_Empire
+  - https://expanse.fandom.com/wiki/Laconian_Imperial_Navy
+  - https://expanse.fandom.com/wiki/Laconian-Free_Navy_alliance
+  # Wikipedia
+  - https://en.wikipedia.org/wiki/The_Expanse_(novel_series)
+  - https://en.wikipedia.org/wiki/The_Expanse_(TV_series)
+  - https://en.wikipedia.org/wiki/James_S._A._Corey
+  - https://en.wikipedia.org/wiki/Leviathan_Wakes
+  # Other wikis & references
+  - https://kardashev.fandom.com/wiki/Humans_(The_Expanse)
+  - https://future.fandom.com/wiki/Sol_system_(The_Expanse)
+  - https://screenrant.com/expanse-timeline-explained/
 readme: |
   Hard science fiction by James S.A. Corey (Daniel Abraham and Ty Franck), spanning nine novels and six television seasons. A near-future Sol System where humanity colonizes planets, moons, and asteroid stations using efficient fusion drives. The physics are realistic: no artificial gravity, no energy shields, no faster-than-light travel. Ships fly on constant thrust and orbital mechanics governs every journey.
 
