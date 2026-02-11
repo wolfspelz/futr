@@ -1,0 +1,52 @@
+title: Sol System 2350
+created: 2026-02-11
+changed: 2026-02-11
+date: 2350
+polity: Humanity
+tags: [index, new]
+order: 100
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/f/f3/InnerSolarSystem-en.png
+    text: The inner Solar System from Sun to Jupiter, showing the asteroid belt
+    link: https://commons.wikimedia.org/wiki/File:InnerSolarSystem-en.png
+    author: Mdf
+    license: Public Domain
+    legal: Released into the public domain by the author.
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/c/cb/Solar_System_Illustration_(rubin-20220314-Solar-System-hero).jpg
+    text: Illustration of the Solar System
+    link: https://commons.wikimedia.org/wiki/File:Solar_System_Illustration_(rubin-20220314-Solar-System-hero).jpg
+    author: Rubin Observatory/NSF/AURA
+    license: CC BY 4.0
+    legal: "https://creativecommons.org/licenses/by/4.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/en/6/60/Nemesis_Games.jpg
+    text: Nemesis Games, the fifth novel depicting the Sol System crisis
+    link: https://en.wikipedia.org/wiki/Nemesis_Games
+    author: Daniel Dociu
+    license: "(c) Orbit Books"
+    legal: Copyrighted book cover art by Daniel Dociu for Orbit Books. Used for commentary under Fair Use.
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/f/f1/Outer_Planet_Orbits_02.svg
+    text: Orbits of the outer planets from Jupiter to Neptune
+    link: https://commons.wikimedia.org/wiki/File:Outer_Planet_Orbits_02.svg
+    author: Danial79 / Mrmw
+    license: CC0
+    legal: Released into the public domain under CC0.
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/0/0f/Artist's_Conception_of_Space_Station_Freedom_-_GPN-2003-00092.jpg
+    text: Space station concept art, evoking UN orbital infrastructure
+    link: https://commons.wikimedia.org/wiki/File:Artist%27s_Conception_of_Space_Station_Freedom_-_GPN-2003-00092.jpg
+    author: Alan Chinchar
+    license: Public Domain
+    legal: NASA concept art, public domain as a work of the U.S. government.
+links:
+  - link: https://expanse.fandom.com/wiki/Timeline_and_chronology
+    text: Expanse Wiki - Timeline and chronology
+readme: |
+  By the year 2350, the Sol System holds roughly thirty-five billion human souls. Earth groans under the weight of thirty billion, its cities stacked high while oceans swallow old coastlines. Billions live on Basic Assistance, fed and housed by the state but stripped of meaningful work. Luna is the political nerve center where the United Nations rules from New Hague.
+
+  Mars, home to four billion, runs a different experiment. Every citizen serves, every resource goes toward the great project: turning the red planet green. The Martian Congressional Republic Navy fields the most advanced warships in the system, Donnager-class battleships that outclass anything Earth can build, though Earth builds far more of them.
+
+  Out in the Belt, life is harder. Ceres Station, spun up for gravity, houses six million. Eros, Tycho, Pallas, Ganymede, Titan, each settlement clings to survival in the void. Belters grow tall and thin in low gravity, their bodies shaped by conditions that would cripple an Earther.
+
+  The Epstein drive ties it all together. Ships accelerate for days on end, crossing the vast distances between planets at punishing g-forces. Railguns, torpedoes, and point defense cannons arm the warships of the UNN and MCRN. There are no shields, no deflectors. A hull breach kills. A torpedo hit kills faster.
+
+  Tensions between Earth and Mars simmer toward open war. The Belt agitates for independence. And on Phoebe, something ancient waits to be found.

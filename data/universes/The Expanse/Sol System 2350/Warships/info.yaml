@@ -1,0 +1,26 @@
+created: 2026-02-11
+changed: 2026-02-11
+tags: [index]
+value: 350
+min: 200
+max: 500
+confidence: calculatedGuess
+references:
+  - link: https://expanse.fandom.com/wiki/United_Nations_Navy
+    text: Expanse Wiki - United Nations Navy (largest fleet, Home/Jupiter/Saturn fleets)
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic_Navy
+    text: Expanse Wiki - MCRN (smaller but technologically superior)
+  - link: https://expanse.fandom.com/wiki/OPA_Navy
+    text: Expanse Wiki - OPA Navy (~5-10 combat-capable ships)
+  - link: https://expanse.fandom.com/wiki/Donnager-class_dreadnought_(Books)
+    text: Expanse Wiki - Donnager-class (exactly 8 built)
+  - link: https://expanse.fandom.com/wiki/Leonidas-class_battleship
+    text: Expanse Wiki - Leonidas-class (16 at Lovell City)
+  - link: https://expanse.fandom.com/wiki/Laconian_Imperial_Navy
+    text: Expanse Wiki - Laconian Navy (Duarte took up to a third of MCRN)
+readme: |
+  Combined UNN + MCRN + OPA fleet. The UNN outnumbers the MCRN 5:1 in ships (canon, TV Season 2). The UNN operates Home Fleet, Jupiter Fleet, and Saturn Fleet with dreadnoughts, battleships, cruisers, destroyers, and corvettes. 16 Leonidas-class battleships docked at Lovell City (Luna) during the Free Navy Conflict. Munroe-class light destroyers make up the larger portion of UNN fleets.
+
+  The MCRN is smaller but fields more advanced ships. Exactly 8 Donnager-class battleships built during the Cold War. Morrigan-class patrol destroyers are mass-produced. Duarte later takes up to a third of the entire MCRN fleet to Laconia.
+
+  Estimated: MCRN ~60 ships, UNN ~300 at 5:1 ratio, OPA ~10 converted civilian vessels. Total ~350.

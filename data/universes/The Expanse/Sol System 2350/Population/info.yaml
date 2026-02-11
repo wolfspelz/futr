@@ -1,0 +1,18 @@
+created: 2026-02-11
+changed: 2026-02-11
+tags: [index]
+value: 35e9
+min: 30e9
+max: 40e9
+confidence: semiCanon
+references:
+  - link: https://expanse.fandom.com/wiki/Earth
+    text: Expanse Wiki - Earth (~30 billion)
+  - link: https://expanse.fandom.com/wiki/Mars
+    text: Expanse Wiki - Mars (~4 billion in books)
+  - link: https://expanse.fandom.com/wiki/List_of_nations_by_different_criteria
+    text: Expanse Wiki - List of nations by different criteria
+  - link: https://expanse.fandom.com/wiki/Ceres
+    text: Expanse Wiki - Ceres (~6 million)
+readme: |
+  Earth: ~30 billion (half on Basic Assistance). Luna: ~100 million to 1 billion. Mars: ~4 billion (books). Belt and outer moons: ~50-100 million across Ceres (6M), Eros (1.5M), Ganymede, Titan, and dozens of smaller stations. Total ~35 billion, dominated by Earth's population.

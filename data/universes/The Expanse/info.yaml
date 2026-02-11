@@ -1,0 +1,49 @@
+title: The Expanse
+created: 2026-02-11
+changed: 2026-02-11
+order: 0
+tags: [index, new]
+showcaseMetrics: [Population, Kardashev, Planets, Warships, Techlevel, Class]
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/en/0/08/Leviathan_Wakes.jpg
+    text: Leviathan Wakes, the first novel in The Expanse series
+    link: https://en.wikipedia.org/wiki/Leviathan_Wakes
+    author: Daniel Dociu
+    license: "(c) Orbit Books"
+    legal: Copyrighted book cover art by Daniel Dociu for Orbit Books. Used for commentary under Fair Use.
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/b/bd/The_Expanse_logo.png
+    text: The Expanse logo
+    link: https://commons.wikimedia.org/wiki/File:The_Expanse_logo.png
+    author: Alcon Entertainment
+    license: PD (textlogo)
+    legal: Public domain as a simple text logo.
+  - src: /proxy/upload.wikimedia.org/wikipedia/en/1/15/Calibans_War.jpg
+    text: "Caliban's War, the second novel"
+    link: https://en.wikipedia.org/wiki/Caliban%27s_War
+    author: Daniel Dociu
+    license: "(c) Orbit Books"
+    legal: Copyrighted book cover art by Daniel Dociu for Orbit Books. Used for commentary under Fair Use.
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/4/4e/Flag_of_the_Martian_Congressional_Republic.svg
+    text: Flag of the Martian Congressional Republic
+    link: https://commons.wikimedia.org/wiki/File:Flag_of_the_Martian_Congressional_Republic.svg
+    author: Artemis Andromeda
+    license: Public Domain
+    legal: Public domain (PD-shape), fan recreation based on TV show design by Jonathan Hunter.
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/0/0e/Shohreh_Aghdashloo_(3)_(38111500402)_(cropped).jpg
+    text: Shohreh Aghdashloo, who portrays Chrisjen Avasarala
+    link: https://commons.wikimedia.org/wiki/File:Shohreh_Aghdashloo_(3)_(38111500402)_(cropped).jpg
+    author: Jeff Hitchcock
+    license: CC BY 2.0
+    legal: "https://creativecommons.org/licenses/by/2.0/"
+links:
+  - link: https://expanse.fandom.com/wiki/The_Expanse_Wiki
+    text: The Expanse Wiki
+  - link: https://en.wikipedia.org/wiki/The_Expanse_(novel_series)
+    text: Wikipedia - The Expanse (novel series)
+  - link: https://en.wikipedia.org/wiki/The_Expanse_(TV_series)
+    text: Wikipedia - The Expanse (TV series)
+readme: |
+  Hard science fiction by James S.A. Corey (Daniel Abraham and Ty Franck), spanning nine novels and six television seasons. A near-future Sol System where humanity colonizes planets, moons, and asteroid stations using efficient fusion drives. The physics are realistic: no artificial gravity, no energy shields, no faster-than-light travel. Ships fly on constant thrust and orbital mechanics governs every journey.
+
+  Three factions compete over the Sol System: the United Nations (Earth and Luna), the Martian Congressional Republic, and the Outer Planets Alliance representing Belters across the asteroid belt and outer moons. The discovery of an alien protomolecule on Saturn's moon Phoebe breaks the political stalemate and eventually opens ring gates to over a thousand extrasolar systems.

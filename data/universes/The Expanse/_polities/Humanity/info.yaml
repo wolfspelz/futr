@@ -1,0 +1,44 @@
+title: Humanity
+created: 2026-02-11
+changed: 2026-02-11
+tags: [index]
+order: 0
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/9/94/Spacecolony3edit.jpeg
+    text: Interior of an O'Neill cylinder space habitat, evoking the spin-gravity stations of the Belt
+    link: https://commons.wikimedia.org/wiki/File:Spacecolony3edit.jpeg
+    author: Rick Guidice
+    license: Public Domain
+    legal: NASA concept art, public domain as a work of the U.S. government.
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/b/bc/Island_three_view_from_endcap.jpg
+    text: Endcap view of a cylindrical space habitat
+    link: https://commons.wikimedia.org/wiki/File:Island_three_view_from_endcap.jpg
+    author: Donald Davis
+    license: Public Domain
+    legal: NASA concept art, public domain as a work of the U.S. government.
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/6/6e/TerraformedMarsGlobeRealistic.jpg
+    text: Artist's impression of a terraformed Mars, the long-term goal of the MCR
+    link: https://commons.wikimedia.org/wiki/File:TerraformedMarsGlobeRealistic.jpg
+    author: Daein Ballard
+    license: CC BY-SA 3.0
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/7/7f/MarsTransitionV.jpg
+    text: Hypothetical phases of Mars terraforming
+    link: https://commons.wikimedia.org/wiki/File:MarsTransitionV.jpg
+    author: Daein Ballard
+    license: CC BY-SA 3.0
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/d/d3/PIA19562-Ceres-DwarfPlanet-Dawn-RC3-image19-20150506.jpg
+    text: Ceres, the dwarf planet that houses the largest Belt station
+    link: https://commons.wikimedia.org/wiki/File:PIA19562-Ceres-DwarfPlanet-Dawn-RC3-image19-20150506.jpg
+    author: NASA/JPL-Caltech/UCLA/MPS/DLR/IDA
+    license: Public Domain
+    legal: NASA image, public domain as a work of the U.S. government.
+links:
+  - link: https://expanse.fandom.com/wiki/Sol_system
+    text: Expanse Wiki - Sol system
+readme: |
+  In the 24th century, humanity spans the Sol System from Earth to the ice mines of Saturn's moons. Three rival powers claim this scattered population. Earth's United Nations presides over thirty billion people, half of them unemployed and living on Basic Assistance. The Martian Congressional Republic, independent since 2214, builds a disciplined military state around the dream of one day breathing open air on a terraformed Mars. In the asteroid belt and beyond, the Outer Planets Alliance speaks for the millions of Belters who mine the rocks, haul the water, and keep the inner planets fed.
+
+  These factions share a common origin but little else. Earth has numbers. Mars has technology. The Belt has desperation. No unified government binds them. Trade and the threat of mutual destruction maintain an uneasy peace.

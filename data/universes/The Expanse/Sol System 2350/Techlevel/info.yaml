@@ -1,0 +1,14 @@
+created: 2026-02-11
+changed: 2026-02-11
+tags: [index]
+value: 7
+confidence: informedGuess
+references:
+  - link: https://expanse.fandom.com/wiki/Epstein_Drive
+    text: Expanse Wiki - Epstein Drive (D-He3 fusion)
+  - link: https://expanse.fandom.com/wiki/Railgun
+    text: Expanse Wiki - Railgun
+  - link: https://expanse.fandom.com/wiki/Missile
+    text: Expanse Wiki - Missile
+readme: |
+  TL 7 Fusion. The Epstein drive is a modified deuterium-helium-3 fusion drive with magnetic coil exhaust acceleration. Hardest technology: controlled fusion for propulsion and power generation. Railguns and PDCs are electromagnetic/kinetic weapons, not a higher tech tier. No nanotech (TL 8), no FTL (TL 9), no artificial gravity, no energy shields.

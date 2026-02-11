@@ -1,0 +1,14 @@
+created: 2026-02-11
+changed: 2026-02-11
+tags: [index]
+value: "Tripartite: UN, MCR, OPA"
+confidence: canon
+references:
+  - link: https://expanse.fandom.com/wiki/United_Nations
+    text: Expanse Wiki - United Nations (federal presidential republic, Earth + Luna)
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic
+    text: Expanse Wiki - Martian Congressional Republic (parliamentary republic)
+  - link: https://expanse.fandom.com/wiki/Outer_Planets_Alliance
+    text: Expanse Wiki - Outer Planets Alliance (decentralized movement)
+readme: |
+  No unified Sol System government. Three competing entities share the system. The United Nations governs Earth and Luna as a federal presidential republic led by the Secretary-General. The Martian Congressional Republic is a parliamentary republic with compulsory military service, led by the Prime Minister. The Outer Planets Alliance is a decentralized movement of Belt factions, part political organization, part resistance network, not formally recognized as a sovereign entity by Earth or Mars.

@@ -1,0 +1,22 @@
+created: 2026-02-11
+changed: 2026-02-11
+tags: [index]
+value: 0.9
+min: 0.85
+max: 0.95
+confidence: calculatedGuess
+references:
+  - link: https://expanse.fandom.com/wiki/Epstein_Drive
+    text: Expanse Wiki - Epstein Drive (D-He3 fusion, 60.2 TW thrust power per corvette)
+  - link: https://kardashev.fandom.com/wiki/Humans_(The_Expanse)
+    text: Kardashev Scale Wiki - Humans (The Expanse)
+readme: |
+  Population: 35e9. Estimated per-person power: ~30,000 W (about 14x Earth 2023's 2,200 W/person). Fusion power is widespread via Epstein drives, but half of Earth's 30 billion live on Basic Assistance with modest energy footprints. Mars terraforming and Belt stations are energy-intensive.
+
+  Total power: 35e9 x 30,000 = 1.05e15 W.
+  Kardashev: log10(1.05e15) / 10 - 0.6 = 0.90.
+
+  Min (10,000 W/person, conservative): 3.5e14 W, K = 0.85.
+  Max (100,000 W/person, generous): 3.5e15 W, K = 0.95.
+
+  No megastructures, no stellar energy harvesting. Approaching but not reaching Type I.

@@ -1,0 +1,14 @@
+created: 2026-02-11
+changed: 2026-02-11
+tags: [index]
+value: 15
+min: 10
+max: 25
+confidence: informedGuess
+references:
+  - link: https://expanse.fandom.com/wiki/Sol_system
+    text: Expanse Wiki - Sol system
+  - link: https://expanse.fandom.com/wiki/Asteroid_Belt
+    text: Expanse Wiki - Asteroid Belt
+readme: |
+  Counts major inhabited worlds, moons, and stations. Planets: Earth, Mars (2). Major moons: Luna, Ganymede, Europa, Callisto, Io, Titan, Enceladus (7). Major asteroid stations: Ceres, Eros, Vesta, Pallas, Hygiea, Tycho (6). Total ~15 named major settlements. Hundreds of smaller unnamed stations and mining outposts exist throughout the Belt.
