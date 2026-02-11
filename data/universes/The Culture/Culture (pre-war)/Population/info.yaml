@@ -1,0 +1,14 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: 30e12
+confidence: semiCanon
+tags: [index]
+order: 0
+references:
+  - link: https://theculture.adactio.com/
+    text: "Iain M. Banks: A Few Notes on the Culture"
+  - link: https://theculture.fandom.com/wiki/The_Culture
+    text: "The Culture Wiki"
+editors: [anthropic-claude]
+readme: |
+  Banks states the Culture has approximately thirty trillion citizens in his essay "A Few Notes on the Culture." The figure includes both biological and artificial citizens scattered across the Milky Way.

@@ -51,13 +51,14 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 3. Iterate until user is satisfied
 
 **Datapoints Comparison Table Format:**
-For EVERY datapoint, show comparable values from existing civilizations to help maintain consistency:
+For EVERY datapoint, show comparable values from existing civilizations to help maintain consistency.
+Include a short **Rationale** column summarizing why the value was chosen (key source, calculation method, or reasoning):
 
-| Metric | Value | Confidence | Comparisons (same universe) | Comparisons (other universes) |
-|--------|-------|------------|----------------------------|-------------------------------|
-| Population | 8e9 | canon | Empire 2040: 25e9 | Earth 2023: 8e9, Federation 2373: 1e12 |
-| Kardashev | 0.85 | calculated | Empire 2040: 1.2 | Earth 2023: 0.73, Federation 2373: 2.1 |
-| Planets | 12 | canon | Empire 2040: 150 | Federation 2373: 150 |
+| Metric | Value | Min | Max | Confidence | Rationale | Comparisons (same universe) | Comparisons (other universes) |
+|--------|-------|-------|-------|------------|-----------|----------------------------|-------------------------------|
+| Population | - | 8e9 | - | canon | Wiki states ~8 billion | Empire 2040: 25e9 | Earth 2023: 8e9, Federation 2373: 1e12 |
+| Kardashev | 0.82 | 0.85 | 0.87 | calculated | 8e9 x 20kW/person = 1.6e14 W | Empire 2040: 1.2 | Earth 2023: 0.73, Federation 2373: 2.1 |
+| Planets | 12 | - | - | canon | Source lists 12 colonies | Empire 2040: 150 | Federation 2373: 150 |
 
 - Query existing civilizations in `data/universes/` for comparison data
 - Prioritize comparisons from the same universe first
@@ -112,9 +113,26 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
    - Check which metrics have datapoints across multiple civilizations in this universe
    - Update `showcaseMetrics` list to include all metrics that enable comparisons
    - Example: `showcaseMetrics: [Population, Kardashev, Planets, Star Systems, Warships]`
-3. Verify all files created
-4. Check if `.claude/settings.local.json` was modified (new permissions added during research)
-5. Commit all changes together (data files + settings if modified) with message: "add {Civilization} civilization"
+3. **Add `sources` to Universe info.yaml** (REQUIRED for new universes, update for existing):
+   - Add a `sources` key listing ALL URLs that were valuable during research
+   - Include every link that contained useful information, contributed to content generation, or informed metric values
+   - Organize with comments by category (primary, wiki, Kardashev estimates, forums, etc.)
+   - These are not displayed on the site but serve as a reference for future research in the same universe
+   - Example:
+     ```yaml
+     sources:
+       # Primary
+       - https://official-wiki.example.com/Main  # population, territory, governance
+       # Fan wikis
+       - https://fandom.example.com/wiki/Topic  # war losses data
+       # Kardashev estimates
+       - https://kardashev.fandom.com/wiki/Civ  # Type II classification
+       # Forums
+       - https://forums.example.com/thread/123  # ship count estimates
+     ```
+4. Verify all files created
+5. Check if `.claude/settings.local.json` was modified (new permissions added during research)
+6. Commit all changes together (data files + settings if modified) with message: "add {Civilization} civilization"
 
 ## Writing Style
 - **All descriptions and readme texts MUST be written in present tense** (historisches Prasens / historical present), regardless of language. Example: "Das Imperium umfasst 50.000 Welten" (not "umfasste"), "The Empire controls 150 worlds" (not "controlled").
@@ -264,6 +282,9 @@ For any civilization, try to find data on:
 5. Territory size (if measurable) and Location
 6. Age of civilization
 7. Key dates (founding, major events)
+
+## Shell Pitfalls
+- **Never use brace expansion inside double quotes.** `mkdir -p "path/{A,B,C}"` creates a single literal directory named `{A,B,C}`. Use separate `mkdir -p` calls or unquoted brace expansion instead.
 
 ## Quality Checks
 - All datapoints MUST have references

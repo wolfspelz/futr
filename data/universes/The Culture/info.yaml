@@ -1,0 +1,92 @@
+title: The Culture
+created: 2026-02-10
+changed: 2026-02-10
+tags: [index, new]
+order: 0
+showcaseMetrics: [Population, Kardashev, Class, Techlevel, Banks Orbitals, Warships]
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture's_orbital.jpg
+    text: A Culture Orbital, the civilization's primary habitat
+    link: https://commons.wikimedia.org/wiki/File:Culture%27s_orbital.jpg
+    author: Hill (Giuseppe Gerbino)
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/c/cc/Marain.jpg
+    text: The Marain writing system used by the Culture
+    link: https://commons.wikimedia.org/wiki/File:Marain.jpg
+    author: Hill
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/c/c5/IainBanks2009.jpg
+    text: Iain Banks at the Edinburgh International Book Festival, 2009
+    link: https://commons.wikimedia.org/wiki/File:IainBanks2009.jpg
+    author: TimDuncan
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/9/98/Ian_M._Banks_2005.JPG
+    text: Iain M. Banks at Worldcon 2005 in Glasgow
+    link: https://commons.wikimedia.org/wiki/File:Ian_M._Banks_2005.JPG
+    author: Szymon Sokol
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+links:
+  - src: https://en.wikipedia.org/wiki/Culture_series
+    text: "Wikipedia: Culture series"
+  - src: https://theculture.fandom.com/wiki/The_Culture
+    text: "The Culture Wiki"
+  - src: https://theculture.adactio.com/
+    text: "A Few Notes on the Culture (Banks essay)"
+sources:
+  # Primary
+  - https://theculture.adactio.com/  # Banks' essay "A Few Notes on the Culture" - population, territory, governance, philosophy
+  - https://redsails.org/a-few-notes-on-the-culture/  # Mirror of the essay
+  - https://en.wikipedia.org/wiki/Culture_series
+  - https://en.wikipedia.org/wiki/The_Culture
+  - https://en.wikipedia.org/wiki/Consider_Phlebas
+  # Culture Wiki (fandom) - main research hub
+  - https://theculture.fandom.com/wiki/The_Culture
+  - https://theculture.fandom.com/wiki/Idiran-Culture_War  # War losses appendix data
+  - https://theculture.fandom.com/wiki/Timeline
+  - https://theculture.fandom.com/wiki/Orbital
+  - https://theculture.fandom.com/wiki/Orbital_(Wikipedia_version)
+  - https://theculture.fandom.com/wiki/Ring
+  - https://theculture.fandom.com/wiki/Energy_grid
+  - https://theculture.fandom.com/wiki/General_Contact_Unit
+  - https://theculture.fandom.com/wiki/Contact
+  - https://theculture.fandom.com/wiki/Systems_Vehicle
+  - https://theculture.fandom.com/wiki/Effector
+  - https://theculture.fandom.com/wiki/Sleeper_Service
+  - https://theculture.fandom.com/wiki/Abominator-class_Offensive_Unit
+  - https://theculture.fandom.com/wiki/Pittance
+  - https://theculture.fandom.com/wiki/Consider_Phlebas
+  - https://theculture.fandom.com/wiki/Recognised_Civilisationary_Levels
+  - https://theculture.fandom.com/wiki/List_of_civilisations_in_the_Culture_series_(temp)
+  # Kardashev estimates
+  - https://kardashev.fandom.com/wiki/The_Culture  # Type II classification
+  - https://kardashev.fandom.com/wiki/Banks_orbital  # Orbital specs
+  - https://scifi.fandom.com/wiki/The_Culture  # Type III classification
+  - https://allthetropes.org/wiki/Abusing_the_Kardashev_Scale_For_Fun_and_Profit  # Borderline Type III
+  # TV Tropes
+  - https://tvtropes.org/pmwiki/pmwiki.php/Literature/TheCulture
+  - https://tvtropes.org/pmwiki/pmwiki.php/Literature/ConsiderPhlebas
+  - https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit
+  # SpaceBattles forums - ship counts, Kardashev, fleet composition
+  - https://forums.spacebattles.com/threads/how-many-ships-the-culture-has.106987/
+  - https://forums.spacebattles.com/threads/culture-ship-types.62655/
+  - https://forums.spacebattles.com/threads/where-does-your-science-fiction-or-fantasy-universe-sit-on-this-kardashev-scale.1036599/
+  - https://forums.spacebattles.com/threads/why-was-the-idiran-culture-war-small.1239995/
+  - https://forums.spacebattles.com/threads/gridfire-and-effectors-what-exactly-do-they-do.15164/
+  - https://forums.spacebattles.com/threads/grid-fire-function-yield.214176/
+  - https://forums.spacebattles.com/threads/iain-m-banks-culture-universe-encounters-isaac-arthur-civilization.761494/
+  - https://spacebattles-factions-database.fandom.com/wiki/The_Culture
+  # Other
+  - https://www.tombell.net/a-timeline-of-iain-m-bankss-the-culture-novels/  # Culture timeline
+  - https://everything2.com/title/Gridfire  # Gridfire explanation
+  - https://www.fanverse.org/blogs/the-culture-destruction-of-vavatch-orbital.22560/  # Gridfire energy calcs
+  - https://anarwiki.org/wiki/The_Culture_Series  # Anarchist governance analysis
+  - https://en-academic.com/dic.nsf/enwiki/11576126  # Ship type classification
+  - https://en-academic.com/dic.nsf/enwiki/48988  # Idiran-Culture War
+editors: [anthropic-claude]
+readme: |
+  Thousands of years of galactic history play out across the Milky Way, where species and empires at wildly different technological levels share the same galaxy. Planet-bound iron-age civilizations orbit the same stars as Sublimed entities that have left material existence behind. Ancient megastructures drift through systems whose builders vanished millennia ago. Hyperspace links hundreds of spacefaring societies, and artificial intelligences run entire civilizations. At the center of it all sits the Culture, a post-scarcity anarchist society with more power than it is entirely comfortable wielding.

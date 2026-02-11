@@ -1,0 +1,16 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: 1000000
+min: 500000
+max: 1500000
+confidence: calculatedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://theculture.fandom.com/wiki/General_Contact_Unit
+    text: "The Culture Wiki: General Contact Unit"
+  - link: https://theculture.fandom.com/wiki/Contact
+    text: "The Culture Wiki: Contact"
+editors: [anthropic-claude]
+readme: |
+  Contact units (primarily GCUs) serving as the Culture's de facto military before purpose-built warships were developed during the Idiran War. The "million or so" GCU figure comes from The State of the Art, set approximately 650 years after the war. The pre-war count is estimated at a similar order of magnitude. Before 1289 CE, the Culture had no dedicated warships at all.

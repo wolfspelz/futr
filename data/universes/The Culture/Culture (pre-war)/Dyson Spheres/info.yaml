@@ -1,0 +1,14 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: 6
+min: 3
+max: 10
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://theculture.fandom.com/wiki/Idiran-Culture_War
+    text: "The Culture Wiki: Idiran-Culture War (war losses appendix)"
+editors: [anthropic-claude]
+readme: |
+  Three Spheres (Dyson spheres) were destroyed during the Idiran-Culture War according to the Consider Phlebas appendix. The pre-war total is unknown but was at least three. Spheres are rare in the Culture universe compared to Orbitals.

@@ -1,0 +1,14 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: 17
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://theculture.fandom.com/wiki/The_Culture
+    text: "The Culture Wiki"
+  - link: https://theculture.fandom.com/wiki/Energy_grid
+    text: "The Culture Wiki: Energy Grid"
+editors: [anthropic-claude]
+readme: |
+  Class 17 (Spacetime Engineering). The Culture manipulates spacetime through gridfire (dimensional rift weapons), effectors (interstellar-range matter manipulation), displacement (hyperspace teleportation), and reactionless drives. Minds compute partly in hyperspace dimensions. The Culture lacks pocket universe creation (Class 18) but commands spacetime engineering well beyond wormhole technology.

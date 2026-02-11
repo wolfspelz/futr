@@ -1,0 +1,16 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: 9000
+min: 8500
+max: 9500
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://theculture.fandom.com/wiki/Timeline
+    text: "The Culture Wiki: Timeline"
+  - link: https://theculture.adactio.com/
+    text: "Iain M. Banks: A Few Notes on the Culture"
+editors: [anthropic-claude]
+readme: |
+  The Culture was founded approximately 7600 BCE by a loose federation of seven or eight spacefaring humanoid species. At the 1326 CE snapshot, it has existed for roughly 8,900 to 9,000 years.

@@ -1,0 +1,18 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: 14000
+min: 10000
+max: 20000
+confidence: calculatedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://theculture.fandom.com/wiki/Idiran-Culture_War
+    text: "The Culture Wiki: Idiran-Culture War (14,334 Orbitals destroyed)"
+  - link: https://theculture.adactio.com/
+    text: "Iain M. Banks: A Few Notes on the Culture"
+  - link: https://theculture.fandom.com/wiki/Orbital
+    text: "The Culture Wiki: Orbital"
+editors: [anthropic-claude]
+readme: |
+  14,334 Orbitals were destroyed during the Idiran-Culture War (Consider Phlebas appendix, total all sides). Approximately half are estimated as Culture Orbitals (~7,000). Assuming a 50% destruction rate, the pre-war Culture total is approximately 14,000. Each Orbital is a ring-shaped megastructure approximately 3 million km in diameter with a habitable surface area 20 times that of Earth.

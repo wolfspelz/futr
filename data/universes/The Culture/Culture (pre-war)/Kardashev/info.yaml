@@ -1,0 +1,20 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: 2.3
+min: 2.0
+max: 2.9
+confidence: calculatedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://kardashev.fandom.com/wiki/The_Culture
+    text: "Kardashev Scale Wiki: The Culture (Type II)"
+  - link: https://allthetropes.org/wiki/Abusing_the_Kardashev_Scale_For_Fun_and_Profit
+    text: "All The Tropes: Borderline Type III"
+  - link: https://scifi.fandom.com/wiki/The_Culture
+    text: "WikiSciFi: Type III"
+  - link: https://forums.spacebattles.com/threads/1036599/
+    text: "SpaceBattles: Type II+"
+editors: [anthropic-claude]
+readme: |
+  Community estimates range from Type II to borderline Type III. The Culture draws most of its energy from the hyperspace Energy Grid rather than from stellar output, making conventional Kardashev classification difficult. With at least six Dyson spheres (each capturing approximately 3.8 x 10^26 W), the floor is firmly Type II. Grid taps provide effectively unlimited additional energy. The wide min/max range reflects the fundamental disagreement over how to classify a civilization whose primary energy source is extradimensional.

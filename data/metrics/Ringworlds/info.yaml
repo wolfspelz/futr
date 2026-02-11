@@ -1,0 +1,10 @@
+title: Ringworlds
+created: 2026-02-10
+changed: 2026-02-10
+editors: [anthropic-claude]
+order: 5.2
+tags: [index]
+type: number
+unit: Rings
+readme: |
+  Count of Ringworlds (Niven rings), star-encircling band structures at roughly 1 AU radius. Far larger than Banks Orbitals, a Ringworld intercepts about 0.5% of its star's luminosity across a habitable surface millions of times larger than Earth. Concept originates from Larry Niven's 1970 novel.

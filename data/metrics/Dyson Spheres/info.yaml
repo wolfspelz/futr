@@ -1,0 +1,10 @@
+title: Dyson Spheres
+created: 2026-02-10
+changed: 2026-02-10
+editors: [anthropic-claude]
+order: 5
+tags: [index]
+type: number
+unit: Spheres
+readme: |
+  Count of Dyson spheres or equivalent stellar enclosures operated by a civilization. A Dyson sphere completely encloses a star, capturing its entire energy output. Each sphere around a Sun-like star captures approximately 3.8 x 10^26 watts, equivalent to Kardashev Type II.

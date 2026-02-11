@@ -1,0 +1,12 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: "Milky Way (dispersed)"
+confidence: canon
+tags: [index]
+order: 0
+references:
+  - link: https://theculture.adactio.com/
+    text: "Iain M. Banks: A Few Notes on the Culture"
+editors: [anthropic-claude]
+readme: |
+  Banks explicitly states the Culture exists "solely in this one galaxy." The Culture holds no contiguous territory but is dispersed across the Milky Way in a thin web of Orbitals, ships, and habitats.

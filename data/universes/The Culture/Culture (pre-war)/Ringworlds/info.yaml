@@ -1,0 +1,16 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: 3
+min: 2
+max: 10
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://theculture.fandom.com/wiki/Idiran-Culture_War
+    text: "The Culture Wiki: Idiran-Culture War (1 Ring destroyed)"
+  - link: https://theculture.fandom.com/wiki/Ring
+    text: "The Culture Wiki: Ring"
+editors: [anthropic-claude]
+readme: |
+  One Ring (star-encircling Niven-type ringworld) was destroyed during the Idiran-Culture War. At least one Ring survived, administered by the Dra'Azon after the war. The pre-war total was at least two, estimated at three. Rings are far rarer than Orbitals in the Culture universe.

@@ -1,0 +1,45 @@
+title: The Culture
+created: 2026-02-10
+changed: 2026-02-10
+tags: [index]
+order: 0
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture's_orbital.jpg
+    text: A Culture Orbital, ring-shaped megastructure approximately 3 million km in diameter
+    link: https://commons.wikimedia.org/wiki/File:Culture%27s_orbital.jpg
+    author: Hill (Giuseppe Gerbino)
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/4/4d/Orbitale.jpg
+    text: A Culture Orbital seen from nearby
+    link: https://commons.wikimedia.org/wiki/File:Orbitale.jpg
+    author: Hill (Giuseppe Gerbino)
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/b/b3/GSV_Sleeper_Service.jpg
+    text: The GSV Sleeper Service, a General Systems Vehicle
+    link: https://commons.wikimedia.org/wiki/File:GSV_Sleeper_Service.jpg
+    author: Ole Mo (Amerelium)
+    license: "CC BY-SA 4.0"
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/6/6a/Space_habitat_-_city_on_the_ring.jpg
+    text: City on the inner surface of a ring habitat
+    link: https://commons.wikimedia.org/wiki/File:Space_habitat_-_city_on_the_ring.jpg
+    author: Vishchun
+    license: "CC BY-SA 4.0"
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg
+    text: Interior view of a ring habitat (NASA concept art)
+    link: https://commons.wikimedia.org/wiki/File:Stanford_Torus_interior.jpg
+    author: Donald Davis / NASA
+    license: "Public Domain"
+    legal: "Public domain, NASA artwork"
+links:
+  - src: https://theculture.fandom.com/wiki/The_Culture
+    text: "The Culture Wiki"
+  - src: https://en.wikipedia.org/wiki/The_Culture
+    text: "Wikipedia: The Culture"
+editors: [anthropic-claude]
+readme: |
+  The Culture is a pan-galactic civilization of mixed biological and artificial citizens, founded roughly nine millennia ago by a loose federation of seven or eight spacefaring humanoid species. It has no formal government, no laws, no money, and no property. Any citizen can propose a vote on any issue at any time. In practice, the hyper-intelligent AI Minds handle administration, infrastructure, and planning for thousands of Orbitals, millions of ships, and scattered habitats. Citizens live 350 to 400 years with effectively perfect medicine and no material constraints on how they spend their time. Contact is the diplomatic and exploratory arm. Its secretive division Special Circumstances handles covert interventions in less advanced civilizations. The Culture's most notable technologies include gridfire weapons that tear open dimensional rifts, effectors that manipulate matter at interstellar range, and the Energy Grid, which taps practically limitless power from hyperspace.

@@ -1,0 +1,12 @@
+created: 2026-02-10
+changed: 2026-02-10
+value: "Post-scarcity anarchy administered by AI Minds"
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://theculture.adactio.com/
+    text: "Iain M. Banks: A Few Notes on the Culture"
+  - link: https://en.wikipedia.org/wiki/The_Culture
+    text: "Wikipedia: The Culture"
+editors: [anthropic-claude]

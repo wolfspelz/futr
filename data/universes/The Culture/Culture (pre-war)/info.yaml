@@ -1,0 +1,35 @@
+title: Culture (pre-war)
+created: 2026-02-10
+changed: 2026-02-10
+date: 1326
+polity: The Culture
+tags: [index, new]
+order: 0
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/b/b3/GSV_Sleeper_Service.jpg
+    text: A General Systems Vehicle, mobile city-ship housing millions
+    link: https://commons.wikimedia.org/wiki/File:GSV_Sleeper_Service.jpg
+    author: Ole Mo (Amerelium)
+    license: "CC BY-SA 4.0"
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png
+    text: A Dyson swarm, representing Culture-level stellar engineering
+    link: https://commons.wikimedia.org/wiki/File:Dyson_Swarm_realistic_representation.png
+    author: Vishchun
+    license: "CC BY-SA 4.0"
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png
+    text: A ring megastructure encircling a star
+    link: https://commons.wikimedia.org/wiki/File:Ringworld_render.png
+    author: SharkD
+    license: "CC BY-SA 4.0"
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
+links:
+  - src: https://theculture.fandom.com/wiki/Idiran-Culture_War
+    text: "The Culture Wiki: Idiran-Culture War"
+  - src: https://theculture.fandom.com/wiki/Consider_Phlebas
+    text: "The Culture Wiki: Consider Phlebas"
+editors: [anthropic-claude]
+readme: |
+  By the early fourteenth century, the Culture has existed for nearly nine thousand years. It spans the Milky Way in a thin, dispersed web of habitats and ships, home to some thirty trillion citizens. Fourteen thousand Orbitals house the vast majority of the population on ring-shaped megastructures with twenty times Earth's surface area each. Millions of ships traverse hyperspace, including General Systems Vehicles that function as mobile cities for millions. The civilization has not fought a major war in centuries. Its Contact units patrol and observe, but dedicated warships are virtually nonexistent. That long peace is about to end. Tensions with the Idirans, a warrior species driven by religious expansionism, have escalated through four disputes since 1267. In 1289, the Culture builds its first genuine warship in five hundred years. By 1326, a War Council has formed and the Peace Faction, unwilling to fight, splits away with millions of ships and hundreds of Orbitals. What follows will be the worst conflict in Culture history: over eight hundred billion dead and more than fourteen thousand Orbitals destroyed before it ends forty-eight years later.
