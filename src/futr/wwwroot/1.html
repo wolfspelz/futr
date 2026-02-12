@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--neon-blue:#00d4ff;--neon-pink:#ff2d8a;--deep:#0a0a12;--panel:rgba(10,10,18,0.85)}
+html{scroll-behavior:smooth}
+body{font-family:'Exo 2',sans-serif;background:var(--deep);color:#d0d8e8;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('/images/Index/sunrise-in-orbit-of-ring-planet.jpg') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,18,0.3) 0%,rgba(10,10,18,0.1) 40%,rgba(10,10,18,0.7) 80%,var(--deep) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:2rem}
+.hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(3rem,8vw,7rem);font-weight:900;letter-spacing:0.15em;color:#fff;text-shadow:0 0 40px var(--neon-blue),0 0 80px rgba(0,212,255,0.3)}
+.hero .tagline{font-size:clamp(1rem,2.5vw,1.5rem);font-weight:300;color:var(--neon-blue);margin-top:0.5rem;letter-spacing:0.3em;text-transform:uppercase}
+.hero .mission{max-width:700px;margin:2rem auto 0;font-size:1.1rem;line-height:1.7;color:rgba(255,255,255,0.8)}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;animation:bob 2s ease-in-out infinite}
+.scroll-hint span{display:block;width:2px;height:40px;background:linear-gradient(to bottom,var(--neon-blue),transparent);margin:0 auto}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* PARALLAX SECTIONS */
+.parallax-section{position:relative;min-height:60vh;display:flex;align-items:center;overflow:hidden}
+.parallax-bg{position:absolute;inset:-20% 0;background-size:cover;background-position:center;background-attachment:fixed}
+.parallax-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,18,0.9) 0%,rgba(10,10,18,0.6) 50%,rgba(10,10,18,0.9) 100%)}
+.parallax-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:4rem 2rem;width:100%}
+
+/* SECTION TITLES */
+.section-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
+.section-title::before{content:'';display:block;width:4px;height:1.5em;background:var(--neon-pink);box-shadow:0 0 10px var(--neon-pink)}
+
+/* IMAGE CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.card{position:relative;border-radius:8px;overflow:hidden;background:var(--panel);border:1px solid rgba(0,212,255,0.15);transition:transform 0.4s,box-shadow 0.4s}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,212,255,0.2)}
+.card-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;filter:brightness(0.85)}
+.card:hover .card-img{filter:brightness(1)}
+.card-body{padding:1.2rem}
+.card-body h3{font-family:'Orbitron',sans-serif;font-size:1rem;color:var(--neon-blue);margin-bottom:0.5rem}
+.card-body p{font-size:0.9rem;line-height:1.5;color:rgba(208,216,232,0.7)}
+
+/* WIDE IMAGE BAND */
+.image-band{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:0}
+.image-band img{width:100%;aspect-ratio:21/9;object-fit:cover;display:block;transition:filter 0.4s}
+.image-band img:hover{filter:brightness(1.2)}
+
+/* TWO-COLUMN FEATURE */
+.feature-row{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:50vh}
+.feature-img{width:100%;height:100%;object-fit:cover;display:block}
+.feature-text{display:flex;flex-direction:column;justify-content:center;padding:4rem 3rem;background:var(--panel)}
+.feature-text h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.3rem,3vw,2rem);color:#fff;margin-bottom:1rem}
+.feature-text p{font-size:1rem;line-height:1.7;color:rgba(208,216,232,0.8)}
+.feature-text .cta{display:inline-block;margin-top:1.5rem;padding:0.7rem 2rem;border:1px solid var(--neon-blue);color:var(--neon-blue);text-decoration:none;font-family:'Orbitron',sans-serif;font-size:0.8rem;letter-spacing:0.1em;transition:all 0.3s}
+.feature-text .cta:hover{background:var(--neon-blue);color:var(--deep)}
+
+/* STATS BAR */
+.stats-bar{display:flex;justify-content:center;gap:4rem;padding:3rem 2rem;background:rgba(0,212,255,0.05);border-top:1px solid rgba(0,212,255,0.1);border-bottom:1px solid rgba(0,212,255,0.1)}
+.stat{text-align:center}
+.stat .num{font-family:'Orbitron',sans-serif;font-size:2.5rem;font-weight:900;color:var(--neon-blue)}
+.stat .label{font-size:0.8rem;color:rgba(208,216,232,0.6);text-transform:uppercase;letter-spacing:0.15em;margin-top:0.3rem}
+
+/* FOOTER */
+footer{text-align:center;padding:4rem 2rem;background:var(--deep);border-top:1px solid rgba(0,212,255,0.1)}
+footer a{color:var(--neon-blue);text-decoration:none}
+footer p{font-size:0.85rem;color:rgba(208,216,232,0.4);margin-top:0.5rem}
+
+/* LINKS */
+a.card-link{text-decoration:none;color:inherit;display:block}
+
+@media(max-width:768px){
+  .feature-row{grid-template-columns:1fr}
+  .stats-bar{flex-wrap:wrap;gap:2rem}
+  .image-band{grid-template-columns:1fr}
+  .parallax-bg{background-attachment:scroll}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>FUTR</h1>
+    <div class="tagline">Fictional Universe Taxonomy Research</div>
+    <p class="mission">Cataloguing the civilizations of imagination. From the Federation to the Culture, from ringworlds to Dyson spheres, we measure what fiction dares to dream.</p>
+  </div>
+  <div class="scroll-hint"><span></span></div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="num">20+</div><div class="label">Universes</div></div>
+  <div class="stat"><div class="num">100+</div><div class="label">Civilizations</div></div>
+  <div class="stat"><div class="num">15</div><div class="label">Metrics</div></div>
+  <div class="stat"><div class="num">Open</div><div class="label">Source</div></div>
+</div>
+
+<section class="parallax-section">
+  <div class="parallax-bg" style="background-image:url('/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg')"></div>
+  <div class="parallax-overlay"></div>
+  <div class="parallax-content">
+    <div class="section-title">Explore Universes</div>
+    <div class="card-grid">
+      <a class="card-link" href="/Universe/The%20Culture">
+        <div class="card">
+          <img class="card-img" src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt="The Culture">
+          <div class="card-body"><h3>The Culture</h3><p>Post-scarcity anarchist utopia spanning the galaxy with sentient AI Minds and biological citizens.</p></div>
+        </div>
+      </a>
+      <a class="card-link" href="/Universe/Star%20Trek">
+        <div class="card">
+          <img class="card-img" src="/images/Index/new-civilizations.jpg" alt="Star Trek">
+          <div class="card-body"><h3>Star Trek</h3><p>Boldly going where no one has gone before across the Alpha and Beta Quadrants.</p></div>
+        </div>
+      </a>
+      <a class="card-link" href="/Universe/Orions%20Arm">
+        <div class="card">
+          <img class="card-img" src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt="Orion's Arm">
+          <div class="card-body"><h3>Orion's Arm</h3><p>A hard sci-fi galaxy dominated by archailect gods and post-singularity civilizations.</p></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="image-band">
+  <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="Ringworld">
+  <img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt="Spacecraft at sunset">
+  <img src="/proxy/upload.wikimedia.org/wikipedia/commons/6/6a/Space_habitat_-_city_on_the_ring.jpg" alt="Space habitat">
+</div>
+
+<div class="feature-row">
+  <img class="feature-img" src="/images/Index/metrics.jpg" alt="Metrics">
+  <div class="feature-text">
+    <h2>Metrics & Analysis</h2>
+    <p>Every civilization is measured across multiple dimensions: population, territory, energy output, technological level, and more. Compare the Federation's 150 member worlds against the Culture's 14,000 Orbitals.</p>
+    <a class="cta" href="/Metrics">Browse Metrics</a>
+  </div>
+</div>
+
+<div class="feature-row">
+  <div class="feature-text">
+    <h2>Open Source Research</h2>
+    <p>FUTR is built in the open. Every datapoint is sourced, every calculation explained. Fork the repository, challenge our numbers, add your favorite universe.</p>
+    <a class="cta" href="https://github.com/nichealpham/futr">Contribute on GitHub</a>
+  </div>
+  <img class="feature-img" src="/images/Index/software.jpg" alt="Open source">
+</div>
+
+<section class="parallax-section">
+  <div class="parallax-bg" style="background-image:url('/proxy/deviantart.com/martechi/ships-for-eternity.png')"></div>
+  <div class="parallax-overlay"></div>
+  <div class="parallax-content">
+    <div class="section-title">Inspiration & Community</div>
+    <div class="card-grid">
+      <div class="card">
+        <img class="card-img" src="/images/Index/book-shelf.jpg" alt="Books">
+        <div class="card-body"><h3>Reading Lists</h3><p>Curated book recommendations from the universes we catalog. Start your journey here.</p></div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="/images/Index/contribute.jpg" alt="Contribute">
+        <div class="card-body"><h3>Contributing</h3><p>Add civilizations, refine metrics, fix calculations. Every contribution helps build the database.</p></div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="/images/Index/discord.png" alt="Discord">
+        <div class="card-body"><h3>Join Discord</h3><p>Discuss fictional civilizations, debate metrics, and help shape the future of FUTR.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="/">FUTR</a> &mdash; Fictional Universe Taxonomy Research
+  <p>Open source. Community driven. For the love of science fiction.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--amber:#ffb000;--amber-dim:rgba(255,176,0,0.15);--red:#ff3333;--dark:#0c0c0c;--panel:rgba(12,12,12,0.92)}
+html{scroll-behavior:smooth}
+body{font-family:'Rajdhani',sans-serif;background:var(--dark);color:#c8c0a8;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(12,12,12,0.95);border-bottom:1px solid rgba(255,176,0,0.2);backdrop-filter:blur(10px)}
+nav .logo{font-family:'Share Tech Mono',monospace;font-size:1.4rem;color:var(--amber);letter-spacing:0.3em}
+nav .links{display:flex;gap:2rem}
+nav .links a{color:#c8c0a8;text-decoration:none;font-size:0.9rem;letter-spacing:0.1em;transition:color 0.3s}
+nav .links a:hover{color:var(--amber)}
+
+/* HERO MOSAIC */
+.hero-mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:50vh 25vh;gap:3px;margin-top:56px}
+.hero-mosaic .tile{position:relative;overflow:hidden}
+.hero-mosaic .tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 6s ease}
+.hero-mosaic .tile:hover img{transform:scale(1.08)}
+.hero-mosaic .tile-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,0.9) 0%,transparent 60%)}
+.hero-mosaic .tile-text{position:absolute;bottom:1.5rem;left:1.5rem;z-index:2}
+.hero-mosaic .tile-text h2{font-size:1.3rem;color:var(--amber);font-weight:700}
+.hero-mosaic .tile-text p{font-size:0.85rem;color:#999;margin-top:0.3rem}
+.hero-mosaic .main-tile{grid-row:1/3}
+.hero-mosaic .main-tile .tile-text{bottom:3rem;left:3rem}
+.hero-mosaic .main-tile .tile-text h1{font-family:'Share Tech Mono',monospace;font-size:clamp(2.5rem,6vw,5rem);color:#fff;letter-spacing:0.2em}
+.hero-mosaic .main-tile .tile-text .sub{font-size:1.1rem;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;margin-top:0.5rem}
+
+/* SECTION */
+.section{max-width:1300px;margin:0 auto;padding:5rem 2rem}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2.5rem;border-bottom:1px solid rgba(255,176,0,0.2);padding-bottom:1rem}
+.section-header h2{font-family:'Share Tech Mono',monospace;font-size:1.5rem;color:var(--amber);letter-spacing:0.15em}
+.section-header a{color:var(--amber);text-decoration:none;font-size:0.85rem;letter-spacing:0.1em;opacity:0.7;transition:opacity 0.3s}
+.section-header a:hover{opacity:1}
+
+/* UNIVERSE CARDS - large image focused */
+.universe-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1.5rem;margin-bottom:3rem}
+.u-card{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:16/9;cursor:pointer}
+.u-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 4s}
+.u-card:hover img{transform:scale(1.05)}
+.u-card .u-info{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;background:linear-gradient(to top,rgba(12,12,12,0.95) 0%,rgba(12,12,12,0.4) 40%,transparent 70%)}
+.u-card .u-info h3{font-family:'Share Tech Mono',monospace;font-size:1.2rem;color:#fff}
+.u-card .u-info p{font-size:0.85rem;color:#999;margin-top:0.3rem;line-height:1.4}
+.u-card .u-badge{position:absolute;top:1rem;right:1rem;background:var(--amber);color:var(--dark);font-family:'Share Tech Mono',monospace;font-size:0.7rem;padding:0.2rem 0.6rem;letter-spacing:0.1em}
+
+/* METRIC STRIP */
+.metric-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin:3rem 0}
+.metric-strip .m-cell{position:relative;aspect-ratio:1;overflow:hidden}
+.metric-strip .m-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5) saturate(0.7)}
+.metric-strip .m-cell:hover img{filter:brightness(0.8) saturate(1)}
+.metric-strip .m-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:0.5rem}
+.metric-strip .m-label span{font-family:'Share Tech Mono',monospace;font-size:0.8rem;color:var(--amber);letter-spacing:0.15em;text-transform:uppercase}
+
+/* IMAGE FEATURE */
+.img-feature{display:grid;grid-template-columns:1.2fr 1fr;gap:3px;margin:3rem 0}
+.img-feature .if-img{overflow:hidden}
+.img-feature .if-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:350px}
+.img-feature .if-content{background:rgba(255,176,0,0.05);border:1px solid rgba(255,176,0,0.15);padding:3rem;display:flex;flex-direction:column;justify-content:center}
+.img-feature .if-content h2{font-family:'Share Tech Mono',monospace;color:var(--amber);font-size:1.4rem;margin-bottom:1rem}
+.img-feature .if-content p{line-height:1.8;color:#999;font-size:0.95rem}
+.if-btn{display:inline-block;margin-top:1.5rem;padding:0.6rem 1.8rem;background:var(--amber);color:var(--dark);font-family:'Share Tech Mono',monospace;text-decoration:none;font-size:0.85rem;letter-spacing:0.1em;transition:all 0.3s}
+.if-btn:hover{background:#fff;color:var(--dark)}
+
+/* BOTTOM GRID */
+.bottom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.bottom-grid .bg-tile{position:relative;overflow:hidden;aspect-ratio:4/3}
+.bottom-grid .bg-tile img{width:100%;height:100%;object-fit:cover;filter:brightness(0.6);transition:all 0.5s}
+.bottom-grid .bg-tile:hover img{filter:brightness(0.9)}
+.bottom-grid .bg-tile .bg-label{position:absolute;bottom:1rem;left:1rem;right:1rem}
+.bottom-grid .bg-tile .bg-label h4{color:#fff;font-size:1rem}
+.bottom-grid .bg-tile .bg-label p{color:#999;font-size:0.8rem;margin-top:0.2rem}
+
+/* FOOTER */
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(255,176,0,0.15)}
+footer .logo{font-family:'Share Tech Mono',monospace;font-size:1.2rem;color:var(--amber);letter-spacing:0.3em}
+footer p{font-size:0.8rem;color:#666;margin-top:0.5rem}
+
+@media(max-width:768px){
+  .hero-mosaic{grid-template-columns:1fr;grid-template-rows:50vh 25vh 25vh 25vh 25vh}
+  .hero-mosaic .main-tile{grid-row:auto}
+  .universe-row{grid-template-columns:1fr}
+  .metric-strip{grid-template-columns:repeat(3,1fr)}
+  .img-feature{grid-template-columns:1fr}
+  .bottom-grid{grid-template-columns:1fr 1fr}
+  nav .links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">FUTR</div>
+  <div class="links">
+    <a href="/Universes">UNIVERSES</a>
+    <a href="/Metrics">METRICS</a>
+    <a href="/About">ABOUT</a>
+  </div>
+</nav>
+
+<div class="hero-mosaic">
+  <div class="tile main-tile">
+    <img src="/images/Index/sunrise-in-orbit-of-ring-planet.jpg" alt="Ring planet">
+    <div class="tile-overlay"></div>
+    <div class="tile-text">
+      <h1>FUTR</h1>
+      <div class="sub">Fictional Universe Taxonomy Research</div>
+    </div>
+  </div>
+  <div class="tile">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt="Space station">
+    <div class="tile-overlay"></div>
+    <div class="tile-text"><h2>Habitats</h2><p>Orbital megastructures</p></div>
+  </div>
+  <div class="tile">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="Ringworld">
+    <div class="tile-overlay"></div>
+    <div class="tile-text"><h2>Ringworlds</h2><p>Niven-class structures</p></div>
+  </div>
+  <div class="tile">
+    <img src="/proxy/deviantart.com/martechi/ships-for-eternity.png" alt="Ships">
+    <div class="tile-overlay"></div>
+    <div class="tile-text"><h2>Fleets</h2><p>Interstellar armadas</p></div>
+  </div>
+  <div class="tile">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt="Dyson swarm">
+    <div class="tile-overlay"></div>
+    <div class="tile-text"><h2>Energy</h2><p>Stellar engineering</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <h2>// UNIVERSES</h2>
+    <a href="/Universes">VIEW ALL &rarr;</a>
+  </div>
+  <div class="universe-row">
+    <div class="u-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt="The Culture">
+      <div class="u-badge">ACTIVE</div>
+      <div class="u-info"><h3>The Culture</h3><p>Post-scarcity anarchist civilization with AI Minds governing thousands of Orbitals</p></div>
+    </div>
+    <div class="u-card">
+      <img src="/images/Index/new-civilizations.jpg" alt="Star Trek">
+      <div class="u-badge">ACTIVE</div>
+      <div class="u-info"><h3>Star Trek</h3><p>The United Federation of Planets and the civilizations of the Alpha Quadrant</p></div>
+    </div>
+    <div class="u-card">
+      <img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt="Perry Rhodan">
+      <div class="u-badge">ACTIVE</div>
+      <div class="u-info"><h3>Perry Rhodan</h3><p>The longest-running science fiction series spanning millions of years</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="metric-strip">
+  <div class="m-cell">
+    <img src="/images/Index/universes.jpg" alt="Population"><div class="m-label"><span>Population</span></div>
+  </div>
+  <div class="m-cell">
+    <img src="/images/Index/metrics.jpg" alt="Territory"><div class="m-label"><span>Territory</span></div>
+  </div>
+  <div class="m-cell">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt="Energy"><div class="m-label"><span>Energy</span></div>
+  </div>
+  <div class="m-cell">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="Technology"><div class="m-label"><span>Tech Level</span></div>
+  </div>
+  <div class="m-cell">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/6/6a/Space_habitat_-_city_on_the_ring.jpg" alt="Class"><div class="m-label"><span>Class</span></div>
+  </div>
+</div>
+
+<div class="img-feature">
+  <div class="if-img">
+    <img src="/images/Index/book-wall.jpg" alt="Research library">
+  </div>
+  <div class="if-content">
+    <h2>// RESEARCH DATABASE</h2>
+    <p>Every datapoint is sourced from canon material, technical manuals, and community research. Confidence levels range from canon-confirmed to educated estimates. Calculations are shown, assumptions documented.</p>
+    <a class="if-btn" href="/About">LEARN MORE</a>
+  </div>
+</div>
+
+<div class="img-feature" style="direction:rtl">
+  <div class="if-img" style="direction:ltr">
+    <img src="/images/Index/software.jpg" alt="Open source">
+  </div>
+  <div class="if-content" style="direction:ltr">
+    <h2>// OPEN SOURCE</h2>
+    <p>FUTR runs on community contributions. The entire codebase and dataset are open source. Add your favorite universe, challenge our estimates, improve the metrics.</p>
+    <a class="if-btn" href="https://github.com">GITHUB</a>
+  </div>
+</div>
+
+<div class="bottom-grid">
+  <div class="bg-tile">
+    <img src="/images/Index/book-shelf.jpg" alt="Books">
+    <div class="bg-label"><h4>Inspiration</h4><p>Recommended reading</p></div>
+  </div>
+  <div class="bg-tile">
+    <img src="/images/Index/contribute.jpg" alt="Contribute">
+    <div class="bg-label"><h4>Contribute</h4><p>Help build the database</p></div>
+  </div>
+  <div class="bg-tile">
+    <img src="/images/Index/discord.png" alt="Discord">
+    <div class="bg-label"><h4>Community</h4><p>Join our Discord</p></div>
+  </div>
+  <div class="bg-tile">
+    <img src="/images/Index/new-universes.jpg" alt="New">
+    <div class="bg-label"><h4>New Universes</h4><p>Recently added</p></div>
+  </div>
+</div>
+
+<footer>
+  <div class="logo">FUTR</div>
+  <p>Fictional Universe Taxonomy Research &mdash; Open Source</p>
+</footer>
+
+</body>
+</html>

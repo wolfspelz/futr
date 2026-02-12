@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Design Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#060608;color:#aab;min-height:100vh}
+header{text-align:center;padding:4rem 2rem 2rem;border-bottom:1px solid #1a1a22}
+header h1{font-family:'Orbitron',sans-serif;font-size:2.5rem;font-weight:900;color:#fff;letter-spacing:0.1em}
+header p{font-size:0.95rem;color:#667;margin-top:0.5rem;font-weight:300}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(540px,1fr));gap:2rem;padding:3rem 2rem;max-width:1800px;margin:0 auto}
+.card{background:#0c0d12;border:1px solid #1a1a22;border-radius:8px;overflow:hidden;transition:border-color 0.3s,transform 0.3s}
+.card:hover{border-color:rgba(0,180,255,0.3);transform:translateY(-4px)}
+.preview{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#000}
+.preview iframe{width:200%;height:200%;border:none;transform:scale(0.5);transform-origin:top left;pointer-events:none}
+.preview .overlay{position:absolute;inset:0;z-index:2;cursor:pointer;background:transparent;transition:background 0.3s}
+.preview .overlay:hover{background:rgba(0,180,255,0.05)}
+.info{padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.info .left h3{font-family:'Orbitron',sans-serif;font-size:0.85rem;color:#fff;font-weight:700}
+.info .left p{font-size:0.75rem;color:#556;margin-top:0.2rem}
+.info .num{font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:rgba(0,180,255,0.2)}
+.open-btn{display:inline-block;padding:0.4rem 1.2rem;border:1px solid rgba(0,180,255,0.3);color:rgba(0,180,255,0.8);text-decoration:none;font-size:0.7rem;font-family:'Orbitron',sans-serif;letter-spacing:0.1em;border-radius:3px;transition:all 0.3s}
+.open-btn:hover{background:rgba(0,180,255,0.15);color:#fff}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #1a1a22}
+footer p{font-size:0.75rem;color:#445}
+@media(max-width:600px){.gallery{grid-template-columns:1fr;padding:1.5rem 1rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>FUTR DESIGNS</h1>
+  <p>12 image-heavy homepage design proposals &mdash; click any to open full size</p>
+</header>
+
+<div class="gallery" id="gallery"></div>
+
+<footer>
+  <p>FUTR &mdash; Fictional Universe Taxonomy Research</p>
+</footer>
+
+<script>
+const designs = [
+  { id: "1", name: "Cinematic Parallax", desc: "Neon blue, parallax scrolling, Orbitron font" },
+  { id: "2", name: "Amber Mosaic", desc: "Image mosaic hero, amber accent, Share Tech Mono" },
+  { id: "3", name: "Cyber Gallery", desc: "Horizontal scroll, masonry grid, JetBrains Mono" },
+  { id: "4", name: "Flame Offset", desc: "Offset image grid, Syne/Space Mono, orange fire" },
+  { id: "5", name: "Slideshow Violet", desc: "Auto-slideshow hero, reveal cards, Audiowide font" },
+  { id: "6", name: "Brutalist Lime", desc: "Collage hero, Bebas Neue, lime green, marquee" },
+  { id: "7", name: "Teal Diagonal", desc: "Diagonal split hero, HUD cards, Oxanium font" },
+  { id: "8", name: "Navy Magazine", desc: "Magazine cover layout, Michroma, red/ice accents" },
+  { id: "9", name: "Bento Red", desc: "Bento grid, Tourney font, hot red/cyan" },
+  { id: "10", name: "Stencil Green", desc: "Vertical split hero, Saira Stencil, neon green" },
+  { id: "11", name: "Military Gold", desc: "Film grain, Black Ops One, gold/rust tones" },
+  { id: "12", name: "Gradient Purple", desc: "Asymmetric overlap, Russo One, purple/cyan gradient" }
+];
+
+const gallery = document.getElementById('gallery');
+designs.forEach(d => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="preview">
+      <iframe src="/${d.id}.html" loading="lazy" sandbox="allow-same-origin"></iframe>
+      <a class="overlay" href="/${d.id}.html" target="_blank"></a>
+    </div>
+    <div class="info">
+      <div class="left">
+        <h3>${d.name}</h3>
+        <p>${d.desc}</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem">
+        <a class="open-btn" href="/${d.id}.html" target="_blank">OPEN</a>
+        <div class="num">${d.id.padStart(2,'0')}</div>
+      </div>
+    </div>`;
+  gallery.appendChild(card);
+});
+</script>
+</body>
+</html>

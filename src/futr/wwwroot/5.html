@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Barlow:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--electric:#00e5ff;--violet:#9d4edd;--dark:#060610;--glass:rgba(6,6,16,0.8)}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--dark);color:#c0c8d8;overflow-x:hidden}
+
+/* HERO SLIDESHOW */
+.hero{position:relative;height:100vh;overflow:hidden}
+.hero-slides{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero-dim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,6,16,0.4),rgba(6,6,16,0.2) 40%,rgba(6,6,16,0.8) 85%,var(--dark))}
+.hero-ui{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.hero-ui h1{font-family:'Audiowide',sans-serif;font-size:clamp(3rem,10vw,8rem);color:#fff;text-shadow:0 0 80px var(--electric);letter-spacing:0.1em}
+.hero-ui .tag{font-size:1rem;color:var(--electric);letter-spacing:0.5em;text-transform:uppercase;font-weight:300;margin-top:0.5rem}
+.hero-ui .blurb{max-width:650px;font-size:1.05rem;line-height:1.8;color:rgba(255,255,255,0.65);margin-top:2rem;font-weight:300}
+.hero-dots{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:6;display:flex;gap:0.8rem}
+.hero-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:all 0.3s}
+.hero-dots span.active{background:var(--electric);box-shadow:0 0 10px var(--electric)}
+
+/* CARDS - HOVER REVEAL */
+.card-section{max-width:1300px;margin:0 auto;padding:5rem 2rem}
+.sec-head{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem}
+.sec-head .line{flex:1;height:1px;background:linear-gradient(to right,var(--electric),transparent)}
+.sec-head h2{font-family:'Audiowide',sans-serif;font-size:1.2rem;color:var(--electric);letter-spacing:0.15em;white-space:nowrap}
+
+.reveal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.r-card{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:6px;cursor:pointer}
+.r-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.8s,filter 0.5s}
+.r-card:hover img{transform:scale(1.06);filter:brightness(1.1)}
+.r-card .r-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,16,0.95) 0%,rgba(6,6,16,0.3) 40%,transparent 70%);transition:background 0.4s}
+.r-card .r-text{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem}
+.r-card .r-text h3{font-family:'Audiowide',sans-serif;font-size:1rem;color:#fff;margin-bottom:0.4rem}
+.r-card .r-text p{font-size:0.85rem;color:rgba(192,200,216,0.7);line-height:1.5;max-height:0;overflow:hidden;transition:max-height 0.5s}
+.r-card:hover .r-text p{max-height:100px}
+.r-card .r-tag{position:absolute;top:1rem;left:1rem;padding:0.2rem 0.7rem;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;border-radius:2px;background:var(--violet);color:#fff}
+
+/* FULL WIDTH IMAGE BREAK */
+.full-break{position:relative;height:50vh;min-height:350px;overflow:hidden}
+.full-break img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5)}
+.full-break .fb-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;z-index:2}
+.full-break .fb-text h2{font-family:'Audiowide',sans-serif;font-size:clamp(1.5rem,4vw,3rem);color:#fff;margin-bottom:1rem}
+.full-break .fb-text p{max-width:600px;color:rgba(255,255,255,0.6);font-size:1rem;line-height:1.7;font-weight:300}
+
+/* IMAGE + TEXT PANELS */
+.panel-row{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+.panel-img{overflow:hidden}
+.panel-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 5s}
+.panel-img:hover img{transform:scale(1.05)}
+.panel-content{display:flex;flex-direction:column;justify-content:center;padding:3.5rem;background:rgba(0,229,255,0.03);border:1px solid rgba(0,229,255,0.08)}
+.panel-content h2{font-family:'Audiowide',sans-serif;font-size:1.3rem;color:#fff;margin-bottom:1.2rem}
+.panel-content p{line-height:1.8;color:rgba(192,200,216,0.7);font-size:0.95rem;font-weight:300}
+.panel-link{display:inline-block;margin-top:1.5rem;color:var(--electric);text-decoration:none;font-size:0.9rem;font-weight:600;letter-spacing:0.05em;transition:color 0.3s}
+.panel-link:hover{color:#fff}
+.panel-link::after{content:' →'}
+
+/* MOSAIC BOTTOM */
+.mosaic-bottom{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.mosaic-bottom .mb{position:relative;overflow:hidden;aspect-ratio:1}
+.mosaic-bottom .mb img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5) saturate(0.6);transition:all 0.4s}
+.mosaic-bottom .mb:hover img{filter:brightness(0.9) saturate(1)}
+.mosaic-bottom .mb span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Audiowide',sans-serif;font-size:0.65rem;color:rgba(255,255,255,0.7);letter-spacing:0.15em;text-transform:uppercase;text-align:center;padding:0.5rem}
+
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(0,229,255,0.08)}
+footer p{font-size:0.8rem;color:#555}
+footer .f-logo{font-family:'Audiowide',sans-serif;font-size:1.5rem;color:var(--electric);letter-spacing:0.2em;margin-bottom:0.5rem}
+
+@media(max-width:768px){
+  .reveal-grid{grid-template-columns:1fr}
+  .panel-row{grid-template-columns:1fr}
+  .mosaic-bottom{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active"><img src="/images/Index/sunrise-in-orbit-of-ring-planet.jpg" alt=""></div>
+    <div class="hero-slide"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt=""></div>
+    <div class="hero-slide"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt=""></div>
+    <div class="hero-slide"><img src="/proxy/deviantart.com/martechi/ships-for-eternity.png" alt=""></div>
+  </div>
+  <div class="hero-dim"></div>
+  <div class="hero-ui">
+    <h1>FUTR</h1>
+    <div class="tag">Fictional Universe Taxonomy Research</div>
+    <p class="blurb">Cataloguing the civilizations of imagination. From ringworlds to Dyson spheres, we measure what science fiction dreams into existence.</p>
+  </div>
+  <div class="hero-dots">
+    <span class="active" data-i="0"></span>
+    <span data-i="1"></span>
+    <span data-i="2"></span>
+    <span data-i="3"></span>
+  </div>
+</section>
+
+<div class="card-section">
+  <div class="sec-head"><h2>Universes</h2><div class="line"></div></div>
+  <div class="reveal-grid">
+    <div class="r-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt="The Culture">
+      <div class="r-tag">FEATURED</div>
+      <div class="r-overlay"></div>
+      <div class="r-text"><h3>The Culture</h3><p>Post-scarcity anarchist utopia. 30 trillion citizens across 14,000 Orbitals. AI Minds run everything.</p></div>
+    </div>
+    <div class="r-card">
+      <img src="/images/Index/new-civilizations.jpg" alt="Star Trek">
+      <div class="r-tag">FEATURED</div>
+      <div class="r-overlay"></div>
+      <div class="r-text"><h3>Star Trek</h3><p>The Federation of Planets. 150+ member worlds exploring the final frontier.</p></div>
+    </div>
+    <div class="r-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt="Orion's Arm">
+      <div class="r-tag">FEATURED</div>
+      <div class="r-overlay"></div>
+      <div class="r-text"><h3>Orion's Arm</h3><p>Hard sci-fi galaxy ruled by godlike archailects. Toposophic hierarchies from S0 to S6.</p></div>
+    </div>
+    <div class="r-card">
+      <img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt="Perry Rhodan">
+      <div class="r-overlay"></div>
+      <div class="r-text"><h3>Perry Rhodan</h3><p>The longest-running SF series. Millions of years of galactic history.</p></div>
+    </div>
+    <div class="r-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/6/6a/Space_habitat_-_city_on_the_ring.jpg" alt="The Expanse">
+      <div class="r-overlay"></div>
+      <div class="r-text"><h3>The Expanse</h3><p>Near-future hard SF. Sol system colonization and the protomolecule.</p></div>
+    </div>
+    <div class="r-card">
+      <img src="/images/Index/new-universes.jpg" alt="More">
+      <div class="r-overlay"></div>
+      <div class="r-text"><h3>And Many More</h3><p>Warhammer 40K, Halo, Mass Effect, Honorverse, and growing.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="full-break">
+  <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="Ringworld">
+  <div class="fb-text">
+    <h2>15 Metrics. 100+ Civilizations.</h2>
+    <p>Population, territory, energy output, Kardashev level, tech level, military power. Compare civilizations across universes with sourced data.</p>
+  </div>
+</div>
+
+<div class="panel-row">
+  <div class="panel-img"><img src="/images/Index/book-wall.jpg" alt="Research"></div>
+  <div class="panel-content">
+    <h2>Sourced Research</h2>
+    <p>Every datapoint cites its source: movies, TV shows, novels, technical manuals. Confidence levels from canon-confirmed to educated estimates. All calculations documented and open to challenge.</p>
+    <a class="panel-link" href="/About">About the project</a>
+  </div>
+</div>
+<div class="panel-row">
+  <div class="panel-content">
+    <h2>Open Source</h2>
+    <p>FUTR is community-driven. Fork the repo, add a universe, fix a calculation. Every contribution reviewed and integrated. The database grows with every pull request.</p>
+    <a class="panel-link" href="https://github.com">Contribute on GitHub</a>
+  </div>
+  <div class="panel-img"><img src="/images/Index/software.jpg" alt="Code"></div>
+</div>
+
+<div class="mosaic-bottom">
+  <div class="mb"><img src="/images/Index/book-shelf.jpg" alt=""><span>Reading</span></div>
+  <div class="mb"><img src="/images/Index/contribute.jpg" alt=""><span>Contribute</span></div>
+  <div class="mb"><img src="/images/Index/discord.png" alt=""><span>Discord</span></div>
+  <div class="mb"><img src="/images/Index/metrics.jpg" alt=""><span>Metrics</span></div>
+  <div class="mb"><img src="/images/Index/universes.jpg" alt=""><span>Universes</span></div>
+  <div class="mb"><img src="/images/Index/new-universes.jpg" alt=""><span>New</span></div>
+</div>
+
+<footer>
+  <div class="f-logo">FUTR</div>
+  <p>Fictional Universe Taxonomy Research &mdash; Open Source</p>
+</footer>
+
+<script>
+(function(){
+  const slides=document.querySelectorAll('.hero-slide');
+  const dots=document.querySelectorAll('.hero-dots span');
+  let cur=0;
+  function go(i){
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur=i%slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+  setInterval(()=>go(cur+1),5000);
+  dots.forEach(d=>d.addEventListener('click',()=>go(+d.dataset.i)));
+})();
+</script>
+</body>
+</html>

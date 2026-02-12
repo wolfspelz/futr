@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#00ffc8;--orange:#ff6b2b;--dark:#07080c;--panel:#0d0f14}
+html{scroll-behavior:smooth}
+body{font-family:'Oxanium',sans-serif;background:var(--dark);color:#8899aa;overflow-x:hidden}
+
+/* HERO - SPLIT DIAGONAL */
+.hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
+.hero-bg-left{position:absolute;top:0;left:0;width:55%;height:100%;clip-path:polygon(0 0,100% 0,80% 100%,0 100%);overflow:hidden;z-index:1}
+.hero-bg-left img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7)}
+.hero-bg-right{position:absolute;top:0;right:0;width:55%;height:100%;clip-path:polygon(20% 0,100% 0,100% 100%,0 100%);overflow:hidden}
+.hero-bg-right img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5) hue-rotate(30deg)}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(7,8,12,0.3),rgba(7,8,12,0.1) 40%,rgba(7,8,12,0.7) 85%,var(--dark))}
+.hero-content{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.hero-content h1{font-size:clamp(3.5rem,10vw,9rem);font-weight:800;color:#fff;letter-spacing:0.05em;text-shadow:0 0 60px rgba(0,255,200,0.3)}
+.hero-content .sub{font-family:'IBM Plex Mono',monospace;font-size:clamp(0.7rem,1.5vw,1rem);color:var(--teal);letter-spacing:0.5em;text-transform:uppercase;margin-top:0.8rem}
+.hero-content .desc{max-width:600px;margin-top:2rem;font-size:1rem;line-height:1.8;color:rgba(255,255,255,0.6);font-weight:400}
+
+/* HUD BORDER CARDS */
+.hud-section{max-width:1300px;margin:0 auto;padding:5rem 2rem}
+.hud-head{font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--teal);letter-spacing:0.3em;text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
+.hud-head::after{content:'';flex:1;height:1px;background:rgba(0,255,200,0.15)}
+
+.hud-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.5rem}
+.hud-card{position:relative;background:var(--panel);border:1px solid rgba(0,255,200,0.1);overflow:hidden;transition:border-color 0.3s}
+.hud-card:hover{border-color:rgba(0,255,200,0.3)}
+.hud-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--orange));transform:scaleX(0);transform-origin:left;transition:transform 0.5s}
+.hud-card:hover::before{transform:scaleX(1)}
+.hud-card .hc-img{aspect-ratio:16/9;overflow:hidden}
+.hud-card .hc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s;filter:brightness(0.8)}
+.hud-card:hover .hc-img img{transform:scale(1.05);filter:brightness(1)}
+.hud-card .hc-body{padding:1.5rem}
+.hud-card .hc-body h3{font-size:1.1rem;color:#fff;font-weight:700;margin-bottom:0.5rem}
+.hud-card .hc-body p{font-size:0.85rem;line-height:1.6;color:#667788}
+.hud-card .hc-tag{position:absolute;top:1rem;right:1rem;background:rgba(7,8,12,0.8);border:1px solid var(--teal);padding:0.2rem 0.6rem;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--teal);letter-spacing:0.1em}
+
+/* WIDE CINEMATIC BANNER */
+.cinema{position:relative;height:45vh;min-height:300px;overflow:hidden}
+.cinema img{width:100%;height:100%;object-fit:cover;filter:brightness(0.4)}
+.cinema .cin-content{position:absolute;inset:0;display:flex;align-items:center;padding:0 6%}
+.cinema .cin-content .cin-left{max-width:550px}
+.cinema .cin-content h2{font-size:clamp(2rem,5vw,3.5rem);color:#fff;font-weight:800;line-height:1.1}
+.cinema .cin-content p{color:#889;margin-top:1rem;font-size:0.95rem;line-height:1.7}
+.cin-btn{display:inline-block;margin-top:1.5rem;padding:0.6rem 2rem;border:1px solid var(--orange);color:var(--orange);font-family:'IBM Plex Mono',monospace;font-size:0.8rem;text-decoration:none;letter-spacing:0.1em;transition:all 0.3s}
+.cin-btn:hover{background:var(--orange);color:#fff}
+
+/* 2x2 IMAGE GRID */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:3px}
+.quad .q-cell{position:relative;aspect-ratio:16/10;overflow:hidden}
+.quad .q-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5);transition:all 0.5s}
+.quad .q-cell:hover img{filter:brightness(0.85)}
+.quad .q-cell .q-info{position:absolute;bottom:1.5rem;left:1.5rem;z-index:2}
+.quad .q-cell .q-info h4{font-size:1.1rem;color:#fff;font-weight:700}
+.quad .q-cell .q-info p{font-size:0.8rem;color:var(--teal);margin-top:0.2rem;font-family:'IBM Plex Mono',monospace}
+.quad .q-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,12,0.8),transparent 40%)}
+
+/* FEATURE BANDS */
+.band{display:grid;grid-template-columns:1fr 1fr;min-height:400px}
+.band-img{overflow:hidden}
+.band-img img{width:100%;height:100%;object-fit:cover}
+.band-text{display:flex;flex-direction:column;justify-content:center;padding:3.5rem;background:var(--panel);border-left:3px solid var(--teal)}
+.band-text h2{font-size:1.5rem;color:#fff;font-weight:700;margin-bottom:1rem}
+.band-text p{font-size:0.9rem;line-height:1.8;color:#667788}
+.band-link{color:var(--teal);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;margin-top:1.5rem;display:inline-block;letter-spacing:0.05em}
+.band-link:hover{color:var(--orange)}
+.band.reverse{direction:rtl}
+.band.reverse>*{direction:ltr}
+.band.reverse .band-text{border-left:none;border-right:3px solid var(--orange)}
+
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid rgba(0,255,200,0.08)}
+footer .f-name{font-size:1.5rem;color:#fff;font-weight:800;letter-spacing:0.1em}
+footer p{font-size:0.8rem;color:#445;margin-top:0.5rem}
+
+@media(max-width:768px){
+  .hero-bg-left,.hero-bg-right{width:100%;clip-path:none}
+  .hero-bg-right{display:none}
+  .hud-grid{grid-template-columns:1fr}
+  .quad{grid-template-columns:1fr}
+  .band,.band.reverse{grid-template-columns:1fr;direction:ltr}
+  .band-text{border-left:none!important;border-right:none!important;border-top:3px solid var(--teal)}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg-left"><img src="/images/Index/sunrise-in-orbit-of-ring-planet.jpg" alt=""></div>
+  <div class="hero-bg-right"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt=""></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>FUTR</h1>
+    <div class="sub">Fictional Universe Taxonomy Research</div>
+    <p class="desc">Measuring the civilizations of imagination. Population, territory, energy, technology, military power. Every number sourced. Every calculation shown.</p>
+  </div>
+</section>
+
+<div class="hud-section">
+  <div class="hud-head">FEATURED UNIVERSES</div>
+  <div class="hud-grid">
+    <div class="hud-card">
+      <div class="hc-tag">30T CITIZENS</div>
+      <div class="hc-img"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt="The Culture"></div>
+      <div class="hc-body"><h3>The Culture</h3><p>Post-scarcity anarchist utopia spanning the galaxy. AI Minds govern 14,000 Orbitals and millions of ships. No money, no laws, no property.</p></div>
+    </div>
+    <div class="hud-card">
+      <div class="hc-tag">150+ WORLDS</div>
+      <div class="hc-img"><img src="/images/Index/new-civilizations.jpg" alt="Star Trek"></div>
+      <div class="hc-body"><h3>Star Trek</h3><p>The United Federation of Planets. Warp drive, phasers, and the Prime Directive. Exploring the final frontier since 2161.</p></div>
+    </div>
+    <div class="hud-card">
+      <div class="hc-tag">S0-S6 SCALE</div>
+      <div class="hc-img"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt="Orion's Arm"></div>
+      <div class="hc-body"><h3>Orion's Arm</h3><p>Hard science fiction universe with godlike archailects, basement universes, and a toposophic hierarchy spanning seven levels of intelligence.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="cinema">
+  <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="Ringworld">
+  <div class="cin-content">
+    <div class="cin-left">
+      <h2>Compare Across Universes</h2>
+      <p>How does the Culture stack up against the Galactic Empire? Is a Dyson sphere more impressive than a ringworld? 15 metrics, 100+ civilizations, one database.</p>
+      <a class="cin-btn" href="/Metrics">VIEW METRICS</a>
+    </div>
+  </div>
+</div>
+
+<div class="quad">
+  <div class="q-cell">
+    <img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt="Ships">
+    <div class="q-info"><h4>Perry Rhodan</h4><p>SOLAR EMPIRE</p></div>
+  </div>
+  <div class="q-cell">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/6/6a/Space_habitat_-_city_on_the_ring.jpg" alt="Habitat">
+    <div class="q-info"><h4>Megastructures</h4><p>ENGINEERING MARVELS</p></div>
+  </div>
+  <div class="q-cell">
+    <img src="/proxy/deviantart.com/martechi/ships-for-eternity.png" alt="Fleet">
+    <div class="q-info"><h4>Fleets</h4><p>MILITARY POWER</p></div>
+  </div>
+  <div class="q-cell">
+    <img src="/images/Index/universes.jpg" alt="Galaxies">
+    <div class="q-info"><h4>Galaxies</h4><p>TERRITORY &amp; REACH</p></div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="band-img"><img src="/images/Index/book-wall.jpg" alt="Research"></div>
+  <div class="band-text">
+    <h2>Sourced Research</h2>
+    <p>Every datapoint cites canon material: movies, TV shows, novels, technical manuals. Confidence levels from canon-confirmed to educated guesses. All calculations documented.</p>
+    <a class="band-link" href="/About">Learn more &rarr;</a>
+  </div>
+</div>
+<div class="band reverse">
+  <div class="band-img"><img src="/images/Index/software.jpg" alt="Code"></div>
+  <div class="band-text">
+    <h2>Open Source</h2>
+    <p>Everything on GitHub. Fork the repo, add a universe, challenge our numbers. Community-reviewed, community-driven.</p>
+    <a class="band-link" href="https://github.com">GitHub &rarr;</a>
+  </div>
+</div>
+<div class="band">
+  <div class="band-img"><img src="/images/Index/contribute.jpg" alt="Community"></div>
+  <div class="band-text">
+    <h2>Community</h2>
+    <p>Join Discord. Debate Kardashev ratings. Help us add every sci-fi civilization ever imagined. Dozens of contributors and growing.</p>
+    <a class="band-link" href="#">Discord &rarr;</a>
+  </div>
+</div>
+
+<footer>
+  <div class="f-name">FUTR</div>
+  <p>Fictional Universe Taxonomy Research &mdash; Open Source</p>
+</footer>
+
+</body>
+</html>

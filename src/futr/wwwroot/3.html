@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--cyan:#00fff2;--magenta:#ff00c8;--dark:#05050a;--glass:rgba(5,5,10,0.7)}
+html{scroll-behavior:smooth}
+body{font-family:'Chakra Petch',sans-serif;background:var(--dark);color:#b8c4d0;overflow-x:hidden}
+
+/* FULLSCREEN HERO */
+.hero{position:relative;height:100vh;overflow:hidden}
+.hero video,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,10,0.5) 0%,rgba(5,5,10,0.2) 30%,rgba(5,5,10,0.6) 70%,var(--dark) 100%)}
+.hero-hud{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem}
+.hero-hud h1{font-family:'JetBrains Mono',monospace;font-size:clamp(3rem,9vw,8rem);font-weight:700;color:#fff;text-shadow:0 0 60px var(--cyan),0 0 120px rgba(0,255,242,0.2);letter-spacing:0.2em}
+.hero-hud .sub{font-size:clamp(0.8rem,2vw,1.2rem);color:var(--cyan);letter-spacing:0.4em;text-transform:uppercase;margin-top:0.5rem}
+.hero-hud .desc{max-width:600px;font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.7);margin-top:2rem}
+
+/* CORNER BRACKETS */
+.bracket{position:relative;padding:2px}
+.bracket::before,.bracket::after{content:'';position:absolute;width:20px;height:20px;border-color:var(--cyan);border-style:solid}
+.bracket::before{top:0;left:0;border-width:1px 0 0 1px}
+.bracket::after{bottom:0;right:0;border-width:0 1px 1px 0}
+
+/* GLASS PANELS */
+.glass{background:var(--glass);backdrop-filter:blur(12px);border:1px solid rgba(0,255,242,0.1);border-radius:2px}
+
+/* HORIZONTAL SCROLL GALLERY */
+.hscroll-wrap{padding:4rem 0 4rem 2rem}
+.hscroll-title{font-family:'JetBrains Mono',monospace;font-size:1.4rem;color:var(--cyan);letter-spacing:0.15em;margin-bottom:1.5rem}
+.hscroll{display:flex;gap:1rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory}
+.hscroll::-webkit-scrollbar{height:3px}
+.hscroll::-webkit-scrollbar-track{background:rgba(0,255,242,0.05)}
+.hscroll::-webkit-scrollbar-thumb{background:var(--cyan)}
+.hscroll .h-card{flex:0 0 360px;scroll-snap-align:start;position:relative;overflow:hidden;border-radius:2px;border:1px solid rgba(0,255,242,0.1)}
+.hscroll .h-card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;filter:brightness(0.8);transition:all 0.5s}
+.hscroll .h-card:hover img{filter:brightness(1);transform:scale(1.03)}
+.hscroll .h-card .h-info{position:absolute;bottom:0;left:0;right:0;padding:1.2rem;background:linear-gradient(to top,rgba(5,5,10,0.95),transparent)}
+.hscroll .h-card .h-info h3{font-family:'JetBrains Mono',monospace;font-size:0.95rem;color:var(--cyan)}
+.hscroll .h-card .h-info p{font-size:0.8rem;color:#888;margin-top:0.3rem}
+
+/* GRID SECTION */
+.grid-section{max-width:1400px;margin:0 auto;padding:4rem 2rem}
+.grid-title{font-family:'JetBrains Mono',monospace;font-size:1.4rem;color:var(--cyan);letter-spacing:0.15em;margin-bottom:1.5rem}
+.masonry{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:180px;gap:0.8rem}
+.masonry .m-item{position:relative;overflow:hidden;border-radius:2px;border:1px solid rgba(0,255,242,0.08)}
+.masonry .m-item img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.7) saturate(0.8);transition:all 0.6s}
+.masonry .m-item:hover img{filter:brightness(1) saturate(1)}
+.masonry .m-item .m-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:1rem;background:linear-gradient(to top,rgba(5,5,10,0.8) 0%,transparent 50%);opacity:0;transition:opacity 0.4s}
+.masonry .m-item:hover .m-overlay{opacity:1}
+.masonry .m-item .m-overlay h4{font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--cyan)}
+.masonry .m-item .m-overlay p{font-size:0.75rem;color:#999;margin-top:0.2rem}
+.masonry .tall{grid-row:span 2}
+.masonry .wide{grid-column:span 2}
+
+/* SPLIT FEATURE */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:500px;margin:4rem 0}
+.split-img{overflow:hidden}
+.split-img img{width:100%;height:100%;object-fit:cover;display:block}
+.split-content{display:flex;flex-direction:column;justify-content:center;padding:4rem;background:rgba(0,255,242,0.03);border:1px solid rgba(0,255,242,0.08)}
+.split-content h2{font-family:'JetBrains Mono',monospace;font-size:1.5rem;color:#fff;margin-bottom:1.5rem}
+.split-content p{line-height:1.8;color:#888;font-size:0.95rem}
+.split-btn{display:inline-block;margin-top:2rem;padding:0.7rem 2rem;border:1px solid var(--cyan);color:var(--cyan);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;transition:all 0.3s}
+.split-btn:hover{background:var(--cyan);color:var(--dark)}
+
+/* IMAGE TICKER */
+.ticker{overflow:hidden;padding:2rem 0;border-top:1px solid rgba(0,255,242,0.08);border-bottom:1px solid rgba(0,255,242,0.08)}
+.ticker-track{display:flex;gap:0.5rem;animation:scroll 30s linear infinite;width:max-content}
+.ticker-track img{height:120px;border-radius:2px;filter:brightness(0.7);transition:filter 0.3s}
+.ticker-track img:hover{filter:brightness(1)}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* FOOTER */
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid rgba(0,255,242,0.08)}
+footer .logo{font-family:'JetBrains Mono',monospace;font-size:1.5rem;color:var(--cyan);letter-spacing:0.3em}
+footer p{color:#555;font-size:0.8rem;margin-top:0.5rem}
+
+@media(max-width:768px){
+  .masonry{grid-template-columns:1fr 1fr;grid-auto-rows:140px}
+  .masonry .wide{grid-column:auto}
+  .split{grid-template-columns:1fr}
+  .hscroll .h-card{flex:0 0 280px}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img src="/images/Index/sunrise-in-orbit-of-ring-planet.jpg" alt="Space">
+  <div class="hero-grad"></div>
+  <div class="hero-hud">
+    <h1>FUTR</h1>
+    <div class="sub">Fictional Universe Taxonomy Research</div>
+    <p class="desc">Measuring the civilizations of imagination. Population, territory, energy, technology. Every number sourced, every calculation shown.</p>
+  </div>
+</section>
+
+<div class="hscroll-wrap">
+  <div class="hscroll-title bracket">&nbsp;UNIVERSES&nbsp;</div>
+  <div class="hscroll">
+    <div class="h-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt="The Culture">
+      <div class="h-info"><h3>The Culture</h3><p>Post-scarcity anarchist utopia</p></div>
+    </div>
+    <div class="h-card">
+      <img src="/images/Index/new-civilizations.jpg" alt="Star Trek">
+      <div class="h-info"><h3>Star Trek</h3><p>Federation of Planets</p></div>
+    </div>
+    <div class="h-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt="Orion's Arm">
+      <div class="h-info"><h3>Orion's Arm</h3><p>Archailect civilizations</p></div>
+    </div>
+    <div class="h-card">
+      <img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt="Perry Rhodan">
+      <div class="h-info"><h3>Perry Rhodan</h3><p>Galactic adventures</p></div>
+    </div>
+    <div class="h-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="Ringworld">
+      <div class="h-info"><h3>Known Space</h3><p>Niven's Ringworld</p></div>
+    </div>
+    <div class="h-card">
+      <img src="/proxy/deviantart.com/martechi/ships-for-eternity.png" alt="Ships">
+      <div class="h-info"><h3>The Expanse</h3><p>Sol system colonization</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-section">
+  <div class="grid-title bracket">&nbsp;GALLERY&nbsp;</div>
+  <div class="masonry">
+    <div class="m-item tall">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt="Stanford Torus">
+      <div class="m-overlay"><div><h4>Stanford Torus</h4><p>O'Neill-class habitat</p></div></div>
+    </div>
+    <div class="m-item wide">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/6/6a/Space_habitat_-_city_on_the_ring.jpg" alt="Ring habitat">
+      <div class="m-overlay"><div><h4>Ring Habitat</h4><p>Megastructure engineering</p></div></div>
+    </div>
+    <div class="m-item">
+      <img src="/images/Index/metrics.jpg" alt="Metrics">
+      <div class="m-overlay"><div><h4>Metrics</h4><p>Measure everything</p></div></div>
+    </div>
+    <div class="m-item">
+      <img src="/images/Index/book-shelf.jpg" alt="Books">
+      <div class="m-overlay"><div><h4>Reading List</h4><p>Source material</p></div></div>
+    </div>
+    <div class="m-item wide">
+      <img src="/proxy/deviantart.com/adamburn/guarding-hellespont.jpg" alt="Fleet">
+      <div class="m-overlay"><div><h4>Fleets & Warfare</h4><p>Military comparisons</p></div></div>
+    </div>
+    <div class="m-item tall">
+      <img src="/images/Index/book-wall.jpg" alt="Research">
+      <div class="m-overlay"><div><h4>Research</h4><p>Canon sources</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="split-img">
+    <img src="/images/Index/software.jpg" alt="Open source">
+  </div>
+  <div class="split-content">
+    <h2>Open Source</h2>
+    <p>The entire FUTR project is open source. Every datapoint cites its source. Every calculation is documented. Fork the repo, challenge our numbers, or add your favorite fictional universe.</p>
+    <a class="split-btn" href="https://github.com">VIEW ON GITHUB</a>
+  </div>
+</div>
+
+<div class="split">
+  <div class="split-content">
+    <h2>Join the Community</h2>
+    <p>Debate Kardashev ratings. Argue about population estimates. Help us figure out whether the Culture or the Federation would win. Dozens of contributors and growing.</p>
+    <a class="split-btn" href="#">JOIN DISCORD</a>
+  </div>
+  <div class="split-img">
+    <img src="/images/Index/contribute.jpg" alt="Community">
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt="">
+    <img src="/images/Index/universes.jpg" alt="">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="">
+    <img src="/images/Index/new-universes.jpg" alt="">
+    <img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt="">
+    <img src="/images/Index/metrics.jpg" alt="">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt="">
+    <img src="/images/Index/new-civilizations.jpg" alt="">
+    <!-- duplicate for seamless loop -->
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt="">
+    <img src="/images/Index/universes.jpg" alt="">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="">
+    <img src="/images/Index/new-universes.jpg" alt="">
+    <img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt="">
+    <img src="/images/Index/metrics.jpg" alt="">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt="">
+    <img src="/images/Index/new-civilizations.jpg" alt="">
+  </div>
+</div>
+
+<footer>
+  <div class="logo">FUTR</div>
+  <p>Fictional Universe Taxonomy Research</p>
+</footer>
+
+</body>
+</html>

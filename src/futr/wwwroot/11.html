@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#ffd700;--rust:#c44900;--dark:#08080a;--panel:#0e0e12}
+html{scroll-behavior:smooth}
+body{font-family:'Titillium Web',sans-serif;background:var(--dark);color:#9a9a9a;overflow-x:hidden}
+
+/* HERO - STACKED LAYERS */
+.hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-grain{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);pointer-events:none;z-index:1}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,0.6) 0%,rgba(8,8,10,0.2) 30%,rgba(8,8,10,0.5) 70%,var(--dark) 100%);z-index:2}
+.hero-content{position:absolute;inset:0;z-index:3;display:flex;align-items:flex-end;padding:6% 5%}
+.hero-content .hc-main{max-width:700px}
+.hero-content h1{font-family:'Black Ops One',sans-serif;font-size:clamp(3rem,8vw,7rem);color:#fff;line-height:0.95;text-shadow:0 4px 30px rgba(255,215,0,0.15)}
+.hero-content .hc-tag{font-size:0.85rem;color:var(--gold);letter-spacing:0.4em;text-transform:uppercase;margin-top:1rem;font-weight:400}
+.hero-content p{font-size:1rem;line-height:1.8;color:rgba(255,255,255,0.55);margin-top:1.5rem;font-weight:300}
+.hero-thumbs{position:absolute;top:50%;right:4%;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:0.8rem}
+.hero-thumbs .ht{width:140px;aspect-ratio:16/10;overflow:hidden;border:2px solid rgba(255,215,0,0.2);border-radius:3px;position:relative;cursor:pointer;transition:border-color 0.3s}
+.hero-thumbs .ht:hover{border-color:var(--gold)}
+.hero-thumbs .ht img{width:100%;height:100%;object-fit:cover;filter:brightness(0.6)}
+.hero-thumbs .ht span{position:absolute;bottom:0.3rem;left:0.4rem;font-size:0.55rem;color:#fff;font-weight:600;text-shadow:0 1px 3px #000}
+
+/* HORIZONTAL CARDS */
+.hz-section{max-width:1400px;margin:0 auto;padding:5rem 2rem}
+.hz-title{font-family:'Black Ops One',sans-serif;font-size:1.2rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:2rem;padding-bottom:0.5rem;border-bottom:2px solid rgba(255,215,0,0.15)}
+.hz-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.hz-card{display:grid;grid-template-columns:120px 1fr;overflow:hidden;border-radius:4px;background:var(--panel);border:1px solid #1a1a1e;transition:border-color 0.3s}
+.hz-card:hover{border-color:rgba(255,215,0,0.25)}
+.hz-card .hz-img{overflow:hidden}
+.hz-card .hz-img img{width:100%;height:100%;object-fit:cover;min-height:120px}
+.hz-card .hz-body{padding:1rem 1.2rem;display:flex;flex-direction:column;justify-content:center}
+.hz-card .hz-body h3{font-size:1rem;color:#fff;font-weight:700}
+.hz-card .hz-body p{font-size:0.8rem;color:#667;margin-top:0.3rem;line-height:1.4}
+
+/* BIG IMAGE SECTION */
+.big-hero{position:relative;height:55vh;min-height:350px;overflow:hidden}
+.big-hero img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35)}
+.big-hero .bh-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;z-index:2;padding:2rem}
+.big-hero .bh-text h2{font-family:'Black Ops One',sans-serif;font-size:clamp(2rem,5vw,4rem);color:#fff}
+.big-hero .bh-text p{max-width:600px;color:rgba(255,255,255,0.5);margin-top:1rem;font-size:0.95rem;line-height:1.7;font-weight:300}
+.bh-link{display:inline-block;margin-top:2rem;padding:0.7rem 2.5rem;border:2px solid var(--gold);color:var(--gold);text-decoration:none;font-family:'Black Ops One',sans-serif;font-size:0.85rem;transition:all 0.3s}
+.bh-link:hover{background:var(--gold);color:var(--dark)}
+
+/* 3-IMAGE ROW WITH OVERLAY CAPTIONS */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.trio .tr{position:relative;aspect-ratio:4/3;overflow:hidden}
+.trio .tr img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5);transition:all 0.5s}
+.trio .tr:hover img{filter:brightness(0.85)}
+.trio .tr .tr-info{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem;z-index:2}
+.trio .tr .tr-info h3{font-family:'Black Ops One',sans-serif;font-size:1.2rem;color:#fff;opacity:0.8}
+.trio .tr .tr-info p{font-size:0.8rem;color:var(--gold);margin-top:0.3rem}
+
+/* SIDE-BY-SIDE */
+.sbs{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+.sbs-img{overflow:hidden}
+.sbs-img img{width:100%;height:100%;object-fit:cover}
+.sbs-text{padding:3.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--panel)}
+.sbs-text h2{font-family:'Black Ops One',sans-serif;font-size:1.3rem;color:#fff;margin-bottom:1rem}
+.sbs-text p{font-size:0.9rem;line-height:1.8;color:#778}
+.sbs-link{display:inline-block;margin-top:1.5rem;color:var(--rust);text-decoration:none;font-weight:700;font-size:0.85rem;transition:color 0.3s}
+.sbs-link:hover{color:var(--gold)}
+
+/* BOTTOM GRID */
+.bottom-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.bottom-row .br{position:relative;aspect-ratio:16/9;overflow:hidden}
+.bottom-row .br img{width:100%;height:100%;object-fit:cover;filter:brightness(0.3);transition:filter 0.4s}
+.bottom-row .br:hover img{filter:brightness(0.7)}
+.bottom-row .br span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Black Ops One',sans-serif;font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:0.2em}
+
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid #1a1a1e}
+footer h3{font-family:'Black Ops One',sans-serif;font-size:1.8rem;color:var(--gold)}
+footer p{font-size:0.75rem;color:#444;margin-top:0.3rem}
+
+@media(max-width:900px){
+  .hero-thumbs{display:none}
+  .trio{grid-template-columns:1fr}
+  .sbs{grid-template-columns:1fr}
+  .bottom-row{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg"><img src="/images/Index/sunrise-in-orbit-of-ring-planet.jpg" alt=""></div>
+  <div class="hero-grain"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <div class="hc-main">
+      <h1>FUTR</h1>
+      <div class="hc-tag">Fictional Universe Taxonomy Research</div>
+      <p>The database of imagined civilizations. Population, territory, energy, technology, military power. Every number sourced from canon. Every calculation open to challenge.</p>
+    </div>
+  </div>
+  <div class="hero-thumbs">
+    <div class="ht"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt=""><span>Culture</span></div>
+    <div class="ht"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt=""><span>Ringworld</span></div>
+    <div class="ht"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt=""><span>Dyson</span></div>
+    <div class="ht"><img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt=""><span>Rhodan</span></div>
+  </div>
+</section>
+
+<div class="hz-section">
+  <div class="hz-title">FEATURED UNIVERSES</div>
+  <div class="hz-row">
+    <div class="hz-card">
+      <div class="hz-img"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt=""></div>
+      <div class="hz-body"><h3>The Culture</h3><p>Post-scarcity anarchist utopia. 30 trillion citizens.</p></div>
+    </div>
+    <div class="hz-card">
+      <div class="hz-img"><img src="/images/Index/new-civilizations.jpg" alt=""></div>
+      <div class="hz-body"><h3>Star Trek</h3><p>Federation of Planets. 150+ member worlds.</p></div>
+    </div>
+    <div class="hz-card">
+      <div class="hz-img"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt=""></div>
+      <div class="hz-body"><h3>Orion's Arm</h3><p>Archailect gods. S0 to S6 hierarchy.</p></div>
+    </div>
+    <div class="hz-card">
+      <div class="hz-img"><img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt=""></div>
+      <div class="hz-body"><h3>Perry Rhodan</h3><p>Longest-running SF. Millions of years.</p></div>
+    </div>
+    <div class="hz-card">
+      <div class="hz-img"><img src="/proxy/deviantart.com/martechi/ships-for-eternity.png" alt=""></div>
+      <div class="hz-body"><h3>The Expanse</h3><p>Near-future hard SF. Protomolecule.</p></div>
+    </div>
+    <div class="hz-card">
+      <div class="hz-img"><img src="/images/Index/new-universes.jpg" alt=""></div>
+      <div class="hz-body"><h3>And More</h3><p>20+ universes and growing.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="big-hero">
+  <img src="/proxy/upload.wikimedia.org/wikipedia/commons/6/6a/Space_habitat_-_city_on_the_ring.jpg" alt="Ring habitat">
+  <div class="bh-text">
+    <h2>COMPARE ACROSS UNIVERSES</h2>
+    <p>15 metrics. 100+ civilizations. Sourced data with confidence ratings. From canon-confirmed to educated estimates.</p>
+    <a class="bh-link" href="/Metrics">EXPLORE METRICS</a>
+  </div>
+</div>
+
+<div class="trio">
+  <div class="tr">
+    <img src="/images/Index/metrics.jpg" alt="">
+    <div class="tr-info"><h3>METRICS</h3><p>15 dimensions</p></div>
+  </div>
+  <div class="tr">
+    <img src="/images/Index/universes.jpg" alt="">
+    <div class="tr-info"><h3>UNIVERSES</h3><p>20+ and growing</p></div>
+  </div>
+  <div class="tr">
+    <img src="/proxy/deviantart.com/adamburn/guarding-hellespont.jpg" alt="">
+    <div class="tr-info"><h3>MILITARY</h3><p>Fleet comparisons</p></div>
+  </div>
+</div>
+
+<div class="sbs">
+  <div class="sbs-img"><img src="/images/Index/book-wall.jpg" alt="Research"></div>
+  <div class="sbs-text">
+    <h2>SOURCED RESEARCH</h2>
+    <p>Every datapoint cites canon sources. Movies, TV shows, novels, technical manuals. Confidence levels and detailed calculation documentation.</p>
+    <a class="sbs-link" href="/About">About the project &rarr;</a>
+  </div>
+</div>
+<div class="sbs">
+  <div class="sbs-text">
+    <h2>OPEN SOURCE</h2>
+    <p>Full dataset and codebase on GitHub. Fork the repo, add a universe, challenge an estimate. Community-reviewed and community-driven.</p>
+    <a class="sbs-link" href="https://github.com">GitHub &rarr;</a>
+  </div>
+  <div class="sbs-img"><img src="/images/Index/software.jpg" alt=""></div>
+</div>
+
+<div class="bottom-row">
+  <div class="br"><img src="/images/Index/book-shelf.jpg" alt=""><span>READING</span></div>
+  <div class="br"><img src="/images/Index/contribute.jpg" alt=""><span>CONTRIBUTE</span></div>
+  <div class="br"><img src="/images/Index/discord.png" alt=""><span>DISCORD</span></div>
+  <div class="br"><img src="/images/cover.jpg" alt=""><span>FUTR</span></div>
+</div>
+
+<footer>
+  <h3>FUTR</h3>
+  <p>Fictional Universe Taxonomy Research &mdash; Open Source</p>
+</footer>
+
+</body>
+</html>

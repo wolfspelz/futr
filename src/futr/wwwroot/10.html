@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Saira:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#39ff14;--steel:#1a1d23;--dark:#0a0b0e}
+html{scroll-behavior:smooth}
+body{font-family:'Saira',sans-serif;background:var(--dark);color:#8a8f9a;overflow-x:hidden}
+
+/* HERO - VERTICAL SPLIT */
+.hero{display:grid;grid-template-columns:1fr 1fr 1fr;height:100vh;min-height:650px;gap:2px}
+.hero-col{position:relative;overflow:hidden}
+.hero-col img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5) saturate(0.6);transition:all 1s}
+.hero-col:hover img{filter:brightness(0.8) saturate(1);transform:scale(1.03)}
+.hero-col .col-fade{position:absolute;inset:0;background:linear-gradient(to top,var(--dark),transparent 40%)}
+.hero-col .col-label{position:absolute;bottom:2rem;left:1.5rem;z-index:2}
+.hero-col .col-label h3{font-family:'Saira Stencil One',sans-serif;font-size:1.3rem;color:#fff}
+.hero-col .col-label p{font-size:0.8rem;color:var(--green);margin-top:0.2rem}
+.hero-overlay{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:2rem}
+.hero-overlay h1{font-family:'Saira Stencil One',sans-serif;font-size:clamp(3rem,9vw,8rem);color:#fff;text-shadow:0 0 80px rgba(57,255,20,0.3);letter-spacing:0.1em}
+.hero-overlay .sub{font-size:0.85rem;color:var(--green);letter-spacing:0.5em;text-transform:uppercase;margin-top:0.5rem}
+.hero-wrapper{position:relative}
+
+/* DATA STRIP */
+.data-strip{display:flex;justify-content:center;gap:4rem;padding:2rem;background:var(--steel);border-bottom:1px solid #222}
+.data-strip .ds{text-align:center}
+.data-strip .ds .val{font-family:'Saira Stencil One',sans-serif;font-size:1.8rem;color:var(--green)}
+.data-strip .ds .lbl{font-size:0.7rem;color:#555;letter-spacing:0.15em;text-transform:uppercase;margin-top:0.2rem}
+
+/* CARD SCROLL */
+.scroll-section{padding:4rem 0 4rem 2rem}
+.scroll-head{font-family:'Saira Stencil One',sans-serif;font-size:1.3rem;color:#fff;margin-bottom:1.5rem;letter-spacing:0.05em}
+.scroll-row{display:flex;gap:1rem;overflow-x:auto;padding-bottom:1rem}
+.scroll-row::-webkit-scrollbar{height:2px}
+.scroll-row::-webkit-scrollbar-thumb{background:var(--green)}
+.s-card{flex:0 0 320px;position:relative;overflow:hidden;border-radius:4px;border:1px solid #1a1d23;background:var(--steel)}
+.s-card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;filter:brightness(0.75);transition:all 0.5s}
+.s-card:hover img{filter:brightness(1)}
+.s-card .s-body{padding:1.2rem}
+.s-card .s-body h3{font-size:1rem;color:#fff;font-weight:600}
+.s-card .s-body p{font-size:0.8rem;color:#667;margin-top:0.3rem;line-height:1.5}
+
+/* FULL BLEED IMAGE SECTION */
+.full-bleed{position:relative;height:60vh;min-height:400px;overflow:hidden}
+.full-bleed img{width:100%;height:100%;object-fit:cover;filter:brightness(0.3)}
+.full-bleed .fb-inner{position:absolute;inset:0;display:flex;align-items:center;padding:0 6%;z-index:2}
+.full-bleed .fb-inner .fb-text{max-width:600px}
+.full-bleed .fb-inner h2{font-family:'Saira Stencil One',sans-serif;font-size:clamp(1.8rem,4vw,3rem);color:#fff}
+.full-bleed .fb-inner p{color:#778;font-size:0.95rem;margin-top:1rem;line-height:1.8}
+.fb-btn{display:inline-block;margin-top:1.5rem;padding:0.6rem 2rem;background:var(--green);color:var(--dark);font-weight:800;font-size:0.8rem;text-decoration:none;letter-spacing:0.1em;transition:background 0.3s}
+.fb-btn:hover{background:#fff}
+
+/* DUAL IMAGE + TEXT */
+.dual{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+.dual-img{overflow:hidden}
+.dual-img img{width:100%;height:100%;object-fit:cover}
+.dual-text{padding:3.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--steel);border-left:3px solid var(--green)}
+.dual-text h2{font-family:'Saira Stencil One',sans-serif;font-size:1.2rem;color:#fff;margin-bottom:1rem}
+.dual-text p{font-size:0.9rem;line-height:1.8;color:#667}
+.dual-link{display:inline-block;margin-top:1.5rem;color:var(--green);text-decoration:none;font-weight:600;font-size:0.85rem;transition:color 0.3s}
+.dual-link:hover{color:#fff}
+
+/* MOSAIC */
+.mosaic-end{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.mosaic-end .me{position:relative;aspect-ratio:1;overflow:hidden}
+.mosaic-end .me img{width:100%;height:100%;object-fit:cover;filter:brightness(0.3) grayscale(0.4);transition:all 0.4s}
+.mosaic-end .me:hover img{filter:brightness(0.8) grayscale(0)}
+.mosaic-end .me span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Saira Stencil One',sans-serif;font-size:0.6rem;color:rgba(255,255,255,0.4);letter-spacing:0.2em;text-transform:uppercase}
+
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #1a1d23}
+footer h3{font-family:'Saira Stencil One',sans-serif;font-size:1.5rem;color:var(--green);letter-spacing:0.1em}
+footer p{font-size:0.75rem;color:#445;margin-top:0.3rem}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;height:auto}
+  .hero-col{height:40vh}
+  .hero-overlay{position:relative;padding:3rem 2rem;pointer-events:auto;background:var(--dark)}
+  .data-strip{flex-wrap:wrap;gap:1.5rem}
+  .dual{grid-template-columns:1fr}
+  .dual-text{border-left:none;border-top:3px solid var(--green)}
+  .mosaic-end{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div class="hero-wrapper">
+  <div class="hero">
+    <div class="hero-col">
+      <img src="/images/Index/sunrise-in-orbit-of-ring-planet.jpg" alt="Space">
+      <div class="col-fade"></div>
+      <div class="col-label"><h3>SPACE</h3><p>The frontier</p></div>
+    </div>
+    <div class="hero-col">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt="Orbital">
+      <div class="col-fade"></div>
+      <div class="col-label"><h3>ORBITALS</h3><p>Megastructures</p></div>
+    </div>
+    <div class="hero-col">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="Ringworld">
+      <div class="col-fade"></div>
+      <div class="col-label"><h3>RINGS</h3><p>Niven-class</p></div>
+    </div>
+  </div>
+  <div class="hero-overlay">
+    <h1>FUTR</h1>
+    <div class="sub">Fictional Universe Taxonomy Research</div>
+  </div>
+</div>
+
+<div class="data-strip">
+  <div class="ds"><div class="val">20+</div><div class="lbl">Universes</div></div>
+  <div class="ds"><div class="val">100+</div><div class="lbl">Civilizations</div></div>
+  <div class="ds"><div class="val">15</div><div class="lbl">Metrics</div></div>
+  <div class="ds"><div class="val">Open</div><div class="lbl">Source</div></div>
+</div>
+
+<div class="scroll-section">
+  <div class="scroll-head">UNIVERSES</div>
+  <div class="scroll-row">
+    <div class="s-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt="Culture">
+      <div class="s-body"><h3>The Culture</h3><p>Post-scarcity anarchist utopia. 30 trillion citizens.</p></div>
+    </div>
+    <div class="s-card">
+      <img src="/images/Index/new-civilizations.jpg" alt="Trek">
+      <div class="s-body"><h3>Star Trek</h3><p>Federation of Planets. 150+ member worlds.</p></div>
+    </div>
+    <div class="s-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt="OA">
+      <div class="s-body"><h3>Orion's Arm</h3><p>Archailect-dominated galaxy. S0 to S6.</p></div>
+    </div>
+    <div class="s-card">
+      <img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt="PR">
+      <div class="s-body"><h3>Perry Rhodan</h3><p>Longest-running SF series.</p></div>
+    </div>
+    <div class="s-card">
+      <img src="/proxy/deviantart.com/martechi/ships-for-eternity.png" alt="Ships">
+      <div class="s-body"><h3>The Expanse</h3><p>Near-future hard SF. Protomolecule.</p></div>
+    </div>
+    <div class="s-card">
+      <img src="/proxy/upload.wikimedia.org/wikipedia/commons/6/6a/Space_habitat_-_city_on_the_ring.jpg" alt="Hab">
+      <div class="s-body"><h3>Megastructures</h3><p>Engineering on a cosmic scale.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="full-bleed">
+  <img src="/proxy/deviantart.com/adamburn/guarding-hellespont.jpg" alt="Fleet">
+  <div class="fb-inner">
+    <div class="fb-text">
+      <h2>COMPARE CIVILIZATIONS</h2>
+      <p>15 metrics across every universe. Population, territory, energy, tech level, military power, Kardashev scale. Sourced data with confidence ratings.</p>
+      <a class="fb-btn" href="/Metrics">VIEW METRICS</a>
+    </div>
+  </div>
+</div>
+
+<div class="dual">
+  <div class="dual-img"><img src="/images/Index/book-wall.jpg" alt="Research"></div>
+  <div class="dual-text">
+    <h2>SOURCED DATA</h2>
+    <p>Canon material, technical manuals, community research. Every datapoint has a confidence level and citations. Calculations are shown and open to challenge.</p>
+    <a class="dual-link" href="/About">About the project &rarr;</a>
+  </div>
+</div>
+<div class="dual">
+  <div class="dual-text" style="border-left:none;border-right:3px solid var(--green)">
+    <h2>OPEN SOURCE</h2>
+    <p>Full codebase and dataset on GitHub. Add universes, fix calculations, challenge estimates. Community-reviewed, community-driven.</p>
+    <a class="dual-link" href="https://github.com">GitHub &rarr;</a>
+  </div>
+  <div class="dual-img"><img src="/images/Index/software.jpg" alt="Code"></div>
+</div>
+
+<div class="mosaic-end">
+  <div class="me"><img src="/images/Index/book-shelf.jpg" alt=""><span>READING</span></div>
+  <div class="me"><img src="/images/Index/contribute.jpg" alt=""><span>CONTRIBUTE</span></div>
+  <div class="me"><img src="/images/Index/discord.png" alt=""><span>DISCORD</span></div>
+  <div class="me"><img src="/images/Index/metrics.jpg" alt=""><span>METRICS</span></div>
+  <div class="me"><img src="/images/Index/universes.jpg" alt=""><span>ALL</span></div>
+</div>
+
+<footer>
+  <h3>FUTR</h3>
+  <p>Fictional Universe Taxonomy Research &mdash; Open Source</p>
+</footer>
+
+</body>
+</html>

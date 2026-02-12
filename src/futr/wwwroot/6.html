@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--lime:#b5ff00;--dark:#0a0a0a;--charcoal:#151515}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#999;overflow-x:hidden}
+
+/* NAV */
+.topnav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;mix-blend-mode:difference}
+.topnav .logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#fff;letter-spacing:0.15em}
+.topnav .nav-links{display:flex;gap:2rem}
+.topnav .nav-links a{color:#fff;text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.05em}
+
+/* HERO - BRUTALIST IMAGE COLLAGE */
+.hero{position:relative;height:100vh;min-height:700px;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:4px;padding:4px;background:var(--dark)}
+.hero-main{grid-row:1/3;position:relative;overflow:hidden}
+.hero-main img{width:100%;height:100%;object-fit:cover}
+.hero-main .h-title{position:absolute;bottom:3rem;left:3rem;z-index:2}
+.hero-main .h-title h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,12vw,10rem);color:#fff;line-height:0.85;mix-blend-mode:difference}
+.hero-main .h-title p{font-size:0.9rem;color:var(--lime);letter-spacing:0.3em;text-transform:uppercase;margin-top:1rem;font-weight:500}
+.hero-main::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.8),transparent 50%)}
+.hero-side{position:relative;overflow:hidden}
+.hero-side img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7)}
+.hero-side .hs-label{position:absolute;bottom:1rem;left:1rem;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;z-index:2}
+.hero-side::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.7),transparent 40%)}
+
+/* MARQUEE */
+.marquee{overflow:hidden;padding:1.5rem 0;border-top:1px solid #222;border-bottom:1px solid #222;background:var(--charcoal)}
+.marquee-track{display:flex;gap:4rem;animation:marquee 20s linear infinite;width:max-content;align-items:center}
+.marquee-track span{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#333;letter-spacing:0.1em;white-space:nowrap}
+.marquee-track .dot{width:8px;height:8px;background:var(--lime);border-radius:50%;flex-shrink:0}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* LARGE TEXT + IMAGE SECTIONS */
+.big-section{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+.big-img{overflow:hidden;position:relative}
+.big-img img{width:100%;height:100%;object-fit:cover;display:block}
+.big-text{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;background:var(--charcoal)}
+.big-text h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,6rem);color:#fff;line-height:0.95;margin-bottom:1.5rem}
+.big-text p{font-size:1rem;line-height:1.9;color:#777;font-weight:300;max-width:500px}
+.big-text .tag{display:inline-block;margin-top:2rem;padding:0.5rem 1.5rem;background:var(--lime);color:var(--dark);font-weight:700;font-size:0.8rem;letter-spacing:0.1em;text-decoration:none}
+.big-text .tag:hover{background:#fff}
+
+/* TRIPLE IMAGE ROW */
+.triple{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px}
+.triple .t-item{position:relative;aspect-ratio:4/5;overflow:hidden}
+.triple .t-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.5) brightness(0.6);transition:all 0.6s}
+.triple .t-item:hover img{filter:grayscale(0) brightness(0.9);transform:scale(1.03)}
+.triple .t-item .t-num{position:absolute;top:1.5rem;left:1.5rem;font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(181,255,0,0.15);line-height:1}
+.triple .t-item .t-label{position:absolute;bottom:1.5rem;left:1.5rem;z-index:2}
+.triple .t-item .t-label h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff}
+.triple .t-item .t-label p{font-size:0.8rem;color:var(--lime);letter-spacing:0.1em;margin-top:0.3rem}
+.triple .t-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.8),transparent 50%)}
+
+/* IMAGE STRIP */
+.strip{display:flex;gap:4px;padding:0 4px}
+.strip .s-img{flex:1;aspect-ratio:16/9;overflow:hidden;position:relative}
+.strip .s-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.4);transition:filter 0.4s}
+.strip .s-img:hover img{filter:brightness(0.8)}
+.strip .s-img span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:#fff;letter-spacing:0.2em}
+
+/* FOOTER */
+footer{padding:4rem 3rem;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #222}
+footer .f-left h3{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#fff}
+footer .f-left p{color:#555;font-size:0.85rem;margin-top:0.3rem}
+footer .f-right{display:flex;gap:2rem}
+footer .f-right a{color:#555;text-decoration:none;font-size:0.85rem;transition:color 0.3s}
+footer .f-right a:hover{color:var(--lime)}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;grid-template-rows:60vh 25vh 25vh}
+  .hero-main{grid-row:auto}
+  .big-section{grid-template-columns:1fr}
+  .triple{grid-template-columns:1fr}
+  .strip{flex-direction:column}
+  .topnav .nav-links{display:none}
+  footer{flex-direction:column;gap:2rem;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="logo">FUTR</div>
+  <div class="nav-links">
+    <a href="/Universes">UNIVERSES</a>
+    <a href="/Metrics">METRICS</a>
+    <a href="/About">ABOUT</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-main">
+    <img src="/images/Index/sunrise-in-orbit-of-ring-planet.jpg" alt="Space">
+    <div class="h-title">
+      <h1>FUTR</h1>
+      <p>Fictional Universe Taxonomy Research</p>
+    </div>
+  </div>
+  <div class="hero-side">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt="Orbital">
+    <div class="hs-label">ORBITALS</div>
+  </div>
+  <div class="hero-side">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt="Ringworld">
+    <div class="hs-label">RINGWORLDS</div>
+  </div>
+</div>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>POPULATION</span><div class="dot"></div>
+    <span>TERRITORY</span><div class="dot"></div>
+    <span>ENERGY</span><div class="dot"></div>
+    <span>TECH LEVEL</span><div class="dot"></div>
+    <span>KARDASHEV</span><div class="dot"></div>
+    <span>MILITARY</span><div class="dot"></div>
+    <span>CLASS</span><div class="dot"></div>
+    <span>POPULATION</span><div class="dot"></div>
+    <span>TERRITORY</span><div class="dot"></div>
+    <span>ENERGY</span><div class="dot"></div>
+    <span>TECH LEVEL</span><div class="dot"></div>
+    <span>KARDASHEV</span><div class="dot"></div>
+    <span>MILITARY</span><div class="dot"></div>
+    <span>CLASS</span><div class="dot"></div>
+  </div>
+</div>
+
+<div class="big-section">
+  <div class="big-text">
+    <h2>CATALOG<br>THE<br>COSMOS</h2>
+    <p>Every civilization measured. Every number sourced. From the Culture's 30 trillion citizens to the Federation's 150 member worlds, FUTR documents what fiction imagines into being.</p>
+    <a class="tag" href="/Universes">EXPLORE UNIVERSES</a>
+  </div>
+  <div class="big-img"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt="Habitat"></div>
+</div>
+
+<div class="triple">
+  <div class="t-item">
+    <img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt="Orion's Arm">
+    <div class="t-num">01</div>
+    <div class="t-label"><h3>Orion's Arm</h3><p>10,000+ Archailects</p></div>
+  </div>
+  <div class="t-item">
+    <img src="/images/Index/new-civilizations.jpg" alt="Star Trek">
+    <div class="t-num">02</div>
+    <div class="t-label"><h3>Star Trek</h3><p>Federation 2373</p></div>
+  </div>
+  <div class="t-item">
+    <img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt="Perry Rhodan">
+    <div class="t-num">03</div>
+    <div class="t-label"><h3>Perry Rhodan</h3><p>Solar Empire</p></div>
+  </div>
+</div>
+
+<div class="big-section">
+  <div class="big-img"><img src="/images/Index/metrics.jpg" alt="Metrics"></div>
+  <div class="big-text">
+    <h2>METRICS<br>THAT<br>MATTER</h2>
+    <p>15 dimensions of measurement. Population, territory, energy, Kardashev scale, tech level, military power, governance type, and more. All with confidence ratings from canon-confirmed to educated guesses.</p>
+    <a class="tag" href="/Metrics">VIEW ALL METRICS</a>
+  </div>
+</div>
+
+<div class="big-section">
+  <div class="big-text">
+    <h2>OPEN<br>SOURCE</h2>
+    <p>Built by fans. Every datapoint, every calculation, every line of code is open source on GitHub. Challenge our numbers, add your favorite universe, improve the metrics.</p>
+    <a class="tag" href="https://github.com">GITHUB</a>
+  </div>
+  <div class="big-img"><img src="/images/Index/software.jpg" alt="Code"></div>
+</div>
+
+<div class="strip">
+  <div class="s-img"><img src="/images/Index/book-shelf.jpg" alt=""><span>READING</span></div>
+  <div class="s-img"><img src="/images/Index/contribute.jpg" alt=""><span>CONTRIBUTE</span></div>
+  <div class="s-img"><img src="/images/Index/discord.png" alt=""><span>DISCORD</span></div>
+  <div class="s-img"><img src="/images/Index/book-wall.jpg" alt=""><span>RESEARCH</span></div>
+</div>
+
+<footer>
+  <div class="f-left">
+    <h3>FUTR</h3>
+    <p>Fictional Universe Taxonomy Research</p>
+  </div>
+  <div class="f-right">
+    <a href="/Universes">Universes</a>
+    <a href="/Metrics">Metrics</a>
+    <a href="/About">About</a>
+    <a href="https://github.com">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>

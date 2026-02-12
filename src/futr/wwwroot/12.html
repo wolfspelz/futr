@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#7b2ff7;--cyan:#00f0ff;--dark:#050508;--card:#0c0d12}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--dark);color:#8a90a0;overflow-x:hidden}
+
+/* HERO - ASYMMETRIC OVERLAP */
+.hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1.2fr 1fr;gap:0;overflow:hidden}
+.hero-left{position:relative;overflow:hidden}
+.hero-left img{width:100%;height:100%;object-fit:cover;min-height:100vh}
+.hero-left::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 50%,var(--dark))}
+.hero-right{position:relative;display:flex;flex-direction:column;justify-content:center;padding:4rem;z-index:2;background:var(--dark)}
+.hero-right h1{font-family:'Russo One',sans-serif;font-size:clamp(3rem,6vw,5.5rem);color:#fff;line-height:1}
+.hero-right .h-sub{font-size:0.9rem;color:var(--cyan);letter-spacing:0.3em;text-transform:uppercase;margin-top:1rem}
+.hero-right p{font-size:1rem;line-height:1.8;color:rgba(255,255,255,0.5);margin-top:2rem;font-weight:300;max-width:450px}
+.hero-right .h-imgs{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:2.5rem}
+.hero-right .h-imgs .hi{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:4px;border:1px solid rgba(123,47,247,0.2)}
+.hero-right .h-imgs .hi img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7);transition:all 0.4s}
+.hero-right .h-imgs .hi:hover img{filter:brightness(1)}
+.hero-right .h-imgs .hi span{position:absolute;bottom:0.4rem;left:0.5rem;font-size:0.65rem;color:#fff;font-weight:600}
+
+/* GLOW LINE */
+.glow-line{height:2px;background:linear-gradient(90deg,transparent,var(--purple),var(--cyan),var(--purple),transparent)}
+
+/* CARDS - LARGE IMAGE GRID */
+.card-section{max-width:1400px;margin:0 auto;padding:5rem 2rem}
+.cs-title{font-family:'Russo One',sans-serif;font-size:1.3rem;color:#fff;margin-bottom:0.3rem}
+.cs-subtitle{font-size:0.85rem;color:var(--purple);letter-spacing:0.1em;margin-bottom:2.5rem}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.cg-card{position:relative;overflow:hidden;border-radius:6px;background:var(--card);border:1px solid #1a1a22;transition:all 0.3s}
+.cg-card:hover{border-color:rgba(123,47,247,0.4);transform:translateY(-4px)}
+.cg-card .cg-img{aspect-ratio:16/10;overflow:hidden}
+.cg-card .cg-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s}
+.cg-card:hover .cg-img img{transform:scale(1.05)}
+.cg-card .cg-body{padding:1.5rem}
+.cg-card .cg-body .cg-meta{font-size:0.7rem;color:var(--purple);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.4rem;font-weight:600}
+.cg-card .cg-body h3{font-size:1.1rem;color:#fff;font-weight:700}
+.cg-card .cg-body p{font-size:0.85rem;color:#556;margin-top:0.4rem;line-height:1.5}
+
+/* WIDE BANNER */
+.banner{position:relative;height:50vh;min-height:350px;overflow:hidden}
+.banner img{width:100%;height:100%;object-fit:cover;filter:brightness(0.3) saturate(0.8)}
+.banner .ban-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(123,47,247,0.15),transparent 60%)}
+.banner .ban-text{position:absolute;inset:0;display:flex;align-items:center;padding:0 6%;z-index:2}
+.banner .ban-text h2{font-family:'Russo One',sans-serif;font-size:clamp(1.8rem,4vw,3.5rem);color:#fff;line-height:1.1}
+.banner .ban-text p{color:#778;font-size:0.95rem;margin-top:1rem;max-width:550px;line-height:1.7;font-weight:300}
+.ban-btn{display:inline-block;margin-top:1.5rem;padding:0.7rem 2.5rem;background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff;text-decoration:none;font-weight:700;font-size:0.85rem;border-radius:3px;transition:opacity 0.3s}
+.ban-btn:hover{opacity:0.85}
+
+/* TWO COLUMN ALTERNATING */
+.alt{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+.alt-img{overflow:hidden;position:relative}
+.alt-img img{width:100%;height:100%;object-fit:cover}
+.alt-img .img-accent{position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,var(--purple),var(--cyan))}
+.alt-txt{display:flex;flex-direction:column;justify-content:center;padding:4rem;background:var(--card)}
+.alt-txt h2{font-family:'Russo One',sans-serif;font-size:1.3rem;color:#fff;margin-bottom:1rem}
+.alt-txt p{font-size:0.95rem;line-height:1.8;color:#667;font-weight:300}
+.alt-txt a{display:inline-block;margin-top:1.5rem;color:var(--cyan);text-decoration:none;font-weight:600;font-size:0.85rem;transition:color 0.3s}
+.alt-txt a:hover{color:#fff}
+
+/* BOTTOM STRIP */
+.bot{display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
+.bot .b{position:relative;aspect-ratio:1;overflow:hidden}
+.bot .b img{width:100%;height:100%;object-fit:cover;filter:brightness(0.3) grayscale(0.3);transition:all 0.4s}
+.bot .b:hover img{filter:brightness(0.8) grayscale(0)}
+.bot .b span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:rgba(255,255,255,0.5);font-weight:700;letter-spacing:0.2em;text-transform:uppercase}
+
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid #1a1a22}
+footer h3{font-family:'Russo One',sans-serif;font-size:1.5rem;background:linear-gradient(90deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+footer p{font-size:0.75rem;color:#445;margin-top:0.3rem}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-left{height:50vh}
+  .hero-left::after{background:linear-gradient(to bottom,transparent 50%,var(--dark))}
+  .card-grid{grid-template-columns:1fr}
+  .alt{grid-template-columns:1fr}
+  .bot{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <img src="/images/Index/sunrise-in-orbit-of-ring-planet.jpg" alt="">
+  </div>
+  <div class="hero-right">
+    <h1>FUTR</h1>
+    <div class="h-sub">Fictional Universe Taxonomy Research</div>
+    <p>The database of imagined civilizations. Measuring what science fiction dreams into existence, from ringworlds to Dyson spheres.</p>
+    <div class="h-imgs">
+      <div class="hi"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/e/e0/Ringworld_render.png" alt=""><span>Ringworld</span></div>
+      <div class="hi"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/0c/Dyson_Swarm_realistic_representation.png" alt=""><span>Dyson Swarm</span></div>
+      <div class="hi"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/2/24/Stanford_Torus_interior.jpg" alt=""><span>Stanford Torus</span></div>
+      <div class="hi"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/6/6a/Space_habitat_-_city_on_the_ring.jpg" alt=""><span>Ring Habitat</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-line"></div>
+
+<div class="card-section">
+  <div class="cs-title">UNIVERSES</div>
+  <div class="cs-subtitle">20+ fictional universes catalogued and growing</div>
+  <div class="card-grid">
+    <div class="cg-card">
+      <div class="cg-img"><img src="/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture%27s_orbital.jpg" alt=""></div>
+      <div class="cg-body">
+        <div class="cg-meta">IAIN M. BANKS</div>
+        <h3>The Culture</h3>
+        <p>Post-scarcity anarchist utopia. 30 trillion citizens. AI Minds.</p>
+      </div>
+    </div>
+    <div class="cg-card">
+      <div class="cg-img"><img src="/images/Index/new-civilizations.jpg" alt=""></div>
+      <div class="cg-body">
+        <div class="cg-meta">GENE RODDENBERRY</div>
+        <h3>Star Trek</h3>
+        <p>Federation of Planets. 150+ member worlds. Warp drive.</p>
+      </div>
+    </div>
+    <div class="cg-card">
+      <div class="cg-img"><img src="/proxy/deviantart.com/luckland/kugelraumer-at-sunset.jpg" alt=""></div>
+      <div class="cg-body">
+        <div class="cg-meta">K.H. SCHEER</div>
+        <h3>Perry Rhodan</h3>
+        <p>Longest-running SF series. Millions of years of history.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="banner">
+  <img src="/proxy/deviantart.com/martechi/ships-for-eternity.png" alt="Fleet">
+  <div class="ban-glow"></div>
+  <div class="ban-text">
+    <div>
+      <h2>15 Metrics.<br>100+ Civilizations.</h2>
+      <p>Population, territory, energy, Kardashev scale, tech level, military power. Cross-universe comparisons with sourced, confidence-rated data.</p>
+      <a class="ban-btn" href="/Metrics">Explore Metrics</a>
+    </div>
+  </div>
+</div>
+
+<div class="alt">
+  <div class="alt-img">
+    <img src="/images/Index/book-wall.jpg" alt="">
+    <div class="img-accent"></div>
+  </div>
+  <div class="alt-txt">
+    <h2>Sourced Research</h2>
+    <p>Every datapoint cites its source. Canon material, technical manuals, community research. Confidence levels from canon-confirmed to educated guesses. All calculations documented and open to challenge.</p>
+    <a href="/About">About the project &rarr;</a>
+  </div>
+</div>
+<div class="alt">
+  <div class="alt-txt">
+    <h2>Open Source</h2>
+    <p>Full codebase and dataset on GitHub. Add a universe, challenge an estimate, fix a calculation. Community-reviewed and community-driven. Pull requests welcome.</p>
+    <a href="https://github.com">Contribute on GitHub &rarr;</a>
+  </div>
+  <div class="alt-img">
+    <img src="/images/Index/software.jpg" alt="">
+    <div class="img-accent" style="left:auto;right:0"></div>
+  </div>
+</div>
+<div class="alt">
+  <div class="alt-img">
+    <img src="/images/Index/contribute.jpg" alt="">
+    <div class="img-accent"></div>
+  </div>
+  <div class="alt-txt">
+    <h2>Community</h2>
+    <p>Debate Kardashev ratings on Discord. Help us catalog every civilization in science fiction. Dozens of active contributors, thousands of datapoints, growing weekly.</p>
+    <a href="#">Join Discord &rarr;</a>
+  </div>
+</div>
+
+<div class="bot">
+  <div class="b"><img src="/images/Index/book-shelf.jpg" alt=""><span>Reading</span></div>
+  <div class="b"><img src="/images/Index/metrics.jpg" alt=""><span>Metrics</span></div>
+  <div class="b"><img src="/images/Index/universes.jpg" alt=""><span>Universes</span></div>
+  <div class="b"><img src="/images/Index/new-universes.jpg" alt=""><span>New</span></div>
+  <div class="b"><img src="/images/Index/discord.png" alt=""><span>Discord</span></div>
+  <div class="b"><img src="/images/cover.jpg" alt=""><span>FUTR</span></div>
+</div>
+
+<footer>
+  <h3>FUTR</h3>
+  <p>Fictional Universe Taxonomy Research &mdash; Open Source</p>
+</footer>
+
+</body>
+</html>
