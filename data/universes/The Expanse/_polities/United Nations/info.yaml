@@ -1,0 +1,36 @@
+title: United Nations
+created: 2026-02-19
+changed: 2026-02-19
+tags: [index]
+order: 0
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_the_United_Nations.svg
+    text: Flag of the United Nations
+    link: https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Nations.svg
+    author: Denelson83, Zscout370, Madden
+    license: Public Domain
+    legal: Public domain (PD-US-no notice-UN).
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/e/e8/United_Nations_General_Assembly_Hall_(3).jpg
+    text: Interior of the United Nations General Assembly Hall in New York
+    link: https://commons.wikimedia.org/wiki/File:United_Nations_General_Assembly_Hall_(3).jpg
+    author: Basil D Soufi
+    license: CC BY-SA 3.0
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/8/85/New_York_City_Skyline_+_NYC_at_Night_-_Kyle_Kirschbaum.JPG
+    text: New York City skyline at night, seat of the UN government
+    link: https://commons.wikimedia.org/wiki/File:New_York_City_Skyline_%2B_NYC_at_Night_-_Kyle_Kirschbaum.JPG
+    author: Kyle Kirschbaum
+    license: CC BY-SA 4.0
+    legal: "https://creativecommons.org/licenses/by-sa/4.0/"
+links:
+  - link: https://expanse.fandom.com/wiki/United_Nations
+    text: Expanse Wiki - United Nations
+  - link: https://expanse.fandom.com/wiki/United_Nations_Navy
+    text: Expanse Wiki - United Nations Navy
+readme: |
+  Earth's world government grew out of the international body founded in 1945, but by the late 21st century it has become the planet's sole sovereign authority. Environmental collapse and resource wars force the nations of Earth into unification under a single federal government. The Secretary-General rules from New York, backed by a General Assembly, a Security Council, and a Court of Justice. Luna falls under UN sovereignty as well, with New Hague on the Moon as a secondary capital.
+
+  The United Nations commands the largest military force in the Sol System. The United Nations Navy fields hundreds of warships, from Truman-class dreadnoughts and Xerxes-class battleships down to the mass-produced Munroe-class destroyers that make up most of its fleets. What the UNN lacks in technological edge compared to Mars, it compensates for with sheer numbers. The United Nations Marine Corps can deploy over a hundred million troops, their bodies hardened by a lifetime under Earth's full gravity.
+
+  For all its power, the UN governs a population in slow-motion collapse. Over half of Earth's thirty billion people live on Basic Assistance, a state welfare program that feeds and houses them but offers no meaningful work. Recipients eat textured protein and recycled rice, wear paper clothing, and wait years for the chance at vocational training. A baby lottery controls reproduction. Billions exist in managed idleness while the UN projects force across the solar system.

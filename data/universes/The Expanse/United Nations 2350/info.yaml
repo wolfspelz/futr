@@ -1,0 +1,48 @@
+title: United Nations 2350
+created: 2026-02-19
+changed: 2026-02-19
+date: 2350
+polity: United Nations
+tags: [index, new]
+order: 50
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/a/a7/Full-Hemisphere_Views_of_Earth_at_Night.png
+    text: Earth at night, showing the city lights of thirty billion people
+    link: https://commons.wikimedia.org/wiki/File:Full-Hemisphere_Views_of_Earth_at_Night.png
+    author: NASA on The Commons
+    license: Public Domain
+    legal: No known copyright restrictions (Flickr Commons / NASA).
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg
+    text: The Moon, home to New Hague and the Bush shipyards
+    link: https://commons.wikimedia.org/wiki/File:FullMoon2010.jpg
+    author: Gregory H. Revera
+    license: CC BY-SA 3.0
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/1/19/Gateway_-_Full_Configuration_Hero_Image_-_121123.png
+    text: Orbital station concept art, evoking UN orbital infrastructure
+    link: https://commons.wikimedia.org/wiki/File:Gateway_-_Full_Configuration_Hero_Image_-_121123.png
+    author: NASA JSC / Alberto Bertolin, Bradley Reynolds
+    license: Public Domain
+    legal: Public domain as a work of the U.S. government (PD-NASA).
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/2/23/Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg
+    text: Dense megacity skyline, evoking Earth's overpopulated cities
+    link: https://commons.wikimedia.org/wiki/File:Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg
+    author: David Iliff (Diliff)
+    license: CC BY 3.0
+    legal: "https://creativecommons.org/licenses/by/3.0/"
+links:
+  - link: https://expanse.fandom.com/wiki/United_Nations
+    text: Expanse Wiki - United Nations
+  - link: https://expanse.fandom.com/wiki/Earth
+    text: Expanse Wiki - Earth
+  - link: https://expanse.fandom.com/wiki/Luna
+    text: Expanse Wiki - Luna
+readme: |
+  By 2350, thirty billion people crowd Earth's surface. The oceans have swallowed old coastlines and cities stack ever higher, but the real weight pressing down on the planet is human. Half the population sits on Basic Assistance, government welfare that provides food, shelter, and nothing else. The economy cannot absorb them. Automation and offworld resource extraction have made most labor unnecessary, and so fifteen billion people wait in line for a shot at education or employment that may never come.
+
+  The United Nations governs this mass from New York and from New Hague on Luna. Secretary-General Esteban Sorrento-Gillis holds office during this period, though real power often flows through figures like Under-Secretary Chrisjen Avasarala and Deputy Secretary-General Sadavir Errinwright. The Security Council shapes military and foreign policy. The UNN Home Fleet orbits Earth while the Jupiter Fleet and Saturn Fleet patrol the outer system.
+
+  The UNN is the largest navy in the Sol System by raw count, outnumbering the Martian Congressional Republic Navy roughly five to one. Truman-class dreadnoughts lead battle groups. Xerxes-class battleships specialize in close-range engagements with railguns and boarding grapplers. Leonidas-class battleships carry marines and dropships. The workhorse Munroe-class light destroyers fill out the fleet in numbers Mars cannot match. On the ground, the UNMC fields over a hundred million marines in Reaver powered armor.
+
+  Earth's technology is the same as the rest of the Sol System. Epstein drives, running on deuterium-helium-3 fusion, push warships and freighters at sustained multi-g acceleration. Railguns, torpedoes, and point defense cannons arm every combatant. There is no faster-than-light travel, no artificial gravity, no energy shielding. UNN vessels are generally less advanced than their MCRN counterparts, built to older designs and produced in greater quantity from the Bush shipyards at Luna.

@@ -1,0 +1,17 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: 0.89
+min: 0.85
+max: 0.93
+confidence: calculatedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Earth
+    text: Expanse Wiki - Earth
+  - link: https://expanse.fandom.com/wiki/Basic_Assistance
+    text: Expanse Wiki - Basic Assistance
+  - link: https://expanse.fandom.com/wiki/Epstein_Drive
+    text: Expanse Wiki - Epstein Drive
+readme: |
+  Population: 30.1e9 (30B Earth + 0.1B Luna). Estimated 15B on Basic Assistance at ~10,000 W/person = 1.5e14 W. 15B employed plus industry/military at ~40,000 W/person = 6.0e14 W. Luna 0.1B at ~50,000 W/person = 5e12 W. UNN fleet and orbital infrastructure ~1e13 W. Total: ~7.65e14 W. Per-person: ~25,400 W (vs Earth 2023: 2,200 W/person, roughly 11.5x more). Kardashev: log10(7.65e14) / 10 - 0.6 = 0.89. Slightly below the Sol System average of 0.90 because Basic Assistance drags down per-capita energy consumption.
