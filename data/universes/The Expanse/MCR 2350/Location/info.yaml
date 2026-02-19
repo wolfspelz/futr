@@ -1,0 +1,14 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: "Mars, Sol System"
+confidence: canon
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Mars
+    text: "Expanse Wiki - Mars"
+  - link: https://expanse.fandom.com/wiki/Sol_system
+    text: "Expanse Wiki - Sol System"
+editors: [anthropic]
+readme: |
+  Mars, fourth planet from Sol. The MCR's territory covers the planet's surface (144.8 million km²). Major settlements include Londres Nova (capital, in northern Aurorae Sinus), Mariner Valley, and Dhanbad Nova. MCRN fleet patrol zones extend from the inner system to Saturn, but sovereign territory is limited to Mars itself.

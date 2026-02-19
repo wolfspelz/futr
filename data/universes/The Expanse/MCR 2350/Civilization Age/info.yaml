@@ -1,0 +1,14 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: 137
+confidence: semiCanon
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic
+    text: "Expanse Wiki - MCR (founded late 22nd to early 23rd century)"
+  - link: https://expanse.fandom.com/wiki/Solomon_Epstein_(Books)
+    text: "Expanse Wiki - Solomon Epstein (Epstein drive enabled independence)"
+editors: [anthropic]
+readme: |
+  The MCR gains independence from the United Nations around 2213, when Mars trades access to the Epstein drive for sovereignty. At the 2350 snapshot, the republic is approximately 137 years old. The exact founding date is not stated precisely in primary canon; fan sources place it at 2213, making the age a semi-canonical estimate.

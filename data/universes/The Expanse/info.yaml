@@ -1,6 +1,6 @@
 title: The Expanse
 created: 2026-02-11
-changed: 2026-02-11
+changed: 2026-02-19
 order: 0
 tags: [index, new]
 showcaseMetrics: [Population, Kardashev, Planets, Warships, Techlevel, Class]
@@ -97,10 +97,20 @@ sources:
   - https://en.wikipedia.org/wiki/The_Expanse_(TV_series)
   - https://en.wikipedia.org/wiki/James_S._A._Corey
   - https://en.wikipedia.org/wiki/Leviathan_Wakes
+  # Expanse Wiki - MCR research
+  - https://expanse.fandom.com/wiki/Mars_Terraforming_Project
+  - https://expanse.fandom.com/wiki/Stealth_technology
+  - https://expanse.fandom.com/wiki/Londres_Nova
+  - https://expanse.fandom.com/wiki/Prime_Minister_of_the_Martian_Congressional_Republic
+  - https://expanse.fandom.com/wiki/Martian_Marine_Corps
+  - https://expanse.fandom.com/wiki/Category:MCRN_ships
+  - https://expanse.fandom.com/wiki/Category:MCRN_ship_classes
   # Other wikis & references
   - https://kardashev.fandom.com/wiki/Humans_(The_Expanse)
   - https://future.fandom.com/wiki/Sol_system_(The_Expanse)
   - https://screenrant.com/expanse-timeline-explained/
+  # Epstein drive power calculations
+  - https://forums.spacebattles.com/threads/the-expanses-epstein-drive-explained.791704/
 readme: |
   Hard science fiction by James S.A. Corey (Daniel Abraham and Ty Franck), spanning nine novels and six television seasons. A near-future Sol System where humanity colonizes planets, moons, and asteroid stations using efficient fusion drives. The physics are realistic: no artificial gravity, no energy shields, no faster-than-light travel. Ships fly on constant thrust and orbital mechanics governs every journey.
 

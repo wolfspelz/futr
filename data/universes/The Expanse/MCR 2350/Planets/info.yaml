@@ -1,0 +1,14 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: 1
+confidence: canon
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Mars
+    text: "Expanse Wiki - Mars"
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic
+    text: "Expanse Wiki - MCR (territory: Mars)"
+editors: [anthropic]
+readme: |
+  The MCR controls Mars only. MCRN fleets patrol as far as Saturn, but these are military patrol zones, not settled territory. Mars's two moons Phobos and Deimos are not described as significant population centers. At this snapshot, no ring gates exist and no extrasolar colonies are possible.

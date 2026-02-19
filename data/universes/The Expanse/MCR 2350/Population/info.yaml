@@ -1,0 +1,14 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: 4e9
+confidence: canon
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic
+    text: "Expanse Wiki - MCR: four billion inhabitants"
+  - link: https://expanse.fandom.com/wiki/Mars
+    text: "Expanse Wiki - Mars"
+editors: [anthropic]
+readme: |
+  The books state Mars has four billion inhabitants. The TV show uses a higher figure of approximately 9-10 billion, but book canon is used here as the primary source. Nearly all Martians live in domed cities and pressurized tunnel networks across the planet's surface.

@@ -1,0 +1,53 @@
+title: MCR 2350
+created: 2026-02-19
+changed: 2026-02-19
+date: 2350
+polity: Martian Congressional Republic
+tags: [index, new]
+order: 200
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/5/56/Mars_Valles_Marineris.jpeg
+    text: Mars, as seen by the Viking 1 Orbiter
+    link: https://commons.wikimedia.org/wiki/File:Mars_Valles_Marineris.jpeg
+    author: NASA / USGS
+    license: Public Domain
+    legal: Public domain, created by NASA.
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/7/75/Perspective_view_of_Korolev_crater.jpg
+    text: Korolev crater on Mars, filled with water ice
+    link: https://commons.wikimedia.org/wiki/File:Perspective_view_of_Korolev_crater.jpg
+    author: ESA/DLR/FU Berlin
+    license: CC BY-SA 3.0 IGO
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/igo/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/c/c2/Olympus_Mons_-_ESA_Mars_Express_-_Flickr_-_Andrea_Luck.png
+    text: Olympus Mons, site of the MCRN's Hecate Base
+    link: https://commons.wikimedia.org/wiki/File:Olympus_Mons_-_ESA_Mars_Express_-_Flickr_-_Andrea_Luck.png
+    author: ESA/DLR/FU Berlin/Andrea Luck
+    license: CC BY 2.0
+    legal: "https://creativecommons.org/licenses/by/2.0/"
+  - src: /proxy/upload.wikimedia.org/wikipedia/en/6/60/Nemesis_Games.jpg
+    text: Nemesis Games, the fifth novel in The Expanse series
+    link: https://en.wikipedia.org/wiki/Nemesis_Games
+    author: Daniel Dociu
+    license: "(c) Orbit Books"
+    legal: Copyrighted book cover art by Daniel Dociu for Orbit Books. Used for commentary under Fair Use.
+links:
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic
+    text: The Expanse Wiki - MCR
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic_Navy
+    text: The Expanse Wiki - MCRN
+editors: [anthropic]
+readme: |
+  At 2350, the Martian Congressional Republic is a major solar system power. Four billion citizens inhabit domed cities across the red planet, connected by tunnels and pressurized transit corridors. Londres Nova, the capital, sprawls beneath ten agricultural domes and generations of tunneled neighborhoods. It houses Congress, the military command, and a major university.
+
+  # Terraforming
+
+  The terraforming project proceeds on schedule. Atmospheric processing plants work to thicken Mars's thin CO2 atmosphere, and the planet has recently acquired an artificial magnetosphere capable of producing auroral displays. The project remains decades from completion, but visible progress sustains Martian identity.
+
+  # Military
+
+  The MCRN fields approximately 60 warships organized into three fleets: the Home Fleet defending Mars, the Jupiter Fleet patrolling from Ceres to Ganymede, and the Saturn Fleet covering the outer system. Eight Donnager-class battleships serve as fleet flagships, each carrying corvettes and patrol destroyers in internal hangars. The UNN outnumbers the MCRN roughly five-to-one, but Martian advantages in stealth materials and ship design keep the balance of power stable.
+
+  # Economy
+
+  The economy runs on terraforming and military production. The MCR builds its own fusion drives, warships, and weapons systems, maintaining technological independence from Earth. Martian stealth technology, deployed in naval combatants and first-strike missile platforms, leads the system in capability.

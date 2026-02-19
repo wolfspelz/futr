@@ -1,0 +1,12 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: "Fusion-drive interplanetary. Epstein drive, stealth tech, advanced military shipbuilding."
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Epstein_Drive
+    text: "Expanse Wiki - Epstein Drive"
+  - link: https://expanse.fandom.com/wiki/Stealth_technology
+    text: "Expanse Wiki - Stealth technology"
+editors: [anthropic]

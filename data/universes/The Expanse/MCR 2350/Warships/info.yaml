@@ -1,0 +1,22 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: 60
+confidence: calculatedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic_Navy
+    text: "Expanse Wiki - MCRN (smaller than UNN but technologically superior)"
+  - link: https://expanse.fandom.com/wiki/Donnager-class_dreadnought_(Books)
+    text: "Expanse Wiki - Donnager-class (exactly 8 built)"
+  - link: https://expanse.fandom.com/wiki/Category:MCRN_ships
+    text: "Expanse Wiki - 43 named MCRN ships"
+  - link: https://expanse.fandom.com/wiki/Laconian_Imperial_Navy
+    text: "Expanse Wiki - Duarte took roughly a third of MCRN fleet"
+editors: [anthropic]
+readme: |
+  Derived from the canon 5:1 UNN-to-MCRN ship ratio (TV Season 2). With the Sol System total estimated at 350 warships (UNN ~300, MCRN ~60, OPA ~10), the MCRN contributes approximately 60 combat vessels.
+
+  Supporting evidence: exactly 8 Donnager-class battleships were built (canon). The Expanse Wiki lists 43 individually named MCRN ships across both books and TV. Admiral Duarte later defects with roughly a third of the fleet (~20 ships), consistent with a pre-defection total of ~60.
+
+  The MCRN organizes its fleet into three commands: the Home Fleet (Mars and inner system), the Jupiter Fleet (Ceres to Ganymede), and the Saturn Fleet (outer system).

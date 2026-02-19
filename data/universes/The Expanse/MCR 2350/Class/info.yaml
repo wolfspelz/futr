@@ -1,0 +1,14 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: 7
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic
+    text: "Expanse Wiki - MCR"
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic_Navy
+    text: "Expanse Wiki - MCRN"
+editors: [anthropic]
+readme: |
+  Class 7 Interplanetary. The MCR inhabits only one planet (Mars) but projects military power across the entire Sol System through three MCRN fleets. Fusion-powered Epstein drives enable sustained interplanetary operations. The MCR builds advanced warships, maintains stealth technology, and operates independently from Earth's industrial base. Single-planet settlement keeps it at the lower end of Class 7, but system-wide fleet reach and technological self-sufficiency place it firmly in this tier.

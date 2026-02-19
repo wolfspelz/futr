@@ -1,0 +1,14 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: "Parliamentary republic"
+confidence: canon
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Martian_Congressional_Republic
+    text: "Expanse Wiki - MCR (unitary parliamentary republic)"
+  - link: https://expanse.fandom.com/wiki/Prime_Minister_of_the_Martian_Congressional_Republic
+    text: "Expanse Wiki - Prime Minister of the MCR"
+editors: [anthropic]
+readme: |
+  Unitary parliamentary republic with electoral authoritarian features. The Prime Minister heads the executive, elected by and dismissable by the Martian Congress. Military service is compulsory. The government exercises tight control over economic planning and resource allocation through a fully planned economy. The Martian Cabinet handles day-to-day administration, and the Martian Courts serve as the judiciary.

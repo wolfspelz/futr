@@ -1,0 +1,44 @@
+created: 2026-02-19
+changed: 2026-02-19
+value: 0.85
+min: 0.83
+max: 0.86
+confidence: calculatedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Epstein_Drive
+    text: "Expanse Wiki - Epstein Drive (D-He3 fusion, 60.2 TW thrust power per corvette)"
+  - link: https://expanse.fandom.com/wiki/Mars_Terraforming_Project
+    text: "Expanse Wiki - Mars Terraforming Project"
+  - link: https://kardashev.fandom.com/wiki/Humans_(The_Expanse)
+    text: "Kardashev Scale Wiki - Humans (The Expanse)"
+  - link: https://forums.spacebattles.com/threads/the-expanses-epstein-drive-explained.791704/
+    text: "SpaceBattles - Epstein Drive power calculations"
+editors: [anthropic]
+readme: |
+  # Civilian Power (main value)
+
+  Population: 4e9. Estimated per-person power: 75,000 W. Mars requires significantly more energy per person than the Sol System average (30,000 W/person) because all habitat is artificial (pressurized domes, temperature control, atmospheric recycling), the terraforming project consumes enormous energy (atmospheric processing, magnetosphere generation), all food grows in pressurized greenhouses, and the military-industrial economy runs heavy manufacturing.
+
+  Total civilian power: 4e9 x 75,000 = 3e14 W.
+  Kardashev: log10(3e14) / 10 - 0.6 = 14.477 / 10 - 0.6 = 0.85.
+
+  Min (50,000 W/person): 2e14 W, K = 0.83.
+  Max (100,000 W/person): 4e14 W, K = 0.86.
+
+  Cross-check: MCR power (3e14 W) = 29% of the Sol System total (1.05e15 W). Earth with 30 billion people would use the remaining 71% at about 25,000 W/person, lower due to half the population living on Basic Assistance. This split is consistent with Mars being the smaller but more industrialized faction.
+
+  # Epstein Drive Power (hypothetical, excluded from main value)
+
+  The Epstein drive produces power output far beyond what civilian infrastructure requires. Including drive power would distort the Kardashev value by conflating propulsion capability with civilizational energy use.
+
+  A Rocinante-class corvette (approximately 500 tons) produces 96.8 TW total fusion output and 60.2 TW thrust power (Tough SF analysis). This single corvette outputs more power than the entire civilian infrastructure of Mars.
+
+  MCRN fleet estimate (60 ships): 8 Donnager-class battleships (approximately 250,000 tons each, roughly 50 PW per ship), plus 52 smaller vessels averaging 500 TW each. Fleet total at full burn: approximately 4e17 W.
+
+  At any given time roughly 30% of the fleet cruises at about 1/5 of maximum power. Active drive power: approximately 2.5e16 W.
+
+  Hypothetical Kardashev including drives: log10(2.5e16) / 10 - 0.6 = 1.04 (barely Type I).
+
+  The Epstein drive output exceeds civilian power by approximately 80x. This illustrates the drive's implausible efficiency by hard science fiction standards and is the reason drive power is excluded from the main value.
