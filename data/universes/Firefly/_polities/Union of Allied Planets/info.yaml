@@ -1,0 +1,43 @@
+title: Union of Allied Planets
+created: 2026-02-21
+changed: 2026-02-21
+tags: [index]
+order: 0
+images:
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/7/7b/Drap-alliance1.png
+    text: Alliance flag
+    link: https://commons.wikimedia.org/wiki/File:Drap-alliance1.png
+    author: "Marc Pasquin"
+    license: "Public domain (PD-shape)"
+    legal: "Public domain: simple geometric shape"
+    tags: [main]
+  - src: /proxy/static.wikia.nocookie.net/firefly/images/f/f1/Anglo-SinoAllianceNavy-SerenityEp.png
+    text: Anglo-Sino Alliance Navy fleet
+    link: https://firefly.fandom.com/wiki/Union_of_Allied_Planets
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/static.wikia.nocookie.net/firefly/images/e/e7/IAVDortmunder.jpg
+    text: IAV Dortmunder (Alliance patrol vessel)
+    link: https://firefly.fandom.com/wiki/IAV_Dortmunder
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/static0.gamerantimages.com/wordpress/wp-content/uploads/2024/04/firefly-class-serenity-landing.jpg
+    text: Firefly-class transport landing
+    link: https://gamerant.com/firefly-serenity-ship-explained/
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/6/6d/Serenity_central-planets.png
+    text: Map of the central planets (Alliance territory)
+    link: https://commons.wikimedia.org/wiki/File:Serenity_central-planets.png
+    author: "Mlindroo"
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+links:
+  - link: https://firefly.fandom.com/wiki/Union_of_Allied_Planets
+    text: Union of Allied Planets (Firefly Wiki)
+  - link: https://firefly.fandom.com/wiki/Alliance_Parliament
+    text: Alliance Parliament (Firefly Wiki)
+editors: [anthropic-claude]

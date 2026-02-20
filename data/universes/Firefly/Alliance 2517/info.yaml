@@ -1,0 +1,51 @@
+title: Alliance 2517
+created: 2026-02-21
+changed: 2026-02-21
+date: 2517
+polity: Union of Allied Planets
+tags: [index, new]
+order: 100
+images:
+  - src: /proxy/static0.gamerantimages.com/wordpress/wp-content/uploads/2024/04/firefly-class-serenity-landing.jpg
+    text: Firefly-class transport landing
+    link: https://gamerant.com/firefly-serenity-ship-explained/
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+    tags: [main]
+  - src: /proxy/static.wikia.nocookie.net/firefly/images/e/e7/IAVDortmunder.jpg
+    text: IAV Dortmunder (Alliance patrol vessel)
+    link: https://firefly.fandom.com/wiki/IAV_Dortmunder
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/6/6d/Serenity_central-planets.png
+    text: Map of the central planets of the Verse
+    link: https://commons.wikimedia.org/wiki/File:Serenity_central-planets.png
+    author: "Mlindroo"
+    license: "CC BY-SA 3.0"
+    legal: "https://creativecommons.org/licenses/by-sa/3.0/"
+  - src: /proxy/m.media-amazon.com/images/S/pv-target-images/d4567b2700b835348fb70a1631a4171a2bf0fa8038a78561a737143b32037091.png
+    text: Firefly promotional poster
+    link: https://www.amazon.com/dp/B001EN71CW
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/static.wikia.nocookie.net/firefly/images/f/f1/Anglo-SinoAllianceNavy-SerenityEp.png
+    text: Anglo-Sino Alliance Navy fleet
+    link: https://firefly.fandom.com/wiki/Union_of_Allied_Planets
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/7/7b/Drap-alliance1.png
+    text: Alliance flag
+    link: https://commons.wikimedia.org/wiki/File:Drap-alliance1.png
+    author: "Marc Pasquin"
+    license: "Public domain (PD-shape)"
+    legal: "Public domain: simple geometric shape"
+links:
+  - link: https://firefly.fandom.com/wiki/Timeline
+    text: Timeline (Firefly Wiki)
+  - link: https://firefly.fandom.com/wiki/The_Verse
+    text: The Verse (Firefly Wiki)
+editors: [anthropic-claude]

@@ -1,0 +1,29 @@
+created: 2026-02-21
+changed: 2026-02-21
+value: 0.95
+min: 0.85
+max: 1.05
+confidence: calculatedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit
+    text: "TV Tropes - Abusing the Kardashev Scale (Firefly entry)"
+  - link: https://firefly.fandom.com/wiki/Spaceship_physics
+    text: "Spaceship Physics (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Helioforming
+    text: "Helioforming (Firefly Wiki)"
+readme: |
+  Population: 303e9. Estimated per-person power by region:
+  Core (40B): ~30,000 W/person (advanced tech, terraforming maintenance).
+  Border (150B): ~7,500 W/person (moderate tech).
+  Rim (113B): ~2,000 W/person (frontier conditions).
+  Weighted average: ~8,400 W/person (vs Earth 2023: 2,200 W/person, about 3.8x more).
+
+  Total power: 303e9 x 8,400 = 2.55e15 W.
+  Kardashev: log10(2.55e15) / 10 - 0.6 = 0.94, rounded to 0.95.
+
+  Min (5,000 W/person): 1.5e15 W, K = 0.85.
+  Max (30,000 W/person): 9.1e15 W, K = 1.05.
+
+  TV Tropes analysis estimates 10^15 to 10^17 W based on Serenity's power output, consistent with this range. Helioforming 7 brown dwarfs suggests peak capabilities above baseline, but everyday tech (ballistic weapons, fuel-cell ships, no FTL) is modest for science fiction.

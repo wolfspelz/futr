@@ -1,0 +1,15 @@
+created: 2026-02-21
+changed: 2026-02-21
+value: 0.01
+min: 0.005
+max: 0.05
+confidence: wildGuess
+tags: [index]
+order: 0
+references:
+  - link: https://firefly.fandom.com/wiki/Pulse_Drive
+    text: "Pulse Drive (Firefly Wiki) - Class 10 crosses Verse in 25 days"
+  - link: https://planetplanet.net/2024/03/18/real-life-sci-fi-world-17-the-verse-from-firefly/
+    text: "Real-life Sci-Fi World 17: the Verse from Firefly"
+readme: |
+  The Verse is a compact multi-star cluster. A Class 10 pulse drive (fastest available) can cross it in about 25 days at sublight speed. Assuming speeds in the range of 0.01c to 0.1c, the cluster diameter is roughly a few hundred AU, or on the order of 0.01 light-years. The real-world astrophysical analysis at planetplanet.net shows the system would need to be fairly compact to remain gravitationally bound.

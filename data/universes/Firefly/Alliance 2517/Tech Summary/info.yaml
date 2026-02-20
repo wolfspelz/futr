@@ -1,0 +1,13 @@
+created: 2026-02-21
+changed: 2026-02-21
+value: "Gravity drives, mass terraforming, helioforming, no FTL"
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://firefly.fandom.com/wiki/Pulse_Drive
+    text: "Pulse Drive (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Terraforming
+    text: "Terraforming (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Helioforming
+    text: "Helioforming (Firefly Wiki)"

@@ -1,0 +1,17 @@
+created: 2026-02-21
+changed: 2026-02-21
+value: 7
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://firefly.fandom.com/wiki/Terraforming
+    text: "Terraforming (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Pulse_Drive
+    text: "Pulse Drive (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Helioforming
+    text: "Helioforming (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Spaceship_physics
+    text: "Spaceship Physics (Firefly Wiki)"
+readme: |
+  TL 7: Fusion. The Alliance operates gravity manipulation drives, has terraformed hundreds of worlds, and helioformed brown dwarfs into protostars. Bioengineering is advanced enough to produce psychic operatives (the Academy program). However, there is no FTL, no nanotechnology, no energy shields, and personal weapons remain ballistic. The most advanced individual technology (gravity manipulation, mass terraforming, helioforming) sits squarely at TL 7.

@@ -22,7 +22,9 @@
       "Edit",
       "Write",
       "Bash(git status:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(for:*)",
+      "Bash(do)"
     ],
     "defaultMode": "acceptEdits"
   },

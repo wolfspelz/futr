@@ -1,0 +1,74 @@
+title: Firefly
+created: 2026-02-21
+changed: 2026-02-21
+tags: [index, new]
+order: 0
+showcaseMetrics: [Population, Kardashev, Planets, Star Systems, Class, Techlevel]
+images:
+  - src: /proxy/static.wikia.nocookie.net/scifi/images/d/d2/Firefly_Serie_Logo.jpg
+    text: Firefly series logo
+    link: https://scifi.fandom.com/de/wiki/Firefly
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/static.thcdn.com/productimg/1600/1600/11518354-1344834007919477.jpg
+    text: Firefly Blu-ray box set cover art
+    link: https://www.zavvi.com/blu-ray/firefly-complete-series-blu-ray/11518354.html
+    author: "20th Century Fox"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/images.immediate.co.uk/production/volatile/sites/3/2017/09/635798922093559607-firefly.jpg
+    text: Firefly crew promotional photo
+    link: https://www.radiotimes.com/tv/sci-fi/firefly/
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/m.media-amazon.com/images/S/pv-target-images/d4567b2700b835348fb70a1631a4171a2bf0fa8038a78561a737143b32037091.png
+    text: Firefly promotional poster
+    link: https://www.amazon.com/dp/B001EN71CW
+    author: "20th Century Fox Television"
+    license: "(c) 20th Century Fox"
+    legal: "Copyrighted by 20th Century Fox. Used for commentary under Fair Use."
+  - src: /proxy/roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2018/04/firefly-serenity-vr.jpg
+    text: Serenity ship in space
+    link: https://www.roadtovr.com/firefly-serenity-vr-experience/
+    author: "Fox / OTOY"
+    license: "(c) Fox / OTOY"
+    legal: "Copyrighted. Used for commentary under Fair Use."
+  - src: /proxy/www.modelermagic.com/wp-content/uploads/2013/06/Serenity_21.jpg
+    text: Serenity ship render
+    link: https://www.modelermagic.com/serenity-firefly/
+    author: "Modeler Magic"
+    license: "(c) Modeler Magic"
+    legal: "Copyrighted. Used for commentary under Fair Use."
+links:
+  - link: https://firefly.fandom.com/wiki/Firefly_Wiki
+    text: Firefly Wiki (Fandom)
+  - link: https://en.wikipedia.org/wiki/Firefly_(TV_series)
+    text: Firefly (Wikipedia)
+  - link: https://en.wikipedia.org/wiki/Serenity_(film)
+    text: Serenity film (Wikipedia)
+sources:
+  # Primary wiki
+  - https://firefly.fandom.com/wiki/The_Verse
+  - https://firefly.fandom.com/wiki/Union_of_Allied_Planets
+  - https://firefly.fandom.com/wiki/Timeline
+  - https://firefly.fandom.com/wiki/Unification_War
+  # Technology
+  - https://firefly.fandom.com/wiki/Grav_Drive
+  - https://firefly.fandom.com/wiki/Pulse_Drive
+  - https://firefly.fandom.com/wiki/Terraforming
+  - https://firefly.fandom.com/wiki/Helioforming
+  # Maps and systems
+  - https://firefly.fandom.com/wiki/Maps_of_the_%27Verse
+  - https://firefly.fandom.com/wiki/White_Sun_system
+  # Population
+  - https://firefly.fandom.com/wiki/The_ethno-cultural_composition_of_the_Verse's_populations
+  # Astrophysics analysis
+  - https://planetplanet.net/2024/03/18/real-life-sci-fi-world-17-the-verse-from-firefly/
+  # Kardashev estimates
+  - https://tvtropes.org/pmwiki/pmwiki.php/JustForFun/AbusingTheKardashevScaleForFunAndProfit
+  # Wikipedia
+  - https://en.wikipedia.org/wiki/Firefly_(TV_series)
+  - https://en.wikipedia.org/wiki/Serenity_(film)
+editors: [anthropic-claude]

@@ -1,0 +1,15 @@
+created: 2026-02-21
+changed: 2026-02-21
+value: 8
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://firefly.fandom.com/wiki/The_Verse
+    text: "The Verse (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Terraforming
+    text: "Terraforming (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Pulse_Drive
+    text: "Pulse Drive (Firefly Wiki)"
+readme: |
+  Class 8: Advanced Interplanetary. The Alliance has terraformed over 200 worlds across a multi-star cluster and maintains mature interplanetary civilization with gravity manipulation drives, but lacks FTL travel. Helioforming 7 brown dwarfs into protostars demonstrates significant stellar engineering capability, pushing the upper end of Class 8 without quite reaching Class 9 (which requires FTL).
