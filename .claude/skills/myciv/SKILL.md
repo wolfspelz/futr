@@ -36,7 +36,7 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 1. Research specific values for each selected metric
 2. Determine confidence levels
 3. Find min/max ranges where uncertain
-   - **Canon/semiCanon values**: Consider whether min/max are needed. If the value is exact and certain, omit min and max. If the source gives an approximate or rounded number (e.g., "about 50,000 worlds"), estimate plausible min/max ranges, since canon does not always mean precise. Use `semiCanon` for values from secondary sources (RPG sourcebooks, technical manuals, creator interviews, decanonized material).
+   - **Canon/semiCanon values**: Consider whether min/max are needed. If the value is exact and certain, omit min and max. If the source gives an approximate or rounded number (e.g., "about 50,000 worlds"), estimate plausible min/max ranges, since canon does not always mean precise. Official media (official maps, TV shows, movies, published novels, studio-sanctioned material) is always `canon`, not `semiCanon`. Use `semiCanon` only for secondary sources (RPG sourcebooks, technical manuals, creator interviews, decanonized material).
 4. **Cross-check values against existing data** (e.g., compare Kardashev to Earth 2023 = 0.73 and other civilizations, but also show other comparisons of other metrics) -- these comparisons are for validation only, do not include them in readme fields
 5. **In-universe comparisons**: When sources compare to places that share real-world names (e.g., "Sol System", "Earth", "Mars"), assume they refer to the in-universe version at the same time period, not real-world data. Research the in-universe reference to properly contextualize the comparison.
 6. Gather reference URLs for all values
@@ -85,9 +85,10 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 
 ### Step 5: Image Research & Attribution (REQUIRED)
 1. Find images (see content.md for approved sources and proxy instructions)
-   - **Try to find 5 images for each item** (universe, polity, civilization). Search broadly: maps, logos/emblems, key characters, ships/technology, artwork, book/media covers, battle scenes, cities/locations, flags/symbols, etc. Present all candidates to the user for selection.
+   - **Try to find 5 images for each item** (universe, polity, civilization). Search broadly: maps, logos/emblems, key characters, ships/technology, artwork, book/media covers, battle scenes, cities/locations, flags/symbols, presskit, etc.
 2. **For EVERY image, research and document all attribution fields:**
    - `src`: Direct image URL (or `/proxy/...` path for proxied images)
+   - `text`: Caption/description for the image
    - `link`: Source page URL for attribution (e.g., Wikimedia Commons file page, publisher page)
    - `author`: Creator/artist name (search for the artist, e.g., book cover artists, map creators)
    - `license`: Short identifier (e.g., "CC BY-SA 4.0", "Public Domain", "(c) Publisher" for copyrighted works)
@@ -97,10 +98,17 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
    - Book covers: Search for "[book title] cover artist" - publishers like Baen often use known artists
    - Fan wiki images: Check the file page for upload info and licensing
    - Official art: Note the copyright holder (studio, publisher) and use Fair Use rationale
-4. **If attribution is incomplete**, ask the user whether to: (a) add the image anyway with "Unknown" for missing fields, (b) skip the image, or (c) search for a different image
-5. Write descriptions for polity and civilization readme fields
-6. Gather links to official/wiki pages
-7. **Proxy images from Wikimedia/Wikipedia** (see content.md Image Proxy section)
+4. **Proxy images from Wikimedia/Wikipedia** (see content.md Image Proxy section) before proceeding to selection
+5. **Use the Image Selector tool** to let the user visually pick images:
+   - Write all candidate images as a JSON array to a temp file (each object must have `src`, `text`, `link`, `author`, `license`, `legal`, and optionally `tags`)
+   - For `/proxy/` images, ensure the files are downloaded to `data/proxy/` first so the tool can display them
+   - Run: `python tools/imageselector/imageselector.py --file <tempfile>`
+   - The tool opens a GUI grid showing all candidates. The user clicks to select/deselect, then clicks Done.
+   - Parse the JSON output (stdout) as the final selected images
+   - If the tool exits with code 1, the user cancelled -- ask what they'd like to change
+6. **If attribution is incomplete** for any selected image, ask the user whether to: (a) add the image anyway with "Unknown" for missing fields, (b) skip the image, or (c) search for a different image
+7. Write descriptions for polity and civilization readme fields
+8. Gather links to official/wiki pages
 
 ### Step 6: Implementation
 1. Create directories and info.yaml files following schemas in content.md:

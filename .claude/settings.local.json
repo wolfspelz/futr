@@ -20,7 +20,8 @@
       "Bash(git commit:*)",
       "Skill(humanizer)",
       "Edit",
-      "Write"
+      "Write",
+      "Bash(git status:*)"
     ],
     "defaultMode": "acceptEdits"
   },

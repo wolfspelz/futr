@@ -248,3 +248,6 @@ images:
     license: "CC BY-SA 3.0"
     legal: "https://creativecommons.org/licenses/by-sa/3.0/"
 ```
+
+## Allowed Tools
+- `python -m json.tool` may be used freely for formatting/validating JSON without asking for permission
