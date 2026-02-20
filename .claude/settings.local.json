@@ -21,7 +21,8 @@
       "Skill(humanizer)",
       "Edit",
       "Write",
-      "Bash(git status:*)"
+      "Bash(git status:*)",
+      "Bash(python:*)"
     ],
     "defaultMode": "acceptEdits"
   },

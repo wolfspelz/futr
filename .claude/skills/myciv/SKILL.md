@@ -85,7 +85,7 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 
 ### Step 5: Image Research & Attribution (REQUIRED)
 1. Find images (see content.md for approved sources and proxy instructions)
-   - **Try to find 5 images for each item** (universe, polity, civilization). Search broadly: maps, logos/emblems, key characters, ships/technology, artwork, book/media covers, battle scenes, cities/locations, flags/symbols, presskit, etc.
+   - **Try to find 5 images for each item** (universe, polity, civilization). Search broadly: presskits, promotional material, key art, official wallpapers, concept art, production stills, poster art, maps, logos/emblems, key characters, ships/technology, book/media covers, battle scenes, cities/locations, flags/symbols, screenshots, fan art Creative Commons, etc.
 2. **For EVERY image, research and document all attribution fields:**
    - `src`: Direct image URL (or `/proxy/...` path for proxied images)
    - `text`: Caption/description for the image
@@ -103,8 +103,8 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
    - Write all candidate images as a JSON array to a temp file (each object must have `src`, `text`, `link`, `author`, `license`, `legal`, and optionally `tags`)
    - For `/proxy/` images, ensure the files are downloaded to `data/proxy/` first so the tool can display them
    - Run: `python tools/imageselector/imageselector.py --file <tempfile>`
-   - The tool opens a GUI grid showing all candidates. The user clicks to select/deselect, then clicks Done.
-   - Parse the JSON output (stdout) as the final selected images
+   - The tool opens a GUI grid showing all candidates. The user clicks to select/deselect, and drags to reorder. The first image becomes the tile/primary image.
+   - Parse the JSON output (stdout) as the final selected images. The output order matches the user's chosen order — use it directly for the `images:` list in info.yaml.
    - If the tool exits with code 1, the user cancelled -- ask what they'd like to change
 6. **If attribution is incomplete** for any selected image, ask the user whether to: (a) add the image anyway with "Unknown" for missing fields, (b) skip the image, or (c) search for a different image
 7. Write descriptions for polity and civilization readme fields
