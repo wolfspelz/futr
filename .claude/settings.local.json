@@ -17,12 +17,10 @@
       "Bash(claude --version:*)",
       "Bash(npm show:*)",
       "Bash(done)",
-      "Bash(git commit:*)",
       "Skill(humanizer)",
       "Edit",
       "Write",
       "Bash(git status:*)",
-      "Bash(python:*)",
       "Bash(for:*)",
       "Bash(do)"
     ],
