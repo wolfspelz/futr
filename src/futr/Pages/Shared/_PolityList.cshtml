@@ -3,7 +3,7 @@
 @if (Model.Any()) {
     <div class="my-textblock">
         <h2>Polities</h2>
-        @foreach (var polity in Model) {
+        @foreach (var polity in Model.OrderBy(x => x.Order)) {
             <div>
                 <a asp-page="Polity" asp-route-id="@polity.SeoName">@polity.Title</a>
             </div>
