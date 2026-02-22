@@ -1,0 +1,18 @@
+created: 2026-02-22
+changed: 2026-02-22
+tags: [index]
+value: 200
+min: 150
+max: 300
+confidence: informedGuess
+references:
+  - link: https://honorverse.fandom.com/wiki/Republic_of_Haven
+    text: Honorverse Wiki - Republic of Haven
+  - link: https://honorverse.fandom.com/wiki/Havenite_star_systems
+    text: Honorverse Wiki - Havenite star systems
+  - link: https://infodump.thefifthimperium.com/entry/Harrington/49/1/
+    text: Pearls of Weber - Haven system tier data
+readme: |
+  David Weber describes Haven's systems in tiers: 30-35 first-tier, ~35 second-tier, ~35 more industrialized, and ~30 economic sinkholes totaling ~135 significant systems. The Honorverse Wiki lists 76 named member systems. Including minor holdings, outposts, and claimed systems, the total reaches approximately 200-300. About 100 systems were conquered through the DuQuesne Plan between 1846 and 1900 PD.
+
+  Key systems include Haven (capital, 667 ly from Sol), Barnett, Trevor's Star (annexed 1888 PD), MacGregor, Lovat, and Cerberus.

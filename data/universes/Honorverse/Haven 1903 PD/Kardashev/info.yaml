@@ -1,0 +1,28 @@
+created: 2026-02-22
+changed: 2026-02-22
+tags: [index]
+value: 1.0
+min: 0.9
+max: 1.1
+confidence: calculatedGuess
+references:
+  - link: https://honorverse.fandom.com/wiki/Republic_of_Haven
+    text: Honorverse Wiki - Republic of Haven
+  - link: https://honorverse.fandom.com/wiki/Nuclear_fusion
+    text: Honorverse Wiki - Nuclear fusion
+  - link: https://honorverse.fandom.com/wiki/Basic_Living_Stipend
+    text: Honorverse Wiki - Basic Living Stipend
+readme: |
+  Population: 200e9. Estimated per-person power by segment:
+  - Dolists (~130B, 2/3 of population): ~3,000 W/person (basic fusion-powered urban living, BLS-supported)
+  - Productive sector (~70B): ~60,000 W/person (heavy industry, shipyards, interstellar commerce)
+  - Military overhead: ~5e14 W (2,106 warships in peacetime)
+
+  Total: 130e9 x 3,000 + 70e9 x 60,000 + 5e14 = 3.9e14 + 4.2e15 + 5e14 = 5.1e15 W.
+  Per-person average: ~25,000 W (vs Earth 2023: 2,200 W/person, about 11x more).
+  Kardashev: log10(5.1e15) / 10 - 0.6 = 15.71/10 - 0.6 = 0.97, rounded to 1.0.
+
+  Min (100B people, 15,000 W/person): 1.5e15 W, K = 0.92 ~ 0.9.
+  Max (300B people, 30,000 W/person): 9e15 W, K = 0.96 ~ 1.0, with military surge ~1.1.
+
+  Haven ranks below Manticore (K=1.1) despite larger absolute size. This reflects Haven's economic dysfunction: empty treasury since 1804 PD, two-thirds unproductive Dolists. Manticore's extremely high per-capita output (wormhole junction revenue, small efficient economy) drives its higher K rating.

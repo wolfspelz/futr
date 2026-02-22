@@ -22,7 +22,11 @@
       "Write",
       "Bash(git status:*)",
       "Bash(for:*)",
-      "Bash(do)"
+      "Bash(do)",
+      "Bash(python3:*)",
+      "Bash(python -m json.tool:*)",
+      "Bash(python tools/imageselector/imageselector.py:*)",
+      "Bash(\"C:/Heiner/github-futr/tmp_polity_images.json\":*)"
     ],
     "defaultMode": "acceptEdits"
   },

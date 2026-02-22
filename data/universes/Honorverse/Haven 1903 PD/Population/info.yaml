@@ -1,0 +1,20 @@
+created: 2026-02-22
+changed: 2026-02-22
+tags: [index]
+value: 2e11
+min: 1e11
+max: 3e11
+confidence: calculatedGuess
+references:
+  - link: https://honorverse.fandom.com/wiki/Republic_of_Haven
+    text: Honorverse Wiki - Republic of Haven
+  - link: https://honorverse.fandom.com/wiki/Haven
+    text: Honorverse Wiki - Haven (planet)
+  - link: https://infodump.thefifthimperium.com/entry/Harrington/49/1/
+    text: Pearls of Weber - Haven system tier data
+  - link: https://honorverse.fandom.com/wiki/Dolist
+    text: Honorverse Wiki - Dolist
+readme: |
+  No canonical total population figure exists for the PRH across all systems. Estimated from David Weber's description of Haven's system tiers: 30-35 first-tier systems (avg 3-5 billion each), ~35 second-tier systems (avg 1-2 billion), ~35 more industrialized systems (avg 0.5-1 billion), and ~30 economic sinkholes (avg 0.1-0.5 billion). Central estimate ~200 billion.
+
+  By 1904 PD, nearly two-thirds of the population are Dolists (welfare recipients on the Basic Living Stipend). The planet Haven alone has several billion inhabitants, with Nouveau Paris holding 36 million.

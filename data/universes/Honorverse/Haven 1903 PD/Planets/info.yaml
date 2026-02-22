@@ -1,0 +1,14 @@
+created: 2026-02-22
+changed: 2026-02-22
+tags: [index]
+value: 100
+min: 75
+max: 150
+confidence: informedGuess
+references:
+  - link: https://honorverse.fandom.com/wiki/Republic_of_Haven
+    text: Honorverse Wiki - Republic of Haven
+  - link: https://honorverse.fandom.com/wiki/Havenite_star_systems
+    text: Honorverse Wiki - Havenite star systems
+readme: |
+  The Honorverse Wiki references 75+ inhabited worlds for the later war period. At 1903 PD the number is similar or slightly lower after five decades of conquest under the DuQuesne Plan. Several major systems (Haven, MacGregor, Trevor's Star) have multiple inhabited worlds, pushing the total above the number of inhabited star systems.

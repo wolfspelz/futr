@@ -1,6 +1,6 @@
 title: Honorverse
 created: 2026-02-04
-changed: 2026-02-04
+changed: 2026-02-22
 order: 0
 tags: [index, new]
 images:
@@ -30,7 +30,34 @@ links:
     text: Honorverse Wiki
   - link: https://en.wikipedia.org/wiki/Honorverse
     text: Wikipedia - Honorverse
-showcaseMetrics: [Population, Planets, Kardashev, Warships, Techlevel, Class]
+showcaseMetrics: [Population, Planets, Star Systems, Kardashev, Warships, Techlevel, Class]
+sources:
+  # Primary wiki
+  - https://honorverse.fandom.com/wiki/Republic_of_Haven  # population, territory, government, economy
+  - https://honorverse.fandom.com/wiki/Republic_of_Haven_Navy  # fleet composition, warship counts, tonnage
+  - https://honorverse.fandom.com/wiki/Star_Kingdom_of_Manticore  # Manticore comparison data
+  - https://honorverse.fandom.com/wiki/Haven  # planet Haven demographics
+  - https://honorverse.fandom.com/wiki/Havenite_star_systems  # named member systems
+  - https://honorverse.fandom.com/wiki/Haven_System  # system details, shipyards
+  - https://honorverse.fandom.com/wiki/Timeline  # key dates
+  # Government and politics
+  - https://honorverse.fandom.com/wiki/Sidney_Harris  # Hereditary President
+  - https://honorverse.fandom.com/wiki/Hereditary_President_of_the_People%27s_Republic_of_Haven
+  - https://honorverse.fandom.com/wiki/DuQuesne_Plan  # expansion strategy
+  - https://honorverse.fandom.com/wiki/Basic_Living_Stipend  # welfare system
+  - https://honorverse.fandom.com/wiki/Dolist  # Dolist class
+  # Military commanders
+  - https://honorverse.fandom.com/wiki/Amos_Parnell  # CNO
+  - https://honorverse.fandom.com/wiki/Thomas_Theisman  # key officer
+  # Technology
+  - https://honorverse.fandom.com/wiki/Nuclear_fusion  # power source
+  - https://honorverse.fandom.com/wiki/Manticoran_missile_technology  # tech gap
+  - https://honorverse.fandom.com/wiki/Havenite_missile_technology  # Haven tech
+  - https://honorverse.fandom.com/wiki/Gross_system_product  # economic comparison
+  # Author data
+  - https://infodump.thefifthimperium.com/entry/Harrington/49/1/  # Weber system tier data
+  # Analytics
+  - https://www.baen.com/honorverse_analytics  # qualitative Haven vs Manticore comparison
 readme: |
   David Weber's military science fiction universe, centered on the career of Honor Harrington.
   Set in the far future where humanity has spread across the galaxy using hyperspace travel
