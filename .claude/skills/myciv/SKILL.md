@@ -93,22 +93,25 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
    - `author`: Creator/artist name (search for the artist, e.g., book cover artists, map creators)
    - `license`: Short identifier (e.g., "CC BY-SA 4.0", "Public Domain", "(c) Publisher" for copyrighted works)
    - `legal`: Full license text or URL (e.g., "https://creativecommons.org/licenses/by-sa/4.0/" or "Copyrighted by [Publisher]. Used for commentary under Fair Use.")
-3. **Research strategy for attribution:**
+3. **Image description strategy (minimize image scanning):**
+   - **Always prefer metadata over scanning**: Use the image's alt attribute, filename, surrounding page text, caption, title attribute, or Wikimedia Commons file description to determine what the image shows
+   - Only scan or visually interpret an image if no textual metadata is available to describe it
+4. **Research strategy for attribution:**
    - Wikimedia Commons: Fetch the file page to find author and license info
    - Book covers: Search for "[book title] cover artist" - publishers like Baen often use known artists
    - Fan wiki images: Check the file page for upload info and licensing
    - Official art: Note the copyright holder (studio, publisher) and use Fair Use rationale
-4. **Proxy images from Wikimedia/Wikipedia** (see content.md Image Proxy section) before proceeding to selection
-5. **Use the Image Selector tool** to let the user visually pick images:
+5. **Proxy images from Wikimedia/Wikipedia** (see content.md Image Proxy section) before proceeding to selection
+6. **Use the Image Selector tool** to let the user visually pick images:
    - Write all candidate images as a JSON array to a temp file (each object must have `src`, `text`, `link`, `author`, `license`, `legal`, and optionally `tags`)
    - For `/proxy/` images, ensure the files are downloaded to `data/proxy/` first so the tool can display them
    - Run: `python tools/imageselector/imageselector.py --file <tempfile>`
    - The tool opens a GUI grid showing all candidates. The user clicks to select/deselect, and drags to reorder. The first image becomes the tile/primary image.
    - Parse the JSON output (stdout) as the final selected images. The output order matches the user's chosen order — use it directly for the `images:` list in info.yaml.
    - If the tool exits with code 1, the user cancelled -- ask what they'd like to change
-6. **If attribution is incomplete** for any selected image, ask the user whether to: (a) add the image anyway with "Unknown" for missing fields, (b) skip the image, or (c) search for a different image
-7. Write descriptions for polity and civilization readme fields
-8. Gather links to official/wiki pages
+7. **Only include images with complete attribution** in the image selector. If attribution is incomplete (missing author, license, or legal), do not add the image to the candidate list. Skip it silently or search for a better-attributed alternative.
+8. Write descriptions for polity and civilization readme fields
+9. Gather links to official/wiki pages
 
 ### Step 6: Implementation
 1. Create directories and info.yaml files following schemas in content.md:
