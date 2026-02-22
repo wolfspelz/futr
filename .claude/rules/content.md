@@ -221,6 +221,16 @@ Ordered from most to least reliable:
 - Verify the image can be embedded (test from different origin)
 - All images MUST have complete attribution: `src`, `link`, `author`, `license`, `legal`
 
+**Adding images to existing entities:**
+- When adding images to an already existing universe, polity, or civilization, include ALL existing images together with the new candidates in the image selector
+- This lets the user reorder, deselect old images, or interleave new ones with existing images
+- The output of the image selector replaces the entire `images:` list in info.yaml
+
+**Image selector usage:**
+- Pipe JSON directly into the selector instead of creating temp files:
+  `echo '<json array>' | python tools/imageselector/imageselector.py`
+- Do NOT create temporary JSON files for image selection
+
 ## Image Proxy
 
 Wikimedia/Wikipedia images often block external embedding. Download these to a local proxy folder.

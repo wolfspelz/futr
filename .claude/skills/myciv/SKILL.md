@@ -103,9 +103,10 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
    - Official art: Note the copyright holder (studio, publisher) and use Fair Use rationale
 5. **Proxy images from Wikimedia/Wikipedia** (see content.md Image Proxy section) before proceeding to selection
 6. **Use the Image Selector tool** to let the user visually pick images:
-   - Write all candidate images as a JSON array to a temp file (each object must have `src`, `text`, `link`, `author`, `license`, `legal`, and optionally `tags`)
+   - Pipe the candidate images as a JSON array directly into the selector (do NOT create temp files):
+     `echo '<json array>' | python tools/imageselector/imageselector.py`
+   - Each object must have `src`, `text`, `link`, `author`, `license`, `legal`, and optionally `tags`
    - For `/proxy/` images, ensure the files are downloaded to `data/proxy/` first so the tool can display them
-   - Run: `python tools/imageselector/imageselector.py --file <tempfile>`
    - The tool opens a GUI grid showing all candidates. The user clicks to select/deselect, and drags to reorder. The first image becomes the tile/primary image.
    - Parse the JSON output (stdout) as the final selected images. The output order matches the user's chosen order — use it directly for the `images:` list in info.yaml.
    - If the tool exits with code 1, the user cancelled -- ask what they'd like to change
