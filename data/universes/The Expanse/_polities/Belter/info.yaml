@@ -1,0 +1,58 @@
+title: Belter
+created: 2026-02-22
+changed: 2026-02-22
+tags: [index]
+order: 0
+images:
+  - src: /proxy/encrypted-tbn0.gstatic.com/opa_logo.png
+    text: OPA logo, the split-circle anarchist A emblem
+    link: https://expanse.fandom.com/wiki/Outer_Planets_Alliance
+    author: Alcon Entertainment
+    license: "(c) Alcon Entertainment"
+    legal: Copyrighted logo design from The Expanse TV series. Used for commentary under Fair Use.
+    tags: [main]
+  - src: /proxy/static.wikia.nocookie.net/expanse/images/1/16/Tynan_.png
+    text: OPA ship Tynan, a battered retrofitted freighter with Epstein drive
+    link: https://expanse.fandom.com/wiki/Tynan
+    author: Alcon Entertainment / Amazon Studios
+    license: "(c) Alcon Entertainment"
+    legal: Copyrighted CGI from The Expanse TV series. Used for commentary under Fair Use.
+  - src: /proxy/i.redd.it/opa-mech.jpg
+    text: OPA mech with Tycho Manufacturing patch, 3D fan art
+    link: https://www.reddit.com/r/TheExpanse/
+    author: Unknown (fan art)
+    license: Unknown
+    legal: Fan-created 3D render of an OPA-branded mech. Attribution incomplete.
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/4/4c/Ceres_-_RC3_-_Haulani_Crater_(22381131691)_(cropped)_(calibrated).png
+    text: Ceres from Dawn's northern approach, Haulani crater visible
+    link: https://commons.wikimedia.org/wiki/File:Ceres_-_RC3_-_Haulani_Crater_(22381131691)_(cropped)_(calibrated).png
+    author: NASA / JPL-Caltech / UCLA / MPS / DLR / IDA / Justin Cowart
+    license: Public Domain
+    legal: Public domain as a work of the U.S. government (PD-NASA).
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/1/1c/Eros_(APOD).jpg
+    text: Asteroid 433 Eros from NEAR Shoemaker, site of Eros Station
+    link: https://commons.wikimedia.org/wiki/File:Eros_(APOD).jpg
+    author: NASA / JPL / APOD
+    license: Public Domain
+    legal: Public domain as a work of the U.S. government (PD-NASA).
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/2/25/Titan_globe.jpg
+    text: Titan, Saturn's largest moon, a key Outer Planets location (Cassini, 2004)
+    link: https://commons.wikimedia.org/wiki/File:Titan_globe.jpg
+    author: NASA / JPL / Space Science Institute
+    license: Public Domain
+    legal: Public domain as a work of the U.S. government (PD-NASA).
+links:
+  - link: https://expanse.fandom.com/wiki/Outer_Planets_Alliance
+    text: Expanse Wiki - OPA
+  - link: https://expanse.fandom.com/wiki/OPA_Navy
+    text: Expanse Wiki - OPA Navy
+readme: |
+  The Outer Planets Alliance speaks for the millions who live and work in the asteroid belt and on the outer moons of the Sol System. It is not a government in any traditional sense, but a loose coalition of political factions, labor unions, militant cells, and community organizers. What they share is a Belter identity and a long list of grievances.
+
+  Belters grow tall and thin in low gravity, their bones fragile, their bodies unable to survive Earth's crushing pull. They mine asteroids, haul ice from Saturn's rings, and maintain the stations that keep the inner planets supplied with raw materials. In return, they pay taxes on air and water and receive little political representation from the United Nations that nominally administers most Belt stations.
+
+  # Factions
+
+  The OPA has no single leader. Anderson Dawes runs the Ceres faction with populist appeal, redistributing corporate bribes back into the community. Fred Johnson, a former UN Marine colonel who defected after the Anderson Station massacre, commands Tycho Station and wants a seat at the table for the Belt. The Black Sky faction practices drone terrorism. The Voltaire Collective organizes labor. Dozens of smaller cells operate across the Belt, each with their own methods and goals.
+
+  What unites them is the conviction that Belters deserve to govern themselves, control their own resources, and stop dying so that Earth and Mars can prosper.

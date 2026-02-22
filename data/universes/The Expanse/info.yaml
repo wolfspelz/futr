@@ -1,41 +1,83 @@
 title: The Expanse
 created: 2026-02-11
-changed: 2026-02-19
+changed: 2026-02-22
 order: 0
 tags: [index, new]
-showcaseMetrics: [Population, Kardashev, Planets, Warships, Techlevel, Class]
+showcaseMetrics: [Population, Kardashev, Planets, Warships, Techlevel, Class, Civilization Age]
 images:
+  - src: /proxy/static.wikia.nocookie.net/expanse/images/3/3d/MCRNTachiConceptArt.png
+    text: MCRN Tachi in original military livery, concept art by Ryan Dening / North Front Studio
+    link: https://expanse.fandom.com/wiki/Rocinante_(TV)
+    author: Ryan Dening / North Front Studio
+    license: "(c) Alcon Entertainment"
+    legal: Copyrighted concept art from The Expanse TV series. Used for commentary under Fair Use.
+    tags: [main]
+  - src: /proxy/static.wikia.nocookie.net/expanse/images/d/d9/S03E02roci1-32m38s.jpg
+    text: Rocinante in flight with PDCs deployed, Season 3 screenshot
+    link: https://expanse.fandom.com/wiki/Rocinante_(TV)
+    author: Alcon Entertainment / Amazon Studios
+    license: "(c) Alcon Entertainment"
+    legal: Copyrighted screenshot from The Expanse TV series S03E02. Used for commentary under Fair Use.
   - src: /proxy/upload.wikimedia.org/wikipedia/en/0/08/Leviathan_Wakes.jpg
     text: Leviathan Wakes, the first novel in The Expanse series
     link: https://en.wikipedia.org/wiki/Leviathan_Wakes
     author: Daniel Dociu
     license: "(c) Orbit Books"
     legal: Copyrighted book cover art by Daniel Dociu for Orbit Books. Used for commentary under Fair Use.
-    tags: [main]
-  - src: /proxy/upload.wikimedia.org/wikipedia/commons/b/bd/The_Expanse_logo.png
-    text: The Expanse logo
-    link: https://commons.wikimedia.org/wiki/File:The_Expanse_logo.png
-    author: Alcon Entertainment
-    license: PD (textlogo)
-    legal: Public domain as a simple text logo.
   - src: /proxy/upload.wikimedia.org/wikipedia/en/1/15/Calibans_War.jpg
     text: "Caliban's War, the second novel"
     link: https://en.wikipedia.org/wiki/Caliban%27s_War
     author: Daniel Dociu
     license: "(c) Orbit Books"
     legal: Copyrighted book cover art by Daniel Dociu for Orbit Books. Used for commentary under Fair Use.
-  - src: /proxy/upload.wikimedia.org/wikipedia/commons/4/4e/Flag_of_the_Martian_Congressional_Republic.svg
-    text: Flag of the Martian Congressional Republic
-    link: https://commons.wikimedia.org/wiki/File:Flag_of_the_Martian_Congressional_Republic.svg
-    author: Artemis Andromeda
+  - src: /proxy/static.wikia.nocookie.net/expanse/images/1/16/Tynan_.png
+    text: OPA ship Tynan, a battered retrofitted freighter with Epstein drive
+    link: https://expanse.fandom.com/wiki/Tynan
+    author: Alcon Entertainment / Amazon Studios
+    license: "(c) Alcon Entertainment"
+    legal: Copyrighted CGI from The Expanse TV series. Used for commentary under Fair Use.
+  - src: /proxy/static.wikia.nocookie.net/the-expanse/images/6/68/Tycho_Station.png
+    text: Tycho Station and the LDSS Nauvoo under construction, CGI from the TV series
+    link: https://expanse.fandom.com/wiki/Tycho_Station
+    author: Alcon Entertainment / North Front Studios
+    license: "(c) Alcon Entertainment"
+    legal: Copyrighted CGI from The Expanse TV series. Used for commentary under Fair Use.
+  - src: /proxy/static.wikia.nocookie.net/expanse/images/8/81/Mcrntachihangarbaydonnager.png
+    text: MCRN Tachi docked in the Donnager's hangar bay
+    link: https://expanse.fandom.com/wiki/Rocinante_(TV)
+    author: Alcon Entertainment / North Front Studios
+    license: "(c) Alcon Entertainment"
+    legal: Copyrighted CGI from The Expanse TV series. Used for commentary under Fair Use.
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/a/a7/Full-Hemisphere_Views_of_Earth_at_Night.png
+    text: Earth at night, showing the city lights of thirty billion people
+    link: https://commons.wikimedia.org/wiki/File:Full-Hemisphere_Views_of_Earth_at_Night.png
+    author: NASA on The Commons
     license: Public Domain
-    legal: Public domain (PD-shape), fan recreation based on TV show design by Jonathan Hunter.
-  - src: /proxy/upload.wikimedia.org/wikipedia/commons/0/0e/Shohreh_Aghdashloo_(3)_(38111500402)_(cropped).jpg
-    text: Shohreh Aghdashloo, who portrays Chrisjen Avasarala
-    link: https://commons.wikimedia.org/wiki/File:Shohreh_Aghdashloo_(3)_(38111500402)_(cropped).jpg
-    author: Jeff Hitchcock
-    license: CC BY 2.0
-    legal: "https://creativecommons.org/licenses/by/2.0/"
+    legal: No known copyright restrictions (Flickr Commons / NASA).
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/1/19/Gateway_-_Full_Configuration_Hero_Image_-_121123.png
+    text: Orbital station concept art, evoking UN orbital infrastructure
+    link: https://commons.wikimedia.org/wiki/File:Gateway_-_Full_Configuration_Hero_Image_-_121123.png
+    author: NASA JSC / Alberto Bertolin, Bradley Reynolds
+    license: Public Domain
+    legal: Public domain as a work of the U.S. government (PD-NASA).
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/2/23/Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg
+    text: Dense megacity skyline, evoking Earth's overpopulated cities
+    link: https://commons.wikimedia.org/wiki/File:Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg
+    author: David Iliff (Diliff)
+    license: CC BY 3.0
+    legal: "https://creativecommons.org/licenses/by/3.0/"
+  - src: /proxy/static.wikia.nocookie.net/expanse/images/6/61/S05E01tychostation08m31s.jpg
+    text: Tycho Station in the Belt, screenshot from Season 5 Episode 1
+    link: https://expanse.fandom.com/wiki/Tycho_Station
+    author: Alcon Entertainment / Amazon Studios
+    license: "(c) Alcon Entertainment"
+    legal: Copyrighted screenshot from The Expanse TV series S05E01. Used for commentary under Fair Use.
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/1/1c/Eros_(APOD).jpg
+    text: Asteroid 433 Eros from NEAR Shoemaker, site of Eros Station
+    link: https://commons.wikimedia.org/wiki/File:Eros_(APOD).jpg
+    author: NASA / JPL / APOD
+    license: Public Domain
+    legal: Public domain as a work of the U.S. government (PD-NASA).
 links:
   - link: https://expanse.fandom.com/wiki/The_Expanse_Wiki
     text: The Expanse Wiki
@@ -98,6 +140,15 @@ sources:
   - https://en.wikipedia.org/wiki/The_Expanse_(TV_series)
   - https://en.wikipedia.org/wiki/James_S._A._Corey
   - https://en.wikipedia.org/wiki/Leviathan_Wakes
+  # Expanse Wiki - OPA research
+  - https://expanse.fandom.com/wiki/Tycho_Station
+  - https://expanse.fandom.com/wiki/Pallas
+  - https://expanse.fandom.com/wiki/Titan
+  - https://expanse.fandom.com/wiki/Saturn
+  - https://expanse.fandom.com/wiki/Belter
+  - https://expanse.fandom.com/wiki/Asteroid_Mining
+  - https://expanse.fandom.com/wiki/Fred_Johnson_(TV)
+  - https://expanse.fandom.com/wiki/Anderson_Dawes_(TV)
   # Expanse Wiki - MCR research
   - https://expanse.fandom.com/wiki/Mars_Terraforming_Project
   - https://expanse.fandom.com/wiki/Stealth_technology

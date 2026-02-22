@@ -1,0 +1,26 @@
+created: 2026-02-22
+changed: 2026-02-22
+value: 0.67
+min: 0.62
+max: 0.69
+confidence: calculatedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Epstein_Drive
+    text: "Expanse Wiki - Epstein Drive (D-He3 fusion)"
+  - link: https://expanse.fandom.com/wiki/List_of_nations_by_different_criteria
+    text: "Expanse Wiki - Nations comparison (population data)"
+  - link: https://kardashev.fandom.com/wiki/Humans_(The_Expanse)
+    text: "Kardashev Scale Wiki - Humans (The Expanse)"
+readme: |
+  Population: 100e6 (OPA's own estimate). Estimated per-person power: 50,000 W. Belter stations require full life support (air recycling, water recycling, temperature control, spin gravity maintenance, lighting) plus mining and industrial operations. Less energy-intensive than Mars (75,000 W/person) because the Belt has no terraforming project and operates older, less efficient equipment.
+
+  Total power: 100e6 x 50,000 = 5e12 W.
+  Per-person: 50,000 W (vs Earth 2023: 2,200 W/person, roughly 23x more).
+  Kardashev: log10(5e12) / 10 - 0.6 = 12.699 / 10 - 0.6 = 0.67.
+
+  Below Earth 2023 (K=0.73) because the OPA's total population is tiny despite space-age per-capita energy use.
+
+  Min (50M people x 30,000 W): 1.5e12 W, K = 0.62.
+  Max (100M people x 75,000 W): 7.5e12 W, K = 0.69.

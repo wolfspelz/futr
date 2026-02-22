@@ -1,0 +1,17 @@
+created: 2026-02-22
+changed: 2026-02-22
+value: 10
+min: 5
+max: 30
+confidence: calculatedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/OPA_Navy
+    text: "Expanse Wiki - OPA Navy (no formal navy at this time)"
+  - link: https://expanse.fandom.com/wiki/List_of_nations_by_different_criteria
+    text: "Expanse Wiki - Nations comparison (OPA military: Tier 3)"
+readme: |
+  At the 2350 snapshot (start of Leviathan Wakes), the OPA has no formal navy. Armed forces consist of retrofitted civilian vessels: freighters and mining ships fitted with improvised weapons, plus a handful of captured or stolen military vessels. No purpose-built warships exist yet. The Behemoth (converted Nauvoo) and first custom-built OPA gunships come later.
+
+  The OPA is rated Tier 3 on the in-universe military scale, with "thousands of marines" but no dedicated warships. The value of 10 represents armed vessels capable of combat, not the thousands of unarmed civilian ships that Belters operate.

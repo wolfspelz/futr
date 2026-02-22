@@ -1,0 +1,13 @@
+created: 2026-02-22
+changed: 2026-02-22
+value: 7
+confidence: informedGuess
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/Epstein_Drive
+    text: "Expanse Wiki - Epstein Drive (D-He3 fusion)"
+  - link: https://expanse.fandom.com/wiki/Scale_of_Technological_Sophistication
+    text: "Expanse Wiki - Scale of Technological Sophistication (OPA rated Tier 3)"
+readme: |
+  TL 7 (Fusion): Same Epstein drive technology (deuterium-helium-3 fusion) as the rest of the Sol System. No unique advanced tech, no degradation of core capabilities. The OPA is rated Tier 3 on the in-universe scale of technological sophistication, below Mars (Tier 1) and the UN (Tier 2), but this reflects equipment age and military investment rather than a fundamental technology gap.

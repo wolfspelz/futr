@@ -1,0 +1,20 @@
+created: 2026-02-22
+changed: 2026-02-22
+value: 100e6
+min: 50e6
+confidence: semiCanon
+tags: [index]
+order: 0
+references:
+  - link: https://expanse.fandom.com/wiki/List_of_nations_by_different_criteria
+    text: "Expanse Wiki - List of nations by different criteria (50-100 million)"
+  - link: https://expanse.fandom.com/wiki/Outer_Planets_Alliance
+    text: "Expanse Wiki - Outer Planets Alliance"
+  - link: https://expanse.fandom.com/wiki/Ceres
+    text: "Expanse Wiki - Ceres (6 million permanent + 1 million transient)"
+  - link: https://expanse.fandom.com/wiki/Eros
+    text: "Expanse Wiki - Eros (1.5 million in books)"
+readme: |
+  Inner planet census estimates ~50 million Belters. The OPA's own count is ~100 million, likely including uncounted populations on small stations and ships. Using the OPA estimate as the primary value and the inner planet figure as the minimum.
+
+  Major stations: Ceres (6M permanent + 1M transient), Eros (~1.5M in books), Saturn system (~20M total across moons), Pallas (hundreds of thousands), Tycho (~15,000), plus hundreds of smaller stations and ship-dwelling Belters.
