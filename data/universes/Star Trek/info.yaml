@@ -1,6 +1,6 @@
 title: Star Trek
 created: 2023-09-17
-changed: 2026-01-27
+changed: 2026-02-23
 tags: [fav, new, index]
 order: 1000
 icons:
@@ -26,4 +26,21 @@ links:
     - link: https://en.wikipedia.org/wiki/Star_Trek
       text: Star Trek on Wikipedia
 editors: [wolfspelz]
-showcaseMetrics: [Planets, Kardashev, Techlevel, Class]
+showcaseMetrics: [Population, Planets, Kardashev, Techlevel, Class]
+sources:
+  # Primary wiki
+  - https://memory-alpha.fandom.com/wiki/Klingon_Empire  # territory, government, military
+  - https://memory-alpha.fandom.com/wiki/Klingon  # species, culture
+  - https://memory-alpha.fandom.com/wiki/Klingon_High_Council  # government structure
+  - https://memory-alpha.fandom.com/wiki/Klingon_Defense_Force  # military
+  - https://memory-alpha.fandom.com/wiki/Klingon_augment_virus  # Augment crisis
+  - https://memory-alpha.fandom.com/wiki/Qo%27noS  # homeworld, population 3.84B in 2378
+  - https://memory-alpha.fandom.com/wiki/Klingon_planets  # 23 confirmed worlds
+  # Secondary wiki
+  - https://memory-beta.fandom.com/wiki/Klingon_Empire  # territory estimates, star systems
+  - https://memory-beta.fandom.com/wiki/Klingon_stars_and_star_systems  # 130+ systems
+  # Kardashev estimates
+  - http://www.trek.fm/feature-articles/2012/2/3/just-my-type-kardashev-civilizations-in-star-trek-and-beyond.html  # Type II classification
+  # Forums
+  - https://www.trekbbs.com/threads/the-galactic-population.283941/  # population estimates
+  - https://www.trekbbs.com/threads/when-did-different-species-achieve-space-travel-warp.126164/  # FTL dates

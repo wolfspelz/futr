@@ -1,0 +1,20 @@
+created: 2026-02-23
+changed: 2026-02-23
+tags: [index]
+value: 20
+min: 15
+max: 30
+confidence: informedGuess
+references:
+  - link: https://memory-alpha.fandom.com/wiki/Klingon_planets
+    text: Memory Alpha - Klingon planets (23 confirmed across all eras)
+  - link: https://memory-beta.fandom.com/wiki/Klingon_Empire
+    text: Memory Beta - Klingon Empire
+readme: |
+  Memory Alpha lists 23 confirmed Klingon worlds across all eras. Not all
+  were held by 2161. Known 22nd-century worlds include Qo'noS (homeworld),
+  Boreth, Rura Penthe, N'Vak Colony, Qu'Vat Colony, Krios Prime, and Ty'Gokor.
+
+  The Empire is already a major interstellar power with centuries of
+  colonization behind it. 20 inhabited worlds is a conservative mid-range
+  estimate for this era.

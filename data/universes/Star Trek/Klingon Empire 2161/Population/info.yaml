@@ -1,0 +1,23 @@
+created: 2026-02-23
+changed: 2026-02-23
+tags: [index]
+value: 9e9
+min: 5e9
+max: 15e9
+confidence: informedGuess
+references:
+  - link: https://memory-alpha.fandom.com/wiki/Qo%27noS
+    text: "Memory Alpha - Qo'noS (3.84 billion in 2378)"
+  - link: https://memory-alpha.fandom.com/wiki/Klingon_Empire
+    text: Memory Alpha - Klingon Empire
+  - link: https://www.trekbbs.com/threads/the-galactic-population.283941/
+    text: TrekBBS - The Galactic Population (fan estimates)
+readme: |
+  No canon population figure exists for the 22nd century Klingon Empire.
+  Qo'noS has 3.84 billion inhabitants in 2378 (canon). In 2161, the homeworld
+  population is likely similar or slightly lower, around 3-4 billion.
+
+  With roughly 20 colony worlds averaging 250 million each, total Empire
+  population is estimated at 9 billion. Range reflects uncertainty: the low
+  end assumes fewer, smaller colonies; the high end assumes more established
+  worlds with larger populations.

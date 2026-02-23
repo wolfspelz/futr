@@ -1,0 +1,27 @@
+created: 2026-02-23
+changed: 2026-02-23
+tags: [index]
+value: 0.9
+min: 0.85
+max: 0.95
+confidence: calculatedGuess
+references:
+  - link: https://memory-alpha.fandom.com/wiki/Klingon_Empire
+    text: Memory Alpha - Klingon Empire
+  - link: https://en.wikipedia.org/wiki/Kardashev_scale
+    text: Wikipedia - Kardashev Scale
+  - link: http://www.trek.fm/feature-articles/2012/2/3/just-my-type-kardashev-civilizations-in-star-trek-and-beyond.html
+    text: "Trek.fm - Kardashev Civilizations in Star Trek"
+readme: |
+  Population: 9e9. Estimated per-person power: ~100,000 W/person.
+  Military-industrial spacefaring civilization with warp ships, disruptor
+  manufacturing, planetary industry. About 45x Earth 2023 (2,200 W/person).
+
+  Total power: 9e9 x 1e5 = 9e14 W (900 TW).
+  Kardashev: log10(9e14) / 10 - 0.6 = 14.95/10 - 0.6 = 0.895, rounded to 0.9.
+
+  Comparable to Andorian Empire 2161 (K=0.9, similar tech era).
+  Earth 2023 baseline: K=0.73. Federation 2373: K=1.0.
+
+  Note: some sources classify the 24th-century Klingon Empire as Type II,
+  but that reflects a much later era with far more territory and energy usage.

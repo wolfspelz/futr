@@ -1,0 +1,16 @@
+created: 2026-02-23
+changed: 2026-02-23
+tags: [index]
+value: 930
+confidence: semiCanon
+references:
+  - link: https://www.trekbbs.com/threads/when-did-different-species-achieve-space-travel-warp.126164/
+    text: TrekBBS - Species Warp Dates Discussion
+  - link: https://memory-alpha.fandom.com/wiki/Klingon_Empire
+    text: Memory Alpha - Klingon Empire
+readme: |
+  Star Trek Star Charts (2002) places Klingon warp capability at approximately
+  930 AD (Earth calendar). This makes them one of the older warp-capable
+  civilizations in the region, predating humans by over 1,100 years
+  (Earth achieved warp in 2063) but postdating the Vulcans (~320 AD)
+  and the Andorians (~1154 AD).
