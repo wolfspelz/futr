@@ -28,6 +28,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 import requests
+import cairosvg
 from PIL import Image, ImageDraw, ImageTk
 
 import tkinter as tk
@@ -59,18 +60,42 @@ def resolve_src(src, data_dir):
     return ("url", src)
 
 
+def _is_svg(path, data=None):
+    """Check if a file path or data looks like SVG."""
+    if path.lower().endswith(".svg"):
+        return True
+    if data and data[:256].lstrip().startswith((b"<?xml", b"<svg")):
+        return True
+    return False
+
+
+def _svg_to_pil(svg_data, thumb_size):
+    """Convert SVG bytes to a PIL Image at the given size."""
+    png_data = cairosvg.svg2png(bytestring=svg_data,
+                                output_width=thumb_size, output_height=thumb_size)
+    return Image.open(io.BytesIO(png_data))
+
+
 def load_image(src, data_dir, thumb_size=THUMB_SIZE):
     """Load an image from URL or file path, return PIL Image thumbnail."""
     kind, path = resolve_src(src, data_dir)
     try:
         if kind == "file":
-            img = Image.open(path)
+            with open(path, "rb") as f:
+                data = f.read()
+            if _is_svg(path, data):
+                img = _svg_to_pil(data, thumb_size)
+            else:
+                img = Image.open(io.BytesIO(data))
         else:
             resp = requests.get(path, timeout=15, headers={
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) FUTR-ImageSelector/1.0"
             })
             resp.raise_for_status()
-            img = Image.open(io.BytesIO(resp.content))
+            if _is_svg(path, resp.content):
+                img = _svg_to_pil(resp.content, thumb_size)
+            else:
+                img = Image.open(io.BytesIO(resp.content))
 
         img = img.convert("RGBA")
         img.thumbnail((thumb_size, thumb_size), Image.LANCZOS)
