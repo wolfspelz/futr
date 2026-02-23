@@ -3,6 +3,26 @@ created: 2026-02-23
 changed: 2026-02-23
 tags: [index]
 order: 0
+images:
+  - src: https://images.prismic.io/star-trek-untold/YmRjNTc0NDEtMjkzNy00ZDVjLWE2Y2MtOTliNDgxYjM2ODE3_66fae5b05c0f64c4d2bdcdf1ad85f7b2.jpeg?auto=compress,format&rect=0,0,2800,1178&w=2800&h=1178
+    text: "Klingon Empire promotional art from startrek.com"
+    link: https://www.startrek.com/news/boldly-go-into-the-klingon-empire
+    author: Paramount Global / CBS Studios
+    license: "(c) Paramount Global"
+    legal: "Copyrighted by Paramount Global. Used for commentary and educational purposes under Fair Use."
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/0/02/Klingon_Empire_Flag.png
+    text: "Flag of the Klingon Empire"
+    link: https://commons.wikimedia.org/wiki/File:Klingon_Empire_Flag.svg
+    author: Oren neu dag
+    license: "Public Domain"
+    legal: "This work is ineligible for copyright and therefore in the public domain."
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/b/b2/Bat'leths.jpg
+    text: "Klingon bat'leths at the Khemorex Klinzhai booth at FedCon"
+    link: https://commons.wikimedia.org/wiki/File:Bat%27leths.jpg
+    author: Maximilian Reininghaus
+    license: "CC BY 3.0"
+    legal: "https://creativecommons.org/licenses/by/3.0/"
 links:
   - link: https://memory-alpha.fandom.com/wiki/Klingon
     text: Memory Alpha - Klingon

@@ -5,6 +5,20 @@ order: 0
 date: 2161
 polity: Klingons
 tags: [index, new]
+images:
+  - src: https://images.prismic.io/star-trek-untold/YmRjNTc0NDEtMjkzNy00ZDVjLWE2Y2MtOTliNDgxYjM2ODE3_66fae5b05c0f64c4d2bdcdf1ad85f7b2.jpeg?auto=compress,format&rect=0,0,2800,1178&w=2800&h=1178
+    text: "Klingon Empire promotional art from startrek.com"
+    link: https://www.startrek.com/news/boldly-go-into-the-klingon-empire
+    author: Paramount Global / CBS Studios
+    license: "(c) Paramount Global"
+    legal: "Copyrighted by Paramount Global. Used for commentary and educational purposes under Fair Use."
+    tags: [main]
+  - src: /proxy/upload.wikimedia.org/wikipedia/commons/0/02/Klingon_Empire_Flag.png
+    text: "Flag of the Klingon Empire"
+    link: https://commons.wikimedia.org/wiki/File:Klingon_Empire_Flag.svg
+    author: Oren neu dag
+    license: "Public Domain"
+    legal: "This work is ineligible for copyright and therefore in the public domain."
 links:
   - link: https://memory-alpha.fandom.com/wiki/Klingon_Empire
     text: Memory Alpha - Klingon Empire

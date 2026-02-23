@@ -28,7 +28,8 @@
       "Bash(python tools/imageselector/imageselector.py:*)",
       "Bash(\"C:/Heiner/github-futr/tmp_polity_images.json\":*)",
       "Bash(git -C \"C:/Heiner/github-futr\" log --oneline -5)",
-      "Bash(git -C \"C:/Heiner/github-futr\" status -u)"
+      "Bash(git -C \"C:/Heiner/github-futr\" status -u)",
+      "Bash(echo:*)"
     ],
     "defaultMode": "acceptEdits"
   },
