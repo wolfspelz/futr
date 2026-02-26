@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR — Fictional Universe Taxonomy Research</title>
+<meta name="description" content="Collecting and analyzing statistical data about civilizations from fictional universes and real-world history.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   FUTR — Stellar Cartography Design System
+   Concept: Cosmic Librarian
+   Interaction: Illuminate, Materialize, Flow
+   ============================================ */
+
+/* --- Design Tokens --- */
+:root {
+  --void: #080C16;
+  --dust: #0F1628;
+  --mist: #1A2340;
+  --mist-light: #243054;
+  --starlight: #E2D9C8;
+  --starlight-dim: rgba(226, 217, 200, 0.65);
+  --gold: #C9A84C;
+  --gold-glow: rgba(201, 168, 76, 0.08);
+  --gold-glow-strong: rgba(201, 168, 76, 0.18);
+  --teal: #32A5A5;
+  --amber: #DA7E4A;
+  --amber-soft: rgba(218, 126, 74, 0.15);
+  --confidence-canon: #5CB85C;
+  --confidence-calc: #C9A84C;
+  --confidence-guess: #DA7E4A;
+
+  /* Universe accent overrides */
+  --accent-startrek: #32A5A5;
+  --accent-warhammer: #D4A843;
+  --accent-firefly: #A8897A;
+  --accent-culture: #8AB4C4;
+  --accent-honorverse: #B89D6A;
+  --accent-perryRhodan: #A0A0D0;
+  --accent-orionsArm: #5AAFCF;
+  --accent-expanse: #7A9AAA;
+  --accent-reality: #A0B0A0;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  --nav-height: 52px;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--starlight);
+  background: var(--void);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* --- Background Layers --- */
+.bg-coord-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 99px, var(--starlight) 99px, var(--starlight) 100px),
+    repeating-linear-gradient(90deg, transparent, transparent 99px, var(--starlight) 99px, var(--starlight) 100px);
+  background-size: 100px 100px;
+}
+
+.bg-coord-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--starlight) 1px, transparent 1px);
+  background-size: 100px 100px;
+  background-position: -0.5px -0.5px;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.bg-coord-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, var(--starlight) 19px, var(--starlight) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, var(--starlight) 19px, var(--starlight) 20px);
+  background-size: 20px 20px;
+}
+
+.bg-stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-stars .star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--starlight);
+}
+
+.bg-hue-shift {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(40, 25, 15, 0.08) 100%);
+}
+
+/* --- Constellation Lines (desktop only) --- */
+.constellation-lines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  .constellation-lines { display: block; }
+}
+
+.constellation-lines .c-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  opacity: 0.06;
+  animation: lineShimmer 8s ease-in-out infinite;
+}
+
+.constellation-lines .c-line:nth-child(2) { animation-delay: -2.5s; }
+.constellation-lines .c-line:nth-child(3) { animation-delay: -5s; }
+.constellation-lines .c-line:nth-child(4) { animation-delay: -7s; }
+
+@keyframes lineShimmer {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.09; }
+}
+
+/* --- Content wrapper --- */
+.content-layer {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Sticky Navigation --- */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  background: rgba(8, 12, 22, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 35, 64, 0.4);
+  transition: background 0.4s ease, border-color 0.3s ease;
+}
+
+.site-nav.scrolled {
+  background: rgba(8, 12, 22, 0.92);
+  border-bottom-color: rgba(26, 35, 64, 0.8);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--starlight-dim);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--starlight);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--starlight);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (max-width: 600px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(8, 12, 22, 0.96);
+    backdrop-filter: blur(16px);
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--mist);
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1rem; }
+}
+
+/* --- Hero Section --- */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: calc(var(--nav-height) + 3rem) clamp(1.25rem, 6vw, 5rem) 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-radial {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: min(50vw, 600px);
+  height: min(50vw, 600px);
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.hero-radial circle,
+.hero-radial line {
+  stroke: var(--gold);
+  fill: none;
+}
+
+.hero-radial .pulse-ring {
+  animation: radarPulse 6s ease-out infinite;
+  transform-origin: center;
+}
+
+.hero-radial .pulse-ring:nth-child(2) { animation-delay: -2s; }
+.hero-radial .pulse-ring:nth-child(3) { animation-delay: -4s; }
+
+@keyframes radarPulse {
+  0% { opacity: 0.6; transform: scale(0.3); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4rem, 15vw, 12rem);
+  line-height: 0.88;
+  color: var(--starlight);
+  letter-spacing: -0.03em;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title span {
+  display: block;
+  background: linear-gradient(135deg, var(--starlight) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 400;
+  color: var(--starlight-dim);
+  max-width: 38ch;
+  margin-top: 1.5rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-stats {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  margin-top: 3rem;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.hero-stat {
+  background: rgba(15, 22, 40, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(26, 35, 64, 0.6);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Asymmetric stat positioning — middle stat offset upward */
+.hero-stat:nth-child(2) {
+  transform: translateY(-12px);
+  padding: 1.15rem 1.75rem;
+}
+
+.hero-stat:nth-child(3) {
+  transform: translateY(-4px);
+}
+
+.hero-stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+
+.hero-stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--gold);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--starlight-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 0.35rem;
+}
+
+/* --- Section Shared --- */
+.section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.section-tag {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  color: var(--starlight);
+}
+
+.section-description {
+  font-size: 1.05rem;
+  color: var(--starlight-dim);
+  max-width: 55ch;
+  margin-top: 0.75rem;
+  line-height: 1.65;
+}
+
+/* --- Universe Showcase Grid --- */
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .universe-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .universe-grid { grid-template-columns: 1fr; }
+}
+
+/* --- Universe Card --- */
+a.universe-card,
+a.civ-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.universe-card {
+  background: var(--dust);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  cursor: pointer;
+}
+
+.universe-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 10%, var(--gold) 50%, transparent 90%);
+  opacity: 0.2;
+  transition: opacity 0.4s ease;
+  z-index: 3;
+}
+
+.universe-card:hover {
+  border-color: var(--mist-light);
+  box-shadow: 0 0 30px var(--gold-glow);
+  background: rgba(15, 22, 40, 0.8);
+}
+
+.universe-card:hover::before {
+  opacity: 0.5;
+}
+
+/* Featured cards span 2 cols */
+.universe-card.featured {
+  grid-column: span 2;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(15, 22, 40, 0.5);
+  border-color: rgba(26, 35, 64, 0.7);
+}
+
+.universe-card.featured:hover {
+  box-shadow: 0 0 40px var(--gold-glow-strong);
+}
+
+@media (max-width: 560px) {
+  .universe-card.featured { grid-column: span 1; }
+}
+
+.card-image-wrap {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.universe-card.featured .card-image-wrap {
+  height: 200px;
+}
+
+.card-image-wrap .card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.70;
+  transition: opacity 0.4s ease;
+}
+
+.universe-card:hover .card-img {
+  opacity: 0.85;
+}
+
+.card-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, var(--dust) 100%);
+  pointer-events: none;
+}
+
+.universe-card.featured .card-image-wrap::after {
+  background: linear-gradient(180deg, transparent 50%, rgba(15, 22, 40, 0.5) 100%);
+}
+
+.card-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.card-universe-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--gold);
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+/* Universe-specific accent colors */
+.universe-card[data-universe="startrek"] .card-universe-name,
+.universe-card[data-universe="startrek"] .data-plate-value { color: var(--accent-startrek); }
+.universe-card[data-universe="startrek"]::before { background: linear-gradient(90deg, transparent 10%, var(--accent-startrek) 50%, transparent 90%); }
+
+.universe-card[data-universe="warhammer"] .card-universe-name,
+.universe-card[data-universe="warhammer"] .data-plate-value { color: var(--accent-warhammer); }
+
+.universe-card[data-universe="firefly"] .card-universe-name,
+.universe-card[data-universe="firefly"] .data-plate-value { color: var(--accent-firefly); }
+.universe-card[data-universe="firefly"]::before { background: linear-gradient(90deg, transparent 10%, var(--accent-firefly) 50%, transparent 90%); }
+
+.universe-card[data-universe="culture"] .card-universe-name,
+.universe-card[data-universe="culture"] .data-plate-value { color: var(--accent-culture); }
+.universe-card[data-universe="culture"]::before { background: linear-gradient(90deg, transparent 10%, var(--accent-culture) 50%, transparent 90%); }
+
+.universe-card[data-universe="honorverse"] .card-universe-name,
+.universe-card[data-universe="honorverse"] .data-plate-value { color: var(--accent-honorverse); }
+
+.universe-card[data-universe="perryRhodan"] .card-universe-name,
+.universe-card[data-universe="perryRhodan"] .data-plate-value { color: var(--accent-perryRhodan); }
+.universe-card[data-universe="perryRhodan"]::before { background: linear-gradient(90deg, transparent 10%, var(--accent-perryRhodan) 50%, transparent 90%); }
+
+.universe-card[data-universe="orionsArm"] .card-universe-name,
+.universe-card[data-universe="orionsArm"] .data-plate-value { color: var(--accent-orionsArm); }
+.universe-card[data-universe="orionsArm"]::before { background: linear-gradient(90deg, transparent 10%, var(--accent-orionsArm) 50%, transparent 90%); }
+
+.universe-card[data-universe="expanse"] .card-universe-name,
+.universe-card[data-universe="expanse"] .data-plate-value { color: var(--accent-expanse); }
+
+.universe-card[data-universe="reality"] .card-universe-name,
+.universe-card[data-universe="reality"] .data-plate-value { color: var(--accent-reality); }
+
+.card-meta {
+  font-size: 0.875rem;
+  color: var(--starlight-dim);
+  margin-top: 0.3rem;
+}
+
+.card-data-plates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* --- Data Plate (reusable) --- */
+.data-plate {
+  background: rgba(26, 35, 64, 0.4);
+  border: 1px solid rgba(26, 35, 64, 0.6);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  min-width: 0;
+}
+
+.data-plate-label {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--starlight-dim);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.data-plate-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--gold);
+  line-height: 1.2;
+  margin-top: 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.confidence-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.confidence-dot.canon { background: var(--confidence-canon); }
+.confidence-dot.calculated { background: var(--confidence-calc); }
+.confidence-dot.guess { background: var(--confidence-guess); }
+
+/* --- Latest Civilizations Section --- */
+.civ-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 800px) {
+  .civ-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .civ-grid { grid-template-columns: 1fr; }
+}
+
+.civ-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--dust);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+.civ-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
+}
+
+.civ-card:hover {
+  border-color: var(--mist-light);
+  box-shadow: 0 0 24px var(--gold-glow);
+  background: rgba(15, 22, 40, 0.7);
+}
+
+.civ-card:hover::before { opacity: 0.4; }
+
+.civ-tag {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  background: rgba(50, 165, 165, 0.08);
+  border: 1px solid rgba(50, 165, 165, 0.15);
+  border-radius: 4px;
+  padding: 2px 8px;
+  width: fit-content;
+  margin-bottom: 0.6rem;
+}
+
+.civ-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--starlight);
+  line-height: 1.25;
+}
+
+.civ-hero-metric {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.civ-hero-metric .data-plate-label {
+  font-size: 13px;
+}
+
+.civ-hero-metric .data-plate-value {
+  font-size: 1.25rem;
+}
+
+.view-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.view-all-link:hover {
+  color: var(--starlight);
+  gap: 0.75rem;
+}
+
+.view-all-link .arrow {
+  transition: transform 0.3s ease;
+}
+
+.view-all-link:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* --- Metrics Observatory --- */
+.metrics-grid {
+  margin-top: 2rem;
+}
+
+.metrics-category {
+  margin-bottom: 2rem;
+}
+
+.metrics-category-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--starlight-dim);
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+.metrics-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.metric-tile {
+  background: var(--dust);
+  border: 1px solid var(--mist);
+  border-radius: 6px;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+/* Size hierarchy: tiles with more civilizations get more visual weight */
+.metric-tile.size-lg {
+  padding: 0.85rem 1.25rem;
+  border-width: 1.5px;
+}
+
+.metric-tile.size-lg .metric-tile-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.metric-tile.size-lg .metric-tile-count {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.metric-tile.size-md {
+  padding: 0.75rem 1.1rem;
+}
+
+.metric-tile.size-md .metric-tile-name {
+  font-weight: 600;
+}
+
+/* Category accent tints */
+.metrics-category[data-category="population"] .metric-tile {
+  border-color: rgba(50, 165, 165, 0.15);
+}
+.metrics-category[data-category="population"] .metric-tile:hover {
+  border-color: rgba(50, 165, 165, 0.35);
+  box-shadow: 0 0 20px rgba(50, 165, 165, 0.08);
+}
+.metrics-category[data-category="population"] .metric-tile::before {
+  background: var(--teal);
+}
+
+.metrics-category[data-category="spatial"] .metric-tile {
+  border-color: rgba(90, 175, 207, 0.15);
+}
+.metrics-category[data-category="spatial"] .metric-tile:hover {
+  border-color: rgba(90, 175, 207, 0.35);
+  box-shadow: 0 0 20px rgba(90, 175, 207, 0.08);
+}
+.metrics-category[data-category="spatial"] .metric-tile::before {
+  background: #5AAFCF;
+}
+
+.metrics-category[data-category="technology"] .metric-tile {
+  border-color: rgba(201, 168, 76, 0.15);
+}
+.metrics-category[data-category="technology"] .metric-tile:hover {
+  border-color: rgba(201, 168, 76, 0.35);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.08);
+}
+.metrics-category[data-category="technology"] .metric-tile::before {
+  background: var(--gold);
+}
+
+.metrics-category[data-category="political"] .metric-tile {
+  border-color: rgba(218, 126, 74, 0.15);
+}
+.metrics-category[data-category="political"] .metric-tile:hover {
+  border-color: rgba(218, 126, 74, 0.35);
+  box-shadow: 0 0 20px rgba(218, 126, 74, 0.08);
+}
+.metrics-category[data-category="political"] .metric-tile::before {
+  background: var(--amber);
+}
+
+.metric-tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.metric-tile:hover {
+  border-color: var(--mist-light);
+  box-shadow: 0 0 20px var(--gold-glow);
+  background: rgba(15, 22, 40, 0.7);
+}
+
+.metric-tile:hover::before { opacity: 0.3; }
+
+.metric-tile-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--starlight);
+  line-height: 1.2;
+}
+
+.metric-tile-count {
+  font-size: 12px;
+  color: var(--starlight-dim);
+  margin-top: 0.15rem;
+}
+
+/* --- Community Section --- */
+.community-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 22, 40, 0.3) 20%, rgba(15, 22, 40, 0.3) 80%, transparent 100%);
+  border-top: 1px solid rgba(26, 35, 64, 0.3);
+}
+
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 700px) {
+  .community-grid { grid-template-columns: 1fr; }
+}
+
+.community-card {
+  background: var(--dust);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.community-card:hover {
+  border-color: var(--mist-light);
+  box-shadow: 0 0 24px var(--gold-glow);
+}
+
+.community-card-icon {
+  margin-bottom: 0.75rem;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.community-card-icon svg {
+  display: block;
+}
+
+.community-card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--starlight);
+  margin-bottom: 0.4rem;
+}
+
+.community-card-desc {
+  font-size: 0.9rem;
+  color: var(--starlight-dim);
+  line-height: 1.55;
+}
+
+/* --- Footer --- */
+.site-footer {
+  padding: 2.5rem clamp(1.25rem, 4vw, 3rem);
+  text-align: center;
+  border-top: 1px solid rgba(26, 35, 64, 0.3);
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: var(--starlight-dim);
+}
+
+.footer-text a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  color: var(--starlight);
+}
+
+/* --- Badge (new) --- */
+.badge-new {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--void);
+  background: var(--amber);
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.badge-stat {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--starlight);
+  background: rgba(26, 35, 64, 0.7);
+  border: 1px solid var(--mist);
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+/* --- Scroll Materialization --- */
+.materialize {
+  opacity: 0;
+  transform: scale(0.97);
+  filter: blur(4px);
+  transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+}
+
+.materialize.visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Stagger children */
+.materialize-stagger > .materialize:nth-child(1) { transition-delay: 0s; }
+.materialize-stagger > .materialize:nth-child(2) { transition-delay: 0.08s; }
+.materialize-stagger > .materialize:nth-child(3) { transition-delay: 0.16s; }
+.materialize-stagger > .materialize:nth-child(4) { transition-delay: 0.24s; }
+.materialize-stagger > .materialize:nth-child(5) { transition-delay: 0.32s; }
+.materialize-stagger > .materialize:nth-child(6) { transition-delay: 0.40s; }
+.materialize-stagger > .materialize:nth-child(7) { transition-delay: 0.48s; }
+.materialize-stagger > .materialize:nth-child(8) { transition-delay: 0.56s; }
+.materialize-stagger > .materialize:nth-child(9) { transition-delay: 0.64s; }
+.materialize-stagger > .materialize:nth-child(10) { transition-delay: 0.72s; }
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .materialize {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  .constellation-lines .c-line { animation: none; opacity: 0.05; }
+  .hero-radial .pulse-ring { animation: none; }
+  .hero-stat-value { /* no counting animation */ }
+
+  .universe-card,
+  .civ-card,
+  .metric-tile,
+  .community-card {
+    transition: none;
+  }
+
+  .nav-links a::after,
+  .view-all-link,
+  .view-all-link .arrow {
+    transition: none;
+  }
+}
+
+/* --- Utility --- */
+/* --- Card value variants --- */
+.data-plate-value--muted {
+  color: var(--starlight-dim);
+  font-size: 0.9rem;
+}
+
+/* --- Focus Visible (keyboard accessibility) --- */
+.universe-card:focus-visible,
+.civ-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 30px var(--gold-glow-strong);
+  border-color: var(--mist-light);
+}
+
+.metric-tile:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 20px var(--gold-glow);
+  border-color: var(--mist-light);
+}
+
+.metric-tile:focus-visible::before { opacity: 0.3; }
+
+.community-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 24px var(--gold-glow);
+}
+
+.nav-links a:focus-visible {
+  color: var(--starlight);
+  outline: none;
+}
+
+.nav-links a:focus-visible::after {
+  width: 100%;
+}
+
+.view-all-link:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- Background Layers -->
+<div class="bg-coord-grid" aria-hidden="true"></div>
+<div class="bg-stars" aria-hidden="true" id="bgStars"></div>
+<div class="bg-hue-shift" aria-hidden="true"></div>
+<div class="constellation-lines" aria-hidden="true">
+  <div class="c-line" style="top:18%; left:5%; width:35%; transform:rotate(-3deg);"></div>
+  <div class="c-line" style="top:42%; left:30%; width:45%; transform:rotate(2deg);"></div>
+  <div class="c-line" style="top:65%; left:10%; width:55%; transform:rotate(-1.5deg);"></div>
+  <div class="c-line" style="top:82%; left:25%; width:40%; transform:rotate(1deg);"></div>
+</div>
+
+<!-- Content -->
+<div class="content-layer">
+
+  <!-- Navigation -->
+  <nav class="site-nav" id="siteNav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo">FUTR</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" id="navToggle">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#universes">Universes</a></li>
+      <li><a href="#civilizations">Civilizations</a></li>
+      <li><a href="#metrics">Metrics</a></li>
+      <li><a href="#community">Contributing</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <svg class="hero-radial" viewBox="0 0 600 600" aria-hidden="true">
+      <circle cx="300" cy="300" r="280" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="300" cy="300" r="200" stroke-width="0.5" opacity="0.25"/>
+      <circle cx="300" cy="300" r="120" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="300" cy="300" r="50" stroke-width="0.5" opacity="0.15"/>
+      <line x1="300" y1="20" x2="300" y2="580" stroke-width="0.3" opacity="0.15"/>
+      <line x1="20" y1="300" x2="580" y2="300" stroke-width="0.3" opacity="0.15"/>
+      <line x1="100" y1="100" x2="500" y2="500" stroke-width="0.3" opacity="0.1"/>
+      <line x1="500" y1="100" x2="100" y2="500" stroke-width="0.3" opacity="0.1"/>
+      <circle class="pulse-ring" cx="300" cy="300" r="280" stroke-width="1" opacity="0"/>
+      <circle class="pulse-ring" cx="300" cy="300" r="280" stroke-width="1" opacity="0"/>
+      <circle class="pulse-ring" cx="300" cy="300" r="280" stroke-width="1" opacity="0"/>
+      <!-- Data points representing universes -->
+      <circle cx="340" cy="160" r="3" fill="#32A5A5" opacity="0.6"/>
+      <circle cx="220" cy="210" r="3" fill="#C9A84C" opacity="0.6"/>
+      <circle cx="410" cy="280" r="2.5" fill="#C4956A" opacity="0.5"/>
+      <circle cx="180" cy="350" r="2.5" fill="#8AB4C4" opacity="0.5"/>
+      <circle cx="380" cy="390" r="2" fill="#B89D6A" opacity="0.4"/>
+      <circle cx="260" cy="430" r="2" fill="#A0A0D0" opacity="0.4"/>
+      <circle cx="350" cy="460" r="2" fill="#5AAFCF" opacity="0.4"/>
+      <circle cx="300" cy="300" r="2" fill="#A0B0A0" opacity="0.3"/>
+    </svg>
+
+    <h1 class="hero-title materialize">
+      <span>FUTR</span>
+    </h1>
+
+    <p class="hero-subtitle materialize">
+      Fictional Universe Taxonomy Research. Cataloguing civilizations across the multiverse with data, rigor, and wonder.
+    </p>
+
+    <div class="hero-stats materialize">
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-count="12">0</div>
+        <div class="hero-stat-label">Universes</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-count="39" data-suffix="+">0</div>
+        <div class="hero-stat-label">Civilizations</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-count="23">0</div>
+        <div class="hero-stat-label">Metrics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Universe Showcase -->
+  <section class="section" id="universes">
+    <div class="section-header materialize">
+      <div class="section-tag">Explore</div>
+      <h2 class="section-title">Universes</h2>
+      <p class="section-description">From galaxy-spanning empires to single star systems. Each universe is a window into how fiction imagines civilization.</p>
+    </div>
+
+    <div class="universe-grid materialize-stagger">
+
+      <!-- Star Trek (Featured) -->
+      <a href="#" class="universe-card featured materialize" data-universe="startrek">
+        <div class="card-image-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&h=400&q=80" alt="Star Trek universe — nebula in deep space" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-universe-name">Star Trek</h3>
+          <p class="card-meta">8 civilizations &middot; 22nd&ndash;24th century</p>
+          <div class="card-data-plates">
+            <div class="data-plate">
+              <div class="data-plate-label">Planets</div>
+              <div class="data-plate-value">150+ <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+            </div>
+            <div class="data-plate">
+              <div class="data-plate-label">Kardashev</div>
+              <div class="data-plate-value">Type II <span class="confidence-dot calculated" title="Calculated" aria-hidden="true"></span><span class="sr-only">Calculated</span></div>
+            </div>
+            <div class="data-plate">
+              <div class="data-plate-label">Population</div>
+              <div class="data-plate-value">~1 Trillion <span class="confidence-dot guess" title="Informed guess" aria-hidden="true"></span><span class="sr-only">Informed guess</span></div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Warhammer 40K (Featured) -->
+      <a href="#" class="universe-card featured materialize" data-universe="warhammer">
+        <div class="card-image-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=800&h=400&q=80" alt="Warhammer 40K universe — dark cosmic clouds" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-universe-name">Warhammer 40,000</h3>
+          <p class="card-meta">3 civilizations &middot; 41st Millennium</p>
+          <div class="card-data-plates">
+            <div class="data-plate">
+              <div class="data-plate-label">Planets</div>
+              <div class="data-plate-value">~1,000,000 <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+            </div>
+            <div class="data-plate">
+              <div class="data-plate-label">Population</div>
+              <div class="data-plate-value">Quadrillions <span class="confidence-dot guess" title="Informed guess" aria-hidden="true"></span><span class="sr-only">Informed guess</span></div>
+            </div>
+            <div class="data-plate">
+              <div class="data-plate-label">Age</div>
+              <div class="data-plate-value">10,000+ yrs <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Firefly -->
+      <a href="#" class="universe-card materialize" data-universe="firefly">
+        <div class="card-image-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=800&h=400&q=80" alt="Firefly universe — dusty milky way over frontier landscape" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-universe-name">Firefly</h3>
+          <p class="card-meta">1 civilization &middot; 26th century</p>
+          <div class="card-data-plates">
+            <div class="data-plate">
+              <div class="data-plate-label">Population</div>
+              <div class="data-plate-value">303 Bn <span class="confidence-dot calculated" title="Calculated" aria-hidden="true"></span><span class="sr-only">Calculated</span></div>
+            </div>
+            <div class="data-plate">
+              <div class="data-plate-label">Planets</div>
+              <div class="data-plate-value">215 <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- The Culture -->
+      <a href="#" class="universe-card materialize" data-universe="culture">
+        <div class="card-image-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=800&h=400&q=80" alt="The Culture universe — abstract light streams" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-universe-name">The Culture</h3>
+          <p class="card-meta">1 civilization &middot; Post-scarcity</p>
+          <div class="card-data-plates">
+            <div class="data-plate">
+              <div class="data-plate-label">Kardashev</div>
+              <div class="data-plate-value">Type II+ <span class="confidence-dot calculated" title="Calculated" aria-hidden="true"></span><span class="sr-only">Calculated</span></div>
+            </div>
+            <div class="data-plate">
+              <div class="data-plate-label">Orbitals</div>
+              <div class="data-plate-value">~900 <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Honorverse -->
+      <a href="#" class="universe-card materialize" data-universe="honorverse">
+        <div class="card-image-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=800&h=400&q=80" alt="Honorverse — dark deep space vista" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-universe-name">Honorverse</h3>
+          <p class="card-meta">3 civilizations &middot; 41st century</p>
+          <div class="card-data-plates">
+            <div class="data-plate">
+              <div class="data-plate-label">Star Systems</div>
+              <div class="data-plate-value">830+ <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Perry Rhodan -->
+      <a href="#" class="universe-card materialize" data-universe="perryRhodan">
+        <div class="card-image-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=800&h=400&q=80" alt="Perry Rhodan universe — spiral galaxy" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-universe-name">Perry Rhodan <span class="badge-stat">Most catalogued</span></h3>
+          <p class="card-meta">6 civilizations &middot; Multiple eras</p>
+          <div class="card-data-plates">
+            <div class="data-plate">
+              <div class="data-plate-label">Population</div>
+              <div class="data-plate-value">Trillions <span class="confidence-dot guess" title="Informed guess" aria-hidden="true"></span><span class="sr-only">Informed guess</span></div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Orion's Arm -->
+      <a href="#" class="universe-card materialize" data-universe="orionsArm">
+        <div class="card-image-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=800&h=400&q=80" alt="Orion's Arm universe — vast starfield" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-universe-name">Orion's Arm <span class="badge-new">New</span></h3>
+          <p class="card-meta">4 civilizations &middot; 10th millennium</p>
+          <div class="card-data-plates">
+            <div class="data-plate">
+              <div class="data-plate-label">Dyson Spheres</div>
+              <div class="data-plate-value">Thousands <span class="confidence-dot guess" title="Informed guess" aria-hidden="true"></span><span class="sr-only">Informed guess</span></div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- The Expanse -->
+      <a href="#" class="universe-card materialize" data-universe="expanse">
+        <div class="card-image-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80" alt="The Expanse universe — Earth from orbit at night" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-universe-name">The Expanse</h3>
+          <p class="card-meta">In progress &middot; 24th century</p>
+          <div class="card-data-plates">
+            <div class="data-plate">
+              <div class="data-plate-label">Status</div>
+              <div class="data-plate-value data-plate-value--muted">Researching</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Reality -->
+      <a href="#" class="universe-card materialize" data-universe="reality">
+        <div class="card-image-wrap">
+          <img class="card-img" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&h=400&q=80" alt="Reality — Earth blue marble from space" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h3 class="card-universe-name">Reality</h3>
+          <p class="card-meta">5 civilizations &middot; Historical periods</p>
+          <div class="card-data-plates">
+            <div class="data-plate">
+              <div class="data-plate-label">Eras</div>
+              <div class="data-plate-value">Bronze Age to 2023</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Latest Civilizations -->
+  <section class="section" id="civilizations">
+    <div class="section-header materialize">
+      <div class="section-tag">Recent Additions</div>
+      <h2 class="section-title">Latest Civilizations</h2>
+      <p class="section-description">New entries in the archive. Each civilization is a polity captured at a specific moment in time.</p>
+    </div>
+
+    <div class="civ-grid materialize-stagger">
+
+      <a href="#" class="civ-card materialize">
+        <div class="civ-tag">Orion's Arm</div>
+        <div class="civ-name">Terragen Sphere 10600</div>
+        <div class="civ-hero-metric">
+          <div class="data-plate-label">Dyson Spheres</div>
+          <div class="data-plate-value">Thousands <span class="confidence-dot guess" title="Informed guess" aria-hidden="true"></span><span class="sr-only">Informed guess</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="civ-card materialize">
+        <div class="civ-tag">Star Trek</div>
+        <div class="civ-name">Klingon Empire 2373</div>
+        <div class="civ-hero-metric">
+          <div class="data-plate-label">Government</div>
+          <div class="data-plate-value">Feudal Empire <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="civ-card materialize">
+        <div class="civ-tag">Warhammer 40K</div>
+        <div class="civ-name">Orks M41</div>
+        <div class="civ-hero-metric">
+          <div class="data-plate-label">Class</div>
+          <div class="data-plate-value">Interstellar <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="civ-card materialize">
+        <div class="civ-tag">Reality</div>
+        <div class="civ-name">Humanity 2023</div>
+        <div class="civ-hero-metric">
+          <div class="data-plate-label">Population</div>
+          <div class="data-plate-value">8 Billion <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="civ-card materialize">
+        <div class="civ-tag">Honorverse</div>
+        <div class="civ-name">Star Empire of Manticore 1922</div>
+        <div class="civ-hero-metric">
+          <div class="data-plate-label">Star Systems</div>
+          <div class="data-plate-value">17 <span class="confidence-dot canon" title="Canon" aria-hidden="true"></span><span class="sr-only">Canon</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="civ-card materialize">
+        <div class="civ-tag">Perry Rhodan</div>
+        <div class="civ-name">Arkonide Empire 2040</div>
+        <div class="civ-hero-metric">
+          <div class="data-plate-label">Age</div>
+          <div class="data-plate-value">~20,000 yrs <span class="confidence-dot calculated" title="Calculated" aria-hidden="true"></span><span class="sr-only">Calculated</span></div>
+        </div>
+      </a>
+
+    </div>
+
+    <a href="#" class="view-all-link materialize">
+      View all recent additions <span class="arrow">&rarr;</span>
+    </a>
+  </section>
+
+  <!-- Metrics Observatory -->
+  <section class="section" id="metrics">
+    <div class="section-header materialize">
+      <div class="section-tag">Observatory</div>
+      <h2 class="section-title">Metrics</h2>
+      <p class="section-description">23 standardized measurements for comparing civilizations across universes. The taxonomy of fictional power.</p>
+    </div>
+
+    <div class="metrics-grid materialize">
+
+      <div class="metrics-category" data-category="population">
+        <div class="metrics-category-label">Population</div>
+        <div class="metrics-tiles">
+          <div class="metric-tile size-lg" tabindex="0" role="link">
+            <div class="metric-tile-name">Total Population</div>
+            <div class="metric-tile-count">28 civilizations</div>
+          </div>
+          <div class="metric-tile size-md" tabindex="0" role="link">
+            <div class="metric-tile-name">Bio Population</div>
+            <div class="metric-tile-count">6 civilizations</div>
+          </div>
+          <div class="metric-tile" tabindex="0" role="link">
+            <div class="metric-tile-name">Virtual Population</div>
+            <div class="metric-tile-count">4 civilizations</div>
+          </div>
+          <div class="metric-tile" tabindex="0" role="link">
+            <div class="metric-tile-name">Mech Population</div>
+            <div class="metric-tile-count">3 civilizations</div>
+          </div>
+          <div class="metric-tile" tabindex="0" role="link">
+            <div class="metric-tile-name">Embodied Population</div>
+            <div class="metric-tile-count">2 civilizations</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics-category" data-category="spatial">
+        <div class="metrics-category-label">Spatial</div>
+        <div class="metrics-tiles">
+          <div class="metric-tile size-lg" tabindex="0" role="link">
+            <div class="metric-tile-name">Planets</div>
+            <div class="metric-tile-count">22 civilizations</div>
+          </div>
+          <div class="metric-tile size-lg" tabindex="0" role="link">
+            <div class="metric-tile-name">Star Systems</div>
+            <div class="metric-tile-count">15 civilizations</div>
+          </div>
+          <div class="metric-tile size-md" tabindex="0" role="link">
+            <div class="metric-tile-name">Territory</div>
+            <div class="metric-tile-count">10 civilizations</div>
+          </div>
+          <div class="metric-tile" tabindex="0" role="link">
+            <div class="metric-tile-name">Banks Orbitals</div>
+            <div class="metric-tile-count">1 civilization</div>
+          </div>
+          <div class="metric-tile" tabindex="0" role="link">
+            <div class="metric-tile-name">Dyson Spheres</div>
+            <div class="metric-tile-count">3 civilizations</div>
+          </div>
+          <div class="metric-tile" tabindex="0" role="link">
+            <div class="metric-tile-name">Ringworlds</div>
+            <div class="metric-tile-count">2 civilizations</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics-category" data-category="technology">
+        <div class="metrics-category-label">Technology</div>
+        <div class="metrics-tiles">
+          <div class="metric-tile size-lg" tabindex="0" role="link">
+            <div class="metric-tile-name">Kardashev Rating</div>
+            <div class="metric-tile-count">20 civilizations</div>
+          </div>
+          <div class="metric-tile size-lg" tabindex="0" role="link">
+            <div class="metric-tile-name">Tech Level</div>
+            <div class="metric-tile-count">18 civilizations</div>
+          </div>
+          <div class="metric-tile size-md" tabindex="0" role="link">
+            <div class="metric-tile-name">Tech Summary</div>
+            <div class="metric-tile-count">15 civilizations</div>
+          </div>
+          <div class="metric-tile size-md" tabindex="0" role="link">
+            <div class="metric-tile-name">FTL Date</div>
+            <div class="metric-tile-count">8 civilizations</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics-category" data-category="political">
+        <div class="metrics-category-label">Political &amp; Classification</div>
+        <div class="metrics-tiles">
+          <div class="metric-tile size-lg" tabindex="0" role="link">
+            <div class="metric-tile-name">Class</div>
+            <div class="metric-tile-count">26 civilizations</div>
+          </div>
+          <div class="metric-tile size-lg" tabindex="0" role="link">
+            <div class="metric-tile-name">Government</div>
+            <div class="metric-tile-count">24 civilizations</div>
+          </div>
+          <div class="metric-tile size-md" tabindex="0" role="link">
+            <div class="metric-tile-name">Location</div>
+            <div class="metric-tile-count">19 civilizations</div>
+          </div>
+          <div class="metric-tile size-md" tabindex="0" role="link">
+            <div class="metric-tile-name">Civilization Age</div>
+            <div class="metric-tile-count">16 civilizations</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Community / Contributing -->
+  <section class="section community-section" id="community">
+    <div class="section-header materialize">
+      <div class="section-tag">Join</div>
+      <h2 class="section-title">Expand the Archive</h2>
+      <p class="section-description">FUTR is open source. Every data point is researched, referenced, and reviewed. Help us catalogue the multiverse.</p>
+    </div>
+
+    <div class="community-grid materialize-stagger">
+
+      <a href="#" class="community-card materialize">
+        <div class="community-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div class="community-card-title">Contribute Data</div>
+        <div class="community-card-desc">Add civilizations, verify metrics, improve references. All data is YAML with markdown documentation.</div>
+      </a>
+
+      <a href="#" class="community-card materialize">
+        <div class="community-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="community-card-title">Join the Discussion</div>
+        <div class="community-card-desc">Connect with other researchers on Discord. Debate Kardashev ratings, share sources, propose new universes.</div>
+      </a>
+
+      <a href="#" class="community-card materialize">
+        <div class="community-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+        <div class="community-card-title">Open Source</div>
+        <div class="community-card-desc">Built with .NET, YAML data files, and a love for fictional worlds. Fork it, improve it, make it yours.</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="footer-text">
+      FUTR &mdash; Fictional Universe Taxonomy Research &middot;
+      <a href="#">About</a> &middot;
+      <a href="#">Privacy</a> &middot;
+      <a href="#">GitHub</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // --- Respect prefers-reduced-motion ---
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // --- Star Background ---
+  const starContainer = document.getElementById('bgStars');
+  const starPositions = [
+    // Loosely inspired by major constellation positions - meaningful, not random
+    {x: 12, y: 8, s: 2, o: 0.6},
+    {x: 25, y: 15, s: 1.5, o: 0.4},
+    {x: 38, y: 5, s: 1, o: 0.3},
+    {x: 55, y: 12, s: 2, o: 0.5},
+    {x: 72, y: 8, s: 1.5, o: 0.4},
+    {x: 88, y: 18, s: 1, o: 0.3},
+    {x: 8, y: 30, s: 1.5, o: 0.5},
+    {x: 20, y: 42, s: 1, o: 0.3},
+    {x: 35, y: 35, s: 2, o: 0.6},
+    {x: 48, y: 28, s: 1, o: 0.35},
+    {x: 62, y: 38, s: 1.5, o: 0.45},
+    {x: 78, y: 32, s: 2, o: 0.5},
+    {x: 92, y: 40, s: 1, o: 0.3},
+    {x: 15, y: 55, s: 1.5, o: 0.4},
+    {x: 30, y: 60, s: 2, o: 0.55},
+    {x: 45, y: 52, s: 1, o: 0.3},
+    {x: 60, y: 58, s: 1.5, o: 0.4},
+    {x: 75, y: 55, s: 2, o: 0.5},
+    {x: 5, y: 72, s: 1, o: 0.3},
+    {x: 22, y: 78, s: 1.5, o: 0.45},
+    {x: 40, y: 70, s: 2, o: 0.5},
+    {x: 58, y: 75, s: 1, o: 0.35},
+    {x: 70, y: 82, s: 1.5, o: 0.4},
+    {x: 85, y: 68, s: 2, o: 0.55},
+    {x: 95, y: 78, s: 1, o: 0.3},
+    {x: 10, y: 90, s: 1.5, o: 0.4},
+    {x: 32, y: 88, s: 1, o: 0.3},
+    {x: 52, y: 92, s: 2, o: 0.5},
+    {x: 68, y: 95, s: 1, o: 0.3},
+    {x: 82, y: 90, s: 1.5, o: 0.45},
+  ];
+
+  starPositions.forEach(function(s) {
+    const el = document.createElement('div');
+    el.className = 'star';
+    el.style.left = s.x + '%';
+    el.style.top = s.y + '%';
+    el.style.width = s.s + 'px';
+    el.style.height = s.s + 'px';
+    el.style.opacity = s.o;
+    starContainer.appendChild(el);
+  });
+
+  // --- Sticky Nav Scroll Effect ---
+  const nav = document.getElementById('siteNav');
+  let lastScrollY = 0;
+  let ticking = false;
+
+  function updateNav() {
+    if (window.scrollY > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateNav);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // --- Mobile Nav Toggle ---
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', function() {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+
+  // Close mobile nav on link click
+  navLinks.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // --- Counting Animation (Hero Stats) ---
+  function animateCount(el) {
+    if (prefersReducedMotion) {
+      el.textContent = el.dataset.count + (el.dataset.suffix || '');
+      return;
+    }
+
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = current + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  // --- Intersection Observer for Materialization ---
+  if (!prefersReducedMotion) {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          // Trigger counting animation for hero stats
+          const counters = entry.target.querySelectorAll('[data-count]');
+          counters.forEach(animateCount);
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.materialize').forEach(function(el) {
+      observer.observe(el);
+    });
+  } else {
+    // Reduced motion: make everything visible, set final count values
+    document.querySelectorAll('.materialize').forEach(function(el) {
+      el.classList.add('visible');
+    });
+    document.querySelectorAll('[data-count]').forEach(function(el) {
+      el.textContent = el.dataset.count + (el.dataset.suffix || '');
+    });
+  }
+
+  // --- Background Hue Shift on Scroll ---
+  if (!prefersReducedMotion) {
+    const hueLayer = document.querySelector('.bg-hue-shift');
+    let hueTicking = false;
+
+    window.addEventListener('scroll', function() {
+      if (!hueTicking) {
+        requestAnimationFrame(function() {
+          const scrollFraction = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+          // Subtle warmth increase as you scroll down
+          const warmth = scrollFraction * 0.12;
+          hueLayer.style.background = 'linear-gradient(180deg, transparent 0%, rgba(40, 25, 15, ' + warmth + ') 100%)';
+          hueTicking = false;
+        });
+        hueTicking = true;
+      }
+    }, { passive: true });
+  }
+
+  // --- Metric Tile Keyboard Activation ---
+  document.querySelectorAll('.metric-tile').forEach(function(tile) {
+    tile.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        tile.click();
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

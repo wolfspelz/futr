@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR — Design Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background: #0A0E18;
+  color: #D8D0C0;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 3rem clamp(1.25rem, 5vw, 4rem);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #E2D9C8;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: rgba(216, 208, 192, 0.55);
+  margin-bottom: 3rem;
+}
+
+.designs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.design-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #111828;
+  border: 1px solid #1A2340;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.design-card:hover,
+.design-card:focus-visible {
+  border-color: #2A3560;
+  box-shadow: 0 0 24px rgba(201, 168, 76, 0.08);
+}
+
+.design-card:focus-visible {
+  outline: 2px solid #C9A84C;
+  outline-offset: 2px;
+}
+
+.design-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.design-number {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #C9A84C;
+  background: rgba(201, 168, 76, 0.1);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.design-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #E2D9C8;
+}
+
+.design-summary {
+  font-size: 0.9rem;
+  color: rgba(216, 208, 192, 0.6);
+  line-height: 1.65;
+  max-width: 65ch;
+}
+
+.design-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(216, 208, 192, 0.5);
+  background: rgba(26, 35, 64, 0.5);
+  border: 1px solid rgba(26, 35, 64, 0.8);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(26, 35, 64, 0.4);
+  font-size: 0.85rem;
+  color: rgba(216, 208, 192, 0.4);
+}
+</style>
+</head>
+<body>
+
+<h1>FUTR Design Gallery</h1>
+<p class="subtitle">Homepage design explorations for futr.space</p>
+
+<div class="designs">
+
+  <a href="1.html" class="design-card">
+    <div class="design-header">
+      <span class="design-number">#1</span>
+      <span class="design-name">Stellar Cartography</span>
+    </div>
+    <p class="design-summary">
+      Deep space elegance. Warm gold on deep navy. The site feels like the reference library of an advanced interstellar civilization — a cosmic librarian aesthetic with scholarly authority and quiet wonder. Syne + Space Grotesk typography, staggered universe grid with per-universe accent colors, periodic-table metrics observatory, glassmorphism on featured cards, and "illuminate, materialize, flow" interaction language.
+    </p>
+    <div class="design-tags">
+      <span class="tag">Dark theme</span>
+      <span class="tag">Gold + Navy palette</span>
+      <span class="tag">Syne + Space Grotesk</span>
+      <span class="tag">Glassmorphism</span>
+      <span class="tag">Universe-specific DNA</span>
+      <span class="tag">Periodic table metrics</span>
+      <span class="tag">Scroll materialization</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="footer">
+  FUTR — Fictional Universe Taxonomy Research
+</div>
+
+</body>
+</html>
