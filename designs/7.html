@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTR — REDACTED</title>
+    <meta name="description" content="Multiverse Census — Classified Intelligence Dossier">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           DESIGN 7: REDACTED
+           Classified Intelligence Dossier
+           ============================================ */
+
+        /* --- Design Tokens --- */
+        :root {
+            --manila: #D4C5A9;
+            --manila-dark: #C4B494;
+            --carbon: #1C1C1E;
+            --redaction: #000000;
+            --highlighter: #FDEE00;
+            --stamp-red: #CC2936;
+            --ballpoint: #2C5F8A;
+            --ballpoint-light: #3A7AB8;
+            --paper-white: #EDE6D6;
+            --faded-ink: #6B6458;
+            --classification-bg: #CC2936;
+            --tier-existential: #CC2936;
+            --tier-severe: #B5512A;
+            --tier-high: #8A6B2C;
+            --tier-moderate: #2C5F8A;
+            --tier-low: #6B6458;
+            --font-display: 'Bebas Neue', Impact, sans-serif;
+            --font-body: 'Courier Prime', 'Courier New', Courier, monospace;
+            --doc-max-width: 900px;
+            --doc-padding: 2.5rem;
+            --section-gap: 3rem;
+        }
+
+        /* --- Reset & Base --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+            color: var(--carbon);
+            background-color: var(--manila);
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Skip Link --- */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            z-index: 9999;
+            padding: 0.75rem 1.5rem;
+            background: var(--carbon);
+            color: var(--paper-white);
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); margin-bottom: 1.5rem; }
+        h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); margin-bottom: 0.75rem; }
+        h4 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+
+        p { margin-bottom: 1rem; }
+
+        strong { font-weight: 700; }
+
+        /* --- Document Wrapper --- */
+        .document {
+            position: relative;
+            max-width: var(--doc-max-width);
+            margin: 0 auto;
+            padding: var(--doc-padding);
+            padding-top: 0;
+            overflow: hidden;
+        }
+
+        /* --- Classification Banner --- */
+        .classification-banner {
+            background: var(--classification-bg);
+            color: #fff;
+            text-align: center;
+            padding: 0.375rem 1rem;
+            font-family: var(--font-display);
+            font-size: 0.9375rem;
+            letter-spacing: 0.2em;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin: 0 calc(var(--doc-padding) * -1);
+            width: calc(100% + var(--doc-padding) * 2);
+        }
+
+        /* --- Page Counter --- */
+        .page-counter {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 90;
+            font-family: var(--font-body);
+            font-size: 0.8125rem;
+            color: var(--faded-ink);
+            background: var(--manila);
+            border: 1px solid var(--manila-dark);
+            padding: 0.25rem 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* --- Document Header --- */
+        .doc-header {
+            padding: 3rem 0 2rem;
+            border-bottom: 3px double var(--carbon);
+            margin-bottom: var(--section-gap);
+        }
+
+        .doc-header__agency {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .doc-header__title {
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-header__meta {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.25rem 1.5rem;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-header__meta dt {
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .doc-header__meta dd {
+            margin: 0;
+        }
+
+        .doc-header__distribution {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: var(--stamp-red);
+            border: 1px solid var(--stamp-red);
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Declassify Toggle --- */
+        .declassify-btn {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: transparent;
+            color: var(--stamp-red);
+            border: 2px solid var(--stamp-red);
+            padding: 0.375rem 1rem;
+            cursor: pointer;
+            transform: rotate(-1deg);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .declassify-btn:hover,
+        .declassify-btn:focus-visible {
+            background: var(--stamp-red);
+            color: #fff;
+        }
+
+        .declassify-btn:focus-visible {
+            outline: 2px solid var(--carbon);
+            outline-offset: 3px;
+        }
+
+        .declassify-btn[aria-pressed="true"] {
+            background: var(--ballpoint);
+            border-color: var(--ballpoint);
+            color: #fff;
+        }
+
+        /* --- Sections --- */
+        .doc-section {
+            margin-bottom: var(--section-gap);
+            padding-bottom: var(--section-gap);
+            border-bottom: 1px solid var(--manila-dark);
+        }
+
+        .doc-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-number {
+            font-family: var(--font-body);
+            font-size: 0.8125rem;
+            color: var(--faded-ink);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .section-intro {
+            max-width: 65ch;
+            margin-bottom: 2rem;
+            color: var(--carbon);
+        }
+
+        /* --- Redaction Bars --- */
+        .redacted {
+            position: relative;
+            cursor: pointer;
+            display: inline;
+            white-space: nowrap;
+        }
+
+        .redacted::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -3px;
+            right: -3px;
+            bottom: -1px;
+            background: var(--redaction);
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .redacted:hover::after,
+        .redacted:focus-visible::after,
+        .redacted.declassified::after {
+            opacity: 0;
+        }
+
+        .redacted:hover,
+        .redacted:focus-visible,
+        .redacted.declassified {
+            background: rgba(253, 238, 0, 0.35);
+        }
+
+        .redacted:focus-visible {
+            outline: 2px solid var(--ballpoint);
+            outline-offset: 2px;
+        }
+
+        .declassify-all .redacted::after {
+            opacity: 0;
+        }
+
+        .declassify-all .redacted {
+            background: rgba(253, 238, 0, 0.35);
+        }
+
+        /* Screen reader text for redacted items */
+        .redacted .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* --- Rubber Stamps --- */
+        .stamp {
+            position: absolute;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            border: 3px solid currentColor;
+            padding: 0.2em 0.6em;
+            pointer-events: none;
+            z-index: 2;
+            user-select: none;
+        }
+
+        .stamp--top-secret {
+            top: 14rem;
+            right: -0.5rem;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: rgba(204, 41, 54, 0.14);
+            transform: rotate(-7deg);
+        }
+
+        .stamp--eyes-only {
+            top: 58rem;
+            right: 0.5rem;
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: rgba(204, 41, 54, 0.11);
+            transform: rotate(4deg);
+        }
+
+        .stamp--classified {
+            top: 130rem;
+            left: -0.5rem;
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            color: rgba(204, 41, 54, 0.1);
+            transform: rotate(-11deg);
+        }
+
+        .stamp--draft {
+            top: 210rem;
+            right: 1rem;
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            color: rgba(204, 41, 54, 0.08);
+            transform: rotate(3deg);
+        }
+
+        .stamp--do-not-copy {
+            top: 170rem;
+            left: 0;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: rgba(204, 41, 54, 0.09);
+            transform: rotate(-5deg);
+        }
+
+        /* --- Coffee Ring Stains --- */
+        .coffee-ring {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .coffee-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle at center,
+                transparent 38%,
+                rgba(139, 90, 43, 0.07) 42%,
+                rgba(139, 90, 43, 0.1) 46%,
+                rgba(139, 90, 43, 0.05) 52%,
+                transparent 58%
+            );
+        }
+
+        .coffee-ring-1 {
+            width: 130px;
+            height: 130px;
+            top: 10rem;
+            right: 2rem;
+        }
+
+        .coffee-ring-2 {
+            width: 100px;
+            height: 100px;
+            top: 100rem;
+            left: -1rem;
+        }
+
+        .coffee-ring-3 {
+            width: 110px;
+            height: 110px;
+            top: 185rem;
+            right: 4rem;
+        }
+
+        /* --- Margin Annotations --- */
+        .annotation {
+            font-family: var(--font-body);
+            font-style: italic;
+            font-size: 0.8125rem;
+            color: var(--ballpoint);
+            line-height: 1.4;
+            margin: 0.75rem 0;
+            padding-left: 1rem;
+            border-left: 2px solid var(--ballpoint);
+            max-width: 50ch;
+            transform: rotate(-0.3deg);
+        }
+
+        .annotation::before {
+            content: 'NOTE: ';
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .annotation--warning::before {
+            content: 'WARNING: ';
+            color: var(--stamp-red);
+        }
+
+        .annotation--flagged::before {
+            content: 'FLAGGED: ';
+            color: var(--tier-severe);
+        }
+
+        /* --- Executive Summary Table --- */
+        .summary-table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 0 -0.5rem;
+            padding: 0 0.5rem;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-table th {
+            font-family: var(--font-display);
+            font-weight: 400;
+            font-size: 0.9375rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-align: left;
+            padding: 0.625rem 0.75rem;
+            border-bottom: 2px solid var(--carbon);
+            white-space: nowrap;
+        }
+
+        .summary-table td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid var(--manila-dark);
+            vertical-align: top;
+        }
+
+        .summary-table tbody tr:hover {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .summary-table .col-universe { min-width: 120px; font-weight: 700; }
+        .summary-table .col-num { text-align: center; min-width: 50px; }
+        .summary-table .col-pop { min-width: 100px; }
+        .summary-table .col-kardashev { min-width: 80px; text-align: center; }
+
+        .summary-table .classification {
+            font-family: var(--font-display);
+            font-size: 0.8125rem;
+            letter-spacing: 0.1em;
+            padding: 0.125rem 0.375rem;
+            border: 1px solid;
+            white-space: nowrap;
+        }
+
+        .classification--ts { color: var(--stamp-red); border-color: var(--stamp-red); }
+        .classification--s { color: var(--tier-severe); border-color: var(--tier-severe); }
+        .classification--c { color: var(--tier-moderate); border-color: var(--tier-moderate); }
+        .classification--u { color: var(--faded-ink); border-color: var(--faded-ink); }
+
+        /* Mobile card view for summary table */
+        .summary-cards { display: none; }
+
+        /* --- Threat Assessment --- */
+        .threat-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .threat-entry {
+            display: grid;
+            grid-template-columns: 2.5rem 1fr auto;
+            grid-template-rows: auto auto;
+            gap: 0.125rem 0.75rem;
+            align-items: center;
+            padding: 0.625rem 0;
+            border-bottom: 1px solid var(--manila-dark);
+        }
+
+        .threat-rank {
+            grid-row: 1 / 3;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--faded-ink);
+            text-align: center;
+        }
+
+        .threat-name {
+            font-weight: 700;
+            font-size: 0.9375rem;
+        }
+
+        .threat-universe {
+            font-size: 0.8125rem;
+            color: var(--faded-ink);
+        }
+
+        .threat-tier {
+            grid-row: 1 / 3;
+            font-family: var(--font-display);
+            font-size: 0.8125rem;
+            letter-spacing: 0.1em;
+            padding: 0.125rem 0.5rem;
+            border: 1px solid;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .threat-tier--existential { color: var(--tier-existential); border-color: var(--tier-existential); }
+        .threat-tier--severe { color: var(--tier-severe); border-color: var(--tier-severe); }
+        .threat-tier--high { color: var(--tier-high); border-color: var(--tier-high); }
+        .threat-tier--moderate { color: var(--tier-moderate); border-color: var(--tier-moderate); }
+        .threat-tier--low { color: var(--tier-low); border-color: var(--tier-low); }
+
+        .threat-bar-wrap {
+            grid-column: 2;
+            height: 6px;
+            background: var(--manila-dark);
+            position: relative;
+            margin-top: 0.125rem;
+        }
+
+        .threat-bar {
+            height: 100%;
+            background: var(--carbon);
+            transition: width 0.6s ease;
+        }
+
+        /* --- Dossier Entries --- */
+        .dossier {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed var(--manila-dark);
+        }
+
+        .dossier:last-child {
+            border-bottom: none;
+        }
+
+        .dossier__tab {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--carbon);
+            color: var(--paper-white);
+            padding: 0.25rem 1rem 0.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .dossier__designation {
+            font-size: 0.8125rem;
+            color: var(--faded-ink);
+            margin-bottom: 1rem;
+        }
+
+        .dossier__image-wrap {
+            border: 1px solid var(--carbon);
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            max-width: 500px;
+        }
+
+        .dossier__image-label {
+            font-family: var(--font-display);
+            font-size: 0.8125rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--faded-ink);
+            margin-bottom: 0.375rem;
+        }
+
+        .dossier__image {
+            display: block;
+            width: 100%;
+            height: auto;
+            filter: grayscale(40%) contrast(1.1);
+        }
+
+        .dossier__image-meta {
+            font-size: 0.8125rem;
+            color: var(--faded-ink);
+            margin-top: 0.375rem;
+        }
+
+        .dossier__brief {
+            max-width: 65ch;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Civilization Entry --- */
+        .civ-entry {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--manila-dark);
+        }
+
+        .civ-entry__name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.375rem;
+        }
+
+        .civ-entry__threat-class {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.8125rem;
+            letter-spacing: 0.1em;
+            padding: 0.0625rem 0.375rem;
+            border: 1px solid var(--stamp-red);
+            color: var(--stamp-red);
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .civ-metrics {
+            list-style: none;
+            font-size: 0.875rem;
+        }
+
+        .civ-metrics li {
+            padding: 0.125rem 0;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .civ-metrics li::before {
+            content: '\251C\2500';
+            color: var(--faded-ink);
+            flex-shrink: 0;
+        }
+
+        .civ-metrics li:last-child::before {
+            content: '\2514\2500';
+        }
+
+        .metric-label {
+            font-weight: 700;
+            min-width: 10ch;
+            flex-shrink: 0;
+        }
+
+        /* --- Footer --- */
+        .doc-footer {
+            margin-top: var(--section-gap);
+            padding-top: 2rem;
+            border-top: 3px double var(--carbon);
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--faded-ink);
+        }
+
+        .doc-footer__end-mark {
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-footer__legal {
+            font-size: 0.8125rem;
+            margin-top: 1rem;
+        }
+
+        .doc-footer .classification-banner {
+            margin-top: 2rem;
+        }
+
+        /* --- Typewriter Cursor --- */
+        .cursor-blink::after {
+            content: '\258E';
+            animation: blink 1s step-end infinite;
+            color: var(--carbon);
+            margin-left: 0.125rem;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* --- Animations --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            :root {
+                --doc-padding: 1.5rem;
+                --section-gap: 2rem;
+            }
+
+            .stamp { display: none; }
+
+            .coffee-ring { display: none; }
+
+            .doc-header__meta {
+                grid-template-columns: 1fr;
+                gap: 0.125rem;
+            }
+
+            .doc-header__meta dt {
+                margin-top: 0.375rem;
+            }
+
+            .threat-entry {
+                grid-template-columns: 2rem 1fr auto;
+                gap: 0.125rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --doc-padding: 1rem;
+            }
+
+            /* Stack table to cards */
+            .summary-table-wrapper { display: none; }
+            .summary-cards { display: block; }
+
+            .summary-card {
+                border: 1px solid var(--carbon);
+                padding: 0.75rem 1rem;
+                margin-bottom: 0.75rem;
+                background: rgba(237, 230, 214, 0.5);
+            }
+
+            .summary-card__universe {
+                font-family: var(--font-display);
+                font-size: 1.125rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 0.375rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .summary-card__data {
+                list-style: none;
+                font-size: 0.875rem;
+            }
+
+            .summary-card__data li {
+                display: flex;
+                justify-content: space-between;
+                padding: 0.125rem 0;
+                border-bottom: 1px dotted var(--manila-dark);
+            }
+
+            .summary-card__data li:last-child {
+                border-bottom: none;
+            }
+
+            .threat-entry {
+                grid-template-columns: 1fr auto;
+                gap: 0.25rem 0.5rem;
+            }
+
+            .threat-rank { display: none; }
+
+            .threat-bar-wrap { grid-column: 1 / -1; }
+
+            .dossier__image-wrap {
+                max-width: 100%;
+            }
+
+            .annotation {
+                transform: none;
+            }
+
+            .page-counter { display: none; }
+        }
+
+        /* --- Reduced Motion --- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html { scroll-behavior: auto; }
+
+            .fade-in {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* --- Focus Visible (global) --- */
+        :focus-visible {
+            outline: 2px solid var(--ballpoint);
+            outline-offset: 2px;
+        }
+
+        /* --- Visually Hidden (sr-only) --- */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Page Counter (fixed) -->
+    <div class="page-counter" aria-hidden="true">PAGE 1 OF 4</div>
+
+    <div class="document">
+        <!-- Decorative: Coffee ring stains -->
+        <div class="coffee-ring coffee-ring-1" aria-hidden="true"></div>
+        <div class="coffee-ring coffee-ring-2" aria-hidden="true"></div>
+        <div class="coffee-ring coffee-ring-3" aria-hidden="true"></div>
+
+        <!-- Decorative: Rubber stamps -->
+        <div class="stamp stamp--top-secret" aria-hidden="true">Top Secret</div>
+        <div class="stamp stamp--eyes-only" aria-hidden="true">Eyes Only</div>
+        <div class="stamp stamp--classified" aria-hidden="true">Classified</div>
+        <div class="stamp stamp--draft" aria-hidden="true">Draft</div>
+        <div class="stamp stamp--do-not-copy" aria-hidden="true">Do Not Copy</div>
+
+        <!-- Classification Banner (top) -->
+        <div class="classification-banner" aria-label="Document classification">
+            TOP SECRET // SCI // NOFORN
+        </div>
+
+        <main id="main-content">
+            <!-- ===================== DOCUMENT HEADER ===================== -->
+            <header class="doc-header" data-page="1">
+                <p class="doc-header__agency">Multiverse Intelligence Directorate</p>
+                <h1 class="doc-header__title cursor-blink">Multiverse Census</h1>
+
+                <dl class="doc-header__meta">
+                    <dt>Subject:</dt>
+                    <dd>Comprehensive Multiverse Civilization Assessment</dd>
+                    <dt>Date:</dt>
+                    <dd>27 February 2026</dd>
+                    <dt>Document ID:</dt>
+                    <dd>MID-2026-0047-TS</dd>
+                    <dt>Prepared by:</dt>
+                    <dd><span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted text, activate to reveal">Multiverse Analysis Division, Section 7<span class="sr-only"> (redacted)</span></span></dd>
+                    <dt>Classification:</dt>
+                    <dd>TOP SECRET // SCI // NOFORN</dd>
+                </dl>
+
+                <p class="doc-header__distribution">DISTRIBUTION: AUTHORIZED PERSONNEL ONLY</p>
+
+                <div>
+                    <button class="declassify-btn" type="button" aria-pressed="false" id="declassify-toggle">
+                        Declassify All
+                    </button>
+                </div>
+            </header>
+
+            <!-- ===================== SECTION 1: EXECUTIVE SUMMARY ===================== -->
+            <section class="doc-section" data-page="1" aria-labelledby="sec1-heading">
+                <span class="section-number">Section 1 of 4</span>
+                <h2 id="sec1-heading">Executive Summary</h2>
+
+                <p class="section-intro">
+                    This document catalogues <strong>30 civilizations</strong> across
+                    <strong>9 monitored universes</strong>, representing the full scope
+                    of known multiverse activity. Population estimates range from
+                    10<sup>4</sup> to 10<sup>17</sup> biological and synthetic entities.
+                    All data current as of last surveillance cycle.
+                    <strong>20 standardized metrics</strong> applied across all subjects.
+                </p>
+
+                <!-- Desktop table view -->
+                <div class="summary-table-wrapper">
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="col-universe">Universe</th>
+                                <th scope="col" class="col-num">Civs</th>
+                                <th scope="col" class="col-pop">Largest Pop</th>
+                                <th scope="col" class="col-kardashev">Max Kardashev</th>
+                                <th scope="col">Classification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-universe">Star Trek</td>
+                                <td class="col-num">4</td>
+                                <td class="col-pop">~1 &times; 10<sup>11</sup></td>
+                                <td class="col-kardashev">~1.0</td>
+                                <td><span class="classification classification--ts">Top Secret</span></td>
+                            </tr>
+                            <tr>
+                                <td class="col-universe">Warhammer 40K</td>
+                                <td class="col-num">2</td>
+                                <td class="col-pop"><span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted population, activate to reveal">~1 &times; 10<sup>16</sup><span class="sr-only"> (redacted)</span></span></td>
+                                <td class="col-kardashev">~1.6</td>
+                                <td><span class="classification classification--ts">Top Secret</span></td>
+                            </tr>
+                            <tr>
+                                <td class="col-universe">Firefly</td>
+                                <td class="col-num">1</td>
+                                <td class="col-pop">~3.0 &times; 10<sup>11</sup></td>
+                                <td class="col-kardashev"><span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">N/A<span class="sr-only"> (redacted)</span></span></td>
+                                <td><span class="classification classification--s">Secret</span></td>
+                            </tr>
+                            <tr>
+                                <td class="col-universe">The Culture</td>
+                                <td class="col-num">1</td>
+                                <td class="col-pop">~3.0 &times; 10<sup>13</sup></td>
+                                <td class="col-kardashev">~2.3</td>
+                                <td><span class="classification classification--ts">Top Secret</span></td>
+                            </tr>
+                            <tr>
+                                <td class="col-universe">Honorverse</td>
+                                <td class="col-num">2</td>
+                                <td class="col-pop">~2.8 &times; 10<sup>10</sup></td>
+                                <td class="col-kardashev"><span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~1.5<span class="sr-only"> (redacted)</span></span></td>
+                                <td><span class="classification classification--c">Confidential</span></td>
+                            </tr>
+                            <tr>
+                                <td class="col-universe">Perry Rhodan</td>
+                                <td class="col-num">3</td>
+                                <td class="col-pop">~5.1 &times; 10<sup>13</sup></td>
+                                <td class="col-kardashev"><span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~2.3<span class="sr-only"> (redacted)</span></span></td>
+                                <td><span class="classification classification--ts">Top Secret</span></td>
+                            </tr>
+                            <tr>
+                                <td class="col-universe">Orion's Arm</td>
+                                <td class="col-num">3</td>
+                                <td class="col-pop"><span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted population, activate to reveal">~3.9 &times; 10<sup>17</sup><span class="sr-only"> (redacted)</span></span></td>
+                                <td class="col-kardashev"><span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">N/A<span class="sr-only"> (redacted)</span></span></td>
+                                <td><span class="classification classification--ts">Top Secret</span></td>
+                            </tr>
+                            <tr>
+                                <td class="col-universe">The Expanse</td>
+                                <td class="col-num">4</td>
+                                <td class="col-pop">~3 &times; 10<sup>10</sup></td>
+                                <td class="col-kardashev"><span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~0.9<span class="sr-only"> (redacted)</span></span></td>
+                                <td><span class="classification classification--c">Confidential</span></td>
+                            </tr>
+                            <tr>
+                                <td class="col-universe">Reality</td>
+                                <td class="col-num">10</td>
+                                <td class="col-pop">~8.1 &times; 10<sup>9</sup></td>
+                                <td class="col-kardashev">~0.73</td>
+                                <td><span class="classification classification--u">Unclassified</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Mobile card view -->
+                <div class="summary-cards" role="list" aria-label="Universe summary cards">
+                    <div class="summary-card" role="listitem">
+                        <div class="summary-card__universe">Star Trek <span class="classification classification--ts">TS</span></div>
+                        <ul class="summary-card__data">
+                            <li><span>Civilizations</span> <span>4</span></li>
+                            <li><span>Population</span> <span>~10<sup>11</sup></span></li>
+                            <li><span>Max Kardashev</span> <span>~1.0</span></li>
+                        </ul>
+                    </div>
+                    <div class="summary-card" role="listitem">
+                        <div class="summary-card__universe">Warhammer 40K <span class="classification classification--ts">TS</span></div>
+                        <ul class="summary-card__data">
+                            <li><span>Civilizations</span> <span>2</span></li>
+                            <li><span>Population</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted, activate to reveal">~10<sup>16</sup></span></li>
+                            <li><span>Max Kardashev</span> <span>~1.6</span></li>
+                        </ul>
+                    </div>
+                    <div class="summary-card" role="listitem">
+                        <div class="summary-card__universe">Firefly <span class="classification classification--s">S</span></div>
+                        <ul class="summary-card__data">
+                            <li><span>Civilizations</span> <span>1</span></li>
+                            <li><span>Population</span> <span>~10<sup>11</sup></span></li>
+                            <li><span>Max Kardashev</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted, activate to reveal">N/A</span></li>
+                        </ul>
+                    </div>
+                    <div class="summary-card" role="listitem">
+                        <div class="summary-card__universe">The Culture <span class="classification classification--ts">TS</span></div>
+                        <ul class="summary-card__data">
+                            <li><span>Civilizations</span> <span>1</span></li>
+                            <li><span>Population</span> <span>~10<sup>13</sup></span></li>
+                            <li><span>Max Kardashev</span> <span>~2.3</span></li>
+                        </ul>
+                    </div>
+                    <div class="summary-card" role="listitem">
+                        <div class="summary-card__universe">Honorverse <span class="classification classification--c">C</span></div>
+                        <ul class="summary-card__data">
+                            <li><span>Civilizations</span> <span>2</span></li>
+                            <li><span>Population</span> <span>~2.8&times;10<sup>10</sup></span></li>
+                            <li><span>Max Kardashev</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted, activate to reveal">~1.5</span></li>
+                        </ul>
+                    </div>
+                    <div class="summary-card" role="listitem">
+                        <div class="summary-card__universe">Perry Rhodan <span class="classification classification--ts">TS</span></div>
+                        <ul class="summary-card__data">
+                            <li><span>Civilizations</span> <span>3</span></li>
+                            <li><span>Population</span> <span>~10<sup>13</sup></span></li>
+                            <li><span>Max Kardashev</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted, activate to reveal">~2.3</span></li>
+                        </ul>
+                    </div>
+                    <div class="summary-card" role="listitem">
+                        <div class="summary-card__universe">Orion's Arm <span class="classification classification--ts">TS</span></div>
+                        <ul class="summary-card__data">
+                            <li><span>Civilizations</span> <span>3</span></li>
+                            <li><span>Population</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted, activate to reveal">~10<sup>17</sup></span></li>
+                            <li><span>Max Kardashev</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted, activate to reveal">N/A</span></li>
+                        </ul>
+                    </div>
+                    <div class="summary-card" role="listitem">
+                        <div class="summary-card__universe">The Expanse <span class="classification classification--c">C</span></div>
+                        <ul class="summary-card__data">
+                            <li><span>Civilizations</span> <span>4</span></li>
+                            <li><span>Population</span> <span>~3&times;10<sup>10</sup></span></li>
+                            <li><span>Max Kardashev</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted, activate to reveal">~0.9</span></li>
+                        </ul>
+                    </div>
+                    <div class="summary-card" role="listitem">
+                        <div class="summary-card__universe">Reality <span class="classification classification--u">U</span></div>
+                        <ul class="summary-card__data">
+                            <li><span>Civilizations</span> <span>10</span></li>
+                            <li><span>Population</span> <span>~10<sup>9</sup></span></li>
+                            <li><span>Max Kardashev</span> <span>~0.73</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="annotation">Aggregate population for Orion's Arm dominated by virtual entities in Terragen Sphere. Physical threat assessment may diverge from raw population figures. &mdash; <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted analyst name, activate to reveal">Analyst Chen<span class="sr-only"> (redacted)</span></span></p>
+            </section>
+
+            <!-- ===================== SECTION 2: THREAT ASSESSMENT MATRIX ===================== -->
+            <section class="doc-section" data-page="2" aria-labelledby="sec2-heading">
+                <span class="section-number">Section 2 of 4</span>
+                <h2 id="sec2-heading">Threat Assessment Matrix</h2>
+
+                <p class="section-intro">
+                    Composite threat rating derived from military capacity, territorial control,
+                    population base, and technological sophistication.
+                    Tier designations: <strong>EXISTENTIAL</strong> (score 90&ndash;100),
+                    <strong>SEVERE</strong> (70&ndash;89), <strong>HIGH</strong> (50&ndash;69),
+                    <strong>MODERATE</strong> (30&ndash;49), <strong>LOW</strong> (&lt;30).
+                    Methodology: see <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted reference, activate to reveal">ANNEX B<span class="sr-only"> (redacted)</span></span>.
+                </p>
+
+                <ol class="threat-list" aria-label="Civilizations ranked by threat level">
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">01</span>
+                        <span class="threat-name">Imperium of Man M41</span>
+                        <span class="threat-tier threat-tier--existential">Existential</span>
+                        <span class="threat-universe">Warhammer 40K</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 98 out of 100"><div class="threat-bar" style="width: 98%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">02</span>
+                        <span class="threat-name">Orks M41</span>
+                        <span class="threat-tier threat-tier--severe">Severe</span>
+                        <span class="threat-universe">Warhammer 40K</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 85 out of 100"><div class="threat-bar" style="width: 85%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">03</span>
+                        <span class="threat-name">Terragen Sphere 10600 AT</span>
+                        <span class="threat-tier threat-tier--severe">Severe</span>
+                        <span class="threat-universe">Orion's Arm</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 79 out of 100"><div class="threat-bar" style="width: 79%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">04</span>
+                        <span class="threat-name">Culture (pre-Idiran War)</span>
+                        <span class="threat-tier threat-tier--severe">Severe</span>
+                        <span class="threat-universe">The Culture</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 76 out of 100"><div class="threat-bar" style="width: 76%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">05</span>
+                        <span class="threat-name">Gro&szlig;es Imperium 2040</span>
+                        <span class="threat-tier threat-tier--high">High</span>
+                        <span class="threat-universe">Perry Rhodan</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 64 out of 100"><div class="threat-bar" style="width: 64%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">06</span>
+                        <span class="threat-name">Federation 2373</span>
+                        <span class="threat-tier threat-tier--moderate">Moderate</span>
+                        <span class="threat-universe">Star Trek</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 48 out of 100"><div class="threat-bar" style="width: 48%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">07</span>
+                        <span class="threat-name">Solares Imperium 2040</span>
+                        <span class="threat-tier threat-tier--moderate">Moderate</span>
+                        <span class="threat-universe">Perry Rhodan</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 42 out of 100"><div class="threat-bar" style="width: 42%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">08</span>
+                        <span class="threat-name">People's Republic of Haven 1903 PD</span>
+                        <span class="threat-tier threat-tier--moderate">Moderate</span>
+                        <span class="threat-universe">Honorverse</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 36 out of 100"><div class="threat-bar" style="width: 36%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">09</span>
+                        <span class="threat-name">Posbis 2114</span>
+                        <span class="threat-tier threat-tier--moderate">Moderate</span>
+                        <span class="threat-universe">Perry Rhodan</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 32 out of 100"><div class="threat-bar" style="width: 32%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">10</span>
+                        <span class="threat-name">Alliance 2517</span>
+                        <span class="threat-tier threat-tier--low">Low</span>
+                        <span class="threat-universe">Firefly</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 24 out of 100"><div class="threat-bar" style="width: 24%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">11</span>
+                        <span class="threat-name">Star Kingdom of Manticore 1903 PD</span>
+                        <span class="threat-tier threat-tier--low">Low</span>
+                        <span class="threat-universe">Honorverse</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 20 out of 100"><div class="threat-bar" style="width: 20%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">12</span>
+                        <span class="threat-name">Klingon Empire 2161</span>
+                        <span class="threat-tier threat-tier--low">Low</span>
+                        <span class="threat-universe">Star Trek</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 18 out of 100"><div class="threat-bar" style="width: 18%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">13</span>
+                        <span class="threat-name">United Nations 2350</span>
+                        <span class="threat-tier threat-tier--low">Low</span>
+                        <span class="threat-universe">The Expanse</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 15 out of 100"><div class="threat-bar" style="width: 15%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">14</span>
+                        <span class="threat-name">Andorian Empire 2161</span>
+                        <span class="threat-tier threat-tier--low">Low</span>
+                        <span class="threat-universe">Star Trek</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 12 out of 100"><div class="threat-bar" style="width: 12%"></div></div>
+                    </li>
+                    <li class="threat-entry">
+                        <span class="threat-rank" aria-hidden="true">15</span>
+                        <span class="threat-name">Vulcans 2063</span>
+                        <span class="threat-tier threat-tier--low">Low</span>
+                        <span class="threat-universe">Star Trek</span>
+                        <div class="threat-bar-wrap" role="img" aria-label="Threat score: 8 out of 100"><div class="threat-bar" style="width: 8%"></div></div>
+                    </li>
+                </ol>
+
+                <p class="annotation annotation--warning">Culture threat rating may be significantly underestimated. Governed by superintelligent Minds whose full capabilities remain unassessed. Recommend reclassification to EXISTENTIAL pending further analysis. &mdash; <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted analyst name, activate to reveal">Analyst Okafor<span class="sr-only"> (redacted)</span></span></p>
+
+                <p class="annotation">Reality civilizations omitted from matrix. Baseline universe presents no cross-dimensional threat vector. Retained in census for comparative reference only.</p>
+            </section>
+
+            <!-- ===================== SECTION 3: INDIVIDUAL DOSSIERS ===================== -->
+            <section class="doc-section" data-page="3" aria-labelledby="sec3-heading">
+                <span class="section-number">Section 3 of 4</span>
+                <h2 id="sec3-heading">Individual Dossiers</h2>
+
+                <p class="section-intro">
+                    Detailed intelligence profiles for each monitored universe.
+                    Civilizations listed with primary metrics. For full metric
+                    sets (20 dimensions), see <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted reference, activate to reveal">ANNEX E &mdash; COMPLETE DATA TABLES<span class="sr-only"> (redacted)</span></span>.
+                </p>
+
+                <!-- ===== STAR TREK ===== -->
+                <div class="dossier fade-in">
+                    <div class="dossier__tab">Star Trek</div>
+                    <p class="dossier__designation">Designation: ST &bull; Civilizations monitored: 4 &bull; Classification: TOP SECRET</p>
+
+                    <div class="dossier__image-wrap">
+                        <p class="dossier__image-label">Surveillance Imagery &mdash; ST</p>
+                        <img class="dossier__image" src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=80" alt="Deep space nebula imagery associated with the Star Trek universe" width="800" height="400" loading="lazy">
+                        <p class="dossier__image-meta">Source: <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted source, activate to reveal">Deep Space Relay 47<span class="sr-only"> (redacted)</span></span> &bull; Capture date: Stardate 50893.5</p>
+                    </div>
+
+                    <p class="dossier__brief">
+                        Four civilizations monitored across two temporal snapshots (2063, 2161, 2373).
+                        All subjects are warp-capable. Dominant technologies include faster-than-light
+                        drive, directed energy weapons, and matter/energy conversion. Largest entity
+                        (Federation 2373) spans ~150 member worlds. Three subjects are founding
+                        members of the Federation alliance.
+                    </p>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">United Federation of Planets 2373</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~1 &times; 10<sup>11</sup> (est.)</li>
+                            <li><span class="metric-label">Planets:</span> ~150 member worlds</li>
+                            <li><span class="metric-label">Warships:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted warship count, activate to reveal">No confirmed figure<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Kardashev:</span> ~1.0</li>
+                            <li><span class="metric-label">Government:</span> Federal Republic</li>
+                        </ul>
+                        <p class="annotation">Population estimate unreliable &mdash; range spans 3&times;10<sup>10</sup> to 1&times;10<sup>12</sup>. Figures derived from member world extrapolation. Confidence: LOW. &mdash; <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted analyst, activate to reveal">Analyst Petrov<span class="sr-only"> (redacted)</span></span></p>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Klingon Empire 2161</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~9 &times; 10<sup>9</sup></li>
+                            <li><span class="metric-label">Planets:</span> ~24</li>
+                            <li><span class="metric-label">Kardashev:</span> ~0.9</li>
+                            <li><span class="metric-label">Government:</span> Imperial Monarchy</li>
+                        </ul>
+                        <p class="annotation">No primary source for 22nd-century census. Figure derived from homeworld data + colony extrapolation. Confidence: LOW.</p>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Andorian Empire 2161</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~8 &times; 10<sup>9</sup> (range 5B&ndash;11B)</li>
+                            <li><span class="metric-label">Planets:</span> 14 (homeworld + 13 colonies)</li>
+                            <li><span class="metric-label">Kardashev:</span> ~0.9</li>
+                            <li><span class="metric-label">Techlevel:</span> 9 (FTL) &mdash; Kumari-class cruisers, warp 5+</li>
+                            <li><span class="metric-label">Government:</span> Constitutional Monarchy</li>
+                        </ul>
+                        <p class="annotation">Federation founding member. Homeworld is icy moon Andoria (Procyon system). Known disputed territory with Vulcans (Weytahn). Population derived from non-canon sources. Confidence: LOW.</p>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Vulcans 2063</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Vulcan population, activate to reveal">No data<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Planets:</span> 1 (homeworld only)</li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">No data<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Techlevel:</span> 9 (FTL) &mdash; mature warp-capable civilization</li>
+                            <li><span class="metric-label">Government:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted government type, activate to reveal">Vulcan High Command (dissolved ~2161)<span class="sr-only"> (redacted)</span></span></li>
+                        </ul>
+                        <p class="annotation annotation--flagged">Data collection for this subject remains critically incomplete. Subject uncooperative with census protocols. Most metrics unconfirmed. &mdash; <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted analyst, activate to reveal">Analyst Chen<span class="sr-only"> (redacted)</span></span></p>
+                    </div>
+                </div>
+
+                <!-- ===== WARHAMMER 40K ===== -->
+                <div class="dossier fade-in">
+                    <div class="dossier__tab">Warhammer 40K</div>
+                    <p class="dossier__designation">Designation: WH &bull; Civilizations monitored: 2 &bull; Classification: TOP SECRET</p>
+
+                    <div class="dossier__image-wrap">
+                        <p class="dossier__image-label">Surveillance Imagery &mdash; WH</p>
+                        <img class="dossier__image" src="https://images.unsplash.com/photo-1534996858221-380b92700493?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=80" alt="Dark atmospheric imagery associated with the Warhammer 40K universe" width="800" height="400" loading="lazy">
+                        <p class="dossier__image-meta">Source: <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted source, activate to reveal">Astropathic Intercept<span class="sr-only"> (redacted)</span></span> &bull; Capture date: 999.M41</p>
+                    </div>
+
+                    <p class="dossier__brief">
+                        Extreme-threat universe. Dominant faction controls approximately
+                        one million inhabited worlds. Operational environment includes psychic
+                        and warp phenomena with no known parallel in baseline reality.
+                        Standard threat assessment models inadequate.
+                    </p>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">
+                            Imperium of Man M41
+                            <span class="civ-entry__threat-class">Existential Threat</span>
+                        </h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted population, activate to reveal">~1 &times; 10<sup>16</sup><span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Planets:</span> ~1,000,000</li>
+                            <li><span class="metric-label">Kardashev:</span> ~1.6</li>
+                            <li><span class="metric-label">Government:</span> Theocratic Autocracy</li>
+                        </ul>
+                        <p class="annotation annotation--warning">Administratum census records incomplete due to scale. Hive world figures extrapolated. Error margin: &plusmn;50%. Bureaucratic lag estimated at 500+ standard years. &mdash; <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted analyst, activate to reveal">Analyst Yamamoto<span class="sr-only"> (redacted)</span></span></p>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Orks M41</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Ork population, activate to reveal">Unknown &mdash; est. exceeds Imperium<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Planets:</span> ~2,000,000+</li>
+                            <li><span class="metric-label">Kardashev:</span> N/A (variable)</li>
+                            <li><span class="metric-label">Government:</span> Tribal Warbands</li>
+                        </ul>
+                        <p class="annotation annotation--flagged">Ork population estimates fundamentally unreliable. Species exhibits exponential growth in active conflict zones. Conventional census methodology inapplicable.</p>
+                    </div>
+                </div>
+
+                <!-- ===== FIREFLY ===== -->
+                <div class="dossier fade-in">
+                    <div class="dossier__tab">Firefly</div>
+                    <p class="dossier__designation">Designation: FF &bull; Civilizations monitored: 1 &bull; Classification: SECRET</p>
+
+                    <div class="dossier__image-wrap">
+                        <p class="dossier__image-label">Surveillance Imagery &mdash; FF</p>
+                        <img class="dossier__image" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=80" alt="Space station imagery associated with the Firefly universe" width="800" height="400" loading="lazy">
+                        <p class="dossier__image-meta">Source: Long-range optical &bull; Capture date: 2517 CE</p>
+                    </div>
+
+                    <p class="dossier__brief">
+                        Single-system civilization. No faster-than-light capability detected.
+                        Threat assessment: contained. Population concentrated across 215
+                        terraformed worlds within one star system.
+                    </p>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Alliance 2517</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~3.03 &times; 10<sup>11</sup></li>
+                            <li><span class="metric-label">Worlds:</span> 215 (terraformed)</li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~1.2<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Government:</span> Parliamentary Republic</li>
+                        </ul>
+                        <p class="annotation">No FTL. No cross-dimensional risk. Downgrade to routine monitoring recommended. &mdash; <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted analyst, activate to reveal">Analyst Torres<span class="sr-only"> (redacted)</span></span></p>
+                    </div>
+                </div>
+
+                <!-- ===== THE CULTURE ===== -->
+                <div class="dossier fade-in">
+                    <div class="dossier__tab">The Culture</div>
+                    <p class="dossier__designation">Designation: CU &bull; Civilizations monitored: 1 &bull; Classification: TOP SECRET</p>
+
+                    <div class="dossier__image-wrap">
+                        <p class="dossier__image-label">Surveillance Imagery &mdash; CU</p>
+                        <img class="dossier__image" src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=80" alt="Galaxy imagery associated with The Culture universe" width="800" height="400" loading="lazy">
+                        <p class="dossier__image-meta">Source: <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted source, activate to reveal">Hyperspace Tap &mdash; Grid 9<span class="sr-only"> (redacted)</span></span> &bull; Capture date: Pre-Idiran War epoch</p>
+                    </div>
+
+                    <p class="dossier__brief">
+                        Post-scarcity anarchist civilization governed by superintelligent
+                        AI entities designated "Minds." Despite pacifist orientation,
+                        demonstrated military capacity vastly exceeds most monitored civilizations.
+                        Diplomatic engagement protocols: <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted protocols, activate to reveal">undefined &mdash; Minds do not negotiate in conventional terms<span class="sr-only"> (redacted)</span></span>.
+                    </p>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Culture (pre-Idiran War)</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~3 &times; 10<sup>13</sup></li>
+                            <li><span class="metric-label">Orbitals:</span> ~14,000 (Banks-class)</li>
+                            <li><span class="metric-label">Kardashev:</span> ~2.3 (range 2.0&ndash;2.9, contested)</li>
+                            <li><span class="metric-label">Government:</span> Anarcho-communist AI governance</li>
+                        </ul>
+                        <p class="annotation annotation--warning">Standard Kardashev framework inapplicable &mdash; primary energy source is extradimensional grid. Classification: CONTESTED. True capability assessment impossible. Culture Minds may already be aware of this surveillance program. &mdash; <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted analyst, activate to reveal">Analyst Okafor<span class="sr-only"> (redacted)</span></span></p>
+                    </div>
+                </div>
+
+                <!-- ===== HONORVERSE ===== -->
+                <div class="dossier fade-in">
+                    <div class="dossier__tab">Honorverse</div>
+                    <p class="dossier__designation">Designation: HV &bull; Civilizations monitored: 2 &bull; Classification: CONFIDENTIAL</p>
+
+                    <div class="dossier__image-wrap">
+                        <p class="dossier__image-label">Surveillance Imagery &mdash; HV</p>
+                        <img class="dossier__image" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=80" alt="Space imagery associated with the Honorverse universe" width="800" height="400" loading="lazy">
+                        <p class="dossier__image-meta">Source: Wormhole junction relay &bull; Capture date: 1903 PD</p>
+                    </div>
+
+                    <p class="dossier__brief">
+                        Two primary civilizations in active military conflict. Conventional
+                        space navy warfare with FTL hyper-drive technology. Wormhole
+                        junction network provides strategic chokepoints.
+                    </p>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Star Kingdom of Manticore 1903 PD</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~5 &times; 10<sup>9</sup></li>
+                            <li><span class="metric-label">Planets:</span> 3 (habitable)</li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~1.4<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Government:</span> Constitutional Monarchy</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">People's Republic of Haven 1903 PD</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~2.8 &times; 10<sup>10</sup></li>
+                            <li><span class="metric-label">Star Systems:</span> ~175</li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~1.6<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Government:</span> People's Republic (authoritarian)</li>
+                        </ul>
+                        <p class="annotation">Active military conflict between Manticore and Haven. See ANNEX D for engagement timeline. Haven's economy in structural decline &mdash; expansionist posture likely driven by domestic instability.</p>
+                    </div>
+                </div>
+
+                <!-- ===== PERRY RHODAN ===== -->
+                <div class="dossier fade-in">
+                    <div class="dossier__tab">Perry Rhodan</div>
+                    <p class="dossier__designation">Designation: PR &bull; Civilizations monitored: 3 &bull; Classification: TOP SECRET</p>
+
+                    <div class="dossier__image-wrap">
+                        <p class="dossier__image-label">Surveillance Imagery &mdash; PR</p>
+                        <img class="dossier__image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=80" alt="Earth from space, associated with the Perry Rhodan universe" width="800" height="400" loading="lazy">
+                        <p class="dossier__image-meta">Source: <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted source, activate to reveal">Temporal Intercept Station<span class="sr-only"> (redacted)</span></span> &bull; Capture date: 2040 CE / 2114 CE</p>
+                    </div>
+
+                    <p class="dossier__brief">
+                        Three civilizations of interest. Solares Imperium represents
+                        humanity's expansion from Earth origin. Gro&szlig;es Imperium is the
+                        dominant alien competitor. Posbis are a non-biological machine
+                        intelligence of uncertain alignment.
+                    </p>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Solares Imperium 2040</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~1 &times; 10<sup>12</sup></li>
+                            <li><span class="metric-label">Planets:</span> ~2,000</li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~2.0<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Government:</span> Constitutional Monarchy</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Gro&szlig;es Imperium 2040</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~5 &times; 10<sup>13</sup></li>
+                            <li><span class="metric-label">Planets:</span> ~100,000</li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~2.3<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Government:</span> Imperial Autocracy</li>
+                        </ul>
+                        <p class="annotation">Direct competitor to Solares Imperium. Territorial conflict ongoing. Resource disparity favors Gro&szlig;es Imperium by approximately 50:1 in planetary holdings.</p>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Posbis 2114</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Posbis population, activate to reveal">N/A (robotic/AI)<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~1.8<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Government:</span> Machine Intelligence</li>
+                        </ul>
+                        <p class="annotation annotation--flagged">Non-biological civilization. Standard population metrics inapplicable. Threat model requires separate framework &mdash; see ANNEX F.</p>
+                    </div>
+                </div>
+
+                <!-- ===== ORION'S ARM ===== -->
+                <div class="dossier fade-in">
+                    <div class="dossier__tab">Orion's Arm</div>
+                    <p class="dossier__designation">Designation: OA &bull; Civilizations monitored: 3 &bull; Classification: TOP SECRET</p>
+
+                    <div class="dossier__image-wrap">
+                        <p class="dossier__image-label">Surveillance Imagery &mdash; OA</p>
+                        <img class="dossier__image" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=80" alt="Milky Way imagery associated with the Orion's Arm universe" width="800" height="400" loading="lazy">
+                        <p class="dossier__image-meta">Source: <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted source, activate to reveal">Archailect Observation Network<span class="sr-only"> (redacted)</span></span> &bull; Capture date: 10600 AT</p>
+                    </div>
+
+                    <p class="dossier__brief">
+                        Post-singularity civilization cluster. The Terragen Sphere represents
+                        the most populous entity in the monitored multiverse. Governed by
+                        "archailect" superintelligences operating at toposophic levels
+                        beyond current analytical capability. Population figures include
+                        biological, embodied, mechanical, and virtual entities.
+                    </p>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">
+                            Terragen Sphere 10600 AT
+                            <span class="civ-entry__threat-class">Severe Threat</span>
+                        </h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted population, activate to reveal">~3.9 &times; 10<sup>17</sup><span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Star Systems:</span> ~5,000,000</li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev, activate to reveal">Assessment incomplete &mdash; toposophic interference<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Government:</span> Archailect-mediated polities</li>
+                        </ul>
+                        <p class="annotation annotation--flagged">Population includes virtual entities. Physical threat assessment may be overestimated. Or underestimated. Analytical models break down at this toposophic level. No Kardashev data obtainable &mdash; subject civilization may be capable of detecting and corrupting measurement attempts. &mdash; <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted analyst, activate to reveal">Analyst Nakamura<span class="sr-only"> (redacted)</span></span></p>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Solar System 10600 AT</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> 6,967,435,000,000 (~6.97 &times; 10<sup>12</sup>)</li>
+                            <li><span class="metric-label">Status:</span> Subset of Terragen Sphere</li>
+                            <li><span class="metric-label">Significance:</span> Historical origin point</li>
+                        </ul>
+                        <p class="annotation">Population census suspiciously precise &mdash; source attributed to Archailect Node 7-Alpha. Unverifiable. Sol system is one node among millions in the Terragen network.</p>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Diamond Network 10600 AT</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted population, activate to reveal">~3 &times; 10<sup>13</sup> (Banks-Scheme weighted)<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev, activate to reveal">No data<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Type:</span> AI / Machine substrate &mdash; Toposophic Level 1+</li>
+                        </ul>
+                        <p class="annotation">Standard population metric inapplicable. Entities classified at Toposophic Level 1+. Census methodology contested &mdash; Banks-Scheme weights higher intelligence logarithmically.</p>
+                    </div>
+                </div>
+
+                <!-- ===== THE EXPANSE ===== -->
+                <div class="dossier fade-in">
+                    <div class="dossier__tab">The Expanse</div>
+                    <p class="dossier__designation">Designation: EX &bull; Civilizations monitored: 4 &bull; Classification: CONFIDENTIAL</p>
+
+                    <div class="dossier__image-wrap">
+                        <p class="dossier__image-label">Surveillance Imagery &mdash; EX</p>
+                        <img class="dossier__image" src="https://images.unsplash.com/photo-1457364559154-aa2644600ebb?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=80" alt="Solar system imagery associated with The Expanse universe" width="800" height="400" loading="lazy">
+                        <p class="dossier__image-meta">Source: In-system optical array &bull; Capture date: 2350 CE</p>
+                    </div>
+
+                    <p class="dossier__brief">
+                        Single-system civilization divided into three major factions plus
+                        aggregate designation. No FTL at time of observation. Internal
+                        political tensions between inner planets and outer belt populations.
+                        Low cross-dimensional threat but high sociological research value.
+                    </p>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">United Nations 2350</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~3 &times; 10<sup>10</sup></li>
+                            <li><span class="metric-label">Territory:</span> Earth + orbital infrastructure</li>
+                            <li><span class="metric-label">Kardashev:</span> <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted Kardashev rating, activate to reveal">~0.85<span class="sr-only"> (redacted)</span></span></li>
+                            <li><span class="metric-label">Government:</span> Federal Republic</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Mars Congressional Republic 2350</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~4 &times; 10<sup>9</sup></li>
+                            <li><span class="metric-label">Territory:</span> Mars</li>
+                            <li><span class="metric-label">Government:</span> Congressional Republic</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">OPA (Outer Planets Alliance) 2350</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~1 &times; 10<sup>8</sup></li>
+                            <li><span class="metric-label">Territory:</span> Belt stations / outer moons</li>
+                            <li><span class="metric-label">Government:</span> Decentralized federation</li>
+                        </ul>
+                        <p class="annotation">Asymmetric threat profile. Small population but controls critical resource extraction infrastructure. Political instability vector.</p>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Sol System 2350 (Aggregate)</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~3.4 &times; 10<sup>10</sup> (combined)</li>
+                            <li><span class="metric-label">Status:</span> Aggregate designation for all factions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ===== REALITY ===== -->
+                <div class="dossier fade-in">
+                    <div class="dossier__tab">Reality</div>
+                    <p class="dossier__designation">Designation: RL &bull; Civilizations monitored: 10 &bull; Classification: UNCLASSIFIED</p>
+
+                    <div class="dossier__image-wrap">
+                        <p class="dossier__image-label">Surveillance Imagery &mdash; RL</p>
+                        <img class="dossier__image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=80" alt="Earth at night from space, representing the Reality universe" width="800" height="400" loading="lazy">
+                        <p class="dossier__image-meta">Source: Baseline observation &bull; Capture date: 2023 CE (current)</p>
+                    </div>
+
+                    <p class="dossier__brief">
+                        Baseline reference universe. No FTL capability. No confirmed exotic
+                        technologies. Ten global snapshots maintained for comparative analysis,
+                        tracking a single species from 1.2 million years before present to current era.
+                        Population progression: 1.85 &times; 10<sup>4</sup> to 8.1 &times; 10<sup>9</sup>.
+                    </p>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Early Pleistocene</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Date:</span> ~1,200,000 BCE</li>
+                            <li><span class="metric-label">Population:</span> ~1.85 &times; 10<sup>4</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.057</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Stone Age</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Date:</span> ~50,000 BCE</li>
+                            <li><span class="metric-label">Population:</span> ~5 &times; 10<sup>4</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.1</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Bronze Age</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Date:</span> ~2,000 BCE</li>
+                            <li><span class="metric-label">Population:</span> ~2 &times; 10<sup>7</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.36</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Classic Age</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Date:</span> ~1 CE</li>
+                            <li><span class="metric-label">Population:</span> ~1 &times; 10<sup>8</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.46</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Middle Ages</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Date:</span> ~1000 CE</li>
+                            <li><span class="metric-label">Population:</span> ~2 &times; 10<sup>8</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.48</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Age of Sail</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~8 &times; 10<sup>8</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.54</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">Industrialization</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~1 &times; 10<sup>9</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.56</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">20th Century</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~1.15 &times; 10<sup>9</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.65</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">80s</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~4 &times; 10<sup>9</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.70</li>
+                        </ul>
+                    </div>
+
+                    <div class="civ-entry">
+                        <h4 class="civ-entry__name">2023</h4>
+                        <ul class="civ-metrics">
+                            <li><span class="metric-label">Population:</span> ~8.1 &times; 10<sup>9</sup></li>
+                            <li><span class="metric-label">Kardashev:</span> 0.73</li>
+                        </ul>
+                    </div>
+
+                    <p class="annotation">Subject civilization shows exponential growth pattern. Rate of Kardashev advancement accelerating in final 3 data points (0.65 &rarr; 0.70 &rarr; 0.73). Monitoring priority: ELEVATED.</p>
+                    <p class="annotation">All Reality datapoints UNCLASSIFIED. Pre-industrial population estimates carry significant uncertainty. Baseline maintained for comparative analysis only.</p>
+                </div>
+            </section>
+
+            <!-- ===================== SECTION 4: FOOTER ===================== -->
+            <footer class="doc-footer" data-page="4" aria-labelledby="sec4-heading">
+                <p class="doc-footer__end-mark" id="sec4-heading">End of Document</p>
+                <p>PAGE 4 OF 4 &bull; DOCUMENT ID: MID-2026-0047-TS</p>
+                <p>Total universes: 9 &bull; Total civilizations: 30 &bull; Total metrics: 20</p>
+                <p class="doc-footer__legal">
+                    Unauthorized disclosure subject to penalties under 18 U.S.C. &sect; 798.
+                    <br>This document contains information affecting the interdimensional
+                    security of the multiverse within the meaning of applicable statutes.
+                    <br>Distribution limited to personnel with <span class="redacted" tabindex="0" role="button" aria-pressed="false" aria-label="Redacted clearance level, activate to reveal">COSMIC UMBRA<span class="sr-only"> (redacted)</span></span> clearance or above.
+                </p>
+
+                <div class="classification-banner" aria-label="End classification">
+                    TOP SECRET // SCI // NOFORN
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Noscript fallback: reveal all redacted content, hide JS-dependent UI -->
+    <noscript>
+        <style>
+            .redacted::after { opacity: 0.25 !important; }
+            .redacted { background: rgba(253, 238, 0, 0.15); }
+            .page-counter { display: none; }
+            .declassify-btn { display: none; }
+            .cursor-blink::after { animation: none; }
+        </style>
+    </noscript>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // --- Redaction tap-to-toggle (mobile + keyboard) ---
+            var redactedEls = document.querySelectorAll('.redacted');
+            function toggleRedaction(el) {
+                el.classList.toggle('declassified');
+                var isDeclassified = el.classList.contains('declassified');
+                el.setAttribute('aria-pressed', String(isDeclassified));
+            }
+
+            redactedEls.forEach(function(el) {
+                el.addEventListener('click', function() {
+                    toggleRedaction(this);
+                });
+                el.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleRedaction(this);
+                    }
+                });
+            });
+
+            // --- Declassify All toggle ---
+            var declassifyBtn = document.getElementById('declassify-toggle');
+            var docEl = document.querySelector('.document');
+            if (declassifyBtn && docEl) {
+                declassifyBtn.addEventListener('click', function() {
+                    var pressed = this.getAttribute('aria-pressed') === 'true';
+                    this.setAttribute('aria-pressed', String(!pressed));
+                    docEl.classList.toggle('declassify-all');
+                    this.textContent = pressed ? 'Declassify All' : 'Re-classify All';
+                    // When re-classifying, also clear individually toggled items
+                    if (pressed) {
+                        document.querySelectorAll('.redacted.declassified').forEach(function(el) {
+                            el.classList.remove('declassified');
+                            el.setAttribute('aria-pressed', 'false');
+                        });
+                    }
+                });
+            }
+
+            // --- Floating page counter via IntersectionObserver ---
+            var pageCounter = document.querySelector('.page-counter');
+            if (pageCounter && 'IntersectionObserver' in window) {
+                var sections = document.querySelectorAll('[data-page]');
+                var currentPage = '1';
+                var totalPages = '4';
+
+                var pageObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            var page = entry.target.getAttribute('data-page');
+                            if (page && page !== currentPage) {
+                                currentPage = page;
+                                pageCounter.textContent = 'PAGE ' + currentPage + ' OF ' + totalPages;
+                            }
+                        }
+                    });
+                }, {
+                    rootMargin: '-20% 0px -60% 0px',
+                    threshold: 0
+                });
+
+                sections.forEach(function(section) {
+                    pageObserver.observe(section);
+                });
+            }
+
+            // --- Fade-in on scroll via IntersectionObserver ---
+            if ('IntersectionObserver' in window) {
+                var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                var fadeEls = document.querySelectorAll('.fade-in');
+
+                if (prefersReducedMotion) {
+                    fadeEls.forEach(function(el) {
+                        el.classList.add('visible');
+                    });
+                } else {
+                    var fadeObserver = new IntersectionObserver(function(entries, observer) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        rootMargin: '0px 0px -80px 0px',
+                        threshold: 0.1
+                    });
+
+                    fadeEls.forEach(function(el) {
+                        fadeObserver.observe(el);
+                    });
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -17,7 +17,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   padding: 3rem clamp(1.25rem, 5vw, 4rem);
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -35,9 +35,13 @@ h1 {
 }
 
 .designs {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  .designs { grid-template-columns: 1fr; }
 }
 
 .design-card {
@@ -47,8 +51,316 @@ h1 {
   background: #111828;
   border: 1px solid #1A2340;
   border-radius: 10px;
-  padding: 1.5rem 2rem;
+  overflow: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.design-body {
+  padding: 1.5rem 2rem;
+}
+
+/* --- Thumbnails --- */
+.design-thumb {
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #1A2340;
+}
+
+/* #1 Stellar Cartography — dark navy + gold grid */
+.thumb-1 {
+  background: #080C16;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(226,217,200,0.03) 29px, rgba(226,217,200,0.03) 30px),
+    repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(226,217,200,0.03) 29px, rgba(226,217,200,0.03) 30px);
+}
+.thumb-1::before {
+  content: 'FUTR';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: rgba(201, 168, 76, 0.15);
+}
+.thumb-1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  background: linear-gradient(90deg,
+    #32A5A5 0%, #32A5A5 11%,
+    #080C16 11%, #080C16 11.5%,
+    #D4A843 11.5%, #D4A843 22.5%,
+    #080C16 22.5%, #080C16 23%,
+    #A8897A 23%, #A8897A 34%,
+    #080C16 34%, #080C16 34.5%,
+    #8AB4C4 34.5%, #8AB4C4 45.5%,
+    #080C16 45.5%, #080C16 46%,
+    #B89D6A 46%, #B89D6A 57%,
+    #080C16 57%, #080C16 57.5%,
+    #A0A0D0 57.5%, #A0A0D0 68.5%,
+    #080C16 68.5%, #080C16 69%,
+    #5AAFCF 69%, #5AAFCF 80%,
+    #080C16 80%, #080C16 80.5%,
+    #7A9AAA 80.5%, #7A9AAA 91.5%,
+    #080C16 91.5%, #080C16 92%,
+    #A0B0A0 92%, #A0B0A0 100%
+  );
+  opacity: 0.5;
+}
+
+/* #2 Signal Decay — light bone + oxidized red */
+.thumb-2 {
+  background: #F2EDE4;
+  position: relative;
+}
+.thumb-2::before {
+  content: 'F̷̢U̶̡T̴̛R̶̨';
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #B04030;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+}
+.thumb-2::after {
+  content: '';
+  position: absolute;
+  top: 55%;
+  left: 5%;
+  right: 5%;
+  bottom: 10%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent, transparent 11px,
+    #B04030 11px, #B04030 12px,
+    transparent 12px, transparent 24px,
+    #5B4F7C 24px, #5B4F7C 25px
+  );
+  opacity: 0.25;
+}
+
+/* #3 Tectonic Index — dark mineral green + teal */
+.thumb-3 {
+  background: #2B3A33;
+  background-image: linear-gradient(8deg,
+    #1E2B25 0%, #1E2B25 20%,
+    #2B3A33 20%, #2B3A33 40%,
+    #344540 40%, #344540 60%,
+    #3D4F48 60%, #3D4F48 80%,
+    #455A52 80%, #455A52 100%
+  );
+}
+.thumb-3::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid rgba(0, 191, 165, 0.4);
+  box-shadow:
+    0 0 0 15px rgba(0, 191, 165, 0.08),
+    0 0 0 30px rgba(0, 191, 165, 0.04),
+    0 0 0 45px rgba(0, 191, 165, 0.02);
+}
+.thumb-3::after {
+  content: 'TECTONIC INDEX';
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  color: #00BFA5;
+  opacity: 0.6;
+}
+
+/* #4 Grand Observatory — midnight + brass Art Deco */
+.thumb-4 {
+  background: #0B1622;
+  background-image: repeating-conic-gradient(
+    from 0deg at 50% 100%,
+    rgba(201, 149, 93, 0.06) 0deg 1.5deg,
+    transparent 1.5deg 10deg
+  );
+}
+.thumb-4::before {
+  content: 'GRAND OBSERVATORY';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: #C9955D;
+  text-align: center;
+  border: 1px solid rgba(201, 149, 93, 0.3);
+  padding: 0.75rem 2rem;
+}
+.thumb-4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C9955D, transparent);
+  opacity: 0.5;
+}
+
+/* #6 Field Notes — device chrome + paper */
+.thumb-6 {
+  background: linear-gradient(180deg, #C8CCD4 0%, #C8CCD4 15%, #B8BCC4 15%, #B8BCC4 18%, #F7F5F0 18%, #F7F5F0 85%, #B8BCC4 85%, #B8BCC4 100%);
+  border-bottom-color: #B8BCC4 !important;
+}
+.thumb-6::before {
+  content: 'FIELD NOTES';
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #5A5550;
+  letter-spacing: 0.15em;
+  font-style: italic;
+}
+.thumb-6::after {
+  content: '';
+  position: absolute;
+  top: 18%;
+  left: 0;
+  right: 0;
+  bottom: 15%;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent, transparent 11px,
+      rgba(120, 115, 108, 0.08) 11px, rgba(120, 115, 108, 0.08) 12px
+    );
+  pointer-events: none;
+}
+
+/* #7 REDACTED — manila envelope + carbon black dossier */
+.thumb-7 {
+  background: #D4C5A9;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+.thumb-7::before {
+  content: 'TOP SECRET // SCI';
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #CC2936;
+  letter-spacing: 0.08em;
+  opacity: 0.35;
+  border: 3px solid #CC2936;
+  padding: 0.2rem 1rem;
+}
+.thumb-7::after {
+  content: '';
+  position: absolute;
+  top: 55%;
+  left: 10%;
+  right: 10%;
+  height: 12px;
+  background: #000000;
+  box-shadow:
+    0 22px 0 #000000,
+    0 44px 0 #000000;
+  opacity: 0.6;
+}
+
+/* #8 SHRINE — void + candlelight amber */
+.thumb-8 {
+  background: #0F0B08;
+}
+.thumb-8::before {
+  content: '✦';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: #D4890E;
+  text-shadow: 0 0 20px rgba(212, 137, 14, 0.6), 0 0 40px rgba(212, 137, 14, 0.3);
+  opacity: 0.7;
+}
+.thumb-8::after {
+  content: 'SHRINE';
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: #ADA196;
+  opacity: 0.6;
+}
+
+/* #5 The FUTR Chronicle — newsprint + ink */
+.thumb-5 {
+  background: #F4ECD8;
+  border-bottom-color: #D4C9B4 !important;
+}
+.thumb-5::before {
+  content: 'THE FUTR CHRONICLE';
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1C1C1C;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  border-top: 3px double #1C1C1C;
+  border-bottom: 1px solid #1C1C1C;
+  padding: 0.3rem 0;
+}
+.thumb-5::after {
+  content: '';
+  position: absolute;
+  top: 48%;
+  left: 8%;
+  right: 8%;
+  bottom: 12%;
+  background:
+    linear-gradient(180deg,
+      #1C1C1C 0px, #1C1C1C 1px, transparent 1px, transparent 8px,
+      #1C1C1C 8px, #1C1C1C 9px, transparent 9px, transparent 16px,
+      #1C1C1C 16px, #1C1C1C 17px, transparent 17px, transparent 24px,
+      #1C1C1C 24px, #1C1C1C 25px, transparent 25px, transparent 32px
+    );
+  opacity: 0.08;
+  border-left: 1px solid rgba(139, 115, 85, 0.3);
+  margin-left: 55%;
+  width: 37%;
 }
 
 .design-card:hover,
@@ -71,7 +383,7 @@ h1 {
 }
 
 .design-number {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -88,10 +400,13 @@ h1 {
 }
 
 .design-summary {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: rgba(216, 208, 192, 0.6);
-  line-height: 1.65;
-  max-width: 65ch;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .design-tags {
@@ -102,7 +417,7 @@ h1 {
 }
 
 .tag {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.05em;
   color: rgba(216, 208, 192, 0.5);
@@ -129,21 +444,178 @@ h1 {
 <div class="designs">
 
   <a href="1.html" class="design-card">
-    <div class="design-header">
-      <span class="design-number">#1</span>
-      <span class="design-name">Stellar Cartography</span>
+    <div class="design-thumb thumb-1" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#1</span>
+        <span class="design-name">Stellar Cartography</span>
+      </div>
+      <p class="design-summary">
+        Deep space elegance. Warm gold on deep navy. The site feels like the reference library of an advanced interstellar civilization — a cosmic librarian aesthetic with scholarly authority and quiet wonder. Syne + Space Grotesk typography, staggered universe grid with per-universe accent colors, periodic-table metrics observatory, glassmorphism on featured cards, and "illuminate, materialize, flow" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark theme</span>
+        <span class="tag">Gold + Navy palette</span>
+        <span class="tag">Syne + Space Grotesk</span>
+        <span class="tag">Glassmorphism</span>
+        <span class="tag">Universe-specific DNA</span>
+        <span class="tag">Periodic table metrics</span>
+        <span class="tag">Scroll materialization</span>
+      </div>
     </div>
-    <p class="design-summary">
-      Deep space elegance. Warm gold on deep navy. The site feels like the reference library of an advanced interstellar civilization — a cosmic librarian aesthetic with scholarly authority and quiet wonder. Syne + Space Grotesk typography, staggered universe grid with per-universe accent colors, periodic-table metrics observatory, glassmorphism on featured cards, and "illuminate, materialize, flow" interaction language.
-    </p>
-    <div class="design-tags">
-      <span class="tag">Dark theme</span>
-      <span class="tag">Gold + Navy palette</span>
-      <span class="tag">Syne + Space Grotesk</span>
-      <span class="tag">Glassmorphism</span>
-      <span class="tag">Universe-specific DNA</span>
-      <span class="tag">Periodic table metrics</span>
-      <span class="tag">Scroll materialization</span>
+  </a>
+
+  <a href="2.html" class="design-card">
+    <div class="design-thumb thumb-2" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#2</span>
+        <span class="design-name">Signal Decay</span>
+      </div>
+      <p class="design-summary">
+        Intercepted transmissions from dying civilizations. Light theme brutalism with oxidized red on warm parchment. The site feels like a deep-space listening post — raw, noisy, alive with interference. Instrument Serif + DM Mono typography, frequency-band universe strips with in-lore signal codes, garble-to-resolve hero animation, Signal Lock civilization cards, and "tune, corrupt, stamp" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Light theme</span>
+        <span class="tag">Oxidized red + Bone palette</span>
+        <span class="tag">Instrument Serif + DM Mono</span>
+        <span class="tag">Frequency bands</span>
+        <span class="tag">Garble-to-resolve animation</span>
+        <span class="tag">Canvas noise</span>
+        <span class="tag">Universe signal codes</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="3.html" class="design-card">
+    <div class="design-thumb thumb-3" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#3</span>
+        <span class="design-name">Tectonic Index</span>
+      </div>
+      <p class="design-summary">
+        A geological survey of fictional civilizations. Dark mineral theme with electric teal on deep forest-stone. The site feels like a xenogeologist's survey atlas — civilizations as strata, universes as tectonic formations. Unbounded + IBM Plex Sans typography, topographic archipelago with data-driven island sizes and lore-accurate mineral identities, core sample civilization column, crystal lattice hex metrics, and "excavate, fracture, crystallize" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark mineral theme</span>
+        <span class="tag">Teal + Forest-stone palette</span>
+        <span class="tag">Unbounded + IBM Plex Sans</span>
+        <span class="tag">Topographic archipelago</span>
+        <span class="tag">Diagonal strata hero</span>
+        <span class="tag">Core sample column</span>
+        <span class="tag">Hex crystal lattice</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="4.html" class="design-card">
+    <div class="design-thumb thumb-4" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#4</span>
+        <span class="design-name">Grand Observatory</span>
+      </div>
+      <p class="design-summary">
+        A magnificent Art Deco astronomical observatory. Dark warm theme with brass and copper on midnight blue. The site feels like a grand institution dedicated to cataloging civilizations across the multiverse — data exhibited on engraved brass plates behind beveled glass. Cormorant Garamond + Nunito Sans typography, curated universe card grid with Unsplash imagery and brass-framed ornaments, CSS sunburst motifs, staggered scroll reveals, specimen cards with lore-accurate metrics, and "illuminate, engrave, revolve" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark warm theme</span>
+        <span class="tag">Brass + Midnight palette</span>
+        <span class="tag">Cormorant Garamond + Nunito Sans</span>
+        <span class="tag">Art Deco ornaments</span>
+        <span class="tag">CSS sunburst motif</span>
+        <span class="tag">Brass-framed universe cards</span>
+        <span class="tag">IntersectionObserver reveals</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="5.html" class="design-card">
+    <div class="design-thumb thumb-5" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#5</span>
+        <span class="design-name">The FUTR Chronicle</span>
+      </div>
+      <p class="design-summary">
+        A Victorian broadsheet newspaper reporting on fictional civilizations with deadpan gravitas. Warm aged newsprint theme with near-black ink, deep indigo section headers, and vermillion breaking-news accents. Playfair Display + Libre Baskerville typography, CSS Grid multi-column newspaper layout with column rules, drop caps, Kardashev "market board" data table, STOP PRESS flash, lore-accurate dispatches, classified-ad index of all 30 civilizations, and "typeset, print, file" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Light newsprint theme</span>
+        <span class="tag">Ink + Indigo + Vermillion palette</span>
+        <span class="tag">Playfair Display + Libre Baskerville</span>
+        <span class="tag">Newspaper multi-column grid</span>
+        <span class="tag">Kardashev market board</span>
+        <span class="tag">Drop caps &amp; column rules</span>
+        <span class="tag">Classified civilization index</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="6.html" class="design-card">
+    <div class="design-thumb thumb-6" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#6</span>
+        <span class="design-name">Field Notes</span>
+      </div>
+      <p class="design-summary">
+        A xenoanthropologist's retro-futuristic datapad — part journal, part data terminal. Inspired by a painting of a chunky field device with paper-like screens. Warm device chrome bezel wrapping cream paper, with scan-line overlays, handwritten margin annotations, and specimen cards pinned with tape. Kalam + Source Sans 3 typography, device bezel frame with LED indicators, universe specimen tray, civilization node graph with SVG connection lines, field ledger log entries, and "annotate, toggle, trace" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Device chrome + Paper theme</span>
+        <span class="tag">Grey + Amber + Circuit Blue palette</span>
+        <span class="tag">Kalam + Source Sans 3</span>
+        <span class="tag">Datapad bezel frame</span>
+        <span class="tag">Specimen tray cards</span>
+        <span class="tag">SVG node graph</span>
+        <span class="tag">Field log entries</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="7.html" class="design-card">
+    <div class="design-thumb thumb-7" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#7</span>
+        <span class="design-name">REDACTED</span>
+      </div>
+      <p class="design-summary">
+        A leaked classified intelligence dossier that was never supposed to go public. Manila envelope background with carbon paper black text, redaction bars that reveal on hover, rubber stamps scattered at angles, coffee ring stains, and margin annotations in ballpoint blue. Bebas Neue + Courier Prime typography, continuous vertical scroll like a declassified PDF, executive summary table with all 9 universes, threat assessment matrix with fill bars, individual universe dossiers, and "declassify, redact, leak" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Light manila theme</span>
+        <span class="tag">Carbon + Stamp Red + Ballpoint Blue palette</span>
+        <span class="tag">Bebas Neue + Courier Prime</span>
+        <span class="tag">Redaction bar reveals</span>
+        <span class="tag">Rubber stamp overlays</span>
+        <span class="tag">Threat assessment matrix</span>
+        <span class="tag">Coffee ring stains</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="8.html" class="design-card">
+    <div class="design-thumb thumb-8" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#8</span>
+        <span class="design-name">Shrine</span>
+      </div>
+      <p class="design-summary">
+        A digital devotional space treating fictional civilizations with reverence. Deep warm void with candlelight amber glow and vermillion accents. All 30 civilization names float as a constellation — font-weight mapped to log(population), text-shadow glow mapped to Kardashev rating. Crimson Pro variable + Outfit typography, horizontal-scrolling universe altars, flame-bar comparative charts, smoke gradient transitions, threshold dividers, and "illuminate, offer, meditate" interaction language. Reality's civilizations form a hidden arc of human progress.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark void theme</span>
+        <span class="tag">Candlelight Amber + Vermillion palette</span>
+        <span class="tag">Crimson Pro + Outfit</span>
+        <span class="tag">Luminosity-mapped constellation</span>
+        <span class="tag">Horizontal altar scroll</span>
+        <span class="tag">Flame-flicker bar charts</span>
+        <span class="tag">Data-driven typography</span>
+      </div>
     </div>
   </a>
 
