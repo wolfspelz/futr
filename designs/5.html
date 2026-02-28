@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE FUTR CHRONICLE — All the Universes Fit to Print</title>
+<meta name="description" content="The FUTR Chronicle — a broadsheet newspaper of record for fictional civilizations across 9 universes. 30 civilizations, 20 metrics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap&subset=latin" rel="stylesheet">
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.nav-menu{display:flex!important}</style></noscript>
+<style>
+/* ============================================
+   THE FUTR CHRONICLE — Design System
+   Concept: Vintage Broadsheet Newspaper
+   Interaction: Typeset, Print, File
+   ============================================ */
+
+/* --- Design Tokens --- */
+:root {
+  --newsprint: #F4ECD8;
+  --newsprint-mid: #EBE1CB;
+  --newsprint-dark: #DED4BE;
+  --ink: #1C1C1C;
+  --ink-light: #4A4A4A;
+  --indigo: #2B3875;
+  --vermillion: #C4362A;
+  --sepia: #8B7355;
+  --sepia-light: #C4B99A;
+
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+
+  --col-rule: 1px solid var(--sepia-light);
+  --ornament-rule: 2px solid var(--ink);
+  --thin-rule: 1px solid var(--ink);
+  --transition-base: 0.3s ease;
+  --radius: 0;
+  --page-max: 1200px;
+  --nav-height: 44px;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--newsprint);
+  line-height: 1.7;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Paper texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+p { margin-bottom: 0.875rem; font-size: 0.875rem; }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--indigo);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--transition-base);
+}
+a:hover { color: var(--vermillion); }
+a:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 3px;
+}
+
+/* --- Skip Link --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--ink);
+  color: var(--newsprint);
+  padding: 0.5rem 1rem;
+  z-index: 10000;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0.5rem;
+  outline: 2px solid var(--vermillion);
+}
+
+/* --- Navigation --- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--newsprint);
+  border-bottom: 3px solid var(--vermillion);
+}
+
+.nav-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--newsprint);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.nav-brand:hover { color: var(--newsprint); }
+.nav-brand:focus-visible { outline-color: var(--newsprint); }
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+}
+
+.nav-menu a {
+  display: block;
+  color: rgba(244, 236, 216, 0.7);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  transition: color var(--transition-base);
+}
+.nav-menu a:hover { color: var(--newsprint); }
+.nav-menu a:focus-visible {
+  outline: 2px solid var(--newsprint);
+  outline-offset: 1px;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--newsprint);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+button.nav-toggle:focus-visible {
+  outline: 2px solid var(--newsprint);
+  outline-offset: 2px;
+}
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Masthead --- */
+.masthead {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 0;
+  text-align: center;
+}
+
+.masthead-rule-top {
+  border: none;
+  border-top: 3px double var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+.masthead-edition {
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 0.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.masthead-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+}
+
+.masthead-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--ink-light);
+  margin-bottom: 0.375rem;
+}
+
+.masthead-meta {
+  font-size: 0.8125rem;
+  color: var(--ink-light);
+  letter-spacing: 0.05em;
+}
+.masthead-meta .sep { margin: 0 0.5rem; }
+
+.masthead-ship {
+  font-size: 0.8125rem;
+  color: var(--ink-light);
+  font-style: italic;
+  margin-top: 0.25rem;
+  letter-spacing: 0.03em;
+}
+
+.masthead-rule-bottom {
+  border: none;
+  border-top: var(--ornament-rule);
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.masthead-thin-rule {
+  border: none;
+  border-top: var(--thin-rule);
+  margin-top: 3px;
+}
+
+/* --- Front Page --- */
+.front-page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 0;
+}
+
+.front-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-areas:
+    "lead sidebar"
+    "market market";
+  gap: 0;
+}
+
+/* --- Lead Story --- */
+.lead-story {
+  grid-area: lead;
+  border-right: var(--col-rule);
+  padding-right: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.story-kicker {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--indigo);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.lead-headline {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.lead-subhead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: var(--ink-light);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.press-photo {
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.press-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: sepia(0.7) saturate(0.8);
+  transition: filter 0.4s ease;
+}
+.press-photo:hover img {
+  filter: sepia(0);
+}
+.press-photo figcaption {
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--ink-light);
+  padding-top: 0.375rem;
+  border-top: 1px solid var(--sepia-light);
+  margin-top: 0.375rem;
+}
+
+.dropcap {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 3.75rem;
+  line-height: 0.75;
+  padding-right: 0.125rem;
+  padding-top: 0.25rem;
+  color: var(--indigo);
+  font-weight: 700;
+}
+
+.lead-body {
+  text-align: justify;
+  hyphens: auto;
+}
+
+.lead-data-aside {
+  float: right;
+  width: 45%;
+  margin: 0 0 0.75rem 1rem;
+  padding: 0.75rem;
+  border: 1px solid var(--sepia-light);
+  background: var(--newsprint-mid);
+  font-size: 0.8125rem;
+}
+
+.lead-data-aside h4 {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid var(--sepia-light);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.125rem 0;
+  border-bottom: 1px dotted var(--sepia-light);
+}
+.data-row:last-child { border-bottom: none; }
+.data-label { color: var(--ink-light); }
+.data-value { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.byline {
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--ink-light);
+  font-variant: small-caps;
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--sepia-light);
+}
+
+/* --- Late Edition Sidebar --- */
+.late-edition {
+  grid-area: sidebar;
+  padding-left: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.sidebar-label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--newsprint);
+  background: var(--ink);
+  padding: 0.1875rem 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.sidebar-story {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--sepia-light);
+}
+.sidebar-story:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.sidebar-headline {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.375rem;
+}
+
+.sidebar-text {
+  font-size: 0.875rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.sidebar-datum {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.sidebar-note {
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--ink-light);
+}
+
+/* --- STOP PRESS banner --- */
+.stop-press {
+  position: relative;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.stop-press-inner {
+  background: var(--vermillion);
+  color: #fff;
+  padding: 0.375rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  transform: rotate(-0.3deg);
+  margin-top: -0.25rem;
+}
+
+.stop-press-label {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  border-right: 1px solid rgba(255,255,255,0.4);
+  padding-right: 0.625rem;
+}
+
+.stop-press-text {
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* --- Market Data Strip --- */
+.market-strip {
+  grid-area: market;
+  border-top: var(--ornament-rule);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.market-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.market-title {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.market-rule {
+  flex: 1;
+  border: none;
+  border-top: 1px solid var(--sepia-light);
+}
+
+.market-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.market-table th {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-light);
+  font-weight: 400;
+  text-align: left;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.market-table td {
+  padding: 0.3125rem 0.5rem;
+  border-bottom: 1px dotted var(--sepia-light);
+  vertical-align: baseline;
+}
+
+.market-table tr:last-child td { border-bottom: none; }
+.market-table tbody tr:nth-child(even) { background: var(--newsprint-mid); }
+
+.market-civ { font-weight: 700; }
+.market-universe {
+  font-style: italic;
+  color: var(--ink-light);
+  font-size: 0.8125rem;
+}
+.market-value {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.market-anchor {
+  color: var(--ink-light);
+  font-style: italic;
+  font-size: 0.8125rem;
+}
+
+.market-value--overflow {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--indigo);
+  letter-spacing: -0.02em;
+}
+
+.datum-overflow {
+  font-size: 1.0625rem;
+  letter-spacing: -0.03em;
+}
+
+.market-footnote {
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--ink-light);
+  margin-top: 0.5rem;
+  padding-top: 0.375rem;
+  border-top: 1px solid var(--sepia-light);
+}
+
+/* --- Universe Sections --- */
+.universe-sections {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-divider {
+  border: none;
+  border-top: var(--ornament-rule);
+  margin: 2rem 0 0;
+}
+.section-divider-thin {
+  border: none;
+  border-top: var(--thin-rule);
+  margin-top: 3px;
+}
+
+.section-divider--wide {
+  max-width: var(--page-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+
+.universe-section {
+  padding: 1.5rem 0 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.section-name {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: var(--newsprint);
+  background: var(--indigo);
+  padding: 0.1875rem 0.625rem;
+}
+
+.section-sub {
+  font-style: italic;
+  color: var(--ink-light);
+  font-size: 0.875rem;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.section-grid > *:first-child {
+  border-right: var(--col-rule);
+  padding-right: 1.25rem;
+}
+.section-grid > *:last-child {
+  padding-left: 1.25rem;
+}
+
+.section-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+.section-grid-3 > *:not(:last-child) {
+  border-right: var(--col-rule);
+  padding-right: 1.25rem;
+}
+.section-grid-3 > *:not(:first-child) {
+  padding-left: 1.25rem;
+}
+
+.article-headline {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.375rem;
+}
+
+.article-body {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.article-photo {
+  margin: 0.75rem 0;
+}
+.article-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: sepia(0.7) saturate(0.8);
+  transition: filter 0.4s ease;
+}
+.article-photo:hover img {
+  filter: sepia(0);
+}
+.article-photo figcaption {
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--ink-light);
+  margin-top: 0.25rem;
+}
+
+.article-data {
+  margin: 0.75rem 0;
+  padding: 0.625rem;
+  border: 1px solid var(--sepia-light);
+  background: var(--newsprint-mid);
+  font-size: 0.8125rem;
+}
+.article-data h5 {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.375rem;
+  border-bottom: 1px solid var(--sepia-light);
+  padding-bottom: 0.1875rem;
+}
+
+.pull-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--indigo);
+  border-left: 3px solid var(--sepia);
+  padding: 0.5rem 0 0.5rem 1rem;
+  margin: 1rem 0;
+  line-height: 1.4;
+}
+
+/* --- Dispatches (brief universe entries) --- */
+.dispatch {
+  padding-bottom: 1rem;
+}
+
+.dispatch-headline {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.dispatch-text {
+  font-size: 0.8125rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+/* --- Classifieds --- */
+.classifieds {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+.classifieds-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.classifieds-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.classifieds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0;
+  border: 1px solid var(--sepia-light);
+}
+
+.classified-card {
+  padding: 0.625rem 0.75rem;
+  border-right: 1px solid var(--sepia-light);
+  border-bottom: 1px solid var(--sepia-light);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  transition: background var(--transition-base);
+}
+.classified-card:hover {
+  background: var(--newsprint-mid);
+}
+
+.classified-name {
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+
+.classified-universe {
+  font-style: italic;
+  color: var(--ink-light);
+  font-size: 0.8125rem;
+}
+
+.classified-stat {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--ink-light);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Footer --- */
+.footer {
+  background: var(--ink);
+  color: var(--newsprint);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+
+.footer-text a {
+  color: var(--newsprint);
+  opacity: 0.85;
+}
+.footer-text a:hover { opacity: 1; }
+.footer-text a:focus-visible { outline-color: var(--newsprint); }
+
+/* --- Responsive: Tablet (768–1024px) --- */
+@media (max-width: 1024px) {
+  .front-grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .section-grid-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .section-grid-3 > *:nth-child(3) {
+    grid-column: 1 / -1;
+    border-right: none;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--sepia-light);
+    margin-top: 1rem;
+  }
+  .section-grid-3 > *:nth-child(2) {
+    border-right: none;
+  }
+
+  .lead-data-aside {
+    float: none;
+    width: 100%;
+    margin: 0 0 1rem;
+  }
+}
+
+/* --- Responsive: Mobile (<768px) --- */
+@media (max-width: 767px) {
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--ink);
+    flex-direction: column;
+    padding: 0.5rem 0;
+    border-top: 1px solid rgba(244, 236, 216, 0.1);
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a {
+    padding: 0.625rem 1.5rem;
+  }
+  .nav-inner { position: relative; }
+
+  .masthead-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .front-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "lead"
+      "sidebar"
+      "market";
+  }
+
+  .lead-story {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: var(--col-rule);
+  }
+
+  .late-edition {
+    padding-left: 0;
+    padding-top: 1rem;
+  }
+
+  .lead-data-aside {
+    float: none;
+    width: 100%;
+    margin: 0 0 1rem;
+  }
+
+  .section-grid,
+  .section-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .section-grid > *:first-child,
+  .section-grid-3 > *:not(:last-child) {
+    border-right: none;
+    padding-right: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--sepia-light);
+    margin-bottom: 1rem;
+  }
+  .section-grid > *:last-child,
+  .section-grid-3 > *:not(:first-child) {
+    padding-left: 0;
+  }
+  .section-grid-3 > *:nth-child(3) {
+    border-top: none;
+    margin-top: 0;
+  }
+
+  .classifieds-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stop-press-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.25rem;
+  }
+  .stop-press-label {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.25rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .classifieds-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Print --- */
+@media print {
+  .nav, .skip-link, body::after { display: none; }
+  body { background: #fff; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Navigation -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">The FUTR Chronicle</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Edition menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+    <ul id="nav-menu" class="nav-menu" role="list">
+      <li><a href="#front-page">Front Page</a></li>
+      <li><a href="#universes">Universes</a></li>
+      <li><a href="#classifieds-section">Classifieds</a></li>
+      <li><a href="https://www.futr.space/">Visit FUTR</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Masthead -->
+<header class="masthead">
+  <hr class="masthead-rule-top" aria-hidden="true">
+  <div class="masthead-edition">27 February 2026 CE · Stardate 103291.8 · 041.M3</div>
+  <h1 class="masthead-title">The FUTR Chronicle</h1>
+  <p class="masthead-tagline">All the Universes Fit to Print</p>
+  <p class="masthead-meta">
+    <span>Vol. IX</span>
+    <span class="sep" aria-hidden="true">·</span>
+    <span>30 Civilizations Indexed</span>
+    <span class="sep" aria-hidden="true">·</span>
+    <span>20 Metrics Tracked</span>
+  </p>
+  <p class="masthead-ship">Curated by the GCU <em>Conditions of Plausible Alarm</em></p>
+  <hr class="masthead-rule-bottom" aria-hidden="true">
+  <hr class="masthead-thin-rule" aria-hidden="true">
+</header>
+
+<!-- Main Content -->
+<main id="main">
+
+<!-- ==================== FRONT PAGE ==================== -->
+<section class="front-page" id="front-page" aria-label="Front page">
+  <div class="front-grid">
+
+    <!-- LEAD STORY -->
+    <article class="lead-story">
+      <p class="story-kicker">Warhammer 40,000 · The Imperium M41</p>
+      <h2 class="lead-headline">Imperium of Man Spans One Million Worlds</h2>
+      <p class="lead-subhead">Holy Terra's dominion dwarfs all recorded civilizations in sheer territorial reach; Ork incursions contest an estimated two million additional planets</p>
+
+      <figure class="press-photo">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80"
+             alt="Points of light across a dark globe, evoking a million inhabited worlds"
+             width="800" height="400" fetchpriority="high">
+        <figcaption>An artist's impression of the million points of light — each an Imperial world. Archival image, Administratum Records.</figcaption>
+      </figure>
+
+      <div class="lead-data-aside">
+        <h4>At a Glance: Imperium M41</h4>
+        <div class="data-row"><span class="data-label">Planets</span><span class="data-value">1,000,000</span></div>
+        <div class="data-row"><span class="data-label">Government</span><span class="data-value">Theocratic Autocracy</span></div>
+        <div class="data-row"><span class="data-label">Kardashev</span><span class="data-value">II+</span></div>
+        <div class="data-row"><span class="data-label">Threat Level</span><span class="data-value">Exterminatus-capable</span></div>
+      </div>
+
+      <p class="lead-body"><span class="dropcap" aria-hidden="true">T</span>he Imperium of Man, sovereign dominion of the God-Emperor of Mankind, now governs exactly one million worlds across the Milky Way galaxy — a figure that eclipses every other civilization in the FUTR index by an order of magnitude. The datum, confirmed by Administratum census tabulators, represents the largest single territorial holding ever recorded.</p>
+
+      <p class="lead-body">Yet Imperial authorities remain unable to secure their borders. The Ork menace, a decentralised network of Waaaghs numbering an estimated two million contested planets, continues to grow unchecked. Unlike the Imperium's rigid hierarchy, Ork forces operate without unified government or central command — a fact that makes their aggregate territorial footprint all the more alarming.</p>
+
+      <p class="byline">— From our correspondent at Segmentum Solar</p>
+    </article>
+
+    <!-- LATE EDITION SIDEBAR -->
+    <aside class="late-edition" aria-label="Late edition stories">
+      <span class="sidebar-label">Late Edition</span>
+
+      <article class="sidebar-story">
+        <h3 class="sidebar-headline">Federation Holds Steady at 150 Member Worlds</h3>
+        <p class="sidebar-text">The United Federation of Planets, reporting from stardate 50893.5 (year 2373), maintains <span class="sidebar-datum">150 member worlds</span> with a combined population estimated at <span class="sidebar-datum">~100 billion</span>. The figure, classified as an informed guess by FUTR analysts, places the Federation as the preeminent Alpha Quadrant power — though dwarfed by Gamma and Delta Quadrant empires.</p>
+      </article>
+
+      <article class="sidebar-story">
+        <h3 class="sidebar-headline">Culture Population Exceeds 30 Trillion</h3>
+        <p class="sidebar-text">The Culture (pre-Idiran War snapshot) reports a population of approximately <span class="sidebar-datum">30 trillion</span> citizens across an estimated <span class="sidebar-datum">14,000 Banks Orbitals</span>. The anarcho-communist hyper-civilisation remains the benchmark for post-scarcity governance in the FUTR index.</p>
+      </article>
+
+      <article class="sidebar-story">
+        <h3 class="sidebar-headline">Terragen Census Defies Notation</h3>
+        <p class="sidebar-text">The Terragen Sphere (Orion's Arm) has filed a population figure of <span class="sidebar-datum datum-overflow">3.9×10<sup>17</sup></span> — a number so vast it overwhelms standard demographic tables. FUTR actuaries note this figure encompasses biological, embodied, mechanical, and virtual populations combined.</p>
+        <p class="sidebar-note">† Figure exceeds standard demographic notation</p>
+      </article>
+    </aside>
+
+    <!-- MARKET DATA STRIP -->
+    <section class="market-strip" aria-label="Kardashev Scale market data">
+      <div class="market-header">
+        <h3 class="market-title">Kardashev Scale — Market Board</h3>
+        <hr class="market-rule" aria-hidden="true">
+      </div>
+
+      <table class="market-table">
+        <thead>
+          <tr>
+            <th scope="col">Civilization</th>
+            <th scope="col">Universe</th>
+            <th scope="col">Kardashev Rating</th>
+            <th scope="col">Population</th>
+            <th scope="col">Planets/Habitats</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="market-civ">Terragen Sphere</td>
+            <td class="market-universe">Orion's Arm</td>
+            <td class="market-value">III+</td>
+            <td class="market-value market-value--overflow">3.9×10<sup>17</sup></td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="market-civ">Culture (pre-war)</td>
+            <td class="market-universe">The Culture</td>
+            <td class="market-value">III</td>
+            <td class="market-value">~30T</td>
+            <td>~14,000 Orbitals</td>
+          </tr>
+          <tr>
+            <td class="market-civ">Großes Imperium</td>
+            <td class="market-universe">Perry Rhodan</td>
+            <td class="market-value">II+</td>
+            <td class="market-value">50T</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="market-civ">Imperium of Man</td>
+            <td class="market-universe">Warhammer 40K</td>
+            <td class="market-value">II+</td>
+            <td>—</td>
+            <td class="market-value">1,000,000</td>
+          </tr>
+          <tr>
+            <td class="market-civ">Federation 2373</td>
+            <td class="market-universe">Star Trek</td>
+            <td class="market-value">II</td>
+            <td class="market-value">~100B</td>
+            <td>150</td>
+          </tr>
+          <tr>
+            <td class="market-civ">Alliance 2517</td>
+            <td class="market-universe">Firefly</td>
+            <td class="market-value">I+</td>
+            <td class="market-value">303B</td>
+            <td>215</td>
+          </tr>
+          <tr>
+            <td class="market-civ">Reality 2023</td>
+            <td class="market-universe market-anchor">Reality</td>
+            <td class="market-value">0.73</td>
+            <td class="market-value">8B</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="market-footnote">Kardashev ratings are FUTR estimates. Reality 2023 baseline shown for comparative scale. Großes Imperium is the Arkonide alien empire (Perry Rhodan).</p>
+    </section>
+
+  </div><!-- .front-grid -->
+</section>
+
+<!-- STOP PRESS -->
+<div class="stop-press" aria-label="Breaking news">
+  <div class="stop-press-inner" role="status">
+    <span class="stop-press-label" aria-hidden="true">Stop Press</span>
+    <span class="stop-press-text">New civilization filed: <strong>Klingon Empire 2161</strong> — Transitional government snapshot following founding of the Federation — Full report pending</span>
+  </div>
+</div>
+
+<!-- ==================== UNIVERSE SECTIONS ==================== -->
+<div class="universe-sections" id="universes">
+
+  <!-- STAR TREK -->
+  <hr class="section-divider" aria-hidden="true">
+  <hr class="section-divider-thin" aria-hidden="true">
+  <section class="universe-section reveal" aria-label="Star Trek">
+    <div class="section-header">
+      <span class="section-name">Star Trek</span>
+      <span class="section-sub">4 civilizations tracked — Alpha &amp; Beta Quadrant powers</span>
+    </div>
+
+    <div class="section-grid">
+      <article>
+        <h3 class="article-headline">Federation at the Crossroads: 150 Worlds, Dominion War Looming</h3>
+        <figure class="article-photo">
+          <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&h=300&q=80"
+               alt="Colorful nebula in deep space" width="600" height="300" loading="lazy">
+          <figcaption>Deep space, near the Bajoran wormhole. Federation Press Corps.</figcaption>
+        </figure>
+        <p class="article-body">The United Federation of Planets enters 2373 with 150 member worlds and an estimated population of 100 billion. As Dominion tensions escalate along the Cardassian border, the Federation's commitment to peaceful exploration faces its severest test since the Borg incursion at Wolf 359.</p>
+
+        <div class="article-data">
+          <h5>Federation 2373 — Key Metrics</h5>
+          <div class="data-row"><span class="data-label">Planets</span><span class="data-value">150</span></div>
+          <div class="data-row"><span class="data-label">Population</span><span class="data-value">~100B (est.)</span></div>
+          <div class="data-row"><span class="data-label">Government</span><span class="data-value">Federal Republic</span></div>
+          <div class="data-row"><span class="data-label">Kardashev</span><span class="data-value">II</span></div>
+        </div>
+      </article>
+
+      <article>
+        <h3 class="article-headline">Klingon Empire 2161: A Government in Transition</h3>
+        <p class="article-body">The Klingon Empire at the dawn of the Federation era (2161) represents a transitional snapshot — a warrior civilisation at the cusp of interstellar expansion. This recently filed entry captures the Empire before its centuries-long rivalry with the Federation fully crystallised.</p>
+
+        <div class="article-data">
+          <h5>Also tracked in this universe</h5>
+          <div class="data-row"><span class="data-label">Andorian Empire 2161</span><span class="data-value">Transitional</span></div>
+          <div class="data-row"><span class="data-label">Vulcans 2063</span><span class="data-value">Pre-Federation</span></div>
+        </div>
+
+        <div class="pull-quote">
+          "Four civilizations in a single quadrant, each filing separate census returns — the Alpha Quadrant remains our most data-rich sector."
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- THE EXPANSE -->
+  <hr class="section-divider" aria-hidden="true">
+  <hr class="section-divider-thin" aria-hidden="true">
+  <section class="universe-section reveal" aria-label="The Expanse">
+    <div class="section-header">
+      <span class="section-name">The Expanse</span>
+      <span class="section-sub">4 civilizations tracked — Sol system, 24th century</span>
+    </div>
+
+    <div class="section-grid">
+      <article>
+        <h3 class="article-headline">Thirty Billion on Earth, Four Billion on Mars: A System Divided</h3>
+        <figure class="article-photo">
+          <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=600&h=300&q=80"
+               alt="Planet seen from orbit" width="600" height="300" loading="lazy">
+          <figcaption>Earth from low orbit, 2350. United Nations imagery.</figcaption>
+        </figure>
+        <p class="article-body">The United Nations of Earth reports a population of 30 billion as of 2350, while the Martian Congressional Republic maintains 4 billion citizens on its terraforming world. The two inner planets remain locked in a cold war that shapes every aspect of Sol system politics.</p>
+      </article>
+
+      <article>
+        <h3 class="article-headline">OPA Files Population at 100 Million</h3>
+        <p class="article-body">The Outer Planets Alliance has, for the first time, disclosed a population figure of approximately 100 million Belters (estimated — OPA refuses formal census). The figure encompasses stations, mining operations, and mobile populations across the asteroid belt and outer moons.</p>
+
+        <div class="article-data">
+          <h5>Sol System 2350 — Complete Census</h5>
+          <div class="data-row"><span class="data-label">United Nations</span><span class="data-value">30B</span></div>
+          <div class="data-row"><span class="data-label">Mars</span><span class="data-value">4B</span></div>
+          <div class="data-row"><span class="data-label">OPA</span><span class="data-value">~100M (est.)</span></div>
+          <div class="data-row"><span class="data-label">Sol System total</span><span class="data-value">~34.1B</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- REALITY -->
+  <hr class="section-divider" aria-hidden="true">
+  <hr class="section-divider-thin" aria-hidden="true">
+  <section class="universe-section reveal" aria-label="Reality">
+    <div class="section-header">
+      <span class="section-name">Reality</span>
+      <span class="section-sub">10 civilizations tracked — Stone Age to 2023</span>
+    </div>
+
+    <div class="section-grid">
+      <article>
+        <h3 class="article-headline">Humanity's Long Arc: Ten Snapshots Across 300,000 Years</h3>
+        <figure class="article-photo">
+          <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=600&h=300&q=80"
+               alt="Earth from space" width="600" height="300" loading="lazy">
+          <figcaption>Earth, 2023. Kardashev 0.73 and climbing.</figcaption>
+        </figure>
+        <p class="article-body">The FUTR index tracks ten snapshots of human civilisation — from the Early Pleistocene through the Stone Age, Bronze Age, Classic Age, Middle Ages, Age of Sail, Industrialization, the 20th Century, the 1980s, and the present day (2023). The arc from a few thousand individuals to 8 billion remains our baseline for measuring every fictional civilisation in the index.</p>
+      </article>
+
+      <article>
+        <h3 class="article-headline">Kardashev 0.73: The Benchmark</h3>
+        <p class="article-body">Reality 2023 anchors the entire FUTR Kardashev Scale. At 0.73, our civilisation has not yet achieved Type I status — we cannot harness the full energy output of our planet. This single datum provides the comparative foundation for every rating in the market board above.</p>
+
+        <div class="article-data">
+          <h5>Reality — Historical Snapshots</h5>
+          <div class="data-row"><span class="data-label">Stone Age</span><span class="data-value">~5M pop</span></div>
+          <div class="data-row"><span class="data-label">Bronze Age</span><span class="data-value">~50M pop</span></div>
+          <div class="data-row"><span class="data-label">Classic Age</span><span class="data-value">~200M pop</span></div>
+          <div class="data-row"><span class="data-label">Industrialization</span><span class="data-value">~1B pop</span></div>
+          <div class="data-row"><span class="data-label">2023</span><span class="data-value">8B · K 0.73</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- DISPATCHES: Other Universes -->
+  <hr class="section-divider" aria-hidden="true">
+  <hr class="section-divider-thin" aria-hidden="true">
+  <section class="universe-section reveal" aria-label="Other universe dispatches">
+    <div class="section-header">
+      <span class="section-name">Dispatches</span>
+      <span class="section-sub">Additional universe reports — The Culture, Firefly, Perry Rhodan, Honorverse, Orion's Arm</span>
+    </div>
+
+    <div class="section-grid-3">
+      <div>
+        <article class="dispatch">
+          <h3 class="dispatch-headline">The Culture (Pre-War)</h3>
+          <p class="dispatch-text">The Culture's anarcho-AI civilisation, snapshotted before the Idiran War, hosts <strong>~30 trillion</strong> citizens across <strong>~14,000 Banks Orbitals</strong>. No formal government; ship Minds govern by consensus. Kardashev III.</p>
+        </article>
+
+        <article class="dispatch">
+          <h3 class="dispatch-headline">Firefly: The Alliance 2517</h3>
+          <p class="dispatch-text">The Anglo-Sino Alliance governs <strong>215 worlds</strong> with a population of <strong>303 billion</strong>. A single-system civilisation — all planets orbit the same star cluster.</p>
+        </article>
+      </div>
+
+      <div>
+        <article class="dispatch">
+          <h3 class="dispatch-headline">Perry Rhodan: Two Empires</h3>
+          <p class="dispatch-text">The Solares Imperium (human, 2040) coexists with the <strong>Großes Imperium</strong> — the Arkonide alien empire, population <strong>50 trillion</strong>. The Posbis (2114), a cyborg civilisation, represent a third tracked entity.</p>
+        </article>
+
+        <article class="dispatch">
+          <h3 class="dispatch-headline">Honorverse</h3>
+          <p class="dispatch-text"><strong>Manticore 1903 PD</strong> and <strong>Haven 1903 PD</strong> — two interstellar powers locked in a generational war. Naval strength is the defining metric.</p>
+        </article>
+      </div>
+
+      <div>
+        <article class="dispatch">
+          <h3 class="dispatch-headline">Orion's Arm: Beyond Scale</h3>
+          <p class="dispatch-text">The <strong>Terragen Sphere</strong> (3.9×10<sup>17</sup> pop) defies comparison. Sub-entries include the Solar System and the Diamond Network — a machine intelligence civilization. Dyson spheres and megastructures are commonplace.</p>
+        </article>
+
+        <article class="dispatch">
+          <h3 class="dispatch-headline">Warhammer 40K: The Ork Question</h3>
+          <p class="dispatch-text"><strong>Orks M41</strong> contest ~2 million planets (calculated estimate). Decentralised Waaaghs, no unified government — each warband operates independently. Not an empire; a species-wide impulse.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</div><!-- .universe-sections -->
+
+<!-- ==================== CLASSIFIEDS ==================== -->
+<hr class="section-divider section-divider--wide" aria-hidden="true">
+<hr class="section-divider-thin section-divider--wide" aria-hidden="true">
+
+<section class="classifieds reveal" id="classifieds-section" aria-label="Civilization classifieds">
+  <div class="classifieds-header">
+    <h2 class="classifieds-title">Classified Index — All 30 Civilizations</h2>
+  </div>
+
+  <div class="classifieds-grid">
+    <!-- Star Trek -->
+    <div class="classified-card">
+      <div class="classified-name">Federation 2373</div>
+      <div class="classified-universe">Star Trek</div>
+      <span class="classified-stat">150 planets · ~100B pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Klingon Empire 2161</div>
+      <div class="classified-universe">Star Trek</div>
+      <span class="classified-stat">Transitional snapshot</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Andorian Empire 2161</div>
+      <div class="classified-universe">Star Trek</div>
+      <span class="classified-stat">Transitional / final</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Vulcans 2063</div>
+      <div class="classified-universe">Star Trek</div>
+      <span class="classified-stat">Pre-Federation era</span>
+    </div>
+
+    <!-- Warhammer 40K -->
+    <div class="classified-card">
+      <div class="classified-name">Imperium of Man M41</div>
+      <div class="classified-universe">Warhammer 40K</div>
+      <span class="classified-stat">1,000,000 planets</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Orks M41</div>
+      <div class="classified-universe">Warhammer 40K</div>
+      <span class="classified-stat">~2M planets · decentralised</span>
+    </div>
+
+    <!-- Firefly -->
+    <div class="classified-card">
+      <div class="classified-name">Alliance 2517</div>
+      <div class="classified-universe">Firefly</div>
+      <span class="classified-stat">215 worlds · 303B pop</span>
+    </div>
+
+    <!-- The Culture -->
+    <div class="classified-card">
+      <div class="classified-name">Culture (pre-war)</div>
+      <div class="classified-universe">The Culture</div>
+      <span class="classified-stat">~30T pop · ~14K Orbitals</span>
+    </div>
+
+    <!-- Honorverse -->
+    <div class="classified-card">
+      <div class="classified-name">Manticore 1903 PD</div>
+      <div class="classified-universe">Honorverse</div>
+      <span class="classified-stat">Naval power</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Haven 1903 PD</div>
+      <div class="classified-universe">Honorverse</div>
+      <span class="classified-stat">Naval power</span>
+    </div>
+
+    <!-- Perry Rhodan -->
+    <div class="classified-card">
+      <div class="classified-name">Solares Imperium 2040</div>
+      <div class="classified-universe">Perry Rhodan</div>
+      <span class="classified-stat">Human empire</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Großes Imperium 2040</div>
+      <div class="classified-universe">Perry Rhodan</div>
+      <span class="classified-stat">Arkonide · 50T pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Posbis 2114</div>
+      <div class="classified-universe">Perry Rhodan</div>
+      <span class="classified-stat">Cyborg civilisation</span>
+    </div>
+
+    <!-- Orion's Arm -->
+    <div class="classified-card">
+      <div class="classified-name">Terragen Sphere</div>
+      <div class="classified-universe">Orion's Arm</div>
+      <span class="classified-stat">3.9×10<sup>17</sup> pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Solar System</div>
+      <div class="classified-universe">Orion's Arm</div>
+      <span class="classified-stat">Sub-entity</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Diamond Network</div>
+      <div class="classified-universe">Orion's Arm</div>
+      <span class="classified-stat">Machine intelligence</span>
+    </div>
+
+    <!-- The Expanse -->
+    <div class="classified-card">
+      <div class="classified-name">United Nations 2350</div>
+      <div class="classified-universe">The Expanse</div>
+      <span class="classified-stat">30B pop · Earth</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Mars 2350</div>
+      <div class="classified-universe">The Expanse</div>
+      <span class="classified-stat">4B pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Sol System 2350</div>
+      <div class="classified-universe">The Expanse</div>
+      <span class="classified-stat">Combined entry</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">OPA 2350</div>
+      <div class="classified-universe">The Expanse</div>
+      <span class="classified-stat">~100M (refuses census)</span>
+    </div>
+
+    <!-- Reality -->
+    <div class="classified-card">
+      <div class="classified-name">Early Pleistocene</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">Earliest snapshot</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Stone Age</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">~5M pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Bronze Age</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">~50M pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Classic Age</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">~200M pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Middle Ages</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">~400M pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Age of Sail</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">~600M pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">Industrialization</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">~1B pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">20th Century</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">~6B pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">1980s</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">~4.8B pop</span>
+    </div>
+    <div class="classified-card">
+      <div class="classified-name">2023</div>
+      <div class="classified-universe">Reality</div>
+      <span class="classified-stat">8B · Kardashev 0.73</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p class="footer-text">
+    THE FUTR CHRONICLE — Fictional Universe Taxonomy Research
+    <br>
+    <a href="https://www.futr.space/">futr.space</a> · 9 Universes · 30 Civilizations · 20 Metrics
+    <br>
+    Design No. 5 — "All the Universes Fit to Print"
+  </p>
+</footer>
+
+<script>
+/* --- Hamburger Navigation --- */
+(function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('nav-menu');
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener('click', function() {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu.classList.toggle('open');
+  });
+
+  /* Close on link click (mobile) */
+  menu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+    });
+  });
+
+  /* Close on Escape */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      toggle.focus();
+    }
+  });
+})();
+
+/* --- Scroll Reveal --- */
+(function() {
+  var reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  /* Respect reduced motion */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>

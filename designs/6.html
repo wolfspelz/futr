@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR — Field Notes</title>
+<meta name="description" content="A xenoanthropologist's datapad — field notes from across the multiverse. 9 universes, 30 civilizations, 20 metrics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.node-graph svg{opacity:1!important}.mobile-nav{display:none!important}.nav-links{display:flex!important}</style></noscript>
+<style>
+/* ============================================
+   FUTR — Field Notes Design System
+   Concept: Xenoanthropologist's Datapad
+   Interaction: Annotate, Toggle, Trace
+   ============================================ */
+
+:root {
+  --paper:           #F7F5F0;
+  --paper-lined:     #EFECE5;
+  --paper-dark:      #E0DCD3;
+  --device-chrome:   #B8BCC4;
+  --device-dark:     #7A8290;
+  --device-light:    #D0D3D9;
+  --graphite:        #2E2B28;
+  --graphite-light:  #5A5550;
+  --graphite-faint:  #78736C;
+  --circuit-blue:    #4A7A94;
+  --circuit-glow:    rgba(74, 122, 148, 0.15);
+  --amber:           #C48B4A;
+  --amber-text:      #8B6530;
+  --indicator-green:  #5A8F58;
+  --alert-red:       #B84A3A;
+  --tape:            rgba(255, 248, 220, 0.7);
+
+  --font-hand:  'Kalam', cursive;
+  --font-body:  'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+
+  --device-radius:       20px;
+  --device-radius-inner: 10px;
+  --transition-base:     0.25s ease;
+  --page-max:            1200px;
+  --bezel-pad:           40px;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: #A8ABB2;
+  color: var(--graphite);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* --- Skip Link --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--graphite);
+  color: var(--paper);
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 6px 6px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  z-index: 1000;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* --- Device Frame (desktop only) --- */
+.datapad-wrap {
+  max-width: var(--page-max);
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.datapad {
+  background: var(--device-chrome);
+  border-radius: var(--device-radius);
+  box-shadow:
+    0 2px 0 var(--device-light),
+    0 -1px 0 var(--device-dark),
+    0 20px 60px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  overflow: hidden;
+}
+
+/* Bezel top strip */
+.device-bezel {
+  background: linear-gradient(180deg, #C8CCD4, var(--device-chrome));
+  padding: 0.5rem var(--bezel-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--device-dark);
+  gap: 0.5rem;
+}
+
+.device-model {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--device-dark);
+}
+
+.device-leds {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+.led--green { background: var(--indicator-green); box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 0 5px rgba(90, 143, 88, 0.5); }
+.led--amber { background: var(--amber); box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 0 5px rgba(196, 139, 74, 0.4); }
+.led--off   { background: #8A8E96; }
+
+/* --- Navigation --- */
+.site-nav {
+  background: var(--device-chrome);
+  border-bottom: 2px solid var(--device-dark);
+  padding: 0 var(--bezel-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2px;
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--device-dark);
+  background: #AEB2BA;
+  border: 1px solid var(--device-dark);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  position: relative;
+  top: 2px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-link:hover { background: #C4C8D0; color: var(--graphite); }
+
+.nav-link[aria-current="true"],
+.nav-link.active {
+  background: var(--paper);
+  color: var(--graphite);
+  border-color: var(--device-dark);
+}
+
+.nav-indicator {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 4px rgba(196, 139, 74, 0.5);
+}
+
+/* Hamburger (mobile) */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--graphite);
+  border-radius: 1px;
+  transition: all var(--transition-base);
+}
+
+/* --- Screen Area --- */
+.screen {
+  background: var(--paper);
+  position: relative;
+  padding: 0 var(--bezel-pad);
+}
+
+/* CRT scan-line overlay */
+.screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.015) 2px,
+    rgba(0, 0, 0, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.screen > * { position: relative; z-index: 1; }
+
+/* --- Section 1: Active Survey (Above Fold) --- */
+.survey-header {
+  padding: 2rem 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.survey-title-block { flex: 1; min-width: 220px; }
+
+.survey-title {
+  font-family: var(--font-hand);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--graphite);
+  line-height: 1.05;
+}
+
+.survey-subtitle {
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  color: var(--graphite-light);
+  margin-top: 0.1rem;
+}
+
+.survey-tagline {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--graphite-light);
+  margin-top: 0.5rem;
+  max-width: 340px;
+}
+
+.survey-underline {
+  width: 160px;
+  height: 2px;
+  background: var(--amber);
+  margin-top: 0.6rem;
+  border-radius: 1px;
+  opacity: 0.6;
+}
+
+/* Field Status Readout */
+.field-status {
+  background: var(--paper-lined);
+  border: 1px solid var(--paper-dark);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  min-width: 170px;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.06);
+}
+
+.field-status-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--graphite);
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid var(--paper-dark);
+  padding-bottom: 0.25rem;
+}
+
+.field-status-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.15rem 0;
+  color: var(--graphite-light);
+}
+
+.field-status-val {
+  color: var(--graphite);
+  font-weight: 600;
+}
+
+.field-status-active {
+  color: var(--indicator-green);
+  font-weight: 700;
+  margin-top: 0.3rem;
+  font-size: 0.8125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--indicator-green);
+  box-shadow: 0 0 5px rgba(90, 143, 88, 0.6);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* --- Specimen Tray (Universe Cards) --- */
+.specimen-tray {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--paper-dark);
+  border-radius: var(--device-radius-inner);
+  background: var(--paper-lined);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.specimen-tray-label {
+  grid-column: 1 / -1;
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  color: var(--graphite-light);
+  padding: 0.6rem 0.75rem 0.35rem;
+  border-bottom: 1px dashed var(--paper-dark);
+}
+
+.specimen-card {
+  padding: 0.75rem;
+  border-right: 1px solid var(--paper-dark);
+  border-bottom: 1px solid var(--paper-dark);
+  transition: background var(--transition-base);
+  cursor: default;
+  position: relative;
+}
+
+/* Remove right border on last column */
+.specimen-card:nth-child(3n+1) { border-right: 1px solid var(--paper-dark); }
+.specimen-card:nth-child(3n+4) { border-right: none; }
+/* Remove bottom border on last row (children 8,9,10 = the last 3 of 9+label) */
+.specimen-card:nth-last-child(-n+3) { border-bottom: none; }
+
+.specimen-card:hover { background: rgba(74, 122, 148, 0.05); }
+
+.specimen-card:hover .specimen-annotation { opacity: 1; }
+
+.specimen-img-wrap { position: relative; margin-bottom: 0.5rem; }
+
+.specimen-img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  border-radius: 3px;
+  transform: rotate(-0.6deg);
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.12);
+  display: block;
+  background: var(--paper-dark);
+}
+
+.specimen-tape {
+  position: absolute;
+  top: -4px;
+  right: 12%;
+  width: 26px;
+  height: 11px;
+  background: var(--tape);
+  border: 1px solid rgba(200, 190, 160, 0.4);
+  transform: rotate(2.5deg);
+  border-radius: 1px;
+}
+
+.specimen-name {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--graphite);
+  line-height: 1.2;
+}
+
+.specimen-stamp {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--amber-text);
+  border: 1.5px solid var(--amber-text);
+  border-radius: 3px;
+  padding: 0.05rem 0.35rem;
+  margin-top: 0.25rem;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+  opacity: 0.85;
+}
+
+.specimen-meta {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--graphite-light);
+  margin-top: 0.2rem;
+}
+
+.specimen-annotation {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--graphite-light);
+  margin-top: 0.3rem;
+  opacity: 0.65;
+  transition: opacity 0.3s ease;
+}
+
+/* --- Section Divider --- */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 0 1rem;
+}
+
+.section-rule::before,
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--paper-dark);
+}
+
+.section-rule-label {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--graphite-light);
+  white-space: nowrap;
+}
+
+/* --- Section 2: Node Graph --- */
+.node-section { padding-bottom: 2rem; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--graphite);
+}
+
+.section-note {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--graphite-light);
+}
+
+.node-graph {
+  background: var(--paper-lined);
+  border: 1px solid var(--paper-dark);
+  border-radius: var(--device-radius-inner);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+  padding: 1.5rem 1rem;
+}
+
+/* Graph paper bg */
+.node-graph::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(168,162,158,0.07) 19px, rgba(168,162,158,0.07) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(168,162,158,0.07) 19px, rgba(168,162,158,0.07) 20px);
+  pointer-events: none;
+}
+
+/* Static SVG lines are hand-placed in the HTML */
+.node-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.node-svg line {
+  stroke-dasharray: 5 4;
+  stroke-opacity: 0.25;
+}
+
+.node-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+}
+
+.node-universe-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.node-universe-label {
+  position: absolute;
+  top: -0.2rem;
+  left: 0.3rem;
+  font-family: var(--font-hand);
+  font-size: 0.8125rem;
+  color: var(--graphite-light);
+  opacity: 0.6;
+}
+
+.civ-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+  transition: transform var(--transition-base);
+  position: relative;
+}
+
+.civ-node:hover { transform: scale(1.06); }
+
+.civ-node:hover .civ-node-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  visibility: visible;
+}
+
+.civ-node-circle {
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--paper);
+  transition: box-shadow var(--transition-base);
+  animation: node-glow 4s ease-in-out infinite;
+}
+
+@keyframes node-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.12); }
+}
+
+.civ-node:hover .civ-node-circle {
+  box-shadow: 0 2px 14px rgba(74, 122, 148, 0.4);
+}
+
+.civ-node-label {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--graphite);
+  margin-top: 0.2rem;
+  text-align: center;
+  max-width: 80px;
+  line-height: 1.15;
+}
+
+.civ-node-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--paper);
+  border: 1px solid var(--paper-dark);
+  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  box-shadow: 2px 3px 10px rgba(0,0,0,0.12);
+  z-index: 20;
+}
+
+.civ-node-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--paper);
+}
+
+.tt-name {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--graphite);
+}
+
+.tt-data {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--graphite-light);
+  margin-top: 0.1rem;
+}
+
+/* Universe node colors */
+.node-startrek .civ-node-circle    { background: #4A6FA5; border-color: #6B8FC5; }
+.node-warhammer .civ-node-circle   { background: #8B3A3A; border-color: #A85050; }
+.node-culture .civ-node-circle     { background: #7B68AE; border-color: #9580C8; }
+.node-expanse .civ-node-circle     { background: #5A7080; border-color: #7A90A0; }
+.node-firefly .civ-node-circle     { background: #A07840; border-color: #C09860; }
+.node-honorverse .civ-node-circle  { background: #3A6080; border-color: #5080A0; }
+.node-rhodan .civ-node-circle      { background: #407060; border-color: #609078; }
+.node-orionsarm .civ-node-circle   { background: #906070; border-color: #B08090; }
+.node-reality .civ-node-circle     { background: #6A6A6A; border-color: #8A8A8A; }
+
+/* Node sizes */
+.node-xs .civ-node-circle { width: 26px; height: 26px; font-size: 0; }
+.node-sm .civ-node-circle { width: 34px; height: 34px; font-size: 0.8125rem; }
+.node-md .civ-node-circle { width: 46px; height: 46px; }
+.node-lg .civ-node-circle { width: 58px; height: 58px; }
+.node-xl .civ-node-circle { width: 72px; height: 72px; }
+
+/* --- Section 3: Field Ledger --- */
+.ledger-section { padding-bottom: 2rem; }
+
+.ledger-wrap {
+  border: 1px solid var(--paper-dark);
+  border-radius: var(--device-radius-inner);
+  background: var(--paper-lined);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+
+.ledger-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.ledger-table th {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--graphite);
+  text-align: left;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 2px solid var(--graphite-faint);
+  background: var(--paper-lined);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.ledger-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgba(168, 162, 158, 0.15);
+  vertical-align: top;
+}
+
+.ledger-table tbody tr { transition: background var(--transition-base); }
+.ledger-table tbody tr:hover { background: rgba(74, 122, 148, 0.05); }
+
+.ledger-civ {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--graphite);
+  display: block;
+}
+
+.ledger-timestamp {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--graphite-light);
+}
+
+.ledger-universe {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--graphite-light);
+}
+
+.ledger-data {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--graphite);
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger-data--accent {
+  color: var(--circuit-blue);
+  font-weight: 700;
+}
+
+.ledger-note {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--graphite-light);
+}
+
+/* --- Section 4: Metric Toggles --- */
+.toggles-section { padding-bottom: 2rem; }
+
+.toggle-panel {
+  background: linear-gradient(180deg, #D4D7DE, var(--device-chrome));
+  border-radius: var(--device-radius-inner);
+  border: 1px solid var(--device-dark);
+  padding: 1rem 1.25rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.toggle-panel-title {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--device-dark);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(122, 130, 144, 0.3);
+}
+
+.toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.metric-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  transition: background var(--transition-base);
+  border: none;
+  background: none;
+  text-align: left;
+}
+
+.metric-toggle:hover { background: rgba(255,255,255,0.15); }
+
+.toggle-track {
+  position: relative;
+  width: 30px;
+  height: 16px;
+  background: #8A8E96;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  transition: background var(--transition-base);
+}
+
+.toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #E8E8E8, #CCC);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  transition: transform var(--transition-base);
+}
+
+.metric-toggle[aria-pressed="true"] .toggle-track {
+  background: var(--indicator-green);
+}
+
+.metric-toggle[aria-pressed="true"] .toggle-track::after {
+  transform: translateX(14px);
+}
+
+.toggle-label {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--graphite);
+  line-height: 1.2;
+}
+
+.toggle-led {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #8A8E96;
+  flex-shrink: 0;
+  transition: all var(--transition-base);
+}
+
+.metric-toggle[aria-pressed="true"] .toggle-led {
+  background: var(--amber);
+  box-shadow: 0 0 4px rgba(196, 139, 74, 0.5);
+}
+
+/* --- Device Footer --- */
+.device-footer {
+  background: linear-gradient(180deg, var(--device-chrome), #A8ABB2);
+  padding: 0.65rem var(--bezel-pad);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--device-dark);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.manufacturer-plate {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--device-dark);
+  background: linear-gradient(180deg, #C0C3CA, #B0B3BA);
+  border: 1px solid var(--device-dark);
+  border-radius: 3px;
+  padding: 0.2rem 0.65rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.sync-status {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--device-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sync-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--indicator-green);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Focus Styles --- */
+*:focus-visible {
+  outline: 2px solid var(--circuit-blue);
+  outline-offset: 2px;
+}
+
+.nav-link:focus-visible { outline-offset: -2px; }
+
+/* --- Accessibility --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --- Responsive: Tablet (<1024px) --- */
+@media (max-width: 1024px) {
+  .datapad-wrap { margin: 0; padding: 0; }
+  .datapad {
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--paper-lined);
+  }
+  .device-bezel { padding: 0.5rem 1.25rem; }
+  .site-nav { padding: 0 1.25rem; }
+  .screen { padding: 0 1.25rem; }
+  .device-footer { padding: 0.65rem 1.25rem; }
+}
+
+/* --- Responsive: Mobile (<768px) --- */
+@media (max-width: 768px) {
+  body { background: var(--paper); }
+
+  .datapad-wrap { margin: 0; padding: 0; }
+  .datapad {
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--paper);
+  }
+
+  .device-bezel { display: none; }
+
+  .site-nav {
+    padding: 0.5rem 1rem;
+    background: var(--paper-lined);
+    border-bottom: 1px solid var(--paper-dark);
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--paper-lined);
+    border-bottom: 2px solid var(--device-dark);
+    padding: 0.5rem;
+    z-index: 50;
+    gap: 0;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-link {
+    border-radius: 4px;
+    border: none;
+    top: 0;
+    padding: 0.6rem 1rem;
+    width: 100%;
+  }
+
+  .hamburger { display: flex; }
+
+  .screen { padding: 0 1rem; }
+
+  .survey-header { flex-direction: column; padding: 1.25rem 0 0.75rem; }
+  .survey-title { font-size: 2.4rem; }
+  .field-status { width: 100%; min-width: auto; }
+
+  .specimen-tray { grid-template-columns: repeat(2, 1fr); }
+  .specimen-card:nth-child(2n+1) { border-right: 1px solid var(--paper-dark); }
+  .specimen-card:nth-child(2n+2) { border-right: none; }
+
+  .node-container { gap: 0.4rem 0.6rem; }
+  .node-universe-label { display: none; }
+
+  .toggle-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .device-footer {
+    padding: 0.65rem 1rem;
+    background: var(--paper-lined);
+  }
+}
+
+@media (max-width: 480px) {
+  .specimen-tray { grid-template-columns: 1fr; }
+  .specimen-card { border-right: none !important; }
+  .toggle-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="datapad-wrap">
+<div class="datapad">
+
+  <!-- Device Bezel -->
+  <div class="device-bezel" aria-hidden="true">
+    <span class="device-model">FUTR-VI Field Terminal</span>
+    <div class="device-leds">
+      <span class="led led--green"></span>
+      <span class="led led--amber"></span>
+      <span class="led led--off"></span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Datapad navigation">
+    <button class="hamburger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+      <span class="hamburger-bar" aria-hidden="true"></span>
+      <span class="hamburger-bar" aria-hidden="true"></span>
+      <span class="hamburger-bar" aria-hidden="true"></span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="menubar">
+      <li role="none"><a href="#main-content" class="nav-link active" role="menuitem" aria-current="true">Survey <span class="nav-indicator" aria-hidden="true"></span></a></li>
+      <li role="none"><a href="#nodes" class="nav-link" role="menuitem">Connections</a></li>
+      <li role="none"><a href="#ledger" class="nav-link" role="menuitem">Field Ledger</a></li>
+      <li role="none"><a href="#metrics" class="nav-link" role="menuitem">Metrics</a></li>
+    </ul>
+  </nav>
+
+  <!-- Screen -->
+  <div class="screen">
+    <main id="main-content">
+
+    <!-- ============================================ -->
+    <!-- SECTION 1: Active Survey (Above the Fold)    -->
+    <!-- ============================================ -->
+    <header class="survey-header">
+      <div class="survey-title-block">
+        <h1 class="survey-title">FUTR</h1>
+        <p class="survey-subtitle">Field notes from across the multiverse</p>
+        <p class="survey-tagline">Fictional Universe Taxonomy Research &mdash; cataloging civilizations from fiction and history.</p>
+        <div class="survey-underline" aria-hidden="true"></div>
+      </div>
+      <div class="field-status" role="complementary" aria-label="Field status summary">
+        <div class="field-status-title">Field Status</div>
+        <div class="field-status-row"><span>Universes</span> <span class="field-status-val">9</span></div>
+        <div class="field-status-row"><span>Civilizations</span> <span class="field-status-val">30</span></div>
+        <div class="field-status-row"><span>Metrics</span> <span class="field-status-val">20</span></div>
+        <div class="field-status-active"><span class="status-dot" aria-hidden="true"></span> ACTIVE SESSION</div>
+      </div>
+    </header>
+
+    <!-- Specimen Tray -->
+    <section aria-label="Universe specimens">
+      <div class="specimen-tray" role="list">
+        <div class="specimen-tray-label" aria-hidden="true">Collected specimens &mdash; 9 universes surveyed</div>
+
+        <!-- Star Trek -->
+        <article class="specimen-card" role="listitem">
+          <div class="specimen-img-wrap">
+            <img class="specimen-img" src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&h=400&q=80" alt="Star Trek — nebula in deep space" width="800" height="400" fetchpriority="high">
+            <div class="specimen-tape" aria-hidden="true"></div>
+          </div>
+          <div class="specimen-name">Star Trek</div>
+          <div class="specimen-stamp">Interstellar Federation</div>
+          <div class="specimen-meta">4 civilizations cataloged</div>
+          <div class="specimen-annotation">fascinating warp dynamics &mdash; must revisit</div>
+        </article>
+
+        <!-- Warhammer 40K -->
+        <article class="specimen-card" role="listitem">
+          <div class="specimen-img-wrap">
+            <img class="specimen-img" src="https://images.unsplash.com/photo-1534996858221-380b92700493?auto=format&fit=crop&w=800&h=400&q=80" alt="Warhammer 40K — dark atmospheric sky" width="800" height="400" fetchpriority="high">
+            <div class="specimen-tape" aria-hidden="true"></div>
+          </div>
+          <div class="specimen-name">Warhammer 40K</div>
+          <div class="specimen-stamp">Galactic Imperium</div>
+          <div class="specimen-meta">2 civilizations cataloged</div>
+          <div class="specimen-annotation">scale defies measurement</div>
+        </article>
+
+        <!-- Firefly -->
+        <article class="specimen-card" role="listitem">
+          <div class="specimen-img-wrap">
+            <img class="specimen-img" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&h=400&q=80" alt="Firefly — orbital view" width="800" height="400" fetchpriority="high">
+            <div class="specimen-tape" aria-hidden="true"></div>
+          </div>
+          <div class="specimen-name">Firefly</div>
+          <div class="specimen-stamp">Multi-system Alliance</div>
+          <div class="specimen-meta">1 civilization cataloged</div>
+          <div class="specimen-annotation">frontier sociology, fascinating</div>
+        </article>
+
+        <!-- The Culture -->
+        <article class="specimen-card" role="listitem">
+          <div class="specimen-img-wrap">
+            <img class="specimen-img" src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=800&h=400&q=80" alt="The Culture — distant galaxy" width="800" height="400" loading="lazy">
+            <div class="specimen-tape" aria-hidden="true"></div>
+          </div>
+          <div class="specimen-name">The Culture</div>
+          <div class="specimen-stamp">Post-scarcity Utopia</div>
+          <div class="specimen-meta">1 civilization cataloged</div>
+          <div class="specimen-annotation">benchmark for post-scarcity!</div>
+        </article>
+
+        <!-- Honorverse -->
+        <article class="specimen-card" role="listitem">
+          <div class="specimen-img-wrap">
+            <img class="specimen-img" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=800&h=400&q=80" alt="Honorverse — Earth from orbit at night" width="800" height="400" loading="lazy">
+            <div class="specimen-tape" aria-hidden="true"></div>
+          </div>
+          <div class="specimen-name">Honorverse</div>
+          <div class="specimen-stamp">Star Kingdom</div>
+          <div class="specimen-meta">2 civilizations cataloged</div>
+          <div class="specimen-annotation">rich naval traditions</div>
+        </article>
+
+        <!-- Perry Rhodan -->
+        <article class="specimen-card" role="listitem">
+          <div class="specimen-img-wrap">
+            <img class="specimen-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80" alt="Perry Rhodan — Earth lights from space" width="800" height="400" loading="lazy">
+            <div class="specimen-tape" aria-hidden="true"></div>
+          </div>
+          <div class="specimen-name">Perry Rhodan</div>
+          <div class="specimen-stamp">Solar Empire</div>
+          <div class="specimen-meta">3 civilizations cataloged</div>
+          <div class="specimen-annotation">longest running saga in data</div>
+        </article>
+
+        <!-- Orion's Arm -->
+        <article class="specimen-card" role="listitem">
+          <div class="specimen-img-wrap">
+            <img class="specimen-img" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=800&h=400&q=80" alt="Orion's Arm — star field" width="800" height="400" loading="lazy">
+            <div class="specimen-tape" aria-hidden="true"></div>
+          </div>
+          <div class="specimen-name">Orion's Arm</div>
+          <div class="specimen-stamp">Toposophic Sphere</div>
+          <div class="specimen-meta">3 civilizations cataloged</div>
+          <div class="specimen-annotation">toposophic levels stagger me!!</div>
+        </article>
+
+        <!-- The Expanse -->
+        <article class="specimen-card" role="listitem">
+          <div class="specimen-img-wrap">
+            <img class="specimen-img" src="https://images.unsplash.com/photo-1457364559154-aa2644600ebb?auto=format&fit=crop&w=800&h=400&q=80" alt="The Expanse — planetary surface" width="800" height="400" loading="lazy">
+            <div class="specimen-tape" aria-hidden="true"></div>
+          </div>
+          <div class="specimen-name">The Expanse</div>
+          <div class="specimen-stamp">Sol System Powers</div>
+          <div class="specimen-meta">4 civilizations cataloged</div>
+          <div class="specimen-annotation">three-way power balance</div>
+        </article>
+
+        <!-- Reality -->
+        <article class="specimen-card" role="listitem">
+          <div class="specimen-img-wrap">
+            <img class="specimen-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80" alt="Reality — Earth at night from space" width="800" height="400" loading="lazy">
+            <div class="specimen-tape" aria-hidden="true"></div>
+          </div>
+          <div class="specimen-name">Reality</div>
+          <div class="specimen-stamp">Control Group</div>
+          <div class="specimen-meta">10 civilizations cataloged</div>
+          <div class="specimen-annotation">us. the baseline.</div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 2: Node Graph                        -->
+    <!-- ============================================ -->
+    <div class="section-rule reveal" aria-hidden="true">
+      <span class="section-rule-label">civilization connections</span>
+    </div>
+
+    <section class="node-section reveal" id="nodes" aria-label="Civilization connections graph">
+      <div class="section-header">
+        <h2 class="section-title">Civilization Network</h2>
+        <span class="section-note">node size ~ population scale</span>
+      </div>
+
+      <div class="node-graph" role="img" aria-label="Network graph of 30 civilizations, sized by population and colored by universe">
+
+        <svg class="node-svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <!-- Star Trek cluster links -->
+          <line x1="120" y1="80" x2="200" y2="110" stroke="#6B8FC5" stroke-width="1.5"/>
+          <line x1="200" y1="110" x2="280" y2="75" stroke="#6B8FC5" stroke-width="1.5"/>
+          <line x1="280" y1="75" x2="340" y2="105" stroke="#6B8FC5" stroke-width="1.5"/>
+          <!-- Warhammer cluster -->
+          <line x1="480" y1="70" x2="570" y2="90" stroke="#A85050" stroke-width="1.5"/>
+          <!-- Culture (solo) -->
+          <!-- Expanse cluster -->
+          <line x1="100" y1="260" x2="190" y2="280" stroke="#7A90A0" stroke-width="1.5"/>
+          <line x1="190" y1="280" x2="260" y2="250" stroke="#7A90A0" stroke-width="1.5"/>
+          <line x1="260" y1="250" x2="330" y2="275" stroke="#7A90A0" stroke-width="1.5"/>
+          <!-- Honorverse cluster -->
+          <line x1="460" y1="260" x2="540" y2="280" stroke="#5080A0" stroke-width="1.5"/>
+          <!-- Perry Rhodan cluster -->
+          <line x1="640" y1="250" x2="720" y2="270" stroke="#609078" stroke-width="1.5"/>
+          <line x1="720" y1="270" x2="790" y2="255" stroke="#609078" stroke-width="1.5"/>
+          <!-- Orion's Arm cluster -->
+          <line x1="120" y1="430" x2="210" y2="450" stroke="#B08090" stroke-width="1.5"/>
+          <line x1="210" y1="450" x2="280" y2="425" stroke="#B08090" stroke-width="1.5"/>
+          <!-- Reality chain -->
+          <line x1="400" y1="400" x2="460" y2="420" stroke="#8A8A8A" stroke-width="1"/>
+          <line x1="460" y1="420" x2="520" y2="405" stroke="#8A8A8A" stroke-width="1"/>
+          <line x1="520" y1="405" x2="580" y2="425" stroke="#8A8A8A" stroke-width="1"/>
+          <line x1="580" y1="425" x2="640" y2="410" stroke="#8A8A8A" stroke-width="1"/>
+          <line x1="640" y1="410" x2="700" y2="430" stroke="#8A8A8A" stroke-width="1"/>
+          <line x1="700" y1="430" x2="760" y2="415" stroke="#8A8A8A" stroke-width="1"/>
+          <line x1="760" y1="415" x2="820" y2="435" stroke="#8A8A8A" stroke-width="1"/>
+          <line x1="820" y1="435" x2="880" y2="420" stroke="#8A8A8A" stroke-width="1"/>
+          <line x1="880" y1="420" x2="940" y2="440" stroke="#8A8A8A" stroke-width="1"/>
+          <!-- Cross-universe links (shared Kardashev ~1) -->
+          <line x1="120" y1="80" x2="480" y2="70" stroke="#CCC" stroke-width="0.8" stroke-dasharray="3 6"/>
+          <line x1="700" y1="155" x2="480" y2="70" stroke="#CCC" stroke-width="0.8" stroke-dasharray="3 6"/>
+        </svg>
+
+        <div class="node-container">
+
+          <!-- Star Trek -->
+          <div class="node-universe-group" style="width: 280px;">
+            <span class="node-universe-label" aria-hidden="true">Star Trek</span>
+            <div class="civ-node node-startrek node-lg" tabindex="0">
+              <div class="civ-node-circle">K1.0</div>
+              <div class="civ-node-label">Federation 2373</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Federation 2373</span><div class="tt-data">~100B pop &bull; 150 planets &bull; K1.0</div></div>
+            </div>
+            <div class="civ-node node-startrek node-sm" tabindex="0">
+              <div class="civ-node-circle">9B</div>
+              <div class="civ-node-label">Klingon 2161</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Klingon Empire 2161</span><div class="tt-data">~9B pop &bull; warrior empire</div></div>
+            </div>
+            <div class="civ-node node-startrek node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Andorians</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Andorian Empire 2161</span><div class="tt-data">Founding Federation member</div></div>
+            </div>
+            <div class="civ-node node-startrek node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Vulcans</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Vulcans 2063</span><div class="tt-data">First Contact era</div></div>
+            </div>
+          </div>
+
+          <!-- Warhammer 40K -->
+          <div class="node-universe-group" style="width: 200px;">
+            <span class="node-universe-label" aria-hidden="true">Warhammer</span>
+            <div class="civ-node node-warhammer node-xl" tabindex="0">
+              <div class="civ-node-circle">K1.6</div>
+              <div class="civ-node-label">Imperium M41</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Imperium of Man M41</span><div class="tt-data">1M planets &bull; K1.6</div></div>
+            </div>
+            <div class="civ-node node-warhammer node-lg" tabindex="0">
+              <div class="civ-node-circle">?!</div>
+              <div class="civ-node-label">Orks M41</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Orks M41</span><div class="tt-data">~2M planets &bull; anomalous!!</div></div>
+            </div>
+          </div>
+
+          <!-- The Culture -->
+          <div class="node-universe-group" style="width: 120px;">
+            <span class="node-universe-label" aria-hidden="true">Culture</span>
+            <div class="civ-node node-culture node-xl" tabindex="0">
+              <div class="civ-node-circle">K2.3</div>
+              <div class="civ-node-label">Culture</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Culture (pre-war)</span><div class="tt-data">~30T pop &bull; 14,000 Orbitals &bull; K2.3</div></div>
+            </div>
+          </div>
+
+          <!-- Firefly -->
+          <div class="node-universe-group" style="width: 100px;">
+            <span class="node-universe-label" aria-hidden="true">Firefly</span>
+            <div class="civ-node node-firefly node-md" tabindex="0">
+              <div class="civ-node-circle">303B</div>
+              <div class="civ-node-label">Alliance</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Alliance 2517</span><div class="tt-data">303B pop &bull; 215 worlds</div></div>
+            </div>
+          </div>
+
+          <!-- Expanse -->
+          <div class="node-universe-group" style="width: 280px;">
+            <span class="node-universe-label" aria-hidden="true">Expanse</span>
+            <div class="civ-node node-expanse node-md" tabindex="0">
+              <div class="civ-node-circle">30B</div>
+              <div class="civ-node-label">UN 2350</div>
+              <div class="civ-node-tooltip"><span class="tt-name">United Nations 2350</span><div class="tt-data">30B pop &bull; Earth</div></div>
+            </div>
+            <div class="civ-node node-expanse node-sm" tabindex="0">
+              <div class="civ-node-circle">4B</div>
+              <div class="civ-node-label">Mars 2350</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Mars 2350</span><div class="tt-data">4B pop &bull; MCR</div></div>
+            </div>
+            <div class="civ-node node-expanse node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">OPA</div>
+              <div class="civ-node-tooltip"><span class="tt-name">OPA 2350</span><div class="tt-data">~100M &bull; Belt faction</div></div>
+            </div>
+            <div class="civ-node node-expanse node-md" tabindex="0">
+              <div class="civ-node-circle">Sol</div>
+              <div class="civ-node-label">Sol System</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Sol System 2350</span><div class="tt-data">Combined Sol system</div></div>
+            </div>
+          </div>
+
+          <!-- Honorverse -->
+          <div class="node-universe-group" style="width: 180px;">
+            <span class="node-universe-label" aria-hidden="true">Honorverse</span>
+            <div class="civ-node node-honorverse node-sm" tabindex="0">
+              <div class="civ-node-circle">3.2B</div>
+              <div class="civ-node-label">Manticore</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Manticore 1903 PD</span><div class="tt-data">3.2B pop &bull; Star Kingdom</div></div>
+            </div>
+            <div class="civ-node node-honorverse node-sm" tabindex="0">
+              <div class="civ-node-circle">PRH</div>
+              <div class="civ-node-label">Haven</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Haven 1903 PD</span><div class="tt-data">Republic of Haven &bull; rival power</div></div>
+            </div>
+          </div>
+
+          <!-- Perry Rhodan -->
+          <div class="node-universe-group" style="width: 230px;">
+            <span class="node-universe-label" aria-hidden="true">Perry Rhodan</span>
+            <div class="civ-node node-rhodan node-sm" tabindex="0">
+              <div class="civ-node-circle">SI</div>
+              <div class="civ-node-label">Solares Imp.</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Solares Imperium 2040</span><div class="tt-data">Human solar empire</div></div>
+            </div>
+            <div class="civ-node node-rhodan node-lg" tabindex="0">
+              <div class="civ-node-circle">50T</div>
+              <div class="civ-node-label">Gro&szlig;es Imp.</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Gro&szlig;es Imperium 2040</span><div class="tt-data">50T pop &bull; Arkonide empire</div></div>
+            </div>
+            <div class="civ-node node-rhodan node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Posbis</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Posbis 2114</span><div class="tt-data">Bio-machine hybrid intelligence</div></div>
+            </div>
+          </div>
+
+          <!-- Orion's Arm -->
+          <div class="node-universe-group" style="width: 230px;">
+            <span class="node-universe-label" aria-hidden="true">Orion's Arm</span>
+            <div class="civ-node node-orionsarm node-xl" tabindex="0">
+              <div class="civ-node-circle">3.9e17</div>
+              <div class="civ-node-label">Terragen</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Terragen Sphere</span><div class="tt-data">3.9&times;10&sup1;&sup7; pop &bull; deep future</div></div>
+            </div>
+            <div class="civ-node node-orionsarm node-sm" tabindex="0">
+              <div class="civ-node-circle">AI</div>
+              <div class="civ-node-label">Diamond Net</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Diamond Network</span><div class="tt-data">Machine superintelligence</div></div>
+            </div>
+            <div class="civ-node node-orionsarm node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Solar Sys.</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Solar System</span><div class="tt-data">Sol in 10600 AT &bull; cradle</div></div>
+            </div>
+          </div>
+
+          <!-- Reality -->
+          <div class="node-universe-group" style="width: 100%;">
+            <span class="node-universe-label" aria-hidden="true">Reality (control group)</span>
+            <div class="civ-node node-reality node-md" tabindex="0">
+              <div class="civ-node-circle">8B</div>
+              <div class="civ-node-label">Earth 2023</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Earth 2023</span><div class="tt-data">~8B pop &bull; K~0.73</div></div>
+            </div>
+            <div class="civ-node node-reality node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Cold War</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Cold War</span><div class="tt-data">Nuclear-capable civilization</div></div>
+            </div>
+            <div class="civ-node node-reality node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">World Wars</div>
+              <div class="civ-node-tooltip"><span class="tt-name">World Wars</span><div class="tt-data">Industrial warfare</div></div>
+            </div>
+            <div class="civ-node node-reality node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Industrial</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Industrial Revolution</span><div class="tt-data">Steam &amp; rail</div></div>
+            </div>
+            <div class="civ-node node-reality node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Renaissance</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Renaissance</span><div class="tt-data">Art &amp; science rebirth</div></div>
+            </div>
+            <div class="civ-node node-reality node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Medieval</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Medieval</span><div class="tt-data">Feudal agrarian</div></div>
+            </div>
+            <div class="civ-node node-reality node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Classical</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Classical Antiquity</span><div class="tt-data">Roman &amp; Han empires</div></div>
+            </div>
+            <div class="civ-node node-reality node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Iron Age</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Iron Age</span><div class="tt-data">Early metal-working empires</div></div>
+            </div>
+            <div class="civ-node node-reality node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Bronze Age</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Bronze Age</span><div class="tt-data">First writing systems</div></div>
+            </div>
+            <div class="civ-node node-reality node-xs" tabindex="0">
+              <div class="civ-node-circle"></div>
+              <div class="civ-node-label">Stone Age</div>
+              <div class="civ-node-tooltip"><span class="tt-name">Stone Age</span><div class="tt-data">Hunter-gatherer bands</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 3: Field Ledger                      -->
+    <!-- ============================================ -->
+    <div class="section-rule reveal" aria-hidden="true">
+      <span class="section-rule-label">field ledger</span>
+    </div>
+
+    <section class="ledger-section reveal" id="ledger" aria-label="Field ledger of all civilizations">
+      <div class="section-header">
+        <h2 class="section-title">Field Ledger</h2>
+        <span class="section-note">30 cataloged civilizations</span>
+      </div>
+
+      <div class="ledger-wrap">
+        <div class="ledger-table-scroll" role="region" aria-label="Scrollable civilization data" tabindex="0">
+          <table class="ledger-table">
+            <thead>
+              <tr>
+                <th scope="col">Civilization</th>
+                <th scope="col">Universe</th>
+                <th scope="col">Kardashev</th>
+                <th scope="col">Population</th>
+                <th scope="col">Observer Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="ledger-civ">Federation 2373</span><br><span class="ledger-timestamp">Year 2373</span></td>
+                <td><span class="ledger-universe">Star Trek</span></td>
+                <td><span class="ledger-data ledger-data--accent">1.0</span></td>
+                <td><span class="ledger-data">~100B</span></td>
+                <td><span class="ledger-note">150 member worlds, benchmark civ</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Klingon Empire 2161</span><br><span class="ledger-timestamp">Year 2161</span></td>
+                <td><span class="ledger-universe">Star Trek</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">~9B</span></td>
+                <td><span class="ledger-note">honor-bound warriors</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Andorian Empire 2161</span><br><span class="ledger-timestamp">Year 2161</span></td>
+                <td><span class="ledger-universe">Star Trek</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">founding member</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Vulcans 2063</span><br><span class="ledger-timestamp">Year 2063</span></td>
+                <td><span class="ledger-universe">Star Trek</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">first contact year</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Imperium of Man M41</span><br><span class="ledger-timestamp">~Year 41,000</span></td>
+                <td><span class="ledger-universe">Warhammer 40K</span></td>
+                <td><span class="ledger-data ledger-data--accent">1.6</span></td>
+                <td><span class="ledger-data">10-20Q</span></td>
+                <td><span class="ledger-note">1M planets!! staggering</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Orks M41</span><br><span class="ledger-timestamp">~Year 41,000</span></td>
+                <td><span class="ledger-universe">Warhammer 40K</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">???</span></td>
+                <td><span class="ledger-note">~2M planets, anomalous organism</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Alliance 2517</span><br><span class="ledger-timestamp">Year 2517</span></td>
+                <td><span class="ledger-universe">Firefly</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">303B</span></td>
+                <td><span class="ledger-note">215 worlds, frontier society</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Culture (pre-war)</span><br><span class="ledger-timestamp">~1300 CE (Earth-rel)</span></td>
+                <td><span class="ledger-universe">The Culture</span></td>
+                <td><span class="ledger-data ledger-data--accent">2.3</span></td>
+                <td><span class="ledger-data">~30T</span></td>
+                <td><span class="ledger-note">14,000 Orbitals, post-scarcity ideal</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Manticore 1903 PD</span><br><span class="ledger-timestamp">1903 post-diaspora</span></td>
+                <td><span class="ledger-universe">Honorverse</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">3.2B</span></td>
+                <td><span class="ledger-note">naval powerhouse</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Haven 1903 PD</span><br><span class="ledger-timestamp">1903 post-diaspora</span></td>
+                <td><span class="ledger-universe">Honorverse</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">expansionist rival</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Solares Imperium 2040</span><br><span class="ledger-timestamp">Year 2040</span></td>
+                <td><span class="ledger-universe">Perry Rhodan</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">human solar empire</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Gro&szlig;es Imperium 2040</span><br><span class="ledger-timestamp">Year 2040</span></td>
+                <td><span class="ledger-universe">Perry Rhodan</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">50T</span></td>
+                <td><span class="ledger-note">Arkonide galactic empire</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Posbis 2114</span><br><span class="ledger-timestamp">Year 2114</span></td>
+                <td><span class="ledger-universe">Perry Rhodan</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">positronic-biological hybrid</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Terragen Sphere</span><br><span class="ledger-timestamp">10600 AT</span></td>
+                <td><span class="ledger-universe">Orion's Arm</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">3.9&times;10<sup>17</sup></span></td>
+                <td><span class="ledger-note">toposophic-scale civilization</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Diamond Network</span><br><span class="ledger-timestamp">10600 AT</span></td>
+                <td><span class="ledger-universe">Orion's Arm</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">AI collective consciousness</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Solar System</span><br><span class="ledger-timestamp">10600 AT</span></td>
+                <td><span class="ledger-universe">Orion's Arm</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">cradle system, 10600 AT</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">United Nations 2350</span><br><span class="ledger-timestamp">Year 2350</span></td>
+                <td><span class="ledger-universe">The Expanse</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">30B</span></td>
+                <td><span class="ledger-note">Earth government</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Mars 2350</span><br><span class="ledger-timestamp">Year 2350</span></td>
+                <td><span class="ledger-universe">The Expanse</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">4B</span></td>
+                <td><span class="ledger-note">military-industrial power</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Sol System 2350</span><br><span class="ledger-timestamp">Year 2350</span></td>
+                <td><span class="ledger-universe">The Expanse</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">combined view of all factions</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">OPA 2350</span><br><span class="ledger-timestamp">Year 2350</span></td>
+                <td><span class="ledger-universe">The Expanse</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">~100M</span></td>
+                <td><span class="ledger-note">Belt faction, OPA</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Earth 2023</span><br><span class="ledger-timestamp">Year 2023</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data ledger-data--accent">~0.73</span></td>
+                <td><span class="ledger-data">~8B</span></td>
+                <td><span class="ledger-note">us. right now.</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Cold War</span><br><span class="ledger-timestamp">~1947&ndash;1991</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">nuclear-capable, peak tension</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">World Wars</span><br><span class="ledger-timestamp">~1914&ndash;1945</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">industrial total war</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Industrial Revolution</span><br><span class="ledger-timestamp">~1760&ndash;1840</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">steam changed everything</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Renaissance</span><br><span class="ledger-timestamp">~1400&ndash;1600</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">art &amp; science rebirth</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Medieval</span><br><span class="ledger-timestamp">~500&ndash;1400</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">feudal fragmentation</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Classical Antiquity</span><br><span class="ledger-timestamp">~500 BCE&ndash;500 CE</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">Rome &amp; Han</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Iron Age</span><br><span class="ledger-timestamp">~1200 BCE</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">early metal-working empires</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Bronze Age</span><br><span class="ledger-timestamp">~3000 BCE</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">first cities, first writing</span></td>
+              </tr>
+              <tr>
+                <td><span class="ledger-civ">Stone Age</span><br><span class="ledger-timestamp">~50,000 BCE</span></td>
+                <td><span class="ledger-universe">Reality</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-data">&mdash;</span></td>
+                <td><span class="ledger-note">hunter-gatherer bands</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 4: Metric Toggles                    -->
+    <!-- ============================================ -->
+    <div class="section-rule reveal" aria-hidden="true">
+      <span class="section-rule-label">available metrics</span>
+    </div>
+
+    <section class="toggles-section reveal" id="metrics" aria-label="Available metrics">
+      <div class="section-header">
+        <h2 class="section-title">Metric Toggles</h2>
+        <span class="section-note">20 measurement dimensions</span>
+      </div>
+
+      <div class="toggle-panel">
+        <div class="toggle-panel-title">Available Instruments</div>
+        <div class="toggle-grid" role="group" aria-label="Metric toggle switches">
+          <button class="metric-toggle" role="switch" aria-pressed="true" aria-label="Population"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Population</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="true" aria-label="Kardashev"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Kardashev</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="true" aria-label="Planets"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Planets</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Star Systems"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Star Systems</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Territory"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Territory</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="true" aria-label="Techlevel"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Techlevel</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Class"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Class</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Government"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Government</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Warships"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Warships</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Banks Orbitals"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Banks Orbitals</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Civilization Age"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Civ Age</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Dyson Spheres"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Dyson Spheres</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Ringworlds"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Ringworlds</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="FTL Date"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">FTL Date</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Tech Summary"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Tech Summary</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Location"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Location</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Bio Population"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Bio Population</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Virtual Population"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Virtual Pop</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Mech Population"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Mech Pop</span><span class="toggle-led" aria-hidden="true"></span></button>
+          <button class="metric-toggle" role="switch" aria-pressed="false" aria-label="Embodied Population"><span class="toggle-track" aria-hidden="true"></span><span class="toggle-label">Embodied Pop</span><span class="toggle-led" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </section>
+
+    </main>
+  </div><!-- /.screen -->
+
+  <!-- Device Footer -->
+  <footer class="device-footer">
+    <div class="manufacturer-plate">FUTR Research Instruments &mdash; Model VI &mdash; futr.space</div>
+    <div class="sync-status" aria-live="polite">
+      <span class="sync-dot" aria-hidden="true"></span>
+      Syncing with Galactic Archive&hellip;
+    </div>
+  </footer>
+
+</div><!-- /.datapad -->
+</div><!-- /.datapad-wrap -->
+
+<script>
+/* ============================================
+   FUTR Field Notes — Interactions
+   Annotate, Toggle, Trace
+   ============================================ */
+(function() {
+  'use strict';
+
+  /* --- Reduced motion check --- */
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- Scroll reveal (with debounce via IntersectionObserver) --- */
+  var reveals = document.querySelectorAll('.reveal');
+  if (reveals.length && !prefersReducedMotion) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(function(el) { observer.observe(el); });
+  } else {
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  /* --- Navigation: smooth scroll & active state --- */
+  var navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      navLinks.forEach(function(l) { l.classList.remove('active'); l.removeAttribute('aria-current'); });
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'true');
+      /* Close mobile menu */
+      var menu = document.getElementById('nav-menu');
+      var hamburger = document.querySelector('.hamburger');
+      if (menu && hamburger) {
+        menu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  /* --- Hamburger toggle --- */
+  var hamburger = document.querySelector('.hamburger');
+  var navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function() {
+      var isOpen = navMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
+
+  /* --- Metric toggles --- */
+  document.querySelectorAll('.metric-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function() {
+      var pressed = toggle.getAttribute('aria-pressed') === 'true';
+      toggle.setAttribute('aria-pressed', String(!pressed));
+    });
+  });
+
+  /* --- Debounced scroll handler for active nav tracking --- */
+  var scrollTimer;
+  var sections = [
+    { id: 'main-content', link: navLinks[0] },
+    { id: 'nodes', link: navLinks[1] },
+    { id: 'ledger', link: navLinks[2] },
+    { id: 'metrics', link: navLinks[3] }
+  ];
+
+  function updateActiveNav() {
+    var scrollY = window.scrollY + 120;
+    for (var i = sections.length - 1; i >= 0; i--) {
+      var el = document.getElementById(sections[i].id);
+      if (el && el.offsetTop <= scrollY) {
+        navLinks.forEach(function(l) { l.classList.remove('active'); l.removeAttribute('aria-current'); });
+        if (sections[i].link) {
+          sections[i].link.classList.add('active');
+          sections[i].link.setAttribute('aria-current', 'true');
+        }
+        break;
+      }
+    }
+  }
+
+  window.addEventListener('scroll', function() {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(updateActiveNav, 80);
+  }, { passive: true });
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR — Grand Observatory</title>
+<meta name="description" content="The Grand Observatory — cataloging civilizations across fictional universes and real-world history. 9 universes, 30 civilizations, 20 metrics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   FUTR — Grand Observatory Design System
+   Concept: Art Deco Astronomical Observatory
+   Interaction: Illuminate, Engrave, Revolve
+   ============================================ */
+
+/* --- Design Tokens --- */
+:root {
+  --bg-deep: #0B1622;
+  --bg-panel: #142133;
+  --bg-card: #1A2A40;
+  --brass: #C9955D;
+  --brass-glow: rgba(201, 149, 93, 0.15);
+  --brass-dim: rgba(201, 149, 93, 0.35);
+  --copper: #A67B5B;
+  --champagne: #E8D4B0;
+  --cream: #EDE4D4;
+  --steel: #7A8FA8;
+  --celestial: #4EADC5;
+  --celestial-glow: rgba(78, 173, 197, 0.15);
+  --alert: #C75B3A;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Nunito Sans', system-ui, sans-serif;
+
+  --nav-height: 52px;
+  --radius: 6px;
+  --radius-lg: 3px;
+  --transition-base: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--cream);
+  background: var(--bg-deep);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--celestial);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover { color: var(--champagne); }
+a:focus-visible {
+  outline: 2px solid var(--celestial);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+.reveal-d5 { transition-delay: 0.40s; }
+.reveal-d6 { transition-delay: 0.48s; }
+
+/* --- Skip link --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.5rem 1rem;
+  background: var(--bg-card);
+  color: var(--champagne);
+  border: 1px solid var(--brass);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* ===========================
+   NAVIGATION
+   =========================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  background: rgba(11, 22, 34, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--brass-dim);
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brass);
+  letter-spacing: 0.2em;
+  text-decoration: none;
+}
+.nav-brand:hover { color: var(--champagne); }
+.nav-brand:focus-visible {
+  outline: 2px solid var(--celestial);
+  outline-offset: 3px;
+}
+
+.nav-diamond {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--brass);
+  transform: rotate(45deg);
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: var(--steel);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+.nav-links a:hover {
+  color: var(--champagne);
+  border-bottom-color: var(--brass);
+}
+.nav-links a:focus-visible {
+  outline: 2px solid var(--celestial);
+  outline-offset: 3px;
+}
+
+/* Hamburger button */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--brass-dim);
+  border-radius: var(--radius);
+  color: var(--champagne);
+  font-size: 1.25rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color var(--transition-base);
+}
+.nav-toggle:hover,
+.nav-toggle:focus-visible {
+  border-color: var(--brass);
+}
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--celestial);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(11, 22, 34, 0.97);
+    border-bottom: 1px solid var(--brass-dim);
+    padding: 0.5rem 0;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { text-align: center; }
+  .nav-links a {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-bottom: none;
+  }
+}
+
+/* ===========================
+   HERO / TITLE AREA
+   =========================== */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 2.5rem clamp(1rem, 4vw, 3rem) 1.5rem;
+  overflow: hidden;
+}
+
+/* Art Deco sunburst behind title */
+.hero-sunburst {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(201, 149, 93, 0.10) 0deg 1.5deg,
+    transparent 1.5deg 10deg
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-title {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  color: var(--champagne);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.hero-tagline {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--steel);
+  font-weight: 400;
+  max-width: 48ch;
+  margin: 0 auto 1.25rem;
+  line-height: 1.5;
+}
+
+/* Stats ribbon */
+.stats-ribbon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 0;
+}
+
+.stats-ribbon::before,
+.stats-ribbon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass-dim));
+}
+.stats-ribbon::before { right: 50%; margin-right: 220px; transform: scaleX(-1); }
+.stats-ribbon::after { left: 50%; margin-left: 220px; }
+
+.stat-item {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--brass);
+  letter-spacing: 0.12em;
+}
+
+.stat-dot {
+  color: var(--brass-dim);
+  font-size: 0.8125rem;
+}
+
+/* Art Deco chevron divider */
+.deco-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+.deco-divider[aria-hidden] { user-select: none; }
+.deco-line {
+  width: 60px;
+  height: 1px;
+  background: var(--brass-dim);
+}
+.deco-diamond {
+  width: 7px;
+  height: 7px;
+  background: var(--brass);
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+/* ===========================
+   UNIVERSE CARDS — FEATURED (above fold)
+   =========================== */
+.section-pad {
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 600;
+  color: var(--champagne);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.universe-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--brass-dim);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition-base), filter var(--transition-base), transform var(--transition-base);
+  text-decoration: none;
+  color: inherit;
+}
+
+.universe-card:hover,
+.universe-card:focus-visible {
+  border-color: var(--brass);
+  transform: translateY(-3px);
+  filter: drop-shadow(0 4px 20px rgba(201, 149, 93, 0.12));
+}
+.universe-card:focus-visible {
+  outline: 2px solid var(--celestial);
+  outline-offset: 2px;
+}
+
+/* Brass corner ornaments — all 4 corners */
+.universe-card::before,
+.universe-card::after,
+.card-corners::before,
+.card-corners::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--brass-dim);
+  border-style: solid;
+  z-index: 2;
+  pointer-events: none;
+  transition: border-color var(--transition-base);
+}
+.card-corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.universe-card::before {
+  top: 6px; left: 6px;
+  border-width: 1px 0 0 1px;
+}
+.universe-card::after {
+  top: 6px; right: 6px;
+  border-width: 1px 1px 0 0;
+}
+.card-corners::before {
+  bottom: 6px; left: 6px;
+  border-width: 0 0 1px 1px;
+}
+.card-corners::after {
+  bottom: 6px; right: 6px;
+  border-width: 0 1px 1px 0;
+}
+.universe-card:hover::before,
+.universe-card:hover::after,
+.universe-card:hover .card-corners::before,
+.universe-card:hover .card-corners::after,
+.universe-card:focus-visible::before,
+.universe-card:focus-visible::after,
+.universe-card:focus-visible .card-corners::before,
+.universe-card:focus-visible .card-corners::after {
+  border-color: var(--brass);
+}
+
+.card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: var(--bg-panel);
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.universe-card:hover .card-img {
+  transform: scale(1.05);
+}
+
+.card-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg-card) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.card-body {
+  padding: 1rem 1.125rem 1.125rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-universe-name {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--champagne);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.card-civ-count {
+  font-size: 0.8125rem;
+  color: var(--steel);
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.card-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.card-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.8125rem;
+}
+
+.card-metric-label {
+  color: var(--steel);
+  font-weight: 400;
+}
+
+.card-metric-value {
+  color: var(--champagne);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.card-metric-value .confidence-calc {
+  color: var(--steel);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  margin-left: 0.25rem;
+}
+
+.card-tag {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--champagne);
+  background: rgba(201, 149, 93, 0.1);
+  border: 1px solid rgba(201, 149, 93, 0.2);
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-top: 0.5rem;
+  align-self: flex-start;
+}
+
+/* ===========================
+   FEATURED SPECIMENS
+   =========================== */
+.specimens-section {
+  padding: 3rem clamp(1rem, 4vw, 3rem) 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.specimen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.specimen-card {
+  background: var(--bg-card);
+  border: 1px solid var(--brass-dim);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition-base), filter var(--transition-base), transform var(--transition-base);
+}
+.specimen-card:hover,
+.specimen-card:focus-within {
+  border-color: var(--brass);
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 16px rgba(201, 149, 93, 0.1));
+}
+
+.specimen-header {
+  padding: 1.25rem 1.25rem 0;
+}
+
+.specimen-universe-tag {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 0.25rem;
+}
+
+.specimen-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--champagne);
+  letter-spacing: 0.04em;
+}
+
+.specimen-subtitle {
+  font-size: 0.8125rem;
+  color: var(--steel);
+  margin-top: 0.125rem;
+}
+
+.specimen-metrics {
+  padding: 1rem 1.25rem 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1.25rem;
+}
+
+.specimen-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.specimen-metric-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--steel);
+}
+
+.specimen-metric-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--champagne);
+  font-variant-numeric: tabular-nums;
+}
+
+.specimen-metric-value.huge {
+  font-size: 1.125rem;
+  color: var(--brass);
+}
+
+.specimen-bar {
+  height: 5px;
+  background: var(--bg-panel);
+  border-radius: 2px;
+  margin: 0.75rem 1.25rem;
+  overflow: hidden;
+}
+.specimen-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--copper), var(--brass));
+  border-radius: 2px;
+}
+
+/* ===========================
+   METRICS PANEL
+   =========================== */
+.metrics-section {
+  padding: 2rem clamp(1rem, 4vw, 3rem) 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.metric-tile {
+  background: var(--bg-card);
+  border: 1px solid rgba(201, 149, 93, 0.15);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.875rem;
+  text-align: center;
+  transition: border-color var(--transition-base), filter var(--transition-base);
+}
+.metric-tile:hover {
+  border-color: var(--brass-dim);
+  filter: drop-shadow(0 2px 8px rgba(201, 149, 93, 0.08));
+}
+
+.metric-tile-name {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--champagne);
+  margin-bottom: 0.25rem;
+}
+
+.metric-tile-coverage {
+  font-size: 0.8125rem;
+  color: var(--steel);
+}
+
+/* ===========================
+   OBSERVATORY LOG (about)
+   =========================== */
+.log-section {
+  padding: 2rem clamp(1rem, 4vw, 3rem) 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.log-plaque {
+  background: var(--bg-panel);
+  border: 1px solid var(--brass-dim);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+
+/* Plaque corner ornaments */
+.log-plaque::before,
+.log-plaque::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--brass-dim);
+  border-style: solid;
+  pointer-events: none;
+}
+.log-plaque::before {
+  top: 10px; left: 10px;
+  border-width: 1px 0 0 1px;
+}
+.log-plaque::after {
+  bottom: 10px; right: 10px;
+  border-width: 0 1px 1px 0;
+}
+
+.log-plaque h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brass);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.log-plaque p {
+  font-size: 0.9375rem;
+  color: var(--cream);
+  line-height: 1.7;
+  max-width: 55ch;
+  margin: 0 auto;
+}
+
+.log-plaque p + p {
+  margin-top: 0.75rem;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+.footer {
+  padding: 2rem clamp(1rem, 4vw, 3rem);
+  text-align: center;
+  border-top: 1px solid var(--brass-dim);
+}
+
+.footer-text {
+  font-size: 0.8125rem;
+  color: var(--steel);
+  letter-spacing: 0.06em;
+}
+
+.footer-link {
+  color: var(--champagne);
+}
+.footer-link:hover { color: var(--champagne); }
+.footer-link:focus-visible {
+  outline: 2px solid var(--celestial);
+  outline-offset: 3px;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+  .universe-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .specimen-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-ribbon {
+    gap: 0.75rem;
+  }
+  .stat-item {
+    font-size: 0.9375rem;
+  }
+  .stats-ribbon::before,
+  .stats-ribbon::after {
+    display: none;
+  }
+  .hero-sunburst {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .universe-grid {
+    grid-template-columns: 1fr;
+  }
+  .metrics-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+</style>
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<a href="#universes" class="skip-link">Skip to content</a>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-brand" aria-label="FUTR home">
+    <span class="nav-diamond" aria-hidden="true"></span>FUTR
+  </a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">☰</button>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="#universes">Universes</a></li>
+    <li><a href="#specimens">Civilizations</a></li>
+    <li><a href="#metrics">Metrics</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-sunburst" aria-hidden="true"></div>
+  <h1 class="hero-title">Grand Observatory</h1>
+  <p class="hero-tagline">Cataloging civilizations across fictional universes and real-world history. Statistical data, lore-accurate metrics, comparative analysis.</p>
+  <div class="stats-ribbon" aria-label="Site statistics">
+    <span class="stat-item">9 Universes</span>
+    <span class="stat-dot" aria-hidden="true">◆</span>
+    <span class="stat-item">30 Civilizations</span>
+    <span class="stat-dot" aria-hidden="true">◆</span>
+    <span class="stat-item">20 Metrics</span>
+  </div>
+</header>
+
+<div class="deco-divider" aria-hidden="true">
+  <span class="deco-line"></span>
+  <span class="deco-diamond"></span>
+  <span class="deco-line"></span>
+</div>
+
+<!-- ===== FEATURED UNIVERSES (above fold) ===== -->
+<section id="universes" class="section-pad" aria-label="Featured universes">
+  <h2 class="section-heading">The Collection</h2>
+  <div class="universe-grid">
+
+    <!-- STAR TREK -->
+    <article class="universe-card reveal" tabindex="0" aria-label="Star Trek universe">
+      <div class="card-corners" aria-hidden="true"></div>
+      <div class="card-img-wrap">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&h=400&q=70&fm=webp"
+          alt="Colorful nebula evoking the utopian wonder of Star Trek"
+          width="800" height="400"
+          fetchpriority="high"
+        >
+        <div class="card-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-universe-name">Star Trek</h3>
+        <p class="card-civ-count">4 civilizations observed</p>
+        <div class="card-metrics">
+          <div class="card-metric">
+            <span class="card-metric-label">Federation 2373</span>
+            <span class="card-metric-value">150 planets</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Peak population</span>
+            <span class="card-metric-value">~100 billion</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Earliest snapshot</span>
+            <span class="card-metric-value">Vulcans 2063</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- WARHAMMER 40K -->
+    <article class="universe-card reveal reveal-d1" tabindex="0" aria-label="Warhammer 40K universe">
+      <div class="card-corners" aria-hidden="true"></div>
+      <div class="card-img-wrap">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1548407260-da850faa41e8?auto=format&fit=crop&w=800&h=400&q=70&fm=webp"
+          alt="Dark gothic cathedral spires evoking the grim Imperium of Man"
+          width="800" height="400"
+          fetchpriority="high"
+        >
+        <div class="card-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-universe-name">Warhammer 40K</h3>
+        <p class="card-civ-count">2 civilizations observed</p>
+        <div class="card-metrics">
+          <div class="card-metric">
+            <span class="card-metric-label">Imperium of Man</span>
+            <span class="card-metric-value">1,000,000 planets</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Orks M41</span>
+            <span class="card-metric-value">~2M planets</span>
+          </div>
+        </div>
+        <span class="card-tag">Galaxy-spanning warfare</span>
+      </div>
+    </article>
+
+    <!-- THE CULTURE -->
+    <article class="universe-card reveal reveal-d2" tabindex="0" aria-label="The Culture universe">
+      <div class="card-corners" aria-hidden="true"></div>
+      <div class="card-img-wrap">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=70&fm=webp"
+          alt="Vast orbital nightside megastructure evoking the Culture's incomprehensible scale"
+          width="800" height="400"
+          fetchpriority="high"
+        >
+        <div class="card-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-universe-name">The Culture</h3>
+        <p class="card-civ-count">1 civilization observed</p>
+        <div class="card-metrics">
+          <div class="card-metric">
+            <span class="card-metric-label">Population (pre-war)</span>
+            <span class="card-metric-value">30 trillion</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Banks Orbitals</span>
+            <span class="card-metric-value">14,000 <span class="confidence-calc" aria-label="Calculated estimate">est.</span></span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- THE EXPANSE -->
+    <article class="universe-card reveal reveal-d3" tabindex="0" aria-label="The Expanse universe">
+      <div class="card-corners" aria-hidden="true"></div>
+      <div class="card-img-wrap">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=800&h=400&q=70&fm=webp"
+          alt="Red Mars-like desert landscape evoking The Expanse's near-future realism"
+          width="800" height="400"
+          fetchpriority="high"
+        >
+        <div class="card-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-universe-name">The Expanse</h3>
+        <p class="card-civ-count">4 civilizations observed</p>
+        <div class="card-metrics">
+          <div class="card-metric">
+            <span class="card-metric-label">Earth (UN 2350)</span>
+            <span class="card-metric-value">30 billion</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">OPA 2350</span>
+            <span class="card-metric-value">100M (0.3% of Earth)</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Mars 2350</span>
+            <span class="card-metric-value">4 billion</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== REMAINING UNIVERSES (below fold) ===== -->
+<section class="section-pad" aria-label="More universes" style="padding-top: 0;">
+  <div class="deco-divider" aria-hidden="true" style="padding-bottom:1.25rem;">
+    <span class="deco-line"></span>
+    <span class="deco-diamond"></span>
+    <span class="deco-diamond"></span>
+    <span class="deco-diamond"></span>
+    <span class="deco-line"></span>
+  </div>
+
+  <div class="universe-grid">
+
+    <!-- PERRY RHODAN -->
+    <article class="universe-card reveal" tabindex="0" aria-label="Perry Rhodan universe">
+      <div class="card-corners" aria-hidden="true"></div>
+      <div class="card-img-wrap">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&h=400&q=70&fm=webp"
+          alt="Retro-futuristic moon and rocket imagery evoking Perry Rhodan's space-age optimism"
+          width="800" height="400"
+          loading="lazy"
+        >
+        <div class="card-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-universe-name">Perry Rhodan</h3>
+        <p class="card-civ-count">3 civilizations observed</p>
+        <div class="card-metrics">
+          <div class="card-metric">
+            <span class="card-metric-label">Großes Imperium</span>
+            <span class="card-metric-value">50 trillion</span>
+          </div>
+        </div>
+        <span class="card-tag">Human + Arkonide + Cyborg</span>
+      </div>
+    </article>
+
+    <!-- FIREFLY -->
+    <article class="universe-card reveal reveal-d1" tabindex="0" aria-label="Firefly universe">
+      <div class="card-corners" aria-hidden="true"></div>
+      <div class="card-img-wrap">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=800&h=400&q=70&fm=webp"
+          alt="Dusty desert canyon landscape evoking Firefly's frontier spirit"
+          width="800" height="400"
+          loading="lazy"
+        >
+        <div class="card-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-universe-name">Firefly</h3>
+        <p class="card-civ-count">1 civilization observed</p>
+        <div class="card-metrics">
+          <div class="card-metric">
+            <span class="card-metric-label">Alliance 2517</span>
+            <span class="card-metric-value">303 billion</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Worlds</span>
+            <span class="card-metric-value">215</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- HONORVERSE -->
+    <article class="universe-card reveal reveal-d2" tabindex="0" aria-label="Honorverse universe">
+      <div class="card-corners" aria-hidden="true"></div>
+      <div class="card-img-wrap">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&h=400&q=70&fm=webp"
+          alt="Dramatic stormy ocean evoking the Honorverse's naval warfare themes"
+          width="800" height="400"
+          loading="lazy"
+        >
+        <div class="card-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-universe-name">Honorverse</h3>
+        <p class="card-civ-count">2 civilizations observed</p>
+        <div class="card-metrics">
+          <div class="card-metric">
+            <span class="card-metric-label">Manticore 1903 PD</span>
+            <span class="card-metric-value">Naval power</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Haven 1903 PD</span>
+            <span class="card-metric-value">Rival faction</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ORION'S ARM -->
+    <article class="universe-card reveal reveal-d3" tabindex="0" aria-label="Orion's Arm universe">
+      <div class="card-corners" aria-hidden="true"></div>
+      <div class="card-img-wrap">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&h=400&q=70&fm=webp"
+          alt="Abstract post-singularity architecture evoking Orion's Arm"
+          width="800" height="400"
+          loading="lazy"
+        >
+        <div class="card-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-universe-name">Orion's Arm</h3>
+        <p class="card-civ-count">3 civilizations observed</p>
+        <div class="card-metrics">
+          <div class="card-metric">
+            <span class="card-metric-label">Terragen Sphere</span>
+            <span class="card-metric-value">3.9 × 10¹⁷</span>
+          </div>
+        </div>
+        <span class="card-tag">Post-singularity</span>
+      </div>
+    </article>
+
+    <!-- REALITY -->
+    <article class="universe-card reveal reveal-d4" tabindex="0" aria-label="Reality universe">
+      <div class="card-corners" aria-hidden="true"></div>
+      <div class="card-img-wrap">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=800&h=400&q=70&fm=webp"
+          alt="City lights at night evoking our own real-world civilization"
+          width="800" height="400"
+          loading="lazy"
+        >
+        <div class="card-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-universe-name">Reality</h3>
+        <p class="card-civ-count">10 civilizations observed</p>
+        <div class="card-metrics">
+          <div class="card-metric">
+            <span class="card-metric-label">Spanning</span>
+            <span class="card-metric-value">Stone Age → 2023</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">The control specimen</span>
+            <span class="card-metric-value">8 billion</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== FEATURED SPECIMENS ===== -->
+<section id="specimens" class="specimens-section">
+  <div class="deco-divider" aria-hidden="true">
+    <span class="deco-line"></span>
+    <span class="deco-diamond"></span>
+    <span class="deco-line"></span>
+  </div>
+  <h2 class="section-heading reveal">Featured Specimens</h2>
+
+  <div class="specimen-grid">
+
+    <!-- Federation 2373 -->
+    <article class="specimen-card reveal" aria-label="Federation 2373 civilization details">
+      <div class="specimen-header">
+        <p class="specimen-universe-tag">Star Trek</p>
+        <h3 class="specimen-name">Federation 2373</h3>
+        <p class="specimen-subtitle">United Federation of Planets at the eve of the Dominion War</p>
+      </div>
+      <div class="specimen-bar" aria-hidden="true"><div class="specimen-bar-fill" style="width: 12%;"></div></div>
+      <div class="specimen-metrics">
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Population</span>
+          <span class="specimen-metric-value">~100 billion</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Planets</span>
+          <span class="specimen-metric-value">150</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Government</span>
+          <span class="specimen-metric-value">Federal republic</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Kardashev</span>
+          <span class="specimen-metric-value">II</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Imperium of Man M41 -->
+    <article class="specimen-card reveal reveal-d1" aria-label="Imperium of Man M41 civilization details">
+      <div class="specimen-header">
+        <p class="specimen-universe-tag">Warhammer 40K</p>
+        <h3 class="specimen-name">Imperium of Man M41</h3>
+        <p class="specimen-subtitle">A million worlds, united by faith and war</p>
+      </div>
+      <div class="specimen-bar" aria-hidden="true"><div class="specimen-bar-fill" style="width: 85%;"></div></div>
+      <div class="specimen-metrics">
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Planets</span>
+          <span class="specimen-metric-value huge">1,000,000</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Government</span>
+          <span class="specimen-metric-value">Theocratic autocracy</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Warships</span>
+          <span class="specimen-metric-value">Millions</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Note</span>
+          <span class="specimen-metric-value" style="font-size:0.8125rem;">Orks control 2M+ planets</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Culture (pre-war) -->
+    <article class="specimen-card reveal reveal-d2" aria-label="Culture pre-war civilization details">
+      <div class="specimen-header">
+        <p class="specimen-universe-tag">The Culture</p>
+        <h3 class="specimen-name">Culture (pre-war)</h3>
+        <p class="specimen-subtitle">Pan-humanoid anarchist utopia before the Idiran War</p>
+      </div>
+      <div class="specimen-bar" aria-hidden="true"><div class="specimen-bar-fill" style="width: 65%;"></div></div>
+      <div class="specimen-metrics">
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Population</span>
+          <span class="specimen-metric-value huge">30 trillion</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Banks Orbitals</span>
+          <span class="specimen-metric-value">14,000 <span class="confidence-calc" aria-label="Calculated guess">est.</span></span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Government</span>
+          <span class="specimen-metric-value">Anarchy (AI-managed)</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Kardashev</span>
+          <span class="specimen-metric-value">II–III</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Terragen Sphere -->
+    <article class="specimen-card reveal reveal-d3" aria-label="Terragen Sphere civilization details">
+      <div class="specimen-header">
+        <p class="specimen-universe-tag">Orion's Arm</p>
+        <h3 class="specimen-name">Terragen Sphere</h3>
+        <p class="specimen-subtitle">Post-singularity civilization spanning thousands of star systems</p>
+      </div>
+      <div class="specimen-bar" aria-hidden="true"><div class="specimen-bar-fill" style="width: 100%;"></div></div>
+      <div class="specimen-metrics">
+        <div class="specimen-metric" style="grid-column: 1 / -1;">
+          <span class="specimen-metric-label">Total Population</span>
+          <span class="specimen-metric-value huge">390,000,000,000,000,000</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Written as</span>
+          <span class="specimen-metric-value">3.9 × 10¹⁷</span>
+        </div>
+        <div class="specimen-metric">
+          <span class="specimen-metric-label">Dyson Spheres</span>
+          <span class="specimen-metric-value">Multiple</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== METRICS PANEL ===== -->
+<section id="metrics" class="metrics-section">
+  <div class="deco-divider" aria-hidden="true">
+    <span class="deco-line"></span>
+    <span class="deco-diamond"></span>
+    <span class="deco-line"></span>
+  </div>
+  <h2 class="section-heading reveal">The Instrument Panel</h2>
+  <p class="reveal" style="text-align:center; color: var(--steel); font-size: 0.875rem; margin-bottom: 1.5rem; max-width: 50ch; margin-left: auto; margin-right: auto;">20 metrics used to observe and compare civilizations across all universes.</p>
+
+  <div class="metrics-grid">
+    <div class="metric-tile reveal"><div class="metric-tile-name">Population</div><div class="metric-tile-coverage">28 civs</div></div>
+    <div class="metric-tile reveal reveal-d1"><div class="metric-tile-name">Planets</div><div class="metric-tile-coverage">15 civs</div></div>
+    <div class="metric-tile reveal reveal-d1"><div class="metric-tile-name">Star Systems</div><div class="metric-tile-coverage">10 civs</div></div>
+    <div class="metric-tile reveal reveal-d2"><div class="metric-tile-name">Kardashev</div><div class="metric-tile-coverage">12 civs</div></div>
+    <div class="metric-tile reveal reveal-d2"><div class="metric-tile-name">Techlevel</div><div class="metric-tile-coverage">20 civs</div></div>
+    <div class="metric-tile reveal reveal-d3"><div class="metric-tile-name">Warships</div><div class="metric-tile-coverage">8 civs</div></div>
+    <div class="metric-tile reveal reveal-d3"><div class="metric-tile-name">Territory</div><div class="metric-tile-coverage">14 civs</div></div>
+    <div class="metric-tile reveal reveal-d4"><div class="metric-tile-name">Government</div><div class="metric-tile-coverage">22 civs</div></div>
+    <div class="metric-tile reveal reveal-d4"><div class="metric-tile-name">Class</div><div class="metric-tile-coverage">18 civs</div></div>
+    <div class="metric-tile reveal reveal-d5"><div class="metric-tile-name">Civ Age</div><div class="metric-tile-coverage">16 civs</div></div>
+    <div class="metric-tile reveal reveal-d5"><div class="metric-tile-name">FTL Date</div><div class="metric-tile-coverage">9 civs</div></div>
+    <div class="metric-tile reveal reveal-d5"><div class="metric-tile-name">Location</div><div class="metric-tile-coverage">24 civs</div></div>
+    <div class="metric-tile reveal reveal-d6"><div class="metric-tile-name">Dyson Spheres</div><div class="metric-tile-coverage">3 civs</div></div>
+    <div class="metric-tile reveal reveal-d6"><div class="metric-tile-name">Ringworlds</div><div class="metric-tile-coverage">2 civs</div></div>
+    <div class="metric-tile reveal reveal-d6"><div class="metric-tile-name">Banks Orbitals</div><div class="metric-tile-coverage">1 civ</div></div>
+    <div class="metric-tile reveal"><div class="metric-tile-name">Tech Summary</div><div class="metric-tile-coverage">18 civs</div></div>
+    <div class="metric-tile reveal reveal-d1"><div class="metric-tile-name">Bio Pop.</div><div class="metric-tile-coverage">6 civs</div></div>
+    <div class="metric-tile reveal reveal-d2"><div class="metric-tile-name">Embodied Pop.</div><div class="metric-tile-coverage">4 civs</div></div>
+    <div class="metric-tile reveal reveal-d3"><div class="metric-tile-name">Mech Pop.</div><div class="metric-tile-coverage">3 civs</div></div>
+    <div class="metric-tile reveal reveal-d4"><div class="metric-tile-name">Virtual Pop.</div><div class="metric-tile-coverage">3 civs</div></div>
+  </div>
+</section>
+
+<!-- ===== OBSERVATORY LOG ===== -->
+<section id="about" class="log-section">
+  <div class="deco-divider" aria-hidden="true">
+    <span class="deco-line"></span>
+    <span class="deco-diamond"></span>
+    <span class="deco-line"></span>
+  </div>
+  <div class="log-plaque reveal">
+    <h2>Observatory Log</h2>
+    <p>FUTR — Fictional Universe Taxonomy Research — collects and analyzes statistical data about civilizations from fictional universes and real-world history.</p>
+    <p>From the 150 worlds of the Federation to the million-planet Imperium of Man, from the 30 trillion souls of the Culture to Bronze Age Earth — every civilization is a datapoint in the grand survey of what organized intelligence looks like across imagination and reality.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="deco-divider" aria-hidden="true" style="padding-bottom:1rem;">
+    <span class="deco-line"></span>
+    <span class="deco-diamond"></span>
+    <span class="deco-line"></span>
+  </div>
+  <p class="footer-text">
+    <a href="https://www.futr.space/" class="footer-link">futr.space</a> — Fictional Universe Taxonomy Research
+  </p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+(function() {
+  'use strict';
+
+  // --- Scroll reveal via IntersectionObserver ---
+  const revealElements = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) {
+      // Show everything immediately
+      revealElements.forEach(function(el) {
+        el.classList.add('visible');
+      });
+    } else {
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+    }
+  } else {
+    // Fallback: show everything
+    revealElements.forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+  // --- Mobile nav toggle ---
+  var navToggle = document.querySelector('.nav-toggle');
+  var navMenu = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function() {
+      var isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    // Close menu when a link is clicked
+    navMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // --- Keyboard enter on cards ---
+  document.querySelectorAll('.universe-card[tabindex]').forEach(function(card) {
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>

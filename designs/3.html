@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR — Fictional Universe Taxonomy Research</title>
+<meta name="description" content="A geological survey of fictional civilizations. 9 universes. 30 civilizations. 20 metrics. Excavate the strata of imagination.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   FUTR — Tectonic Index Design System
+   Concept: Geological Survey / Xenogeology Atlas
+   Interaction: Excavate, Fracture, Crystallize
+   ============================================ */
+
+/* --- Design Tokens --- */
+:root {
+  --surface:        #2B3A33;
+  --surface-raised: #344840;
+  --surface-light:  #E8EDE9;
+  --surface-mid:    #CDD5CE;
+  --bedrock:        #2B3A33;
+  --accent:         #00BFA5;
+  --accent-text:    #007A6A;
+  --accent-hot:     #FF6B3D;
+  --text-on-dark:   #D8E0DA;
+  --text-on-light:  #1C2B24;
+  --text-muted:     #96AEA2;
+  --stratum:        #1A2721;
+  --fault:          #3D5A4C;
+  --crystal:        rgba(180, 240, 224, 0.12);
+
+  /* Universe minerals */
+  --mineral-startrek:    #7B68EE;
+  --mineral-warhammer:   #2A1018;
+  --mineral-firefly:     #C4956A;
+  --mineral-culture:     #E0E7FF;
+  --mineral-honorverse:  #708090;
+  --mineral-perryRhodan: #2E8B57;
+  --mineral-orionsArm:   #E8567F;
+  --mineral-expanse:     #4A5568;
+  --mineral-reality:     #9B8E7E;
+
+  --font-display: 'Unbounded', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --nav-height: 56px;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-on-dark);
+  background: var(--surface);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* --- Noise Grain Overlay --- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* --- Focus Visible (global) --- */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- Navigation --- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background: var(--stratum);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--fault);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--text-on-dark);
+}
+
+/* Seismograph indicator */
+.nav-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 60px;
+  background: var(--accent);
+  transition: left 0.4s cubic-bezier(0.22, 1, 0.36, 1), width 0.3s;
+  pointer-events: none;
+}
+
+.nav-toggle {
+  display: none;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--fault);
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+}
+
+/* --- Hero: Diagonal Strata --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--nav-height) + 4rem) clamp(1.25rem, 4vw, 4rem) 6rem;
+  overflow: hidden;
+}
+
+.hero-strata {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-strata .stratum {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  height: 25%;
+  transform: skewY(-8deg);
+  transform-origin: center;
+}
+
+.hero-strata .stratum:nth-child(1) { top: -5%; background: var(--stratum); }
+.hero-strata .stratum:nth-child(2) { top: 18%; background: var(--surface); }
+.hero-strata .stratum:nth-child(3) { top: 38%; background: var(--fault); }
+.hero-strata .stratum:nth-child(4) { top: 55%; background: var(--surface-light); }
+.hero-strata .stratum:nth-child(5) { top: 75%; background: var(--surface-mid); }
+
+/* Core sample line */
+.hero-coreline {
+  position: absolute;
+  left: clamp(3rem, 12vw, 10rem);
+  top: 0;
+  width: 2px;
+  height: 0;
+  background: var(--accent);
+  z-index: 1;
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-coreline.is-visible {
+    animation: coreline-descend 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@keyframes coreline-descend {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.hero-title .word {
+  display: block;
+  position: relative;
+}
+
+.hero-title .word-light {
+  color: var(--text-on-light);
+}
+
+.hero-title .word-dark {
+  color: var(--text-on-dark);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  max-width: 48ch;
+}
+
+.hero-stats {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.9vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-stats .num {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero-stats .sep {
+  color: var(--fault);
+  margin: 0 0.25rem;
+}
+
+/* --- Section Headers --- */
+.section-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+/* --- Topographic Archipelago: Universe Showcase --- */
+.archipelago-section {
+  position: relative;
+  padding: 5rem clamp(1.25rem, 4vw, 3rem) 6rem;
+}
+
+.archipelago {
+  position: relative;
+  width: 100%;
+  min-height: 700px;
+}
+
+/* Desktop scatter layout */
+@media (min-width: 901px) {
+  .archipelago {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 1.5rem;
+    min-height: 800px;
+  }
+}
+
+.island {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+}
+
+.island:hover,
+.island:focus-visible {
+  transform: scale(1.03);
+}
+
+.island-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.15);
+  background: color-mix(in srgb, var(--island-color, var(--accent)) 7%, rgba(0,0,0,0.2));
+  overflow: hidden;
+}
+
+/* Contour rings — pseudo-element for GPU-composited scale */
+.island-rings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.island:hover .island-rings,
+.island.is-expanded .island-rings {
+  transform: scale(1.12);
+}
+
+.island-rings .ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--island-color, var(--accent));
+  opacity: 0.3;
+}
+
+.island-rings .ring:nth-child(1) { inset: 8%; opacity: 0.5; border-width: 2px; }
+.island-rings .ring:nth-child(2) { inset: 18%; opacity: 0.35; }
+.island-rings .ring:nth-child(3) { inset: 28%; opacity: 0.25; }
+.island-rings .ring:nth-child(4) { inset: 38%; opacity: 0.15; }
+
+/* Island shapes via clip-path and border-radius */
+.island[data-shape="crystal"] .island-body,
+.island[data-shape="crystal"] .island-rings .ring {
+  clip-path: polygon(30% 0%, 70% 0%, 95% 25%, 100% 60%, 75% 100%, 25% 100%, 0% 65%, 5% 20%);
+}
+
+.island[data-shape="jagged"] .island-body,
+.island[data-shape="jagged"] .island-rings .ring {
+  clip-path: polygon(15% 0%, 45% 5%, 75% 0%, 100% 20%, 90% 55%, 100% 80%, 70% 100%, 35% 95%, 0% 100%, 5% 60%, 0% 30%);
+}
+
+.island[data-shape="eroded"] .island-body,
+.island[data-shape="eroded"] .island-rings .ring {
+  border-radius: 45% 55% 40% 60% / 55% 40% 60% 45%;
+}
+
+.island[data-shape="circle"] .island-body,
+.island[data-shape="circle"] .island-rings .ring {
+  border-radius: 50%;
+  clip-path: none;
+}
+
+.island[data-shape="diamond"] .island-body,
+.island[data-shape="diamond"] .island-rings .ring {
+  clip-path: polygon(50% 0%, 95% 30%, 100% 70%, 50% 100%, 0% 70%, 5% 30%);
+}
+
+.island[data-shape="stepped"] .island-body,
+.island[data-shape="stepped"] .island-rings .ring {
+  clip-path: polygon(10% 0%, 60% 0%, 60% 20%, 100% 20%, 100% 55%, 80% 55%, 80% 100%, 20% 100%, 20% 70%, 0% 70%);
+}
+
+.island[data-shape="bismuth"] .island-body,
+.island[data-shape="bismuth"] .island-rings .ring {
+  clip-path: polygon(20% 0%, 70% 0%, 70% 15%, 100% 15%, 100% 50%, 85% 50%, 85% 85%, 40% 85%, 40% 100%, 0% 100%, 0% 40%, 20% 40%);
+}
+
+.island[data-shape="shard"] .island-body,
+.island[data-shape="shard"] .island-rings .ring {
+  clip-path: polygon(25% 0%, 80% 5%, 100% 35%, 85% 70%, 95% 100%, 40% 90%, 0% 100%, 10% 50%);
+}
+
+.island[data-shape="blob"] .island-body,
+.island[data-shape="blob"] .island-rings .ring {
+  border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+}
+
+/* Island content */
+.island-mineral {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--island-color, var(--accent));
+  opacity: 0.8;
+  margin-bottom: 0.35rem;
+}
+
+.island-name {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.3vw, 1.3rem);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: 0.25rem;
+}
+
+.island-civs {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* Hover detail — crystallize in */
+.island-detail {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+  max-width: 20ch;
+  line-height: 1.4;
+}
+
+.island:hover .island-detail,
+.island.is-expanded .island-detail {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Desktop grid placement */
+@media (min-width: 901px) {
+  /* Large islands: 2×2 */
+  .island--large { grid-column: span 2; grid-row: span 2; }
+  .island--large .island-body { min-height: 260px; }
+
+  /* Medium islands: 1×2 or 2×1 */
+  .island--medium .island-body { min-height: 180px; }
+
+  /* Small islands */
+  .island--small .island-body { min-height: 140px; }
+
+  /* Specific positions for scatter */
+  .island[data-universe="startrek"]    { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .island[data-universe="warhammer"]   { grid-column: 3 / 5; grid-row: 1 / 2; }
+  .island[data-universe="culture"]     { grid-column: 5 / 6; grid-row: 1 / 2; }
+  .island[data-universe="honorverse"]  { grid-column: 6 / 7; grid-row: 1 / 3; }
+  .island[data-universe="perryRhodan"] { grid-column: 3 / 4; grid-row: 2 / 3; }
+  .island[data-universe="orionsArm"]   { grid-column: 4 / 6; grid-row: 2 / 3; }
+  .island[data-universe="firefly"]     { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .island[data-universe="expanse"]     { grid-column: 2 / 4; grid-row: 3 / 5; }
+  .island[data-universe="reality"]     { grid-column: 4 / 6; grid-row: 3 / 5; }
+}
+
+/* Tight scatter for mid screens */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .archipelago { gap: 1rem; }
+  .island--large .island-body { min-height: 200px; }
+}
+
+/* Mobile: card stack */
+@media (max-width: 900px) {
+  .archipelago {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: auto;
+  }
+
+  .island-body {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    min-height: auto !important;
+    gap: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--island-color, var(--accent));
+    clip-path: none !important;
+  }
+
+  .island-rings { display: none; }
+
+  .island[data-shape] .island-body {
+    clip-path: none !important;
+    border-radius: 6px;
+  }
+
+  .island-detail {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s, max-height 0.3s, transform 0.3s;
+  }
+
+  .island.is-expanded .island-detail {
+    opacity: 1;
+    max-height: 60px;
+    transform: translateY(0);
+  }
+}
+
+/* Touch fallback */
+@media (hover: none) {
+  .island:hover .island-detail { opacity: 0; transform: translateY(6px); }
+  .island:hover .island-rings { transform: none; }
+  .island:hover { transform: none; }
+  .island.is-expanded .island-detail { opacity: 1; transform: translateY(0); }
+  .island.is-expanded .island-rings { transform: scale(1.12); }
+}
+
+/* --- Core Sample: Latest Civilizations --- */
+.core-section {
+  position: relative;
+  padding: 5rem clamp(1.25rem, 4vw, 3rem);
+}
+
+.core-column {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--surface-raised);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--fault);
+}
+
+.core-band {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid rgba(61, 90, 76, 0.3);
+  cursor: pointer;
+  transition: background 0.2s;
+  overflow: hidden;
+  outline: none;
+}
+
+.core-band:last-child { border-bottom: none; }
+
+.core-band::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--band-color, var(--accent));
+}
+
+/* Seismic pulse on hover — pseudo element, GPU composited */
+.core-band::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .core-band:hover::after,
+  .core-band.is-expanded::after {
+    animation: seismic-pulse 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@keyframes seismic-pulse {
+  0% { transform: scaleX(0); opacity: 0.6; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+.core-band:hover,
+.core-band.is-expanded {
+  background: rgba(0, 191, 165, 0.06);
+}
+
+.core-band-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--band-color, var(--accent));
+  flex-shrink: 0;
+}
+
+.core-band-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.core-band-name {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+  font-weight: 500;
+  color: var(--text-on-dark);
+}
+
+.core-band-universe {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.core-band-metrics {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s, opacity 0.3s, margin-top 0.3s;
+  margin-top: 0;
+}
+
+.core-band:hover .core-band-metrics,
+.core-band.is-expanded .core-band-metrics {
+  max-height: 80px;
+  opacity: 1;
+  margin-top: 0.35rem;
+}
+
+@media (hover: none) {
+  .core-band:hover .core-band-metrics { max-height: 0; opacity: 0; margin-top: 0; }
+  .core-band.is-expanded .core-band-metrics { max-height: 80px; opacity: 1; margin-top: 0.35rem; }
+}
+
+/* Mobile: full width */
+@media (max-width: 900px) {
+  .core-column { max-width: 100%; }
+}
+
+/* --- Crystal Lattice: Metrics Hex Grid --- */
+.lattice-section {
+  position: relative;
+  padding: 5rem clamp(1.25rem, 4vw, 3rem);
+}
+
+.lattice-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hex-cell {
+  position: relative;
+  background: var(--crystal);
+  border: 1px solid var(--fault);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  aspect-ratio: 1 / 1.15;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 0.75rem;
+  cursor: default;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), filter 0.25s;
+  outline: none;
+}
+
+/* Focus indicator inside clip-path (outline gets clipped) */
+.hex-cell:focus-visible {
+  outline: none;
+}
+
+.hex-cell:focus-visible::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  border: 2px solid var(--accent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Offset every other row for honeycomb stagger */
+.hex-cell:nth-child(4n+5),
+.hex-cell:nth-child(4n+6),
+.hex-cell:nth-child(4n+7),
+.hex-cell:nth-child(4n+8) {
+  transform: translateX(calc(50% + 0.5rem));
+}
+
+/* Hover: scale + glow — will-change added/removed via JS */
+.hex-cell:hover,
+.hex-cell:focus-visible {
+  transform: scale(1.06) translateY(-2px);
+  filter: drop-shadow(0 0 20px rgba(0, 191, 165, 0.25));
+}
+
+/* Staggered row hover must also include offset */
+.hex-cell:nth-child(4n+5):hover,
+.hex-cell:nth-child(4n+6):hover,
+.hex-cell:nth-child(4n+7):hover,
+.hex-cell:nth-child(4n+8):hover,
+.hex-cell:nth-child(4n+5):focus-visible,
+.hex-cell:nth-child(4n+6):focus-visible,
+.hex-cell:nth-child(4n+7):focus-visible,
+.hex-cell:nth-child(4n+8):focus-visible {
+  transform: translateX(calc(50% + 0.5rem)) scale(1.06) translateY(-2px);
+}
+
+@media (hover: none) {
+  .hex-cell:hover { transform: none; filter: none; }
+  .hex-cell:nth-child(4n+5):hover,
+  .hex-cell:nth-child(4n+6):hover,
+  .hex-cell:nth-child(4n+7):hover,
+  .hex-cell:nth-child(4n+8):hover { transform: translateX(calc(50% + 0.5rem)); filter: none; }
+  .hex-cell.is-active { transform: scale(1.06) translateY(-2px); filter: drop-shadow(0 0 20px rgba(0, 191, 165, 0.25)); }
+}
+
+.hex-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 0.35rem;
+  opacity: 0.6;
+}
+
+.hex-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.hex-name {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-on-dark);
+  line-height: 1.2;
+}
+
+.hex-count {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+/* Mobile: 2-column rectangles */
+@media (max-width: 900px) {
+  .lattice-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .hex-cell {
+    clip-path: none;
+    border-radius: 6px;
+    aspect-ratio: auto;
+    padding: 1rem;
+    transform: none !important;
+  }
+
+  .hex-cell:focus-visible::before {
+    clip-path: none;
+    border-radius: 4px;
+  }
+}
+
+/* --- Fault Line Separator --- */
+.fault-line {
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+}
+
+.fault-line svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.fault-line-path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 12 8;
+  stroke-dashoffset: 200;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fault-line.is-visible .fault-line-path {
+    animation: fault-crack 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@keyframes fault-crack {
+  to { stroke-dashoffset: 0; }
+}
+
+/* --- Community: Below the Fault --- */
+.community-section {
+  position: relative;
+  background: var(--stratum);
+  padding: 4rem clamp(1.25rem, 4vw, 3rem);
+}
+
+.community-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+  .community-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.community-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 0.95vw, 0.95rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.community-text strong {
+  color: var(--text-on-dark);
+  font-weight: 500;
+}
+
+.community-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.community-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 0.85vw, 0.85rem);
+  font-weight: 500;
+  color: var(--text-on-dark);
+  background: var(--surface-raised);
+  border: 1px solid var(--fault);
+  border-radius: 4px;
+  padding: 0.7rem 1.25rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s, filter 0.2s, border-radius 0.2s;
+  filter: blur(0.3px);
+}
+
+.community-btn:hover {
+  border-color: var(--accent);
+  filter: none;
+  border-radius: 2px;
+}
+
+.community-btn .arrow {
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+
+.community-btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* --- Footer: Deep Stratum --- */
+.footer {
+  position: relative;
+  background: var(--stratum);
+  padding: 4rem clamp(1.25rem, 4vw, 3rem) 2rem;
+  overflow: hidden;
+  border-top: 1px solid rgba(61, 90, 76, 0.2);
+}
+
+.footer-watermark {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 14vw, 14rem);
+  font-weight: 400;
+  color: var(--text-on-dark);
+  opacity: 0.09;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-info {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--accent); }
+
+/* --- Scroll reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo">FUTR</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#universes">Universes</a></li>
+    <li><a href="#signals">Signals</a></li>
+    <li><a href="#codebook">Codebook</a></li>
+    <li><a href="#network">Network</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+  <span class="nav-indicator" id="nav-indicator" aria-hidden="true"></span>
+</nav>
+
+<!-- Hero: Diagonal Strata -->
+<section class="hero" id="hero">
+  <div class="hero-strata" aria-hidden="true">
+    <div class="stratum"></div>
+    <div class="stratum"></div>
+    <div class="stratum"></div>
+    <div class="stratum"></div>
+    <div class="stratum"></div>
+  </div>
+  <div class="hero-coreline" id="hero-coreline" aria-hidden="true"></div>
+  <div class="hero-content reveal">
+    <h1 class="hero-title">
+      <span class="word word-dark">Fictional</span>
+      <span class="word word-dark">Universe</span>
+      <span class="word word-light">Taxonomy</span>
+      <span class="word word-light">Research</span>
+    </h1>
+    <p class="hero-subtitle">Excavating the deep strata of civilizations across fiction and history. A geological survey of imagination.</p>
+    <div class="hero-stats">
+      <span><span class="num">30</span> civilizations</span>
+      <span class="sep">/</span>
+      <span><span class="num">9</span> universes</span>
+      <span class="sep">/</span>
+      <span><span class="num">20</span> metrics</span>
+    </div>
+  </div>
+</section>
+
+<!-- Topographic Archipelago: Universe Showcase -->
+<section class="archipelago-section" id="universes">
+  <div class="section-label reveal">// Survey Atlas &mdash; 9 Formations</div>
+
+  <div class="archipelago" role="group" aria-label="Universe formations">
+
+    <!-- Star Trek — Dilithium — Large -->
+    <div class="island island--large reveal" data-universe="startrek" data-shape="crystal" style="--island-color: var(--mineral-startrek);" tabindex="0" role="button" aria-expanded="false" aria-label="Star Trek: Dilithium Formation, 4 civilizations" onclick="toggleIsland(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIsland(this)}">
+      <div class="island-rings" aria-hidden="true">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="island-body">
+        <span class="island-mineral">Star Trek // Dilithium Formation</span>
+        <span class="island-name">Star Trek</span>
+        <span class="island-civs">4 civilizations</span>
+        <span class="island-detail">Warp-capable empires of the Alpha and Beta Quadrants. Federation, Klingon, Vulcan, Andorian.</span>
+      </div>
+    </div>
+
+    <!-- Warhammer 40K — Obsidian -->
+    <div class="island island--medium reveal" data-universe="warhammer" data-shape="jagged" style="--island-color: var(--accent-hot);" tabindex="0" role="button" aria-expanded="false" aria-label="Warhammer 40,000: Obsidian Formation, 2 civilizations" onclick="toggleIsland(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIsland(this)}">
+      <div class="island-rings" aria-hidden="true">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="island-body">
+        <span class="island-mineral">Warhammer 40K // Obsidian Formation</span>
+        <span class="island-name">Warhammer 40,000</span>
+        <span class="island-civs">2 civilizations</span>
+        <span class="island-detail">Galaxy-spanning theocratic empire. A million worlds under the God-Emperor.</span>
+      </div>
+    </div>
+
+    <!-- The Culture — Synthetic Diamond -->
+    <div class="island island--small reveal" data-universe="culture" data-shape="circle" style="--island-color: var(--mineral-culture);" tabindex="0" role="button" aria-expanded="false" aria-label="The Culture: Synthetic Diamond Formation, 1 civilization" onclick="toggleIsland(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIsland(this)}">
+      <div class="island-rings" aria-hidden="true">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="island-body">
+        <span class="island-mineral">Culture // Synthetic Diamond Formation</span>
+        <span class="island-name">The Culture</span>
+        <span class="island-civs">1 civilization</span>
+        <span class="island-detail">Post-scarcity anarcho-utopia. AI Minds, Orbitals, and Special Circumstances.</span>
+      </div>
+    </div>
+
+    <!-- Honorverse — Magnetite -->
+    <div class="island island--medium reveal" data-universe="honorverse" data-shape="diamond" style="--island-color: var(--mineral-honorverse);" tabindex="0" role="button" aria-expanded="false" aria-label="Honorverse: Magnetite Formation, 2 civilizations" onclick="toggleIsland(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIsland(this)}">
+      <div class="island-rings" aria-hidden="true">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="island-body">
+        <span class="island-mineral">Honorverse // Magnetite Formation</span>
+        <span class="island-name">Honorverse</span>
+        <span class="island-civs">2 civilizations</span>
+        <span class="island-detail">Impeller-drive navies and Manticoran honor. Space-age Napoleonic warfare.</span>
+      </div>
+    </div>
+
+    <!-- Perry Rhodan — Emerald -->
+    <div class="island island--medium reveal" data-universe="perryRhodan" data-shape="stepped" style="--island-color: var(--mineral-perryRhodan);" tabindex="0" role="button" aria-expanded="false" aria-label="Perry Rhodan: Emerald Formation, 3 civilizations" onclick="toggleIsland(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIsland(this)}">
+      <div class="island-rings" aria-hidden="true">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="island-body">
+        <span class="island-mineral">Perry Rhodan // Emerald Formation</span>
+        <span class="island-name">Perry Rhodan</span>
+        <span class="island-civs">3 civilizations</span>
+        <span class="island-detail">Humanity's longest saga. Solar Empire, Posbis, and intergalactic alliances.</span>
+      </div>
+    </div>
+
+    <!-- Orion's Arm — Bismuth -->
+    <div class="island island--medium reveal" data-universe="orionsArm" data-shape="bismuth" style="--island-color: var(--mineral-orionsArm);" tabindex="0" role="button" aria-expanded="false" aria-label="Orion's Arm: Bismuth Formation, 3 civilizations" onclick="toggleIsland(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIsland(this)}">
+      <div class="island-rings" aria-hidden="true">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="island-body">
+        <span class="island-mineral">Orion's Arm // Bismuth Formation</span>
+        <span class="island-name">Orion&rsquo;s Arm</span>
+        <span class="island-civs">3 civilizations</span>
+        <span class="island-detail">Toposophic transcendence. Archailects, Dyson swarms, and deep time.</span>
+      </div>
+    </div>
+
+    <!-- Firefly — Sandstone — Small -->
+    <div class="island island--small reveal" data-universe="firefly" data-shape="eroded" style="--island-color: var(--mineral-firefly);" tabindex="0" role="button" aria-expanded="false" aria-label="Firefly: Sandstone Formation, 1 civilization" onclick="toggleIsland(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIsland(this)}">
+      <div class="island-rings" aria-hidden="true">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="island-body">
+        <span class="island-mineral">Firefly // Sandstone Formation</span>
+        <span class="island-name">Firefly</span>
+        <span class="island-civs">1 civilization</span>
+        <span class="island-detail">The &rsquo;Verse. No FTL, terraformed moons, Alliance control.</span>
+      </div>
+    </div>
+
+    <!-- The Expanse — Basalt — Large -->
+    <div class="island island--large reveal" data-universe="expanse" data-shape="shard" style="--island-color: var(--mineral-expanse);" tabindex="0" role="button" aria-expanded="false" aria-label="The Expanse: Basalt Formation, 4 civilizations" onclick="toggleIsland(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIsland(this)}">
+      <div class="island-rings" aria-hidden="true">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="island-body">
+        <span class="island-mineral">Expanse // Basalt Formation</span>
+        <span class="island-name">The Expanse</span>
+        <span class="island-civs">4 civilizations</span>
+        <span class="island-detail">Hard sci-fi realpolitik. Earth, Mars, Belt, and protomolecule mysteries.</span>
+      </div>
+    </div>
+
+    <!-- Reality — Granite — Large -->
+    <div class="island island--large reveal" data-universe="reality" data-shape="blob" style="--island-color: var(--mineral-reality);" tabindex="0" role="button" aria-expanded="false" aria-label="Reality: Granite Formation, 10 civilizations" onclick="toggleIsland(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIsland(this)}">
+      <div class="island-rings" aria-hidden="true">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="island-body">
+        <span class="island-mineral">Reality // Granite Formation</span>
+        <span class="island-name">Reality</span>
+        <span class="island-civs">10 civilizations</span>
+        <span class="island-detail">The baseline. Real civilizations from human history, for comparison with fiction.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Core Sample: Latest Civilizations -->
+<section class="core-section" id="signals">
+  <div class="section-label reveal">// Core Sample &mdash; Recent Strata</div>
+
+  <div class="core-column reveal">
+    <!-- Band 1: Culture (pre-war) -->
+    <div class="core-band" style="--band-color: var(--mineral-culture);" tabindex="0" role="button" aria-expanded="false" aria-label="Culture (pre-war)" onclick="toggleBand(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleBand(this)}">
+      <div class="core-band-dot" style="background: var(--mineral-culture);"></div>
+      <div class="core-band-info">
+        <div class="core-band-name">Culture (pre-war)</div>
+        <div class="core-band-universe">The Culture</div>
+        <div class="core-band-metrics">Population: 30 trillion &bull; Orbitals: 14,000 &bull; Kardashev: ~III</div>
+      </div>
+    </div>
+
+    <!-- Band 2: Klingon Empire 2161 -->
+    <div class="core-band" style="--band-color: var(--mineral-startrek);" tabindex="0" role="button" aria-expanded="false" aria-label="Klingon Empire 2161" onclick="toggleBand(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleBand(this)}">
+      <div class="core-band-dot" style="background: var(--mineral-startrek);"></div>
+      <div class="core-band-info">
+        <div class="core-band-name">Klingon Empire 2161</div>
+        <div class="core-band-universe">Star Trek</div>
+        <div class="core-band-metrics">Planets: ~20 worlds &bull; Warships: D5-class fleet &bull; Techlevel: warp-capable</div>
+      </div>
+    </div>
+
+    <!-- Band 3: Mars 2350 -->
+    <div class="core-band" style="--band-color: var(--mineral-expanse);" tabindex="0" role="button" aria-expanded="false" aria-label="Mars 2350" onclick="toggleBand(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleBand(this)}">
+      <div class="core-band-dot" style="background: var(--mineral-expanse);"></div>
+      <div class="core-band-info">
+        <div class="core-band-name">Mars 2350</div>
+        <div class="core-band-universe">The Expanse</div>
+        <div class="core-band-metrics">Population: 4 billion &bull; Warships: ~60 vessels &bull; Government: republic</div>
+      </div>
+    </div>
+
+    <!-- Band 4: Alliance 2517 -->
+    <div class="core-band" style="--band-color: var(--mineral-firefly);" tabindex="0" role="button" aria-expanded="false" aria-label="Alliance 2517" onclick="toggleBand(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleBand(this)}">
+      <div class="core-band-dot" style="background: var(--mineral-firefly);"></div>
+      <div class="core-band-info">
+        <div class="core-band-name">Alliance 2517</div>
+        <div class="core-band-universe">Firefly</div>
+        <div class="core-band-metrics">Worlds: 215 settled &bull; Government: alliance &bull; FTL: none (slowboat)</div>
+      </div>
+    </div>
+
+    <!-- Band 5: Andorian Empire 2161 -->
+    <div class="core-band" style="--band-color: var(--mineral-startrek);" tabindex="0" role="button" aria-expanded="false" aria-label="Andorian Empire 2161" onclick="toggleBand(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleBand(this)}">
+      <div class="core-band-dot" style="background: var(--mineral-startrek);"></div>
+      <div class="core-band-info">
+        <div class="core-band-name">Andorian Empire 2161</div>
+        <div class="core-band-universe">Star Trek</div>
+        <div class="core-band-metrics">Colonies: ~14 worlds &bull; Warships: Kumari-class &bull; Status: Federation founder</div>
+      </div>
+    </div>
+
+    <!-- Band 6: Posbis 2114 -->
+    <div class="core-band" style="--band-color: var(--mineral-perryRhodan);" tabindex="0" role="button" aria-expanded="false" aria-label="Posbis 2114" onclick="toggleBand(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleBand(this)}">
+      <div class="core-band-dot" style="background: var(--mineral-perryRhodan);"></div>
+      <div class="core-band-info">
+        <div class="core-band-name">Posbis 2114</div>
+        <div class="core-band-universe">Perry Rhodan</div>
+        <div class="core-band-metrics">Type: cyborg hybrids &bull; Base: Hundertsonnenwelt &bull; Range: intergalactic</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Crystal Lattice: Metrics -->
+<section class="lattice-section" id="codebook">
+  <div class="section-label reveal">// Crystal Lattice &mdash; 20 Registered Metrics</div>
+
+  <div class="lattice-grid reveal" role="list" aria-label="Available metrics">
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <span class="hex-name">Population</span>
+      <span class="hex-count">individuals &rarr; quadrillions</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></div>
+      <span class="hex-name">Planets</span>
+      <span class="hex-count">1 &rarr; millions</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="10"/></svg></div>
+      <span class="hex-name">Star Systems</span>
+      <span class="hex-count">1 &rarr; millions</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><path d="M4 20 L12 4 L20 20" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="hex-name">Kardashev Rating</span>
+      <span class="hex-count">I &rarr; III+</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><path d="M6 18 L6 8 M10 18 L10 6 M14 18 L14 10 M18 18 L18 4" stroke-linecap="round"/></svg></div>
+      <span class="hex-name">Techlevel</span>
+      <span class="hex-count">pre-industrial &rarr; transcendent</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><path d="M4 16 L12 8 L20 16 M8 12 L12 8 L16 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="hex-name">Warships</span>
+      <span class="hex-count">0 &rarr; millions</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div>
+      <span class="hex-name">Territory</span>
+      <span class="hex-count">qualitative description</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><path d="M12 4 L4 9 L4 18 L12 22 L20 18 L20 9 Z" stroke-linejoin="round"/></svg></div>
+      <span class="hex-name">Government</span>
+      <span class="hex-count">democracy &rarr; AI-guided</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="16" x2="20" y2="16"/></svg></div>
+      <span class="hex-name">Class</span>
+      <span class="hex-count">qualitative assessment</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6 L12 12 L16 14" stroke-linecap="round"/></svg></div>
+      <span class="hex-name">Civilization Age</span>
+      <span class="hex-count">years &rarr; millennia</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><path d="M5 12 L19 12 M14 7 L19 12 L14 17" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="hex-name">FTL Date</span>
+      <span class="hex-count">year or N/A</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M4 20 C4 16 8 13 12 13 C16 13 20 16 20 20" stroke-linecap="round"/></svg></div>
+      <span class="hex-name">Location</span>
+      <span class="hex-count">e.g. Alpha Quadrant, Sol</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+      <span class="hex-name">Dyson Spheres</span>
+      <span class="hex-count">0 &rarr; thousands</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div>
+      <span class="hex-name">Ringworlds</span>
+      <span class="hex-count">0 &rarr; known instances</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="5"/><ellipse cx="12" cy="12" rx="10" ry="5" transform="rotate(60 12 12)"/></svg></div>
+      <span class="hex-name">Banks Orbitals</span>
+      <span class="hex-count">0 &rarr; tens of thousands</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><path d="M4 20 L8 10 L12 14 L16 6 L20 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="hex-name">Tech Summary</span>
+      <span class="hex-count">narrative overview</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 20 C5 16 8 13 12 13 C16 13 19 16 19 20" stroke-linecap="round"/><path d="M9 11 Q12 14 15 11" stroke-linecap="round"/></svg></div>
+      <span class="hex-name">Bio Population</span>
+      <span class="hex-count">biological individuals</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 20 C5 16 8 13 12 13 C16 13 19 16 19 20" stroke-linecap="round"/><line x1="12" y1="6" x2="12" y2="10"/><line x1="10" y1="8" x2="14" y2="8"/></svg></div>
+      <span class="hex-name">Embodied Population</span>
+      <span class="hex-count">physical-form entities</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="14" rx="2"/><circle cx="12" cy="9" r="2"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+      <span class="hex-name">Mech Population</span>
+      <span class="hex-count">mechanical entities</span>
+    </div>
+
+    <div class="hex-cell" role="listitem" tabindex="0">
+      <div class="hex-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke-dasharray="4 2"/><circle cx="12" cy="12" r="3"/><path d="M12 4 L12 7 M12 17 L12 20 M4 12 L7 12 M17 12 L20 12"/></svg></div>
+      <span class="hex-name">Virtual Population</span>
+      <span class="hex-count">digital substrate entities</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Fault Line Separator -->
+<div class="fault-line" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+    <path class="fault-line-path" d="M0,45 L120,38 L240,52 L400,35 L520,48 L650,30 L780,55 L900,40 L1050,50 L1200,35"/>
+  </svg>
+</div>
+
+<!-- Community: Below the Fault -->
+<section class="community-section" id="network">
+  <div class="section-label reveal">// Below the Fault &mdash; Contributing</div>
+
+  <div class="community-grid reveal">
+    <div class="community-text">
+      <p><strong>FUTR is an open geological survey.</strong> Every civilization needs a surveyor. If you have data on fictional or historical civilizations, we want your core samples.</p>
+      <p style="margin-top: 0.75rem;">Add new universes, contribute civilizations, propose metrics, or fix errata. The strata run deep.</p>
+    </div>
+    <div class="community-links">
+      <a href="#" class="community-btn">Contribute data <span class="arrow">&rarr;</span></a>
+      <a href="#" class="community-btn">View on GitHub <span class="arrow">&rarr;</span></a>
+      <a href="#" class="community-btn">Read the docs <span class="arrow">&rarr;</span></a>
+      <a href="#" class="community-btn">Join discussion <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer: Deep Stratum -->
+<footer class="footer">
+  <span class="footer-watermark" aria-hidden="true">FUTR</span>
+  <div class="footer-content">
+    <div class="footer-info">
+      FUTR &mdash; Fictional Universe Taxonomy Research<br>
+      A geological survey of imagination.
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">futr.space</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* ============================================
+   Tectonic Index — Interactions
+   ============================================ */
+
+// --- Scroll Reveal via IntersectionObserver ---
+(function() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+
+// --- Hero Coreline ---
+(function() {
+  var line = document.getElementById('hero-coreline');
+  if (line) {
+    // Small delay to ensure it plays on load
+    setTimeout(function() { line.classList.add('is-visible'); }, 300);
+  }
+})();
+
+// --- Fault Line Animation ---
+(function() {
+  var fault = document.querySelector('.fault-line');
+  if (!fault) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(fault);
+})();
+
+// --- Island Toggle (touch fallback) ---
+function toggleIsland(el) {
+  var wasExpanded = el.classList.contains('is-expanded');
+
+  // Close all
+  document.querySelectorAll('.island.is-expanded').forEach(function(island) {
+    island.classList.remove('is-expanded');
+    island.setAttribute('aria-expanded', 'false');
+  });
+
+  // Toggle current
+  if (!wasExpanded) {
+    el.classList.add('is-expanded');
+    el.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// --- Core Band Toggle ---
+function toggleBand(el) {
+  var wasExpanded = el.classList.contains('is-expanded');
+
+  document.querySelectorAll('.core-band.is-expanded').forEach(function(band) {
+    band.classList.remove('is-expanded');
+    band.setAttribute('aria-expanded', 'false');
+  });
+
+  if (!wasExpanded) {
+    el.classList.add('is-expanded');
+    el.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// --- Hex Cell will-change toggle + keyboard handler (performance) ---
+(function() {
+  function toggleHexActive(cell) {
+    var wasActive = cell.classList.contains('is-active');
+    document.querySelectorAll('.hex-cell.is-active').forEach(function(c) {
+      c.classList.remove('is-active');
+    });
+    if (!wasActive) cell.classList.add('is-active');
+  }
+
+  document.querySelectorAll('.hex-cell').forEach(function(cell) {
+    cell.addEventListener('mouseenter', function() {
+      this.style.willChange = 'transform, filter';
+    });
+    cell.addEventListener('mouseleave', function() {
+      this.style.willChange = 'auto';
+    });
+    // Touch: toggle active
+    cell.addEventListener('click', function() {
+      if (window.matchMedia('(hover: none)').matches) {
+        toggleHexActive(this);
+      }
+    });
+    // Keyboard: Enter/Space toggle
+    cell.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleHexActive(this);
+      }
+    });
+  });
+})();
+
+// --- Nav Seismograph Indicator ---
+(function() {
+  var indicator = document.getElementById('nav-indicator');
+  var links = document.querySelectorAll('.nav-links a');
+  if (!indicator || !links.length) return;
+
+  function updateIndicator(link) {
+    var rect = link.getBoundingClientRect();
+    var navRect = link.closest('.nav').getBoundingClientRect();
+    indicator.style.left = (rect.left - navRect.left) + 'px';
+    indicator.style.width = rect.width + 'px';
+  }
+
+  // Position on first visible link
+  updateIndicator(links[0]);
+
+  // Track active section via scroll
+  var sections = ['universes', 'signals', 'codebook', 'network'];
+  var sectionEls = sections.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+
+  var scrollRAF = null;
+  function onScroll() {
+    if (scrollRAF) return;
+    scrollRAF = requestAnimationFrame(function() {
+      var scrollY = window.scrollY + 200;
+      var activeIndex = 0;
+
+      sectionEls.forEach(function(sec, i) {
+        if (sec.offsetTop <= scrollY) activeIndex = i;
+      });
+
+      if (links[activeIndex]) updateIndicator(links[activeIndex]);
+      scrollRAF = null;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+})();
+
+// --- Mobile Nav Toggle ---
+(function() {
+  var toggle = document.getElementById('nav-toggle');
+  var links = document.getElementById('nav-links');
+  if (!toggle || !links) return;
+
+  toggle.addEventListener('click', function() {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    links.style.display = expanded ? 'none' : 'flex';
+  });
+
+  // Show/hide based on breakpoint
+  function checkMobile() {
+    if (window.innerWidth <= 700) {
+      toggle.style.display = 'block';
+      links.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+    } else {
+      toggle.style.display = 'none';
+      links.style.display = 'flex';
+    }
+  }
+
+  checkMobile();
+  window.addEventListener('resize', checkMobile, { passive: true });
+})();
+</script>
+</body>
+</html>

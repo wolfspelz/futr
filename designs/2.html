@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR — Fictional Universe Taxonomy Research</title>
+<meta name="description" content="Intercepted transmissions from civilizations across fiction and history. 9 universes. 30 civilizations. 16 metrics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   FUTR — Signal Decay Design System
+   Concept: Listening Post / Radio Intercept
+   Interaction: Tune, Corrupt, Stamp
+   ============================================ */
+
+/* --- Design Tokens --- */
+:root {
+  --bone: #F2EDE4;
+  --chalk: #FAFAF6;
+  --soot: #1C1917;
+  --graphite: #44403C;
+  --smoke: #8A8480;
+  --static: #D6D3D1;
+
+  --signal-red: #B04030;
+  --signal-green: #15803D;
+  --interference: #5B4F7C;
+  --burn: #C4522A;
+
+  --freq-startrek: #0EA5E9;
+  --freq-warhammer: #8B1A1A;
+  --freq-firefly: #D97706;
+  --freq-culture: #8B5CF6;
+  --freq-honorverse: #2563EB;
+  --freq-perryRhodan: #7B8FA8;
+  --freq-orionsArm: #06B6D4;
+  --freq-expanse: #64748B;
+  --freq-reality: #78716C;
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-data: 'DM Mono', 'Courier New', monospace;
+
+  --nav-height: 56px;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  font-family: var(--font-display);
+  color: var(--soot);
+  background: var(--bone);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* --- Canvas Noise Overlay --- */
+#noise-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.065;
+  mix-blend-mode: multiply;
+}
+
+/* --- Navigation --- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background: var(--bone);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--static);
+}
+
+.nav::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--signal-red);
+  animation: pulse-line 3s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.25em;
+  color: var(--soot);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.nav-links a:hover {
+  color: var(--signal-red);
+}
+
+/* --- Focus Visible (global) --- */
+a:focus-visible,
+button:focus-visible,
+.freq-strip:focus-visible {
+  outline: 2px solid var(--signal-red);
+  outline-offset: 2px;
+}
+
+.nav-toggle {
+  display: none;
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  background: none;
+  border: 1px solid var(--static);
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+}
+
+/* --- Hero --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: calc(var(--nav-height) + 2rem) clamp(1.25rem, 4vw, 3rem) 4rem;
+  overflow: hidden;
+}
+
+.hero-waveform {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: 300px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-waveform path {
+  fill: none;
+  stroke: var(--signal-red);
+  stroke-width: 2;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 20vw, 14rem);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--soot);
+  margin-left: -0.5vw;
+}
+
+.hero-title .letter {
+  display: inline-block;
+  transition: none;
+}
+
+.hero-title .letter:nth-child(1) { transform: rotate(-1.2deg); }
+.hero-title .letter:nth-child(2) { transform: rotate(0.5deg); }
+.hero-title .letter:nth-child(3) { transform: rotate(-0.7deg); }
+.hero-title .letter:nth-child(4) { transform: rotate(0.9deg); }
+
+.hero-subtitle {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-data);
+  font-size: clamp(0.82rem, 1.2vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  margin-top: 1.5rem;
+  overflow: hidden;
+}
+
+.hero-stats {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-data);
+  font-size: clamp(0.82rem, 1vw, 0.9rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--graphite);
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-stats .stat-num {
+  color: var(--signal-red);
+  font-weight: 500;
+}
+
+.hero-stats .stat-sep {
+  color: var(--smoke);
+  margin: 0 0.25rem;
+}
+
+/* --- Frequency Band: Universe Showcase --- */
+.freq-section {
+  position: relative;
+  padding: 5rem 0 4rem;
+}
+
+.section-label {
+  font-family: var(--font-data);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--signal-red);
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  margin-bottom: 2rem;
+}
+
+.freq-strip {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) 1fr auto 80px;
+  align-items: center;
+  gap: 1rem;
+  height: 120px;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  border-top: 1px solid var(--static);
+  cursor: pointer;
+  transition: height 0.3s ease, background-color 0.2s;
+  overflow: hidden;
+}
+
+.freq-strip:last-child {
+  border-bottom: 1px solid var(--static);
+}
+
+/* Scan lines */
+.freq-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.05) 3px,
+    rgba(0,0,0,0.05) 4px
+  );
+  z-index: 0;
+}
+
+/* Warhammer: denser scan lines */
+.freq-strip[data-universe="warhammer"]::before {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(139,26,26,0.08) 1px,
+    rgba(139,26,26,0.08) 2px
+  );
+}
+
+.freq-strip-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 1;
+}
+
+.freq-code {
+  font-family: var(--font-data);
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--smoke);
+}
+
+/* Warhammer corrupted code */
+.freq-strip[data-universe="warhammer"] .freq-code {
+  color: var(--freq-warhammer);
+}
+
+.freq-name {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.freq-name-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--soot);
+  line-height: 1.1;
+}
+
+.freq-sigil {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.freq-sigil svg {
+  width: 100%;
+  height: 100%;
+}
+
+.freq-stats {
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--graphite);
+  letter-spacing: 0.04em;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.freq-signal-bar {
+  width: 80px;
+  height: 100%;
+  z-index: 1;
+  transition: width 0.3s ease;
+}
+
+/* Warhammer signal bar: jagged edge */
+.freq-strip[data-universe="warhammer"] .freq-signal-bar {
+  clip-path: polygon(0 0, 85% 3%, 100% 8%, 90% 15%, 100% 22%, 85% 30%, 100% 38%, 92% 45%, 100% 52%, 88% 60%, 100% 68%, 90% 75%, 100% 82%, 85% 90%, 100% 95%, 0 100%);
+}
+
+.freq-details {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 1rem;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 1;
+}
+
+.freq-details-text {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--graphite);
+  max-width: 55ch;
+}
+
+.freq-details-link {
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--soot);
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.freq-details-link:hover {
+  color: var(--signal-red);
+}
+
+/* Expanded state */
+.freq-strip.expanded {
+  height: 200px;
+}
+
+.freq-strip.expanded .freq-details {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.freq-strip.expanded .freq-signal-bar {
+  width: 120px;
+}
+
+/* Sibling compression */
+.freq-strip:has(~ .expanded),
+.expanded ~ .freq-strip {
+  height: 100px;
+}
+
+/* Reality: archival treatment */
+.freq-strip[data-universe="reality"]::before {
+  background: none;
+}
+
+.freq-strip[data-universe="reality"] {
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+.freq-strip[data-universe="reality"] .freq-code {
+  font-weight: 300;
+  color: var(--freq-reality);
+}
+
+/* --- Signal Lock: Latest Civilizations --- */
+.signal-lock-section {
+  padding: 5rem clamp(1.25rem, 4vw, 3rem) 4rem;
+}
+
+.signal-lock-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.signal-card {
+  position: relative;
+  border: 1px solid var(--static);
+  padding: 1.5rem;
+  background: var(--chalk);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.signal-card.locked {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.signal-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+/* Scanline wipe overlay */
+.signal-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, var(--chalk) 50%, transparent 100%);
+  transform: translateY(-100%);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.signal-card.locking::after {
+  animation: scanwipe 0.4s ease-out forwards;
+}
+
+@keyframes scanwipe {
+  0% { opacity: 0.6; transform: translateY(-100%); }
+  100% { opacity: 0; transform: translateY(100%); }
+}
+
+.signal-card-tag {
+  display: inline-block;
+  font-family: var(--font-data);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  color: var(--chalk);
+  margin-bottom: 0.75rem;
+}
+
+.signal-card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--font-data);
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--signal-red);
+}
+
+.signal-card-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--soot);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.signal-card-metrics {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--graphite);
+  line-height: 1.8;
+}
+
+.signal-card-metrics span {
+  display: block;
+}
+
+.signal-card-garble {
+  font-family: var(--font-data);
+  font-size: 0.8rem;
+  color: var(--smoke);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+
+/* --- Codebook: Metrics --- */
+.codebook-section {
+  padding: 5rem clamp(1.25rem, 4vw, 3rem) 4rem;
+  border-top: 1px solid var(--static);
+}
+
+.codebook-table {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.codebook-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--static);
+  align-items: baseline;
+}
+
+.codebook-row:nth-child(even) {
+  background: rgba(214, 211, 209, 0.15);
+  margin: 0 calc(-1 * clamp(1.25rem, 4vw, 3rem));
+  padding: 1rem clamp(1.25rem, 4vw, 3rem);
+}
+
+.codebook-metric-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--soot);
+}
+
+.codebook-metric-def {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--graphite);
+  line-height: 1.5;
+}
+
+.codebook-metric-def .range {
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  color: var(--smoke);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* --- Join the Network --- */
+.join-section {
+  padding: 6rem clamp(1.25rem, 4vw, 3rem) 5rem;
+  text-align: center;
+}
+
+.join-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--soot);
+  margin-bottom: 2.5rem;
+  line-height: 1.1;
+}
+
+.join-buttons {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.join-btn {
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--bone);
+  background: var(--soot);
+  padding: 1rem 3rem;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  transition: background 0.15s, color 0.15s;
+}
+
+/* Corrupt hover: channel split */
+.join-btn[data-text]::before,
+.join-btn[data-text]::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.join-btn[data-text]::before {
+  color: #ff0000;
+  mix-blend-mode: screen;
+}
+
+.join-btn[data-text]::after {
+  color: #00ffff;
+  mix-blend-mode: screen;
+}
+
+.join-btn:hover {
+  background: var(--soot);
+  color: var(--bone);
+}
+
+.join-btn.corrupting {
+  background: var(--soot);
+  color: transparent;
+}
+
+.join-btn.corrupting::before {
+  opacity: 1;
+  transform: translate(-2px, -1px);
+}
+
+.join-btn.corrupting::after {
+  opacity: 1;
+  transform: translate(2px, 1px);
+}
+
+.join-text {
+  font-family: var(--font-data);
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--graphite);
+  max-width: 45ch;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* --- Footer --- */
+.footer {
+  border-top: 1px solid var(--static);
+  padding: 2rem clamp(1.25rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.footer-main {
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--graphite);
+}
+
+.footer-links {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.footer-links a {
+  font-family: var(--font-data);
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--graphite);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-links a:hover {
+  color: var(--signal-red);
+}
+
+/* --- Responsive: 768–1024 --- */
+@media (max-width: 1024px) {
+  .signal-lock-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  .freq-strip {
+    grid-template-columns: minmax(100px, 150px) 1fr auto 60px;
+    gap: 0.75rem;
+  }
+}
+
+/* --- Responsive: <768 --- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--bone);
+    border-bottom: 1px solid var(--static);
+    flex-direction: column;
+    padding: 1rem clamp(1.25rem, 4vw, 3rem);
+    gap: 1rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .signal-lock-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .freq-strip {
+    grid-template-columns: 1fr auto 24px;
+    height: auto;
+    min-height: 100px;
+    padding: 1rem clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .freq-strip-left {
+    grid-column: 1 / -1;
+  }
+
+  .freq-stats {
+    grid-column: 1 / -1;
+    white-space: normal;
+  }
+
+  .freq-signal-bar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 24px;
+  }
+
+  .codebook-row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .hero-stats .stat-sep {
+    display: none;
+  }
+
+  .join-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .join-btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
+
+/* --- Responsive: <600 --- */
+@media (max-width: 600px) {
+  .codebook-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+/* --- Touch: always expanded strips --- */
+@media (hover: none) {
+  .freq-strip {
+    height: auto !important;
+    min-height: 160px;
+  }
+
+  .freq-details {
+    opacity: 1;
+    transform: none;
+  }
+
+  .freq-strip .freq-signal-bar {
+    width: 80px;
+  }
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .nav::after {
+    animation: none;
+    opacity: 0.6;
+  }
+
+  .hero-title .letter {
+    transform: none !important;
+  }
+
+  .signal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .signal-card::after {
+    display: none;
+  }
+
+  .freq-strip {
+    transition: none;
+  }
+
+  .freq-details {
+    transition: none;
+  }
+
+  .join-btn::before,
+  .join-btn::after {
+    display: none;
+  }
+
+  @keyframes scanwipe { 0%, 100% { opacity: 0; } }
+}
+</style>
+</head>
+<body>
+
+<!-- Canvas noise overlay -->
+<canvas id="noise-canvas" aria-hidden="true"></canvas>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="#" class="nav-logo">FUTR</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false'?'true':'false'); document.querySelector('.nav-links').classList.toggle('open')">FREQ</button>
+  <ul class="nav-links">
+    <li><a href="#universes">Universes</a></li>
+    <li><a href="#signals">Signals</a></li>
+    <li><a href="#codebook">Codebook</a></li>
+    <li><a href="#network">Network</a></li>
+  </ul>
+</nav>
+
+<!-- Hero: Signal Acquisition -->
+<section class="hero">
+  <!-- SVG Waveform background -->
+  <svg class="hero-waveform" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,150 C40,130 80,90 120,100 C160,110 200,180 240,170 C280,160 320,80 360,95 C400,110 440,190 480,175 C520,160 560,70 600,85 C640,100 680,195 720,180 C760,165 800,65 840,80 C880,95 920,185 960,170 C1000,155 1040,75 1080,90 C1120,105 1160,190 1200,175 C1240,160 1280,80 1320,95 C1360,110 1400,160 1440,150" />
+  </svg>
+
+  <h1 class="hero-title" id="hero-title" aria-label="FUTR">
+    <span class="letter" data-char="F">F</span><span class="letter" data-char="U">U</span><span class="letter" data-char="T">T</span><span class="letter" data-char="R">R</span>
+  </h1>
+
+  <p class="hero-subtitle" id="hero-subtitle" data-text="Fictional Universe Taxonomy Research">
+    Fictional Universe Taxonomy Research
+  </p>
+
+  <div class="hero-stats">
+    <span>[<span class="stat-num">9</span> UNIVERSES]</span>
+    <span class="stat-sep">|</span>
+    <span>[<span class="stat-num">30</span> CIVILIZATIONS]</span>
+    <span class="stat-sep">|</span>
+    <span>[<span class="stat-num">16</span> METRICS]</span>
+  </div>
+</section>
+
+<!-- Frequency Band: Universe Showcase -->
+<section class="freq-section" id="universes">
+  <div class="section-label">// Frequency Spectrum &mdash; 9 Active Bands</div>
+
+  <!-- Star Trek -->
+  <div class="freq-strip" data-universe="startrek" tabindex="0" role="button" aria-expanded="false" onclick="toggleStrip(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleStrip(this)}">
+    <div class="freq-strip-left">
+      <span class="freq-code">SUBSP-ST.2151</span>
+      <div class="freq-name">
+        <span class="freq-name-text">Star Trek</span>
+        <span class="freq-sigil">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2 L18 22 L12 17 L6 22 Z" fill="var(--freq-startrek)" opacity="0.85"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <span class="freq-stats">4 civilizations &bull; 2063&ndash;2373</span>
+    <div class="freq-signal-bar" style="background: var(--freq-startrek);"></div>
+    <div class="freq-details">
+      <span class="freq-details-text">The Federation and its allies across centuries of exploration, diplomacy, and conflict in the Alpha Quadrant.</span>
+      <a href="#" class="freq-details-link">Tune In &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Warhammer 40,000 -->
+  <div class="freq-strip" data-universe="warhammer" tabindex="0" role="button" aria-expanded="false" onclick="toggleStrip(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleStrip(this)}">
+    <div class="freq-strip-left">
+      <span class="freq-code">AS░RA-W▓.M41</span>
+      <div class="freq-name">
+        <span class="freq-name-text">Warhammer 40,000</span>
+        <span class="freq-sigil">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3 C12 3 8 8 8 12 C8 16 12 21 12 21 C12 21 16 16 16 12 C16 8 12 3 12 3 Z M10 11 L12 7 L14 11 L12 13 Z" fill="var(--freq-warhammer)" opacity="0.85"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <span class="freq-stats">2 civilizations &bull; M41</span>
+    <div class="freq-signal-bar" style="background: var(--freq-warhammer);"></div>
+    <div class="freq-details">
+      <span class="freq-details-text">In the grim darkness of the far future, there is only war. Astropathic transmissions corrupted beyond recognition.</span>
+      <a href="#" class="freq-details-link">Tune In &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Firefly -->
+  <div class="freq-strip" data-universe="firefly" tabindex="0" role="button" aria-expanded="false" onclick="toggleStrip(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleStrip(this)}">
+    <div class="freq-strip-left">
+      <span class="freq-code">BURST-FF.2517</span>
+      <div class="freq-name">
+        <span class="freq-name-text">Firefly</span>
+        <span class="freq-sigil">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 4 L14 10 L12 8 L10 10 Z M8 12 C8 16.4 12 20 12 20 C12 20 16 16.4 16 12 C16 9.8 14.2 8 12 8 C9.8 8 8 9.8 8 12 Z" fill="var(--freq-firefly)" opacity="0.85"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <span class="freq-stats">1 civilization &bull; 2517</span>
+    <div class="freq-signal-bar" style="background: var(--freq-firefly);"></div>
+    <div class="freq-details">
+      <span class="freq-details-text">The Verse. Alliance-controlled core worlds and the lawless frontier of the outer rim.</span>
+      <a href="#" class="freq-details-link">Tune In &rarr;</a>
+    </div>
+  </div>
+
+  <!-- The Culture -->
+  <div class="freq-strip" data-universe="culture" tabindex="0" role="button" aria-expanded="false" onclick="toggleStrip(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleStrip(this)}">
+    <div class="freq-strip-left">
+      <span class="freq-code">GRID-CU.&infin;</span>
+      <div class="freq-name">
+        <span class="freq-name-text">The Culture</span>
+        <span class="freq-sigil">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="var(--freq-culture)" stroke-width="1.5" opacity="0.85"/>
+            <circle cx="12" cy="12" r="4" stroke="var(--freq-culture)" stroke-width="1.5" opacity="0.85"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <span class="freq-stats">1 civilization &bull; post-scarcity</span>
+    <div class="freq-signal-bar" style="background: var(--freq-culture);"></div>
+    <div class="freq-details">
+      <span class="freq-details-text">A pan-galactic utopian civilization of trillions, guided by benevolent AI Minds across thousands of Orbitals.</span>
+      <a href="#" class="freq-details-link">Tune In &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Honorverse -->
+  <div class="freq-strip" data-universe="honorverse" tabindex="0" role="button" aria-expanded="false" onclick="toggleStrip(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleStrip(this)}">
+    <div class="freq-strip-left">
+      <span class="freq-code">GRAV-HV.1903</span>
+      <div class="freq-name">
+        <span class="freq-name-text">Honorverse</span>
+        <span class="freq-sigil">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3 L14.5 9 L12 7.5 L9.5 9 Z M7 11 L12 9 L17 11 L14 13 L17 16 L12 14 L7 16 L10 13 Z" fill="var(--freq-honorverse)" opacity="0.85"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <span class="freq-stats">2 civilizations &bull; 1903 PD</span>
+    <div class="freq-signal-bar" style="background: var(--freq-honorverse);"></div>
+    <div class="freq-details">
+      <span class="freq-details-text">Manticore, Haven, and the great powers of the Honorverse locked in interstellar naval warfare.</span>
+      <a href="#" class="freq-details-link">Tune In &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Perry Rhodan -->
+  <div class="freq-strip" data-universe="perryRhodan" tabindex="0" role="button" aria-expanded="false" onclick="toggleStrip(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleStrip(this)}">
+    <div class="freq-strip-left">
+      <span class="freq-code">LINEAR-PR.2040</span>
+      <div class="freq-name">
+        <span class="freq-name-text">Perry Rhodan</span>
+        <span class="freq-sigil">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="3" stroke="var(--freq-perryRhodan)" stroke-width="1.5" opacity="0.85"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4" stroke="var(--freq-perryRhodan)" stroke-width="1" opacity="0.5" transform="rotate(-30 12 12)"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4" stroke="var(--freq-perryRhodan)" stroke-width="1" opacity="0.5" transform="rotate(30 12 12)"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <span class="freq-stats">3 civilizations &bull; 2040&ndash;2114</span>
+    <div class="freq-signal-bar" style="background: var(--freq-perryRhodan);"></div>
+    <div class="freq-details">
+      <span class="freq-details-text">Humanity's longest-running space opera. From first contact to intergalactic empires across millennia of pulp adventure.</span>
+      <a href="#" class="freq-details-link">Tune In &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Orion's Arm -->
+  <div class="freq-strip" data-universe="orionsArm" tabindex="0" role="button" aria-expanded="false" onclick="toggleStrip(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleStrip(this)}">
+    <div class="freq-strip-left">
+      <span class="freq-code">COMM-OA.10K</span>
+      <div class="freq-name">
+        <span class="freq-name-text">Orion's Arm</span>
+        <span class="freq-sigil">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 12 C12 12 10 8 8 6 C6 4 3 3 3 3" stroke="var(--freq-orionsArm)" stroke-width="1.5" fill="none" opacity="0.85" stroke-linecap="round"/>
+            <path d="M12 12 C12 12 14 16 16 18 C18 20 21 21 21 21" stroke="var(--freq-orionsArm)" stroke-width="1.5" fill="none" opacity="0.85" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="2" fill="var(--freq-orionsArm)" opacity="0.85"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <span class="freq-stats">3 civilizations &bull; 10,000+ AT</span>
+    <div class="freq-signal-bar" style="background: var(--freq-orionsArm);"></div>
+    <div class="freq-details">
+      <span class="freq-details-text">Ten millennia of posthuman evolution. Archailects, Dyson swarms, and toposophic transcendence across the Terragen Sphere.</span>
+      <a href="#" class="freq-details-link">Tune In &rarr;</a>
+    </div>
+  </div>
+
+  <!-- The Expanse -->
+  <div class="freq-strip" data-universe="expanse" tabindex="0" role="button" aria-expanded="false" onclick="toggleStrip(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleStrip(this)}">
+    <div class="freq-strip-left">
+      <span class="freq-code">TBEAM-EX.2350</span>
+      <div class="freq-name">
+        <span class="freq-name-text">The Expanse</span>
+        <span class="freq-sigil">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="var(--freq-expanse)" stroke-width="1.5" fill="none" opacity="0.85"/>
+            <line x1="5" y1="5" x2="19" y2="19" stroke="var(--freq-expanse)" stroke-width="1.5" opacity="0.85"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <span class="freq-stats">4 civilizations &bull; 2350</span>
+    <div class="freq-signal-bar" style="background: var(--freq-expanse);"></div>
+    <div class="freq-details">
+      <span class="freq-details-text">Earth, Mars, and the Belt. Hard sci-fi politics, protomolecule mysteries, and tight-beam diplomacy across the solar system.</span>
+      <a href="#" class="freq-details-link">Tune In &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Reality -->
+  <div class="freq-strip" data-universe="reality" tabindex="0" role="button" aria-expanded="false" onclick="toggleStrip(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleStrip(this)}">
+    <div class="freq-strip-left">
+      <span class="freq-code">ARCHIVE-TERRA</span>
+      <div class="freq-name">
+        <span class="freq-name-text">Reality</span>
+        <span class="freq-sigil">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="var(--freq-reality)" stroke-width="1.5" opacity="0.85"/>
+            <ellipse cx="12" cy="12" rx="5" ry="9" stroke="var(--freq-reality)" stroke-width="1" opacity="0.5"/>
+            <line x1="3" y1="12" x2="21" y2="12" stroke="var(--freq-reality)" stroke-width="1" opacity="0.5"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <span class="freq-stats">10 civilizations &bull; archival baseline</span>
+    <div class="freq-signal-bar" style="background: var(--freq-reality);"></div>
+    <div class="freq-details">
+      <span class="freq-details-text">The baseline. Real civilizations from human history and the present day, for comparison with fiction.</span>
+      <a href="#" class="freq-details-link">Tune In &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Signal Lock: Latest Civilizations -->
+<section class="signal-lock-section" id="signals">
+  <div class="section-label">// Recent Transmissions &mdash; Signal Lock</div>
+
+  <div class="signal-lock-grid" id="signal-lock-grid">
+    <!-- Card 1: Culture (pre-war) -->
+    <div class="signal-card" data-universe-color="var(--freq-culture)" style="border-left: 4px solid var(--freq-culture);">
+      <div class="signal-card-garble" aria-hidden="true"></div>
+      <div class="signal-card-content" style="display:none;">
+        <span class="signal-card-tag" style="background: var(--freq-culture);">The Culture</span>
+        <span class="signal-card-badge">New Signal</span>
+        <h3 class="signal-card-name">Culture (pre-war)</h3>
+        <div class="signal-card-metrics">
+          <span>Population: 30 trillion</span>
+          <span>Orbitals: 14,000</span>
+          <span>Kardashev: ~III</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Klingon Empire 2161 -->
+    <div class="signal-card" data-universe-color="var(--freq-startrek)" style="border-left: 4px solid var(--freq-startrek);">
+      <div class="signal-card-garble" aria-hidden="true"></div>
+      <div class="signal-card-content" style="display:none;">
+        <span class="signal-card-tag" style="background: var(--freq-startrek);">Star Trek</span>
+        <span class="signal-card-badge">New Signal</span>
+        <h3 class="signal-card-name">Klingon Empire 2161</h3>
+        <div class="signal-card-metrics">
+          <span>Planets: ~20 worlds</span>
+          <span>Warships: D5-class fleet</span>
+          <span>Techlevel: warp-capable</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Mars 2350 -->
+    <div class="signal-card" data-universe-color="var(--freq-expanse)" style="border-left: 4px solid var(--freq-expanse);">
+      <div class="signal-card-garble" aria-hidden="true"></div>
+      <div class="signal-card-content" style="display:none;">
+        <span class="signal-card-tag" style="background: var(--freq-expanse);">The Expanse</span>
+        <span class="signal-card-badge">New Signal</span>
+        <h3 class="signal-card-name">Mars 2350</h3>
+        <div class="signal-card-metrics">
+          <span>Population: 4 billion</span>
+          <span>Warships: ~60 vessels</span>
+          <span>Government: republic</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Alliance 2517 -->
+    <div class="signal-card" data-universe-color="var(--freq-firefly)" style="border-left: 4px solid var(--freq-firefly);">
+      <div class="signal-card-garble" aria-hidden="true"></div>
+      <div class="signal-card-content" style="display:none;">
+        <span class="signal-card-tag" style="background: var(--freq-firefly);">Firefly</span>
+        <span class="signal-card-badge">New Signal</span>
+        <h3 class="signal-card-name">Alliance 2517</h3>
+        <div class="signal-card-metrics">
+          <span>Worlds: 5,000+ settled</span>
+          <span>Government: alliance</span>
+          <span>FTL: none (slowboat)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5: Andorian Empire 2161 -->
+    <div class="signal-card" data-universe-color="var(--freq-startrek)" style="border-left: 4px solid var(--freq-startrek);">
+      <div class="signal-card-garble" aria-hidden="true"></div>
+      <div class="signal-card-content" style="display:none;">
+        <span class="signal-card-tag" style="background: var(--freq-startrek);">Star Trek</span>
+        <span class="signal-card-badge">New Signal</span>
+        <h3 class="signal-card-name">Andorian Empire 2161</h3>
+        <div class="signal-card-metrics">
+          <span>Colonies: ~13 systems</span>
+          <span>Warships: Kumari-class</span>
+          <span>Status: Federation founder</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6: Posbis 2114 -->
+    <div class="signal-card" data-universe-color="var(--freq-perryRhodan)" style="border-left: 4px solid var(--freq-perryRhodan);">
+      <div class="signal-card-garble" aria-hidden="true"></div>
+      <div class="signal-card-content" style="display:none;">
+        <span class="signal-card-tag" style="background: var(--freq-perryRhodan);">Perry Rhodan</span>
+        <span class="signal-card-badge">New Signal</span>
+        <h3 class="signal-card-name">Posbis 2114</h3>
+        <div class="signal-card-metrics">
+          <span>Type: cyborg hybrids</span>
+          <span>Base: Hundertsonnenwelt</span>
+          <span>Range: intergalactic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Codebook: Metrics -->
+<section class="codebook-section" id="codebook">
+  <div class="section-label">// Signal Codebook &mdash; 16 Registered Metrics</div>
+
+  <div class="codebook-table">
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Population</span>
+      <span class="codebook-metric-def">Total sentient population across all substrates<span class="range">range: individuals &rarr; quadrillions</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Planets</span>
+      <span class="codebook-metric-def">Number of inhabited or controlled worlds<span class="range">range: 1 &rarr; millions</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Star Systems</span>
+      <span class="codebook-metric-def">Number of settled or administered star systems<span class="range">range: 1 &rarr; millions</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Kardashev Rating</span>
+      <span class="codebook-metric-def">Energy utilization on the Kardashev scale<span class="range">range: I &rarr; III+</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Techlevel</span>
+      <span class="codebook-metric-def">Technological sophistication classification<span class="range">range: pre-industrial &rarr; transcendent</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Warships</span>
+      <span class="codebook-metric-def">Military vessel count across all classes<span class="range">range: 0 &rarr; millions</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Territory</span>
+      <span class="codebook-metric-def">Spatial extent of controlled or claimed space<span class="range">qualitative description</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Government</span>
+      <span class="codebook-metric-def">Political structure and governance model<span class="range">e.g. democracy, empire, anarchy, AI-guided</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Class</span>
+      <span class="codebook-metric-def">Social or developmental classification tier<span class="range">qualitative assessment</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Civilization Age</span>
+      <span class="codebook-metric-def">Duration since founding or emergence<span class="range">range: years &rarr; millennia</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">FTL Date</span>
+      <span class="codebook-metric-def">Year faster-than-light travel was achieved<span class="range">year or N/A</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Location</span>
+      <span class="codebook-metric-def">Primary spatial coordinates or region<span class="range">e.g. Alpha Quadrant, Milky Way, Sol System</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Dyson Spheres</span>
+      <span class="codebook-metric-def">Count of Dyson sphere or swarm megastructures<span class="range">range: 0 &rarr; thousands</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Ringworlds</span>
+      <span class="codebook-metric-def">Count of Niven-type ringworld megastructures<span class="range">range: 0 &rarr; known instances</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Banks Orbitals</span>
+      <span class="codebook-metric-def">Count of Culture-type orbital habitats<span class="range">range: 0 &rarr; thousands</span></span>
+    </div>
+    <div class="codebook-row">
+      <span class="codebook-metric-name">Tech Summary</span>
+      <span class="codebook-metric-def">Qualitative overview of key technological capabilities<span class="range">narrative description</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- Join the Network -->
+<section class="join-section" id="network">
+  <h2 class="join-headline">Every frequency<br>needs a listener.</h2>
+  <div class="join-buttons">
+    <a href="https://discordapp.com/channels/1136704642986811423/1153448297915220058" class="join-btn" data-text="DISCORD">DISCORD</a>
+    <a href="https://github.com/wolfspelz/futr" class="join-btn" data-text="GITHUB">GITHUB</a>
+  </div>
+  <p class="join-text">
+    Missing a universe? Found an error in the data? Fork, edit, pull-request. Every contribution strengthens the signal.
+  </p>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-main">FUTR &mdash; SIGNAL ACTIVE &mdash; 2026</div>
+  <div class="footer-links">
+    <a href="https://github.com/wolfspelz/futr">Source</a>
+    <a href="https://discordapp.com/channels/1136704642986811423/1153448297915220058">Discord</a>
+    <a href="#">Privacy</a>
+  </div>
+</footer>
+
+<script>
+/* ============================================
+   FUTR — Signal Decay: Interaction Engine
+   ============================================ */
+
+const NOISE_CHARS = '▓░▪◻■█▒▫▬▮▯0123456789ABCDEF!@#<>?/';
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* --- Canvas Noise Generator --- */
+(function initNoise() {
+  const canvas = document.getElementById('noise-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    draw();
+  }
+
+  function draw() {
+    const imageData = ctx.createImageData(w, h);
+    const data = imageData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      const v = Math.random() * 255;
+      data[i] = v;
+      data[i + 1] = v;
+      data[i + 2] = v;
+      data[i + 3] = 255;
+    }
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  let resizeTimer;
+  function debouncedResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 100);
+  }
+
+  resize();
+  window.addEventListener('resize', debouncedResize);
+})();
+
+
+/* --- Hero Garble Effect --- */
+(function initHeroGarble() {
+  if (prefersReducedMotion) return;
+
+  const title = document.getElementById('hero-title');
+  const subtitle = document.getElementById('hero-subtitle');
+  if (!title || !subtitle) return;
+
+  const letters = title.querySelectorAll('.letter');
+  const subtitleText = subtitle.getAttribute('data-text') || subtitle.textContent;
+
+  // Garble title letters
+  letters.forEach(letter => {
+    letter.dataset.resolved = 'false';
+    letter.textContent = NOISE_CHARS[Math.floor(Math.random() * NOISE_CHARS.length)];
+  });
+
+  // Garble subtitle
+  subtitle.textContent = subtitleText.split('').map(c =>
+    c === ' ' ? ' ' : NOISE_CHARS[Math.floor(Math.random() * NOISE_CHARS.length)]
+  ).join('');
+
+  const totalDuration = 1800;
+  // Irregular stagger: each letter resolves at a different pace
+  const letterThresholds = [350, 700, 1200, 1800];
+  const startTime = performance.now();
+
+  function animateTitle(now) {
+    const elapsed = now - startTime;
+    let allResolved = true;
+
+    letters.forEach((letter, i) => {
+      if (letter.dataset.resolved === 'true') return;
+      const threshold = letterThresholds[i];
+      if (elapsed >= threshold) {
+        letter.textContent = letter.dataset.char;
+        letter.dataset.resolved = 'true';
+        // Brief red flash on resolve
+        letter.style.color = 'var(--signal-red)';
+        setTimeout(() => { letter.style.color = ''; }, 150);
+      } else {
+        letter.textContent = NOISE_CHARS[Math.floor(Math.random() * NOISE_CHARS.length)];
+        allResolved = false;
+      }
+    });
+
+    // Subtitle resolves in parallel
+    const subtitleProgress = Math.min(elapsed / totalDuration, 1);
+    const resolvedCount = Math.floor(subtitleProgress * subtitleText.length);
+    subtitle.textContent = subtitleText.split('').map((c, i) => {
+      if (c === ' ') return ' ';
+      if (i < resolvedCount) return c;
+      return NOISE_CHARS[Math.floor(Math.random() * NOISE_CHARS.length)];
+    }).join('');
+
+    if (!allResolved || subtitleProgress < 1) {
+      requestAnimationFrame(animateTitle);
+    } else {
+      subtitle.textContent = subtitleText;
+    }
+  }
+
+  // Start after a short delay to ensure page is painted
+  setTimeout(() => requestAnimationFrame(animateTitle), 200);
+})();
+
+
+/* --- Frequency Strip Expand/Collapse --- */
+function toggleStrip(el) {
+  const wasExpanded = el.classList.contains('expanded');
+
+  // Collapse all
+  document.querySelectorAll('.freq-strip.expanded').forEach(strip => {
+    strip.classList.remove('expanded');
+    strip.setAttribute('aria-expanded', 'false');
+  });
+
+  // Expand clicked (if wasn't already open)
+  if (!wasExpanded) {
+    el.classList.add('expanded');
+    el.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// JS fallback for :has() — sibling compression
+(function initStripFallback() {
+  if (CSS.supports && CSS.supports('selector(:has(+ *))')) return;
+
+  const strips = document.querySelectorAll('.freq-strip');
+
+  function updateCompression() {
+    const expandedEl = document.querySelector('.freq-strip.expanded');
+    strips.forEach(strip => {
+      strip.style.height = '';
+      if (expandedEl && strip !== expandedEl) {
+        strip.style.height = '100px';
+      }
+    });
+    if (expandedEl) {
+      expandedEl.style.height = '200px';
+    }
+  }
+
+  // Observe class changes
+  const observer = new MutationObserver(updateCompression);
+  strips.forEach(strip => {
+    observer.observe(strip, { attributes: true, attributeFilter: ['class'] });
+  });
+})();
+
+
+/* --- Signal Lock: IntersectionObserver + Garble Resolve --- */
+(function initSignalLock() {
+  const grid = document.getElementById('signal-lock-grid');
+  if (!grid) return;
+
+  const cards = grid.querySelectorAll('.signal-card');
+
+  // Initialize garble text
+  cards.forEach(card => {
+    const garble = card.querySelector('.signal-card-garble');
+    if (garble) {
+      let lines = '';
+      for (let i = 0; i < 5; i++) {
+        let line = '';
+        const len = 15 + Math.floor(Math.random() * 20);
+        for (let j = 0; j < len; j++) {
+          line += NOISE_CHARS[Math.floor(Math.random() * NOISE_CHARS.length)];
+        }
+        lines += line + '\n';
+      }
+      garble.textContent = lines;
+    }
+  });
+
+  if (prefersReducedMotion) {
+    // Immediately show all cards resolved
+    cards.forEach(card => {
+      card.classList.add('locked');
+      const garble = card.querySelector('.signal-card-garble');
+      const content = card.querySelector('.signal-card-content');
+      if (garble) garble.style.display = 'none';
+      if (content) content.style.display = '';
+    });
+    return;
+  }
+
+  function lockCard(card, delay) {
+    setTimeout(() => {
+      card.classList.add('locking');
+
+      // Cycle garble for 300ms then reveal
+      const garble = card.querySelector('.signal-card-garble');
+      const content = card.querySelector('.signal-card-content');
+      const start = performance.now();
+
+      function cycle(now) {
+        if (now - start < 300) {
+          if (garble) {
+            let lines = '';
+            for (let i = 0; i < 5; i++) {
+              let line = '';
+              const len = 15 + Math.floor(Math.random() * 20);
+              for (let j = 0; j < len; j++) {
+                line += NOISE_CHARS[Math.floor(Math.random() * NOISE_CHARS.length)];
+              }
+              lines += line + '\n';
+            }
+            garble.textContent = lines;
+          }
+          requestAnimationFrame(cycle);
+        } else {
+          if (garble) garble.style.display = 'none';
+          if (content) content.style.display = '';
+          card.classList.add('locked');
+          card.classList.remove('locking');
+        }
+      }
+
+      requestAnimationFrame(cycle);
+    }, delay);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const allCards = Array.from(cards);
+        allCards.forEach((card, i) => {
+          if (!card.classList.contains('locked')) {
+            lockCard(card, i * 200);
+          }
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(grid);
+})();
+
+
+/* --- Corrupt Effect: Join Buttons --- */
+(function initCorrupt() {
+  if (prefersReducedMotion) return;
+
+  document.querySelectorAll('.join-btn[data-text]').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      btn.classList.add('corrupting');
+      setTimeout(() => {
+        btn.classList.remove('corrupting');
+      }, 120);
+    });
+  });
+})();
+
+
+/* --- Stamp Effect: Global Click --- */
+(function initStamp() {
+  if (prefersReducedMotion) return;
+
+  document.addEventListener('mousedown', (e) => {
+    const target = e.target.closest('a, button, .freq-strip');
+    if (!target) return;
+    target.style.transform = 'scale(0.97)';
+    target.style.transition = 'none';
+
+    function release() {
+      target.style.transform = '';
+      target.style.transition = '';
+      window.removeEventListener('mouseup', release);
+    }
+    window.addEventListener('mouseup', release);
+  });
+})();
+
+</script>
+</body>
+</html>
