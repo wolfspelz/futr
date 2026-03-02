@@ -35,4 +35,6 @@ because they will discuss among each other and with the art director
 before their contributions are accepted.
 A lively discussion is key. 
 
-Do 2 more designs one after the other lead by the Science Fiction expert.
+Create 2 more weird designs with a SciFi focus with content above the fold as #6 and #8. 
+Do not ask for permissions for local inforation gathering tasks like 
+cat, grep, ls, for(with cat, grep, ls), find.
