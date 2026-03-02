@@ -1,0 +1,38 @@
+!! claude: ignore this file !!
+
+Check the website and content structure. It has many info boxes, i.e. box shaed info pieces. But do not rely on info boxes only. 
+
+Use the frontend-design skill to create a stunning design (not one of Editorial, Terminal, Swiss, cyberpunk). A modern SF design. 
+Be bold, be beautiful, be futuristic. This is a SciFi Web site with many SciFi and Fantasy Universes. 
+
+Create the design as a single HTML page with embeded CSS and JS if necessary for their operation. 
+Put the design in a folder /designs as /designs/1.html if it is the 1st. Otherwise choose higher numbers as appropriate. 
+Also create or update /designs/index.html with summary and thumnbail. We will do more designs later. 
+
+We will work with an agent team. These are the team members' personalities:
+- A young wild GenZ artist who questions traditional styles and sometimes convinces the art director to be more bold and modern
+- A Science Fiction expert who argues that the design should be anywhere between modern and futuristic thinking about visuals that appeal to SciFi and Fantasy fans, but who also despises a simple neon or cyberpunk look. He imageines a ook that might be from one of the many scifi universes.
+- A User Interface Expert who first creates a UX guide and then makes sure that the web site is not just beautiful and modern, abut also practically usable
+- A test engineer who makes sure that all is correct, no fonts/texts clipped, no uninteded weird lines, etc.
+- Experienced Art Director who leads the design. The Art Director knows about the others personalities and takes their ideas into account. He is leading and the others comment and argue their specific domains, expertise, and interests. 
+
+They all work together on the design.
+
+Spawn an agent team, with one agent per personality 
+For each design 
+- let the Art Director propose a design direction, 
+- then they all discuss and argue
+- and agree on a design direction.
+- Then the art director creates the design
+- then all team members analyze it and discuss
+- and the art director might update the design in reaction to their comments.
+
+
+Do ideation interactively, discuss! 
+Also, later, do not just comment, but discuss your change requests. 
+Shut down all members only after the implementation is complete, 
+because they will discuss among each other and with the art director
+before their contributions are accepted.
+A lively discussion is key. 
+
+Do 2 more designs one after the other lead by the Science Fiction expert.
