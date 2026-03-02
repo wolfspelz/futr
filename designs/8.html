@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FUTR — Shrine</title>
-    <meta name="description" content="A digital devotional space — 30 civilizations from 9 fictional universes, rendered as candlelight in the void.">
+    <title>FUTR — Transit Authority</title>
+    <meta name="description" content="Interstellar immigration processing terminal — 30 civilizations across 9 universes, processed as transit permits through the Multiverse Transit Authority.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
     <style>
         /* ============================================
-           DESIGN 8: SHRINE
-           A Digital Devotional Space
-           Illuminate — Offer — Meditate
+           DESIGN 8: TRANSIT AUTHORITY
+           Interstellar Immigration Processing Terminal
+           Process — Stamp — File
            ============================================ */
 
         /* --- Design Tokens --- */
         :root {
-            --void: #0F0B08;
-            --void-lighter: #1A1510;
-            --void-card: #16120D;
-            --amber: #D4890E;
-            --amber-dim: #A06A0A;
-            --amber-glow: rgba(212, 137, 14, 0.15);
-            --amber-bright: #F0A020;
-            --vermillion: #D44D2E;
-            --incense: #ADA196;
-            --incense-dim: #7A7168;
-            --rice-paper: #F2EDE4;
-            --ash: #5C554D;
-            --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
-            --font-ui: 'Outfit', system-ui, -apple-system, sans-serif;
-            --page-max: 1200px;
-            --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --paper: #F5F2EC;
+            --paper-dark: #EDE8DF;
+            --paper-line: #D8D2C6;
+            --carbon: #1A1A1A;
+            --carbon-mid: #3A3A3A;
+            --carbon-dim: #6B6560;
+            --stamp-red: #B03432;
+            --stamp-red-dim: rgba(176, 52, 50, 0.12);
+            --stamp-red-mid: rgba(176, 52, 50, 0.25);
+            --blue: #2E5090;
+            --blue-dim: rgba(46, 80, 144, 0.1);
+            --blue-mid: rgba(46, 80, 144, 0.25);
+            --sage: #A8C5B8;
+            --sage-dim: rgba(168, 197, 184, 0.15);
+            --sage-mid: rgba(168, 197, 184, 0.3);
+            --font-display: 'Darker Grotesque', system-ui, sans-serif;
+            --font-mono: 'Space Mono', 'Consolas', monospace;
+            --page-max: 900px;
             --transition-base: 0.3s ease;
         }
 
@@ -45,1786 +48,1101 @@
         }
 
         body {
-            font-family: var(--font-ui);
+            font-family: var(--font-display);
             font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.7;
-            color: var(--incense);
-            background-color: var(--void);
+            font-weight: 500;
+            line-height: 1.6;
+            color: var(--carbon);
+            background-color: var(--paper);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
+
+        /* Paper texture background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body > * { position: relative; z-index: 1; }
 
         /* --- Skip Link --- */
         .skip-link {
             position: absolute;
             top: -100%;
             left: 1rem;
-            z-index: 9999;
-            padding: 0.75rem 1.5rem;
-            background: var(--amber);
-            color: var(--void);
-            font-family: var(--font-ui);
+            padding: 0.5rem 1rem;
+            background: var(--blue);
+            color: #fff;
+            font-family: var(--font-mono);
             font-size: 0.875rem;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
             border-radius: 0 0 4px 4px;
+            z-index: 10000;
         }
-
-        .skip-link:focus { top: 0; }
-
-        /* --- Typography --- */
-        h1, h2, h3 {
-            font-family: var(--font-serif);
-            line-height: 1.2;
-            color: var(--rice-paper);
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 200;
-            font-style: italic;
-            letter-spacing: 0.02em;
-        }
-
-        h2 {
-            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-            font-weight: 300;
-            font-style: italic;
-            letter-spacing: 0.04em;
-            margin-bottom: 1.5rem;
-        }
-
-        h3 {
-            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-            font-weight: 400;
-            margin-bottom: 0.75rem;
-        }
-
-        h4 {
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--amber);
-            margin-bottom: 0.5rem;
-        }
-
-        p { margin-bottom: 1rem; }
-
-        a {
-            color: var(--amber);
-            text-decoration: none;
-            transition: color var(--transition-base);
-        }
-
-        a:hover { color: var(--amber-bright); }
-
-        a:focus-visible {
-            outline: 2px solid var(--amber);
-            outline-offset: 3px;
-            border-radius: 2px;
-        }
-
-        /* --- Animations --- */
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            5% { opacity: 0.85; }
-            10% { opacity: 0.95; }
-            15% { opacity: 0.78; }
-            20% { opacity: 1; }
-            25% { opacity: 0.92; }
-            35% { opacity: 0.82; }
-            40% { opacity: 1; }
-            50% { opacity: 0.9; }
-            60% { opacity: 0.98; }
-            70% { opacity: 0.84; }
-            80% { opacity: 0.96; }
-            90% { opacity: 0.88; }
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-
-        @keyframes threshold-burn {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes flame-bar {
-            0%, 100% { opacity: 0.9; transform: scaleY(1); }
-            25% { opacity: 1; transform: scaleY(1.01); }
-            50% { opacity: 0.85; transform: scaleY(0.99); }
-            75% { opacity: 0.95; transform: scaleY(1.005); }
-        }
+        .skip-link:focus-visible { top: 0; }
 
         /* --- Reduced Motion --- */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+                animation: none !important;
+                transition: none !important;
             }
-            .fade-in { opacity: 1 !important; transform: none !important; }
-        }
-
-        /* --- Fade In --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* --- Sections --- */
-        .section {
-            padding: 5rem clamp(1.25rem, 5vw, 4rem);
-        }
-
-        .section__inner {
-            max-width: var(--page-max);
-            margin: 0 auto;
-        }
-
-        /* --- Threshold Dividers --- */
-        .threshold {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0;
-            height: 80px;
-            max-width: 200px;
-            margin: 0 auto;
-            opacity: 0.3;
-        }
-
-        .threshold__pillar {
-            width: 1px;
-            height: 60px;
-            background: var(--amber-dim);
-            border-radius: 1px;
-        }
-
-        .threshold__beam {
-            width: 40px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--amber), transparent);
-            margin: 0 8px;
-            animation: threshold-burn 8s ease infinite;
-            background-size: 200% 100%;
-        }
-
-        /* --- Smoke gradient transitions --- */
-        .smoke-gradient {
-            height: 120px;
-            background: radial-gradient(ellipse at 50% 0%, rgba(212, 137, 14, 0.04) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        /* ============================================
-           SECTION 1: INVOCATION (Hero)
-           ============================================ */
-        .invocation {
-            min-height: max(50vh, 400px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 4rem clamp(1.25rem, 5vw, 4rem);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .invocation::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 600px;
-            height: 600px;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, var(--amber-glow) 0%, transparent 70%);
-            pointer-events: none;
-            animation: pulse-glow 6s ease infinite;
-        }
-
-        .invocation__flame {
-            width: 2px;
-            height: 80px;
-            background: linear-gradient(to top, transparent, var(--amber-dim), var(--amber));
-            margin: 0 auto 2rem;
-            animation: flicker 3s ease infinite;
-            border-radius: 1px;
-        }
-
-        .invocation__title {
-            position: relative;
-            z-index: 1;
-            margin-bottom: 1rem;
-        }
-
-        .invocation__title span {
-            display: block;
-            font-family: var(--font-ui);
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--amber);
-            margin-bottom: 0.75rem;
-        }
-
-        .invocation__subtitle {
-            position: relative;
-            z-index: 1;
-            font-family: var(--font-serif);
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            font-weight: 300;
-            font-style: italic;
-            color: var(--incense);
-            max-width: 560px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .invocation__stats {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            gap: 3rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .invocation__stat-value {
-            display: block;
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            font-weight: 200;
-            color: var(--amber);
-            line-height: 1;
-            animation: flicker 4s ease infinite;
-        }
-
-        .invocation__stat-label {
-            display: block;
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            font-weight: 400;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--incense-dim);
-            margin-top: 0.5rem;
-        }
-
-        .invocation__scroll-hint {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--ash);
-            animation: pulse-glow 3s ease infinite;
-        }
-
-        /* ============================================
-           SECTION 2: THE CONSTELLATION
-           ============================================ */
-        .constellation {
-            padding: 6rem clamp(1.25rem, 5vw, 4rem);
-        }
-
-        .constellation__header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .constellation__header p {
-            font-size: 0.9375rem;
-            color: var(--incense-dim);
-            max-width: 520px;
-            margin: 0 auto;
-        }
-
-        .constellation__field {
-            position: relative;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 0.4rem 1rem;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 3rem 1rem;
-        }
-
-        /* --- Constellation star buttons --- */
-        .constellation__star {
-            font-family: var(--font-serif);
-            line-height: 1.4;
-            color: var(--rice-paper);
-            background: none;
-            border: none;
-            cursor: pointer;
-            transition: transform var(--transition-base);
-            white-space: nowrap;
-            position: relative;
-            padding: 2px 4px;
-        }
-
-        .constellation__star:hover,
-        .constellation__star:focus-visible {
-            transform: scale(1.08);
-        }
-
-        .constellation__star:focus-visible {
-            outline: 2px solid var(--amber);
-            outline-offset: 4px;
-            border-radius: 2px;
-        }
-
-        .constellation__star--terragen {
-            font-size: 1.5rem !important;
-            animation: breathe 6s ease infinite;
-        }
-
-        /* --- Tooltip --- */
-        .constellation__tooltip {
-            position: absolute;
-            bottom: calc(100% + 10px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--void-lighter);
-            border: 1px solid rgba(212, 137, 14, 0.2);
-            border-radius: 4px;
-            padding: 0.625rem 0.875rem;
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            font-weight: 400;
-            font-style: normal;
-            color: var(--incense);
-            white-space: nowrap;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            z-index: 100;
-            text-shadow: none;
-        }
-
-        .constellation__tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 5px solid transparent;
-            border-top-color: rgba(212, 137, 14, 0.2);
-        }
-
-        .constellation__star.active .constellation__tooltip,
-        .constellation__star:focus-visible .constellation__tooltip {
-            opacity: 1;
-        }
-
-        .constellation__tooltip-line {
-            display: block;
-            line-height: 1.5;
-        }
-
-        .constellation__tooltip-line--name {
-            font-weight: 600;
-            color: var(--rice-paper);
-        }
-
-        .constellation__tooltip-line--amber {
-            color: var(--amber);
-        }
-
-        /* --- Legend --- */
-        .constellation__legend {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(212, 137, 14, 0.08);
-        }
-
-        .constellation__legend-item {
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            color: var(--incense-dim);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .legend-weight-light {
-            font-family: var(--font-serif);
-            font-weight: 200;
-            font-size: 0.875rem;
-            color: var(--incense-dim);
-        }
-
-        .legend-weight-heavy {
-            font-family: var(--font-serif);
-            font-weight: 900;
-            font-size: 0.875rem;
-            color: var(--rice-paper);
-        }
-
-        .legend-glow-swatch {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--amber);
-            box-shadow: 0 0 6px var(--amber);
-        }
-
-        /* ============================================
-           SECTION 3: OFFERINGS (Altars)
-           ============================================ */
-        .altars {
-            padding: 5rem 0;
-        }
-
-        .altars__header {
-            text-align: center;
-            padding: 0 clamp(1.25rem, 5vw, 4rem);
-            margin-bottom: 3rem;
-        }
-
-        .altar-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding: 0 clamp(1.25rem, 5vw, 4rem);
-        }
-
-        .altar-nav__btn {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--ash);
-            border-radius: 50%;
-            background: transparent;
-            color: var(--incense);
-            font-size: 1.125rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: border-color var(--transition-base), color var(--transition-base);
-            flex-shrink: 0;
-        }
-
-        .altar-nav__btn:hover { border-color: var(--amber); color: var(--amber); }
-
-        .altar-nav__btn:focus-visible {
-            outline: 2px solid var(--amber);
-            outline-offset: 3px;
-        }
-
-        .altar-nav__btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-        .altar-nav__dots {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .altar-nav__dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            border: 1px solid var(--ash);
-            background: transparent;
-            cursor: pointer;
-            transition: background var(--transition-base), border-color var(--transition-base);
-            padding: 0;
-        }
-
-        .altar-nav__dot.active { background: var(--amber); border-color: var(--amber); }
-        .altar-nav__dot:hover { border-color: var(--amber); }
-
-        .altar-nav__dot:focus-visible {
-            outline: 2px solid var(--amber);
-            outline-offset: 3px;
-        }
-
-        .altars__track {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-
-        .altars__track::-webkit-scrollbar { display: none; }
-
-        .altar {
-            min-width: 100vw;
-            scroll-snap-align: start;
-            padding: 0 clamp(1.25rem, 5vw, 4rem);
-            display: flex;
-            justify-content: center;
-        }
-
-        .altar__inner {
-            max-width: var(--page-max);
-            width: 100%;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .altar__image-col { position: relative; }
-
-        .altar__image {
-            width: 300px;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 2px;
-            filter: sepia(0.2) brightness(0.85);
-            transition: filter var(--transition-slow);
-        }
-
-        .altar:hover .altar__image { filter: sepia(0) brightness(0.95); }
-
-        .altar__image-label {
-            position: absolute;
-            bottom: 1rem;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--amber);
-            text-shadow: 0 1px 8px rgba(0,0,0,0.8);
-        }
-
-        .altar__offerings {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .altar__universe-name {
-            font-family: var(--font-serif);
-            font-size: clamp(1.75rem, 4vw, 2.75rem);
-            font-weight: 200;
-            font-style: italic;
-            color: var(--rice-paper);
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(212, 137, 14, 0.15);
-        }
-
-        .altar__universe-name span {
-            display: block;
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            font-weight: 500;
-            font-style: normal;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--amber-dim);
-            margin-bottom: 0.25rem;
-        }
-
-        .altar__intro {
-            font-family: var(--font-serif);
-            font-size: 0.9375rem;
-            font-style: italic;
-            color: var(--incense);
-            line-height: 1.8;
-        }
-
-        /* --- Offering Cards --- */
-        .offering {
-            background: var(--void-card);
-            border: 1px solid rgba(212, 137, 14, 0.08);
-            border-radius: 3px;
-            padding: 1rem 1.25rem;
-            transition: border-color var(--transition-base), box-shadow var(--transition-base);
-        }
-
-        .offering:hover {
-            border-color: rgba(212, 137, 14, 0.2);
-            box-shadow: 0 0 20px rgba(212, 137, 14, 0.05);
-        }
-
-        .offering__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.5rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .offering__name {
-            font-family: var(--font-serif);
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--rice-paper);
-        }
-
-        .offering__tier {
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 2px 10px;
-            border-radius: 2px;
-        }
-
-        .offering__tier--transcendent { color: #E8C84A; background: rgba(232, 200, 74, 0.1); }
-        .offering__tier--stellar { color: var(--amber); background: rgba(212, 137, 14, 0.1); }
-        .offering__tier--planetary { color: var(--amber-dim); background: rgba(160, 106, 10, 0.1); }
-        .offering__tier--nascent { color: var(--incense-dim); background: rgba(122, 113, 104, 0.1); }
-
-        .offering__metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 0.5rem;
-        }
-
-        .offering__metric-label {
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            font-weight: 400;
-            color: var(--incense-dim);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .offering__metric-value {
-            font-family: var(--font-serif);
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--rice-paper);
-        }
-
-        .offering__metric-value--amber { color: var(--amber); }
-        .offering__metric-value--dim { color: var(--incense-dim); font-style: italic; }
-
-        .offering__note {
-            margin-top: 0.5rem;
-            font-family: var(--font-serif);
-            font-size: 0.875rem;
-            font-style: italic;
-            color: var(--incense-dim);
-            border-left: 2px solid rgba(212, 137, 14, 0.15);
-            padding-left: 0.75rem;
-        }
-
-        /* ============================================
-           SECTION 4: THE CANON (Flame-bar charts)
-           ============================================ */
-        .canon {
-            padding: 5rem clamp(1.25rem, 5vw, 4rem);
-        }
-
-        .canon__header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .canon__charts {
-            max-width: var(--page-max);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .canon__chart {
-            background: var(--void-card);
-            border: 1px solid rgba(212, 137, 14, 0.08);
-            border-radius: 3px;
-            padding: 1.5rem;
-        }
-
-        .canon__chart-title {
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--amber);
-            margin-bottom: 1.25rem;
-            text-align: center;
-        }
-
-        .canon__bars {
-            display: flex;
-            align-items: flex-end;
-            gap: 3px;
-            height: 200px;
-            padding-top: 0.5rem;
-        }
-
-        .canon__bar-col {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100%;
-            justify-content: flex-end;
-            min-width: 0;
-        }
-
-        .canon__bar {
-            width: 100%;
-            max-width: 28px;
-            border-radius: 2px 2px 0 0;
-            background: linear-gradient(to top, var(--amber-dim), var(--amber));
-            animation: flame-bar 3s ease infinite;
-            transform-origin: bottom;
-            position: relative;
-        }
-
-        .canon__bar--vermillion {
-            background: linear-gradient(to top, #8B3320, var(--vermillion));
-        }
-
-        .canon__bar-label {
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            color: var(--incense-dim);
-            margin-top: 0.5rem;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            max-height: 80px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .canon__bar-value {
-            position: absolute;
-            top: -1.25rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: var(--font-ui);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--amber);
-            white-space: nowrap;
-        }
-
-        /* ============================================
-           SECTION 5: COLOPHON
-           ============================================ */
-        .colophon {
-            padding: 6rem clamp(1.25rem, 5vw, 4rem) 4rem;
-            text-align: center;
-        }
-
-        .colophon__flame {
-            width: 2px;
-            height: 40px;
-            background: linear-gradient(to top, transparent, var(--amber-dim));
-            margin: 0 auto 2rem;
-            animation: flicker 4s ease infinite;
-            border-radius: 1px;
-        }
-
-        .colophon__whisper {
-            font-family: var(--font-serif);
-            font-size: 1rem;
-            font-style: italic;
-            font-weight: 300;
-            color: var(--incense);
-            margin-bottom: 2rem;
-        }
-
-        .colophon__credit {
-            font-family: var(--font-ui);
-            font-size: 0.875rem;
-            color: var(--incense-dim);
-        }
-
-        .colophon__credit a { color: var(--amber-dim); }
-        .colophon__credit a:hover { color: var(--amber); }
-
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
-        @media (max-width: 840px) {
-            .altar__inner { grid-template-columns: 1fr; }
-            .altar__image-col { display: flex; justify-content: center; }
-            .altar__image { width: 100%; max-width: 400px; height: 260px; }
-            .canon__charts { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 640px) {
-            .invocation__stats { gap: 2rem; }
-            .invocation__stat-value { font-size: 2rem; }
-            .constellation__field { gap: 0.3rem 0.6rem; padding: 2rem 0.5rem; }
-            .altar__image { height: 200px; }
-            .offering__metrics { grid-template-columns: 1fr 1fr; }
-            .canon__bars { height: 150px; }
-            .canon__bar-label { font-size: 0.8125rem; max-height: 60px; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            html { scroll-behavior: auto; }
         }
 
         /* --- Noscript --- */
-        noscript .fade-in { opacity: 1; transform: none; }
+        .noscript-banner {
+            background: var(--sage-dim);
+            border-bottom: 1px solid var(--sage);
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--carbon-dim);
+            text-align: center;
+        }
+
+        /* --- Header Bar: Terminal status strip --- */
+        .terminal-bar {
+            background: var(--carbon);
+            border-bottom: 3px solid var(--sage);
+            padding: 0.625rem clamp(1rem, 3vw, 2rem);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .terminal-inner {
+            max-width: var(--page-max);
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 1.5rem;
+        }
+
+        .terminal-id { display: flex; align-items: center; gap: 0.5rem; }
+        .terminal-logo {
+            color: var(--sage);
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+        .terminal-name {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1rem;
+            color: #fff;
+            letter-spacing: 0.06em;
+        }
+
+        .terminal-nav {
+            display: flex;
+            gap: 1rem;
+            margin-left: auto;
+        }
+        .terminal-nav a {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--sage);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color var(--transition-base);
+        }
+        .terminal-nav a:hover { color: #fff; }
+        .terminal-nav a:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; border-radius: 2px; }
+
+        .terminal-stats {
+            display: flex;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .terminal-stats .stat-value { color: var(--sage); font-weight: 700; }
+
+        /* --- Form Container (the "document") --- */
+        .form-document {
+            max-width: var(--page-max);
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+        }
+
+        /* --- Hero: Form Header --- */
+        .form-hero {
+            text-align: center;
+            padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+            border-bottom: 2px solid var(--carbon);
+        }
+
+        .form-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .form-hero-sub {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--carbon-dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-hero-ref {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--stamp-red);
+            letter-spacing: 0.15em;
+            font-weight: 700;
+        }
+
+        /* --- Stamp decorations (purely visual) --- */
+        .stamp-approved {
+            position: absolute;
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--stamp-red);
+            border: 3px solid var(--stamp-red);
+            padding: 0.15rem 0.75rem;
+            border-radius: 4px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .stamp-1 { top: 1.5rem; right: 1.5rem; transform: rotate(12deg); }
+        .stamp-2 { bottom: 1rem; left: 2rem; transform: rotate(-8deg); }
+
+        /* --- Official Notice Box --- */
+        .official-notice {
+            border: 2px solid var(--carbon);
+            padding: 1.25rem 1.5rem;
+            margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+            position: relative;
+        }
+        .official-notice::before {
+            content: 'OFFICIAL NOTICE';
+            position: absolute;
+            top: -0.6em;
+            left: 1rem;
+            background: var(--paper);
+            padding: 0 0.5rem;
+            font-family: var(--font-display);
+            font-size: 0.8125rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--stamp-red);
+        }
+        .notice-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.625rem;
+        }
+        .notice-text {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            line-height: 1.7;
+            color: var(--carbon-mid);
+            margin-bottom: 0.75rem;
+        }
+        .notice-text:last-child { margin-bottom: 0; }
+        .notice-ref {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--carbon-dim);
+            font-style: italic;
+        }
+        .notice-schedule {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin-top: 0.75rem;
+        }
+        .notice-schedule-item {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            background: var(--paper-dark);
+            border: 1px solid var(--paper-line);
+            border-radius: 2px;
+        }
+
+        /* --- Section Divider: perforated tear-line --- */
+        .tear-line {
+            border: none;
+            border-top: 2px dashed var(--paper-line);
+            margin: 0;
+            position: relative;
+        }
+        .tear-line::before {
+            content: attr(data-label);
+            position: absolute;
+            top: -0.6em;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--paper);
+            padding: 0 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--carbon-dim);
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+        }
+
+        /* --- Form Section --- */
+        .form-section {
+            padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+            position: relative;
+        }
+
+        .form-section-header {
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--paper-line);
+        }
+
+        .form-section-header h2 {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.125rem;
+        }
+
+        .form-section-header p {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--carbon-dim);
+        }
+
+        /* --- Summary Table (Executive Overview) --- */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+        }
+
+        .summary-table thead th {
+            background: var(--carbon);
+            color: var(--sage);
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            font-weight: 700;
+            font-size: 0.8125rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .summary-table tbody td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid var(--paper-line);
+            vertical-align: top;
+            color: var(--carbon);
+        }
+
+        .summary-table tbody tr:nth-child(even) td { background: var(--paper-dark); }
+        .summary-table tbody tr:hover td { background: var(--sage-dim); }
+
+        .port-name { font-weight: 700; font-size: 0.875rem; font-family: var(--font-display); }
+        .port-count { color: var(--blue); font-weight: 700; }
+
+        /* --- Transit Permits Grid --- */
+        .permits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        /* --- Universe Port Section --- */
+        .port-section {
+            border: 1px solid var(--paper-line);
+            border-left: 4px solid var(--blue);
+            background: #fff;
+            position: relative;
+        }
+
+        .port-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 1rem;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--paper-line);
+            background: var(--paper-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Ghost image in port header */
+        .port-header-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .port-header-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.06;
+            filter: saturate(0.3);
+        }
+
+        .port-header > * { position: relative; z-index: 1; }
+
+        .port-header h3 {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .port-code {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: var(--blue);
+            background: var(--blue-dim);
+            padding: 0.125rem 0.5rem;
+            border-radius: 2px;
+            letter-spacing: 0.06em;
+        }
+
+        .port-permits-count {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--carbon-dim);
+            margin-left: auto;
+        }
+
+        /* Rubber stamp overlay on port sections */
+        .port-stamp {
+            position: absolute;
+            top: 0.75rem;
+            right: 1rem;
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--stamp-red);
+            border: 2px solid var(--stamp-red);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* --- Permit Cards --- */
+        .permit-list {
+            padding: 0.75rem 1.25rem;
+        }
+
+        .permit-card {
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed var(--paper-line);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.25rem 1rem;
+            align-items: start;
+        }
+        .permit-card:last-child { border-bottom: none; }
+
+        .permit-name {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .permit-status {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: #fff;
+            background: var(--blue);
+            padding: 0.125rem 0.4rem;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            justify-self: end;
+        }
+        .permit-status-cleared {
+            background: #3A7A5C;
+        }
+        .permit-status-pending {
+            background: var(--carbon-dim);
+        }
+
+        .permit-data {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem 1rem;
+        }
+
+        .permit-field {
+            display: flex;
+            gap: 0.25rem;
+            align-items: baseline;
+        }
+        .permit-field dt {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--carbon-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .permit-field dd {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: var(--carbon);
+        }
+
+        /* Carbon-copy shadow on permit cards */
+        .permit-card {
+            box-shadow: 2px 2px 0 rgba(46, 80, 144, 0.06);
+        }
+
+        /* --- Control Port: Reality --- */
+        .control-port {
+            border-left-color: var(--carbon-dim);
+            border-style: dashed;
+            border-left-style: solid;
+        }
+
+        .control-port .port-header {
+            background: var(--paper);
+        }
+
+        .control-port .port-code {
+            color: var(--carbon-dim);
+            background: rgba(107, 101, 96, 0.1);
+        }
+
+        .control-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.375rem;
+            padding: 0.75rem 1.25rem;
+        }
+
+        .control-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.5rem;
+            padding: 0.375rem 0.625rem;
+            border-left: 2px solid var(--carbon-dim);
+            background: var(--paper-dark);
+            border-radius: 0 2px 2px 0;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            transition: background var(--transition-base);
+        }
+        .control-entry:hover { background: var(--sage-dim); }
+
+        .control-name {
+            color: var(--carbon);
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+        }
+
+        .control-stats {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+            color: var(--carbon-dim);
+        }
+
+        /* --- Footer --- */
+        .form-footer {
+            max-width: var(--page-max);
+            margin: 0 auto;
+            padding: 2rem clamp(1rem, 3vw, 2rem);
+            border-top: 2px solid var(--carbon);
+            text-align: center;
+        }
+        .form-footer p {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--carbon-dim);
+            margin-bottom: 0.25rem;
+        }
+
+        /* --- Reveal Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Focus Visible --- */
+        :focus { outline: none; }
+        :focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .terminal-nav { display: none; }
+            .terminal-inner { justify-content: space-between; }
+        }
+
+        @media (max-width: 600px) {
+            .terminal-stats { display: none; }
+            .summary-table { font-size: 0.8125rem; }
+            .summary-table thead th,
+            .summary-table tbody td { padding: 0.375rem 0.5rem; }
+            .permit-card {
+                grid-template-columns: 1fr;
+            }
+            .permit-status { justify-self: start; }
+            .control-timeline { grid-template-columns: 1fr; }
+            .stamp-approved { display: none; }
+        }
     </style>
-    <noscript>
-        <style>
-            .fade-in { opacity: 1 !important; transform: none !important; }
-            .constellation__star { font-weight: 400 !important; opacity: 1 !important; }
-            .constellation__tooltip { position: static; opacity: 1; display: block; transform: none; white-space: normal; margin-top: 0.25rem; }
-            .altar-nav { display: none !important; }
-            .altars__track { flex-wrap: wrap; overflow-x: visible; scroll-snap-type: none; }
-            .altar { min-width: auto; width: 100%; }
-            .canon__bar { animation: none !important; }
-        </style>
-    </noscript>
 </head>
 <body>
 
-<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-<div class="page-wrapper">
-
-    <!-- ========== INVOCATION ========== -->
-    <header class="invocation">
-        <div class="invocation__flame" aria-hidden="true"></div>
-        <div class="invocation__title fade-in">
-            <span>Fictional Universe Taxonomy Research</span>
-            <h1>Shrine</h1>
-        </div>
-        <p class="invocation__subtitle fade-in">
-            Thirty civilizations across nine universes, rendered as candlelight in the void.
-            Population from 10<sup>4</sup> to 10<sup>17</sup>. Kardashev from 0.057 to 2.3.
-        </p>
-        <div class="invocation__stats fade-in">
-            <div class="invocation__stat">
-                <span class="invocation__stat-value">30</span>
-                <span class="invocation__stat-label">Civilizations</span>
-            </div>
-            <div class="invocation__stat">
-                <span class="invocation__stat-value">9</span>
-                <span class="invocation__stat-label">Universes</span>
-            </div>
-            <div class="invocation__stat">
-                <span class="invocation__stat-value">20</span>
-                <span class="invocation__stat-label">Metrics</span>
-            </div>
-        </div>
-        <div class="invocation__scroll-hint" aria-hidden="true">Descend</div>
-    </header>
-
-    <main id="main-content">
-
-    <div class="threshold" aria-hidden="true">
-        <div class="threshold__pillar"></div>
-        <div class="threshold__beam"></div>
-        <div class="threshold__pillar"></div>
+<noscript>
+    <div class="noscript-banner">
+        Transit processing available without JavaScript. Scroll animations disabled.
     </div>
+</noscript>
 
-    <!-- ========== THE CONSTELLATION ========== -->
-    <section class="constellation section" aria-label="The Constellation — civilization names sized by population, glowing by energy">
-        <div class="constellation__header fade-in">
-            <h2>The Constellation</h2>
-            <p>Each name carries the weight of its population and the glow of its energy.
-            Heavier type marks greater numbers. Brighter glow marks higher Kardashev.</p>
+<!-- Terminal Bar -->
+<header class="terminal-bar">
+    <div class="terminal-inner">
+        <div class="terminal-id">
+            <span class="terminal-logo">MTA://</span>
+            <span class="terminal-name">FUTR</span>
         </div>
-
-        <div class="constellation__field fade-in" aria-label="30 civilization names — click any name for details">
-            <!-- Populated by JS -->
-        </div>
-
-        <div class="constellation__legend fade-in" aria-label="Legend">
-            <div class="constellation__legend-item">
-                <span class="legend-weight-light">Thin</span> = fewer people
-            </div>
-            <div class="constellation__legend-item">
-                <span class="legend-weight-heavy">Heavy</span> = more people
-            </div>
-            <div class="constellation__legend-item">
-                <span class="legend-glow-swatch" aria-hidden="true"></span>
-                Glow = Kardashev
-            </div>
-        </div>
-    </section>
-
-    <div class="smoke-gradient" aria-hidden="true"></div>
-
-    <div class="threshold" aria-hidden="true">
-        <div class="threshold__pillar"></div>
-        <div class="threshold__beam"></div>
-        <div class="threshold__pillar"></div>
-    </div>
-
-    <!-- ========== OFFERINGS (Altars) ========== -->
-    <section class="altars section" aria-label="Universe offerings">
-        <div class="altars__header fade-in">
-            <h2>The Offerings</h2>
-        </div>
-
-        <nav class="altar-nav fade-in" aria-label="Altar navigation">
-            <button class="altar-nav__btn altar-nav__btn--prev" aria-label="Previous universe" disabled>
-                <span aria-hidden="true">&larr;</span>
-            </button>
-            <div class="altar-nav__dots" aria-label="Universe selector">
-            </div>
-            <button class="altar-nav__btn altar-nav__btn--next" aria-label="Next universe">
-                <span aria-hidden="true">&rarr;</span>
-            </button>
+        <nav class="terminal-nav" aria-label="Form sections">
+            <a href="#overview">Overview</a>
+            <a href="#permits">Permits</a>
+            <a href="#control">Control</a>
         </nav>
+        <div class="terminal-stats" role="group" aria-label="Processing statistics">
+            <span><span class="stat-value">9</span> ports</span>
+            <span><span class="stat-value">30</span> permits</span>
+        </div>
+    </div>
+</header>
 
-        <div class="altars__track">
-
-            <!-- Star Trek -->
-            <article class="altar" data-universe="Star Trek">
-                <div class="altar__inner">
-                    <div class="altar__image-col">
-                        <img class="altar__image" src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=640&q=80" alt="Nebula representing the Star Trek universe" width="300" height="400" loading="lazy">
-                        <div class="altar__image-label" aria-hidden="true">Star Trek</div>
-                    </div>
-                    <div class="altar__offerings">
-                        <h3 class="altar__universe-name"><span>Universe I</span>Star Trek</h3>
-                        <p class="altar__intro">Four civilizations from the early days of warp drive to the height of the Federation.</p>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Vulcans 2063</span>
-                                <span class="offering__tier offering__tier--nascent">Nascent</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value offering__metric-value--dim">No data</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Planets</span><span class="offering__metric-value">1</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--dim">No data</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Tech Level</span><span class="offering__metric-value offering__metric-value--amber">9</span></div>
-                            </div>
-                            <p class="offering__note">The year of first contact. Census data remains elusive.</p>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Andorian Empire 2161</span>
-                                <span class="offering__tier offering__tier--planetary">Planetary</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~8 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Planets</span><span class="offering__metric-value">14</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">0.9</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Klingon Empire 2161</span>
-                                <span class="offering__tier offering__tier--planetary">Planetary</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~9 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Planets</span><span class="offering__metric-value">1</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">0.9</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Federation 2373</span>
-                                <span class="offering__tier offering__tier--stellar">Stellar</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~100 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Planets</span><span class="offering__metric-value">150</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">1.0</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Warhammer 40,000 -->
-            <article class="altar" data-universe="Warhammer 40,000">
-                <div class="altar__inner">
-                    <div class="altar__image-col">
-                        <img class="altar__image" src="https://images.unsplash.com/photo-1534996858221-380b92700493?w=640&q=80" alt="Dark brooding clouds representing the grim Warhammer 40,000 universe" width="300" height="400" loading="lazy">
-                        <div class="altar__image-label" aria-hidden="true">Warhammer 40,000</div>
-                    </div>
-                    <div class="altar__offerings">
-                        <h3 class="altar__universe-name"><span>Universe II</span>Warhammer 40,000</h3>
-                        <p class="altar__intro">A million worlds held by faith, fear, and a dying Emperor. And somewhere beyond, the Orks — uncounted, uncountable.</p>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Imperium of Man M41</span>
-                                <span class="offering__tier offering__tier--stellar">Stellar</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~1 &times; 10<sup>16</sup></span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Planets</span><span class="offering__metric-value">1,000,000</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">1.6</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Orks M41</span>
-                                <span class="offering__tier offering__tier--stellar">Stellar</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~5 &times; 10<sup>16</sup></span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Planets</span><span class="offering__metric-value">~2,000,000</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--dim">No data</span></div>
-                            </div>
-                            <p class="offering__note">Countless. The green tide resists census.</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Firefly -->
-            <article class="altar" data-universe="Firefly">
-                <div class="altar__inner">
-                    <div class="altar__image-col">
-                        <img class="altar__image" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=640&q=80" alt="Rocket trail against the night sky representing the Firefly universe" width="300" height="400" loading="lazy">
-                        <div class="altar__image-label" aria-hidden="true">Firefly</div>
-                    </div>
-                    <div class="altar__offerings">
-                        <h3 class="altar__universe-name"><span>Universe III</span>Firefly</h3>
-                        <p class="altar__intro">A single star system terraformed into a frontier. The Alliance keeps order at the core; the Rim keeps freedom at the edge.</p>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Alliance 2517</span>
-                                <span class="offering__tier offering__tier--planetary">Planetary</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~303 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Planets</span><span class="offering__metric-value">215</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">0.95</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- The Culture -->
-            <article class="altar" data-universe="The Culture">
-                <div class="altar__inner">
-                    <div class="altar__image-col">
-                        <img class="altar__image" src="https://images.unsplash.com/photo-1464802686167-b939a6910659?w=640&q=80" alt="Spiral galaxy representing The Culture's vast post-scarcity civilization" width="300" height="400" loading="lazy">
-                        <div class="altar__image-label" aria-hidden="true">The Culture</div>
-                    </div>
-                    <div class="altar__offerings">
-                        <h3 class="altar__universe-name"><span>Universe IV</span>The Culture</h3>
-                        <p class="altar__intro">Post-scarcity. Run by benevolent Minds. The highest Kardashev in the census, though contested across a wide range.</p>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Culture (pre-war)</span>
-                                <span class="offering__tier offering__tier--transcendent">Transcendent</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~30 trillion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Orbitals</span><span class="offering__metric-value">~14,000</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">2.3</span></div>
-                            </div>
-                            <p class="offering__note">Zero planets. Kardashev range 2.0 to 2.9, contested.</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Honorverse -->
-            <article class="altar" data-universe="Honorverse">
-                <div class="altar__inner">
-                    <div class="altar__image-col">
-                        <img class="altar__image" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=640&q=80" alt="Space vista representing the Honorverse" width="300" height="400" loading="lazy">
-                        <div class="altar__image-label" aria-hidden="true">Honorverse</div>
-                    </div>
-                    <div class="altar__offerings">
-                        <h3 class="altar__universe-name"><span>Universe V</span>Honorverse</h3>
-                        <p class="altar__intro">Two star nations locked in centuries of cold war and open conflict. Honor Harrington's universe of duty and maneuver.</p>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Manticore 1903 PD</span>
-                                <span class="offering__tier offering__tier--stellar">Stellar</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~3.2 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">1.1</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Haven 1903 PD</span>
-                                <span class="offering__tier offering__tier--stellar">Stellar</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~200 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">1.0</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Perry Rhodan -->
-            <article class="altar" data-universe="Perry Rhodan">
-                <div class="altar__inner">
-                    <div class="altar__image-col">
-                        <img class="altar__image" src="https://images.unsplash.com/photo-1462332420958-a05d1e002413?w=640&q=80" alt="Spiral galaxy representing the Perry Rhodan universe" width="300" height="400" loading="lazy">
-                        <div class="altar__image-label" aria-hidden="true">Perry Rhodan</div>
-                    </div>
-                    <div class="altar__offerings">
-                        <h3 class="altar__universe-name"><span>Universe VI</span>Perry Rhodan</h3>
-                        <p class="altar__intro">The longest-running science fiction series. Three eras spanning millions of years of galactic history.</p>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Solares Imperium 2040</span>
-                                <span class="offering__tier offering__tier--planetary">Planetary</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~9 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">0.9</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Gro&szlig;es Imperium 2040</span>
-                                <span class="offering__tier offering__tier--stellar">Stellar</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~50 trillion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">1.6</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Posbis 2114</span>
-                                <span class="offering__tier offering__tier--stellar">Stellar</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value offering__metric-value--dim">Robotic</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">1.3</span></div>
-                            </div>
-                            <p class="offering__note">Km-scale processor ships. No meaningful biological population count.</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Orion's Arm -->
-            <article class="altar" data-universe="Orion's Arm">
-                <div class="altar__inner">
-                    <div class="altar__image-col">
-                        <img class="altar__image" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=640&q=80" alt="Dense star field of the Milky Way representing Orion's Arm" width="300" height="400" loading="lazy">
-                        <div class="altar__image-label" aria-hidden="true">Orion's Arm</div>
-                    </div>
-                    <div class="altar__offerings">
-                        <h3 class="altar__universe-name"><span>Universe VII</span>Orion's Arm</h3>
-                        <p class="altar__intro">Post-singularity. Toposophic minds and megastructures, all observed at 10600 AT. No Kardashev data survives assessment.</p>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Terragen Sphere</span>
-                                <span class="offering__tier offering__tier--stellar">Beyond Scale</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~3.9 &times; 10<sup>17</sup></span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--dim">Unassessable</span></div>
-                            </div>
-                            <p class="offering__note">The whole of the expansion bubble — biological, virtual, and post-biological.</p>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Solar System (OA)</span>
-                                <span class="offering__tier offering__tier--planetary">Planetary</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">6,967,435,000,000</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--dim">Unassessable</span></div>
-                            </div>
-                            <p class="offering__note">Exact figure — suspiciously precise for a civilization that counts virtual minds.</p>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Diamond Network</span>
-                                <span class="offering__tier offering__tier--stellar">Stellar</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~3 &times; 10<sup>13</sup></span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--dim">Unassessable</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- The Expanse -->
-            <article class="altar" data-universe="The Expanse">
-                <div class="altar__inner">
-                    <div class="altar__image-col">
-                        <img class="altar__image" src="https://images.unsplash.com/photo-1457364559154-aa2644600ebb?w=640&q=80" alt="Atmospheric ocean horizon representing The Expanse's near-future solar system" width="300" height="400" loading="lazy">
-                        <div class="altar__image-label" aria-hidden="true">The Expanse</div>
-                    </div>
-                    <div class="altar__offerings">
-                        <h3 class="altar__universe-name"><span>Universe VIII</span>The Expanse</h3>
-                        <p class="altar__intro">Humanity divided across Earth, Mars, and the Belt. Four factions in a single solar system, each with distinct populations and ambitions.</p>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">United Nations 2350</span>
-                                <span class="offering__tier offering__tier--planetary">Planetary</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~30 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">0.89</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Mars 2350</span>
-                                <span class="offering__tier offering__tier--planetary">Planetary</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~4 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">0.85</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">OPA 2350</span>
-                                <span class="offering__tier offering__tier--nascent">Nascent</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~100 million</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">0.67</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header">
-                                <span class="offering__name">Sol System 2350</span>
-                                <span class="offering__tier offering__tier--planetary">Planetary</span>
-                            </div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Population</span><span class="offering__metric-value">~35 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">Kardashev</span><span class="offering__metric-value offering__metric-value--amber">0.90</span></div>
-                            </div>
-                            <p class="offering__note">Combined total: Earth, Mars, Belt, and outer stations.</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Reality -->
-            <article class="altar" data-universe="Reality">
-                <div class="altar__inner">
-                    <div class="altar__image-col">
-                        <img class="altar__image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=640&q=80" alt="Earth at night from orbit representing Reality" width="300" height="400" loading="lazy">
-                        <div class="altar__image-label" aria-hidden="true">Reality</div>
-                    </div>
-                    <div class="altar__offerings">
-                        <h3 class="altar__universe-name"><span>Universe IX</span>Reality</h3>
-                        <p class="altar__intro">Our own universe in ten eras. Population from 18,500 to 8.1 billion. Kardashev from 0.057 to 0.73. The hidden arc of acceleration.</p>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">Early Pleistocene</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~18,500</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.057</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">Stone Age</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~50,000</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.10</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">Bronze Age</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~20 million</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.36</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">Classic Age</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~100 million</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.46</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">Middle Ages</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~200 million</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.48</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">Age of Sail</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~800 million</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.54</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">Industrialization</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~1 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.56</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">20th Century</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~1.15 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.65</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">80s</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~4 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.70</span></div>
-                            </div>
-                        </div>
-                        <div class="offering">
-                            <div class="offering__header"><span class="offering__name">2023</span><span class="offering__tier offering__tier--nascent">Nascent</span></div>
-                            <div class="offering__metrics">
-                                <div class="offering__metric"><span class="offering__metric-label">Pop</span><span class="offering__metric-value">~8.1 billion</span></div>
-                                <div class="offering__metric"><span class="offering__metric-label">K</span><span class="offering__metric-value offering__metric-value--amber">0.73</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
+<!-- Hero + Main Content -->
+<main id="main">
+<div class="form-document">
+    <section class="form-hero" aria-label="Introduction">
+        <div style="position:relative;">
+            <p class="form-hero-ref" aria-hidden="true">Form MTA-47C &bull; Rev. 2399.3 &bull; Multiverse Immigration Division</p>
+            <h1>Multiverse Transit Authority</h1>
+            <p class="form-hero-sub">Interstellar Immigration Processing Terminal</p>
+            <p class="form-hero-instructions" style="font-family:var(--font-mono);font-size:0.8125rem;color:var(--carbon-dim);margin-top:0.75rem;">Complete all sections. Apply appropriate stamps. File under universe of origin.</p>
+            <span class="stamp-approved stamp-1" aria-hidden="true">Processed</span>
+            <span class="stamp-approved stamp-2" aria-hidden="true">Filed</span>
         </div>
     </section>
 
-    <div class="smoke-gradient" aria-hidden="true"></div>
-
-    <div class="threshold" aria-hidden="true">
-        <div class="threshold__pillar"></div>
-        <div class="threshold__beam"></div>
-        <div class="threshold__pillar"></div>
+    <!-- Official Notice -->
+    <div class="official-notice reveal">
+        <p class="notice-title">Notice to All Transit Applicants</p>
+        <p class="notice-text">
+            All entities operating energy harvesting infrastructure exceeding K-Class 1.0
+            must complete Declaration Form MTA-E7 prior to transit authorization.
+            Failure to declare planetary holdings in excess of 50 worlds constitutes
+            a Class 4 Transit Violation under Multiverse Immigration Code &sect;2.17.4.
+        </p>
+        <p class="notice-text">
+            Non-biological entities (robotic, AI, or uploaded consciousness) require
+            supplementary Form MTA-S3 and must pass Sentience Verification Protocol
+            before permits are stamped.
+        </p>
+        <p class="notice-ref">Processing schedule by K-Classification:</p>
+        <div class="notice-schedule">
+            <span class="notice-schedule-item">K 0&ndash;0.9: 3 standard cycles</span>
+            <span class="notice-schedule-item">K 1.0&ndash;1.9: 12 cycles</span>
+            <span class="notice-schedule-item">K 2.0+: Priority Review</span>
+        </div>
     </div>
 
-    <!-- ========== THE CANON (Flame-bar charts) ========== -->
-    <section class="canon section fade-in" aria-label="The Canon — comparative data charts">
-        <div class="canon__header">
-            <h2>The Canon</h2>
+    <!-- Section A: Executive Overview -->
+    <hr class="tear-line" data-label="SECTION A" aria-hidden="true">
+
+    <section class="form-section reveal" id="overview">
+        <div class="form-section-header">
+            <h2>Port of Origin Summary</h2>
+            <p>All registered multiverse transit ports. Verify port codes before stamping. Discrepancies should be reported to MTA Compliance, Ref. MIC-4401.</p>
         </div>
 
-        <div class="canon__charts" id="canon-charts">
-            <!-- Populated by JS: Population and Kardashev flame-bar charts -->
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th scope="col">Port</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Permits</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="port-name">Star Trek</td><td>STK</td><td class="port-count">4</td><td>Active</td></tr>
+                <tr><td class="port-name">The Culture</td><td>CUL</td><td class="port-count">1</td><td>Active</td></tr>
+                <tr><td class="port-name">Warhammer 40,000</td><td>W40</td><td class="port-count">2</td><td>Active</td></tr>
+                <tr><td class="port-name">The Expanse</td><td>EXP</td><td class="port-count">4</td><td>Active</td></tr>
+                <tr><td class="port-name">Perry Rhodan</td><td>PRH</td><td class="port-count">3</td><td>Active</td></tr>
+                <tr><td class="port-name">Orion&#8217;s Arm</td><td>ORA</td><td class="port-count">3</td><td>Active</td></tr>
+                <tr><td class="port-name">Honorverse</td><td>HON</td><td class="port-count">2</td><td>Active</td></tr>
+                <tr><td class="port-name">Firefly</td><td>FLY</td><td class="port-count">1</td><td>Active</td></tr>
+                <tr><td class="port-name">Reality</td><td>CTL</td><td class="port-count">10</td><td>Control</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Section B: Transit Permits -->
+    <hr class="tear-line" data-label="SECTION B" aria-hidden="true">
+
+    <section class="form-section" id="permits">
+        <div class="form-section-header">
+            <h2>Transit Permits</h2>
+            <p>Individual immigration processing records filed by port of origin. Stamp each permit upon verification. Incomplete declarations will be held.</p>
+        </div>
+
+        <div class="permits-grid">
+
+            <!-- 1. Star Trek -->
+            <article class="port-section reveal">
+                <div class="port-header">
+                    <div class="port-header-bg" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=900&h=200&q=80"
+                             alt="" width="900" height="200" fetchpriority="high">
+                    </div>
+                    <h3>Star Trek</h3>
+                    <span class="port-code">STK</span>
+                    <span class="port-permits-count">4 permits</span>
+                    <span class="port-stamp" aria-hidden="true">Cleared</span>
+                </div>
+                <div class="permit-list">
+                    <div class="permit-card">
+                        <h4 class="permit-name">Federation 2373</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~100B</dd></div>
+                            <div class="permit-field"><dt>Planets</dt><dd>~150</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>1.0</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>10</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Klingon Empire 2161</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~9B</dd></div>
+                            <div class="permit-field"><dt>Planets</dt><dd>~20</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>0.9</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>9</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Andorian Empire 2161</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~8B</dd></div>
+                            <div class="permit-field"><dt>Planets</dt><dd>14</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>0.9</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>9</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Vulcans 2063</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Planets</dt><dd>1</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>9</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 2. The Culture -->
+            <article class="port-section reveal">
+                <div class="port-header">
+                    <div class="port-header-bg" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=900&h=200&q=80"
+                             alt="" width="900" height="200" fetchpriority="high">
+                    </div>
+                    <h3>The Culture</h3>
+                    <span class="port-code">CUL</span>
+                    <span class="port-permits-count">1 permit</span>
+                    <span class="port-stamp" aria-hidden="true">Priority Review</span>
+                </div>
+                <div class="permit-list">
+                    <div class="permit-card">
+                        <h4 class="permit-name">Culture (pre-war)</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~30T</dd></div>
+                            <div class="permit-field"><dt>Orbitals</dt><dd>~14K</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>2.3</dd></div>
+                            <div class="permit-field"><dt>Dyson</dt><dd>6</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>13</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 3. Warhammer 40,000 -->
+            <article class="port-section reveal">
+                <div class="port-header">
+                    <div class="port-header-bg" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1534996858221-380b92700493?auto=format&fit=crop&w=900&h=200&q=80"
+                             alt="" width="900" height="200" loading="lazy">
+                    </div>
+                    <h3>Warhammer 40,000</h3>
+                    <span class="port-code">W40</span>
+                    <span class="port-permits-count">2 permits</span>
+                    <span class="port-stamp" aria-hidden="true">Quarantine Advised</span>
+                </div>
+                <div class="permit-list">
+                    <div class="permit-card">
+                        <h4 class="permit-name">Imperium of Man M41</h4>
+                        <span class="permit-status">Processed</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~1&times;10&sup1;&sup6;</dd></div>
+                            <div class="permit-field"><dt>Planets</dt><dd>1M</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>1.6</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>10</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Orks M41</h4>
+                        <span class="permit-status">Processed</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~5&times;10&sup1;&sup6;</dd></div>
+                            <div class="permit-field"><dt>Planets</dt><dd>~2M</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>10</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 4. The Expanse -->
+            <article class="port-section reveal">
+                <div class="port-header">
+                    <div class="port-header-bg" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1457364559154-aa2644600ebb?auto=format&fit=crop&w=900&h=200&q=80"
+                             alt="" width="900" height="200" loading="lazy">
+                    </div>
+                    <h3>The Expanse</h3>
+                    <span class="port-code">EXP</span>
+                    <span class="port-permits-count">4 permits</span>
+                    <span class="port-stamp" aria-hidden="true">Partial Hold</span>
+                </div>
+                <div class="permit-list">
+                    <div class="permit-card">
+                        <h4 class="permit-name">Sol System 2350</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~35B</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>0.9</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">United Nations 2350</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~30B</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>0.89</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Mars 2350</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~4B</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>0.85</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Outer Planets Alliance 2350</h4>
+                        <span class="permit-status permit-status-pending">Pending Verification</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~100M</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>0.67</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 5. Perry Rhodan -->
+            <article class="port-section reveal">
+                <div class="port-header">
+                    <div class="port-header-bg" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&h=200&q=80"
+                             alt="" width="900" height="200" loading="lazy">
+                    </div>
+                    <h3>Perry Rhodan</h3>
+                    <span class="port-code">PRH</span>
+                    <span class="port-permits-count">3 permits</span>
+                    <span class="port-stamp" aria-hidden="true">Cleared</span>
+                </div>
+                <div class="permit-list">
+                    <div class="permit-card">
+                        <h4 class="permit-name">Gro&szlig;es Imperium 2040</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~50T</dd></div>
+                            <div class="permit-field"><dt>Planets</dt><dd>50K</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>1.6</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>10</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Posbis 2114</h4>
+                        <span class="permit-status">Processed</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Type</dt><dd>Robotic/AI</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>1.3</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>10</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Solares Imperium 2040</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~9B</dd></div>
+                            <div class="permit-field"><dt>Planets</dt><dd>6</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>0.9</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>9</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 6. Orion's Arm -->
+            <article class="port-section reveal">
+                <div class="port-header">
+                    <div class="port-header-bg" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=900&h=200&q=80"
+                             alt="" width="900" height="200" loading="lazy">
+                    </div>
+                    <h3>Orion&#8217;s Arm</h3>
+                    <span class="port-code">ORA</span>
+                    <span class="port-permits-count">3 permits</span>
+                    <span class="port-stamp" aria-hidden="true">Classification Exceeded</span>
+                </div>
+                <div class="permit-list">
+                    <div class="permit-card">
+                        <h4 class="permit-name">Terragen Sphere 10600 AT</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~3.9&times;10&sup1;&sup7;</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>14</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Diamond Network 10600 AT</h4>
+                        <span class="permit-status">Processed</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>TL</dt><dd>14</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Solar System 10600 AT</h4>
+                        <span class="permit-status">Processed</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>TL</dt><dd>13</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 7. Honorverse -->
+            <article class="port-section reveal">
+                <div class="port-header">
+                    <div class="port-header-bg" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=900&h=200&q=80"
+                             alt="" width="900" height="200" loading="lazy">
+                    </div>
+                    <h3>Honorverse</h3>
+                    <span class="port-code">HON</span>
+                    <span class="port-permits-count">2 permits</span>
+                    <span class="port-stamp" aria-hidden="true">Cleared</span>
+                </div>
+                <div class="permit-list">
+                    <div class="permit-card">
+                        <h4 class="permit-name">Haven 1903 PD</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~200B</dd></div>
+                            <div class="permit-field"><dt>Planets</dt><dd>~100</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>1.0</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>9</dd></div>
+                        </dl>
+                    </div>
+                    <div class="permit-card">
+                        <h4 class="permit-name">Manticore 1903 PD</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~3.2B</dd></div>
+                            <div class="permit-field"><dt>Planets</dt><dd>3</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>1.1</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>9</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 8. Firefly -->
+            <article class="port-section reveal">
+                <div class="port-header">
+                    <div class="port-header-bg" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=900&h=200&q=80"
+                             alt="" width="900" height="200" loading="lazy">
+                    </div>
+                    <h3>Firefly</h3>
+                    <span class="port-code">FLY</span>
+                    <span class="port-permits-count">1 permit</span>
+                    <span class="port-stamp" aria-hidden="true">Restricted Access</span>
+                </div>
+                <div class="permit-list">
+                    <div class="permit-card">
+                        <h4 class="permit-name">Alliance 2517</h4>
+                        <span class="permit-status permit-status-cleared">Cleared</span>
+                        <dl class="permit-data">
+                            <div class="permit-field"><dt>Pop</dt><dd>~303B</dd></div>
+                            <div class="permit-field"><dt>Worlds</dt><dd>215</dd></div>
+                            <div class="permit-field"><dt>K</dt><dd>0.95</dd></div>
+                            <div class="permit-field"><dt>TL</dt><dd>7</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </article>
+
         </div>
     </section>
 
-    </main>
+    <!-- Section C: Control Port -->
+    <hr class="tear-line" data-label="SECTION C" aria-hidden="true">
 
-    <!-- ========== COLOPHON ========== -->
-    <footer class="colophon">
-        <div class="colophon__flame" aria-hidden="true"></div>
-        <p class="colophon__whisper">these worlds live because we remember them</p>
-        <p class="colophon__credit">
-            <a href="https://www.futr.space/">FUTR</a> &mdash; Fictional Universe Taxonomy Research
-        </p>
-    </footer>
+    <section class="form-section" id="control">
+        <div class="form-section-header">
+            <h2>Control Port &mdash; Reality</h2>
+            <p>Baseline reference port. Single-planet origin, pre-interstellar status. Exempt from K-Class declaration requirements per MIC &sect;1.02.1 (sub-threshold civilizations).</p>
+        </div>
+
+        <article class="port-section control-port reveal">
+            <div class="port-header">
+                <div class="port-header-bg" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&h=200&q=80"
+                         alt="" width="900" height="200" loading="lazy">
+                </div>
+                <h3>Reality</h3>
+                <span class="port-code">CTL</span>
+                <span class="port-permits-count">10 observations</span>
+            </div>
+            <div class="control-timeline">
+                <div class="control-entry">
+                    <span class="control-name">Early Pleistocene</span>
+                    <span class="control-stats"><span>18.5K</span> <span>K0.057</span></span>
+                </div>
+                <div class="control-entry">
+                    <span class="control-name">Stone Age</span>
+                    <span class="control-stats"><span>50K</span> <span>K0.1</span></span>
+                </div>
+                <div class="control-entry">
+                    <span class="control-name">Bronze Age</span>
+                    <span class="control-stats"><span>20M</span> <span>K0.36</span></span>
+                </div>
+                <div class="control-entry">
+                    <span class="control-name">Classic Age</span>
+                    <span class="control-stats"><span>100M</span> <span>K0.46</span></span>
+                </div>
+                <div class="control-entry">
+                    <span class="control-name">Middle Ages</span>
+                    <span class="control-stats"><span>200M</span> <span>K0.48</span></span>
+                </div>
+                <div class="control-entry">
+                    <span class="control-name">Age of Sail</span>
+                    <span class="control-stats"><span>800M</span> <span>K0.54</span></span>
+                </div>
+                <div class="control-entry">
+                    <span class="control-name">Industrialization</span>
+                    <span class="control-stats"><span>1B</span> <span>K0.56</span></span>
+                </div>
+                <div class="control-entry">
+                    <span class="control-name">Mid 20th Century</span>
+                    <span class="control-stats"><span>1.15B</span> <span>K0.65</span></span>
+                </div>
+                <div class="control-entry">
+                    <span class="control-name">1980s</span>
+                    <span class="control-stats"><span>4B</span> <span>K0.7</span></span>
+                </div>
+                <div class="control-entry">
+                    <span class="control-name">2023</span>
+                    <span class="control-stats"><span>8.1B</span> <span>K0.73</span></span>
+                </div>
+            </div>
+        </article>
+    </section>
 
 </div>
+</main>
+
+<footer class="form-footer">
+    <p>FUTR &mdash; Fictional Universe Taxonomy Research</p>
+    <p>Form MTA-47C &bull; Multiverse Transit Authority &bull; All permits provisional pending final review</p>
+    <p>Unauthorized reproduction of this document is a violation of MIC &sect;9.44.2</p>
+</footer>
 
 <script>
 (function() {
     'use strict';
 
-    /* ============================================
-       CIVILIZATION DATA — from FUTR
-       ============================================ */
-    var civs = [
-        // Star Trek
-        { name: 'Vulcans 2063', universe: 'Star Trek', uKey: 'star-trek', pop: null, kardashev: null },
-        { name: 'Andorian Empire 2161', universe: 'Star Trek', uKey: 'star-trek', pop: 8e9, kardashev: 0.9 },
-        { name: 'Klingon Empire 2161', universe: 'Star Trek', uKey: 'star-trek', pop: 9e9, kardashev: 0.9 },
-        { name: 'Federation 2373', universe: 'Star Trek', uKey: 'star-trek', pop: 1e11, kardashev: 1.0 },
-        // Warhammer 40,000
-        { name: 'Imperium of Man M41', universe: 'Warhammer 40,000', uKey: 'warhammer', pop: 1e16, kardashev: 1.6 },
-        { name: 'Orks M41', universe: 'Warhammer 40,000', uKey: 'warhammer', pop: 5e16, kardashev: null },
-        // Firefly
-        { name: 'Alliance 2517', universe: 'Firefly', uKey: 'firefly', pop: 303e9, kardashev: 0.95 },
-        // The Culture
-        { name: 'Culture (pre-war)', universe: 'The Culture', uKey: 'culture', pop: 30e12, kardashev: 2.3 },
-        // Honorverse
-        { name: 'Manticore 1903 PD', universe: 'Honorverse', uKey: 'honorverse', pop: 3.2e9, kardashev: 1.1 },
-        { name: 'Haven 1903 PD', universe: 'Honorverse', uKey: 'honorverse', pop: 200e9, kardashev: 1.0 },
-        // Perry Rhodan
-        { name: 'Solares Imperium 2040', universe: 'Perry Rhodan', uKey: 'perry-rhodan', pop: 9e9, kardashev: 0.9 },
-        { name: 'Gro\u00DFes Imperium 2040', universe: 'Perry Rhodan', uKey: 'perry-rhodan', pop: 50e12, kardashev: 1.6 },
-        { name: 'Posbis 2114', universe: 'Perry Rhodan', uKey: 'perry-rhodan', pop: null, kardashev: 1.3 },
-        // Orion's Arm
-        { name: 'Terragen Sphere', universe: "Orion\u2019s Arm", uKey: 'orions-arm', pop: 3.9e17, kardashev: null, special: true },
-        { name: 'Solar System (OA)', universe: "Orion\u2019s Arm", uKey: 'orions-arm', pop: 6967435000000, kardashev: null },
-        { name: 'Diamond Network', universe: "Orion\u2019s Arm", uKey: 'orions-arm', pop: 3e13, kardashev: null },
-        // The Expanse
-        { name: 'OPA 2350', universe: 'The Expanse', uKey: 'expanse', pop: 1e8, kardashev: 0.67 },
-        { name: 'Mars 2350', universe: 'The Expanse', uKey: 'expanse', pop: 4e9, kardashev: 0.85 },
-        { name: 'United Nations 2350', universe: 'The Expanse', uKey: 'expanse', pop: 30e9, kardashev: 0.89 },
-        { name: 'Sol System 2350', universe: 'The Expanse', uKey: 'expanse', pop: 35e9, kardashev: 0.90 },
-        // Reality (chronological)
-        { name: 'Early Pleistocene', universe: 'Reality', uKey: 'reality', pop: 18500, kardashev: 0.057 },
-        { name: 'Stone Age', universe: 'Reality', uKey: 'reality', pop: 50000, kardashev: 0.10 },
-        { name: 'Bronze Age', universe: 'Reality', uKey: 'reality', pop: 20e6, kardashev: 0.36 },
-        { name: 'Classic Age', universe: 'Reality', uKey: 'reality', pop: 100e6, kardashev: 0.46 },
-        { name: 'Middle Ages', universe: 'Reality', uKey: 'reality', pop: 200e6, kardashev: 0.48 },
-        { name: 'Age of Sail', universe: 'Reality', uKey: 'reality', pop: 800e6, kardashev: 0.54 },
-        { name: 'Industrialization', universe: 'Reality', uKey: 'reality', pop: 1e9, kardashev: 0.56 },
-        { name: '20th Century', universe: 'Reality', uKey: 'reality', pop: 1.15e9, kardashev: 0.65 },
-        { name: '80s', universe: 'Reality', uKey: 'reality', pop: 4e9, kardashev: 0.70 },
-        { name: '2023', universe: 'Reality', uKey: 'reality', pop: 8.1e9, kardashev: 0.73 }
-    ];
-
-    var universeOrder = [
-        'Star Trek', 'Warhammer 40,000', 'Firefly', 'The Culture',
-        'Honorverse', 'Perry Rhodan', "Orion\u2019s Arm", 'The Expanse', 'Reality'
-    ];
-
-    /* ============================================
-       LOG-SCALE POPULATION → FONT-WEIGHT
-       ============================================ */
-    var MIN_LOG = 4.267;  // log10(18500)
-    var MAX_LOG = 17.591; // log10(3.9e17)
-    var LOG_SPAN = MAX_LOG - MIN_LOG;
-
-    function popToT(pop) {
-        if (!pop || pop <= 0) return -1;
-        var t = (Math.log10(pop) - MIN_LOG) / LOG_SPAN;
-        return Math.max(0, Math.min(1, t));
-    }
-
-    function popToWeight(pop) {
-        var t = popToT(pop);
-        if (t < 0) return 300;
-        return Math.min(900, Math.round(200 + 700 * t));
-    }
-
-    function popToOpacity(pop) {
-        var t = popToT(pop);
-        if (t < 0) return 0.65;
-        return 0.65 + 0.35 * t;
-    }
-
-    /* ============================================
-       KARDASHEV → TEXT-SHADOW GLOW
-       ============================================ */
-    var K_MIN = 0.057;
-    var K_MAX = 2.3;
-
-    function kardashevToGlow(k) {
-        if (k === null || k === undefined) return 'none';
-        var t = Math.min((k - K_MIN) / (K_MAX - K_MIN), 1);
-        var blur1 = 4 + t * 12;
-        var alpha1 = 0.15 + t * 0.45;
-        var shadow = '0 0 ' + blur1.toFixed(0) + 'px rgba(212, 137, 14, ' + alpha1.toFixed(2) + ')';
-        if (t > 0.7) {
-            var blur2 = 8 + t * 20;
-            var alpha2 = 0.08 + t * 0.2;
-            shadow += ', 0 0 ' + blur2.toFixed(0) + 'px rgba(212, 137, 14, ' + alpha2.toFixed(2) + ')';
-        }
-        return shadow;
-    }
-
-    function terragenGlow() {
-        return '0 0 16px rgba(212, 137, 14, 0.5), 0 0 32px rgba(212, 137, 14, 0.25), 0 0 48px rgba(212, 137, 14, 0.1)';
-    }
-
-    /* ============================================
-       FORMAT HELPERS
-       ============================================ */
-    function formatPop(pop) {
-        if (!pop) return 'Unknown';
-        if (pop >= 1e15) return pop.toExponential(1);
-        if (pop >= 1e12) return (pop / 1e12).toFixed(1) + 'T';
-        if (pop >= 1e9) return (pop / 1e9).toFixed(1) + 'B';
-        if (pop >= 1e6) return (pop / 1e6).toFixed(0) + 'M';
-        return pop.toLocaleString();
-    }
-
-    function formatK(k) {
-        if (k === null || k === undefined) return 'N/A';
-        return k.toFixed(k < 0.1 ? 3 : 2);
-    }
-
-    /* ============================================
-       CONSTELLATION: Build star buttons
-       ============================================ */
-    var field = document.querySelector('.constellation__field');
-    if (field) {
-        // Shuffle non-Reality civs for organic layout, keep Reality at end for arc
-        var realityCivs = [];
-        var otherCivs = [];
-        civs.forEach(function(c) {
-            if (c.uKey === 'reality') realityCivs.push(c);
-            else otherCivs.push(c);
-        });
-
-        // Simple deterministic shuffle for non-Reality
-        var shuffled = otherCivs.slice();
-        var seed = 42;
-        for (var i = shuffled.length - 1; i > 0; i--) {
-            seed = (seed * 16807 + 0) % 2147483647;
-            var j = seed % (i + 1);
-            var tmp = shuffled[i];
-            shuffled[i] = shuffled[j];
-            shuffled[j] = tmp;
-        }
-
-        var allStars = shuffled.concat(realityCivs);
-
-        allStars.forEach(function(civ) {
-            var btn = document.createElement('button');
-            btn.className = 'constellation__star';
-            btn.type = 'button';
-
-            var t = popToT(civ.pop);
-            var weight = popToWeight(civ.pop);
-            var opacity = popToOpacity(civ.pop);
-            var glow = civ.special ? terragenGlow() : kardashevToGlow(civ.kardashev);
-            // Font-size: 1rem–1.25rem computed from t; Terragen at 1.5rem via CSS
-            var fontSize = (t >= 0) ? (1.0 + t * 0.25) : 1.0;
-
-            btn.style.fontWeight = weight;
-            btn.style.opacity = opacity;
-            btn.style.fontSize = fontSize.toFixed(3) + 'rem';
-            btn.style.textShadow = glow;
-
-            if (civ.special) {
-                btn.classList.add('constellation__star--terragen');
-            }
-
-            // Accessible label
-            var label = civ.name + ' (' + civ.universe + ') — Pop: ' + formatPop(civ.pop) + ', Kardashev: ' + formatK(civ.kardashev);
-            btn.setAttribute('aria-label', label);
-
-            // Name text
-            var nameSpan = document.createTextNode(civ.name);
-            btn.appendChild(nameSpan);
-
-            // Tooltip
-            var tooltip = document.createElement('span');
-            tooltip.className = 'constellation__tooltip';
-            tooltip.setAttribute('role', 'tooltip');
-            tooltip.innerHTML =
-                '<span class="constellation__tooltip-line constellation__tooltip-line--name">' + civ.name + '</span>' +
-                '<span class="constellation__tooltip-line">' + civ.universe + '</span>' +
-                '<span class="constellation__tooltip-line constellation__tooltip-line--amber">Pop: ' + formatPop(civ.pop) + '</span>' +
-                '<span class="constellation__tooltip-line constellation__tooltip-line--amber">K: ' + formatK(civ.kardashev) + '</span>';
-
-            btn.appendChild(tooltip);
-
-            // Click/tap toggle
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                var wasActive = btn.classList.contains('active');
-                field.querySelectorAll('.constellation__star.active').forEach(function(s) {
-                    s.classList.remove('active');
-                });
-                if (!wasActive) btn.classList.add('active');
-            });
-
-            field.appendChild(btn);
-        });
-
-        // Close tooltips on outside click
-        document.addEventListener('click', function() {
-            field.querySelectorAll('.constellation__star.active').forEach(function(s) {
-                s.classList.remove('active');
-            });
-        });
-    }
-
-    /* ============================================
-       ALTAR NAVIGATION
-       ============================================ */
-    var track = document.querySelector('.altars__track');
-    var altarEls = track ? Array.prototype.slice.call(track.querySelectorAll('.altar')) : [];
-    var dotsContainer = document.querySelector('.altar-nav__dots');
-    var prevBtn = document.querySelector('.altar-nav__btn--prev');
-    var nextBtn = document.querySelector('.altar-nav__btn--next');
-    var currentAltar = 0;
-
-    function updateNav() {
-        if (!dotsContainer) return;
-        var dots = dotsContainer.querySelectorAll('.altar-nav__dot');
-        dots.forEach(function(dot, i) {
-            dot.classList.toggle('active', i === currentAltar);
-            dot.setAttribute('aria-pressed', i === currentAltar ? 'true' : 'false');
-        });
-        if (prevBtn) prevBtn.disabled = currentAltar === 0;
-        if (nextBtn) nextBtn.disabled = currentAltar === altarEls.length - 1;
-    }
-
-    function scrollToAltar(index) {
-        if (index < 0 || index >= altarEls.length) return;
-        currentAltar = index;
-        altarEls[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-        updateNav();
-    }
-
-    if (dotsContainer && altarEls.length > 0) {
-        universeOrder.forEach(function(name, i) {
-            var dot = document.createElement('button');
-            dot.className = 'altar-nav__dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', name);
-            dot.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
-            dot.addEventListener('click', function() { scrollToAltar(i); });
-            dotsContainer.appendChild(dot);
-        });
-    }
-
-    if (prevBtn) prevBtn.addEventListener('click', function() { scrollToAltar(currentAltar - 1); });
-    if (nextBtn) nextBtn.addEventListener('click', function() { scrollToAltar(currentAltar + 1); });
-
-    // Keyboard nav on track
-    if (track) {
-        track.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight') { scrollToAltar(currentAltar + 1); e.preventDefault(); }
-            if (e.key === 'ArrowLeft') { scrollToAltar(currentAltar - 1); e.preventDefault(); }
-        });
-
-        var scrollTimeout;
-        track.addEventListener('scroll', function() {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(function() {
-                var newIdx = Math.round(track.scrollLeft / track.offsetWidth);
-                if (newIdx !== currentAltar && newIdx >= 0 && newIdx < altarEls.length) {
-                    currentAltar = newIdx;
-                    updateNav();
-                }
-            }, 100);
-        });
-    }
-
-    /* ============================================
-       THE CANON: Flame-bar charts
-       ============================================ */
-    var canonEl = document.getElementById('canon-charts');
-    if (canonEl) {
-        // Select top 12 civs by population for readability
-        var withPop = civs.filter(function(c) { return c.pop !== null && c.pop > 0; });
-        withPop.sort(function(a, b) { return b.pop - a.pop; });
-        var topPop = withPop.slice(0, 12);
-
-        // Select civs with Kardashev for K chart, top 12
-        var withK = civs.filter(function(c) { return c.kardashev !== null; });
-        withK.sort(function(a, b) { return b.kardashev - a.kardashev; });
-        var topK = withK.slice(0, 12);
-
-        function buildChart(title, items, getValue, getLabel, maxVal, isVermillion) {
-            var chart = document.createElement('div');
-            chart.className = 'canon__chart';
-
-            var titleEl = document.createElement('div');
-            titleEl.className = 'canon__chart-title';
-            titleEl.textContent = title;
-            chart.appendChild(titleEl);
-
-            var bars = document.createElement('div');
-            bars.className = 'canon__bars';
-
-            items.forEach(function(item, idx) {
-                var val = getValue(item);
-                var pct = Math.max(3, (val / maxVal) * 100);
-
-                var col = document.createElement('div');
-                col.className = 'canon__bar-col';
-
-                var bar = document.createElement('div');
-                bar.className = 'canon__bar' + (isVermillion ? ' canon__bar--vermillion' : '');
-                bar.style.height = pct + '%';
-                bar.style.animationDelay = (Math.random() * 2).toFixed(2) + 's';
-
-                var valEl = document.createElement('span');
-                valEl.className = 'canon__bar-value';
-                valEl.textContent = getLabel(item);
-                bar.appendChild(valEl);
-
-                var label = document.createElement('span');
-                label.className = 'canon__bar-label';
-                // Short name for bar labels
-                var shortName = item.name.replace(/ \d{4}.*$/, '').replace(/ M41$/, '').replace(/ \(pre-war\)$/, '');
-                if (shortName.length > 12) shortName = shortName.substring(0, 11) + '\u2026';
-                label.textContent = shortName;
-
-                col.appendChild(bar);
-                col.appendChild(label);
-                bars.appendChild(col);
-            });
-
-            chart.appendChild(bars);
-            return chart;
-        }
-
-        // Population chart (log scale for bar heights)
-        var maxLogPop = Math.log10(topPop[0].pop);
-        var popChart = buildChart(
-            'Population',
-            topPop,
-            function(c) { return Math.log10(c.pop); },
-            function(c) { return formatPop(c.pop); },
-            maxLogPop,
-            false
-        );
-
-        // Kardashev chart (linear)
-        var maxK = topK[0].kardashev;
-        var kChart = buildChart(
-            'Kardashev',
-            topK,
-            function(c) { return c.kardashev; },
-            function(c) { return c.kardashev.toFixed(1); },
-            maxK,
-            true
-        );
-
-        canonEl.appendChild(popChart);
-        canonEl.appendChild(kChart);
-    }
-
-    /* ============================================
-       INTERSECTION OBSERVER: Fade-in
-       ============================================ */
-    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var fadeEls = document.querySelectorAll('.fade-in');
-
-    if (reducedMotion) {
-        fadeEls.forEach(function(el) { el.classList.add('visible'); });
-    } else if ('IntersectionObserver' in window) {
-        var fadeObserver = new IntersectionObserver(function(entries) {
+    /* --- IntersectionObserver for reveal animations --- */
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && revealEls.length) {
+        var revealObs = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    fadeObserver.unobserve(entry.target);
+                    revealObs.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15 });
-
-        fadeEls.forEach(function(el) { fadeObserver.observe(el); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function(el) { revealObs.observe(el); });
     } else {
-        fadeEls.forEach(function(el) { el.classList.add('visible'); });
+        revealEls.forEach(function(el) { el.classList.add('visible'); });
     }
 
 })();

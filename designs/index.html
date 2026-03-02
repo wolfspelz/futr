@@ -184,7 +184,7 @@ h1 {
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.35em;
   color: #00BFA5;
   opacity: 0.6;
@@ -225,40 +225,6 @@ h1 {
   opacity: 0.5;
 }
 
-/* #6 Field Notes — device chrome + paper */
-.thumb-6 {
-  background: linear-gradient(180deg, #C8CCD4 0%, #C8CCD4 15%, #B8BCC4 15%, #B8BCC4 18%, #F7F5F0 18%, #F7F5F0 85%, #B8BCC4 85%, #B8BCC4 100%);
-  border-bottom-color: #B8BCC4 !important;
-}
-.thumb-6::before {
-  content: 'FIELD NOTES';
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Courier New', monospace;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: #5A5550;
-  letter-spacing: 0.15em;
-  font-style: italic;
-}
-.thumb-6::after {
-  content: '';
-  position: absolute;
-  top: 18%;
-  left: 0;
-  right: 0;
-  bottom: 15%;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent, transparent 11px,
-      rgba(120, 115, 108, 0.08) 11px, rgba(120, 115, 108, 0.08) 12px
-    );
-  pointer-events: none;
-}
-
 /* #7 REDACTED — manila envelope + carbon black dossier */
 .thumb-7 {
   background: #D4C5A9;
@@ -294,32 +260,76 @@ h1 {
   opacity: 0.6;
 }
 
-/* #8 SHRINE — void + candlelight amber */
-.thumb-8 {
-  background: #0F0B08;
+/* #9 SPECIES — alabaster + india ink, clinical specimen catalog */
+.thumb-9 {
+  background: #FAFAF8;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(212,208,203,0.3) 39px, rgba(212,208,203,0.3) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(212,208,203,0.3) 39px, rgba(212,208,203,0.3) 40px);
+  border-bottom-color: #D4D0CB !important;
 }
-.thumb-8::before {
-  content: '✦';
+.thumb-9::before {
+  content: 'FUTR-CU-001';
   position: absolute;
-  top: 40%;
+  top: 22%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3rem;
-  color: #D4890E;
-  text-shadow: 0 0 20px rgba(212, 137, 14, 0.6), 0 0 40px rgba(212, 137, 14, 0.3);
-  opacity: 0.7;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8125rem;
+  color: #6B6B6B;
+  letter-spacing: 0.1em;
 }
-.thumb-8::after {
-  content: 'SHRINE';
+.thumb-9::after {
+  content: '';
   position: absolute;
-  bottom: 20%;
+  top: 42%;
+  left: 10%;
+  right: 10%;
+  bottom: 15%;
+  border: 1px dashed #D4D0CB;
+  border-left: 3px solid #2D6A4F;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* #10 PANOPTICON — phosphor green + gunmetal, tracking station */
+.thumb-10 {
+  background: #1B1F23;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.06) 1px, rgba(0,0,0,0.06) 2px);
+}
+.thumb-10::before {
+  content: 'SECTOR 04 // LOCK';
+  position: absolute;
+  top: 25%;
   left: 50%;
-  transform: translateX(-50%);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.3em;
-  color: #ADA196;
-  opacity: 0.6;
+  transform: translate(-50%, -50%);
+  font-family: 'Courier New', monospace;
+  font-size: 0.8125rem;
+  color: #33FF66;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+}
+.thumb-10::after {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 8%;
+  right: 8%;
+  bottom: 10%;
+  background:
+    linear-gradient(0deg,
+      transparent 0px, transparent 2px,
+      rgba(51,255,102,0.08) 2px, rgba(51,255,102,0.08) 3px,
+      transparent 3px, transparent 20px,
+      rgba(51,255,102,0.08) 20px, rgba(51,255,102,0.08) 21px,
+      transparent 21px, transparent 38px,
+      rgba(51,255,102,0.08) 38px, rgba(51,255,102,0.08) 39px,
+      transparent 39px, transparent 56px,
+      rgba(51,255,102,0.08) 56px, rgba(51,255,102,0.08) 57px
+    );
+  border: 1px solid #2E353D;
+  border-radius: 2px;
 }
 
 /* #5 The FUTR Chronicle — newsprint + ink */
@@ -361,6 +371,82 @@ h1 {
   border-left: 1px solid rgba(139, 115, 85, 0.3);
   margin-left: 55%;
   width: 37%;
+}
+
+/* #6 SPORE DRIFT — dark-field mycology, bioluminescent colonies */
+.thumb-6 {
+  background:
+    radial-gradient(circle at 40% 38%, rgba(208,72,144,0.28) 0%, transparent 38%),
+    radial-gradient(circle at 68% 62%, rgba(155,104,232,0.22) 0%, transparent 30%),
+    radial-gradient(circle at 22% 65%, rgba(212,152,43,0.18) 0%, transparent 24%),
+    #08060E;
+}
+.thumb-6::before {
+  content: '';
+  position: absolute;
+  top: 36%;
+  left: 38%;
+  width: 58px;
+  height: 58px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid rgba(208,72,144,0.55);
+  box-shadow: 0 0 14px rgba(208,72,144,0.25), inset 0 0 10px rgba(208,72,144,0.07);
+}
+.thumb-6::after {
+  content: 'SPORE DRIFT';
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(208,72,144,0.65);
+  white-space: nowrap;
+}
+
+/* #8 TRANSIT AUTHORITY — government form paper, rubber stamps */
+.thumb-8 {
+  background: #F5F2EC;
+  border-bottom-color: #D4CAB8 !important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+.thumb-8::before {
+  content: 'MULTIVERSE TRANSIT AUTHORITY';
+  position: absolute;
+  top: 24%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  border-top: 2px solid #1A1A1A;
+  border-bottom: 1px solid #1A1A1A;
+  padding: 0.25rem 0;
+}
+.thumb-8::after {
+  content: 'PROCESSED';
+  position: absolute;
+  top: 52%;
+  right: 12%;
+  transform: translateY(-50%) rotate(12deg);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #B03432;
+  border: 2.5px solid #B03432;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  opacity: 0.22;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .design-card:hover,
@@ -558,19 +644,19 @@ h1 {
     <div class="design-body">
       <div class="design-header">
         <span class="design-number">#6</span>
-        <span class="design-name">Field Notes</span>
+        <span class="design-name">Spore Drift</span>
       </div>
       <p class="design-summary">
-        A xenoanthropologist's retro-futuristic datapad — part journal, part data terminal. Inspired by a painting of a chunky field device with paper-like screens. Warm device chrome bezel wrapping cream paper, with scan-line overlays, handwritten margin annotations, and specimen cards pinned with tape. Kalam + Source Sans 3 typography, device bezel frame with LED indicators, universe specimen tray, civilization node graph with SVG connection lines, field ledger log entries, and "annotate, toggle, trace" interaction language.
+        A mycologist's dark-field observation log. Civilizations are bioluminescent fungal colonies glowing against near-black substrate. Each universe is a circular petri dish, sized by civilization count, scattered across the page like dishes on a lab bench. Gram-stain palette: fuchsia for gram-positive cultures, purple for gram-variable, amber for growth medium. SVG mycelium threads connect the colonies into a living network. Lexend + Overpass Mono typography, "Inoculate — Culture — Observe" interaction language.
       </p>
       <div class="design-tags">
-        <span class="tag">Device chrome + Paper theme</span>
-        <span class="tag">Grey + Amber + Circuit Blue palette</span>
-        <span class="tag">Kalam + Source Sans 3</span>
-        <span class="tag">Datapad bezel frame</span>
-        <span class="tag">Specimen tray cards</span>
-        <span class="tag">SVG node graph</span>
-        <span class="tag">Field log entries</span>
+        <span class="tag">Dark mycological theme</span>
+        <span class="tag">Purple-black + Fuchsia glow</span>
+        <span class="tag">Lexend + Overpass Mono</span>
+        <span class="tag">Circular petri dish layout</span>
+        <span class="tag">Gram-stain palette logic</span>
+        <span class="tag">SVG mycelium network</span>
+        <span class="tag">Dark-field illumination</span>
       </div>
     </div>
   </a>
@@ -602,19 +688,63 @@ h1 {
     <div class="design-body">
       <div class="design-header">
         <span class="design-number">#8</span>
-        <span class="design-name">Shrine</span>
+        <span class="design-name">Transit Authority</span>
       </div>
       <p class="design-summary">
-        A digital devotional space treating fictional civilizations with reverence. Deep warm void with candlelight amber glow and vermillion accents. All 30 civilization names float as a constellation — font-weight mapped to log(population), text-shadow glow mapped to Kardashev rating. Crimson Pro variable + Outfit typography, horizontal-scrolling universe altars, flame-bar comparative charts, smoke gradient transitions, threshold dividers, and "illuminate, offer, meditate" interaction language. Reality's civilizations form a hidden arc of human progress.
+        An intergalactic immigration processing terminal. Civilizations are travelers being cleared through multiverse customs — filed as transit permits, stamped and processed by the Multiverse Transit Authority. Form paper with institutional sage, carbon-copy blue, and rubber-stamp red on off-white bureaucratic stock. Permit statuses carry narrative weight: The Culture is Priority, Warhammer is Flagged, the OPA is Pending. Darker Grotesque + Space Mono typography, perforated tear-line section dividers, 3-letter port codes, and "Process — Stamp — File" interaction language.
       </p>
       <div class="design-tags">
-        <span class="tag">Dark void theme</span>
-        <span class="tag">Candlelight Amber + Vermillion palette</span>
-        <span class="tag">Crimson Pro + Outfit</span>
-        <span class="tag">Luminosity-mapped constellation</span>
-        <span class="tag">Horizontal altar scroll</span>
-        <span class="tag">Flame-flicker bar charts</span>
-        <span class="tag">Data-driven typography</span>
+        <span class="tag">Light form-paper theme</span>
+        <span class="tag">Sage + Carbon + Stamp Red palette</span>
+        <span class="tag">Darker Grotesque + Space Mono</span>
+        <span class="tag">Single-column form document</span>
+        <span class="tag">Rubber stamp narrative</span>
+        <span class="tag">Port code system</span>
+        <span class="tag">Bureaucratic absurdism</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="9.html" class="design-card">
+    <div class="design-thumb thumb-9" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#9</span>
+        <span class="design-name">Species</span>
+      </div>
+      <p class="design-summary">
+        A xenobiologist's specimen catalog — civilizations pinned and labeled with clinical precision. Cold clinical white with botanical green accents and india ink text. Each universe is a phylum, each civilization a specimen with catalog numbers, classification badges, mounting pins, and scale bars. Lora + Fira Code typography, taxonomic grid organized by Kardashev classification hierarchy, featured specimen highlight for the Culture at K 2.3, annotated field notes on anomalous specimens, and "classify, catalog, compare" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Light clinical theme</span>
+        <span class="tag">Alabaster + India Ink palette</span>
+        <span class="tag">Lora + Fira Code</span>
+        <span class="tag">Taxonomic specimen cards</span>
+        <span class="tag">Kardashev classification key</span>
+        <span class="tag">Catalog numbering system</span>
+        <span class="tag">Specimen field notes</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="10.html" class="design-card">
+    <div class="design-thumb thumb-10" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#10</span>
+        <span class="design-name">Panopticon</span>
+      </div>
+      <p class="design-summary">
+        A deep space telemetry network monitoring 9 active sectors. Phosphor green on gunmetal with CRT scanlines and a live radar sweep. Each universe is a tracking sector in a 3×3 grid, each civilization a tracked contact with military-format readouts. Share Tech Mono + Archivo typography, status bar with live mission elapsed time counter, signal lock indicators, amber-accented Reality sector as a long-term observation control subject, contact flags on anomalous readings, and "track, monitor, observe" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark phosphor theme</span>
+        <span class="tag">Green + Gunmetal palette</span>
+        <span class="tag">Share Tech Mono + Archivo</span>
+        <span class="tag">3×3 sector grid</span>
+        <span class="tag">CRT scanlines + Radar sweep</span>
+        <span class="tag">Live MET counter</span>
+        <span class="tag">Contact tracking flags</span>
       </div>
     </div>
   </a>

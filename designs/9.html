@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTR — Species</title>
+    <meta name="description" content="A xenological specimen catalog — 30 civilizations from 9 fictional universes, classified and cataloged with clinical precision.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           DESIGN 9: SPECIES
+           Xenological Specimen Catalog
+           Classify — Catalog — Compare
+           ============================================ */
+
+        /* --- Design Tokens --- */
+        :root {
+            --alabaster: #FAFAF8;
+            --alabaster-dim: #F0EFED;
+            --ink: #1A1A1A;
+            --ink-light: #3A3A3A;
+            --ink-faint: #6B6B6B;
+            --specimen-green: #2D6A4F;
+            --specimen-green-light: #D4E7DD;
+            --specimen-green-faint: #EDF5F0;
+            --sepia: #B5651D;
+            --sepia-bg: #FDF6EE;
+            --sepia-border: #E8D5BC;
+            --class-blue: #1B4965;
+            --class-blue-light: #D6E4ED;
+            --rule-color: #D4D0CB;
+            --rule-dark: #A8A29E;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+            --font-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
+            --page-max: 1180px;
+            --transition-base: 0.25s ease;
+        }
+
+        /* --- Reset & Base --- */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--ink);
+            background-color: var(--alabaster);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* --- Skip Link --- */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--class-blue);
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            z-index: 1000;
+            transition: top var(--transition-base);
+        }
+        .skip-link:focus-visible {
+            top: 0;
+        }
+
+        /* --- Reduced Motion --- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* --- Noscript --- */
+        .noscript-banner {
+            background: var(--sepia-bg);
+            border-bottom: 1px solid var(--sepia-border);
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--ink-light);
+            text-align: center;
+        }
+
+        /* --- Page Wrapper --- */
+        .page {
+            max-width: var(--page-max);
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 4vw, 3rem);
+        }
+
+        /* --- Catalog Header --- */
+        .catalog-header {
+            padding: 3rem 0 2rem;
+            border-bottom: 2px solid var(--ink);
+            margin-bottom: 0.5rem;
+            position: relative;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(212, 208, 203, 0.3) 39px, rgba(212, 208, 203, 0.3) 40px),
+                repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(212, 208, 203, 0.3) 39px, rgba(212, 208, 203, 0.3) 40px);
+            background-size: 40px 40px;
+        }
+
+        .catalog-institution {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--specimen-green);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .catalog-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .catalog-subtitle {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+            color: var(--ink-faint);
+            line-height: 1.5;
+            max-width: 44rem;
+        }
+
+        /* --- Catalog Meta Bar --- */
+        .catalog-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--rule-color);
+            margin-bottom: 2.5rem;
+        }
+
+        .meta-item {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--ink-light);
+        }
+
+        .meta-label {
+            color: var(--ink-faint);
+            margin-right: 0.35rem;
+        }
+
+        .meta-value {
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        /* --- Classification Key --- */
+        .class-key {
+            background: var(--alabaster-dim);
+            border: 1px solid var(--rule-color);
+            border-radius: 4px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .class-key-title {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--class-blue);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .class-key-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+        }
+
+        .class-key-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--ink-light);
+        }
+
+        .class-swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .class-swatch.c0a { background: #A8A29E; }
+        .class-swatch.c0b { background: #B5651D; }
+        .class-swatch.c0c { background: #D97706; }
+        .class-swatch.ci  { background: #2D6A4F; }
+        .class-swatch.cii { background: #1B4965; }
+        .class-swatch.cna { background: var(--rule-color); border: 1px dashed var(--rule-dark); }
+
+        /* --- Featured Specimen Highlight --- */
+        .catalog-highlight {
+            display: flex;
+            align-items: stretch;
+            gap: 1.5rem;
+            background: var(--class-blue-light);
+            border: 1px solid #B0C9DA;
+            border-left: 4px solid var(--class-blue);
+            border-radius: 4px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .highlight-label {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--class-blue);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-name {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+            margin-bottom: 0.15rem;
+        }
+
+        .highlight-desc {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--ink-light);
+            line-height: 1.5;
+        }
+
+        .highlight-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-shrink: 0;
+            align-items: center;
+        }
+
+        .highlight-stat {
+            text-align: center;
+        }
+
+        .highlight-stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--class-blue);
+            line-height: 1.2;
+        }
+
+        .highlight-stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--ink-faint);
+        }
+
+        @media (max-width: 600px) {
+            .catalog-highlight { flex-direction: column; gap: 0.75rem; }
+            .highlight-stats { justify-content: flex-start; }
+        }
+
+        /* --- Single-specimen grid fix --- */
+        .specimen-grid-solo {
+            max-width: 540px;
+        }
+
+        /* --- Phylum Sections --- */
+        .phylum {
+            margin-bottom: 3rem;
+        }
+
+        .phylum-header {
+            display: flex;
+            align-items: flex-end;
+            gap: 1.25rem;
+            padding: 1rem 0 0.75rem;
+            border-bottom: 1px solid var(--rule-color);
+            margin-bottom: 1.25rem;
+        }
+
+        .phylum-image {
+            width: 160px;
+            height: 96px;
+            object-fit: cover;
+            border-radius: 3px;
+            border: 1px solid var(--rule-color);
+            flex-shrink: 0;
+        }
+
+        .phylum-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .phylum-label {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--class-blue);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .phylum-name {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .phylum-count {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--ink-faint);
+            white-space: nowrap;
+            flex-shrink: 0;
+            padding-bottom: 0.15rem;
+        }
+
+        /* --- Specimen Grid --- */
+        .specimen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 680px) {
+            .specimen-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- Specimen Card --- */
+        .specimen-card {
+            background: #fff;
+            border: 1px solid var(--rule-color);
+            border-left: 3px solid var(--specimen-green);
+            border-radius: 3px;
+            padding: 1.25rem 1.25rem 1rem;
+            position: relative;
+            box-shadow: var(--card-shadow);
+            transition: box-shadow var(--transition-base), border-color var(--transition-base);
+        }
+
+        .specimen-card:hover {
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .specimen-card:focus-within {
+            outline: 2px solid var(--class-blue);
+            outline-offset: 2px;
+        }
+
+        /* Mounting pin indicators */
+        .specimen-card::before,
+        .specimen-card::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--rule-color);
+            border: 1px solid var(--rule-dark);
+            top: 8px;
+        }
+        .specimen-card::before { right: 8px; }
+        .specimen-card::after { right: 22px; }
+
+        .specimen-catalog-no {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--ink-faint);
+            margin-bottom: 0.25rem;
+        }
+
+        .specimen-name {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .specimen-class {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            margin-bottom: 0.75rem;
+        }
+
+        .specimen-class.c0a { background: #f0efed; color: #57534E; }
+        .specimen-class.c0b { background: var(--sepia-bg); color: #92400E; }
+        .specimen-class.c0c { background: #FEF3C7; color: #92400E; }
+        .specimen-class.ci  { background: var(--specimen-green-faint); color: #1B4332; }
+        .specimen-class.cii { background: var(--class-blue-light); color: #0C2D42; }
+        .specimen-class.cna { background: var(--alabaster-dim); color: var(--ink-faint); border: 1px dashed var(--rule-color); }
+
+        .specimen-class-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .specimen-class.c0a .specimen-class-dot { background: #A8A29E; }
+        .specimen-class.c0b .specimen-class-dot { background: #B5651D; }
+        .specimen-class.c0c .specimen-class-dot { background: #D97706; }
+        .specimen-class.ci .specimen-class-dot  { background: #2D6A4F; }
+        .specimen-class.cii .specimen-class-dot { background: #1B4965; }
+        .specimen-class.cna .specimen-class-dot { background: var(--rule-dark); }
+
+        /* --- Vitals Panel --- */
+        .specimen-vitals {
+            border-top: 1px dashed var(--rule-color);
+            padding-top: 0.65rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem 1rem;
+        }
+
+        .vital-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            line-height: 1.6;
+        }
+
+        .vital-label {
+            color: var(--ink-faint);
+            flex-shrink: 0;
+        }
+
+        .vital-value {
+            color: var(--ink);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        /* Scale bar decoration */
+        .specimen-scalebar {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 0.65rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--rule-dark);
+        }
+
+        .scalebar-line {
+            flex: 1;
+            height: 0;
+            border-top: 1px solid var(--rule-color);
+            position: relative;
+        }
+
+        .scalebar-line::before,
+        .scalebar-line::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            width: 1px;
+            height: 7px;
+            background: var(--rule-color);
+        }
+        .scalebar-line::before { left: 0; }
+        .scalebar-line::after { right: 0; }
+
+        /* --- Specimen Notes --- */
+        .specimen-note {
+            margin-top: 0.65rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-style: normal;
+            color: var(--specimen-green);
+            line-height: 1.5;
+            padding: 0.5rem 0.65rem;
+            background: var(--specimen-green-faint);
+            border-radius: 2px;
+        }
+
+        /* --- Footer --- */
+        .catalog-footer {
+            border-top: 2px solid var(--ink);
+            padding: 1.5rem 0 3rem;
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+
+        .footer-note {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--ink-faint);
+        }
+
+        .footer-link {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--specimen-green);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color var(--transition-base);
+        }
+        .footer-link:hover { border-bottom-color: var(--specimen-green); }
+        .footer-link:focus-visible {
+            outline: 2px solid var(--class-blue);
+            outline-offset: 2px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            .catalog-header { padding: 2rem 0 1.5rem; }
+            .phylum-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+            .phylum-image { width: 100%; height: 120px; }
+            .specimen-vitals { grid-template-columns: 1fr; }
+            .catalog-meta { gap: 0.75rem; }
+            .class-key-grid { gap: 0.35rem 1rem; }
+        }
+
+        /* --- Focus visible for all interactive --- */
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 2px solid var(--class-blue);
+            outline-offset: 2px;
+        }
+
+        /* --- Print styles --- */
+        @media print {
+            body { background: #fff; }
+            .skip-link { display: none; }
+            .specimen-card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <noscript>
+        <div class="noscript-banner">
+            All catalog content is available without JavaScript.
+        </div>
+    </noscript>
+
+    <main id="main-content" class="page">
+
+        <!-- ===== CATALOG HEADER ===== -->
+        <header class="catalog-header">
+            <p class="catalog-institution">Galactic Institute of Xenological Studies</p>
+            <h1 class="catalog-title">Multiverse Specimen Catalog</h1>
+            <p class="catalog-subtitle">A comparative survey of 30 civilizations across 9 phyla, classified by developmental stage, population extent, and energy utilization capacity.</p>
+        </header>
+
+        <!-- ===== META BAR ===== -->
+        <div class="catalog-meta" aria-label="Catalog summary statistics">
+            <div class="meta-item"><span class="meta-label">Specimens:</span> <span class="meta-value">30</span></div>
+            <div class="meta-item"><span class="meta-label">Phyla:</span> <span class="meta-value">9</span></div>
+            <div class="meta-item"><span class="meta-label">Catalog Ref:</span> <span class="meta-value">FUTR-2026-R3</span></div>
+            <div class="meta-item"><span class="meta-label">Classification:</span> <span class="meta-value">Kardashev-Extended</span></div>
+        </div>
+
+        <!-- ===== CLASSIFICATION KEY ===== -->
+        <div class="class-key" aria-label="Classification key">
+            <div class="class-key-title">Classification Key — Kardashev Developmental Scale</div>
+            <div class="class-key-grid">
+                <div class="class-key-item"><span class="class-swatch c0a" aria-hidden="true"></span> Class 0-A: K &lt; 0.5 (Pre-industrial)</div>
+                <div class="class-key-item"><span class="class-swatch c0b" aria-hidden="true"></span> Class 0-B: K 0.5–0.7 (Industrial)</div>
+                <div class="class-key-item"><span class="class-swatch c0c" aria-hidden="true"></span> Class 0-C: K 0.7–0.99 (Early Spacefaring)</div>
+                <div class="class-key-item"><span class="class-swatch ci" aria-hidden="true"></span> Class I: K 1.0–1.99 (Planetary)</div>
+                <div class="class-key-item"><span class="class-swatch cii" aria-hidden="true"></span> Class II: K 2.0+ (Stellar)</div>
+                <div class="class-key-item"><span class="class-swatch cna" aria-hidden="true"></span> Unclassified (Insufficient data)</div>
+            </div>
+        </div>
+
+        <!-- ===== FEATURED SPECIMEN ===== -->
+        <div class="catalog-highlight" aria-label="Featured specimen">
+            <div>
+                <div class="highlight-label">Catalog Highlight — Highest Classified Specimen</div>
+                <div class="highlight-name">Culture (pre-war) — FUTR-CU-001</div>
+                <div class="highlight-desc">Class II stellar civilization. 30 trillion inhabitants across ~14,000 Orbitals and 6 Dyson Spheres. Anomalous energy signature at K 2.3 — the highest value recorded in this survey.</div>
+            </div>
+            <div class="highlight-stats">
+                <div class="highlight-stat">
+                    <div class="highlight-stat-value">K 2.3</div>
+                    <div class="highlight-stat-label">Kardashev</div>
+                </div>
+                <div class="highlight-stat">
+                    <div class="highlight-stat-value">~30T</div>
+                    <div class="highlight-stat-label">Population</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PHYLUM: STAR TREK ===== -->
+        <section class="phylum" aria-label="Star Trek universe specimens">
+            <div class="phylum-header">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&h=400&q=80"
+                     alt="" aria-hidden="true" class="phylum-image" width="160" height="96" loading="eager" fetchpriority="high">
+                <div class="phylum-info">
+                    <div class="phylum-label">Phylum I</div>
+                    <h2 class="phylum-name">Star Trek</h2>
+                </div>
+                <div class="phylum-count">4 specimens</div>
+            </div>
+            <div class="specimen-grid">
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-ST-001</div>
+                    <h3 class="specimen-name">Vulcans 2063</h3>
+                    <div class="specimen-class cna"><span class="specimen-class-dot" aria-hidden="true"></span> Unclassified</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">TL9</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-ST-002</div>
+                    <h3 class="specimen-name">Andorian Empire 2161</h3>
+                    <div class="specimen-class c0c"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-C</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~8B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">14</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.9</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-ST-003</div>
+                    <h3 class="specimen-name">Klingon Empire 2161</h3>
+                    <div class="specimen-class c0c"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-C</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~9B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">~20</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.9</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-ST-004</div>
+                    <h3 class="specimen-name">Federation 2373</h3>
+                    <div class="specimen-class ci"><span class="specimen-class-dot" aria-hidden="true"></span> Class I</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~100B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">~150</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">1.0</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Boundary specimen. K-level 1.0 marks exact Class I threshold.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== PHYLUM: WARHAMMER 40K ===== -->
+        <section class="phylum" aria-label="Warhammer 40,000 universe specimens">
+            <div class="phylum-header">
+                <img src="https://images.unsplash.com/photo-1534996858221-380b92700493?auto=format&fit=crop&w=800&h=400&q=80"
+                     alt="" aria-hidden="true" class="phylum-image" width="160" height="96" loading="lazy">
+                <div class="phylum-info">
+                    <div class="phylum-label">Phylum II</div>
+                    <h2 class="phylum-name">Warhammer 40,000</h2>
+                </div>
+                <div class="phylum-count">2 specimens</div>
+            </div>
+            <div class="specimen-grid">
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-WH-001</div>
+                    <h3 class="specimen-name">Imperium of Man M41</h3>
+                    <div class="specimen-class ci"><span class="specimen-class-dot" aria-hidden="true"></span> Class I</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~1×10¹⁶</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">~1M</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">1.6</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Largest territorial extent in catalog. 1M+ administered worlds.</div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-WH-002</div>
+                    <h3 class="specimen-name">Orks M41</h3>
+                    <div class="specimen-class cna"><span class="specimen-class-dot" aria-hidden="true"></span> Unclassified</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~5×10¹⁶</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">~2M</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Highest estimated population in catalog. Resists standard classification.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== PHYLUM: FIREFLY ===== -->
+        <section class="phylum" aria-label="Firefly universe specimens">
+            <div class="phylum-header">
+                <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&h=400&q=80"
+                     alt="" aria-hidden="true" class="phylum-image" width="160" height="96" loading="lazy">
+                <div class="phylum-info">
+                    <div class="phylum-label">Phylum III</div>
+                    <h2 class="phylum-name">Firefly</h2>
+                </div>
+                <div class="phylum-count">1 specimen</div>
+            </div>
+            <div class="specimen-grid specimen-grid-solo">
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-FF-001</div>
+                    <h3 class="specimen-name">Alliance 2517</h3>
+                    <div class="specimen-class c0c"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-C</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~303B</span></div>
+                        <div class="vital-row"><span class="vital-label">Worlds</span> <span class="vital-value">215</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.95</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== PHYLUM: THE CULTURE ===== -->
+        <section class="phylum" aria-label="The Culture universe specimens">
+            <div class="phylum-header">
+                <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=800&h=400&q=80"
+                     alt="" aria-hidden="true" class="phylum-image" width="160" height="96" loading="lazy">
+                <div class="phylum-info">
+                    <div class="phylum-label">Phylum IV</div>
+                    <h2 class="phylum-name">The Culture</h2>
+                </div>
+                <div class="phylum-count">1 specimen</div>
+            </div>
+            <div class="specimen-grid specimen-grid-solo">
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-CU-001</div>
+                    <h3 class="specimen-name">Culture (pre-war)</h3>
+                    <div class="specimen-class cii"><span class="specimen-class-dot" aria-hidden="true"></span> Class II</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~30T</span></div>
+                        <div class="vital-row"><span class="vital-label">Orbitals</span> <span class="vital-value">~14,000</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">2.3</span></div>
+                        <div class="vital-row"><span class="vital-label">Dyson Sp.</span> <span class="vital-value">6</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Highest K-level in catalog. Anomalous energy signature — recommend priority study.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== PHYLUM: HONORVERSE ===== -->
+        <section class="phylum" aria-label="Honorverse universe specimens">
+            <div class="phylum-header">
+                <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=800&h=400&q=80"
+                     alt="" aria-hidden="true" class="phylum-image" width="160" height="96" loading="lazy">
+                <div class="phylum-info">
+                    <div class="phylum-label">Phylum V</div>
+                    <h2 class="phylum-name">Honorverse</h2>
+                </div>
+                <div class="phylum-count">2 specimens</div>
+            </div>
+            <div class="specimen-grid">
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-HV-001</div>
+                    <h3 class="specimen-name">Manticore 1903 PD</h3>
+                    <div class="specimen-class ci"><span class="specimen-class-dot" aria-hidden="true"></span> Class I</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~3.2B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">3</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">1.1</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-HV-002</div>
+                    <h3 class="specimen-name">Haven 1903 PD</h3>
+                    <div class="specimen-class ci"><span class="specimen-class-dot" aria-hidden="true"></span> Class I</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~200B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">~100</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">1.0</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== PHYLUM: PERRY RHODAN ===== -->
+        <section class="phylum" aria-label="Perry Rhodan universe specimens">
+            <div class="phylum-header">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80"
+                     alt="" aria-hidden="true" class="phylum-image" width="160" height="96" loading="lazy">
+                <div class="phylum-info">
+                    <div class="phylum-label">Phylum VI</div>
+                    <h2 class="phylum-name">Perry Rhodan</h2>
+                </div>
+                <div class="phylum-count">3 specimens</div>
+            </div>
+            <div class="specimen-grid">
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-PR-001</div>
+                    <h3 class="specimen-name">Solares Imperium 2040</h3>
+                    <div class="specimen-class c0c"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-C</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~9B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">6</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.9</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-PR-002</div>
+                    <h3 class="specimen-name">Großes Imperium 2040</h3>
+                    <div class="specimen-class ci"><span class="specimen-class-dot" aria-hidden="true"></span> Class I</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~50T</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">50,000</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">1.6</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Shares Class I / K 1.6 with FUTR-WH-001 despite radically different population structure. Cross-phylum convergence under study.</div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-PR-003</div>
+                    <h3 class="specimen-name">Posbis 2114</h3>
+                    <div class="specimen-class ci"><span class="specimen-class-dot" aria-hidden="true"></span> Class I</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">Robotic</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">1.3</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Non-biological specimen. Robotic collective. Standard population metrics inapplicable.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== PHYLUM: ORION'S ARM ===== -->
+        <section class="phylum" aria-label="Orion's Arm universe specimens">
+            <div class="phylum-header">
+                <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=800&h=400&q=80"
+                     alt="" aria-hidden="true" class="phylum-image" width="160" height="96" loading="lazy">
+                <div class="phylum-info">
+                    <div class="phylum-label">Phylum VII</div>
+                    <h2 class="phylum-name">Orion's Arm</h2>
+                </div>
+                <div class="phylum-count">3 specimens</div>
+            </div>
+            <div class="specimen-grid">
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-OA-001</div>
+                    <h3 class="specimen-name">Terragen Sphere 10600 AT</h3>
+                    <div class="specimen-class cna"><span class="specimen-class-dot" aria-hidden="true"></span> Unclassified</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~3.9×10¹⁷</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">TL14</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Highest tech level in catalog. Exceeds standard classification frameworks.</div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-OA-002</div>
+                    <h3 class="specimen-name">Solar System 10600 AT</h3>
+                    <div class="specimen-class cna"><span class="specimen-class-dot" aria-hidden="true"></span> Unclassified</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">TL13</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-OA-003</div>
+                    <h3 class="specimen-name">Diamond Network 10600 AT</h3>
+                    <div class="specimen-class cna"><span class="specimen-class-dot" aria-hidden="true"></span> Unclassified</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">TL14</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Non-biological specimen. AI substrate network. Classification protocols under review.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== PHYLUM: THE EXPANSE ===== -->
+        <section class="phylum" aria-label="The Expanse universe specimens">
+            <div class="phylum-header">
+                <img src="https://images.unsplash.com/photo-1457364559154-aa2644600ebb?auto=format&fit=crop&w=800&h=400&q=80"
+                     alt="" aria-hidden="true" class="phylum-image" width="160" height="96" loading="lazy">
+                <div class="phylum-info">
+                    <div class="phylum-label">Phylum VIII</div>
+                    <h2 class="phylum-name">The Expanse</h2>
+                </div>
+                <div class="phylum-count">4 specimens</div>
+            </div>
+            <div class="specimen-grid">
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-EX-001</div>
+                    <h3 class="specimen-name">United Nations 2350</h3>
+                    <div class="specimen-class c0c"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-C</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~30B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.89</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-EX-002</div>
+                    <h3 class="specimen-name">Mars 2350</h3>
+                    <div class="specimen-class c0c"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-C</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~4B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.85</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-EX-003</div>
+                    <h3 class="specimen-name">Sol System 2350</h3>
+                    <div class="specimen-class c0c"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-C</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~35B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.9</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-EX-004</div>
+                    <h3 class="specimen-name">Outer Planets Alliance 2350</h3>
+                    <div class="specimen-class c0b"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-B</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">~100M</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">—</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.67</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Anomalous specimen. Spacefaring civilization sustaining habitation at K 0.67 — well below expected threshold for permanent off-world presence.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== PHYLUM: REALITY ===== -->
+        <section class="phylum" aria-label="Reality universe specimens">
+            <div class="phylum-header">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80"
+                     alt="" aria-hidden="true" class="phylum-image" width="160" height="96" loading="lazy">
+                <div class="phylum-info">
+                    <div class="phylum-label">Phylum IX — Control Sample</div>
+                    <h2 class="phylum-name">Reality</h2>
+                </div>
+                <div class="phylum-count">10 specimens</div>
+            </div>
+            <div class="specimen-grid">
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-001</div>
+                    <h3 class="specimen-name">Early Pleistocene</h3>
+                    <div class="specimen-class c0a"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-A</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">18,500</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.057</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-002</div>
+                    <h3 class="specimen-name">Stone Age</h3>
+                    <div class="specimen-class c0a"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-A</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">50,000</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.1</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-003</div>
+                    <h3 class="specimen-name">Bronze Age</h3>
+                    <div class="specimen-class c0a"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-A</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">20M</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.36</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-004</div>
+                    <h3 class="specimen-name">Classic Age</h3>
+                    <div class="specimen-class c0a"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-A</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">100M</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.46</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-005</div>
+                    <h3 class="specimen-name">Middle Ages</h3>
+                    <div class="specimen-class c0a"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-A</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">200M</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.48</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-006</div>
+                    <h3 class="specimen-name">Age of Sail</h3>
+                    <div class="specimen-class c0b"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-B</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">800M</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.54</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-007</div>
+                    <h3 class="specimen-name">Industrialization</h3>
+                    <div class="specimen-class c0b"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-B</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">1B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.56</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-008</div>
+                    <h3 class="specimen-name">20th Century</h3>
+                    <div class="specimen-class c0b"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-B</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">1.15B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.65</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-009</div>
+                    <h3 class="specimen-name">1980s</h3>
+                    <div class="specimen-class c0c"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-C</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">4B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.7</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: First control sample observation at Class 0-C. Coincides with initial extra-atmospheric capability.</div>
+                </div>
+
+                <div class="specimen-card">
+                    <div class="specimen-catalog-no">FUTR-RE-010</div>
+                    <h3 class="specimen-name">2023</h3>
+                    <div class="specimen-class c0c"><span class="specimen-class-dot" aria-hidden="true"></span> Class 0-C</div>
+                    <div class="specimen-vitals">
+                        <div class="vital-row"><span class="vital-label">Pop.</span> <span class="vital-value">8.1B</span></div>
+                        <div class="vital-row"><span class="vital-label">Planets</span> <span class="vital-value">1</span></div>
+                        <div class="vital-row"><span class="vital-label">K-Level</span> <span class="vital-value">0.73</span></div>
+                        <div class="vital-row"><span class="vital-label">Tech</span> <span class="vital-value">—</span></div>
+                    </div>
+                    <div class="specimen-scalebar" aria-hidden="true"><span class="scalebar-line"></span></div>
+                    <div class="specimen-note">NOTE: Most recent control observation. Single-planet species at Class 0-C threshold.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== CATALOG FOOTER ===== -->
+        <footer class="catalog-footer">
+            <div class="footer-note">Catalog compiled by the Galactic Institute of Xenological Studies — FUTR Division</div>
+            <a href="https://www.futr.space/" class="footer-link">futr.space</a>
+        </footer>
+
+    </main>
+
+    <script>
+    (function() {
+        'use strict';
+
+        /* Respect reduced motion globally */
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        /* IntersectionObserver for phylum section fade-in */
+        if ('IntersectionObserver' in window && !prefersReducedMotion.matches) {
+            var phylumSections = document.querySelectorAll('.phylum');
+            phylumSections.forEach(function(section) {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(12px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+            phylumSections.forEach(function(section) {
+                observer.observe(section);
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
