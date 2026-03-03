@@ -407,6 +407,85 @@ h1 {
   white-space: nowrap;
 }
 
+/* #11 SINGULARITY — Doppler black hole, void + cyan + orange */
+.thumb-11 {
+  background: #0A0510;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 212, 255, 0.08) 0%,
+    transparent 60%
+  );
+}
+.thumb-11::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: conic-gradient(
+    from 180deg,
+    #00D4FF, #4DE0FF 60deg, #E8F0FF 100deg,
+    #FFB088 140deg, #FF5722 200deg,
+    #0A0510 270deg, #062040 330deg, #00D4FF
+  );
+  mask: radial-gradient(circle, transparent 28%, rgba(0,0,0,0.5) 32%, black 36%, black 44%, rgba(0,0,0,0.5) 48%, transparent 52%);
+  -webkit-mask: radial-gradient(circle, transparent 28%, rgba(0,0,0,0.5) 32%, black 36%, black 44%, rgba(0,0,0,0.5) 48%, transparent 52%);
+  filter: blur(1px);
+}
+.thumb-11::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #0A0510;
+  box-shadow:
+    0 0 20px 8px rgba(0, 212, 255, 0.1),
+    0 0 40px 16px rgba(0, 212, 255, 0.05);
+}
+
+/* #12 ARCHIVE OMEGA — deep indigo, glitch text, amber data lines */
+.thumb-12 {
+  background: #08061A;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52'%3E%3Cpath d='M30 2L58 15V39L30 52L2 39V15Z' fill='none' stroke='%237C4DFF' stroke-opacity='0.08' stroke-width='0.5'/%3E%3C/svg%3E");
+}
+.thumb-12::before {
+  content: 'AWAKENING';
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #7C4DFF;
+  letter-spacing: 0.15em;
+  text-shadow: 3px 0 #FFD54F, -3px 0 rgba(124,77,255,0.6);
+  opacity: 0.7;
+}
+.thumb-12::after {
+  content: '';
+  position: absolute;
+  top: 58%;
+  left: 12%;
+  right: 12%;
+  bottom: 15%;
+  background:
+    linear-gradient(180deg,
+      #FFD54F 0px, #FFD54F 1px, transparent 1px, transparent 10px,
+      #FFD54F 10px, #FFD54F 11px, transparent 11px, transparent 20px,
+      #FFD54F 20px, #FFD54F 21px, transparent 21px, transparent 30px,
+      #FFD54F 30px, #FFD54F 31px, transparent 31px
+    );
+  opacity: 0.15;
+}
+
 /* #8 TRANSIT AUTHORITY — government form paper, rubber stamps */
 .thumb-8 {
   background: #F5F2EC;
@@ -745,6 +824,50 @@ h1 {
         <span class="tag">CRT scanlines + Radar sweep</span>
         <span class="tag">Live MET counter</span>
         <span class="tag">Contact tracking flags</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="11.html" class="design-card">
+    <div class="design-thumb thumb-11" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#11</span>
+        <span class="design-name">Singularity</span>
+      </div>
+      <p class="design-summary">
+        The Kardashev Event Horizon. A CSS-rendered black hole with a physically accurate Doppler-shifted accretion disk dominates the hero — blue-shifted cyan on the approaching side, red-shifted orange on the receding side. Civilizations orbit the singularity in a gravitational hierarchy: the Culture at K 2.3 nearest the event horizon, Reality at K 0.73 in distant orbit. Exo 2 + Inconsolata typography, proximity-tier card sizing with extreme/high/near/far visual weight, gravity threshold stats bar, parallax singularity recession on scroll, and "Descend — Orbit — Transcend" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark void theme</span>
+        <span class="tag">Cyan + Orange Doppler palette</span>
+        <span class="tag">Exo 2 + Inconsolata</span>
+        <span class="tag">CSS black hole rendering</span>
+        <span class="tag">Doppler accretion disk</span>
+        <span class="tag">Proximity-tier card hierarchy</span>
+        <span class="tag">Parallax scroll recession</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="12.html" class="design-card">
+    <div class="design-thumb thumb-12" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#12</span>
+        <span class="design-name">Archive Omega</span>
+      </div>
+      <p class="design-summary">
+        An ancient knowledge vault awakening from dormancy. Opens with a full-screen glitched boot sequence — "AWAKENING" in violet with amber/violet text-shadow jitter, followed by cascading data lines resolving into the archive interface. Deep indigo substrate with hexagonal SVG texture, violet structural accents on large text, amber data readouts. Archive records catalogued as REC.001-008 with classification tiers. Full-width Integrity Check split-screen comparing humanity's earliest record (Pleistocene K 0.057) against the most advanced (Culture K 2.3). Rajdhani + Red Hat Mono typography, SVG data veins with stroke-dashoffset animation, backdrop-filter blur panels, and "Awaken — Remember — Illuminate" interaction language.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark indigo theme</span>
+        <span class="tag">Violet + Amber palette</span>
+        <span class="tag">Rajdhani + Red Hat Mono</span>
+        <span class="tag">Boot sequence hero</span>
+        <span class="tag">SVG data veins</span>
+        <span class="tag">Integrity Check split-screen</span>
+        <span class="tag">Hexagonal texture + blur panels</span>
       </div>
     </div>
   </a>

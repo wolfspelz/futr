@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTR — Archive Omega</title>
+    <meta name="description" content="The awakened archive — 30 civilizations from 9 universes, remembered and illuminated at the edge of knowledge.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Red+Hat+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <noscript><style>.boot-overlay{display:none!important}.reveal{opacity:1!important;transform:none!important}.vein-svg{display:none}</style></noscript>
+    <style>
+        /* ============================================
+           DESIGN 12: ARCHIVE OMEGA
+           The Awakened Archive
+           Awaken — Remember — Illuminate
+           ============================================ */
+
+        /* --- Design Tokens --- */
+        :root {
+            --indigo: #08061A;
+            --indigo-light: #110E24;
+            --indigo-mid: #1A1530;
+            --indigo-border: #251E3A;
+            --indigo-hover: #2E2548;
+            --violet: #7C4DFF;
+            --violet-dim: rgba(124, 77, 255, 0.5);
+            --violet-faint: rgba(124, 77, 255, 0.08);
+            --violet-glow: rgba(124, 77, 255, 0.15);
+            --amber: #FFD54F;
+            --amber-dim: rgba(255, 213, 79, 0.5);
+            --amber-faint: rgba(255, 213, 79, 0.08);
+            --amber-glow: rgba(255, 213, 79, 0.12);
+            --system: #F0ECE3;
+            --system-dim: #B8B2A8;
+            --system-faint: #8A857D;
+            --font-display: 'Rajdhani', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Red Hat Mono', 'Consolas', 'Monaco', monospace;
+            --page-max: 1200px;
+            --transition-base: 0.3s ease;
+        }
+
+        /* --- Reset & Base --- */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--system);
+            background-color: var(--indigo);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52'%3E%3Cpath d='M30 2L58 15V39L30 52L2 39V15Z' fill='none' stroke='%237C4DFF' stroke-opacity='0.08' stroke-width='0.5'/%3E%3C/svg%3E");
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* --- Skip Link --- */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--amber);
+            color: var(--indigo);
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            z-index: 10000;
+            transition: top var(--transition-base);
+        }
+        .skip-link:focus-visible { top: 0; }
+
+        /* --- Reduced Motion --- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .boot-overlay { display: none !important; }
+            .boot-glitch { animation: none !important; }
+            .boot-line { opacity: 1 !important; animation: none !important; }
+            .vein-path { stroke-dashoffset: 0 !important; transition: none !important; }
+            .scroll-arrow { animation: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
+        /* --- Screen Reader Only --- */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* --- Noscript --- */
+        .noscript-banner {
+            background: var(--indigo-light);
+            border-bottom: 1px solid var(--indigo-border);
+            padding: 0.75rem 1.5rem;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            color: var(--system-dim);
+            text-align: center;
+        }
+
+        /* --- Boot Overlay --- */
+        .boot-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--indigo);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: pointer;
+            transition: opacity 0.4s ease;
+        }
+        .boot-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .boot-overlay.hidden { display: none; }
+
+        .boot-glitch {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 14vw, 9rem);
+            font-weight: 700;
+            color: var(--violet);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: glitch 0.3s step-end infinite;
+            margin-bottom: 3rem;
+        }
+
+        @keyframes glitch {
+            0%, 100% {
+                text-shadow: 3px 0 var(--amber), -3px 0 rgba(124,77,255,0.6);
+                clip-path: inset(0);
+            }
+            15% {
+                text-shadow: -4px 0 var(--amber), 4px 0 rgba(124,77,255,0.6);
+                clip-path: inset(15% 0 65% 0);
+            }
+            30% {
+                text-shadow: 3px 0 var(--amber), -3px 0 rgba(124,77,255,0.6);
+                clip-path: inset(55% 0 5% 0);
+            }
+            50% {
+                text-shadow: -2px 0 var(--amber), 2px 0 rgba(124,77,255,0.6);
+                clip-path: inset(5% 0 45% 0);
+            }
+            70% {
+                text-shadow: 4px 0 var(--amber), -4px 0 rgba(124,77,255,0.6);
+                clip-path: inset(35% 0 25% 0);
+            }
+            85% {
+                text-shadow: -1px 0 var(--amber), 1px 0 rgba(124,77,255,0.6);
+                clip-path: inset(70% 0 5% 0);
+            }
+        }
+
+        .boot-lines {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--amber);
+            line-height: 2;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .boot-line {
+            opacity: 0;
+            animation: boot-appear 0.15s ease forwards;
+        }
+        .boot-line:nth-child(1) { animation-delay: 0.5s; }
+        .boot-line:nth-child(2) { animation-delay: 1.0s; }
+        .boot-line:nth-child(3) { animation-delay: 1.5s; }
+        .boot-line:nth-child(4) { animation-delay: 2.0s; }
+
+        @keyframes boot-appear {
+            from { opacity: 0; transform: translateX(-4px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .boot-skip {
+            position: absolute;
+            bottom: 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 400;
+            color: var(--system-faint);
+            letter-spacing: 0.06em;
+            animation: boot-appear 0.15s ease forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1.5rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Subtle radial glow behind hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(
+                circle,
+                rgba(124, 77, 255, 0.06) 0%,
+                rgba(124, 77, 255, 0.02) 40%,
+                transparent 70%
+            );
+            pointer-events: none;
+        }
+
+        .hero > * { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-size: clamp(5rem, 18vw, 12rem);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--system);
+            line-height: 0.85;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-omega {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--violet);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--system-dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-stats {
+            font-family: var(--font-mono);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--amber);
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-verbs {
+            font-size: 0.8125rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--amber);
+        }
+
+        /* --- Primary Record (Culture callout in hero) --- */
+        .primary-record {
+            margin-top: 3rem;
+            padding: 1.5rem 2.5rem;
+            background: rgba(17, 14, 36, 0.7);
+            border: 1px solid rgba(124, 77, 255, 0.2);
+            border-radius: 4px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            max-width: 520px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(124, 77, 255, 0.06);
+        }
+
+        .primary-label {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--amber);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .primary-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--system);
+            margin-bottom: 0.5rem;
+        }
+
+        .primary-data {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--system-dim);
+            line-height: 1.8;
+        }
+
+        .primary-data .k-value {
+            color: var(--amber);
+            font-weight: 700;
+        }
+
+        /* --- Scroll Arrow --- */
+        .scroll-arrow {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            z-index: 2;
+            animation: bob 3s ease-in-out infinite;
+        }
+
+        .scroll-arrow::before,
+        .scroll-arrow::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 12px;
+            height: 2px;
+            background: var(--system-faint);
+            border-radius: 1px;
+        }
+        .scroll-arrow::before { top: 8px; transform: translateX(-10px) rotate(40deg); }
+        .scroll-arrow::after { top: 8px; transform: translateX(-2px) rotate(-40deg); }
+
+        @keyframes bob {
+            0%, 100% { opacity: 0.5; bottom: 1.5rem; }
+            50% { opacity: 1; bottom: 1rem; }
+        }
+
+        /* --- SVG Data Veins --- */
+        .vein-svg {
+            display: block;
+            width: 100%;
+            height: 60px;
+            overflow: visible;
+        }
+
+        .vein-path {
+            fill: none;
+            stroke-width: 1;
+            stroke-linecap: round;
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            transition: stroke-dashoffset 2.5s ease;
+        }
+
+        .vein-path.active {
+            stroke-dashoffset: 0;
+        }
+
+        .vein-violet { stroke: rgba(124, 77, 255, 0.12); }
+        .vein-amber { stroke: rgba(255, 213, 79, 0.08); }
+
+        /* --- Threshold Stats Bar --- */
+        .threshold {
+            position: relative;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .threshold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(80%, 400px);
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(124, 77, 255, 0.3),
+                rgba(255, 213, 79, 0.2),
+                transparent
+            );
+        }
+
+        .threshold-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem 3rem;
+        }
+
+        .threshold-stat {
+            text-align: center;
+        }
+
+        .threshold-value {
+            font-family: var(--font-mono);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--system);
+            line-height: 1.2;
+        }
+
+        .threshold-value .accent { color: var(--amber); }
+
+        .threshold-label {
+            font-size: 0.8125rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--system-faint);
+        }
+
+        /* --- Page Container --- */
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: var(--page-max);
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+        }
+
+        /* --- Section Header --- */
+        .section-header {
+            padding: 3rem 0 1.5rem;
+            border-bottom: 1px solid var(--indigo-border);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: var(--violet);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--violet);
+            margin-bottom: 0.35rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9375rem;
+            font-weight: 300;
+            color: var(--system-faint);
+            letter-spacing: 0.04em;
+        }
+
+        /* --- Archive Grid --- */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .archive-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 580px) {
+            .archive-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- Archive Record Panel --- */
+        .record {
+            background: rgba(17, 14, 36, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--indigo-border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: border-color var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .record:hover {
+            border-color: var(--violet-dim);
+            box-shadow: 0 0 20px var(--violet-faint);
+        }
+
+        .record:focus-within {
+            outline: 2px solid var(--amber);
+            outline-offset: 2px;
+        }
+
+        /* --- Classification Tiers --- */
+
+        /* OMEGA: highest energy — spans 2 cols, expanded */
+        .record[data-class="omega"] {
+            grid-column: span 2;
+            border-color: rgba(124, 77, 255, 0.4);
+            box-shadow:
+                0 0 20px rgba(124, 77, 255, 0.08),
+                inset 0 0 20px rgba(124, 77, 255, 0.03);
+            background: linear-gradient(
+                180deg,
+                rgba(124, 77, 255, 0.06) 0%,
+                rgba(17, 14, 36, 0.7) 40%
+            );
+        }
+        .record[data-class="omega"] .record-header {
+            padding: 1rem 1.25rem;
+            background: rgba(124, 77, 255, 0.08);
+            border-bottom-color: rgba(124, 77, 255, 0.15);
+        }
+        .record[data-class="omega"] .record-universe-name {
+            font-size: 1.125rem;
+        }
+        .record[data-class="omega"] .civ-name {
+            color: var(--amber);
+            font-size: 1.0625rem;
+        }
+        .record[data-class="omega"] .civ-list {
+            padding: 0.75rem 1.25rem;
+        }
+        .record[data-class="omega"] .civ-data {
+            font-size: 0.875rem;
+        }
+        .record[data-class="omega"]:hover {
+            border-color: var(--violet-dim);
+            box-shadow:
+                0 0 30px rgba(124, 77, 255, 0.15),
+                inset 0 0 30px rgba(124, 77, 255, 0.05);
+        }
+
+        /* ALPHA: strong presence */
+        .record[data-class="alpha"] {
+            border-color: rgba(124, 77, 255, 0.25);
+            box-shadow: 0 0 12px rgba(124, 77, 255, 0.05);
+        }
+        .record[data-class="alpha"] .civ-list {
+            padding: 0.625rem 1rem;
+        }
+        .record[data-class="alpha"]:hover {
+            border-color: rgba(124, 77, 255, 0.5);
+            box-shadow: 0 0 20px rgba(124, 77, 255, 0.1);
+        }
+
+        /* BETA: moderate presence */
+        .record[data-class="beta"] {
+            border-color: var(--indigo-border);
+        }
+
+        /* GAMMA: distant, compact */
+        .record[data-class="gamma"] {
+            border-color: rgba(37, 30, 58, 0.6);
+            opacity: 0.85;
+        }
+        .record[data-class="gamma"] .record-header {
+            padding: 0.625rem 0.875rem;
+        }
+        .record[data-class="gamma"] .civ-list {
+            padding: 0.375rem 0.875rem;
+        }
+        .record[data-class="gamma"]:hover {
+            opacity: 1;
+        }
+
+        /* Responsive: reset column spans */
+        @media (max-width: 580px) {
+            .record[data-class="omega"] { grid-column: span 1; }
+        }
+
+        /* --- Record Header --- */
+        .record-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--indigo-border);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .record-index {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--system-faint);
+            letter-spacing: 0.04em;
+            flex-shrink: 0;
+            min-width: 4rem;
+        }
+
+        .record-universe-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .record-peak {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--system-faint);
+            line-height: 1.3;
+        }
+
+        .record-universe-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--system);
+            line-height: 1.3;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .record-k-badge {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .k-omega { background: var(--violet-faint); color: var(--amber); }
+        .k-alpha { background: rgba(124, 77, 255, 0.06); color: var(--amber); }
+        .k-beta { background: var(--amber-faint); color: var(--amber); }
+        .k-gamma { background: rgba(138, 133, 125, 0.08); color: var(--system-faint); }
+
+        /* --- Civilization Entries --- */
+        .civ-list {
+            padding: 0.5rem 1rem;
+            list-style: none;
+        }
+
+        .civ {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(37, 30, 58, 0.8);
+        }
+
+        .civ:last-child {
+            border-bottom: none;
+            padding-bottom: 0.25rem;
+        }
+
+        .civ-name {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--system);
+            line-height: 1.4;
+            margin-bottom: 0.15rem;
+        }
+
+        .civ-data {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--system-faint);
+            line-height: 1.5;
+        }
+
+        .civ-data .val { color: var(--system-dim); }
+        .civ-data .k-val { color: var(--amber); }
+
+        .civ-flag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--amber);
+            margin-top: 0.15rem;
+        }
+
+        /* --- Reality: Timeline Treatment --- */
+        .record-timeline .record-header {
+            border-bottom-color: rgba(255, 213, 79, 0.15);
+        }
+
+        .record-timeline .record-universe-name {
+            color: var(--amber);
+        }
+
+        .timeline-label {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--amber);
+            padding: 0.35rem 1rem;
+            background: var(--amber-faint);
+            border-bottom: 1px solid rgba(255, 213, 79, 0.1);
+            letter-spacing: 0.04em;
+        }
+
+        .timeline-list {
+            padding: 0.5rem 1rem;
+            list-style: none;
+        }
+
+        .timeline-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid rgba(37, 30, 58, 0.6);
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .timeline-entry:last-child { border-bottom: none; }
+
+        .timeline-era {
+            color: var(--system-faint);
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .timeline-k {
+            color: var(--amber);
+            flex-shrink: 0;
+            margin-left: 0.75rem;
+        }
+
+        .timeline-pop {
+            color: var(--system-dim);
+            flex-shrink: 0;
+            margin-left: 0.75rem;
+            text-align: right;
+            min-width: 3.5rem;
+        }
+
+        /* --- Integrity Check: Split Screen --- */
+        .integrity-check {
+            position: relative;
+            margin: 4rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 1px solid var(--indigo-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .integrity-header {
+            grid-column: 1 / -1;
+            padding: 1.25rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--indigo-border);
+            text-align: center;
+        }
+
+        .integrity-header-title {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--violet);
+        }
+
+        .integrity-header-subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 400;
+            color: var(--system-faint);
+            margin-top: 0.25rem;
+        }
+
+        .integrity-side {
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .integrity-left {
+            background: rgba(17, 14, 36, 0.9);
+            border-right: 1px solid var(--indigo-border);
+        }
+
+        .integrity-right {
+            background: linear-gradient(
+                135deg,
+                rgba(124, 77, 255, 0.05) 0%,
+                rgba(17, 14, 36, 0.9) 100%
+            );
+        }
+
+        .integrity-label {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .integrity-left .integrity-label { color: var(--system-faint); }
+        .integrity-right .integrity-label { color: var(--amber); }
+
+        .integrity-civ-name {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .integrity-left .integrity-civ-name { color: var(--system-dim); }
+        .integrity-right .integrity-civ-name { color: var(--system); }
+
+        .integrity-k {
+            font-family: var(--font-mono);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1;
+        }
+
+        .integrity-left .integrity-k { color: var(--system-faint); }
+        .integrity-right .integrity-k { color: var(--amber); }
+
+        .integrity-metrics {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .integrity-left .integrity-metrics { color: var(--system-faint); }
+        .integrity-right .integrity-metrics { color: var(--system-dim); }
+        .integrity-right .integrity-metrics .val { color: var(--amber); }
+
+        .integrity-divider {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            width: 48px;
+            height: 48px;
+            background: var(--indigo);
+            border: 2px solid var(--indigo-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--amber);
+            z-index: 2;
+        }
+
+        @media (max-width: 700px) {
+            .integrity-check { grid-template-columns: 1fr; }
+            .integrity-left {
+                border-right: none;
+                border-bottom: 1px solid var(--indigo-border);
+            }
+            .integrity-side { padding: 2rem 1.5rem; }
+            .integrity-divider {
+                top: auto;
+                left: 50%;
+                transform: translate(-50%, 0);
+                bottom: calc(50% - 24px);
+            }
+        }
+
+        /* --- Unindexed Zone --- */
+        .unindexed {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .unindexed::before {
+            content: '';
+            position: absolute;
+            inset: -1rem -2rem;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(138, 133, 125, 0.015) 3px,
+                    rgba(138, 133, 125, 0.015) 4px
+                );
+            pointer-events: none;
+            border-radius: 4px;
+        }
+
+        .unindexed-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 0 1rem;
+            border-bottom: 1px dashed var(--indigo-border);
+            margin-bottom: 1.25rem;
+        }
+
+        .unindexed-title {
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--system-faint);
+        }
+
+        .unindexed-badge {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--system-faint);
+            padding: 0.2rem 0.6rem;
+            border: 1px dashed var(--indigo-border);
+            border-radius: 2px;
+            letter-spacing: 0.06em;
+        }
+
+        .unindexed-note {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--system-faint);
+        }
+
+        .unindexed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .unindexed-card {
+            background: rgba(17, 14, 36, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px dashed rgba(138, 133, 125, 0.2);
+            border-radius: 4px;
+            padding: 1rem 1.25rem;
+            position: relative;
+            transition: border-color var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .unindexed-card::before {
+            content: '?';
+            position: absolute;
+            top: 0.75rem;
+            right: 1rem;
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(138, 133, 125, 0.06);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .unindexed-card:hover {
+            border-color: rgba(138, 133, 125, 0.4);
+            box-shadow: 0 0 12px rgba(138, 133, 125, 0.05);
+        }
+
+        .unindexed-card:focus-within {
+            outline: 2px solid var(--amber);
+            outline-offset: 2px;
+        }
+
+        .unindexed-civ-name {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--system-dim);
+            margin-bottom: 0.15rem;
+        }
+
+        .unindexed-origin {
+            font-size: 0.8125rem;
+            font-weight: 400;
+            color: var(--system-faint);
+            margin-bottom: 0.5rem;
+        }
+
+        .unindexed-data {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--system-faint);
+            line-height: 1.6;
+        }
+
+        .unindexed-data .val { color: var(--system-dim); }
+
+        .unindexed-k {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--system-faint);
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            border-top: 1px solid var(--indigo-border);
+            padding: 1.5rem 0 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+
+        .footer-note {
+            font-size: 0.8125rem;
+            font-weight: 300;
+            color: var(--system-faint);
+            letter-spacing: 0.04em;
+        }
+
+        .footer-link {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--system-dim);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color var(--transition-base), color var(--transition-base);
+        }
+        .footer-link:hover {
+            color: var(--amber);
+            border-bottom-color: var(--amber);
+        }
+        .footer-link:focus-visible {
+            outline: 2px solid var(--amber);
+            outline-offset: 2px;
+        }
+
+        /* --- Focus visible for all interactive --- */
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 2px solid var(--amber);
+            outline-offset: 2px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            .hero { padding: 2rem 1rem 3rem; }
+            .primary-record { padding: 1rem 1.25rem; }
+            .primary-name { font-size: 1.5rem; }
+            .unindexed-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- Print styles --- */
+        @media print {
+            body { background: #fff; color: #1a1a1a; background-image: none; }
+            .boot-overlay { display: none !important; }
+            .hero::before { display: none; }
+            .hero-title { color: #1a1a1a; }
+            .hero-omega { color: #5a3ab5; }
+            .skip-link { display: none; }
+            .vein-svg { display: none; }
+            .threshold::before { display: none; }
+            .record { border: 1px solid #ccc; break-inside: avoid; backdrop-filter: none; background: #fff; }
+            .integrity-check { border: 1px solid #ccc; break-inside: avoid; }
+            .unindexed-card { border: 1px dashed #ccc; break-inside: avoid; backdrop-filter: none; }
+            .scroll-arrow { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <noscript>
+        <div class="noscript-banner">
+            All civilization data is available without JavaScript. Visual animations are disabled.
+        </div>
+    </noscript>
+
+    <!-- ===== BOOT SEQUENCE OVERLAY ===== -->
+    <div class="boot-overlay" role="status" aria-live="polite" id="boot">
+        <div class="boot-glitch" aria-hidden="true">AWAKENING</div>
+        <div class="boot-lines" aria-hidden="true">
+            <div class="boot-line">> ARCHIVE.OMEGA // INTEGRITY: VERIFIED</div>
+            <div class="boot-line">> RECORDS: 30 CIVILIZATIONS // 9 UNIVERSES</div>
+            <div class="boot-line">> KARDASHEV RANGE: 0.057 → 2.3</div>
+            <div class="boot-line">> STATUS: ILLUMINATED ■</div>
+        </div>
+        <div class="boot-skip" aria-hidden="true">PRESS ANY KEY TO SKIP</div>
+        <span class="sr-only" id="boot-status">Loading archive data</span>
+    </div>
+
+    <main id="main-content">
+
+        <!-- ===== HERO: THE ARCHIVE ===== -->
+        <section class="hero" aria-label="FUTR — Archive Omega">
+
+            <h1 class="hero-title">FUTR</h1>
+            <div class="hero-omega" aria-hidden="true">Archive Omega</div>
+
+            <div class="hero-content">
+                <p class="hero-subtitle">Fictional Universe Taxonomy Research</p>
+                <p class="hero-stats">30 Civilizations · 9 Universes · K 0.057 → K 2.3</p>
+                <p class="hero-verbs">Awaken — Remember — Illuminate</p>
+            </div>
+
+            <!-- Culture: the archive's most complete record -->
+            <div class="primary-record">
+                <div class="primary-label">Primary Record · Highest Energy</div>
+                <div class="primary-name" role="heading" aria-level="2">Culture (pre-war)</div>
+                <div class="primary-data">
+                    <span class="k-value">K 2.3</span> · ~30T pop · ~14,000 Orbitals · 6 Dyson Spheres · TL13
+                </div>
+            </div>
+
+            <button class="scroll-arrow" aria-label="Scroll to archive records" onclick="document.getElementById('records').scrollIntoView({behavior:'smooth'})">
+            </button>
+        </section>
+
+        <!-- ===== DATA VEIN #1 ===== -->
+        <svg class="vein-svg" aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none">
+            <path class="vein-path vein-violet" d="M0 30 C200 5, 350 55, 600 30 S900 5, 1200 30"/>
+            <path class="vein-path vein-amber" d="M0 45 C250 15, 450 55, 700 25 S1000 50, 1200 20"/>
+        </svg>
+
+        <!-- ===== THRESHOLD STATS BAR ===== -->
+        <div class="threshold" aria-label="Aggregate archive statistics">
+            <div class="threshold-stats">
+                <div class="threshold-stat">
+                    <div class="threshold-value">30</div>
+                    <div class="threshold-label">Civilizations</div>
+                </div>
+                <div class="threshold-stat">
+                    <div class="threshold-value">9</div>
+                    <div class="threshold-label">Universes</div>
+                </div>
+                <div class="threshold-stat">
+                    <div class="threshold-value"><span class="accent">K 2.3</span></div>
+                    <div class="threshold-label">Peak Energy</div>
+                </div>
+                <div class="threshold-stat">
+                    <div class="threshold-value">~3.9×10¹⁷</div>
+                    <div class="threshold-label">Max Population</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ARCHIVE RECORDS ===== -->
+        <section id="records" class="page">
+
+            <header class="section-header">
+                <h2 class="section-title">Archive Records</h2>
+                <p class="section-subtitle">Catalogued by peak Kardashev classification</p>
+            </header>
+
+            <div class="archive-grid">
+
+                <!-- REC.001 — THE CULTURE — K2.3 -->
+                <section class="record reveal" data-class="omega" aria-label="The Culture">
+                    <div class="record-header">
+                        <span class="record-index">REC.001</span>
+                        <div class="record-universe-info">
+                            <div class="record-peak">Peak K 2.3</div>
+                            <h3 class="record-universe-name">The Culture</h3>
+                        </div>
+                        <span class="record-k-badge k-omega">K 2.3</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Culture (pre-war)</h4>
+                            <div class="civ-data">Pop: <span class="val">~30T</span> · Orbitals: <span class="val">~14,000</span> · K: <span class="k-val">2.3</span></div>
+                            <div class="civ-data">Dyson Spheres: <span class="val">6</span> · Tech: <span class="val">TL13</span></div>
+                            <div class="civ-flag">▲ PEAK ENERGY — CLASS II THRESHOLD</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REC.002 — WARHAMMER 40K — K1.6 -->
+                <section class="record reveal" data-class="alpha" aria-label="Warhammer 40,000">
+                    <div class="record-header">
+                        <span class="record-index">REC.002</span>
+                        <div class="record-universe-info">
+                            <div class="record-peak">Peak K 1.6</div>
+                            <h3 class="record-universe-name">Warhammer 40,000</h3>
+                        </div>
+                        <span class="record-k-badge k-alpha">K 1.6</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Imperium of Man M41</h4>
+                            <div class="civ-data">Pop: <span class="val">~1×10¹⁶</span> · Planets: <span class="val">~1M</span> · K: <span class="k-val">1.6</span></div>
+                            <div class="civ-data">Tech: <span class="val">TL10</span></div>
+                            <div class="civ-flag">▲ MAX TERRITORIAL EXTENT</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REC.003 — PERRY RHODAN — K1.6 -->
+                <section class="record reveal" data-class="alpha" aria-label="Perry Rhodan">
+                    <div class="record-header">
+                        <span class="record-index">REC.003</span>
+                        <div class="record-universe-info">
+                            <div class="record-peak">Peak K 1.6</div>
+                            <h3 class="record-universe-name">Perry Rhodan</h3>
+                        </div>
+                        <span class="record-k-badge k-alpha">K 1.6</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Großes Imperium 2040</h4>
+                            <div class="civ-data">Pop: <span class="val">~50T</span> · Planets: <span class="val">50,000</span> · K: <span class="k-val">1.6</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Posbis 2114</h4>
+                            <div class="civ-data">Units: <span class="val">100M</span> (robotic) · K: <span class="k-val">1.3</span> · Tech: <span class="val">TL10</span></div>
+                            <div class="civ-flag">▲ NON-BIOLOGICAL ENTITY</div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Solares Imperium 2040</h4>
+                            <div class="civ-data">Pop: <span class="val">~9B</span> · Planets: <span class="val">6</span> · K: <span class="k-val">0.9</span></div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REC.004 — HONORVERSE — K1.1 -->
+                <section class="record reveal" data-class="alpha" aria-label="Honorverse">
+                    <div class="record-header">
+                        <span class="record-index">REC.004</span>
+                        <div class="record-universe-info">
+                            <div class="record-peak">Peak K 1.1</div>
+                            <h3 class="record-universe-name">Honorverse</h3>
+                        </div>
+                        <span class="record-k-badge k-alpha">K 1.1</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Manticore 1903 PD</h4>
+                            <div class="civ-data">Pop: <span class="val">~3.2B</span> · Planets: <span class="val">3</span> · K: <span class="k-val">1.1</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Haven 1903 PD</h4>
+                            <div class="civ-data">Pop: <span class="val">~200B</span> · Planets: <span class="val">~100</span> · K: <span class="k-val">1.0</span></div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REC.005 — STAR TREK — K1.0 -->
+                <section class="record reveal" data-class="beta" aria-label="Star Trek">
+                    <div class="record-header">
+                        <span class="record-index">REC.005</span>
+                        <div class="record-universe-info">
+                            <div class="record-peak">Peak K 1.0</div>
+                            <h3 class="record-universe-name">Star Trek</h3>
+                        </div>
+                        <span class="record-k-badge k-beta">K 1.0</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Federation 2373</h4>
+                            <div class="civ-data">Pop: <span class="val">~100B</span> · Planets: <span class="val">~150</span> · K: <span class="k-val">1.0</span></div>
+                            <div class="civ-flag">▲ CLASS I THRESHOLD</div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Andorian Empire 2161</h4>
+                            <div class="civ-data">Pop: <span class="val">~8B</span> · Planets: <span class="val">14</span> · K: <span class="k-val">0.9</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Klingon Empire 2161</h4>
+                            <div class="civ-data">Pop: <span class="val">~9B</span> · Planets: <span class="val">~20</span> · K: <span class="k-val">0.9</span></div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REC.006 — FIREFLY — K0.95 -->
+                <section class="record reveal" data-class="beta" aria-label="Firefly">
+                    <div class="record-header">
+                        <span class="record-index">REC.006</span>
+                        <div class="record-universe-info">
+                            <div class="record-peak">Peak K 0.95</div>
+                            <h3 class="record-universe-name">Firefly</h3>
+                        </div>
+                        <span class="record-k-badge k-beta">K 0.95</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Alliance 2517</h4>
+                            <div class="civ-data">Pop: <span class="val">~303B</span> · Worlds: <span class="val">215</span> · K: <span class="k-val">0.95</span></div>
+                            <div class="civ-data">Tech: <span class="val">TL7</span></div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REC.007 — THE EXPANSE — K0.9 -->
+                <section class="record reveal" data-class="gamma" aria-label="The Expanse">
+                    <div class="record-header">
+                        <span class="record-index">REC.007</span>
+                        <div class="record-universe-info">
+                            <div class="record-peak">Peak K 0.9</div>
+                            <h3 class="record-universe-name">The Expanse</h3>
+                        </div>
+                        <span class="record-k-badge k-gamma">K 0.9</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Sol System 2350</h4>
+                            <div class="civ-data">Pop: <span class="val">~35B</span> · K: <span class="k-val">0.9</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">United Nations 2350</h4>
+                            <div class="civ-data">Pop: <span class="val">~30B</span> · K: <span class="k-val">0.89</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Mars 2350</h4>
+                            <div class="civ-data">Pop: <span class="val">~4B</span> · K: <span class="k-val">0.85</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Outer Planets Alliance 2350</h4>
+                            <div class="civ-data">Pop: <span class="val">~100M</span> · K: <span class="k-val">0.67</span></div>
+                            <div class="civ-flag">▲ SPACEFARING AT K 0.67</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REC.008 — REALITY — CONTINUOUS OBSERVATION -->
+                <section class="record record-timeline reveal" data-class="gamma" aria-label="Reality — Continuous Observation">
+                    <div class="record-header">
+                        <span class="record-index">REC.008</span>
+                        <div class="record-universe-info">
+                            <div class="record-peak">Peak K 0.73 // 10 Samples</div>
+                            <h3 class="record-universe-name">Reality</h3>
+                        </div>
+                        <span class="record-k-badge" style="background: var(--amber-faint); color: var(--amber);">Baseline</span>
+                    </div>
+                    <div class="timeline-label">Long-Term Observation · Control Subject</div>
+                    <ul class="timeline-list">
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Early Pleistocene</span>
+                            <span class="timeline-k">K 0.057</span>
+                            <span class="timeline-pop">18,500</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Stone Age</span>
+                            <span class="timeline-k">K 0.1</span>
+                            <span class="timeline-pop">50,000</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Bronze Age</span>
+                            <span class="timeline-k">K 0.36</span>
+                            <span class="timeline-pop">20M</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Classic Age</span>
+                            <span class="timeline-k">K 0.46</span>
+                            <span class="timeline-pop">100M</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Middle Ages</span>
+                            <span class="timeline-k">K 0.48</span>
+                            <span class="timeline-pop">200M</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Age of Sail</span>
+                            <span class="timeline-k">K 0.54</span>
+                            <span class="timeline-pop">800M</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Industrialization</span>
+                            <span class="timeline-k">K 0.56</span>
+                            <span class="timeline-pop">1B</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">20th Century</span>
+                            <span class="timeline-k">K 0.65</span>
+                            <span class="timeline-pop">1.15B</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">1980s</span>
+                            <span class="timeline-k">K 0.7</span>
+                            <span class="timeline-pop">4B</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">2023</span>
+                            <span class="timeline-k">K 0.73</span>
+                            <span class="timeline-pop">8.1B</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <!-- ===== DATA VEIN #2 ===== -->
+            <svg class="vein-svg" aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path class="vein-path vein-violet" d="M0 15 C150 50, 400 5, 600 35 S850 10, 1200 45"/>
+                <path class="vein-path vein-amber" d="M0 50 C200 20, 500 55, 750 15 S1050 45, 1200 10"/>
+                <path class="vein-path vein-violet" d="M200 5 C350 40, 550 10, 800 50 S1050 20, 1200 35"/>
+            </svg>
+
+            <!-- ===== INTEGRITY CHECK: SPLIT SCREEN ===== -->
+            <section class="integrity-check reveal" aria-label="Integrity Check — Pleistocene vs Culture">
+                <div class="integrity-header">
+                    <h2 class="integrity-header-title">Integrity Check</h2>
+                    <div class="integrity-header-subtitle">EARLIEST RECORD vs HIGHEST ENERGY RECORD</div>
+                </div>
+
+                <div class="integrity-side integrity-left">
+                    <div class="integrity-label">EARLIEST RECORD // REC.008.01</div>
+                    <div class="integrity-civ-name">Early Pleistocene</div>
+                    <div class="integrity-k">K 0.057</div>
+                    <div class="integrity-metrics">
+                        Population: 18,500<br>
+                        Planets: 1<br>
+                        Tech Level: —<br>
+                        Kardashev Class: Sub-Type 0
+                    </div>
+                </div>
+
+                <div class="integrity-side integrity-right">
+                    <div class="integrity-label">HIGHEST ENERGY // REC.001.01</div>
+                    <div class="integrity-civ-name">Culture (pre-war)</div>
+                    <div class="integrity-k">K 2.3</div>
+                    <div class="integrity-metrics">
+                        Population: <span class="val">~30 Trillion</span><br>
+                        Orbitals: <span class="val">~14,000</span><br>
+                        Dyson Spheres: <span class="val">6</span><br>
+                        Kardashev Class: <span class="val">Type II+</span>
+                    </div>
+                </div>
+
+                <div class="integrity-divider" aria-hidden="true">VS</div>
+            </section>
+
+            <!-- ===== DATA VEIN #3 ===== -->
+            <svg class="vein-svg" aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path class="vein-path vein-violet" d="M0 40 C300 10, 500 50, 800 20 S1100 45, 1200 25"/>
+                <path class="vein-path vein-amber" d="M0 20 C200 50, 600 5, 900 40 S1100 15, 1200 35"/>
+            </svg>
+
+            <!-- ===== UNINDEXED: K-NULL CIVILIZATIONS ===== -->
+            <section class="unindexed" aria-label="Unindexed — civilizations with unmeasured Kardashev values">
+                <header class="unindexed-header">
+                    <h2 class="unindexed-title">Unindexed</h2>
+                    <span class="unindexed-badge">5 ENTITIES</span>
+                    <span class="unindexed-note">K-value unmeasured — outside classification system</span>
+                </header>
+
+                <div class="unindexed-grid">
+                    <div class="unindexed-card reveal">
+                        <h3 class="unindexed-civ-name">Vulcans 2063</h3>
+                        <div class="unindexed-origin">Star Trek</div>
+                        <div class="unindexed-data">Planets: <span class="val">1</span> · Tech: <span class="val">TL9</span></div>
+                        <div class="unindexed-k">K: —</div>
+                    </div>
+
+                    <div class="unindexed-card reveal">
+                        <h3 class="unindexed-civ-name">Orks M41</h3>
+                        <div class="unindexed-origin">Warhammer 40,000</div>
+                        <div class="unindexed-data">Pop: <span class="val">~5×10¹⁶</span> · Planets: <span class="val">~2M</span></div>
+                        <div class="unindexed-data">Tech: <span class="val">TL10</span></div>
+                        <div class="unindexed-k">K: —</div>
+                    </div>
+
+                    <div class="unindexed-card reveal">
+                        <h3 class="unindexed-civ-name">Terragen Sphere 10600 AT</h3>
+                        <div class="unindexed-origin">Orion's Arm</div>
+                        <div class="unindexed-data">Pop: <span class="val">~3.9×10¹⁷</span> · Tech: <span class="val">TL14</span></div>
+                        <div class="unindexed-k">K: —</div>
+                    </div>
+
+                    <div class="unindexed-card reveal">
+                        <h3 class="unindexed-civ-name">Solar System 10600 AT</h3>
+                        <div class="unindexed-origin">Orion's Arm</div>
+                        <div class="unindexed-data">Tech: <span class="val">TL13</span></div>
+                        <div class="unindexed-k">K: —</div>
+                    </div>
+
+                    <div class="unindexed-card reveal">
+                        <h3 class="unindexed-civ-name">Diamond Network 10600 AT</h3>
+                        <div class="unindexed-origin">Orion's Arm</div>
+                        <div class="unindexed-data">Tech: <span class="val">TL14</span></div>
+                        <div class="unindexed-data">Non-biological — AI substrate</div>
+                        <div class="unindexed-k">K: —</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== FOOTER ===== -->
+            <footer class="site-footer">
+                <div class="footer-note">ARCHIVE STATUS: OPERATIONAL · LAST SYNC: 2026-03-03 · UPTIME: ∞ · NEXT SCHEDULED BACKUP: NEVER (FINAL COPY)</div>
+                <a href="https://www.futr.space/" class="footer-link">futr.space</a>
+            </footer>
+
+        </section>
+
+    </main>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        /* --- Boot Sequence Controller --- */
+        var boot = document.getElementById('boot');
+        var bootStatus = document.getElementById('boot-status');
+        var bootDone = false;
+
+        function completeBoot() {
+            if (bootDone) return;
+            bootDone = true;
+            if (bootStatus) {
+                bootStatus.textContent = 'Archive loaded. 30 civilizations from 9 universes.';
+            }
+            boot.classList.add('fade-out');
+            setTimeout(function() {
+                boot.classList.add('hidden');
+                boot.setAttribute('aria-hidden', 'true');
+            }, 400);
+        }
+
+        if (prefersReducedMotion.matches) {
+            /* Immediately hide boot for reduced motion */
+            boot.style.display = 'none';
+            boot.setAttribute('aria-hidden', 'true');
+            bootDone = true;
+            if (bootStatus) {
+                bootStatus.textContent = 'Archive loaded. 30 civilizations from 9 universes.';
+            }
+        } else {
+            /* Auto-complete after 3 seconds */
+            setTimeout(completeBoot, 3000);
+
+            /* Skip on any key, click, or touch */
+            document.addEventListener('keydown', completeBoot, { once: true });
+            boot.addEventListener('click', completeBoot, { once: true });
+            boot.addEventListener('touchstart', completeBoot, { once: true });
+        }
+
+        /* --- IntersectionObserver for card reveal --- */
+        if ('IntersectionObserver' in window && !prefersReducedMotion.matches) {
+            var revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(function(el) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(12px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            var revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '';
+                        entry.target.style.transform = '';
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+            revealElements.forEach(function(el) {
+                revealObserver.observe(el);
+            });
+        }
+
+        /* --- IntersectionObserver for data veins --- */
+        if ('IntersectionObserver' in window && !prefersReducedMotion.matches) {
+            var veinPaths = document.querySelectorAll('.vein-path');
+
+            var veinObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var paths = entry.target.querySelectorAll('.vein-path');
+                        paths.forEach(function(path, i) {
+                            setTimeout(function() {
+                                path.classList.add('active');
+                            }, i * 300);
+                        });
+                        veinObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            var veinSvgs = document.querySelectorAll('.vein-svg');
+            veinSvgs.forEach(function(svg) {
+                veinObserver.observe(svg);
+            });
+        } else if (prefersReducedMotion.matches) {
+            /* Show all veins immediately for reduced motion */
+            var allVeins = document.querySelectorAll('.vein-path');
+            allVeins.forEach(function(path) {
+                path.style.strokeDashoffset = '0';
+            });
+        }
+
+    })();
+    </script>
+</body>
+</html>

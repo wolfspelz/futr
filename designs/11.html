@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTR — Singularity</title>
+    <meta name="description" content="The Kardashev Event Horizon — 30 civilizations from 9 universes, orbiting the boundary of transcendence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&family=Inconsolata:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+    <style>
+        /* ============================================
+           DESIGN 11: SINGULARITY
+           The Kardashev Event Horizon
+           Descend — Orbit — Transcend
+           ============================================ */
+
+        /* --- Design Tokens --- */
+        :root {
+            --void: #0A0510;
+            --void-light: #12101E;
+            --void-border: #1E1A2E;
+            --void-hover: #252040;
+            --cyan: #00D4FF;
+            --cyan-dim: rgba(0, 212, 255, 0.5);
+            --cyan-faint: rgba(0, 212, 255, 0.08);
+            --cyan-glow: rgba(0, 212, 255, 0.15);
+            --blue: #1565C0;
+            --blue-dim: rgba(21, 101, 192, 0.4);
+            --blue-light: #5B9BF0;
+            --blue-faint: rgba(21, 101, 192, 0.12);
+            --orange: #FF5722;
+            --orange-dim: rgba(255, 87, 34, 0.5);
+            --orange-faint: rgba(255, 87, 34, 0.08);
+            --photon: #E8F0FF;
+            --photon-dim: #B0B8CC;
+            --photon-faint: #8890A5;
+            --font-display: 'Exo 2', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Inconsolata', 'Consolas', 'Monaco', monospace;
+            --page-max: 1200px;
+            --transition-base: 0.3s ease;
+        }
+
+        /* --- Reset & Base --- */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--photon);
+            background-color: var(--void);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* --- Skip Link --- */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--cyan);
+            color: var(--void);
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            z-index: 10000;
+            transition: top var(--transition-base);
+        }
+        .skip-link:focus-visible { top: 0; }
+
+        /* --- Reduced Motion --- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .accretion-disk { animation: none !important; }
+            .photon-pulse { animation: none !important; }
+            .scroll-arrow { animation: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
+        /* --- Noscript --- */
+        .noscript-banner {
+            background: var(--void-light);
+            border-bottom: 1px solid var(--void-border);
+            padding: 0.75rem 1.5rem;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            color: var(--photon-dim);
+            text-align: center;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem 4rem;
+            overflow: hidden;
+        }
+
+        /* Dense starfield behind hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 5% 12%, rgba(232,240,255,0.5), transparent),
+                radial-gradient(1px 1px at 12% 67%, rgba(232,240,255,0.35), transparent),
+                radial-gradient(1px 1px at 18% 34%, rgba(232,240,255,0.25), transparent),
+                radial-gradient(1px 1px at 24% 89%, rgba(232,240,255,0.4), transparent),
+                radial-gradient(1px 1px at 31% 5%, rgba(232,240,255,0.3), transparent),
+                radial-gradient(1px 1px at 37% 52%, rgba(0,212,255,0.2), transparent),
+                radial-gradient(1px 1px at 43% 78%, rgba(232,240,255,0.35), transparent),
+                radial-gradient(1px 1px at 48% 23%, rgba(232,240,255,0.45), transparent),
+                radial-gradient(1px 1px at 55% 91%, rgba(232,240,255,0.3), transparent),
+                radial-gradient(1px 1px at 62% 42%, rgba(232,240,255,0.25), transparent),
+                radial-gradient(1px 1px at 68% 8%, rgba(255,87,34,0.12), transparent),
+                radial-gradient(1px 1px at 73% 61%, rgba(232,240,255,0.4), transparent),
+                radial-gradient(1px 1px at 79% 28%, rgba(232,240,255,0.35), transparent),
+                radial-gradient(1px 1px at 84% 75%, rgba(0,212,255,0.15), transparent),
+                radial-gradient(1px 1px at 91% 47%, rgba(232,240,255,0.3), transparent),
+                radial-gradient(1px 1px at 96% 15%, rgba(232,240,255,0.45), transparent),
+                radial-gradient(1px 1px at 8% 45%, rgba(232,240,255,0.2), transparent),
+                radial-gradient(1px 1px at 52% 3%, rgba(232,240,255,0.35), transparent),
+                radial-gradient(1px 1px at 88% 93%, rgba(232,240,255,0.3), transparent),
+                radial-gradient(1px 1px at 35% 38%, rgba(232,240,255,0.15), transparent),
+                radial-gradient(1.5px 1.5px at 20% 55%, rgba(232,240,255,0.6), transparent),
+                radial-gradient(1.5px 1.5px at 65% 18%, rgba(232,240,255,0.5), transparent),
+                radial-gradient(1.5px 1.5px at 82% 85%, rgba(0,212,255,0.25), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero > * { position: relative; z-index: 1; }
+
+        /* --- Black Hole Visual --- */
+        .singularity {
+            position: relative;
+            width: clamp(300px, 60vmin, 580px);
+            height: clamp(300px, 60vmin, 580px);
+            margin-bottom: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Outer ambient glow — fills the void */
+        .singularity::before {
+            content: '';
+            position: absolute;
+            inset: -80%;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(0, 212, 255, 0.1) 0%,
+                rgba(0, 212, 255, 0.04) 20%,
+                rgba(255, 87, 34, 0.03) 35%,
+                rgba(255, 87, 34, 0.01) 50%,
+                transparent 70%
+            );
+            pointer-events: none;
+        }
+
+        /* Accretion disk — Doppler-shifted */
+        .accretion-disk {
+            position: absolute;
+            inset: -15%;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 180deg,
+                #00D4FF,
+                #4DE0FF 30deg,
+                #E8F0FF 80deg,
+                #FFB088 120deg,
+                #FF5722 180deg,
+                #CC3A10 220deg,
+                #0A0510 270deg,
+                #062040 320deg,
+                #00D4FF 360deg
+            );
+            mask: radial-gradient(
+                circle,
+                transparent 26%,
+                rgba(0,0,0,0.4) 28%,
+                black 32%,
+                black 46%,
+                rgba(0,0,0,0.6) 48%,
+                transparent 52%
+            );
+            -webkit-mask: radial-gradient(
+                circle,
+                transparent 26%,
+                rgba(0,0,0,0.4) 28%,
+                black 32%,
+                black 46%,
+                rgba(0,0,0,0.6) 48%,
+                transparent 52%
+            );
+            animation: disk-rotate 50s linear infinite;
+            filter: blur(2px);
+        }
+
+        @keyframes disk-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Photon ring — bright glow at event horizon boundary */
+        .photon-ring {
+            position: absolute;
+            inset: 18%;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            box-shadow:
+                0 0 30px 8px rgba(0, 212, 255, 0.15),
+                0 0 60px 16px rgba(0, 212, 255, 0.08),
+                inset 0 0 30px 8px rgba(0, 212, 255, 0.1);
+            animation: photon-pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes photon-pulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 30px 8px rgba(0, 212, 255, 0.15),
+                    0 0 60px 16px rgba(0, 212, 255, 0.08),
+                    inset 0 0 30px 8px rgba(0, 212, 255, 0.1);
+            }
+            50% {
+                box-shadow:
+                    0 0 40px 12px rgba(0, 212, 255, 0.2),
+                    0 0 80px 24px rgba(0, 212, 255, 0.1),
+                    inset 0 0 40px 12px rgba(0, 212, 255, 0.15);
+            }
+        }
+
+        /* Event horizon — absolute void */
+        .event-horizon {
+            position: absolute;
+            inset: 28%;
+            border-radius: 50%;
+            background: var(--void);
+            box-shadow: 0 0 40px 20px rgba(10, 5, 16, 0.9);
+        }
+
+        /* --- Hero Title --- */
+        .hero-title {
+            font-size: clamp(4.5rem, 18vw, 12rem);
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--photon);
+            text-shadow:
+                0 0 60px rgba(0, 212, 255, 0.3),
+                0 0 120px rgba(0, 212, 255, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Hero Content Below Black Hole --- */
+        .hero-content {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9375rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--photon-dim);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-stats {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-verbs {
+            font-size: 0.8125rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--photon-faint);
+        }
+
+        /* --- Culture Callout (nearest to event horizon) --- */
+        .culture-callout {
+            margin-top: 1.5rem;
+            padding: 1.25rem 2rem;
+            background: var(--cyan-faint);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 4px;
+            text-align: center;
+            max-width: 480px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.06);
+        }
+
+        .callout-label {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .callout-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--photon);
+            margin-bottom: 0.5rem;
+        }
+
+        .callout-data {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--photon-dim);
+            line-height: 1.8;
+        }
+
+        .callout-data .k-value {
+            color: var(--cyan);
+            font-weight: 700;
+        }
+
+        /* --- Scroll Arrow --- */
+        .scroll-arrow {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            z-index: 2;
+            animation: bob 3s ease-in-out infinite;
+        }
+
+        .scroll-arrow::before,
+        .scroll-arrow::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 12px;
+            height: 2px;
+            background: var(--photon-faint);
+            border-radius: 1px;
+        }
+        .scroll-arrow::before { top: 8px; transform: translateX(-10px) rotate(40deg); }
+        .scroll-arrow::after { top: 8px; transform: translateX(-2px) rotate(-40deg); }
+
+        @keyframes bob {
+            0%, 100% { opacity: 0.5; bottom: 1.5rem; }
+            50% { opacity: 1; bottom: 1rem; }
+        }
+
+        /* --- Gravity Threshold Transition --- */
+        .gravity-threshold {
+            position: relative;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .gravity-threshold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(80%, 400px);
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 212, 255, 0.3),
+                rgba(255, 87, 34, 0.2),
+                transparent
+            );
+        }
+
+        .threshold-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem 3rem;
+        }
+
+        .threshold-stat {
+            text-align: center;
+        }
+
+        .threshold-value {
+            font-family: var(--font-mono);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--photon);
+            line-height: 1.2;
+        }
+
+        .threshold-value .accent { color: var(--cyan); }
+
+        .threshold-label {
+            font-size: 0.8125rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--photon-faint);
+        }
+
+        /* --- Page Container --- */
+        .page {
+            max-width: var(--page-max);
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+        }
+
+        /* --- Section Header --- */
+        .section-header {
+            padding: 2.5rem 0 1.5rem;
+            border-bottom: 1px solid var(--void-border);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--photon);
+            margin-bottom: 0.35rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: var(--photon-faint);
+            letter-spacing: 0.04em;
+        }
+
+        /* --- Universe Grid --- */
+        .universe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .universe-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 580px) {
+            .universe-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- Universe Panel --- */
+        .universe {
+            background: var(--void-light);
+            border: 1px solid var(--void-border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: border-color var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .universe:hover {
+            border-color: var(--blue-dim);
+            box-shadow: 0 0 20px var(--blue-faint);
+        }
+
+        .universe:focus-within {
+            outline: 2px solid var(--cyan);
+            outline-offset: 2px;
+        }
+
+        /* --- Proximity Tiers (visual weight by peak K) --- */
+
+        /* EXTREME: gravitationally dominant — spans 2 cols, expanded padding */
+        .universe[data-proximity="extreme"] {
+            grid-column: span 2;
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow:
+                0 0 20px rgba(0, 212, 255, 0.08),
+                inset 0 0 20px rgba(0, 212, 255, 0.03);
+            background: linear-gradient(
+                180deg,
+                rgba(0, 212, 255, 0.06) 0%,
+                var(--void-light) 40%
+            );
+        }
+        .universe[data-proximity="extreme"] .universe-header {
+            padding: 1rem 1.25rem;
+            background: rgba(0, 212, 255, 0.08);
+            border-bottom-color: rgba(0, 212, 255, 0.15);
+        }
+        .universe[data-proximity="extreme"] .universe-name {
+            font-size: 1.125rem;
+        }
+        .universe[data-proximity="extreme"] .civ-name {
+            color: var(--cyan);
+            font-size: 1.0625rem;
+        }
+        .universe[data-proximity="extreme"] .civ-list {
+            padding: 0.75rem 1.25rem;
+        }
+        .universe[data-proximity="extreme"] .civ-data {
+            font-size: 0.875rem;
+        }
+        .universe[data-proximity="extreme"]:hover {
+            border-color: var(--cyan-dim);
+            box-shadow:
+                0 0 30px rgba(0, 212, 255, 0.15),
+                inset 0 0 30px rgba(0, 212, 255, 0.05);
+        }
+
+        /* HIGH: strong gravitational pull */
+        .universe[data-proximity="high"] {
+            border-color: rgba(21, 101, 192, 0.35);
+            box-shadow: 0 0 12px rgba(21, 101, 192, 0.06);
+        }
+        .universe[data-proximity="high"] .civ-list {
+            padding: 0.625rem 1rem;
+        }
+        .universe[data-proximity="high"]:hover {
+            border-color: rgba(21, 101, 192, 0.6);
+            box-shadow: 0 0 20px rgba(21, 101, 192, 0.12);
+        }
+
+        /* NEAR: moderate orbit */
+        .universe[data-proximity="near"] {
+            border-color: var(--void-border);
+        }
+
+        /* FAR: distant orbit — compact, receding */
+        .universe[data-proximity="far"] {
+            border-color: rgba(30, 26, 46, 0.6);
+            opacity: 0.85;
+        }
+        .universe[data-proximity="far"] .universe-header {
+            padding: 0.625rem 0.875rem;
+        }
+        .universe[data-proximity="far"] .civ-list {
+            padding: 0.375rem 0.875rem;
+        }
+        .universe[data-proximity="far"]:hover {
+            opacity: 1;
+        }
+
+        /* Responsive: reset column spans */
+        @media (max-width: 580px) {
+            .universe[data-proximity="extreme"] { grid-column: span 1; }
+        }
+
+        /* --- Universe Header --- */
+        .universe-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--void-border);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .universe-thumb {
+            width: 48px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid var(--void-border);
+            flex-shrink: 0;
+        }
+
+        .universe-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .universe-peak {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--photon-faint);
+            line-height: 1.3;
+        }
+
+        .universe-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--photon);
+            line-height: 1.3;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .universe-k-badge {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .k-extreme { background: var(--cyan-faint); color: var(--cyan); }
+        .k-high { background: var(--blue-faint); color: var(--blue-light); }
+        .k-mid { background: var(--orange-faint); color: var(--orange); }
+        .k-low { background: rgba(176, 184, 204, 0.08); color: var(--photon-faint); }
+
+        /* --- Civilization Entries --- */
+        .civ-list {
+            padding: 0.5rem 1rem;
+            list-style: none;
+        }
+
+        .civ {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(30, 26, 46, 0.8);
+        }
+
+        .civ:last-child {
+            border-bottom: none;
+            padding-bottom: 0.25rem;
+        }
+
+        .civ-name {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--photon);
+            line-height: 1.4;
+            margin-bottom: 0.15rem;
+        }
+
+        .civ-data {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--photon-faint);
+            line-height: 1.5;
+        }
+
+        .civ-data .val { color: var(--photon-dim); }
+        .civ-data .k-val { color: var(--cyan); }
+
+        .civ-flag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--orange);
+            margin-top: 0.15rem;
+        }
+
+        /* --- Reality: Timeline Treatment --- */
+        .universe-timeline .universe-header {
+            border-bottom-color: rgba(255, 87, 34, 0.15);
+        }
+
+        .universe-timeline .universe-name {
+            color: var(--orange);
+        }
+
+        .timeline-label {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--orange);
+            padding: 0.35rem 1rem;
+            background: var(--orange-faint);
+            border-bottom: 1px solid rgba(255, 87, 34, 0.1);
+            letter-spacing: 0.04em;
+        }
+
+        .timeline-list {
+            padding: 0.5rem 1rem;
+            list-style: none;
+        }
+
+        .timeline-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid rgba(30, 26, 46, 0.6);
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .timeline-entry:last-child { border-bottom: none; }
+
+        .timeline-era {
+            color: var(--photon-faint);
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .timeline-k {
+            color: var(--orange);
+            flex-shrink: 0;
+            margin-left: 0.75rem;
+        }
+
+        .timeline-pop {
+            color: var(--photon-dim);
+            flex-shrink: 0;
+            margin-left: 0.75rem;
+            text-align: right;
+            min-width: 3.5rem;
+        }
+
+        /* --- UNCHARTED Zone --- */
+        .uncharted {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .uncharted::before {
+            content: '';
+            position: absolute;
+            inset: -1rem -2rem;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(136, 144, 165, 0.02) 3px,
+                    rgba(136, 144, 165, 0.02) 4px
+                );
+            pointer-events: none;
+            border-radius: 4px;
+        }
+
+        .uncharted-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 0 1rem;
+            border-bottom: 1px dashed var(--void-border);
+            margin-bottom: 1.25rem;
+        }
+
+        .uncharted-title {
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--photon-faint);
+        }
+
+        .uncharted-badge {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--photon-faint);
+            padding: 0.2rem 0.6rem;
+            border: 1px dashed var(--void-border);
+            border-radius: 2px;
+            letter-spacing: 0.06em;
+        }
+
+        .uncharted-note {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--photon-faint);
+        }
+
+        .uncharted-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .uncharted-card {
+            background: var(--void-light);
+            border: 1px dashed rgba(136, 144, 165, 0.2);
+            border-radius: 4px;
+            padding: 1rem 1.25rem;
+            position: relative;
+            transition: border-color var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .uncharted-card::before {
+            content: '?';
+            position: absolute;
+            top: 0.75rem;
+            right: 1rem;
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(136, 144, 165, 0.06);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .uncharted-card:hover {
+            border-color: rgba(136, 144, 165, 0.4);
+            box-shadow: 0 0 12px rgba(136, 144, 165, 0.05);
+        }
+
+        .uncharted-card:focus-within {
+            outline: 2px solid var(--cyan);
+            outline-offset: 2px;
+        }
+
+        .uncharted-civ-name {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--photon-dim);
+            margin-bottom: 0.15rem;
+        }
+
+        .uncharted-origin {
+            font-size: 0.8125rem;
+            font-weight: 400;
+            color: var(--photon-faint);
+            margin-bottom: 0.5rem;
+        }
+
+        .uncharted-data {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--photon-faint);
+            line-height: 1.6;
+        }
+
+        .uncharted-data .val { color: var(--photon-dim); }
+
+        .uncharted-k {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--photon-faint);
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            border-top: 1px solid var(--void-border);
+            padding: 1.5rem 0 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+
+        .footer-note {
+            font-size: 0.8125rem;
+            font-weight: 300;
+            color: var(--photon-faint);
+            letter-spacing: 0.04em;
+        }
+
+        .footer-link {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--photon-dim);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color var(--transition-base), color var(--transition-base);
+        }
+        .footer-link:hover {
+            color: var(--cyan);
+            border-bottom-color: var(--cyan);
+        }
+        .footer-link:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 2px;
+        }
+
+        /* --- Focus visible for all interactive --- */
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 2px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            .hero { padding: 1.5rem 1rem 3rem; }
+            .culture-callout { padding: 1rem 1.25rem; }
+            .callout-name { font-size: 1.25rem; }
+            .universe-thumb { width: 40px; height: 28px; }
+            .uncharted-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- Print styles --- */
+        @media print {
+            body { background: #fff; color: #1a1a1a; }
+            .hero::before { display: none; }
+            .singularity { display: none; }
+            .hero-title { color: #1a1a1a; text-shadow: none; }
+            .skip-link { display: none; }
+            .gravity-threshold::before { display: none; }
+            .universe { border: 1px solid #ccc; break-inside: avoid; }
+            .uncharted-card { border: 1px dashed #ccc; break-inside: avoid; }
+            .scroll-arrow { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <noscript>
+        <div class="noscript-banner">
+            All civilization data is available without JavaScript. Visual animations are disabled.
+        </div>
+    </noscript>
+
+    <main id="main-content">
+
+        <!-- ===== HERO: THE SINGULARITY ===== -->
+        <section class="hero" aria-label="FUTR — The Kardashev Event Horizon">
+
+            <h1 class="hero-title">FUTR</h1>
+
+            <div class="singularity" aria-hidden="true">
+                <div class="accretion-disk"></div>
+                <div class="photon-ring"></div>
+                <div class="event-horizon"></div>
+            </div>
+
+            <div class="hero-content">
+                <p class="hero-subtitle">Fictional Universe Taxonomy Research</p>
+                <p class="hero-stats">30 Civilizations · 9 Universes · K 0.057 → K 2.3</p>
+                <p class="hero-verbs">Descend — Orbit — Transcend</p>
+            </div>
+
+            <!-- Culture: closest to the event horizon -->
+            <div class="culture-callout">
+                <div class="callout-label">Nearest to Event Horizon</div>
+                <div class="callout-name" role="heading" aria-level="2">Culture (pre-war)</div>
+                <div class="callout-data">
+                    <span class="k-value">K 2.3</span> · ~30T pop · ~14,000 Orbitals · 6 Dyson Spheres · TL13
+                </div>
+            </div>
+
+            <button class="scroll-arrow" aria-label="Scroll to civilization data" onclick="document.getElementById('universes').scrollIntoView({behavior:'smooth'})">
+            </button>
+        </section>
+
+        <!-- ===== GRAVITY THRESHOLD ===== -->
+        <div class="gravity-threshold" aria-label="Aggregate civilization statistics">
+            <div class="threshold-stats">
+                <div class="threshold-stat">
+                    <div class="threshold-value">30</div>
+                    <div class="threshold-label">Civilizations</div>
+                </div>
+                <div class="threshold-stat">
+                    <div class="threshold-value">9</div>
+                    <div class="threshold-label">Universes</div>
+                </div>
+                <div class="threshold-stat">
+                    <div class="threshold-value"><span class="accent">K 2.3</span></div>
+                    <div class="threshold-label">Peak Energy</div>
+                </div>
+                <div class="threshold-stat">
+                    <div class="threshold-value">~3.9×10¹⁷</div>
+                    <div class="threshold-label">Max Population</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== KNOWN UNIVERSES ===== -->
+        <section id="universes" class="page">
+
+            <header class="section-header">
+                <h2 class="section-title">Known Universes</h2>
+                <p class="section-subtitle">Ordered by peak Kardashev proximity to the singularity</p>
+            </header>
+
+            <div class="universe-grid">
+
+                <!-- THE CULTURE — K2.3 -->
+                <section class="universe reveal" data-proximity="extreme" aria-label="The Culture">
+                    <div class="universe-header">
+                        <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=800&h=400&q=80"
+                             alt="" aria-hidden="true" class="universe-thumb" width="48" height="32" loading="eager" fetchpriority="high">
+                        <div class="universe-info">
+                            <div class="universe-peak">Peak K 2.3</div>
+                            <h3 class="universe-name">The Culture</h3>
+                        </div>
+                        <span class="universe-k-badge k-extreme">K 2.3</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Culture (pre-war)</h4>
+                            <div class="civ-data">Pop: <span class="val">~30T</span> · Orbitals: <span class="val">~14,000</span> · K: <span class="k-val">2.3</span></div>
+                            <div class="civ-data">Dyson Spheres: <span class="val">6</span> · Tech: <span class="val">TL13</span></div>
+                            <div class="civ-flag">▲ PEAK ENERGY — CLASS II THRESHOLD</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- WARHAMMER 40K — K1.6 -->
+                <section class="universe reveal" data-proximity="high" aria-label="Warhammer 40,000">
+                    <div class="universe-header">
+                        <img src="https://images.unsplash.com/photo-1534996858221-380b92700493?auto=format&fit=crop&w=800&h=400&q=80"
+                             alt="" aria-hidden="true" class="universe-thumb" width="48" height="32" loading="eager" fetchpriority="high">
+                        <div class="universe-info">
+                            <div class="universe-peak">Peak K 1.6</div>
+                            <h3 class="universe-name">Warhammer 40,000</h3>
+                        </div>
+                        <span class="universe-k-badge k-high">K 1.6</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Imperium of Man M41</h4>
+                            <div class="civ-data">Pop: <span class="val">~1×10¹⁶</span> · Planets: <span class="val">~1M</span> · K: <span class="k-val">1.6</span></div>
+                            <div class="civ-data">Tech: <span class="val">TL10</span></div>
+                            <div class="civ-flag">▲ MAX TERRITORIAL EXTENT</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- PERRY RHODAN — K1.6 -->
+                <section class="universe reveal" data-proximity="high" aria-label="Perry Rhodan">
+                    <div class="universe-header">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80"
+                             alt="" aria-hidden="true" class="universe-thumb" width="48" height="32" loading="lazy">
+                        <div class="universe-info">
+                            <div class="universe-peak">Peak K 1.6</div>
+                            <h3 class="universe-name">Perry Rhodan</h3>
+                        </div>
+                        <span class="universe-k-badge k-high">K 1.6</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Großes Imperium 2040</h4>
+                            <div class="civ-data">Pop: <span class="val">~50T</span> · Planets: <span class="val">50,000</span> · K: <span class="k-val">1.6</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Posbis 2114</h4>
+                            <div class="civ-data">Units: <span class="val">100M</span> (robotic) · K: <span class="k-val">1.3</span> · Tech: <span class="val">TL10</span></div>
+                            <div class="civ-flag">▲ NON-BIOLOGICAL ENTITY</div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Solares Imperium 2040</h4>
+                            <div class="civ-data">Pop: <span class="val">~9B</span> · Planets: <span class="val">6</span> · K: <span class="k-val">0.9</span></div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- HONORVERSE — K1.1 -->
+                <section class="universe reveal" data-proximity="high" aria-label="Honorverse">
+                    <div class="universe-header">
+                        <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=800&h=400&q=80"
+                             alt="" aria-hidden="true" class="universe-thumb" width="48" height="32" loading="lazy">
+                        <div class="universe-info">
+                            <div class="universe-peak">Peak K 1.1</div>
+                            <h3 class="universe-name">Honorverse</h3>
+                        </div>
+                        <span class="universe-k-badge k-high">K 1.1</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Manticore 1903 PD</h4>
+                            <div class="civ-data">Pop: <span class="val">~3.2B</span> · Planets: <span class="val">3</span> · K: <span class="k-val">1.1</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Haven 1903 PD</h4>
+                            <div class="civ-data">Pop: <span class="val">~200B</span> · Planets: <span class="val">~100</span> · K: <span class="k-val">1.0</span></div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- STAR TREK — K1.0 -->
+                <section class="universe reveal" data-proximity="near" aria-label="Star Trek">
+                    <div class="universe-header">
+                        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&h=400&q=80"
+                             alt="" aria-hidden="true" class="universe-thumb" width="48" height="32" loading="lazy">
+                        <div class="universe-info">
+                            <div class="universe-peak">Peak K 1.0</div>
+                            <h3 class="universe-name">Star Trek</h3>
+                        </div>
+                        <span class="universe-k-badge k-mid">K 1.0</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Federation 2373</h4>
+                            <div class="civ-data">Pop: <span class="val">~100B</span> · Planets: <span class="val">~150</span> · K: <span class="k-val">1.0</span></div>
+                            <div class="civ-flag">▲ CLASS I THRESHOLD</div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Andorian Empire 2161</h4>
+                            <div class="civ-data">Pop: <span class="val">~8B</span> · Planets: <span class="val">14</span> · K: <span class="k-val">0.9</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Klingon Empire 2161</h4>
+                            <div class="civ-data">Pop: <span class="val">~9B</span> · Planets: <span class="val">~20</span> · K: <span class="k-val">0.9</span></div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- FIREFLY — K0.95 -->
+                <section class="universe reveal" data-proximity="near" aria-label="Firefly">
+                    <div class="universe-header">
+                        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&h=400&q=80"
+                             alt="" aria-hidden="true" class="universe-thumb" width="48" height="32" loading="lazy">
+                        <div class="universe-info">
+                            <div class="universe-peak">Peak K 0.95</div>
+                            <h3 class="universe-name">Firefly</h3>
+                        </div>
+                        <span class="universe-k-badge k-mid">K 0.95</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Alliance 2517</h4>
+                            <div class="civ-data">Pop: <span class="val">~303B</span> · Worlds: <span class="val">215</span> · K: <span class="k-val">0.95</span></div>
+                            <div class="civ-data">Tech: <span class="val">TL7</span></div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- THE EXPANSE — K0.9 -->
+                <section class="universe reveal" data-proximity="far" aria-label="The Expanse">
+                    <div class="universe-header">
+                        <img src="https://images.unsplash.com/photo-1457364559154-aa2644600ebb?auto=format&fit=crop&w=800&h=400&q=80"
+                             alt="" aria-hidden="true" class="universe-thumb" width="48" height="32" loading="lazy">
+                        <div class="universe-info">
+                            <div class="universe-peak">Peak K 0.9</div>
+                            <h3 class="universe-name">The Expanse</h3>
+                        </div>
+                        <span class="universe-k-badge k-low">K 0.9</span>
+                    </div>
+                    <ul class="civ-list">
+                        <li class="civ">
+                            <h4 class="civ-name">Sol System 2350</h4>
+                            <div class="civ-data">Pop: <span class="val">~35B</span> · K: <span class="k-val">0.9</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">United Nations 2350</h4>
+                            <div class="civ-data">Pop: <span class="val">~30B</span> · K: <span class="k-val">0.89</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Mars 2350</h4>
+                            <div class="civ-data">Pop: <span class="val">~4B</span> · K: <span class="k-val">0.85</span></div>
+                        </li>
+                        <li class="civ">
+                            <h4 class="civ-name">Outer Planets Alliance 2350</h4>
+                            <div class="civ-data">Pop: <span class="val">~100M</span> · K: <span class="k-val">0.67</span></div>
+                            <div class="civ-flag">▲ SPACEFARING AT K 0.67</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REALITY — CONTINUOUS OBSERVATION -->
+                <section class="universe universe-timeline reveal" data-proximity="far" aria-label="Reality — Continuous Observation">
+                    <div class="universe-header">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80"
+                             alt="" aria-hidden="true" class="universe-thumb" width="48" height="32" loading="lazy">
+                        <div class="universe-info">
+                            <div class="universe-peak">Peak K 0.73 // 10 Samples</div>
+                            <h3 class="universe-name">Reality</h3>
+                        </div>
+                        <span class="universe-k-badge" style="background: var(--orange-faint); color: var(--orange);">Baseline</span>
+                    </div>
+                    <div class="timeline-label">Long-Term Observation · Control Subject</div>
+                    <ul class="timeline-list">
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Early Pleistocene</span>
+                            <span class="timeline-k">K 0.057</span>
+                            <span class="timeline-pop">18,500</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Stone Age</span>
+                            <span class="timeline-k">K 0.1</span>
+                            <span class="timeline-pop">50,000</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Bronze Age</span>
+                            <span class="timeline-k">K 0.36</span>
+                            <span class="timeline-pop">20M</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Classic Age</span>
+                            <span class="timeline-k">K 0.46</span>
+                            <span class="timeline-pop">100M</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Middle Ages</span>
+                            <span class="timeline-k">K 0.48</span>
+                            <span class="timeline-pop">200M</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Age of Sail</span>
+                            <span class="timeline-k">K 0.54</span>
+                            <span class="timeline-pop">800M</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">Industrialization</span>
+                            <span class="timeline-k">K 0.56</span>
+                            <span class="timeline-pop">1B</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">20th Century</span>
+                            <span class="timeline-k">K 0.65</span>
+                            <span class="timeline-pop">1.15B</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">1980s</span>
+                            <span class="timeline-k">K 0.7</span>
+                            <span class="timeline-pop">4B</span>
+                        </li>
+                        <li class="timeline-entry">
+                            <span class="timeline-era">2023</span>
+                            <span class="timeline-k">K 0.73</span>
+                            <span class="timeline-pop">8.1B</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <!-- ===== UNCHARTED: K-NULL CIVILIZATIONS ===== -->
+            <section class="uncharted" aria-label="Uncharted — civilizations with unmeasured Kardashev values">
+                <header class="uncharted-header">
+                    <h2 class="uncharted-title">Uncharted</h2>
+                    <span class="uncharted-badge">5 ENTITIES</span>
+                    <span class="uncharted-note">K-value unmeasured — outside gravitational model</span>
+                </header>
+
+                <div class="uncharted-grid">
+                    <div class="uncharted-card reveal">
+                        <h3 class="uncharted-civ-name">Vulcans 2063</h3>
+                        <div class="uncharted-origin">Star Trek</div>
+                        <div class="uncharted-data">Planets: <span class="val">1</span> · Tech: <span class="val">TL9</span></div>
+                        <div class="uncharted-k">K: —</div>
+                    </div>
+
+                    <div class="uncharted-card reveal">
+                        <h3 class="uncharted-civ-name">Orks M41</h3>
+                        <div class="uncharted-origin">Warhammer 40,000</div>
+                        <div class="uncharted-data">Pop: <span class="val">~5×10¹⁶</span> · Planets: <span class="val">~2M</span></div>
+                        <div class="uncharted-data">Tech: <span class="val">TL10</span></div>
+                        <div class="uncharted-k">K: —</div>
+                    </div>
+
+                    <div class="uncharted-card reveal">
+                        <h3 class="uncharted-civ-name">Terragen Sphere 10600 AT</h3>
+                        <div class="uncharted-origin">Orion's Arm</div>
+                        <div class="uncharted-data">Pop: <span class="val">~3.9×10¹⁷</span> · Tech: <span class="val">TL14</span></div>
+                        <div class="uncharted-k">K: —</div>
+                    </div>
+
+                    <div class="uncharted-card reveal">
+                        <h3 class="uncharted-civ-name">Solar System 10600 AT</h3>
+                        <div class="uncharted-origin">Orion's Arm</div>
+                        <div class="uncharted-data">Tech: <span class="val">TL13</span></div>
+                        <div class="uncharted-k">K: —</div>
+                    </div>
+
+                    <div class="uncharted-card reveal">
+                        <h3 class="uncharted-civ-name">Diamond Network 10600 AT</h3>
+                        <div class="uncharted-origin">Orion's Arm</div>
+                        <div class="uncharted-data">Tech: <span class="val">TL14</span></div>
+                        <div class="uncharted-data">Non-biological — AI substrate</div>
+                        <div class="uncharted-k">K: —</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== FOOTER ===== -->
+            <footer class="site-footer">
+                <div class="footer-note">The Kardashev Event Horizon — FUTR · Fictional Universe Taxonomy Research</div>
+                <a href="https://www.futr.space/" class="footer-link">futr.space</a>
+            </footer>
+
+        </section>
+
+    </main>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        /* --- IntersectionObserver for card reveal --- */
+        if ('IntersectionObserver' in window && !prefersReducedMotion.matches) {
+            var revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(function(el) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(12px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '';
+                        entry.target.style.transform = '';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+            revealElements.forEach(function(el) {
+                observer.observe(el);
+            });
+        }
+
+        /* --- Parallax: subtle black hole recession on scroll --- */
+        if (!prefersReducedMotion.matches) {
+            var singularity = document.querySelector('.singularity');
+            var hero = document.querySelector('.hero');
+            var ticking = false;
+
+            function onScroll() {
+                if (!ticking) {
+                    ticking = true;
+                    requestAnimationFrame(function() {
+                        var scrollY = window.scrollY;
+                        var heroHeight = hero ? hero.offsetHeight : 800;
+                        if (scrollY < heroHeight && singularity) {
+                            var progress = scrollY / heroHeight;
+                            var scale = 1 - progress * 0.3;
+                            var opacity = 1 - progress * 0.8;
+                            singularity.style.transform = 'scale(' + Math.max(scale, 0.7) + ')';
+                            singularity.style.opacity = Math.max(opacity, 0.2);
+                        }
+                        ticking = false;
+                    });
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+        }
+    })();
+    </script>
+</body>
+</html>
