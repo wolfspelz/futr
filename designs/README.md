@@ -17,7 +17,7 @@ When creating new designs, use a 5-agent team:
 | Agent | Role | Model | Mode |
 |-------|------|-------|------|
 | **scifi-lead** | Creative visionary — proposes concepts | Opus | bypassPermissions |
-| **art-director** | Builder — implements HTML/CSS/JS | Opus | bypassPermissions |
+| **art-director** | Builder, Code-whiz — implements HTML/CSS/JS | Opus | bypassPermissions |
 | **genz-reviewer** | Culture/vibe critic | Opus | bypassPermissions |
 | **ux-expert** | Accessibility specialist | Opus | bypassPermissions |
 | **test-engineer** | Functionality checker | Sonnet | bypassPermissions |
