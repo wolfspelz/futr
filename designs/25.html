@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   COSMIC BRUTALISM — FUTR Design 6
+   Archivo Black + Barlow + Barlow Condensed
+   Near-white background, black text, electric vermillion accent
+   ============================================================ */
+
+:root {
+  --bg: #F5F2ED;
+  --bg-warm: #EDE8E0;
+  --black: #1A1A1A;
+  --black-soft: #2D2D2D;
+  --vermillion: #FF3D00;
+  --vermillion-dark: #E03500;
+  --vermillion-light: rgba(255, 61, 0, 0.08);
+  --vermillion-mid: rgba(255, 61, 0, 0.15);
+  --grey-100: #E8E4DD;
+  --grey-200: #D4CFC6;
+  --grey-300: #B0AAA0;
+  --grey-400: #8A8478;
+  --grey-500: #6B655A;
+  --grid-line: rgba(26, 26, 26, 0.06);
+  --grid-line-strong: rgba(26, 26, 26, 0.12);
+
+  --font-display: 'Archivo Black', 'Impact', sans-serif;
+  --font-body: 'Barlow', 'Helvetica Neue', sans-serif;
+  --font-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+
+  --border-heavy: 3px solid var(--black);
+  --border-medium: 2px solid var(--black);
+  --border-accent: 3px solid var(--vermillion);
+  --shadow-slab: 6px 6px 0 var(--black);
+  --shadow-slab-sm: 4px 4px 0 var(--black);
+  --shadow-slab-accent: 6px 6px 0 var(--vermillion);
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 10rem;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--black);
+  background-color: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Exposed structural grid — background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--grid-line) 0,
+      var(--grid-line) 1px,
+      transparent 1px,
+      transparent
+    ),
+    repeating-linear-gradient(
+      0deg,
+      var(--grid-line) 0,
+      var(--grid-line) 1px,
+      transparent 1px,
+      transparent
+    );
+  background-size: 80px 80px;
+}
+
+/* Stronger grid column lines */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--grid-line-strong) 0,
+      var(--grid-line-strong) 1px,
+      transparent 1px,
+      transparent
+    );
+  background-size: 240px 240px;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+img { max-width: 100%; display: block; }
+
+/* All content above the grid */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.display-mega {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 14rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.display-sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey-500);
+}
+
+.label-sm {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey-400);
+}
+
+.body-lg {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 52ch;
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger children */
+.stagger-children .reveal:nth-child(1) { transition-delay: 0s; }
+.stagger-children .reveal:nth-child(2) { transition-delay: 0.08s; }
+.stagger-children .reveal:nth-child(3) { transition-delay: 0.16s; }
+.stagger-children .reveal:nth-child(4) { transition-delay: 0.24s; }
+.stagger-children .reveal:nth-child(5) { transition-delay: 0.32s; }
+.stagger-children .reveal:nth-child(6) { transition-delay: 0.40s; }
+.stagger-children .reveal:nth-child(7) { transition-delay: 0.48s; }
+.stagger-children .reveal:nth-child(8) { transition-delay: 0.56s; }
+.stagger-children .reveal:nth-child(9) { transition-delay: 0.64s; }
+.stagger-children .reveal:nth-child(10) { transition-delay: 0.72s; }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--bg);
+  border-bottom: var(--border-heavy);
+  padding: 0 var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  transition: box-shadow 0.3s ease;
+}
+
+.nav.scrolled {
+  box-shadow: 0 4px 20px rgba(26, 26, 26, 0.1);
+}
+
+.nav__brand {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.nav__brand span {
+  color: var(--vermillion);
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  list-style: none;
+}
+
+.nav__links a {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-500);
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav__links a:hover {
+  color: var(--black);
+}
+
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--vermillion);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav__links a:hover::after {
+  width: 100%;
+}
+
+.nav__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  position: relative;
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: var(--black);
+  position: absolute;
+  left: 4px;
+  transition: all 0.3s;
+}
+
+.nav__hamburger span:nth-child(1) { top: 8px; }
+.nav__hamburger span:nth-child(2) { top: 16px; }
+.nav__hamburger span:nth-child(3) { top: 24px; }
+
+@media (max-width: 900px) {
+  .nav__links { display: none; }
+  .nav__hamburger { display: block; }
+
+  .nav__links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: var(--border-heavy);
+    padding: var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  .nav__hamburger.active span:nth-child(1) {
+    top: 16px;
+    transform: rotate(45deg);
+  }
+  .nav__hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav__hamburger.active span:nth-child(3) {
+    top: 16px;
+    transform: rotate(-45deg);
+  }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(64px + var(--space-lg)) var(--space-md) var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__overline {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--vermillion);
+  margin-bottom: var(--space-sm);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 13vw, 16rem);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-left: -0.06em;
+  /* Bleed left */
+}
+
+.hero__title-line {
+  display: block;
+}
+
+.hero__title-line--accent {
+  color: var(--vermillion);
+  /* Push right / overlap */
+  margin-left: 0.5em;
+}
+
+.hero__title-line--indent {
+  margin-left: 1.2em;
+}
+
+/* Giant background number */
+.hero__bg-number {
+  position: absolute;
+  right: -5vw;
+  bottom: -10vh;
+  font-family: var(--font-display);
+  font-size: clamp(20rem, 45vw, 60rem);
+  line-height: 0.75;
+  color: rgba(26, 26, 26, 0.03);
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+}
+
+.hero__description {
+  margin-top: var(--space-lg);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  line-height: 1.5;
+  max-width: 45ch;
+  color: var(--black-soft);
+  font-weight: 400;
+}
+
+.hero__stats {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.hero__stat {
+  border-left: var(--border-accent);
+  padding-left: var(--space-sm);
+}
+
+.hero__stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.hero__stat-label {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey-400);
+  margin-top: 0.25rem;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-md);
+  left: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.hero__scroll-line {
+  width: 40px;
+  height: 3px;
+  background: var(--vermillion);
+  animation: pulse-width 2s ease-in-out infinite;
+}
+
+@keyframes pulse-width {
+  0%, 100% { width: 40px; }
+  50% { width: 60px; }
+}
+
+.hero__scroll-text {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey-400);
+}
+
+/* ============================================================
+   SECTION LAYOUT
+   ============================================================ */
+.section {
+  padding: var(--space-xl) var(--space-md);
+  position: relative;
+}
+
+.section--dark {
+  background: var(--black);
+  color: var(--bg);
+}
+
+.section--accent-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--space-md);
+  right: var(--space-md);
+  height: 3px;
+  background: var(--vermillion);
+}
+
+.section__header {
+  margin-bottom: var(--space-lg);
+}
+
+.section__number {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 15vw, 14rem);
+  line-height: 0.8;
+  color: rgba(26, 26, 26, 0.04);
+  margin-left: -0.08em;
+  margin-bottom: -0.3em;
+  position: relative;
+  z-index: 0;
+  user-select: none;
+}
+
+.section--dark .section__number {
+  color: rgba(245, 242, 237, 0.04);
+}
+
+.section__title-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.section__dash {
+  width: 60px;
+  height: 4px;
+  background: var(--vermillion);
+  flex-shrink: 0;
+  margin-top: 0.6em;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   MISSION / ABOUT
+   ============================================================ */
+.mission {
+  padding: var(--space-2xl) var(--space-md);
+  position: relative;
+}
+
+.mission__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mission__left {
+  position: relative;
+}
+
+.mission__giant-text {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 11rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-left: -0.06em;
+}
+
+.mission__giant-text span {
+  display: block;
+}
+
+.mission__giant-text .accent {
+  color: var(--vermillion);
+  -webkit-text-stroke: 0;
+}
+
+.mission__giant-text .outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--black);
+}
+
+.mission__right {
+  padding-top: var(--space-lg);
+}
+
+.mission__text {
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  line-height: 1.7;
+  color: var(--black-soft);
+  max-width: 50ch;
+  margin-bottom: var(--space-md);
+}
+
+.mission__detail {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--grey-500);
+  line-height: 1.6;
+  max-width: 50ch;
+}
+
+@media (max-width: 900px) {
+  .mission__content {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  .mission__right {
+    padding-top: 0;
+  }
+}
+
+/* ============================================================
+   CARD GRID — Concrete Slabs
+   ============================================================ */
+.cards-section {
+  padding: var(--space-xl) var(--space-md);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--bg);
+  border: var(--border-heavy);
+  padding: var(--space-md);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--vermillion);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-slab);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  font-size: 1.8rem;
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-xs);
+  line-height: 1.1;
+}
+
+.card__text {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--grey-500);
+  line-height: 1.5;
+}
+
+.card__number {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(26, 26, 26, 0.04);
+  pointer-events: none;
+}
+
+/* Featured card (wide) */
+.card--featured {
+  grid-column: span 2;
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.card--featured .card__icon {
+  font-size: 3rem;
+  width: 80px;
+  height: 80px;
+}
+
+@media (max-width: 700px) {
+  .card--featured {
+    grid-column: span 1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   UNIVERSES — Massive Slabs
+   ============================================================ */
+.universes-section {
+  padding: var(--space-xl) 0;
+  overflow: hidden;
+}
+
+.universes-section .section__header {
+  padding: 0 var(--space-md);
+}
+
+.universes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.universe-tile {
+  border: var(--border-heavy);
+  margin: -1.5px; /* Prevent double borders */
+  padding: var(--space-lg) var(--space-md);
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.universe-tile:hover {
+  background-color: var(--vermillion-light);
+}
+
+.universe-tile:hover .universe-tile__bg {
+  color: var(--vermillion);
+  opacity: 0.08;
+}
+
+.universe-tile:hover .universe-tile__name {
+  color: var(--vermillion);
+}
+
+.universe-tile__bg {
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 10vw, 10rem);
+  line-height: 0.8;
+  color: rgba(26, 26, 26, 0.04);
+  pointer-events: none;
+  user-select: none;
+  transition: color 0.3s, opacity 0.3s;
+}
+
+.universe-tile__count {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-xs);
+}
+
+.universe-tile__name {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: color 0.3s;
+  line-height: 1.1;
+}
+
+.universe-tile__label {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey-400);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .universes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .universes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   METRICS — Technical Spec Sheet
+   ============================================================ */
+.metrics-section {
+  padding: var(--space-xl) var(--space-md);
+  background: var(--black);
+  color: var(--bg);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.metric-block {
+  border: 1px solid rgba(245, 242, 237, 0.1);
+  padding: var(--space-md);
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.metric-block:hover {
+  background: rgba(255, 61, 0, 0.05);
+  border-color: rgba(255, 61, 0, 0.3);
+}
+
+.metric-block__icon {
+  font-size: 1.4rem;
+  margin-bottom: var(--space-sm);
+  opacity: 0.6;
+}
+
+.metric-block__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  line-height: 1.1;
+}
+
+.metric-block__type {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-300);
+}
+
+.metric-block__bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(245, 242, 237, 0.06);
+  margin-top: var(--space-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-block__bar-fill {
+  height: 100%;
+  background: var(--vermillion);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 0;
+}
+
+.metric-block__bar-fill.animated {
+  width: var(--bar-width);
+}
+
+/* ============================================================
+   CIVILIZATIONS — Brutalist Data Grid
+   ============================================================ */
+.civilizations-section {
+  padding: var(--space-xl) var(--space-md);
+}
+
+.civ-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.civ-row {
+  display: grid;
+  grid-template-columns: 60px 2fr 1fr 1fr 1fr;
+  border: var(--border-heavy);
+  margin-bottom: -3px;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.civ-row:hover {
+  background: var(--vermillion-light);
+}
+
+.civ-row:hover .civ-row__index {
+  background: var(--vermillion);
+  color: white;
+}
+
+.civ-row__index {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-warm);
+  border-right: var(--border-heavy);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.civ-row__name {
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid var(--grey-200);
+}
+
+.civ-row__universe {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--vermillion);
+}
+
+.civ-row__title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.civ-row__metric {
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--grey-200);
+}
+
+.civ-row__metric:last-child {
+  border-right: none;
+}
+
+.civ-row__metric-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.civ-row__metric-label {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey-400);
+  margin-top: 0.25rem;
+}
+
+/* Header row */
+.civ-row--header {
+  background: var(--black);
+  color: var(--bg);
+  border-color: var(--black);
+}
+
+.civ-row--header:hover {
+  background: var(--black);
+}
+
+.civ-row--header .civ-row__index {
+  background: var(--vermillion);
+  color: white;
+  border-color: var(--black);
+}
+
+.civ-row--header .civ-row__name,
+.civ-row--header .civ-row__metric {
+  border-color: rgba(245, 242, 237, 0.15);
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .civ-row {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .civ-row__name {
+    grid-column: 2;
+    border-right: none;
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .civ-row__index {
+    grid-row: 1 / 3;
+  }
+  .civ-row__metric {
+    border-right: 1px solid var(--grey-200);
+    border-bottom: none;
+  }
+  .civ-row__metrics-wrap {
+    grid-column: 2;
+    display: flex;
+  }
+  .civ-row--header {
+    display: none;
+  }
+}
+
+/* ============================================================
+   COMMUNITY — Overlapping blocks
+   ============================================================ */
+.community-section {
+  padding: var(--space-xl) var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.community-section::before {
+  content: 'COMMUNITY';
+  position: absolute;
+  top: -0.2em;
+  left: -0.1em;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 20vw, 22rem);
+  line-height: 0.8;
+  color: rgba(26, 26, 26, 0.03);
+  pointer-events: none;
+  user-select: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.community-block {
+  background: var(--bg);
+  border: var(--border-heavy);
+  padding: var(--space-lg) var(--space-md);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.community-block:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-slab);
+}
+
+.community-block:nth-child(2) {
+  margin-top: var(--space-lg);
+}
+
+.community-block:nth-child(3) {
+  margin-top: calc(var(--space-lg) * 2);
+}
+
+.community-block__icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.community-block__title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  line-height: 1;
+}
+
+.community-block__text {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--grey-500);
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+}
+
+.community-block__link {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vermillion);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.3s;
+}
+
+.community-block__link:hover {
+  gap: 1rem;
+}
+
+.community-block__link-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.community-block:hover .community-block__link-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 800px) {
+  .community-grid {
+    grid-template-columns: 1fr;
+  }
+  .community-block:nth-child(2),
+  .community-block:nth-child(3) {
+    margin-top: 0;
+  }
+}
+
+/* ============================================================
+   UNIVERSES WE WANT — Call to action
+   ============================================================ */
+.wanted-section {
+  padding: var(--space-xl) var(--space-md);
+  background: var(--bg-warm);
+  position: relative;
+}
+
+.wanted-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.wanted__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+}
+
+.wanted__item {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  text-transform: uppercase;
+  padding: var(--space-xs) var(--space-sm);
+  border: var(--border-medium);
+  background: var(--bg);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  cursor: pointer;
+}
+
+.wanted__item:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-slab-sm);
+  background: var(--vermillion);
+  color: white;
+  border-color: var(--vermillion);
+}
+
+@media (max-width: 800px) {
+  .wanted-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+/* ============================================================
+   INSPIRATION STRIP
+   ============================================================ */
+.inspiration-strip {
+  padding: var(--space-lg) var(--space-md);
+  border-top: var(--border-heavy);
+  border-bottom: var(--border-heavy);
+  overflow: hidden;
+  position: relative;
+}
+
+.inspiration-marquee {
+  display: flex;
+  gap: var(--space-lg);
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.inspiration-marquee__item {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 5rem);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(26, 26, 26, 0.08);
+  user-select: none;
+}
+
+.inspiration-marquee__item .dot {
+  color: var(--vermillion);
+  opacity: 0.4;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--black);
+  color: var(--bg);
+  padding: var(--space-xl) var(--space-md) var(--space-md);
+}
+
+.footer__top {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid rgba(245, 242, 237, 0.1);
+}
+
+.footer__brand {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.footer__brand span {
+  color: var(--vermillion);
+}
+
+.footer__tagline {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--grey-300);
+  margin-top: var(--space-sm);
+  max-width: 30ch;
+}
+
+.footer__col-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.footer__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.footer__links a {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--grey-300);
+  transition: color 0.2s;
+}
+
+.footer__links a:hover {
+  color: var(--vermillion);
+}
+
+.footer__bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.footer__copy {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--grey-400);
+}
+
+.footer__legal {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.footer__legal a {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-400);
+  transition: color 0.2s;
+}
+
+.footer__legal a:hover {
+  color: var(--vermillion);
+}
+
+@media (max-width: 700px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+/* ============================================================
+   SCROLL-DRIVEN PARALLAX ON HERO TYPE
+   ============================================================ */
+.parallax-type {
+  will-change: transform;
+}
+
+/* ============================================================
+   BUTTON
+   ============================================================ */
+.btn {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: var(--space-sm) var(--space-md);
+  border: var(--border-heavy);
+  background: var(--black);
+  color: var(--bg);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-slab-sm);
+}
+
+.btn--accent {
+  background: var(--vermillion);
+  border-color: var(--vermillion);
+  color: white;
+}
+
+.btn--accent:hover {
+  box-shadow: var(--shadow-slab-accent);
+}
+
+/* ============================================================
+   TEXTURE OVERLAY (subtle paper noise)
+   ============================================================ */
+.texture-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+</style>
+</head>
+<body>
+
+<!-- Subtle paper/concrete noise overlay -->
+<div class="texture-overlay"></div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav__brand">FUTR<span>.</span></a>
+  <ul class="nav__links" id="navLinks">
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#universes">Universes</a></li>
+    <li><a href="#metrics">Metrics</a></li>
+    <li><a href="#civilizations">Civilizations</a></li>
+    <li><a href="#community">Community</a></li>
+  </ul>
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero__overline reveal">Fictional Universe Taxonomy Research</div>
+
+  <h1 class="hero__title parallax-type">
+    <span class="hero__title-line reveal-left">Mapping</span>
+    <span class="hero__title-line hero__title-line--accent reveal-left" style="transition-delay: 0.1s;">Every</span>
+    <span class="hero__title-line reveal-left" style="transition-delay: 0.2s;">Civilization</span>
+  </h1>
+
+  <div class="hero__bg-number" aria-hidden="true">09</div>
+
+  <p class="hero__description reveal" style="transition-delay: 0.3s;">
+    Collecting, comparing, and cataloging statistical data about civilizations from science fiction universes and real-world history.
+  </p>
+
+  <div class="hero__stats reveal" style="transition-delay: 0.4s;">
+    <div class="hero__stat">
+      <div class="hero__stat-number">9</div>
+      <div class="hero__stat-label">Universes</div>
+    </div>
+    <div class="hero__stat">
+      <div class="hero__stat-number">20+</div>
+      <div class="hero__stat-label">Civilizations</div>
+    </div>
+    <div class="hero__stat">
+      <div class="hero__stat-number">22</div>
+      <div class="hero__stat-label">Metrics</div>
+    </div>
+  </div>
+
+  <div class="hero__scroll">
+    <div class="hero__scroll-line"></div>
+    <span class="hero__scroll-text">Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     MISSION
+     ============================================================ -->
+<section class="mission section--accent-bar" id="mission">
+  <div class="mission__content">
+    <div class="mission__left reveal-left">
+      <div class="mission__giant-text">
+        <span>The</span>
+        <span class="accent">FUTR</span>
+        <span class="outline">Project</span>
+      </div>
+    </div>
+    <div class="mission__right">
+      <p class="mission__text reveal">
+        The FUTR project collects statistics about civilizations in science fiction universes. Population counts, Kardashev scale ratings, territory sizes, fleet strengths, and more &mdash; all cataloged, sourced, and compared.
+      </p>
+      <p class="mission__text reveal" style="transition-delay: 0.1s;">
+        From the Federation of Planets to the Imperium of Man. From Firefly's Alliance to the Terragen Sphere. How do they compare to each other &mdash; and to us?
+      </p>
+      <p class="mission__detail reveal" style="transition-delay: 0.2s;">
+        Open source. Community driven. Every datapoint referenced. We track confidence levels from hard canon to wild guesses.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CARDS GRID
+     ============================================================ -->
+<section class="cards-section" id="explore">
+  <div class="section__header container">
+    <div class="section__number reveal-left">02</div>
+    <div class="section__title-row">
+      <h2 class="display-lg reveal-left" style="transition-delay: 0.05s;">Explore</h2>
+      <div class="section__dash reveal" style="transition-delay: 0.15s;"></div>
+    </div>
+  </div>
+
+  <div class="cards-grid stagger-children">
+    <a class="card card--featured reveal" href="#">
+      <div class="card__icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3"/><path d="M16 24h16M24 16v16" stroke="var(--vermillion)" stroke-width="3"/></svg>
+      </div>
+      <div>
+        <div class="card__title">All Universes</div>
+        <div class="card__text">Browse every tracked universe from Star Trek to Warhammer 40,000 &mdash; complete with civilizations, metrics, and source references.</div>
+      </div>
+      <div class="card__number">9</div>
+    </a>
+
+    <a class="card reveal" href="#">
+      <div class="card__icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M8 38L24 10l16 28H8z" stroke="currentColor" stroke-width="3" fill="none"/><circle cx="24" cy="28" r="3" fill="var(--vermillion)"/></svg>
+      </div>
+      <div class="card__title">New Universes</div>
+      <div class="card__text">Recently added fictional settings waiting to be explored and populated with data.</div>
+    </a>
+
+    <a class="card reveal" href="#">
+      <div class="card__icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" stroke="currentColor" stroke-width="3" fill="none"/><line x1="8" y1="24" x2="40" y2="24" stroke="var(--vermillion)" stroke-width="3"/></svg>
+      </div>
+      <div class="card__title">New Civilizations</div>
+      <div class="card__text">Latest civilization snapshots added across all universes.</div>
+    </a>
+
+    <a class="card reveal" href="#">
+      <div class="card__icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="10" y="28" width="6" height="12" fill="var(--vermillion)"/><rect x="21" y="18" width="6" height="22" fill="currentColor"/><rect x="32" y="8" width="6" height="32" fill="currentColor" opacity="0.4"/></svg>
+      </div>
+      <div class="card__title">Metrics</div>
+      <div class="card__text">22 metrics from Population to Kardashev Scale to Dyson Spheres.</div>
+      <div class="card__number">22</div>
+    </a>
+
+    <a class="card reveal" href="#">
+      <div class="card__icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="3" stroke-dasharray="6 4" fill="none"/><circle cx="24" cy="24" r="4" fill="var(--vermillion)"/></svg>
+      </div>
+      <div class="card__title">Universes We Want</div>
+      <div class="card__text">Vote for and suggest universes the community should track next.</div>
+    </a>
+
+    <a class="card reveal" href="#">
+      <div class="card__icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 8l4 8 8 1-6 6 2 8-8-4-8 4 2-8-6-6 8-1z" stroke="currentColor" stroke-width="3" fill="none"/></svg>
+      </div>
+      <div class="card__title">Inspiration</div>
+      <div class="card__text">The databases, projects, and ideas that sparked FUTR.</div>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================
+     UNIVERSES
+     ============================================================ -->
+<section class="universes-section" id="universes">
+  <div class="section__header container">
+    <div class="section__number reveal-left">03</div>
+    <div class="section__title-row">
+      <h2 class="display-lg reveal-left" style="transition-delay: 0.05s;">Universes</h2>
+      <div class="section__dash reveal" style="transition-delay: 0.15s;"></div>
+    </div>
+  </div>
+
+  <div class="universes-grid stagger-children">
+    <div class="universe-tile reveal">
+      <div class="universe-tile__bg" aria-hidden="true">ST</div>
+      <div class="universe-tile__count">4</div>
+      <div class="universe-tile__name">Star Trek</div>
+      <div class="universe-tile__label">Civilizations</div>
+    </div>
+
+    <div class="universe-tile reveal">
+      <div class="universe-tile__bg" aria-hidden="true">PR</div>
+      <div class="universe-tile__count">3</div>
+      <div class="universe-tile__name">Perry Rhodan</div>
+      <div class="universe-tile__label">Civilizations</div>
+    </div>
+
+    <div class="universe-tile reveal">
+      <div class="universe-tile__bg" aria-hidden="true">FF</div>
+      <div class="universe-tile__count">1</div>
+      <div class="universe-tile__name">Firefly</div>
+      <div class="universe-tile__label">Civilizations</div>
+    </div>
+
+    <div class="universe-tile reveal">
+      <div class="universe-tile__bg" aria-hidden="true">EX</div>
+      <div class="universe-tile__count">4</div>
+      <div class="universe-tile__name">The Expanse</div>
+      <div class="universe-tile__label">Civilizations</div>
+    </div>
+
+    <div class="universe-tile reveal">
+      <div class="universe-tile__bg" aria-hidden="true">TC</div>
+      <div class="universe-tile__count">1</div>
+      <div class="universe-tile__name">The Culture</div>
+      <div class="universe-tile__label">Civilizations</div>
+    </div>
+
+    <div class="universe-tile reveal">
+      <div class="universe-tile__bg" aria-hidden="true">HV</div>
+      <div class="universe-tile__count">2</div>
+      <div class="universe-tile__name">Honorverse</div>
+      <div class="universe-tile__label">Civilizations</div>
+    </div>
+
+    <div class="universe-tile reveal">
+      <div class="universe-tile__bg" aria-hidden="true">40K</div>
+      <div class="universe-tile__count">2</div>
+      <div class="universe-tile__name">Warhammer 40,000</div>
+      <div class="universe-tile__label">Civilizations</div>
+    </div>
+
+    <div class="universe-tile reveal">
+      <div class="universe-tile__bg" aria-hidden="true">RE</div>
+      <div class="universe-tile__count">9</div>
+      <div class="universe-tile__name">Reality</div>
+      <div class="universe-tile__label">Civilizations</div>
+    </div>
+
+    <div class="universe-tile reveal">
+      <div class="universe-tile__bg" aria-hidden="true">OA</div>
+      <div class="universe-tile__count">3</div>
+      <div class="universe-tile__name">Orion's Arm</div>
+      <div class="universe-tile__label">Civilizations</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     METRICS
+     ============================================================ -->
+<section class="metrics-section section" id="metrics">
+  <div class="section__header container">
+    <div class="section__number reveal-left">04</div>
+    <div class="section__title-row">
+      <h2 class="display-lg reveal-left" style="transition-delay: 0.05s; color: var(--bg);">Metrics</h2>
+      <div class="section__dash reveal" style="transition-delay: 0.15s;"></div>
+    </div>
+    <p class="body-lg reveal" style="transition-delay: 0.2s; color: var(--grey-300); margin-top: var(--space-sm);">22 tracked dimensions across every civilization. Each datapoint sourced, confidence-rated, and comparable.</p>
+  </div>
+
+  <div class="metrics-grid stagger-children">
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2"/></svg>
+      </div>
+      <div class="metric-block__name">Population</div>
+      <div class="metric-block__type">Number / People</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 85%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="var(--vermillion)"/></svg>
+      </div>
+      <div class="metric-block__name">Planets</div>
+      <div class="metric-block__type">Number / Worlds</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 70%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="var(--vermillion)" stroke-width="2" stroke-dasharray="4 3"/></svg>
+      </div>
+      <div class="metric-block__name">Kardashev Scale</div>
+      <div class="metric-block__type">Scale / 0 &ndash; III+</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 60%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2"/><path d="M4 14h16" stroke="var(--vermillion)" stroke-width="2"/></svg>
+      </div>
+      <div class="metric-block__name">Techlevel</div>
+      <div class="metric-block__type">Scale / Level</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 45%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="metric-block__name">Star Systems</div>
+      <div class="metric-block__type">Number / Systems</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 55%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10" stroke="currentColor" stroke-width="2"/><path d="M22 2L12 12" stroke="var(--vermillion)" stroke-width="2"/></svg>
+      </div>
+      <div class="metric-block__name">Civilization Age</div>
+      <div class="metric-block__type">Number / Years</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 40%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="1" opacity="0.3"/></svg>
+      </div>
+      <div class="metric-block__name">Territory</div>
+      <div class="metric-block__type">Number / Light-years</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 35%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6" stroke="currentColor" stroke-width="2"/><path d="M6 6l12 12" stroke="var(--vermillion)" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+      </div>
+      <div class="metric-block__name">Warships</div>
+      <div class="metric-block__type">Number / Vessels</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 50%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-5 7 5v14" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="metric-block__name">Government</div>
+      <div class="metric-block__type">Category / Type</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 75%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="var(--vermillion)" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+      </div>
+      <div class="metric-block__name">Dyson Spheres</div>
+      <div class="metric-block__type">Number / Structures</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 15%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" stroke-width="2"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="var(--vermillion)" stroke-width="2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" stroke-width="2" transform="rotate(120 12 12)"/></svg>
+      </div>
+      <div class="metric-block__name">Ringworlds</div>
+      <div class="metric-block__type">Number / Structures</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 10%;"></div></div>
+    </div>
+
+    <div class="metric-block reveal">
+      <div class="metric-block__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 22h20L12 2z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 14v-4M12 18v-1" stroke="var(--vermillion)" stroke-width="2"/></svg>
+      </div>
+      <div class="metric-block__name">FTL Date</div>
+      <div class="metric-block__type">Date / Year</div>
+      <div class="metric-block__bar"><div class="metric-block__bar-fill" style="--bar-width: 30%;"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INSPIRATION MARQUEE
+     ============================================================ -->
+<div class="inspiration-strip">
+  <div class="inspiration-marquee" aria-hidden="true">
+    <span class="inspiration-marquee__item">Star Trek <span class="dot">/</span> Perry Rhodan <span class="dot">/</span> Firefly <span class="dot">/</span> The Expanse <span class="dot">/</span> The Culture <span class="dot">/</span> Honorverse <span class="dot">/</span> Warhammer 40K <span class="dot">/</span> Reality <span class="dot">/</span> Orion's Arm</span>
+    <span class="inspiration-marquee__item">Star Trek <span class="dot">/</span> Perry Rhodan <span class="dot">/</span> Firefly <span class="dot">/</span> The Expanse <span class="dot">/</span> The Culture <span class="dot">/</span> Honorverse <span class="dot">/</span> Warhammer 40K <span class="dot">/</span> Reality <span class="dot">/</span> Orion's Arm</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     CIVILIZATIONS
+     ============================================================ -->
+<section class="civilizations-section section--accent-bar" id="civilizations">
+  <div class="section__header container">
+    <div class="section__number reveal-left">05</div>
+    <div class="section__title-row">
+      <h2 class="display-lg reveal-left" style="transition-delay: 0.05s;">Civilizations</h2>
+      <div class="section__dash reveal" style="transition-delay: 0.15s;"></div>
+    </div>
+  </div>
+
+  <div class="civ-grid">
+    <div class="civ-row civ-row--header">
+      <div class="civ-row__index">#</div>
+      <div class="civ-row__name">Civilization</div>
+      <div class="civ-row__metric">Population</div>
+      <div class="civ-row__metric">Planets</div>
+      <div class="civ-row__metric">Kardashev</div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">01</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">Star Trek</span>
+        <span class="civ-row__title">Federation 2373</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">9.85T</span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">150</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">II</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">02</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">Star Trek</span>
+        <span class="civ-row__title">Klingon Empire 2161</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">03</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">Firefly</span>
+        <span class="civ-row__title">Alliance 2517</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">18.2B</span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">72</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">I</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">04</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">The Expanse</span>
+        <span class="civ-row__title">Mars 2350</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">1</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">05</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">The Expanse</span>
+        <span class="civ-row__title">OPA 2350</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">06</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">Warhammer 40K</span>
+        <span class="civ-row__title">Imperium of Man M41</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">~10<sup>15</sup></span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">1M+</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">II</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">07</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">Orion's Arm</span>
+        <span class="civ-row__title">Terragen Sphere</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">~10<sup>19</sup></span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">III</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">08</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">Orion's Arm</span>
+        <span class="civ-row__title">Diamond Network</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">~10<sup>12</sup></span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">&mdash;</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">09</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">Perry Rhodan</span>
+        <span class="civ-row__title">Solares Imperium 2040</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">3.2B</span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">2</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">I</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+
+    <div class="civ-row reveal">
+      <div class="civ-row__index">10</div>
+      <div class="civ-row__name">
+        <span class="civ-row__universe">Honorverse</span>
+        <span class="civ-row__title">Manticore 1903 PD</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">2.9B</span>
+        <span class="civ-row__metric-label">Population</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">3</span>
+        <span class="civ-row__metric-label">Planets</span>
+      </div>
+      <div class="civ-row__metric">
+        <span class="civ-row__metric-value">I</span>
+        <span class="civ-row__metric-label">Kardashev</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMMUNITY
+     ============================================================ -->
+<section class="community-section section" id="community">
+  <div class="section__header container">
+    <div class="section__number reveal-left">06</div>
+    <div class="section__title-row">
+      <h2 class="display-lg reveal-left" style="transition-delay: 0.05s;">Community</h2>
+      <div class="section__dash reveal" style="transition-delay: 0.15s;"></div>
+    </div>
+  </div>
+
+  <div class="community-grid stagger-children">
+    <div class="community-block reveal">
+      <div class="community-block__icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M27.2 6.8c-2-2-5.2-2.8-8-1.6L16 8 12.8 5.2c-2.8-1.2-6-.4-8 1.6A6.4 6.4 0 004 14l12 12 12-12a6.4 6.4 0 00-.8-7.2z" stroke="currentColor" stroke-width="2.5" fill="none"/></svg>
+      </div>
+      <div class="community-block__title">Discord</div>
+      <div class="community-block__text">Join the FUTR community. Discuss fictional universes, debate metrics, and help shape the project.</div>
+      <a href="#" class="community-block__link">
+        Join Server <span class="community-block__link-arrow">&rarr;</span>
+      </a>
+    </div>
+
+    <div class="community-block reveal">
+      <div class="community-block__icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2L4 8v8c0 7.2 5.2 13.6 12 16 6.8-2.4 12-8.8 12-16V8L16 2z" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M10 16l4 4 8-8" stroke="var(--vermillion)" stroke-width="2.5"/></svg>
+      </div>
+      <div class="community-block__title">Contributing</div>
+      <div class="community-block__text">Add civilizations, refine metrics, improve data quality. Every contribution is tracked and attributed.</div>
+      <a href="#" class="community-block__link">
+        Get Started <span class="community-block__link-arrow">&rarr;</span>
+      </a>
+    </div>
+
+    <div class="community-block reveal">
+      <div class="community-block__icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.3 2 2 8.3 2 16c0 6.2 4 11.4 9.6 13.2.7.1 1-.3 1-.7v-2.5c-3.9.8-4.7-1.9-4.7-1.9-.6-1.6-1.6-2-1.6-2-1.3-.9.1-.9.1-.9 1.4.1 2.1 1.4 2.1 1.4 1.3 2.2 3.3 1.6 4.1 1.2.1-.9.5-1.6.9-1.9-3.1-.4-6.4-1.6-6.4-7 0-1.5.6-2.8 1.4-3.8-.1-.4-.6-1.8.1-3.7 0 0 1.2-.4 3.8 1.4a13 13 0 016.8 0c2.7-1.8 3.8-1.4 3.8-1.4.8 1.9.3 3.3.1 3.7.9 1 1.4 2.2 1.4 3.8 0 5.4-3.3 6.6-6.4 7 .5.4 1 1.3 1 2.6v3.9c0 .4.3.8 1 .7C26 27.4 30 22.2 30 16c0-7.7-6.3-14-14-14z" fill="currentColor"/></svg>
+      </div>
+      <div class="community-block__title">Open Source</div>
+      <div class="community-block__text">All data and code on GitHub. Fork it, extend it, build on it. MIT licensed.</div>
+      <a href="#" class="community-block__link">
+        View on GitHub <span class="community-block__link-arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     UNIVERSES WE WANT
+     ============================================================ -->
+<section class="wanted-section" id="wanted">
+  <div class="wanted-content">
+    <div>
+      <div class="section__number reveal-left">07</div>
+      <h2 class="display-md reveal-left" style="transition-delay: 0.05s;">Universes<br>We Want</h2>
+      <p class="body-lg reveal" style="transition-delay: 0.15s; margin-top: var(--space-sm);">Help us expand. These universes are on our radar &mdash; contribute data to make them happen.</p>
+    </div>
+    <ul class="wanted__list stagger-children">
+      <li class="wanted__item reveal">Dune</li>
+      <li class="wanted__item reveal">Foundation</li>
+      <li class="wanted__item reveal">Battlestar Galactica</li>
+      <li class="wanted__item reveal">Babylon 5</li>
+      <li class="wanted__item reveal">Mass Effect</li>
+      <li class="wanted__item reveal">Halo</li>
+      <li class="wanted__item reveal">Star Wars</li>
+      <li class="wanted__item reveal">Stargate</li>
+      <li class="wanted__item reveal">Hitchhiker's Guide</li>
+      <li class="wanted__item reveal">Hyperion</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div>
+      <div class="footer__brand">FUTR<span>.</span></div>
+      <p class="footer__tagline">Fictional Universe Taxonomy Research. Collecting the data that fiction forgot to standardize.</p>
+    </div>
+    <div>
+      <div class="footer__col-title">Explore</div>
+      <ul class="footer__links">
+        <li><a href="#">All Universes</a></li>
+        <li><a href="#">Civilizations</a></li>
+        <li><a href="#">Metrics</a></li>
+        <li><a href="#">Universes We Want</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Connect</div>
+      <ul class="footer__links">
+        <li><a href="#">Discord</a></li>
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Contributing Guide</a></li>
+        <li><a href="#">Inspiration</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__copy">&copy; 2024 &ndash; 2026 FUTR Project. All rights reserved.</div>
+    <div class="footer__legal">
+      <a href="#">Impressum</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // ---- Scroll reveal via IntersectionObserver ----
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -60px 0px'
+  });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // ---- Metric bar animation ----
+  const barFills = document.querySelectorAll('.metric-block__bar-fill');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  barFills.forEach(el => barObserver.observe(el));
+
+  // ---- Nav scroll shadow ----
+  const nav = document.getElementById('nav');
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ---- Hamburger toggle ----
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close menu on link click
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // ---- Parallax on hero title (gentle, uses rAF) ----
+  const heroTitle = document.querySelector('.parallax-type');
+  let lastScrollY = 0;
+  let parallaxTicking = false;
+
+  function updateParallax() {
+    if (heroTitle) {
+      const scrolled = window.scrollY;
+      const rate = scrolled * 0.15;
+      heroTitle.style.transform = `translateY(${rate}px)`;
+    }
+    parallaxTicking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    lastScrollY = window.scrollY;
+    if (!parallaxTicking) {
+      requestAnimationFrame(updateParallax);
+      parallaxTicking = true;
+    }
+  }, { passive: true });
+
+  // ---- Smooth scroll for anchor links ----
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

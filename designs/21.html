@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR - Art Deco Starship</title>
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0d0d1a;
+  --bg-surface: #12122a;
+  --gold: #c9a84c;
+  --gold-bright: #e6c65a;
+  --copper: #b87333;
+  --copper-dim: #8a5a2e;
+  --cream: #f5f0e8;
+  --cream-dim: rgba(245, 240, 232, 0.6);
+  --cream-faint: rgba(245, 240, 232, 0.15);
+  --border-gold: rgba(201, 168, 76, 0.3);
+  --border-gold-strong: rgba(201, 168, 76, 0.6);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: var(--bg);
+  color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Decorative background patterns */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201, 168, 76, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 0% 100%, rgba(184, 115, 51, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(201, 168, 76, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem 4rem;
+}
+
+/* Art Deco line decorations */
+.deco-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 2rem 0;
+}
+
+.deco-line-thick {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-bright), var(--gold), transparent);
+  margin: 2rem 0;
+}
+
+.deco-double-line {
+  position: relative;
+  height: 8px;
+  margin: 2.5rem 0;
+}
+
+.deco-double-line::before,
+.deco-double-line::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.deco-double-line::before { top: 0; }
+.deco-double-line::after { bottom: 0; }
+
+/* Sunburst decoration */
+.sunburst {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.sunburst::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 30px;
+  background: conic-gradient(from 180deg at 50% 100%,
+    transparent 0deg,
+    var(--gold) 10deg,
+    transparent 20deg,
+    transparent 30deg,
+    var(--gold) 40deg,
+    transparent 50deg,
+    transparent 60deg,
+    var(--gold) 70deg,
+    transparent 80deg,
+    transparent 90deg,
+    var(--gold) 100deg,
+    transparent 110deg,
+    transparent 120deg,
+    var(--gold) 130deg,
+    transparent 140deg,
+    transparent 150deg,
+    var(--gold) 160deg,
+    transparent 170deg,
+    transparent 180deg
+  );
+  opacity: 0.5;
+}
+
+/* Nav bar */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.nav-bar a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-bar a:hover { color: var(--gold-bright); }
+
+.design-label {
+  font-family: 'Poiret One', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--cream-dim);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.header-frame {
+  border: 1px solid var(--border-gold);
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+/* Corner flourishes */
+.header-frame::before,
+.header-frame::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+
+.header-frame::before {
+  top: -1px; left: -1px;
+  border-width: 3px 0 0 3px;
+}
+
+.header-frame::after {
+  top: -1px; right: -1px;
+  border-width: 3px 3px 0 0;
+}
+
+.header-frame-bottom {
+  position: absolute;
+  bottom: -1px;
+  width: 40px;
+  height: 40px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+
+.corner-bl { left: -1px; border-width: 0 0 3px 3px; }
+.corner-br { right: -1px; border-width: 0 3px 3px 0; }
+
+.header h1 {
+  font-family: 'Poiret One', cursive;
+  font-size: clamp(4rem, 12vw, 9rem);
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(201, 168, 76, 0.3);
+  animation: gold-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes gold-glow {
+  0% { text-shadow: 0 0 20px rgba(201, 168, 76, 0.2); }
+  100% { text-shadow: 0 0 60px rgba(201, 168, 76, 0.4), 0 0 100px rgba(201, 168, 76, 0.1); }
+}
+
+.header .subtitle {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.65rem, 1.5vw, 0.9rem);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+/* Section titles */
+.section-title {
+  font-family: 'Poiret One', cursive;
+  font-size: 1.8rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0.75rem auto 0;
+}
+
+/* Deco card - the main card style */
+.deco-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-gold);
+  position: relative;
+  padding: 1.5rem;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+
+.deco-card:hover {
+  border-color: var(--border-gold-strong);
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.08);
+}
+
+/* Stepped border corners */
+.deco-card::before,
+.deco-card::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+}
+
+.deco-card::before {
+  top: 4px; left: 4px;
+  border-top: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
+  opacity: 0.6;
+  transition: opacity 0.4s;
+}
+
+.deco-card::after {
+  bottom: 4px; right: 4px;
+  border-bottom: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+  opacity: 0.6;
+  transition: opacity 0.4s;
+}
+
+.deco-card:hover::before,
+.deco-card:hover::after { opacity: 1; }
+
+/* Gold line trace animation */
+@keyframes trace-line {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.deco-card:hover .trace-line {
+  animation: trace-line 0.6s ease forwards;
+}
+
+.trace-line {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--gold), var(--copper));
+}
+
+/* Universe Tiles */
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.universe-tile {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+}
+
+.universe-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+
+.universe-tile:hover .universe-icon {
+  transform: scale(1.2);
+}
+
+.universe-name {
+  font-family: 'Poiret One', cursive;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  margin-bottom: 0.25rem;
+}
+
+.universe-count {
+  font-size: 0.7rem;
+  color: var(--cream-dim);
+  letter-spacing: 0.05em;
+}
+
+/* Radiating lines behind universe icon */
+.universe-tile .radiate {
+  display: inline-block;
+  position: relative;
+}
+
+.universe-tile .radiate::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 50px; height: 50px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  transition: all 0.3s;
+}
+
+.universe-tile:hover .radiate::before {
+  width: 65px; height: 65px;
+  border-color: rgba(201, 168, 76, 0.3);
+}
+
+/* Civilization Cards */
+.civ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.civ-card { padding: 1.5rem; }
+
+.civ-card .civ-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.civ-name {
+  font-family: 'Poiret One', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+
+.civ-universe-tag {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.2em 0.6em;
+  border: 1px solid var(--border-gold);
+  color: var(--cream-dim);
+}
+
+.civ-period {
+  font-size: 0.8rem;
+  color: var(--cream-dim);
+  margin-top: 0.2rem;
+  letter-spacing: 0.04em;
+}
+
+.civ-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.civ-metric {
+  text-align: center;
+  position: relative;
+}
+
+.civ-metric::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 15%;
+  width: 1px; height: 70%;
+  background: var(--border-gold);
+}
+
+.civ-metric:last-child::after { display: none; }
+
+.civ-metric-value {
+  font-family: 'Poiret One', cursive;
+  font-size: 1.6rem;
+  color: var(--gold-bright);
+}
+
+.civ-metric-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--cream-dim);
+  margin-top: 0.15rem;
+}
+
+/* Datapoint Info Boxes */
+.datapoint-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.datapoint-box { padding: 1.5rem; }
+
+.datapoint-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--cream-dim);
+  margin-bottom: 0.4rem;
+}
+
+.datapoint-value {
+  font-family: 'Poiret One', cursive;
+  font-size: 2.5rem;
+  color: var(--gold);
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+.datapoint-range-track {
+  height: 3px;
+  background: rgba(201, 168, 76, 0.15);
+  margin-bottom: 0.35rem;
+  position: relative;
+}
+
+.datapoint-range-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--copper), var(--gold));
+  transition: width 0.8s ease;
+}
+
+.datapoint-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  color: var(--cream-dim);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.conf-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.15em 0.6em;
+  border: 1px solid;
+}
+
+.conf-canon { border-color: var(--gold); color: var(--gold); }
+.conf-informed { border-color: var(--copper); color: var(--copper); }
+.conf-wild { border-color: var(--cream-dim); color: var(--cream-dim); }
+
+.datapoint-ref {
+  font-size: 0.65rem;
+  color: var(--cream-dim);
+  margin-top: 0.6rem;
+  font-style: italic;
+}
+
+/* Tags & Links */
+.tags-section { margin-bottom: 1rem; }
+
+.tags-container {
+  padding: 1.5rem;
+}
+
+.tags-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.tags-col, .links-col { flex: 1; min-width: 240px; }
+
+.sub-heading {
+  font-family: 'Poiret One', cursive;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.3em 0.9em;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--border-gold);
+  color: var(--cream-dim);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tag:hover {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.link-list { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.link-item {
+  color: var(--cream-dim);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.link-item:hover { color: var(--gold); }
+
+.link-item::before {
+  content: '\25C6';
+  font-size: 0.5rem;
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+/* Data Table */
+.table-section { margin-bottom: 1rem; overflow-x: auto; }
+
+.table-frame {
+  padding: 1.5rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.data-table thead th {
+  font-family: 'Poiret One', cursive;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border-gold-strong);
+  white-space: nowrap;
+}
+
+.data-table tbody td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  white-space: nowrap;
+  color: var(--cream-dim);
+}
+
+.data-table tbody tr { transition: background 0.3s; }
+.data-table tbody tr:hover { background: rgba(201, 168, 76, 0.04); }
+
+.data-table .civ-col {
+  font-family: 'Poiret One', cursive;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+}
+
+.data-table .num-col {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table thead th.num-col { text-align: right; }
+
+/* Readme */
+.readme-section { margin-bottom: 1rem; }
+
+.readme-frame { padding: 2rem; }
+
+.readme-frame h3 {
+  font-family: 'Poiret One', cursive;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.readme-frame p {
+  color: var(--cream-dim);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+  max-width: 72ch;
+}
+
+.readme-frame p:last-child { margin-bottom: 0; }
+
+/* Fan/Sunburst divider */
+.fan-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin: 2.5rem 0;
+  height: 30px;
+}
+
+.fan-ray {
+  width: 1px;
+  background: var(--gold);
+  transform-origin: bottom center;
+  opacity: 0.4;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Poiret One', cursive;
+  letter-spacing: 0.15em;
+  color: var(--cream-dim);
+  font-size: 0.85rem;
+}
+
+/* Slide-open animation for cards */
+@keyframes slide-open {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.deco-card {
+  animation: slide-open 0.6s ease backwards;
+}
+
+.civ-grid .deco-card:nth-child(1) { animation-delay: 0.1s; }
+.civ-grid .deco-card:nth-child(2) { animation-delay: 0.2s; }
+.civ-grid .deco-card:nth-child(3) { animation-delay: 0.3s; }
+.civ-grid .deco-card:nth-child(4) { animation-delay: 0.4s; }
+.civ-grid .deco-card:nth-child(5) { animation-delay: 0.5s; }
+.civ-grid .deco-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content { padding: 1rem; }
+  .header-frame { padding: 2rem 1rem; }
+  .header h1 { letter-spacing: 0.2em; }
+  .universe-grid { grid-template-columns: repeat(3, 1fr); }
+  .civ-grid { grid-template-columns: 1fr; }
+  .datapoint-grid { grid-template-columns: 1fr; }
+  .tags-links-row { flex-direction: column; gap: 1.5rem; }
+  .readme-frame { padding: 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .universe-grid { grid-template-columns: repeat(2, 1fr); }
+  .header-frame::before,
+  .header-frame::after,
+  .header-frame-bottom { width: 25px; height: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- Nav -->
+  <nav class="nav-bar">
+    <a href="index.html">&larr; Back to Index</a>
+    <span class="design-label">Design 8 : Art Deco Starship</span>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-frame">
+      <div class="header-frame-bottom corner-bl"></div>
+      <div class="header-frame-bottom corner-br"></div>
+      <div class="sunburst"></div>
+      <h1>FUTR</h1>
+      <p class="subtitle">Fictional Universe Taxonomy Research</p>
+    </div>
+  </header>
+
+  <div class="deco-double-line"></div>
+
+  <!-- Universes -->
+  <section>
+    <h2 class="section-title">Universes</h2>
+    <div class="universe-grid">
+      <div class="deco-card universe-tile">
+        <span class="radiate"><span class="universe-icon">&#9734;</span></span>
+        <div class="universe-name">Star Trek</div>
+        <div class="universe-count">12 civilizations</div>
+        <div class="trace-line"></div>
+      </div>
+      <div class="deco-card universe-tile">
+        <span class="radiate"><span class="universe-icon">&#9673;</span></span>
+        <div class="universe-name">Orion's Arm</div>
+        <div class="universe-count">8 civilizations</div>
+        <div class="trace-line"></div>
+      </div>
+      <div class="deco-card universe-tile">
+        <span class="radiate"><span class="universe-icon">&#9788;</span></span>
+        <div class="universe-name">The Expanse</div>
+        <div class="universe-count">5 civilizations</div>
+        <div class="trace-line"></div>
+      </div>
+      <div class="deco-card universe-tile">
+        <span class="radiate"><span class="universe-icon">&#9876;</span></span>
+        <div class="universe-name">Warhammer 40K</div>
+        <div class="universe-count">9 civilizations</div>
+        <div class="trace-line"></div>
+      </div>
+      <div class="deco-card universe-tile">
+        <span class="radiate"><span class="universe-icon">&#8734;</span></span>
+        <div class="universe-name">Culture</div>
+        <div class="universe-count">3 civilizations</div>
+        <div class="trace-line"></div>
+      </div>
+      <div class="deco-card universe-tile">
+        <span class="radiate"><span class="universe-icon">&#9679;</span></span>
+        <div class="universe-name">Reality</div>
+        <div class="universe-count">15 civilizations</div>
+        <div class="trace-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="fan-divider" id="fan-divider-1"></div>
+
+  <!-- Civilization Cards -->
+  <section>
+    <h2 class="section-title">Civilizations</h2>
+    <div class="civ-grid">
+      <div class="deco-card civ-card">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">Federation 2373</div>
+            <div class="civ-period">Star Trek &middot; 24th Century</div>
+          </div>
+          <span class="civ-universe-tag">Star Trek</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">10</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">1.2T</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">9</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+        <div class="trace-line"></div>
+      </div>
+
+      <div class="deco-card civ-card">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">Terragen Sphere</div>
+            <div class="civ-period">Orion's Arm &middot; 10600 AT</div>
+          </div>
+          <span class="civ-universe-tag">Orion's Arm</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">18</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">10S+</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">14</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+        <div class="trace-line"></div>
+      </div>
+
+      <div class="deco-card civ-card">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">Imperium of Man</div>
+            <div class="civ-period">Warhammer 40K &middot; M41</div>
+          </div>
+          <span class="civ-universe-tag">Warhammer 40K</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">16</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">~10Q</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">10</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+        <div class="trace-line"></div>
+      </div>
+
+      <div class="deco-card civ-card">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">The Culture</div>
+            <div class="civ-period">Culture Series &middot; ~1300 CE equiv.</div>
+          </div>
+          <span class="civ-universe-tag">Culture</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">17</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">30T+</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">13</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+        <div class="trace-line"></div>
+      </div>
+
+      <div class="deco-card civ-card">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">United Nations 2350</div>
+            <div class="civ-period">The Expanse &middot; 24th Century</div>
+          </div>
+          <span class="civ-universe-tag">The Expanse</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">6</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">30B</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">6</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+        <div class="trace-line"></div>
+      </div>
+
+      <div class="deco-card civ-card">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">Roman Empire 117 AD</div>
+            <div class="civ-period">Reality &middot; 2nd Century</div>
+          </div>
+          <span class="civ-universe-tag">Reality</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">3</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">70M</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">2</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+        <div class="trace-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="deco-line-thick"></div>
+
+  <!-- Datapoint Info Boxes -->
+  <section>
+    <h2 class="section-title">Datapoints: Federation 2373</h2>
+    <div class="datapoint-grid">
+      <div class="deco-card datapoint-box">
+        <div class="datapoint-label">Class</div>
+        <div class="datapoint-value">10</div>
+        <div class="datapoint-range-track">
+          <div class="datapoint-range-fill" style="width: 50%"></div>
+        </div>
+        <div class="datapoint-range-labels"><span>Min: 1</span><span>Max: 20</span></div>
+        <span class="conf-badge conf-informed">informedGuess</span>
+        <div class="datapoint-ref">Ref: Star Trek TNG, DS9 series data</div>
+        <div class="trace-line"></div>
+      </div>
+
+      <div class="deco-card datapoint-box">
+        <div class="datapoint-label">Tech Level</div>
+        <div class="datapoint-value">9</div>
+        <div class="datapoint-range-track">
+          <div class="datapoint-range-fill" style="width: 60%"></div>
+        </div>
+        <div class="datapoint-range-labels"><span>Min: 1</span><span>Max: 15</span></div>
+        <span class="conf-badge conf-informed">informedGuess</span>
+        <div class="datapoint-ref">Ref: Warp drive, replicators, transporters</div>
+        <div class="trace-line"></div>
+      </div>
+
+      <div class="deco-card datapoint-box">
+        <div class="datapoint-label">Planets</div>
+        <div class="datapoint-value">150</div>
+        <div class="datapoint-range-track">
+          <div class="datapoint-range-fill" style="width: 15%"></div>
+        </div>
+        <div class="datapoint-range-labels"><span>Min: 0</span><span>Max: 1,000,000+</span></div>
+        <span class="conf-badge conf-canon">canon</span>
+        <div class="datapoint-ref">Ref: Star Trek First Contact</div>
+        <div class="trace-line"></div>
+      </div>
+
+      <div class="deco-card datapoint-box">
+        <div class="datapoint-label">Population</div>
+        <div class="datapoint-value">1.2T</div>
+        <div class="datapoint-range-track">
+          <div class="datapoint-range-fill" style="width: 35%"></div>
+        </div>
+        <div class="datapoint-range-labels"><span>Min: 1</span><span>Max: 10 septillion+</span></div>
+        <span class="conf-badge conf-wild">wildGuess</span>
+        <div class="datapoint-ref">Ref: Estimated from 150 member worlds</div>
+        <div class="trace-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="deco-line"></div>
+
+  <!-- Tags & Links -->
+  <section class="tags-section">
+    <h2 class="section-title">Tags & Links</h2>
+    <div class="deco-card tags-container">
+      <div class="tags-links-row">
+        <div class="tags-col">
+          <div class="sub-heading">Tags</div>
+          <div class="tag-list">
+            <span class="tag">space-faring</span>
+            <span class="tag">federation</span>
+            <span class="tag">democratic</span>
+            <span class="tag">multi-species</span>
+            <span class="tag">warp-capable</span>
+            <span class="tag">post-scarcity</span>
+            <span class="tag">interstellar</span>
+            <span class="tag">prime-directive</span>
+          </div>
+        </div>
+        <div class="links-col">
+          <div class="sub-heading">References</div>
+          <div class="link-list">
+            <a class="link-item" href="#">Memory Alpha - Federation</a>
+            <a class="link-item" href="#">Star Trek: First Contact</a>
+            <a class="link-item" href="#">DS9 Technical Manual</a>
+            <a class="link-item" href="#">Ex Astris Scientia</a>
+          </div>
+        </div>
+      </div>
+      <div class="trace-line"></div>
+    </div>
+  </section>
+
+  <div class="fan-divider" id="fan-divider-2"></div>
+
+  <!-- Data Table -->
+  <section class="table-section">
+    <h2 class="section-title">Civilization Comparison</h2>
+    <div class="deco-card table-frame">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Civilization</th>
+            <th>Universe</th>
+            <th class="num-col">Class</th>
+            <th class="num-col">Population</th>
+            <th class="num-col">Tech Level</th>
+            <th class="num-col">Planets</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="civ-col">Terragen Sphere</td>
+            <td>Orion's Arm</td>
+            <td class="num-col">18</td>
+            <td class="num-col">10 septillion+</td>
+            <td class="num-col">14</td>
+            <td class="num-col">millions</td>
+          </tr>
+          <tr>
+            <td class="civ-col">The Culture</td>
+            <td>Culture</td>
+            <td class="num-col">17</td>
+            <td class="num-col">30 trillion+</td>
+            <td class="num-col">13</td>
+            <td class="num-col">~100,000</td>
+          </tr>
+          <tr>
+            <td class="civ-col">Imperium of Man</td>
+            <td>Warhammer 40K</td>
+            <td class="num-col">16</td>
+            <td class="num-col">~10 quadrillion</td>
+            <td class="num-col">10</td>
+            <td class="num-col">~1,000,000</td>
+          </tr>
+          <tr>
+            <td class="civ-col">Federation 2373</td>
+            <td>Star Trek</td>
+            <td class="num-col">10</td>
+            <td class="num-col">1.2 trillion</td>
+            <td class="num-col">9</td>
+            <td class="num-col">150</td>
+          </tr>
+          <tr>
+            <td class="civ-col">United Nations 2350</td>
+            <td>The Expanse</td>
+            <td class="num-col">6</td>
+            <td class="num-col">30 billion</td>
+            <td class="num-col">6</td>
+            <td class="num-col">3</td>
+          </tr>
+          <tr>
+            <td class="civ-col">Roman Empire 117 AD</td>
+            <td>Reality</td>
+            <td class="num-col">3</td>
+            <td class="num-col">70 million</td>
+            <td class="num-col">2</td>
+            <td class="num-col">1</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="trace-line"></div>
+    </div>
+  </section>
+
+  <div class="deco-line"></div>
+
+  <!-- Readme -->
+  <section class="readme-section">
+    <h2 class="section-title">About Federation 2373</h2>
+    <div class="deco-card readme-frame">
+      <h3>The United Federation of Planets</h3>
+      <p>
+        The United Federation of Planets is an interstellar federal republic composed of planetary governments that agreed to exist semi-autonomously under a single central government based on the principles of universal liberty, rights, and equality, and to share their knowledge and resources in peaceful cooperation, scientific development, and mutual defense.
+      </p>
+      <p>
+        By 2373, the Federation had grown to include approximately 150 member worlds and thousands of colonies spread across 8,000 light-years. This was also the year the Dominion War began, a conflict that would test the Federation's ideals and military capability to their limits. The year represents a critical snapshot: a mature interstellar democracy at the peak of its expansion, about to face its greatest existential challenge.
+      </p>
+      <p>
+        Technologically, the Federation possesses warp drive capable of exceeding Warp 9, matter-energy conversion (replicators and transporters), and sophisticated artificial intelligence. Their tech level of 9 reflects mastery of fundamental forces, though they remain below civilizations that have achieved megastructure engineering or substrate-independent consciousness.
+      </p>
+      <div class="trace-line"></div>
+    </div>
+  </section>
+
+  <div class="deco-double-line"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    FUTR &middot; Fictional Universe Taxonomy Research &middot; futr.space
+  </footer>
+
+</div>
+
+<script>
+// Generate fan/sunburst dividers
+document.querySelectorAll('.fan-divider').forEach(function(divider) {
+  var rays = 15;
+  for (var i = 0; i < rays; i++) {
+    var ray = document.createElement('div');
+    ray.className = 'fan-ray';
+    var angle = -30 + (60 / (rays - 1)) * i;
+    var height = 12 + Math.cos((angle / 30) * Math.PI / 2) * 16;
+    ray.style.height = height + 'px';
+    ray.style.transform = 'rotate(' + angle + 'deg)';
+    divider.appendChild(ray);
+  }
+});
+</script>
+
+</body>
+</html>

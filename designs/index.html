@@ -17,7 +17,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   padding: 3rem clamp(1.25rem, 5vw, 4rem);
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -36,11 +36,23 @@ h1 {
 
 .designs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1400px) {
+  .designs { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 1100px) {
+  .designs { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 800px) {
+  .designs { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
   .designs { grid-template-columns: 1fr; }
 }
 
@@ -56,12 +68,12 @@ h1 {
 }
 
 .design-body {
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 1.25rem;
 }
 
 /* --- Thumbnails --- */
 .design-thumb {
-  height: 180px;
+  height: 150px;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid #1A2340;
@@ -480,6 +492,369 @@ h1 {
   height: 2px;
   background: linear-gradient(90deg, #3B82F6 0%, #3B82F6 40%, transparent 100%);
   opacity: 0.7;
+}
+
+/* #15 GLASSMORPHISM NEBULA — frosted glass on cosmic nebula gradient */
+.thumb-15 {
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(224,64,251,0.25), transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(0,229,255,0.2), transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(255,215,64,0.12), transparent 40%),
+    #08080f;
+}
+.thumb-15::before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  width: 60%;
+  height: 40%;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.thumb-15::after {
+  content: 'NEBULA';
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: rgba(224,64,251,0.5);
+}
+
+/* #16 NEON PLASMA — electric neon glow, scan lines, pulsing borders */
+.thumb-16 {
+  background: #0a0518;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(100,60,180,0.04) 2px, rgba(100,60,180,0.04) 4px);
+}
+.thumb-16::before {
+  content: 'PLASMA';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #a855f7;
+  text-shadow: 0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3);
+  letter-spacing: 0.15em;
+}
+.thumb-16::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #a855f7, #00e5ff, #a855f7);
+  box-shadow: 0 0 12px rgba(168,85,247,0.5);
+}
+
+/* #17 AURORA BOREALIS — flowing northern lights, ethereal atmosphere */
+.thumb-17 {
+  background:
+    linear-gradient(180deg,
+      #060610 0%,
+      rgba(0,255,180,0.08) 30%,
+      rgba(100,0,255,0.08) 50%,
+      rgba(255,0,100,0.06) 70%,
+      #060610 100%
+    ),
+    #060610;
+}
+.thumb-17::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  width: 70%;
+  height: 50%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0,255,180,0.12), rgba(100,0,255,0.1), rgba(255,0,100,0.08));
+  filter: blur(20px);
+}
+.thumb-17::after {
+  content: 'AURORA';
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: rgba(0,255,180,0.45);
+}
+
+/* #18 HOLOGRAPHIC INTERFACE — iridescent prismatic panels */
+.thumb-18 {
+  background:
+    linear-gradient(135deg, rgba(255,110,199,0.12), rgba(123,104,238,0.12), rgba(0,229,255,0.12)),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px),
+    #0a0a14;
+}
+.thumb-18::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width: 60%;
+  height: 50%;
+  border: 1px solid rgba(123,104,238,0.3);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255,110,199,0.06), rgba(0,229,255,0.06));
+}
+.thumb-18::after {
+  content: 'HOLOGRAPHIC';
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(123,104,238,0.5);
+}
+
+/* #19 OBSIDIAN & GOLD — dark luxury, serif, star field */
+.thumb-19 {
+  background:
+    radial-gradient(1.5px 1.5px at 30% 20%, rgba(201,168,76,0.5), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 50% 80%, rgba(201,168,76,0.3), transparent),
+    radial-gradient(1px 1px at 15% 65%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 85% 35%, rgba(201,168,76,0.4), transparent),
+    #0a0a0f;
+}
+.thumb-19::before {
+  content: 'OBSIDIAN';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #c9a84c;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+.thumb-19::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+  opacity: 0.4;
+}
+
+/* #20 GLASSMORPHISM AURORA — northern lights behind frosted glass */
+.thumb-20 {
+  background:
+    linear-gradient(135deg, rgba(0,255,180,0.08), rgba(100,0,255,0.08), rgba(255,0,100,0.06)),
+    radial-gradient(ellipse at 20% 80%, rgba(0,255,200,0.1), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(200,100,255,0.08), transparent 50%),
+    #060610;
+}
+.thumb-20::before {
+  content: '';
+  position: absolute;
+  top: 22%;
+  left: 18%;
+  width: 64%;
+  height: 56%;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(2px);
+}
+.thumb-20::after {
+  content: 'GLASS AURORA';
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(0,255,180,0.4);
+  white-space: nowrap;
+}
+
+/* #21 ART DECO STARSHIP — geometric elegance, gold leaf lines */
+.thumb-21 {
+  background: #0f0f14;
+  background-image:
+    repeating-linear-gradient(135deg, rgba(218,165,32,0.03) 0px, rgba(218,165,32,0.03) 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(45deg, rgba(218,165,32,0.03) 0px, rgba(218,165,32,0.03) 1px, transparent 1px, transparent 20px);
+}
+.thumb-21::before {
+  content: 'ART DECO';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #daa520;
+  letter-spacing: 0.25em;
+  opacity: 0.55;
+  border-top: 2px solid rgba(218,165,32,0.35);
+  border-bottom: 2px solid rgba(218,165,32,0.35);
+  padding: 0.4rem 1.5rem;
+}
+.thumb-21::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #daa520, transparent);
+  opacity: 0.4;
+}
+
+/* #22 KINETIC UNIVERSE — dynamic motion, orbital animations */
+.thumb-22 {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(0,150,255,0.1), transparent 60%),
+    radial-gradient(ellipse at 20% 20%, rgba(255,100,0,0.06), transparent 40%),
+    radial-gradient(ellipse at 80% 80%, rgba(0,255,100,0.06), transparent 40%),
+    #06080c;
+}
+.thumb-22::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(0,150,255,0.3);
+  box-shadow:
+    0 0 0 20px rgba(0,150,255,0.04),
+    0 0 0 40px rgba(0,150,255,0.02);
+}
+.thumb-22::after {
+  content: 'KINETIC';
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: rgba(0,150,255,0.45);
+}
+
+/* #23 CLASSICAL RENAISSANCE — burgundy & gold on parchment */
+.thumb-23 {
+  background: #F5F0E4;
+  border-bottom-color: #D4C9B4 !important;
+}
+.thumb-23::before {
+  content: 'RENAISSANCE';
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #6B1D3A;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
+}
+.thumb-23::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9973b, transparent);
+  opacity: 0.5;
+  box-shadow: 0 8px 0 rgba(107,29,58,0.1);
+}
+
+/* #24 ARCHAEOLOGICAL EXCAVATION — terracotta & scanner teal */
+.thumb-24 {
+  background: #1A1510;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(180,120,60,0.06) 19px, rgba(180,120,60,0.06) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(180,120,60,0.06) 19px, rgba(180,120,60,0.06) 20px);
+}
+.thumb-24::before {
+  content: 'EXCAVATION';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #B5694D;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+.thumb-24::after {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00BFA5, transparent);
+  opacity: 0.4;
+  box-shadow: 0 10px 0 rgba(0,191,165,0.15), 0 20px 0 rgba(0,191,165,0.08);
+}
+
+/* #25 COSMIC BRUTALISM — electric vermillion on near-white */
+.thumb-25 {
+  background: #F8F6F2;
+  border-bottom-color: #D4D0CB !important;
+}
+.thumb-25::before {
+  content: 'BRUTALISM';
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #E83B2E;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+}
+.thumb-25::after {
+  content: '';
+  position: absolute;
+  top: 58%;
+  left: 8%;
+  right: 8%;
+  bottom: 12%;
+  background:
+    linear-gradient(0deg,
+      #1A1A1A 0px, #1A1A1A 3px, transparent 3px, transparent 14px,
+      #1A1A1A 14px, #1A1A1A 17px, transparent 17px, transparent 28px,
+      #1A1A1A 28px, #1A1A1A 31px, transparent 31px
+    );
+  opacity: 0.06;
 }
 
 /* #13 MONOLITH — warm soot void, massive Orbitron type, terracotta accents */
@@ -975,6 +1350,226 @@ h1 {
         <span class="tag">Diagonal section dividers</span>
         <span class="tag">Alternating panel layout</span>
         <span class="tag">Staggered page-load animation</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="15.html" class="design-card">
+    <div class="design-thumb thumb-15" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#15</span>
+        <span class="design-name">Glassmorphism Nebula</span>
+      </div>
+      <p class="design-summary">
+        Frosted glass cards floating over an animated cosmic nebula gradient. Deep purples, magentas, and teals with blur effects. Animated background drift, staggered entrance animation, and scroll-reveal cards.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark theme</span>
+        <span class="tag">Purple + Magenta + Teal palette</span>
+        <span class="tag">Glassmorphism</span>
+        <span class="tag">Animated background</span>
+        <span class="tag">Blur effects</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="16.html" class="design-card">
+    <div class="design-thumb thumb-16" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#16</span>
+        <span class="design-name">Neon Plasma</span>
+      </div>
+      <p class="design-summary">
+        Electric neon glow effects with pulsing borders. Animated scan lines and flickering cards. High energy dark theme with deep purple substrate and vivid violet-cyan neon accents.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark theme</span>
+        <span class="tag">Violet + Cyan neon palette</span>
+        <span class="tag">Glow effects</span>
+        <span class="tag">Scan lines</span>
+        <span class="tag">High energy</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="17.html" class="design-card">
+    <div class="design-thumb thumb-17" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#17</span>
+        <span class="design-name">Aurora Borealis</span>
+      </div>
+      <p class="design-summary">
+        Flowing northern lights gradients, floating orbs, organic overlapping cards. Ethereal and atmospheric with green, purple, and pink aurora bands over a deep space void. Parallax depth effects.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark theme</span>
+        <span class="tag">Aurora green + Purple palette</span>
+        <span class="tag">Organic layout</span>
+        <span class="tag">Parallax</span>
+        <span class="tag">Ethereal atmosphere</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="18.html" class="design-card">
+    <div class="design-thumb thumb-18" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#18</span>
+        <span class="design-name">Holographic Interface</span>
+      </div>
+      <p class="design-summary">
+        Light-based iridescent panels floating in space. Prismatic borders, scan lines, particle field, flickering data readouts. A holographic command interface aesthetic with glassmorphism and rainbow refractions.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark iridescent theme</span>
+        <span class="tag">Pink + Purple + Cyan palette</span>
+        <span class="tag">Glassmorphism</span>
+        <span class="tag">Particles</span>
+        <span class="tag">Prismatic borders</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="19.html" class="design-card">
+    <div class="design-thumb thumb-19" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#19</span>
+        <span class="design-name">Obsidian &amp; Gold</span>
+      </div>
+      <p class="design-summary">
+        Dark luxury aesthetic. Deep obsidian backgrounds with gold accents, serif typography, star field, and corner-accented cards. Museum-like presentation with premium matte black surfaces.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark luxury theme</span>
+        <span class="tag">Gold + Obsidian palette</span>
+        <span class="tag">Serif typography</span>
+        <span class="tag">Star field</span>
+        <span class="tag">Museum aesthetic</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="20.html" class="design-card">
+    <div class="design-thumb thumb-20" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#20</span>
+        <span class="design-name">Glassmorphism Aurora</span>
+      </div>
+      <p class="design-summary">
+        Northern lights meet glass UI. Aurora borealis gradients behind frosted glass panels. Ethereal and modern with emerald, violet, and rose light bands filtered through translucent card surfaces.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark theme</span>
+        <span class="tag">Emerald + Violet + Rose palette</span>
+        <span class="tag">Glassmorphism</span>
+        <span class="tag">Aurora gradients</span>
+        <span class="tag">Frosted panels</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="21.html" class="design-card">
+    <div class="design-thumb thumb-21" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#21</span>
+        <span class="design-name">Art Deco Starship</span>
+      </div>
+      <p class="design-summary">
+        1920s Art Deco aesthetics projected into space. Geometric elegance, gold leaf lines, monumental typography. Repeating angular patterns with goldenrod accents on dark midnight substrate.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark theme</span>
+        <span class="tag">Gold + Midnight palette</span>
+        <span class="tag">Art Deco geometry</span>
+        <span class="tag">Gold leaf accents</span>
+        <span class="tag">Monumental typography</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="22.html" class="design-card">
+    <div class="design-thumb thumb-22" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#22</span>
+        <span class="design-name">Kinetic Universe</span>
+      </div>
+      <p class="design-summary">
+        Dynamic motion-driven design. Kinetic typography, orbital animations, data in constant fluid motion. Multi-colored accent radials with blue, orange, and green energy signatures on deep space background.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark theme</span>
+        <span class="tag">Blue + Orange + Green palette</span>
+        <span class="tag">Kinetic typography</span>
+        <span class="tag">Orbital animations</span>
+        <span class="tag">Fluid motion</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="23.html" class="design-card">
+    <div class="design-thumb thumb-23" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#23</span>
+        <span class="design-name">Classical Renaissance</span>
+      </div>
+      <p class="design-summary">
+        Warm parchment with burgundy and gold. Cormorant Garamond + Outfit typography. A scholarly, Renaissance-era aesthetic treating civilizations as illuminated manuscript entries with classical ornamental dividers.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Light parchment theme</span>
+        <span class="tag">Burgundy + Gold palette</span>
+        <span class="tag">Cormorant Garamond + Outfit</span>
+        <span class="tag">Manuscript aesthetic</span>
+        <span class="tag">Classical ornaments</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="24.html" class="design-card">
+    <div class="design-thumb thumb-24" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#24</span>
+        <span class="design-name">Archaeological Excavation</span>
+      </div>
+      <p class="design-summary">
+        Civilizations as archaeological dig sites. Zilla Slab + Martian Mono typography with terracotta accents and scanner teal grid lines. Each universe is an excavation layer, each civilization an unearthed artifact with provenance data.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Dark earth theme</span>
+        <span class="tag">Terracotta + Scanner Teal palette</span>
+        <span class="tag">Zilla Slab + Martian Mono</span>
+        <span class="tag">Dig site metaphor</span>
+        <span class="tag">Grid scan lines</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="25.html" class="design-card">
+    <div class="design-thumb thumb-25" aria-hidden="true"></div>
+    <div class="design-body">
+      <div class="design-header">
+        <span class="design-number">#25</span>
+        <span class="design-name">Cosmic Brutalism</span>
+      </div>
+      <p class="design-summary">
+        Electric vermillion on near-white. Archivo Black + Barlow typography with massive bold headlines and raw structural lines. Brutalist web design meets space data — unapologetic, loud, and architecturally stark.
+      </p>
+      <div class="design-tags">
+        <span class="tag">Light near-white theme</span>
+        <span class="tag">Vermillion + Black palette</span>
+        <span class="tag">Archivo Black + Barlow</span>
+        <span class="tag">Brutalist layout</span>
+        <span class="tag">Massive typography</span>
       </div>
     </div>
   </a>

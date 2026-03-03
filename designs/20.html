@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR - Glassmorphism Aurora</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green: #00ff88;
+  --purple: #8b5cf6;
+  --pink: #ec4899;
+  --blue: #3b82f6;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.18);
+  --text: #f0f0f5;
+  --text-secondary: rgba(240, 240, 245, 0.7);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #050510;
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Aurora Background */
+.aurora-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.aurora-layer {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  filter: blur(80px);
+  opacity: 0.5;
+}
+
+.aurora-layer-1 {
+  background: radial-gradient(ellipse 60% 40% at 20% 20%, var(--green), transparent),
+              radial-gradient(ellipse 50% 35% at 60% 30%, var(--purple), transparent),
+              radial-gradient(ellipse 40% 50% at 80% 60%, var(--blue), transparent);
+  animation: aurora-drift-1 18s ease-in-out infinite alternate;
+}
+
+.aurora-layer-2 {
+  background: radial-gradient(ellipse 55% 45% at 70% 40%, var(--pink), transparent),
+              radial-gradient(ellipse 45% 35% at 30% 70%, var(--green), transparent),
+              radial-gradient(ellipse 50% 40% at 50% 20%, var(--purple), transparent);
+  animation: aurora-drift-2 22s ease-in-out infinite alternate;
+  opacity: 0.35;
+}
+
+.aurora-layer-3 {
+  background: radial-gradient(ellipse 70% 30% at 40% 50%, var(--blue), transparent),
+              radial-gradient(ellipse 40% 50% at 80% 20%, var(--pink), transparent);
+  animation: aurora-drift-3 15s ease-in-out infinite alternate;
+  opacity: 0.25;
+}
+
+/* Aurora Curtain Effect - vertical streaks */
+.aurora-curtain {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 60%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    rgba(0, 255, 136, 0.03) 2px,
+    transparent 4px,
+    transparent 30px,
+    rgba(139, 92, 246, 0.03) 32px,
+    transparent 34px,
+    transparent 60px
+  );
+  animation: curtain-shimmer 8s ease-in-out infinite alternate;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+}
+
+@keyframes aurora-drift-1 {
+  0% { transform: translateX(0) translateY(0) scale(1); }
+  50% { transform: translateX(-15%) translateY(5%) scale(1.1); }
+  100% { transform: translateX(-25%) translateY(-5%) scale(1); }
+}
+
+@keyframes aurora-drift-2 {
+  0% { transform: translateX(-10%) translateY(0) scale(1.05); }
+  50% { transform: translateX(5%) translateY(-8%) scale(1); }
+  100% { transform: translateX(-5%) translateY(3%) scale(1.1); }
+}
+
+@keyframes aurora-drift-3 {
+  0% { transform: translateX(5%) translateY(3%) scale(1); }
+  100% { transform: translateX(-15%) translateY(-5%) scale(1.05); }
+}
+
+@keyframes curtain-shimmer {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.5; }
+}
+
+/* Star field */
+.stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 4rem;
+}
+
+/* Glass Panels */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--glass-highlight);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+
+/* Navigation bar */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.2rem;
+  margin-bottom: 2rem;
+  font-size: 0.85rem;
+}
+
+.nav-bar a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-bar a:hover { color: var(--green); }
+
+.design-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  background: linear-gradient(135deg, var(--green), var(--blue), var(--purple), var(--pink));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 8s ease-in-out infinite;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.header .subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* Section titles */
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.4em;
+  background: linear-gradient(to bottom, var(--green), var(--purple));
+  border-radius: 2px;
+}
+
+/* Universe Tiles */
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.universe-tile {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.universe-tile::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-color, var(--green)), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.universe-tile:hover::before { opacity: 1; }
+
+.universe-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+  display: block;
+  filter: grayscale(0.2);
+  transition: transform 0.3s ease;
+}
+
+.universe-tile:hover .universe-icon { transform: scale(1.15); }
+
+.universe-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+}
+
+.universe-count {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-top: 0.3rem;
+}
+
+/* Universe accent colors */
+.tile-trek { --accent-color: #3b82f6; }
+.tile-oa { --accent-color: #00ff88; }
+.tile-expanse { --accent-color: #f59e0b; }
+.tile-40k { --accent-color: #ef4444; }
+.tile-culture { --accent-color: #8b5cf6; }
+.tile-reality { --accent-color: #6b7280; }
+
+/* Civilization Cards */
+.civ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.civ-card {
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.civ-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--card-accent, var(--green)), transparent);
+}
+
+.civ-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.civ-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.civ-universe-badge {
+  font-size: 0.65rem;
+  padding: 0.2em 0.6em;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.civ-period {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.civ-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.civ-metric {
+  text-align: center;
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+}
+
+.civ-metric-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--card-accent, var(--green));
+}
+
+.civ-metric-label {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.15rem;
+}
+
+.card-trek { --card-accent: #3b82f6; }
+.card-oa { --card-accent: #00ff88; }
+.card-expanse { --card-accent: #f59e0b; }
+.card-40k { --card-accent: #ef4444; }
+.card-culture { --card-accent: #8b5cf6; }
+.card-reality { --card-accent: #6b7280; }
+
+/* Datapoint Info Boxes */
+.datapoint-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.datapoint-box {
+  padding: 1.25rem;
+}
+
+.datapoint-metric-name {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.datapoint-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.datapoint-range {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.datapoint-range-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.datapoint-range-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--green), var(--blue));
+}
+
+.datapoint-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+}
+
+.confidence-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 0.15em 0.5em;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.conf-canon { background: rgba(0, 255, 136, 0.15); color: var(--green); }
+.conf-informed { background: rgba(139, 92, 246, 0.15); color: var(--purple); }
+.conf-wild { background: rgba(236, 72, 153, 0.15); color: var(--pink); }
+
+.datapoint-ref {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Tags */
+.tags-section {
+  margin-bottom: 3rem;
+}
+
+.tags-links-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.tags-group, .links-group {
+  flex: 1;
+  min-width: 250px;
+}
+
+.tags-group h3, .links-group h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.3em 0.8em;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tag:hover {
+  background: rgba(0, 255, 136, 0.12);
+  border-color: rgba(0, 255, 136, 0.3);
+  color: var(--green);
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.link-item {
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.link-item:hover { color: var(--green); }
+
+.link-item::before {
+  content: '\2192';
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+/* Data Table */
+.table-container {
+  margin-bottom: 3rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.85rem;
+}
+
+.data-table thead th {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--glass-border);
+  white-space: nowrap;
+}
+
+.data-table tbody td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+}
+
+.data-table tbody tr {
+  transition: background 0.2s;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.data-table .civ-col {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.data-table .num-col {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Readme section */
+.readme-section {
+  margin-bottom: 3rem;
+}
+
+.readme-content {
+  padding: 2rem;
+}
+
+.readme-content h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.readme-content p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  max-width: 75ch;
+}
+
+.readme-content p:last-child { margin-bottom: 0; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content { padding: 1rem; }
+  .header { padding: 3rem 1rem; }
+  .header h1 { letter-spacing: 0.08em; }
+  .universe-grid { grid-template-columns: repeat(3, 1fr); }
+  .civ-grid { grid-template-columns: 1fr; }
+  .civ-metrics { grid-template-columns: repeat(3, 1fr); }
+  .datapoint-grid { grid-template-columns: 1fr; }
+  .tags-links-container { flex-direction: column; gap: 1rem; }
+  .readme-content { padding: 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .universe-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- Aurora Background -->
+<div class="aurora-container">
+  <div class="aurora-layer aurora-layer-1"></div>
+  <div class="aurora-layer aurora-layer-2"></div>
+  <div class="aurora-layer aurora-layer-3"></div>
+  <div class="aurora-curtain"></div>
+</div>
+
+<!-- Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- Content -->
+<div class="content">
+
+  <!-- Nav -->
+  <nav class="glass nav-bar">
+    <a href="index.html">&larr; Back to Index</a>
+    <span class="design-label">Design 7: Glassmorphism Aurora</span>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>FUTR</h1>
+    <p class="subtitle">Fictional Universe Taxonomy Research</p>
+  </header>
+
+  <!-- Universes -->
+  <section>
+    <h2 class="section-title">Universes</h2>
+    <div class="universe-grid">
+      <div class="glass universe-tile tile-trek">
+        <span class="universe-icon">&#9734;</span>
+        <div class="universe-name">Star Trek</div>
+        <div class="universe-count">12 civilizations</div>
+      </div>
+      <div class="glass universe-tile tile-oa">
+        <span class="universe-icon">&#9673;</span>
+        <div class="universe-name">Orion's Arm</div>
+        <div class="universe-count">8 civilizations</div>
+      </div>
+      <div class="glass universe-tile tile-expanse">
+        <span class="universe-icon">&#9788;</span>
+        <div class="universe-name">The Expanse</div>
+        <div class="universe-count">5 civilizations</div>
+      </div>
+      <div class="glass universe-tile tile-40k">
+        <span class="universe-icon">&#9876;</span>
+        <div class="universe-name">Warhammer 40K</div>
+        <div class="universe-count">9 civilizations</div>
+      </div>
+      <div class="glass universe-tile tile-culture">
+        <span class="universe-icon">&#8734;</span>
+        <div class="universe-name">Culture</div>
+        <div class="universe-count">3 civilizations</div>
+      </div>
+      <div class="glass universe-tile tile-reality">
+        <span class="universe-icon">&#9679;</span>
+        <div class="universe-name">Reality</div>
+        <div class="universe-count">15 civilizations</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Civilization Cards -->
+  <section>
+    <h2 class="section-title">Civilizations</h2>
+    <div class="civ-grid">
+      <div class="glass civ-card card-trek">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">Federation 2373</div>
+            <div class="civ-period">Star Trek &middot; 24th Century</div>
+          </div>
+          <span class="civ-universe-badge">Star Trek</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">10</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">1.2T</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">9</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass civ-card card-oa">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">Terragen Sphere</div>
+            <div class="civ-period">Orion's Arm &middot; 10600 AT</div>
+          </div>
+          <span class="civ-universe-badge">Orion's Arm</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">18</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">10S+</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">14</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass civ-card card-40k">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">Imperium of Man</div>
+            <div class="civ-period">Warhammer 40K &middot; M41</div>
+          </div>
+          <span class="civ-universe-badge">Warhammer 40K</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">16</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">~10Q</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">10</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass civ-card card-culture">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">The Culture</div>
+            <div class="civ-period">Culture Series &middot; ~1300 CE equiv.</div>
+          </div>
+          <span class="civ-universe-badge">Culture</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">17</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">30T+</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">13</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass civ-card card-expanse">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">United Nations 2350</div>
+            <div class="civ-period">The Expanse &middot; 24th Century</div>
+          </div>
+          <span class="civ-universe-badge">The Expanse</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">6</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">30B</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">6</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass civ-card card-reality">
+        <div class="civ-header">
+          <div>
+            <div class="civ-name">Roman Empire 117 AD</div>
+            <div class="civ-period">Reality &middot; 2nd Century</div>
+          </div>
+          <span class="civ-universe-badge">Reality</span>
+        </div>
+        <div class="civ-metrics">
+          <div class="civ-metric">
+            <div class="civ-metric-value">3</div>
+            <div class="civ-metric-label">Class</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">70M</div>
+            <div class="civ-metric-label">Population</div>
+          </div>
+          <div class="civ-metric">
+            <div class="civ-metric-value">2</div>
+            <div class="civ-metric-label">Tech Level</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Datapoint Info Boxes -->
+  <section>
+    <h2 class="section-title">Datapoints: Federation 2373</h2>
+    <div class="datapoint-grid">
+      <div class="glass datapoint-box">
+        <div class="datapoint-metric-name">Class</div>
+        <div class="datapoint-value" style="color: var(--blue)">10</div>
+        <div class="datapoint-range">
+          <div class="datapoint-range-bar">
+            <div class="datapoint-range-fill" style="width: 50%; background: linear-gradient(90deg, #3b82f6, #8b5cf6);"></div>
+          </div>
+        </div>
+        <div class="datapoint-range-labels">
+          <span>Min: 1</span><span>Max: 20</span>
+        </div>
+        <div style="margin-top: 0.5rem;">
+          <span class="confidence-badge conf-informed">informedGuess</span>
+        </div>
+        <div class="datapoint-ref">Ref: Star Trek TNG, DS9 series data</div>
+      </div>
+
+      <div class="glass datapoint-box">
+        <div class="datapoint-metric-name">Tech Level</div>
+        <div class="datapoint-value" style="color: var(--green)">9</div>
+        <div class="datapoint-range">
+          <div class="datapoint-range-bar">
+            <div class="datapoint-range-fill" style="width: 60%; background: linear-gradient(90deg, #00ff88, #3b82f6);"></div>
+          </div>
+        </div>
+        <div class="datapoint-range-labels">
+          <span>Min: 1</span><span>Max: 15</span>
+        </div>
+        <div style="margin-top: 0.5rem;">
+          <span class="confidence-badge conf-informed">informedGuess</span>
+        </div>
+        <div class="datapoint-ref">Ref: Warp drive, replicators, transporters</div>
+      </div>
+
+      <div class="glass datapoint-box">
+        <div class="datapoint-metric-name">Planets</div>
+        <div class="datapoint-value" style="color: var(--purple)">150</div>
+        <div class="datapoint-range">
+          <div class="datapoint-range-bar">
+            <div class="datapoint-range-fill" style="width: 15%; background: linear-gradient(90deg, #8b5cf6, #ec4899);"></div>
+          </div>
+        </div>
+        <div class="datapoint-range-labels">
+          <span>Min: 0</span><span>Max: 1,000,000+</span>
+        </div>
+        <div style="margin-top: 0.5rem;">
+          <span class="confidence-badge conf-canon">canon</span>
+        </div>
+        <div class="datapoint-ref">Ref: Star Trek First Contact, official count</div>
+      </div>
+
+      <div class="glass datapoint-box">
+        <div class="datapoint-metric-name">Population</div>
+        <div class="datapoint-value" style="color: var(--pink)">1.2T</div>
+        <div class="datapoint-range">
+          <div class="datapoint-range-bar">
+            <div class="datapoint-range-fill" style="width: 35%; background: linear-gradient(90deg, #ec4899, #f59e0b);"></div>
+          </div>
+        </div>
+        <div class="datapoint-range-labels">
+          <span>Min: 1</span><span>Max: 10 septillion+</span>
+        </div>
+        <div style="margin-top: 0.5rem;">
+          <span class="confidence-badge conf-wild">wildGuess</span>
+        </div>
+        <div class="datapoint-ref">Ref: Estimated from 150 member worlds</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tags & Links -->
+  <section class="tags-section">
+    <h2 class="section-title">Tags & Links</h2>
+    <div class="glass-strong" style="padding: 1.5rem;">
+      <div class="tags-links-container">
+        <div class="tags-group">
+          <h3>Tags</h3>
+          <div class="tag-list">
+            <span class="tag">space-faring</span>
+            <span class="tag">federation</span>
+            <span class="tag">democratic</span>
+            <span class="tag">multi-species</span>
+            <span class="tag">warp-capable</span>
+            <span class="tag">post-scarcity</span>
+            <span class="tag">interstellar</span>
+            <span class="tag">prime-directive</span>
+          </div>
+        </div>
+        <div class="links-group">
+          <h3>References</h3>
+          <div class="link-list">
+            <a class="link-item" href="#">Memory Alpha - Federation</a>
+            <a class="link-item" href="#">Star Trek: First Contact</a>
+            <a class="link-item" href="#">DS9 Technical Manual</a>
+            <a class="link-item" href="#">Ex Astris Scientia</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Table -->
+  <section>
+    <h2 class="section-title">Civilization Comparison</h2>
+    <div class="glass-strong table-container" style="padding: 0.5rem;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Civilization</th>
+            <th>Universe</th>
+            <th style="text-align:right">Class</th>
+            <th style="text-align:right">Population</th>
+            <th style="text-align:right">Tech Level</th>
+            <th style="text-align:right">Planets</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="civ-col">Terragen Sphere</td>
+            <td>Orion's Arm</td>
+            <td class="num-col" style="color: var(--green)">18</td>
+            <td class="num-col">10 septillion+</td>
+            <td class="num-col">14</td>
+            <td class="num-col">millions</td>
+          </tr>
+          <tr>
+            <td class="civ-col">The Culture</td>
+            <td>Culture</td>
+            <td class="num-col" style="color: var(--purple)">17</td>
+            <td class="num-col">30 trillion+</td>
+            <td class="num-col">13</td>
+            <td class="num-col">~100,000</td>
+          </tr>
+          <tr>
+            <td class="civ-col">Imperium of Man</td>
+            <td>Warhammer 40K</td>
+            <td class="num-col" style="color: var(--pink)">16</td>
+            <td class="num-col">~10 quadrillion</td>
+            <td class="num-col">10</td>
+            <td class="num-col">~1,000,000</td>
+          </tr>
+          <tr>
+            <td class="civ-col">Federation 2373</td>
+            <td>Star Trek</td>
+            <td class="num-col" style="color: var(--blue)">10</td>
+            <td class="num-col">1.2 trillion</td>
+            <td class="num-col">9</td>
+            <td class="num-col">150</td>
+          </tr>
+          <tr>
+            <td class="civ-col">United Nations 2350</td>
+            <td>The Expanse</td>
+            <td class="num-col" style="color: #f59e0b">6</td>
+            <td class="num-col">30 billion</td>
+            <td class="num-col">6</td>
+            <td class="num-col">3</td>
+          </tr>
+          <tr>
+            <td class="civ-col">Roman Empire 117 AD</td>
+            <td>Reality</td>
+            <td class="num-col" style="color: #6b7280">3</td>
+            <td class="num-col">70 million</td>
+            <td class="num-col">2</td>
+            <td class="num-col">1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Readme -->
+  <section class="readme-section">
+    <h2 class="section-title">About Federation 2373</h2>
+    <div class="glass-strong readme-content">
+      <h3>The United Federation of Planets</h3>
+      <p>
+        The United Federation of Planets is an interstellar federal republic composed of planetary governments that agreed to exist semi-autonomously under a single central government based on the principles of universal liberty, rights, and equality, and to share their knowledge and resources in peaceful cooperation, scientific development, and mutual defense.
+      </p>
+      <p>
+        By 2373, the Federation had grown to include approximately 150 member worlds and thousands of colonies spread across 8,000 light-years. This was also the year the Dominion War began, a conflict that would test the Federation's ideals and military capability to their limits. The year represents a critical snapshot: a mature interstellar democracy at the peak of its expansion, about to face its greatest existential challenge.
+      </p>
+      <p>
+        Technologically, the Federation possesses warp drive capable of exceeding Warp 9, matter-energy conversion (replicators and transporters), and sophisticated artificial intelligence. Their tech level of 9 reflects mastery of fundamental forces, though they remain below civilizations that have achieved megastructure engineering or substrate-independent consciousness.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    FUTR &middot; Fictional Universe Taxonomy Research &middot; futr.space
+  </footer>
+
+</div>
+
+<script>
+// Generate stars
+(function() {
+  const container = document.getElementById('stars');
+  const count = 120;
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = (Math.random() * 3) + 's';
+    star.style.animationDuration = (2 + Math.random() * 3) + 's';
+    star.style.width = star.style.height = (1 + Math.random() * 2) + 'px';
+    container.appendChild(star);
+  }
+})();
+</script>
+
+</body>
+</html>

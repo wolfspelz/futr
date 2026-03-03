@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CSS VARIABLES
+   ============================================================ */
+:root {
+  --bg-deep: #080c18;
+  --bg-navy: #0a0e1a;
+  --bg-elevated: #0f1425;
+  --bg-card: #131829;
+  --bg-card-hover: #181e36;
+  --burgundy: #7a2234;
+  --burgundy-deep: #5a1525;
+  --burgundy-light: #a03048;
+  --gold: #c5a455;
+  --gold-light: #dfc478;
+  --gold-dim: #8a7438;
+  --gold-glow: rgba(197, 164, 85, 0.15);
+  --parchment: #e8dcc8;
+  --parchment-light: #f5efe3;
+  --parchment-dim: #b8ad9a;
+  --text-primary: #e8dcc8;
+  --text-secondary: #9a917e;
+  --text-muted: #6a6358;
+  --border-subtle: rgba(197, 164, 85, 0.12);
+  --border-gold: rgba(197, 164, 85, 0.3);
+  --border-bright: rgba(197, 164, 85, 0.6);
+
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Outfit', 'Segoe UI', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(197,164,85,0.1);
+  --shadow-glow: 0 0 30px rgba(197,164,85,0.08);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--bg-deep);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   STAR FIELD BACKGROUND
+   ============================================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(122, 34, 52, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 60%, rgba(197, 164, 85, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(15, 20, 37, 0.9) 0%, var(--bg-deep) 100%);
+  pointer-events: none;
+}
+
+.star-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ============================================================
+   GEOMETRIC PATTERN SVG (section divider)
+   ============================================================ */
+.geo-divider {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  opacity: 0.5;
+}
+
+.geo-divider svg {
+  width: 100%;
+  max-width: 900px;
+  height: 40px;
+}
+
+/* ============================================================
+   GEOMETRIC BORDER FRAMES
+   ============================================================ */
+.geo-frame {
+  position: relative;
+}
+
+.geo-frame::before,
+.geo-frame::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Corner ornaments */
+.corner-ornament {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--gold-dim);
+  opacity: 0.6;
+  transition: opacity 0.5s ease, border-color 0.5s ease;
+}
+.corner-ornament.tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+.corner-ornament.tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; }
+.corner-ornament.bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; }
+.corner-ornament.br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+
+/* ============================================================
+   LAYOUT CONTAINERS
+   ============================================================ */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+section {
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: relative;
+  padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  overflow: hidden;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(122,34,52,0.1) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg-deep) 0%, transparent 30%);
+  pointer-events: none;
+}
+
+.header-geometric {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.08;
+}
+
+.header-geometric::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  animation: headerRingSpin 120s linear infinite;
+}
+
+.header-geometric::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 600px;
+  height: 600px;
+  border: 1px solid var(--gold);
+  animation: headerRingSpin 90s linear infinite reverse;
+}
+
+@keyframes headerRingSpin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.site-acronym {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  margin-right: -0.4em;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.site-acronym::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(197,164,85,0.3), transparent);
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); opacity: 0; }
+  50% { transform: translateX(100%); opacity: 1; }
+}
+
+.site-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color: var(--parchment-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.site-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Header decorative line */
+.header-rule {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), var(--gold), var(--gold-dim), transparent);
+  position: relative;
+}
+
+.header-rule::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  background: var(--gold);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* ============================================================
+   NAVIGATION / CARD GRID
+   ============================================================ */
+.nav-section {
+  padding-top: 1rem;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.08em;
+}
+
+.section-subheading {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.card-grid--featured {
+  grid-template-columns: 1fr;
+  margin-bottom: 1.25rem;
+}
+
+.nav-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.nav-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--gold-glow), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.nav-card:hover {
+  border-color: var(--border-gold);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-hover), var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.nav-card:hover::before {
+  left: 100%;
+}
+
+.nav-card:hover .corner-ornament {
+  opacity: 1;
+  border-color: var(--gold);
+}
+
+.nav-card--featured {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(122,34,52,0.15) 100%);
+  border-color: var(--border-gold);
+  padding: 2rem;
+  text-align: center;
+}
+
+.nav-card__icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+  opacity: 0.8;
+}
+
+.nav-card__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.03em;
+}
+
+.nav-card__desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.nav-card--featured .nav-card__title {
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.nav-card--featured .nav-card__desc {
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--parchment-dim);
+}
+
+/* ============================================================
+   UNIVERSE TILES
+   ============================================================ */
+.universes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.universe-tile {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.universe-tile:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-hover), var(--shadow-glow);
+  transform: translateY(-3px);
+}
+
+.universe-tile:hover .universe-tile__visual {
+  filter: brightness(1.2);
+}
+
+.universe-tile:hover .corner-ornament {
+  opacity: 1;
+  border-color: var(--gold);
+}
+
+.universe-tile__visual {
+  height: 140px;
+  position: relative;
+  transition: filter 0.4s ease;
+  overflow: hidden;
+}
+
+.universe-tile__visual::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, var(--bg-card), transparent);
+}
+
+/* Unique gradient for each universe */
+.universe-tile[data-universe="startrek"] .universe-tile__visual {
+  background: linear-gradient(135deg, #1a237e 0%, #283593 40%, #c5a455 100%);
+}
+.universe-tile[data-universe="perry-rhodan"] .universe-tile__visual {
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 40%, #c5a455 100%);
+}
+.universe-tile[data-universe="firefly"] .universe-tile__visual {
+  background: linear-gradient(135deg, #4e342e 0%, #6d4c41 40%, #d4a24e 100%);
+}
+.universe-tile[data-universe="expanse"] .universe-tile__visual {
+  background: linear-gradient(135deg, #1a2332 0%, #263248 40%, #4a6fa5 100%);
+}
+.universe-tile[data-universe="culture"] .universe-tile__visual {
+  background: linear-gradient(135deg, #311b92 0%, #4527a0 40%, #7c4dff 100%);
+}
+.universe-tile[data-universe="honorverse"] .universe-tile__visual {
+  background: linear-gradient(135deg, #880e4f 0%, #ad1457 40%, #e8a87c 100%);
+}
+.universe-tile[data-universe="warhammer"] .universe-tile__visual {
+  background: linear-gradient(135deg, #4a0000 0%, #6d0000 40%, #c5a455 100%);
+}
+.universe-tile[data-universe="reality"] .universe-tile__visual {
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 40%, #42a5f5 100%);
+}
+.universe-tile[data-universe="orions-arm"] .universe-tile__visual {
+  background: linear-gradient(135deg, #e65100 0%, #ef6c00 40%, #ffd54f 100%);
+}
+
+/* Geometric overlay on visuals */
+.universe-tile__visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(60deg, transparent 45%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.03) 55%, transparent 55%),
+    linear-gradient(-60deg, transparent 45%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.03) 55%, transparent 55%);
+  background-size: 30px 52px;
+  opacity: 0.5;
+}
+
+.universe-tile__classification {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(8,12,24,0.7);
+  backdrop-filter: blur(4px);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-gold);
+  z-index: 2;
+}
+
+.universe-tile__info {
+  padding: 1rem 1.25rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.universe-tile__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 0.25rem;
+}
+
+.universe-tile__meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.universe-tile__stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.universe-tile__stat-value {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ============================================================
+   DATA TABLE (Civilizations)
+   ============================================================ */
+.data-section {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.data-table thead {
+  background: linear-gradient(180deg, rgba(197,164,85,0.08), rgba(197,164,85,0.03));
+}
+
+.data-table th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-gold);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.data-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(197,164,85,0.04);
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: rgba(0,0,0,0.15);
+}
+
+.data-table tbody tr:nth-child(even):hover {
+  background: rgba(197,164,85,0.06);
+}
+
+.data-table .cell-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--parchment);
+}
+
+.data-table .cell-universe {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.data-table .cell-metric {
+  font-variant-numeric: tabular-nums;
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+.data-table .cell-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tag-type-i { background: rgba(66,165,245,0.15); color: #64b5f6; border: 1px solid rgba(66,165,245,0.3); }
+.tag-type-ii { background: rgba(197,164,85,0.15); color: var(--gold-light); border: 1px solid rgba(197,164,85,0.3); }
+.tag-type-iii { background: rgba(239,108,0,0.15); color: #ffab40; border: 1px solid rgba(239,108,0,0.3); }
+.tag-stellar { background: rgba(122,34,52,0.2); color: #e88a9a; border: 1px solid rgba(122,34,52,0.4); }
+
+/* ============================================================
+   METRICS SECTION
+   ============================================================ */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--burgundy), var(--gold), var(--burgundy));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.metric-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.metric-card:hover::before {
+  opacity: 1;
+}
+
+.metric-card__icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.metric-card__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 0.25rem;
+}
+
+.metric-card__desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* ============================================================
+   COMMUNITY SECTION
+   ============================================================ */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.community-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.community-card:hover {
+  border-color: var(--border-gold);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+.community-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-gold);
+}
+
+.community-card__icon--discord { background: rgba(88,101,242,0.15); }
+.community-card__icon--github { background: rgba(197,164,85,0.1); }
+.community-card__icon--contribute { background: rgba(122,34,52,0.2); }
+
+.community-card__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 0.35rem;
+}
+
+.community-card__desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   WANTED UNIVERSES
+   ============================================================ */
+.wanted-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.wanted-tag {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.wanted-tag:hover {
+  color: var(--gold);
+  border-color: var(--border-gold);
+  background: var(--bg-card-hover);
+}
+
+/* ============================================================
+   INSPIRATION
+   ============================================================ */
+.inspiration-block {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  position: relative;
+}
+
+.inspiration-block__quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--parchment);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.inspiration-block__source {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  padding: 3rem 0 2rem;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.footer-rule {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.footer-copy a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.footer-copy a:hover {
+  color: var(--gold);
+}
+
+/* ============================================================
+   GEOMETRIC TESSELLATION PATTERN (repeating SVG border)
+   ============================================================ */
+.tess-border {
+  height: 24px;
+  width: 100%;
+  background-repeat: repeat-x;
+  background-size: 48px 24px;
+  opacity: 0.2;
+  margin: 1rem 0;
+}
+
+.tess-border--top {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24'%3E%3Cpath d='M0 12 L12 0 L24 12 L12 24Z' fill='none' stroke='%23c5a455' stroke-width='0.5'/%3E%3Cpath d='M24 12 L36 0 L48 12 L36 24Z' fill='none' stroke='%23c5a455' stroke-width='0.5'/%3E%3Cline x1='0' y1='12' x2='48' y2='12' stroke='%23c5a455' stroke-width='0.3'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS
+   ============================================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================================
+   ANIMATED GEOMETRIC ACCENT (floating)
+   ============================================================ */
+.floating-geo {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.04;
+}
+
+.floating-geo--1 {
+  top: 15%;
+  left: 5%;
+  width: 200px;
+  height: 200px;
+  border: 1px solid var(--gold);
+  transform: rotate(45deg);
+  animation: floatGeo 20s ease-in-out infinite;
+}
+
+.floating-geo--2 {
+  top: 40%;
+  right: 3%;
+  width: 150px;
+  height: 150px;
+  border: 1px solid var(--burgundy-light);
+  border-radius: 50%;
+  animation: floatGeo 25s ease-in-out infinite reverse;
+}
+
+.floating-geo--3 {
+  bottom: 20%;
+  left: 8%;
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--gold);
+  animation: floatGeo 18s ease-in-out infinite;
+}
+
+@keyframes floatGeo {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); }
+  25% { transform: rotate(50deg) translate(10px, -10px); }
+  50% { transform: rotate(45deg) translate(5px, 5px); }
+  75% { transform: rotate(40deg) translate(-5px, -5px); }
+}
+
+/* ============================================================
+   PULSING DOT ACCENTS ON SECTION HEADINGS
+   ============================================================ */
+.section-heading-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.heading-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulseDot 3s ease-in-out infinite;
+}
+
+.heading-dot:first-child { animation-delay: 0s; }
+.heading-dot:last-child { animation-delay: 1.5s; }
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .universes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .community-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .corner-ornament {
+    display: none;
+  }
+
+  .floating-geo {
+    display: none;
+  }
+
+  .data-table {
+    font-size: 0.8rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.65rem 0.75rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .universes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .site-acronym {
+    letter-spacing: 0.25em;
+    margin-right: -0.25em;
+  }
+
+  .footer-links {
+    gap: 1rem;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .site-acronym::after,
+  .header-geometric::before,
+  .header-geometric::after,
+  .floating-geo--1,
+  .floating-geo--2,
+  .floating-geo--3 {
+    animation: none;
+  }
+
+  .heading-dot {
+    animation: none;
+    opacity: 0.6;
+  }
+
+  .nav-card::before {
+    display: none;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .nav-card,
+  .universe-tile,
+  .metric-card,
+  .community-card {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   FOCUS STYLES (accessibility)
+   ============================================================ */
+a:focus-visible,
+.nav-card:focus-visible,
+.universe-tile:focus-visible,
+.community-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- Star field (CSS-generated dots) -->
+<div class="star-field" aria-hidden="true"></div>
+
+<!-- Floating geometric accents -->
+<div class="floating-geo floating-geo--1" aria-hidden="true"></div>
+<div class="floating-geo floating-geo--2" aria-hidden="true"></div>
+<div class="floating-geo floating-geo--3" aria-hidden="true"></div>
+
+<div class="page-wrapper">
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="header-geometric" aria-hidden="true"></div>
+    <div class="header-content">
+      <div class="site-acronym">FUTR</div>
+      <h1 class="site-title">Fictional Universe Taxonomy Research</h1>
+      <p class="site-subtitle">
+        A galactic archive cataloging the civilizations, empires, and peoples
+        of science fiction&rsquo;s greatest universes.
+      </p>
+      <div class="header-rule" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <!-- ========== MISSION ========== -->
+  <section class="nav-section">
+    <div class="container">
+
+      <div class="card-grid--featured fade-in">
+        <div class="nav-card nav-card--featured geo-frame" tabindex="0">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="nav-card__title">Our Mission</div>
+          <div class="nav-card__desc">
+            The FUTR project collects statistics about civilizations in science fiction universes.
+            We catalog population counts, territorial reach, technological levels, and more &mdash;
+            building a comprehensive database of the fictional peoples that have shaped our imagination.
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Cards -->
+      <div class="card-grid">
+        <a href="#universes" class="nav-card geo-frame fade-in fade-in-delay-1">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <span class="nav-card__icon" aria-hidden="true">&#9737;</span>
+          <div class="nav-card__title">All Universes</div>
+          <div class="nav-card__desc">Browse the complete archive of fictional universes and their civilizations.</div>
+        </a>
+
+        <a href="#civilizations" class="nav-card geo-frame fade-in fade-in-delay-2">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <span class="nav-card__icon" aria-hidden="true">&#9672;</span>
+          <div class="nav-card__title">New Civilizations</div>
+          <div class="nav-card__desc">Recently added civilization entries with fresh data and metrics.</div>
+        </a>
+
+        <a href="#metrics" class="nav-card geo-frame fade-in fade-in-delay-3">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <span class="nav-card__icon" aria-hidden="true">&#9670;</span>
+          <div class="nav-card__title">Metrics</div>
+          <div class="nav-card__desc">The standardized measurements we use to quantify civilizations.</div>
+        </a>
+
+        <a href="#wanted" class="nav-card geo-frame fade-in fade-in-delay-1">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <span class="nav-card__icon" aria-hidden="true">&#9733;</span>
+          <div class="nav-card__title">Universes We Want</div>
+          <div class="nav-card__desc">Vote for the next universes to be added to the archive.</div>
+        </a>
+
+        <a href="#community" class="nav-card geo-frame fade-in fade-in-delay-2">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <span class="nav-card__icon" aria-hidden="true">&#9826;</span>
+          <div class="nav-card__title">New Universes</div>
+          <div class="nav-card__desc">The latest fictional universes added to our growing collection.</div>
+        </a>
+
+        <a href="#community" class="nav-card geo-frame fade-in fade-in-delay-3">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <span class="nav-card__icon" aria-hidden="true">&#9776;</span>
+          <div class="nav-card__title">Contributing</div>
+          <div class="nav-card__desc">Help expand the archive. Add data, verify sources, and collaborate.</div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== GEOMETRIC DIVIDER ========== -->
+  <div class="container">
+    <div class="geo-divider" aria-hidden="true">
+      <svg viewBox="0 0 900 40" preserveAspectRatio="none">
+        <line x1="0" y1="20" x2="350" y2="20" stroke="#c5a455" stroke-width="0.5" opacity="0.3"/>
+        <polygon points="370,20 385,5 400,20 385,35" fill="none" stroke="#c5a455" stroke-width="0.8" opacity="0.5"/>
+        <polygon points="400,20 415,8 430,20 415,32" fill="none" stroke="#c5a455" stroke-width="0.5" opacity="0.3"/>
+        <polygon points="430,20 445,5 460,20 445,35" fill="none" stroke="#7a2234" stroke-width="0.8" opacity="0.4"/>
+        <polygon points="460,20 475,8 490,20 475,32" fill="none" stroke="#c5a455" stroke-width="0.5" opacity="0.3"/>
+        <polygon points="490,20 505,5 520,20 505,35" fill="none" stroke="#c5a455" stroke-width="0.8" opacity="0.5"/>
+        <line x1="540" y1="20" x2="900" y2="20" stroke="#c5a455" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="445" cy="20" r="3" fill="#c5a455" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ========== UNIVERSES ========== -->
+  <section id="universes">
+    <div class="container">
+      <div style="text-align:center;" class="fade-in">
+        <div class="section-heading-wrapper" style="justify-content:center; display:inline-flex;">
+          <span class="heading-dot" aria-hidden="true"></span>
+          <h2 class="section-heading">The Archive of Universes</h2>
+          <span class="heading-dot" aria-hidden="true"></span>
+        </div>
+        <p class="section-subheading">Select a universe to explore its cataloged civilizations</p>
+      </div>
+
+      <div class="universes-grid">
+
+        <a href="#" class="universe-tile geo-frame fade-in" data-universe="startrek">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="universe-tile__visual">
+            <span class="universe-tile__classification">UNI-001</span>
+          </div>
+          <div class="universe-tile__info">
+            <div class="universe-tile__name">Star Trek</div>
+            <div class="universe-tile__meta">Gene Roddenberry, 1966</div>
+            <div class="universe-tile__stats">
+              <span><span class="universe-tile__stat-value">3</span> civilizations</span>
+              <span><span class="universe-tile__stat-value">12</span> datapoints</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="universe-tile geo-frame fade-in" data-universe="perry-rhodan">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="universe-tile__visual">
+            <span class="universe-tile__classification">UNI-002</span>
+          </div>
+          <div class="universe-tile__info">
+            <div class="universe-tile__name">Perry Rhodan</div>
+            <div class="universe-tile__meta">K.H. Scheer &amp; Clark Darlton, 1961</div>
+            <div class="universe-tile__stats">
+              <span><span class="universe-tile__stat-value">1</span> civilization</span>
+              <span><span class="universe-tile__stat-value">4</span> datapoints</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="universe-tile geo-frame fade-in" data-universe="firefly">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="universe-tile__visual">
+            <span class="universe-tile__classification">UNI-003</span>
+          </div>
+          <div class="universe-tile__info">
+            <div class="universe-tile__name">Firefly</div>
+            <div class="universe-tile__meta">Joss Whedon, 2002</div>
+            <div class="universe-tile__stats">
+              <span><span class="universe-tile__stat-value">1</span> civilization</span>
+              <span><span class="universe-tile__stat-value">3</span> datapoints</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="universe-tile geo-frame fade-in" data-universe="expanse">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="universe-tile__visual">
+            <span class="universe-tile__classification">UNI-004</span>
+          </div>
+          <div class="universe-tile__info">
+            <div class="universe-tile__name">The Expanse</div>
+            <div class="universe-tile__meta">James S.A. Corey, 2011</div>
+            <div class="universe-tile__stats">
+              <span><span class="universe-tile__stat-value">2</span> civilizations</span>
+              <span><span class="universe-tile__stat-value">6</span> datapoints</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="universe-tile geo-frame fade-in" data-universe="culture">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="universe-tile__visual">
+            <span class="universe-tile__classification">UNI-005</span>
+          </div>
+          <div class="universe-tile__info">
+            <div class="universe-tile__name">The Culture</div>
+            <div class="universe-tile__meta">Iain M. Banks, 1987</div>
+            <div class="universe-tile__stats">
+              <span><span class="universe-tile__stat-value">1</span> civilization</span>
+              <span><span class="universe-tile__stat-value">4</span> datapoints</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="universe-tile geo-frame fade-in" data-universe="honorverse">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="universe-tile__visual">
+            <span class="universe-tile__classification">UNI-006</span>
+          </div>
+          <div class="universe-tile__info">
+            <div class="universe-tile__name">Honorverse</div>
+            <div class="universe-tile__meta">David Weber, 1993</div>
+            <div class="universe-tile__stats">
+              <span><span class="universe-tile__stat-value">1</span> civilization</span>
+              <span><span class="universe-tile__stat-value">3</span> datapoints</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="universe-tile geo-frame fade-in" data-universe="warhammer">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="universe-tile__visual">
+            <span class="universe-tile__classification">UNI-007</span>
+          </div>
+          <div class="universe-tile__info">
+            <div class="universe-tile__name">Warhammer 40,000</div>
+            <div class="universe-tile__meta">Games Workshop, 1987</div>
+            <div class="universe-tile__stats">
+              <span><span class="universe-tile__stat-value">1</span> civilization</span>
+              <span><span class="universe-tile__stat-value">5</span> datapoints</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="universe-tile geo-frame fade-in" data-universe="reality">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="universe-tile__visual">
+            <span class="universe-tile__classification">UNI-000</span>
+          </div>
+          <div class="universe-tile__info">
+            <div class="universe-tile__name">Reality</div>
+            <div class="universe-tile__meta">The baseline reference universe</div>
+            <div class="universe-tile__stats">
+              <span><span class="universe-tile__stat-value">1</span> civilization</span>
+              <span><span class="universe-tile__stat-value">4</span> datapoints</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="universe-tile geo-frame fade-in" data-universe="orions-arm">
+          <span class="corner-ornament tl" aria-hidden="true"></span>
+          <span class="corner-ornament tr" aria-hidden="true"></span>
+          <span class="corner-ornament bl" aria-hidden="true"></span>
+          <span class="corner-ornament br" aria-hidden="true"></span>
+          <div class="universe-tile__visual">
+            <span class="universe-tile__classification">UNI-008</span>
+          </div>
+          <div class="universe-tile__info">
+            <div class="universe-tile__name">Orion&rsquo;s Arm</div>
+            <div class="universe-tile__meta">Community worldbuilding, 2000</div>
+            <div class="universe-tile__stats">
+              <span><span class="universe-tile__stat-value">1</span> civilization</span>
+              <span><span class="universe-tile__stat-value">3</span> datapoints</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GEOMETRIC DIVIDER ========== -->
+  <div class="container">
+    <div class="geo-divider" aria-hidden="true">
+      <svg viewBox="0 0 900 40" preserveAspectRatio="none">
+        <line x1="0" y1="20" x2="380" y2="20" stroke="#c5a455" stroke-width="0.5" opacity="0.3"/>
+        <path d="M400,5 L420,20 L400,35 L380,20 Z" fill="none" stroke="#7a2234" stroke-width="0.8" opacity="0.4"/>
+        <path d="M440,8 L455,20 L440,32 L425,20 Z" fill="none" stroke="#c5a455" stroke-width="0.5" opacity="0.3"/>
+        <path d="M480,5 L500,20 L480,35 L460,20 Z" fill="none" stroke="#c5a455" stroke-width="0.8" opacity="0.5"/>
+        <line x1="500" y1="20" x2="900" y2="20" stroke="#c5a455" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="440" cy="20" r="2.5" fill="#7a2234" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ========== CIVILIZATIONS TABLE ========== -->
+  <section id="civilizations" class="data-section">
+    <div class="container">
+      <div style="text-align:center;" class="fade-in">
+        <div class="section-heading-wrapper" style="justify-content:center; display:inline-flex;">
+          <span class="heading-dot" aria-hidden="true"></span>
+          <h2 class="section-heading">Cataloged Civilizations</h2>
+          <span class="heading-dot" aria-hidden="true"></span>
+        </div>
+        <p class="section-subheading">All recorded civilization entries with their primary metrics</p>
+      </div>
+
+      <div class="table-wrapper fade-in">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Civilization</th>
+              <th>Universe</th>
+              <th>Population</th>
+              <th>Planets</th>
+              <th>Kardashev</th>
+              <th>Tech Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cell-name">Federation 2373</td>
+              <td class="cell-universe">Star Trek</td>
+              <td class="cell-metric">~1 trillion</td>
+              <td class="cell-metric">150+</td>
+              <td><span class="cell-tag tag-type-ii">Type II</span></td>
+              <td class="cell-metric">Warp drive</td>
+            </tr>
+            <tr>
+              <td class="cell-name">Klingon Empire 2161</td>
+              <td class="cell-universe">Star Trek</td>
+              <td class="cell-metric">~500 billion</td>
+              <td class="cell-metric">80+</td>
+              <td><span class="cell-tag tag-type-ii">Type II</span></td>
+              <td class="cell-metric">Warp drive</td>
+            </tr>
+            <tr>
+              <td class="cell-name">Alliance 2517</td>
+              <td class="cell-universe">Firefly</td>
+              <td class="cell-metric">~50 billion</td>
+              <td class="cell-metric">70+</td>
+              <td><span class="cell-tag tag-type-i">Type I</span></td>
+              <td class="cell-metric">Interstellar</td>
+            </tr>
+            <tr>
+              <td class="cell-name">Mars 2350</td>
+              <td class="cell-universe">The Expanse</td>
+              <td class="cell-metric">~9 billion</td>
+              <td class="cell-metric">1</td>
+              <td><span class="cell-tag tag-type-i">Type I</span></td>
+              <td class="cell-metric">Epstein drive</td>
+            </tr>
+            <tr>
+              <td class="cell-name">Outer Planets Alliance 2350</td>
+              <td class="cell-universe">The Expanse</td>
+              <td class="cell-metric">~100 million</td>
+              <td class="cell-metric">&mdash;</td>
+              <td><span class="cell-tag tag-stellar">Sub-I</span></td>
+              <td class="cell-metric">Epstein drive</td>
+            </tr>
+            <tr>
+              <td class="cell-name">Diamond Network</td>
+              <td class="cell-universe">Orion&rsquo;s Arm</td>
+              <td class="cell-metric">~10<sup>18</sup></td>
+              <td class="cell-metric">Thousands</td>
+              <td><span class="cell-tag tag-type-iii">Type III</span></td>
+              <td class="cell-metric">Godtech</td>
+            </tr>
+            <tr>
+              <td class="cell-name">Imperium of Man M41</td>
+              <td class="cell-universe">Warhammer 40,000</td>
+              <td class="cell-metric">~trillions</td>
+              <td class="cell-metric">1,000,000+</td>
+              <td><span class="cell-tag tag-type-ii">Type II</span></td>
+              <td class="cell-metric">Warp travel</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== METRICS ========== -->
+  <section id="metrics">
+    <div class="container">
+      <div style="text-align:center;" class="fade-in">
+        <div class="section-heading-wrapper" style="justify-content:center; display:inline-flex;">
+          <span class="heading-dot" aria-hidden="true"></span>
+          <h2 class="section-heading">Measurement Standards</h2>
+          <span class="heading-dot" aria-hidden="true"></span>
+        </div>
+        <p class="section-subheading">The galactic taxonomy system for quantifying civilizations</p>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card fade-in">
+          <span class="metric-card__icon" aria-hidden="true">&#9775;</span>
+          <div class="metric-card__name">Population</div>
+          <div class="metric-card__desc">Total sentient beings</div>
+        </div>
+        <div class="metric-card fade-in fade-in-delay-1">
+          <span class="metric-card__icon" aria-hidden="true">&#9790;</span>
+          <div class="metric-card__name">Planets</div>
+          <div class="metric-card__desc">Settled worlds</div>
+        </div>
+        <div class="metric-card fade-in fade-in-delay-2">
+          <span class="metric-card__icon" aria-hidden="true">&#9889;</span>
+          <div class="metric-card__name">Kardashev Scale</div>
+          <div class="metric-card__desc">Energy utilization level</div>
+        </div>
+        <div class="metric-card fade-in fade-in-delay-3">
+          <span class="metric-card__icon" aria-hidden="true">&#9881;</span>
+          <div class="metric-card__name">Tech Level</div>
+          <div class="metric-card__desc">Technological capability</div>
+        </div>
+        <div class="metric-card fade-in fade-in-delay-4">
+          <span class="metric-card__icon" aria-hidden="true">&#10038;</span>
+          <div class="metric-card__name">Star Systems</div>
+          <div class="metric-card__desc">Controlled stellar regions</div>
+        </div>
+        <div class="metric-card fade-in">
+          <span class="metric-card__icon" aria-hidden="true">&#8987;</span>
+          <div class="metric-card__name">Civilization Age</div>
+          <div class="metric-card__desc">Duration of existence</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WANTED UNIVERSES ========== -->
+  <section id="wanted">
+    <div class="container">
+      <div style="text-align:center;" class="fade-in">
+        <div class="section-heading-wrapper" style="justify-content:center; display:inline-flex;">
+          <span class="heading-dot" aria-hidden="true"></span>
+          <h2 class="section-heading">Universes We Want</h2>
+          <span class="heading-dot" aria-hidden="true"></span>
+        </div>
+        <p class="section-subheading">Universes under consideration for future addition to the archive</p>
+      </div>
+
+      <div class="wanted-list fade-in">
+        <span class="wanted-tag">Foundation</span>
+        <span class="wanted-tag">Dune</span>
+        <span class="wanted-tag">Babylon 5</span>
+        <span class="wanted-tag">Mass Effect</span>
+        <span class="wanted-tag">Halo</span>
+        <span class="wanted-tag">Battlestar Galactica</span>
+        <span class="wanted-tag">Stargate</span>
+        <span class="wanted-tag">The Three-Body Problem</span>
+        <span class="wanted-tag">Hyperion</span>
+        <span class="wanted-tag">Revelation Space</span>
+        <span class="wanted-tag">Ringworld</span>
+        <span class="wanted-tag">Red Rising</span>
+        <span class="wanted-tag">Old Man&rsquo;s War</span>
+        <span class="wanted-tag">The Forever War</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GEOMETRIC DIVIDER ========== -->
+  <div class="container">
+    <div class="geo-divider" aria-hidden="true">
+      <svg viewBox="0 0 900 40" preserveAspectRatio="none">
+        <line x1="0" y1="20" x2="370" y2="20" stroke="#c5a455" stroke-width="0.5" opacity="0.3"/>
+        <rect x="385" y="10" width="20" height="20" fill="none" stroke="#c5a455" stroke-width="0.6" opacity="0.3" transform="rotate(45 395 20)"/>
+        <rect x="420" y="7" width="26" height="26" fill="none" stroke="#7a2234" stroke-width="0.8" opacity="0.4" transform="rotate(45 433 20)"/>
+        <rect x="455" y="10" width="20" height="20" fill="none" stroke="#c5a455" stroke-width="0.6" opacity="0.3" transform="rotate(45 465 20)"/>
+        <line x1="490" y1="20" x2="900" y2="20" stroke="#c5a455" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="433" cy="20" r="2" fill="#c5a455" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ========== COMMUNITY ========== -->
+  <section id="community">
+    <div class="container">
+      <div style="text-align:center;" class="fade-in">
+        <div class="section-heading-wrapper" style="justify-content:center; display:inline-flex;">
+          <span class="heading-dot" aria-hidden="true"></span>
+          <h2 class="section-heading">Join the Archive</h2>
+          <span class="heading-dot" aria-hidden="true"></span>
+        </div>
+        <p class="section-subheading">Contribute to the galactic record</p>
+      </div>
+
+      <div class="community-grid">
+        <a href="#" class="community-card fade-in">
+          <div class="community-card__icon community-card__icon--discord" aria-hidden="true">
+            <svg width="20" height="16" viewBox="0 0 20 16" fill="currentColor" style="color: var(--gold);">
+              <path d="M16.93 1.33A16.44 16.44 0 0012.86 0a.06.06 0 00-.07.03c-.18.32-.38.74-.52 1.07a15.18 15.18 0 00-4.54 0A10.88 10.88 0 007.2.03.06.06 0 007.14 0a16.4 16.4 0 00-4.07 1.33.05.05 0 00-.03.02C.44 5.36-.27 9.27.08 13.13a.07.07 0 00.03.05 16.53 16.53 0 004.97 2.52.06.06 0 00.07-.02c.38-.52.72-1.07 1.02-1.65a.06.06 0 00-.03-.09 10.89 10.89 0 01-1.56-.74.06.06 0 01-.01-.1c.1-.08.21-.16.31-.24a.06.06 0 01.07-.01c3.27 1.49 6.81 1.49 10.04 0a.06.06 0 01.07 0c.1.08.2.16.31.25a.06.06 0 010 .1c-.5.29-1.02.53-1.56.73a.06.06 0 00-.04.09c.3.58.65 1.13 1.02 1.65a.06.06 0 00.07.02 16.49 16.49 0 004.97-2.52.07.07 0 00.03-.04c.42-4.36-.71-8.24-2.99-11.63a.05.05 0 00-.02-.02zM6.68 10.78c-1.01 0-1.84-.93-1.84-2.06 0-1.14.81-2.07 1.84-2.07 1.04 0 1.86.94 1.84 2.07 0 1.13-.81 2.06-1.84 2.06zm6.8 0c-1.01 0-1.84-.93-1.84-2.06 0-1.14.81-2.07 1.84-2.07 1.04 0 1.86.94 1.84 2.07 0 1.13-.8 2.06-1.84 2.06z"/>
+            </svg>
+          </div>
+          <div class="community-card__title">Discord</div>
+          <div class="community-card__desc">
+            Join our community of science fiction enthusiasts and data researchers.
+            Discuss civilizations, debate metrics, and propose new entries.
+          </div>
+        </a>
+
+        <a href="#" class="community-card fade-in fade-in-delay-1">
+          <div class="community-card__icon community-card__icon--github" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="color: var(--gold);">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V19c0 .27.16.59.67.5C17.14 18.16 20 14.42 20 10A10 10 0 0010 0z"/>
+            </svg>
+          </div>
+          <div class="community-card__title">Open Source</div>
+          <div class="community-card__desc">
+            FUTR is fully open source. Browse the code, file issues, submit pull requests,
+            or fork the repository to build your own analysis tools.
+          </div>
+        </a>
+
+        <a href="#" class="community-card fade-in fade-in-delay-2">
+          <div class="community-card__icon community-card__icon--contribute" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--gold);">
+              <path d="M10 1v18M1 10h18"/>
+              <circle cx="10" cy="10" r="8"/>
+            </svg>
+          </div>
+          <div class="community-card__title">Contributing</div>
+          <div class="community-card__desc">
+            Help expand the archive. Add data for new civilizations, verify existing sources,
+            improve metrics, or suggest new universes to catalog.
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INSPIRATION ========== -->
+  <section>
+    <div class="container">
+      <div class="inspiration-block geo-frame fade-in">
+        <span class="corner-ornament tl" aria-hidden="true"></span>
+        <span class="corner-ornament tr" aria-hidden="true"></span>
+        <span class="corner-ornament bl" aria-hidden="true"></span>
+        <span class="corner-ornament br" aria-hidden="true"></span>
+        <div class="inspiration-block__quote">
+          &ldquo;The universe is a pretty big place. If it&rsquo;s just us, seems like an awful waste of space.&rdquo;
+        </div>
+        <div class="inspiration-block__source">&mdash; Carl Sagan, Contact</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-rule" aria-hidden="true"></div>
+      <nav class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Privacy</a>
+        <a href="#">GitHub</a>
+        <a href="#">Discord</a>
+      </nav>
+      <div class="footer-copy">
+        &copy; 2024&ndash;2026 <a href="https://www.futr.space/">FUTR</a> &mdash; Fictional Universe Taxonomy Research
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+// ============================================================
+// STAR FIELD GENERATOR
+// ============================================================
+(function() {
+  const starField = document.querySelector('.star-field');
+  if (!starField) return;
+
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.style.position = 'absolute';
+  canvas.style.inset = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  starField.appendChild(canvas);
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    draw();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw faint constellation grid lines
+    ctx.strokeStyle = 'rgba(197, 164, 85, 0.015)';
+    ctx.lineWidth = 0.5;
+    const gridSize = 120;
+    for (let x = 0; x < canvas.width; x += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, canvas.height);
+      ctx.stroke();
+    }
+    for (let y = 0; y < canvas.height; y += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(canvas.width, y);
+      ctx.stroke();
+    }
+
+    // Draw stars
+    const starCount = Math.floor((canvas.width * canvas.height) / 4000);
+    const seed = 42;
+    function seededRandom(i) {
+      let x = Math.sin(seed + i * 9301 + 49297) * 233280;
+      return x - Math.floor(x);
+    }
+
+    for (let i = 0; i < starCount; i++) {
+      const x = seededRandom(i * 3) * canvas.width;
+      const y = seededRandom(i * 3 + 1) * canvas.height;
+      const brightness = seededRandom(i * 3 + 2);
+      const size = brightness < 0.85 ? 0.5 : brightness < 0.95 ? 1 : 1.5;
+
+      if (brightness > 0.92) {
+        // Warm golden star
+        ctx.fillStyle = `rgba(197, 164, 85, ${brightness * 0.4})`;
+      } else if (brightness > 0.7) {
+        // Slightly warm white
+        ctx.fillStyle = `rgba(232, 220, 200, ${brightness * 0.3})`;
+      } else {
+        // Dim cool star
+        ctx.fillStyle = `rgba(180, 190, 210, ${brightness * 0.2})`;
+      }
+
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+})();
+
+// ============================================================
+// SCROLL REVEAL
+// ============================================================
+(function() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+})();
+
+// ============================================================
+// SMOOTH SCROLL FOR NAV LINKS
+// ============================================================
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

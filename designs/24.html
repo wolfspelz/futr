@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR - Fictional Universe Taxonomy Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Martian+Mono:wght@300;400;500;700&family=Zilla+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CSS VARIABLES
+   ============================================================ */
+:root {
+  --sand-lightest: #F5F0E6;
+  --sand-light: #E8DCC8;
+  --sand-mid: #D4C4A8;
+  --sand-dark: #B8A07A;
+  --earth-mid: #8B7355;
+  --earth-dark: #6B553D;
+  --terracotta: #C4653A;
+  --terracotta-light: #D8845A;
+  --terracotta-dim: #A04E2A;
+  --excavation-dark: #3D2B1F;
+  --excavation-deeper: #2A1C14;
+  --scanner-teal: #2EC4B6;
+  --scanner-teal-light: #5DD9CE;
+  --scanner-teal-dim: #1F8A80;
+  --scanner-teal-glow: rgba(46, 196, 182, 0.15);
+  --scanner-teal-faint: rgba(46, 196, 182, 0.06);
+
+  --text-primary: #3D2B1F;
+  --text-secondary: #6B553D;
+  --text-muted: #8B7355;
+  --text-on-dark: #E8DCC8;
+  --text-on-dark-muted: #B8A07A;
+
+  --card-bg: #F5F0E6;
+  --card-shadow: 0 2px 8px rgba(61, 43, 31, 0.08), 0 1px 3px rgba(61, 43, 31, 0.06);
+  --card-shadow-hover: 0 6px 20px rgba(61, 43, 31, 0.12), 0 2px 8px rgba(61, 43, 31, 0.08);
+
+  --border-grid: rgba(139, 115, 85, 0.15);
+  --border-card: rgba(139, 115, 85, 0.25);
+  --border-scanner: rgba(46, 196, 182, 0.3);
+
+  --font-display: 'Zilla Slab', 'Georgia', serif;
+  --font-mono: 'Martian Mono', 'Courier New', monospace;
+  --font-annotation: 'Caveat', cursive;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  --transition-smooth: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--sand-light);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   EXCAVATION GRID BACKGROUND
+   ============================================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--border-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-grid) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.5;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(196, 101, 58, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(46, 196, 182, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, rgba(61, 43, 31, 0.08) 0%, transparent 50%);
+}
+
+/* Sandy texture noise overlay */
+#texture-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ============================================================
+   SCAN LINE ANIMATION
+   ============================================================ */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+#scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--scanner-teal), transparent);
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.4;
+  animation: scanline 8s linear infinite;
+  box-shadow: 0 0 20px var(--scanner-teal), 0 0 60px rgba(46, 196, 182, 0.2);
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.content-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 72px 0;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  padding: 24px 0;
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--border-grid);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.brand-glyph {
+  width: 44px;
+  height: 44px;
+  position: relative;
+}
+
+.brand-glyph svg {
+  width: 100%;
+  height: 100%;
+}
+
+.brand-text {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--excavation-dark);
+}
+
+.brand-text span {
+  display: block;
+  font-family: var(--font-annotation);
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-muted);
+  margin-top: -2px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.header-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-smooth);
+}
+
+.header-nav a:hover {
+  color: var(--scanner-teal-dim);
+  border-color: var(--border-scanner);
+  background: var(--scanner-teal-faint);
+}
+
+/* ============================================================
+   HERO / DIG SITE HEADER
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+  position: relative;
+}
+
+.hero::before {
+  content: 'GRID REF: 47.2N / 122.8W — STRATUM VII — EPOCH: UNKNOWN';
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--scanner-teal-dim);
+  opacity: 0.6;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--excavation-dark);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--terracotta);
+  position: relative;
+}
+
+.hero-title em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--scanner-teal);
+  opacity: 0.5;
+  border-radius: 2px;
+}
+
+.hero-annotation {
+  font-family: var(--font-annotation);
+  font-size: 1.15rem;
+  color: var(--terracotta);
+  transform: rotate(-2deg);
+  display: inline-block;
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.hero-annotation::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 14px;
+  height: 2px;
+  background: var(--terracotta);
+  opacity: 0.5;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.hero-stat {
+  position: relative;
+  padding: 16px 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.hero-stat::before {
+  content: 'SCAN';
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: var(--scanner-teal);
+  background: var(--sand-light);
+  padding: 0 6px;
+}
+
+.hero-stat-value {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--excavation-dark);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+.section-header {
+  margin-bottom: 36px;
+}
+
+.section-ref {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--scanner-teal-dim);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-ref::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--scanner-teal);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 6px var(--scanner-teal);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--excavation-dark);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.section-annotation {
+  font-family: var(--font-annotation);
+  font-size: 1rem;
+  color: var(--terracotta);
+  transform: rotate(-1.5deg);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   SPECIMEN CARDS (EXPLORE SECTION)
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.specimen-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 24px 22px 20px;
+  position: relative;
+  text-decoration: none;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all var(--transition-smooth);
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+}
+
+.specimen-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--border-scanner);
+  transform: translateY(-2px);
+}
+
+.specimen-card:hover .specimen-card-scan {
+  opacity: 1;
+}
+
+/* Pushpin */
+.specimen-card::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 24px;
+  width: 10px;
+  height: 10px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(61, 43, 31, 0.3), inset 0 -1px 1px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+/* Scan overlay on hover */
+.specimen-card-scan {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  color: var(--scanner-teal);
+  padding: 6px 10px;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.specimen-card-id {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.specimen-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--excavation-dark);
+  line-height: 1.2;
+}
+
+.specimen-card-desc {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.specimen-card-annotation {
+  font-family: var(--font-annotation);
+  font-size: 0.85rem;
+  color: var(--terracotta);
+  transform: rotate(-1deg);
+  display: inline-block;
+  margin-top: auto;
+}
+
+/* Featured card */
+.specimen-card--featured {
+  grid-column: span 2;
+  border-color: var(--terracotta-dim);
+  border-width: 1px;
+  background: linear-gradient(135deg, var(--card-bg) 0%, #F0E8D6 100%);
+}
+
+.specimen-card--featured::before {
+  background: var(--scanner-teal);
+  box-shadow: 0 1px 3px rgba(46, 196, 182, 0.4), inset 0 -1px 1px rgba(0,0,0,0.2), 0 0 8px rgba(46, 196, 182, 0.3);
+}
+
+/* Tape effect for select cards */
+.specimen-card--taped::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  right: 20px;
+  width: 40px;
+  height: 16px;
+  background: rgba(212, 196, 168, 0.7);
+  border-radius: 1px;
+  transform: rotate(2deg);
+  z-index: 1;
+}
+
+/* ============================================================
+   UNIVERSE TILES
+   ============================================================ */
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.universe-tile {
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-on-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 180px;
+  transition: all var(--transition-smooth);
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.universe-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(61, 43, 31, 0.2);
+}
+
+.universe-tile:hover .universe-tile-scan {
+  opacity: 1;
+}
+
+/* Scan overlay corners */
+.universe-tile::before,
+.universe-tile::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--scanner-teal);
+  border-style: solid;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.universe-tile::before {
+  top: 8px;
+  left: 8px;
+  border-width: 2px 0 0 2px;
+}
+
+.universe-tile::after {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 2px 2px 0;
+}
+
+.universe-tile:hover::before,
+.universe-tile:hover::after {
+  opacity: 0.6;
+}
+
+.universe-tile-site {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: auto;
+}
+
+.universe-tile-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.universe-tile-meta {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+  position: relative;
+  z-index: 1;
+}
+
+.universe-tile-scan {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  letter-spacing: 0.1em;
+  color: var(--scanner-teal);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+  text-transform: uppercase;
+}
+
+/* Universe-specific palettes — earthy, muted, archaeological */
+.universe-tile--startrek {
+  background: linear-gradient(145deg, #2B3A4E 0%, #1E3045 40%, #243852 100%);
+}
+.universe-tile--perry {
+  background: linear-gradient(145deg, #3A2D4A 0%, #2D2240 40%, #352845 100%);
+}
+.universe-tile--firefly {
+  background: linear-gradient(145deg, #4A3520 0%, #3D2A18 40%, #453020 100%);
+}
+.universe-tile--expanse {
+  background: linear-gradient(145deg, #1E3535 0%, #15302E 40%, #1A3230 100%);
+}
+.universe-tile--culture {
+  background: linear-gradient(145deg, #352045 0%, #2A1838 40%, #301E40 100%);
+}
+.universe-tile--honor {
+  background: linear-gradient(145deg, #3A3520 0%, #2D2A15 40%, #35301A 100%);
+}
+.universe-tile--wh40k {
+  background: linear-gradient(145deg, #4A1E1E 0%, #3D1515 40%, #451A1A 100%);
+}
+.universe-tile--reality {
+  background: linear-gradient(145deg, #1E3A28 0%, #152E22 40%, #1A3525 100%);
+}
+.universe-tile--orionsarm {
+  background: linear-gradient(145deg, #3A2A18 0%, #302215 40%, #35261A 100%);
+}
+
+/* ============================================================
+   METRICS DISPLAY
+   ============================================================ */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.metric-cell {
+  background: var(--card-bg);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  text-align: center;
+  transition: all var(--transition-smooth);
+  position: relative;
+  box-shadow: var(--card-shadow);
+}
+
+.metric-cell:hover {
+  border-color: var(--border-scanner);
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.metric-cell::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--scanner-teal);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+  border-radius: 1px;
+}
+
+.metric-cell:hover::after {
+  opacity: 0.6;
+}
+
+.metric-cell-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--excavation-dark);
+  margin-bottom: 4px;
+}
+
+.metric-cell-type {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* ============================================================
+   DATA TABLE
+   ============================================================ */
+.table-wrap {
+  margin-top: 32px;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-card);
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  position: relative;
+}
+
+.table-wrap::before {
+  content: 'SCAN STATUS: DECODED — CONFIDENCE: HIGH';
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  color: var(--scanner-teal);
+  padding: 8px 14px;
+  z-index: 2;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.data-table thead {
+  background: rgba(61, 43, 31, 0.05);
+}
+
+.data-table th {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  padding: 14px 20px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--border-card);
+}
+
+.data-table td {
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.data-table tbody tr {
+  transition: background var(--transition-smooth);
+}
+
+.data-table tbody tr:hover {
+  background: rgba(46, 196, 182, 0.04);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table .civ-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--excavation-dark);
+  font-weight: 600;
+}
+
+.data-table .civ-universe {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.data-table .value-highlight {
+  color: var(--terracotta);
+  font-weight: 500;
+}
+
+.data-table .value-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.badge--k07 { background: rgba(139, 115, 85, 0.12); color: var(--earth-mid); }
+.badge--k09 { background: rgba(139, 115, 85, 0.15); color: var(--earth-dark); }
+.badge--k1 { background: rgba(46, 196, 182, 0.1); color: var(--scanner-teal-dim); }
+.badge--k1p { background: rgba(46, 196, 182, 0.15); color: var(--scanner-teal-dim); }
+.badge--k2 { background: rgba(196, 101, 58, 0.12); color: var(--terracotta); }
+.badge--k3 { background: rgba(196, 101, 58, 0.18); color: var(--terracotta-dim); border: 1px solid rgba(196, 101, 58, 0.15); }
+
+/* ============================================================
+   WANTED SECTION
+   ============================================================ */
+.wanted-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.wanted-tag {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 400;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  border: 1px dashed var(--border-card);
+  color: var(--text-secondary);
+  transition: all var(--transition-smooth);
+  cursor: default;
+  position: relative;
+}
+
+.wanted-tag:hover {
+  border-color: var(--scanner-teal);
+  border-style: solid;
+  color: var(--scanner-teal-dim);
+  background: var(--scanner-teal-faint);
+}
+
+.wanted-tag::before {
+  content: '?';
+  font-family: var(--font-annotation);
+  font-size: 0.7rem;
+  color: var(--terracotta);
+  margin-right: 6px;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   COMMUNITY GRID
+   ============================================================ */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+
+/* ============================================================
+   EXCAVATION DIVIDER
+   ============================================================ */
+.dig-divider {
+  width: 100%;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.dig-divider-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-card), var(--border-card), transparent);
+  position: relative;
+}
+
+.dig-divider-inner::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  background: var(--scanner-teal);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(46, 196, 182, 0.4);
+}
+
+.dig-divider-label {
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--sand-light);
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  padding: 40px 0 32px;
+  border-top: 1px solid var(--border-card);
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-text {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color var(--transition-smooth);
+}
+
+.footer-links a:hover {
+  color: var(--scanner-teal-dim);
+}
+
+.footer-annotation {
+  font-family: var(--font-annotation);
+  font-size: 0.8rem;
+  color: var(--terracotta);
+  transform: rotate(-1deg);
+  display: inline-block;
+  margin-top: 12px;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ============================================================
+   DECODE ANIMATION
+   ============================================================ */
+@keyframes decode-flicker {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  15% { opacity: 0.3; }
+  20% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.decode-in {
+  animation: decode-flicker 0.6s ease forwards;
+}
+
+/* Staggered character decode for stat values */
+.hero-stat-value .char {
+  display: inline-block;
+  opacity: 0;
+}
+
+.hero-stat-value.decoded .char {
+  animation: decode-flicker 0.4s ease forwards;
+}
+
+/* ============================================================
+   ROTATION ON DESKTOP (pinboard feel)
+   ============================================================ */
+@media (min-width: 768px) {
+  .specimen-card:nth-child(3n+1) { transform: rotate(-0.5deg); }
+  .specimen-card:nth-child(3n+2) { transform: rotate(0.3deg); }
+  .specimen-card:nth-child(3n) { transform: rotate(-0.2deg); }
+
+  .specimen-card:hover {
+    transform: rotate(0deg) translateY(-2px) !important;
+  }
+
+  .universe-tile:nth-child(even) { transform: rotate(0.3deg); }
+  .universe-tile:nth-child(3n) { transform: rotate(-0.4deg); }
+
+  .universe-tile:hover {
+    transform: rotate(0deg) translateY(-3px) !important;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .specimen-card--featured {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .header-nav {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .hero-stats {
+    gap: 16px;
+  }
+
+  .hero-stat {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  section {
+    padding: 48px 0;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .universe-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .community-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrap::before {
+    display: none;
+  }
+
+  .specimen-card,
+  .universe-tile {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-stats {
+    flex-direction: column;
+  }
+
+  .metrics-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   GRID COORDINATE LABELS
+   ============================================================ */
+.grid-coord {
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  opacity: 0.4;
+  position: absolute;
+  z-index: 0;
+}
+</style>
+</head>
+<body>
+
+<div id="texture-overlay"></div>
+<div id="scanline"></div>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="content-wrap">
+    <div class="header-inner">
+      <a class="brand" href="#">
+        <div class="brand-glyph">
+          <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Excavation crosshair / compass glyph -->
+            <rect x="4" y="4" width="36" height="36" rx="2" stroke="#8B7355" stroke-width="1" fill="none" opacity="0.3"/>
+            <line x1="22" y1="2" x2="22" y2="14" stroke="#2EC4B6" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="30" x2="22" y2="42" stroke="#2EC4B6" stroke-width="1" opacity="0.5"/>
+            <line x1="2" y1="22" x2="14" y2="22" stroke="#2EC4B6" stroke-width="1" opacity="0.5"/>
+            <line x1="30" y1="22" x2="42" y2="22" stroke="#2EC4B6" stroke-width="1" opacity="0.5"/>
+            <circle cx="22" cy="22" r="8" stroke="#C4653A" stroke-width="1.5" fill="none"/>
+            <circle cx="22" cy="22" r="3" fill="#C4653A" opacity="0.7"/>
+            <rect x="10" y="10" width="24" height="24" rx="1" stroke="#8B7355" stroke-width="0.5" fill="none" opacity="0.2" stroke-dasharray="3 3"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          FUTR
+          <span>Fictional Universe Taxonomy Research</span>
+        </div>
+      </a>
+      <nav class="header-nav">
+        <a href="#universes">Universes</a>
+        <a href="#civilizations">Civilizations</a>
+        <a href="#metrics">Metrics</a>
+        <a href="#community">Community</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="content-wrap">
+    <div class="hero-annotation reveal">Field notes, day 4,291...</div>
+    <h1 class="hero-title reveal reveal-delay-1">Excavating the <em>Civilizations</em><br>of Fiction</h1>
+    <p class="hero-subtitle reveal reveal-delay-2">The FUTR project collects statistics about civilizations in science fiction universes. How many planets? How big is their fleet? How advanced is their technology? We dig through the lore to find out.</p>
+    <div class="hero-stats reveal reveal-delay-3">
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-decode="9">9</div>
+        <div class="hero-stat-label">Universes</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-decode="7">7</div>
+        <div class="hero-stat-label">Civilizations</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-decode="6">6</div>
+        <div class="hero-stat-label">Metrics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="dig-divider">
+  <div class="dig-divider-inner">
+    <span class="dig-divider-label">Stratum I &mdash; Surface Findings</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     EXPLORE CARDS
+     ============================================================ -->
+<section id="explore">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-ref reveal">Catalog &mdash; Field Survey</div>
+      <h2 class="section-title reveal">Dig Site Index</h2>
+      <span class="section-annotation reveal">What have we found so far?</span>
+      <p class="section-desc reveal">Navigate the structured taxonomy of fictional civilizations, their metrics, and the community building this knowledge base.</p>
+    </div>
+
+    <div class="card-grid">
+      <a class="specimen-card specimen-card--featured reveal" href="#">
+        <span class="specimen-card-scan">SCANNING...</span>
+        <div class="specimen-card-id">Specimen FTR-001</div>
+        <div class="specimen-card-title">Mission</div>
+        <div class="specimen-card-desc">The FUTR project collects statistics about civilizations in science fiction universes. How many planets? How big is their fleet? We quantify the imagination.</div>
+        <span class="specimen-card-annotation">The core excavation charter</span>
+      </a>
+      <a class="specimen-card reveal" href="#universes">
+        <span class="specimen-card-scan">SCANNING...</span>
+        <div class="specimen-card-id">Specimen FTR-002</div>
+        <div class="specimen-card-title">All Universes</div>
+        <div class="specimen-card-desc">Browse the complete collection of fictional universes we track.</div>
+      </a>
+      <a class="specimen-card specimen-card--taped reveal" href="#">
+        <span class="specimen-card-scan">SCANNING...</span>
+        <div class="specimen-card-id">Specimen FTR-003</div>
+        <div class="specimen-card-title">New Universes</div>
+        <div class="specimen-card-desc">Recently added universes joining the taxonomy.</div>
+        <span class="specimen-card-annotation">Fresh finds!</span>
+      </a>
+      <a class="specimen-card reveal" href="#civilizations">
+        <span class="specimen-card-scan">SCANNING...</span>
+        <div class="specimen-card-id">Specimen FTR-004</div>
+        <div class="specimen-card-title">New Civilizations</div>
+        <div class="specimen-card-desc">Latest civilization snapshots added to the database.</div>
+      </a>
+      <a class="specimen-card reveal" href="#metrics">
+        <span class="specimen-card-scan">SCANNING...</span>
+        <div class="specimen-card-id">Specimen FTR-005</div>
+        <div class="specimen-card-title">Metrics</div>
+        <div class="specimen-card-desc">Population, planets, Kardashev scale, tech level, and more.</div>
+      </a>
+      <a class="specimen-card specimen-card--taped reveal" href="#wanted">
+        <span class="specimen-card-scan">SCANNING...</span>
+        <div class="specimen-card-id">Specimen FTR-006</div>
+        <div class="specimen-card-title">Universes We Want</div>
+        <div class="specimen-card-desc">Universes on our radar that we'd love contributors to help research.</div>
+        <span class="specimen-card-annotation">Promising dig sites awaiting excavation</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="dig-divider">
+  <div class="dig-divider-inner">
+    <span class="dig-divider-label">Stratum II &mdash; Excavation Sites</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     UNIVERSES
+     ============================================================ -->
+<section id="universes">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-ref reveal">Catalog &mdash; Excavation Sites</div>
+      <h2 class="section-title reveal">Universes</h2>
+      <span class="section-annotation reveal">Each one a world unto itself</span>
+      <p class="section-desc reveal">Each universe is a distinct fictional setting with its own civilizations, technologies, and scales of power.</p>
+    </div>
+
+    <div class="universe-grid">
+      <a class="universe-tile universe-tile--startrek reveal" href="#">
+        <span class="universe-tile-scan">SITE ACTIVE</span>
+        <div class="universe-tile-site">Site-I</div>
+        <div class="universe-tile-name">Star Trek</div>
+        <div class="universe-tile-meta">3 civilizations tracked</div>
+      </a>
+      <a class="universe-tile universe-tile--perry reveal" href="#">
+        <span class="universe-tile-scan">PENDING</span>
+        <div class="universe-tile-site">Site-II</div>
+        <div class="universe-tile-name">Perry Rhodan</div>
+        <div class="universe-tile-meta">Coming soon</div>
+      </a>
+      <a class="universe-tile universe-tile--firefly reveal" href="#">
+        <span class="universe-tile-scan">SITE ACTIVE</span>
+        <div class="universe-tile-site">Site-III</div>
+        <div class="universe-tile-name">Firefly</div>
+        <div class="universe-tile-meta">1 civilization tracked</div>
+      </a>
+      <a class="universe-tile universe-tile--expanse reveal" href="#">
+        <span class="universe-tile-scan">SITE ACTIVE</span>
+        <div class="universe-tile-site">Site-IV</div>
+        <div class="universe-tile-name">The Expanse</div>
+        <div class="universe-tile-meta">2 civilizations tracked</div>
+      </a>
+      <a class="universe-tile universe-tile--culture reveal" href="#">
+        <span class="universe-tile-scan">PENDING</span>
+        <div class="universe-tile-site">Site-V</div>
+        <div class="universe-tile-name">The Culture</div>
+        <div class="universe-tile-meta">Coming soon</div>
+      </a>
+      <a class="universe-tile universe-tile--honor reveal" href="#">
+        <span class="universe-tile-scan">PENDING</span>
+        <div class="universe-tile-site">Site-VI</div>
+        <div class="universe-tile-name">Honorverse</div>
+        <div class="universe-tile-meta">Coming soon</div>
+      </a>
+      <a class="universe-tile universe-tile--wh40k reveal" href="#">
+        <span class="universe-tile-scan">SITE ACTIVE</span>
+        <div class="universe-tile-site">Site-VII</div>
+        <div class="universe-tile-name">Warhammer 40,000</div>
+        <div class="universe-tile-meta">1 civilization tracked</div>
+      </a>
+      <a class="universe-tile universe-tile--reality reveal" href="#">
+        <span class="universe-tile-scan">BASELINE</span>
+        <div class="universe-tile-site">Site-REF</div>
+        <div class="universe-tile-name">Reality</div>
+        <div class="universe-tile-meta">Baseline reference</div>
+      </a>
+      <a class="universe-tile universe-tile--orionsarm reveal" href="#">
+        <span class="universe-tile-scan">SITE ACTIVE</span>
+        <div class="universe-tile-site">Site-VIII</div>
+        <div class="universe-tile-name">Orion's Arm</div>
+        <div class="universe-tile-meta">1 civilization tracked</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="dig-divider">
+  <div class="dig-divider-inner">
+    <span class="dig-divider-label">Stratum III &mdash; Decoded Transmissions</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     CIVILIZATIONS DATA TABLE
+     ============================================================ -->
+<section id="civilizations">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-ref reveal">Data &mdash; Decoded Records</div>
+      <h2 class="section-title reveal">Civilizations</h2>
+      <span class="section-annotation reveal">Snapshots frozen in time, like insects in amber</span>
+      <p class="section-desc reveal">Snapshots of polities at specific points in time, quantified across standardized metrics.</p>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Civilization</th>
+            <th>Universe</th>
+            <th>Population</th>
+            <th>Planets</th>
+            <th>Kardashev</th>
+            <th>Star Systems</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="civ-name">Federation 2373</td>
+            <td class="civ-universe">Star Trek</td>
+            <td class="value-highlight">~1 trillion</td>
+            <td class="value-mono">150+</td>
+            <td><span class="badge badge--k2">K2</span></td>
+            <td class="value-mono">~8,000</td>
+          </tr>
+          <tr>
+            <td class="civ-name">Klingon Empire 2161</td>
+            <td class="civ-universe">Star Trek</td>
+            <td class="value-mono">unknown</td>
+            <td class="value-mono">~20</td>
+            <td><span class="badge badge--k1p">K1+</span></td>
+            <td class="value-mono">unknown</td>
+          </tr>
+          <tr>
+            <td class="civ-name">Alliance 2517</td>
+            <td class="civ-universe">Firefly</td>
+            <td class="value-mono">~50 billion</td>
+            <td class="value-mono">~70</td>
+            <td><span class="badge badge--k1">K1</span></td>
+            <td class="value-mono">1</td>
+          </tr>
+          <tr>
+            <td class="civ-name">Mars 2350</td>
+            <td class="civ-universe">The Expanse</td>
+            <td class="value-mono">~9 billion</td>
+            <td class="value-mono">1</td>
+            <td><span class="badge badge--k09">K0.9</span></td>
+            <td class="value-mono">1</td>
+          </tr>
+          <tr>
+            <td class="civ-name">OPA 2350</td>
+            <td class="civ-universe">The Expanse</td>
+            <td class="value-mono">~50 million</td>
+            <td class="value-mono">0</td>
+            <td><span class="badge badge--k07">K0.7</span></td>
+            <td class="value-mono">1</td>
+          </tr>
+          <tr>
+            <td class="civ-name">Diamond Network</td>
+            <td class="civ-universe">Orion's Arm</td>
+            <td class="value-highlight">~10 quadrillion</td>
+            <td class="value-mono">many thousands</td>
+            <td><span class="badge badge--k3">K3+</span></td>
+            <td class="value-mono">~100,000+</td>
+          </tr>
+          <tr>
+            <td class="civ-name">Imperium of Man M41</td>
+            <td class="civ-universe">Warhammer 40K</td>
+            <td class="value-highlight">~quadrillions</td>
+            <td class="value-mono">~1 million</td>
+            <td><span class="badge badge--k3">K3</span></td>
+            <td class="value-mono">~1 million</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="dig-divider">
+  <div class="dig-divider-inner">
+    <span class="dig-divider-label">Stratum IV &mdash; Measurement Standards</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     METRICS
+     ============================================================ -->
+<section id="metrics">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-ref reveal">Dimensions &mdash; Classification System</div>
+      <h2 class="section-title reveal">Metrics</h2>
+      <span class="section-annotation reveal">How do you measure a civilization?</span>
+      <p class="section-desc reveal">Standardized measurements that allow meaningful comparison across vastly different fictional universes.</p>
+    </div>
+
+    <div class="metrics-row reveal">
+      <div class="metric-cell">
+        <div class="metric-cell-name">Population</div>
+        <div class="metric-cell-type">Numeric</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell-name">Planets</div>
+        <div class="metric-cell-type">Count</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell-name">Kardashev Scale</div>
+        <div class="metric-cell-type">Classification</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell-name">Tech Level</div>
+        <div class="metric-cell-type">Scale</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell-name">Star Systems</div>
+        <div class="metric-cell-type">Count</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell-name">Civilization Age</div>
+        <div class="metric-cell-type">Duration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="dig-divider">
+  <div class="dig-divider-inner">
+    <span class="dig-divider-label">Stratum V &mdash; Unexcavated Sites</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     UNIVERSES WE WANT
+     ============================================================ -->
+<section id="wanted">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-ref reveal">Wishlist &mdash; Pending Excavation</div>
+      <h2 class="section-title reveal">Universes We Want</h2>
+      <span class="section-annotation reveal">So many sites, so few archaeologists...</span>
+      <p class="section-desc reveal">These are universes on our radar. If you have knowledge and passion for any of them, we'd love your contribution.</p>
+    </div>
+
+    <div class="wanted-list reveal">
+      <span class="wanted-tag">Dune</span>
+      <span class="wanted-tag">Foundation</span>
+      <span class="wanted-tag">Battlestar Galactica</span>
+      <span class="wanted-tag">Mass Effect</span>
+      <span class="wanted-tag">Stargate</span>
+      <span class="wanted-tag">Babylon 5</span>
+      <span class="wanted-tag">Halo</span>
+      <span class="wanted-tag">Star Wars</span>
+      <span class="wanted-tag">The Three-Body Problem</span>
+      <span class="wanted-tag">Alien</span>
+      <span class="wanted-tag">Revelation Space</span>
+      <span class="wanted-tag">Hyperion</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="dig-divider">
+  <div class="dig-divider-inner">
+    <span class="dig-divider-label">Stratum VI &mdash; Field Team</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     COMMUNITY
+     ============================================================ -->
+<section id="community">
+  <div class="content-wrap">
+    <div class="section-header">
+      <div class="section-ref reveal">Team &mdash; Join the Expedition</div>
+      <h2 class="section-title reveal">Community</h2>
+      <span class="section-annotation reveal">Every expedition needs a crew</span>
+      <p class="section-desc reveal">FUTR is open source and community-driven. Every contribution makes the dataset richer.</p>
+    </div>
+
+    <div class="community-grid">
+      <a class="specimen-card reveal" href="#">
+        <span class="specimen-card-scan">LINK</span>
+        <div class="specimen-card-id">Comm Channel</div>
+        <div class="specimen-card-title">Discord</div>
+        <div class="specimen-card-desc">Join the conversation, discuss fictional civilizations, and help shape the project's direction.</div>
+        <span class="specimen-card-annotation">The field team's campfire</span>
+      </a>
+      <a class="specimen-card specimen-card--taped reveal" href="#">
+        <span class="specimen-card-scan">LINK</span>
+        <div class="specimen-card-id">Repository</div>
+        <div class="specimen-card-title">Open Source</div>
+        <div class="specimen-card-desc">The entire project is open source on GitHub. Browse the code, submit issues, or fork the repo.</div>
+      </a>
+      <a class="specimen-card reveal" href="#">
+        <span class="specimen-card-scan">LINK</span>
+        <div class="specimen-card-id">Field Guide</div>
+        <div class="specimen-card-title">Contributing</div>
+        <div class="specimen-card-desc">Add universes, refine data, improve metrics. Every SciFi fan has knowledge to share.</div>
+        <span class="specimen-card-annotation">We need more hands on site!</span>
+      </a>
+      <a class="specimen-card reveal" href="#">
+        <span class="specimen-card-scan">LINK</span>
+        <div class="specimen-card-id">Origins</div>
+        <div class="specimen-card-title">Inspiration</div>
+        <div class="specimen-card-desc">Inspired by Atomic Rockets, Kardashev scale research, and a love for quantifying the unquantifiable.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="content-wrap">
+    <div class="footer-inner">
+      <div class="footer-text">&copy; 2025 FUTR &mdash; Fictional Universe Taxonomy Research</div>
+      <div class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Privacy</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-annotation">End of excavation report. More sites to follow...</div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+// ---------------------------------------------------------------
+// SCROLL REVEAL
+// ---------------------------------------------------------------
+(function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+
+// ---------------------------------------------------------------
+// DECODE ANIMATION FOR STAT VALUES
+// ---------------------------------------------------------------
+(function() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const statValues = document.querySelectorAll('.hero-stat-value[data-decode]');
+
+  statValues.forEach(function(el) {
+    const finalText = el.getAttribute('data-decode');
+    const chars = finalText.split('');
+    el.textContent = '';
+
+    chars.forEach(function(ch, i) {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = ch;
+      span.style.animationDelay = (i * 0.15) + 's';
+      el.appendChild(span);
+    });
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          el.classList.add('decoded');
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(el);
+  });
+})();
+
+// ---------------------------------------------------------------
+// SCANLINE SPEED VARIATION (subtle)
+// ---------------------------------------------------------------
+(function() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    const scanline = document.getElementById('scanline');
+    if (scanline) scanline.style.display = 'none';
+    return;
+  }
+})();
+
+// ---------------------------------------------------------------
+// EXCAVATION GRID COORDINATE LABELS (scattered around edges)
+// ---------------------------------------------------------------
+(function() {
+  const coords = [
+    { text: 'A1', top: '160px', left: '8px' },
+    { text: 'A2', top: '160px', left: '88px' },
+    { text: 'B1', top: '240px', left: '8px' },
+    { text: 'C3', top: '320px', left: '168px' },
+    { text: 'D2', top: '400px', left: '88px' },
+    { text: 'E4', top: '560px', left: '248px' },
+    { text: 'F1', top: '640px', left: '8px' },
+    { text: 'G3', top: '800px', left: '168px' },
+  ];
+
+  if (window.innerWidth < 768) return;
+
+  coords.forEach(function(c) {
+    const el = document.createElement('div');
+    el.className = 'grid-coord';
+    el.textContent = c.text;
+    el.style.top = c.top;
+    el.style.left = c.left;
+    document.body.appendChild(el);
+  });
+})();
+</script>
+</body>
+</html>

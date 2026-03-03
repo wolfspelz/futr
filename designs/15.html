@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTR — Fictional Universe Taxonomy Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #0a0015;
+            --bg-mid: #1a0030;
+            --bg-blue: #0d1b2a;
+            --bg-steel: #1b2838;
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --card-bg-hover: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --card-border-hover: rgba(255, 255, 255, 0.25);
+            --accent-magenta: #e040fb;
+            --accent-cyan: #00e5ff;
+            --accent-magenta-glow: rgba(224, 64, 251, 0.4);
+            --accent-cyan-glow: rgba(0, 229, 255, 0.3);
+            --text-primary: #f0f0f5;
+            --text-secondary: rgba(240, 240, 245, 0.7);
+            --text-muted: rgba(240, 240, 245, 0.45);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background: var(--bg-deep);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated nebula background */
+        .nebula-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(135deg,
+                var(--bg-deep) 0%,
+                var(--bg-mid) 25%,
+                #120828 40%,
+                var(--bg-blue) 60%,
+                #0a1628 75%,
+                var(--bg-steel) 100%);
+            background-size: 400% 400%;
+            animation: nebulaShift 20s ease infinite;
+        }
+
+        .nebula-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 50%, rgba(224, 64, 251, 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 80% at 80% 30%, rgba(0, 229, 255, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 50% 80%, rgba(138, 43, 226, 0.05) 0%, transparent 70%);
+            animation: nebulaGlow 15s ease-in-out infinite alternate;
+        }
+
+        .nebula-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 30% 65%, rgba(255,255,255,0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 55% 15%, rgba(255,255,255,0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 70% 45%, rgba(255,255,255,0.2) 0%, transparent 100%),
+                radial-gradient(1px 1px at 85% 80%, rgba(255,255,255,0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 15% 85%, rgba(255,255,255,0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 45% 40%, rgba(255,255,255,0.2) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 92% 12%, rgba(255,255,255,0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at 60% 90%, rgba(255,255,255,0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.25) 0%, transparent 100%);
+            animation: starsTwinkle 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes nebulaShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 25%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 75%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes nebulaGlow {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes starsTwinkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 0, 21, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--accent-magenta), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo span {
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            display: block;
+            background: linear-gradient(135deg, var(--text-secondary), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            margin-top: -2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-magenta), var(--accent-cyan));
+            transition: width 0.3s ease;
+            border-radius: 1px;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-secondary);
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            letter-spacing: 0.05em;
+            line-height: 1.05;
+            animation: floatIn 1.5s ease-out;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, #cf6aff 30%, var(--accent-cyan) 70%, #4dffc3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            font-weight: 300;
+            animation: floatIn 1.5s ease-out 0.2s both;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            animation: floatIn 1.5s ease-out 0.4s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--accent-cyan);
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--text-muted), transparent);
+            margin: 0.5rem auto 0;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-label {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-magenta);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Glass Card Base */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        }
+
+        .glass-card:hover {
+            background: var(--card-bg-hover);
+            border-color: var(--card-border-hover);
+            transform: translateY(-4px);
+            box-shadow:
+                0 8px 32px rgba(224, 64, 251, 0.1),
+                0 2px 16px rgba(0, 229, 255, 0.05);
+        }
+
+        /* Animation reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Universe Cards Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .universe-card .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            background: rgba(224, 64, 251, 0.12);
+            border: 1px solid rgba(224, 64, 251, 0.2);
+        }
+
+        .universe-card .card-title {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .universe-card .card-meta {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .universe-card .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.65rem;
+            border-radius: 100px;
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            color: var(--accent-cyan);
+            letter-spacing: 0.03em;
+            font-weight: 500;
+        }
+
+        .tag.magenta {
+            background: rgba(224, 64, 251, 0.08);
+            border-color: rgba(224, 64, 251, 0.15);
+            color: var(--accent-magenta);
+        }
+
+        /* Civilization Cards */
+        .civ-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .civ-card .civ-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .civ-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 12px var(--accent-cyan-glow);
+            flex-shrink: 0;
+        }
+
+        .civ-indicator.magenta {
+            background: var(--accent-magenta);
+            box-shadow: 0 0 12px var(--accent-magenta-glow);
+        }
+
+        .civ-indicator.gold {
+            background: #ffd740;
+            box-shadow: 0 0 12px rgba(255, 215, 64, 0.4);
+        }
+
+        .civ-card .civ-name {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .civ-card .civ-universe {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .civ-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .civ-stat {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .civ-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.25rem;
+        }
+
+        .civ-stat-value {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--accent-cyan);
+        }
+
+        .civ-stat-value.magenta {
+            color: var(--accent-magenta);
+        }
+
+        /* Metric Cards */
+        .metric-card .metric-number {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-magenta), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-card .metric-name {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .metric-card .metric-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .metric-card .metric-range {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .metric-card .metric-range span {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-family: var(--font-heading);
+        }
+
+        /* Datapoint Detail Cards */
+        .dp-card .dp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .dp-card .dp-metric {
+            font-size: 0.75rem;
+            color: var(--accent-magenta);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .dp-card .dp-confidence {
+            font-size: 0.65rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        .dp-confidence.canon {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+        }
+
+        .dp-confidence.semi-canon {
+            background: rgba(224, 64, 251, 0.1);
+            color: var(--accent-magenta);
+            border: 1px solid rgba(224, 64, 251, 0.2);
+        }
+
+        .dp-confidence.guess {
+            background: rgba(255, 215, 64, 0.1);
+            color: #ffd740;
+            border: 1px solid rgba(255, 215, 64, 0.2);
+        }
+
+        .dp-card .dp-value {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .dp-card .dp-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .dp-card .dp-range {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .dp-range-item {
+            flex: 1;
+        }
+
+        .dp-range-item .dp-range-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .dp-range-item .dp-range-value {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Data Table */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            text-align: left;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--card-border);
+            white-space: nowrap;
+        }
+
+        tbody td {
+            padding: 0.85rem 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        td.name-cell {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        td .table-tag {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 100px;
+            font-weight: 500;
+        }
+
+        td .table-tag.high {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--accent-cyan);
+        }
+
+        td .table-tag.mid {
+            background: rgba(224, 64, 251, 0.1);
+            color: var(--accent-magenta);
+        }
+
+        td .table-tag.low {
+            background: rgba(255, 215, 64, 0.1);
+            color: #ffd740;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--card-border);
+            margin-top: 2rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--accent-magenta), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-secondary);
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 1.25rem;
+            }
+
+            nav { display: none; }
+
+            .hamburger { display: flex; }
+
+            nav.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 0, 21, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--card-border);
+            }
+
+            .hero {
+                padding: 7rem 1.25rem 3rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nebula-bg"></div>
+
+<!-- Header -->
+<header>
+    <div class="logo">
+        FUTR
+        <span>Fictional Universe Taxonomy Research</span>
+    </div>
+    <nav id="mainNav">
+        <a href="#universes">Universes</a>
+        <a href="#civilizations">Civilizations</a>
+        <a href="#metrics">Metrics</a>
+        <a href="#data">Data</a>
+        <a href="#about">About</a>
+    </nav>
+    <div class="hamburger" id="hamburger" onclick="document.getElementById('mainNav').classList.toggle('open')">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <h1 class="hero-title">
+        <span class="gradient-text">Catalog the</span><br>
+        <span class="gradient-text">Multiverse</span>
+    </h1>
+    <p class="hero-subtitle">
+        Mapping civilizations across fictional universes and real history. From the Federation to the Imperium, measured and compared.
+    </p>
+    <div class="hero-stats">
+        <div class="hero-stat">
+            <div class="hero-stat-value">12</div>
+            <div class="hero-stat-label">Universes</div>
+        </div>
+        <div class="hero-stat">
+            <div class="hero-stat-value">84</div>
+            <div class="hero-stat-label">Civilizations</div>
+        </div>
+        <div class="hero-stat">
+            <div class="hero-stat-value">9</div>
+            <div class="hero-stat-label">Metrics</div>
+        </div>
+        <div class="hero-stat">
+            <div class="hero-stat-value">430+</div>
+            <div class="hero-stat-label">Datapoints</div>
+        </div>
+    </div>
+    <div class="scroll-hint">Explore</div>
+</section>
+
+<!-- Universes -->
+<section id="universes">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Explore</div>
+            <h2 class="section-title">Universes</h2>
+            <p class="section-desc">Fictional settings and real-world history, cataloged with consistent metrics for cross-universe comparison.</p>
+        </div>
+        <div class="card-grid">
+            <div class="glass-card universe-card reveal">
+                <div class="card-icon">&#x1F596;</div>
+                <div class="card-title">Star Trek</div>
+                <div class="card-meta">22 civilizations &middot; 186 datapoints</div>
+                <div class="card-tags">
+                    <span class="tag">Space Opera</span>
+                    <span class="tag magenta">Post-Scarcity</span>
+                </div>
+            </div>
+            <div class="glass-card universe-card reveal">
+                <div class="card-icon">&#x1F9E0;</div>
+                <div class="card-title">Orion's Arm</div>
+                <div class="card-meta">15 civilizations &middot; 102 datapoints</div>
+                <div class="card-tags">
+                    <span class="tag">Hard SF</span>
+                    <span class="tag magenta">Posthuman</span>
+                </div>
+            </div>
+            <div class="glass-card universe-card reveal">
+                <div class="card-icon">&#x1F680;</div>
+                <div class="card-title">Firefly</div>
+                <div class="card-meta">6 civilizations &middot; 34 datapoints</div>
+                <div class="card-tags">
+                    <span class="tag">Space Western</span>
+                    <span class="tag magenta">Single System</span>
+                </div>
+            </div>
+            <div class="glass-card universe-card reveal">
+                <div class="card-icon">&#x1F30D;</div>
+                <div class="card-title">The Expanse</div>
+                <div class="card-meta">8 civilizations &middot; 52 datapoints</div>
+                <div class="card-tags">
+                    <span class="tag">Hard SF</span>
+                    <span class="tag magenta">Near Future</span>
+                </div>
+            </div>
+            <div class="glass-card universe-card reveal">
+                <div class="card-icon">&#x2B50;</div>
+                <div class="card-title">Star Wars</div>
+                <div class="card-meta">14 civilizations &middot; 89 datapoints</div>
+                <div class="card-tags">
+                    <span class="tag">Space Opera</span>
+                    <span class="tag magenta">Galactic</span>
+                </div>
+            </div>
+            <div class="glass-card universe-card reveal">
+                <div class="card-icon">&#x1F480;</div>
+                <div class="card-title">Warhammer 40K</div>
+                <div class="card-meta">11 civilizations &middot; 67 datapoints</div>
+                <div class="card-tags">
+                    <span class="tag">Grimdark</span>
+                    <span class="tag magenta">Far Future</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Civilizations -->
+<section id="civilizations">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Snapshots</div>
+            <h2 class="section-title">Civilizations</h2>
+            <p class="section-desc">A polity at a specific point in time, measured across consistent dimensions.</p>
+        </div>
+        <div class="card-grid">
+            <div class="glass-card civ-card reveal">
+                <div class="civ-header">
+                    <div class="civ-indicator"></div>
+                    <div>
+                        <div class="civ-name">Federation 2373</div>
+                        <div class="civ-universe">Star Trek</div>
+                    </div>
+                </div>
+                <div class="civ-stats">
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Class</div>
+                        <div class="civ-stat-value">12</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Tech Level</div>
+                        <div class="civ-stat-value">10</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Population</div>
+                        <div class="civ-stat-value magenta">985B</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Planets</div>
+                        <div class="civ-stat-value">150</div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card civ-card reveal">
+                <div class="civ-header">
+                    <div class="civ-indicator magenta"></div>
+                    <div>
+                        <div class="civ-name">Imperium M41</div>
+                        <div class="civ-universe">Warhammer 40K</div>
+                    </div>
+                </div>
+                <div class="civ-stats">
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Class</div>
+                        <div class="civ-stat-value">17</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Tech Level</div>
+                        <div class="civ-stat-value">11</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Population</div>
+                        <div class="civ-stat-value magenta">~10<sup>15</sup></div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Planets</div>
+                        <div class="civ-stat-value">1M+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card civ-card reveal">
+                <div class="civ-header">
+                    <div class="civ-indicator gold"></div>
+                    <div>
+                        <div class="civ-name">Galactic Empire</div>
+                        <div class="civ-universe">Star Wars</div>
+                    </div>
+                </div>
+                <div class="civ-stats">
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Class</div>
+                        <div class="civ-stat-value">18</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Tech Level</div>
+                        <div class="civ-stat-value">11</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Population</div>
+                        <div class="civ-stat-value magenta">~10<sup>17</sup></div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Planets</div>
+                        <div class="civ-stat-value">1.5M</div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card civ-card reveal">
+                <div class="civ-header">
+                    <div class="civ-indicator"></div>
+                    <div>
+                        <div class="civ-name">Earth 2350</div>
+                        <div class="civ-universe">The Expanse</div>
+                    </div>
+                </div>
+                <div class="civ-stats">
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Class</div>
+                        <div class="civ-stat-value">7</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Tech Level</div>
+                        <div class="civ-stat-value">7</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Population</div>
+                        <div class="civ-stat-value magenta">30B</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Planets</div>
+                        <div class="civ-stat-value">1</div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card civ-card reveal">
+                <div class="civ-header">
+                    <div class="civ-indicator magenta"></div>
+                    <div>
+                        <div class="civ-name">Terragen Sphere 10600</div>
+                        <div class="civ-universe">Orion's Arm</div>
+                    </div>
+                </div>
+                <div class="civ-stats">
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Class</div>
+                        <div class="civ-stat-value">20</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Tech Level</div>
+                        <div class="civ-stat-value">14</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Population</div>
+                        <div class="civ-stat-value magenta">~10<sup>20</sup></div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Planets</div>
+                        <div class="civ-stat-value">~10<sup>6</sup></div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card civ-card reveal">
+                <div class="civ-header">
+                    <div class="civ-indicator gold"></div>
+                    <div>
+                        <div class="civ-name">Alliance 2518</div>
+                        <div class="civ-universe">Firefly</div>
+                    </div>
+                </div>
+                <div class="civ-stats">
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Class</div>
+                        <div class="civ-stat-value">8</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Tech Level</div>
+                        <div class="civ-stat-value">8</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Population</div>
+                        <div class="civ-stat-value magenta">~50B</div>
+                    </div>
+                    <div class="civ-stat">
+                        <div class="civ-stat-label">Planets</div>
+                        <div class="civ-stat-value">~70</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Metrics -->
+<section id="metrics">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Dimensions</div>
+            <h2 class="section-title">Metrics</h2>
+            <p class="section-desc">The standardized dimensions used to measure and compare civilizations across all universes.</p>
+        </div>
+        <div class="card-grid">
+            <div class="glass-card metric-card reveal">
+                <div class="metric-number">C</div>
+                <div class="metric-name">Class</div>
+                <div class="metric-desc">Overall capability including reach. Scale names suggest reach correlation, but axes are independent.</div>
+                <div class="metric-range">
+                    <div>Min: <span>1</span></div>
+                    <div>Max: <span>20</span></div>
+                </div>
+            </div>
+            <div class="glass-card metric-card reveal">
+                <div class="metric-number">TL</div>
+                <div class="metric-name">Techlevel</div>
+                <div class="metric-desc">Technology difficulty only, not scale. A Matrioshka brain using fusion is TL 7, not higher.</div>
+                <div class="metric-range">
+                    <div>Min: <span>1</span></div>
+                    <div>Max: <span>15</span></div>
+                </div>
+            </div>
+            <div class="glass-card metric-card reveal">
+                <div class="metric-number">P</div>
+                <div class="metric-name">Population</div>
+                <div class="metric-desc">Total sapient population of the civilization, including all substrates and embodiments.</div>
+                <div class="metric-range">
+                    <div>Type: <span>Numeric</span></div>
+                    <div>Unit: <span>Individuals</span></div>
+                </div>
+            </div>
+            <div class="glass-card metric-card reveal">
+                <div class="metric-number">&#x1F30D;</div>
+                <div class="metric-name">Planets</div>
+                <div class="metric-desc">Number of significantly inhabited or controlled worlds, stations, and major habitats.</div>
+                <div class="metric-range">
+                    <div>Type: <span>Numeric</span></div>
+                    <div>Unit: <span>Worlds</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Datapoints -->
+<section>
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Detail</div>
+            <h2 class="section-title">Datapoint Examples</h2>
+            <p class="section-desc">Individual measurements with values, ranges, and confidence levels.</p>
+        </div>
+        <div class="card-grid">
+            <div class="glass-card dp-card reveal">
+                <div class="dp-header">
+                    <div class="dp-metric">Class</div>
+                    <div class="dp-confidence semi-canon">Informed Guess</div>
+                </div>
+                <div class="dp-value">12</div>
+                <div class="dp-label">Federation 2373 &mdash; Star Trek</div>
+                <div class="dp-range">
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Min</div>
+                        <div class="dp-range-value">11</div>
+                    </div>
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Max</div>
+                        <div class="dp-range-value">13</div>
+                    </div>
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Source</div>
+                        <div class="dp-range-value">Canon</div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card dp-card reveal">
+                <div class="dp-header">
+                    <div class="dp-metric">Tech Level</div>
+                    <div class="dp-confidence canon">Canon</div>
+                </div>
+                <div class="dp-value">14</div>
+                <div class="dp-label">Terragen Sphere 10600 &mdash; Orion's Arm</div>
+                <div class="dp-range">
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Min</div>
+                        <div class="dp-range-value">13</div>
+                    </div>
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Max</div>
+                        <div class="dp-range-value">15</div>
+                    </div>
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Source</div>
+                        <div class="dp-range-value">EG</div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card dp-card reveal">
+                <div class="dp-header">
+                    <div class="dp-metric">Population</div>
+                    <div class="dp-confidence guess">Wild Guess</div>
+                </div>
+                <div class="dp-value">~10<sup>15</sup></div>
+                <div class="dp-label">Imperium M41 &mdash; Warhammer 40K</div>
+                <div class="dp-range">
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Min</div>
+                        <div class="dp-range-value">10<sup>14</sup></div>
+                    </div>
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Max</div>
+                        <div class="dp-range-value">10<sup>16</sup></div>
+                    </div>
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Source</div>
+                        <div class="dp-range-value">Lore</div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card dp-card reveal">
+                <div class="dp-header">
+                    <div class="dp-metric">Planets</div>
+                    <div class="dp-confidence canon">Canon</div>
+                </div>
+                <div class="dp-value">150</div>
+                <div class="dp-label">Federation 2373 &mdash; Star Trek</div>
+                <div class="dp-range">
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Min</div>
+                        <div class="dp-range-value">140</div>
+                    </div>
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Max</div>
+                        <div class="dp-range-value">180</div>
+                    </div>
+                    <div class="dp-range-item">
+                        <div class="dp-range-label">Source</div>
+                        <div class="dp-range-value">TNG/DS9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Data Table -->
+<section id="data">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Compare</div>
+            <h2 class="section-title">Civilization Data</h2>
+            <p class="section-desc">All civilizations at a glance. Sortable, searchable, comparable.</p>
+        </div>
+        <div class="table-wrapper reveal">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Civilization</th>
+                        <th>Universe</th>
+                        <th>Class</th>
+                        <th>Tech Level</th>
+                        <th>Population</th>
+                        <th>Planets</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="name-cell">Federation 2373</td>
+                        <td>Star Trek</td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>985 billion</td>
+                        <td>150</td>
+                        <td><span class="table-tag high">Canon</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name-cell">Terragen Sphere 10600</td>
+                        <td>Orion's Arm</td>
+                        <td>20</td>
+                        <td>14</td>
+                        <td>~10<sup>20</sup></td>
+                        <td>~10<sup>6</sup></td>
+                        <td><span class="table-tag high">Canon</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name-cell">Imperium M41</td>
+                        <td>Warhammer 40K</td>
+                        <td>17</td>
+                        <td>11</td>
+                        <td>~10<sup>15</sup></td>
+                        <td>1,000,000+</td>
+                        <td><span class="table-tag low">Wild Guess</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name-cell">Galactic Empire</td>
+                        <td>Star Wars</td>
+                        <td>18</td>
+                        <td>11</td>
+                        <td>~10<sup>17</sup></td>
+                        <td>1,500,000</td>
+                        <td><span class="table-tag mid">Semi-Canon</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name-cell">Earth 2350</td>
+                        <td>The Expanse</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>30 billion</td>
+                        <td>1</td>
+                        <td><span class="table-tag high">Canon</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name-cell">Alliance 2518</td>
+                        <td>Firefly</td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td>~50 billion</td>
+                        <td>~70</td>
+                        <td><span class="table-tag mid">Informed Guess</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name-cell">Klingon Empire 2373</td>
+                        <td>Star Trek</td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>~500 billion</td>
+                        <td>~80</td>
+                        <td><span class="table-tag mid">Informed Guess</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name-cell">GAIA</td>
+                        <td>Orion's Arm</td>
+                        <td>14</td>
+                        <td>12</td>
+                        <td>~10<sup>12</sup></td>
+                        <td>1 (Sol)</td>
+                        <td><span class="table-tag high">Canon</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name-cell">Roman Empire 117 AD</td>
+                        <td>Reality</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>70 million</td>
+                        <td>1</td>
+                        <td><span class="table-tag high">Canon</span></td>
+                    </tr>
+                    <tr>
+                        <td class="name-cell">USA 2025</td>
+                        <td>Reality</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>340 million</td>
+                        <td>1</td>
+                        <td><span class="table-tag high">Canon</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="about">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">FUTR</div>
+            <div class="footer-links">
+                <a href="#universes">Universes</a>
+                <a href="#civilizations">Civilizations</a>
+                <a href="#metrics">Metrics</a>
+                <a href="#data">Data</a>
+            </div>
+        </div>
+        <div class="footer-copy">
+            Fictional Universe Taxonomy Research &mdash; Mapping civilizations across the multiverse.
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Staggered reveal on scroll with IntersectionObserver
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.1
+    };
+
+    let revealDelay = 0;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Stagger within visible group
+                const siblings = entry.target.parentElement.querySelectorAll('.reveal:not(.visible)');
+                let index = Array.from(siblings).indexOf(entry.target);
+                if (index < 0) index = 0;
+
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 100);
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
