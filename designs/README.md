@@ -8,7 +8,7 @@ The `/designs/` folder contains standalone HTML homepage design explorations for
 
 ## Current State
 
-12 designs exist (#1–#12). Gallery (`index.html`) has cards with CSS-only thumbnails for all 12.
+14 designs exist (#1–#14). Gallery (`index.html`) has cards with CSS-only thumbnails for all 14.
 
 ## Team Process
 
@@ -48,6 +48,20 @@ These happen in EVERY session — check proactively:
 - **Reviewers go idle waiting.** Send explicit nudges when it's time to review.
 - **Boot/intro animations need careful accessibility handling.** Cap duration, skip on any key/click/touch, aria-live for screen readers, prefers-reduced-motion must skip entirely (not just slow down).
 
+## Frontend Design Skill
+
+When creating designs solo (without the team process), use the **frontend-design** skill (`/frontend-design`). It provides aesthetic guidelines that push designs beyond generic AI output:
+
+- **Bold aesthetic direction**: Commit to an extreme tone — maximalist, retro-futuristic, brutalist, editorial, art deco, etc.
+- **Typography**: Distinctive, characterful font choices. Never generic (Inter, Roboto, Arial). Pair a display font with a refined body font.
+- **Color**: Dominant colors with sharp accents. CSS variables for consistency. No timid, evenly-distributed palettes.
+- **Motion**: CSS-only animations preferred. High-impact page-load orchestration with staggered reveals over scattered micro-interactions. Scroll-triggering and hover states that surprise.
+- **Spatial composition**: Unexpected layouts, asymmetry, overlap, diagonal flow, grid-breaking elements.
+- **Backgrounds & texture**: Gradient meshes, noise, geometric patterns, layered transparencies, grain overlays — not just flat solid colors.
+- **No AI slop**: No purple-gradient-on-white clichés, no cookie-cutter component patterns. Every design must feel genuinely designed for FUTR's context.
+
+Invoke the skill before building to load the full guidelines into context, then apply them alongside the FUTR-specific requirements below.
+
 ## Design Requirements
 
 ### Content Above the Fold
@@ -79,10 +93,10 @@ These should feel cinematic, immersive, awe-inspiring. Think sci-fi movie poster
 
 ## Already Used (DO NOT REPEAT in future designs)
 
-### Fonts (26 used)
-Syne, Space Grotesk, Instrument Serif, DM Mono, Unbounded, IBM Plex Sans, Cormorant Garamond, Nunito Sans, Playfair Display, Libre Baskerville, Kalam, Source Sans 3, Bebas Neue, Courier Prime, Crimson Pro, Outfit, Lora, Fira Code, Share Tech Mono, Archivo, Lexend, Overpass Mono, Darker Grotesque, Space Mono, Exo 2, Inconsolata, Rajdhani, Red Hat Mono
+### Fonts (30 used)
+Syne, Space Grotesk, Instrument Serif, DM Mono, Unbounded, IBM Plex Sans, Cormorant Garamond, Nunito Sans, Playfair Display, Libre Baskerville, Kalam, Source Sans 3, Bebas Neue, Courier Prime, Crimson Pro, Outfit, Lora, Fira Code, Share Tech Mono, Archivo, Lexend, Overpass Mono, Darker Grotesque, Space Mono, Exo 2, Inconsolata, Rajdhani, Red Hat Mono, Orbitron, Saira, Big Shoulders Display, Titillium Web
 
-### Color Themes (12 used)
+### Color Themes (14 used)
 1. Dark navy + gold (#080C16 / #C9A84C) — Design #1
 2. Light bone + oxidized red (#F2EDE4 / #B04030) — Design #2
 3. Dark mineral green + teal (#2B3A33 / #00BFA5) — Design #3
@@ -95,8 +109,10 @@ Syne, Space Grotesk, Instrument Serif, DM Mono, Unbounded, IBM Plex Sans, Cormor
 10. Phosphor + gunmetal (#1B1F23 / #33FF66 + #7B9BB5) — Design #10
 11. Void + plasma cyan + thermal orange (#0A0510 / #00D4FF + #FF5722) — Design #11
 12. Deep indigo + violet + amber (#08061A / #7C4DFF + #FFD54F) — Design #12
+13. Warm soot + terracotta + verdigris (#0C0A08 / #B5694D + #6B7B6E) — Design #13
+14. Cold midnight + electric blue + platinum (#060810 / #3B82F6 + #E8ECF2) — Design #14
 
-### Metaphors (12 used)
+### Metaphors (14 used)
 1. Cosmic librarian — #1
 2. Radio listening post — #2
 3. Geological survey — #3
@@ -109,8 +125,10 @@ Syne, Space Grotesk, Instrument Serif, DM Mono, Unbounded, IBM Plex Sans, Cormor
 10. Live orbital tracking station — #10
 11. Kardashev event horizon / black hole — #11
 12. Ancient autonomous archive ship — #12
+13. Alien monolith / cosmic inscription stone — #13
+14. Galactic authority summit protocol — #14
 
-### Layout Patterns (12 used)
+### Layout Patterns (14 used)
 1. Card grids with per-universe accent colors — #1
 2. Frequency bands with signal lock cards — #2
 3. Topographic archipelago + core sample column + hex lattice — #3
@@ -123,6 +141,8 @@ Syne, Space Grotesk, Instrument Serif, DM Mono, Unbounded, IBM Plex Sans, Cormor
 10. 3×3 sector monitoring grid with contact entries — #10
 11. CSS black hole hero + proximity-tier data cards + gravity threshold bar — #11
 12. Boot sequence hero + classification-tier archive records + integrity check split-screen — #12
+13. Monument-scale typography hero + terracotta-bordered universe slabs + Kardashev gradient monument — #13
+14. Asymmetric left-aligned hero + diagonal dividers + alternating side-image universe panels + blue badges — #14
 
 ### Design Summaries
 
@@ -140,6 +160,8 @@ Syne, Space Grotesk, Instrument Serif, DM Mono, Unbounded, IBM Plex Sans, Cormor
 | 10 | Panopticon | Phosphor+gunmetal | Share Tech Mono + Archivo | CRT scanlines, radar sweep, live MET counter |
 | 11 | Singularity | Void+cyan+orange | Exo 2 + Inconsolata | CSS black hole, Doppler accretion disk, parallax |
 | 12 | Archive Omega | Indigo+violet+amber | Rajdhani + Red Hat Mono | Boot sequence, integrity check, data veins |
+| 13 | Monolith | Soot+terracotta | Orbitron + Saira | Monument-scale bold typography, universe slabs, Kardashev monument |
+| 14 | Apex | Midnight+electric blue | Big Shoulders Display + Titillium Web | Asymmetric hero, diagonal dividers, side-image panels, page-load animation |
 
 ## FUTR Data Reference (VERIFIED from YAML files)
 

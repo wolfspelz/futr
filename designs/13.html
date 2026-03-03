@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR — Monolith</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Saira:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* === RESET & BASE === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --mono-void: #0C0A08;
+  --mono-soot: #141210;
+  --mono-slab: #1C1A17;
+  --stone: #F5F0E8;
+  --stone-dim: #B0A898;
+  --terracotta: #B5694D;
+  --terracotta-glow: #D07A58;
+  --verdigris: #6B7B6E;
+  --verdigris-dim: #4A5A4D;
+  --inscription: rgba(245, 240, 232, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Saira', system-ui, sans-serif;
+  background: var(--mono-void);
+  color: var(--stone);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === SKIP LINK === */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--terracotta);
+  color: var(--stone);
+  padding: 0.75rem 1.5rem;
+  font-family: 'Saira', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 0 0 4px 4px;
+}
+.skip-link:focus-visible {
+  top: 0;
+  outline: 2px solid var(--stone);
+  outline-offset: 2px;
+}
+
+/* === FOCUS STYLES === */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 3px;
+}
+
+/* === HERO === */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(2rem, 8vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Etched surface texture */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 119px,
+      var(--inscription) 119px,
+      var(--inscription) 120px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 119px,
+      var(--inscription) 119px,
+      var(--inscription) 120px
+    );
+  pointer-events: none;
+  aria-hidden: true;
+}
+
+/* Subtle radial light from center */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 120%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(181, 105, 77, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Massive title */
+.hero-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(5rem, 18vw, 14rem);
+  line-height: 0.85;
+  letter-spacing: 0.08em;
+  color: var(--stone);
+  text-transform: uppercase;
+  margin-bottom: clamp(1rem, 3vw, 2rem);
+  text-shadow: 0 2px 40px rgba(181, 105, 77, 0.08);
+}
+
+.hero-subtitle {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  letter-spacing: 0.35em;
+  color: var(--terracotta);
+  text-transform: uppercase;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* Stats bar */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  flex-wrap: wrap;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  border-top: 1px solid var(--inscription);
+  border-bottom: 1px solid var(--inscription);
+}
+
+.stat-block {
+  text-align: center;
+  min-width: 120px;
+}
+
+.stat-value {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  color: var(--stone);
+  letter-spacing: 0.05em;
+}
+
+.stat-value .stat-accent {
+  color: var(--terracotta);
+}
+
+.stat-label {
+  font-family: 'Saira', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone-dim);
+  margin-top: 0.5rem;
+}
+
+/* Interaction language */
+.hero-interaction {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--verdigris);
+}
+
+.hero-interaction span {
+  color: var(--verdigris-dim);
+}
+
+/* === SECTION SHARED === */
+.section {
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--stone);
+  line-height: 1.1;
+}
+
+.section-rule {
+  width: 80px;
+  height: 3px;
+  background: var(--terracotta);
+  margin-top: 1rem;
+  border: none;
+}
+
+/* === UNIVERSE SLABS === */
+.universe-grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.universe-slab {
+  position: relative;
+  background: var(--mono-slab);
+  border-left: 4px solid var(--terracotta);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.universe-slab.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle surface texture on slabs */
+.universe-slab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 59px,
+      rgba(245, 240, 232, 0.015) 59px,
+      rgba(245, 240, 232, 0.015) 60px
+    );
+  pointer-events: none;
+}
+
+.universe-slab-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.universe-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.universe-meta {
+  font-family: 'Saira', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--verdigris);
+}
+
+.universe-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  filter: grayscale(0.3) contrast(1.1);
+  opacity: 0.7;
+}
+
+/* Civilization entries */
+.civ-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.civ-entry {
+  background: rgba(245, 240, 232, 0.03);
+  border: 1px solid rgba(245, 240, 232, 0.06);
+  padding: 1.25rem 1.5rem;
+  position: relative;
+}
+
+.civ-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 0.75rem;
+}
+
+.civ-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+.civ-datum {
+  font-family: 'Saira', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--stone-dim);
+}
+
+.civ-datum strong {
+  color: var(--terracotta);
+  font-weight: 600;
+}
+
+.civ-datum .k-null {
+  color: var(--verdigris);
+  font-style: italic;
+}
+
+/* === KARDASHEV MONUMENT === */
+.kardashev-monument {
+  position: relative;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  padding: clamp(2rem, 4vw, 3rem);
+  background: var(--mono-soot);
+  border: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+.kardashev-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 2rem;
+}
+
+.kardashev-scale {
+  position: relative;
+  height: 60px;
+  background: rgba(245, 240, 232, 0.03);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.kardashev-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--verdigris-dim), var(--terracotta), var(--terracotta-glow));
+  opacity: 0.3;
+}
+
+.kardashev-markers {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.k-marker {
+  text-align: center;
+}
+
+.k-marker-value {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--stone);
+}
+
+.k-marker-label {
+  font-family: 'Saira', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--stone-dim);
+  margin-top: 0.25rem;
+}
+
+/* === INSCRIPTION FOOTER === */
+.inscription-footer {
+  text-align: center;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+  border-top: 1px solid var(--inscription);
+}
+
+.inscription-mark {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.08);
+  margin-bottom: 1rem;
+}
+
+.inscription-text {
+  font-family: 'Saira', sans-serif;
+  font-size: 0.875rem;
+  color: var(--stone-dim);
+  letter-spacing: 0.1em;
+}
+
+.inscription-text a {
+  color: var(--terracotta);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(181, 105, 77, 0.3);
+  transition: border-color 0.3s ease;
+}
+
+.inscription-text a:hover {
+  border-color: var(--terracotta);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
+  .hero-stats {
+    gap: 1.5rem;
+  }
+  .stat-block {
+    min-width: 80px;
+  }
+  .civ-list {
+    grid-template-columns: 1fr;
+  }
+  .universe-slab-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* === PRINT === */
+@media print {
+  body { background: #fff; color: #000; }
+  .hero::before, .hero::after, .universe-slab::before { display: none; }
+  .universe-slab { border-left-color: #333; background: #f5f5f5; opacity: 1; transform: none; }
+  .civ-entry { border-color: #ccc; background: #fff; }
+  .hero { min-height: auto; }
+}
+
+/* === NOSCRIPT === */
+noscript .universe-slab {
+  opacity: 1;
+  transform: none;
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<main id="main-content">
+
+  <!-- HERO: Monumental inscription -->
+  <section class="hero" aria-label="FUTR Monolith — Fictional Universe Taxonomy Research">
+    <div class="hero-content" aria-hidden="true">
+      <div style="position:absolute;inset:0;pointer-events:none;" aria-hidden="true"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">FUTR</h1>
+      <p class="hero-subtitle">Fictional Universe Taxonomy Research</p>
+
+      <div class="hero-stats" role="list" aria-label="Key statistics">
+        <div class="stat-block" role="listitem">
+          <div class="stat-value">9</div>
+          <div class="stat-label">Universes</div>
+        </div>
+        <div class="stat-block" role="listitem">
+          <div class="stat-value">30</div>
+          <div class="stat-label">Civilizations</div>
+        </div>
+        <div class="stat-block" role="listitem">
+          <div class="stat-value"><span class="stat-accent">K</span>2.3</div>
+          <div class="stat-label">Max Kardashev</div>
+        </div>
+        <div class="stat-block" role="listitem">
+          <div class="stat-value"><span class="stat-accent">K</span>0.057</div>
+          <div class="stat-label">Min Kardashev</div>
+        </div>
+      </div>
+
+      <p class="hero-interaction">Inscribe <span>&mdash;</span> Reveal <span>&mdash;</span> Endure</p>
+    </div>
+  </section>
+
+  <!-- UNIVERSES -->
+  <section class="section" aria-label="Universe records">
+    <div class="section-header">
+      <h2 class="section-title">Inscribed Records</h2>
+      <hr class="section-rule" aria-hidden="true">
+    </div>
+
+    <div class="universe-grid">
+
+      <!-- Star Trek -->
+      <article class="universe-slab">
+        <div class="universe-slab-header">
+          <h3 class="universe-name">Star Trek</h3>
+          <span class="universe-meta">4 Civilizations</span>
+        </div>
+        <img class="universe-image" src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&h=400&q=80" alt="Star Trek universe — deep space nebula" width="800" height="400" loading="lazy">
+        <div class="civ-list">
+          <div class="civ-entry">
+            <h4 class="civ-name">Vulcans 2063</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>1</strong> planet</span>
+              <span class="civ-datum">TL9</span>
+              <span class="civ-datum">Class 10</span>
+              <span class="civ-datum">K: <span class="k-null">null</span></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Andorian Empire 2161</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~8B</strong> pop</span>
+              <span class="civ-datum"><strong>14</strong> planets</span>
+              <span class="civ-datum">K <strong>0.9</strong></span>
+              <span class="civ-datum">TL9</span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Klingon Empire 2161</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~9B</strong> pop</span>
+              <span class="civ-datum"><strong>~20</strong> planets</span>
+              <span class="civ-datum">K <strong>0.9</strong></span>
+              <span class="civ-datum">TL9</span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Federation 2373</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~100B</strong> pop</span>
+              <span class="civ-datum"><strong>~150</strong> planets</span>
+              <span class="civ-datum">K <strong>1.0</strong></span>
+              <span class="civ-datum">TL10</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Warhammer 40,000 -->
+      <article class="universe-slab">
+        <div class="universe-slab-header">
+          <h3 class="universe-name">Warhammer 40,000</h3>
+          <span class="universe-meta">2 Civilizations</span>
+        </div>
+        <img class="universe-image" src="https://images.unsplash.com/photo-1534996858221-380b92700493?auto=format&fit=crop&w=800&h=400&q=80" alt="Warhammer 40,000 universe — dark cosmic imagery" width="800" height="400" loading="lazy">
+        <div class="civ-list">
+          <div class="civ-entry">
+            <h4 class="civ-name">Imperium of Man M41</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~1&times;10<sup>16</sup></strong> pop</span>
+              <span class="civ-datum"><strong>~1M</strong> planets</span>
+              <span class="civ-datum">K <strong>1.6</strong></span>
+              <span class="civ-datum">TL10</span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Orks M41</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~5&times;10<sup>16</sup></strong> pop</span>
+              <span class="civ-datum"><strong>~2M</strong> planets</span>
+              <span class="civ-datum">TL10</span>
+              <span class="civ-datum">K: <span class="k-null">null</span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Firefly -->
+      <article class="universe-slab">
+        <div class="universe-slab-header">
+          <h3 class="universe-name">Firefly</h3>
+          <span class="universe-meta">1 Civilization</span>
+        </div>
+        <img class="universe-image" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&h=400&q=80" alt="Firefly universe — spacecraft and deep space" width="800" height="400" loading="lazy">
+        <div class="civ-list">
+          <div class="civ-entry">
+            <h4 class="civ-name">Alliance 2517</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~303B</strong> pop</span>
+              <span class="civ-datum"><strong>215</strong> worlds</span>
+              <span class="civ-datum">K <strong>0.95</strong></span>
+              <span class="civ-datum">TL7</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- The Culture -->
+      <article class="universe-slab">
+        <div class="universe-slab-header">
+          <h3 class="universe-name">The Culture</h3>
+          <span class="universe-meta">1 Civilization</span>
+        </div>
+        <img class="universe-image" src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=800&h=400&q=80" alt="The Culture universe — vast galactic structures" width="800" height="400" loading="lazy">
+        <div class="civ-list">
+          <div class="civ-entry">
+            <h4 class="civ-name">Culture (pre-war)</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~30T</strong> pop</span>
+              <span class="civ-datum"><strong>~14,000</strong> Orbitals</span>
+              <span class="civ-datum"><strong>6</strong> Dyson Spheres</span>
+              <span class="civ-datum">K <strong>2.3</strong></span>
+              <span class="civ-datum">TL13</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Honorverse -->
+      <article class="universe-slab">
+        <div class="universe-slab-header">
+          <h3 class="universe-name">Honorverse</h3>
+          <span class="universe-meta">2 Civilizations</span>
+        </div>
+        <img class="universe-image" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=800&h=400&q=80" alt="Honorverse — space fleet formations" width="800" height="400" loading="lazy">
+        <div class="civ-list">
+          <div class="civ-entry">
+            <h4 class="civ-name">Manticore 1903 PD</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~3.2B</strong> pop</span>
+              <span class="civ-datum"><strong>3</strong> planets</span>
+              <span class="civ-datum">K <strong>1.1</strong></span>
+              <span class="civ-datum">TL9</span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Haven 1903 PD</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~200B</strong> pop</span>
+              <span class="civ-datum"><strong>~100</strong> planets</span>
+              <span class="civ-datum">K <strong>1.0</strong></span>
+              <span class="civ-datum">TL9</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Perry Rhodan -->
+      <article class="universe-slab">
+        <div class="universe-slab-header">
+          <h3 class="universe-name">Perry Rhodan</h3>
+          <span class="universe-meta">3 Civilizations</span>
+        </div>
+        <img class="universe-image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80" alt="Perry Rhodan universe — planet and starfield" width="800" height="400" loading="lazy">
+        <div class="civ-list">
+          <div class="civ-entry">
+            <h4 class="civ-name">Solares Imperium 2040</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~9B</strong> pop</span>
+              <span class="civ-datum"><strong>6</strong> planets</span>
+              <span class="civ-datum">K <strong>0.9</strong></span>
+              <span class="civ-datum">TL9</span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Gro&szlig;es Imperium 2040</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~50T</strong> pop</span>
+              <span class="civ-datum"><strong>50,000</strong> planets</span>
+              <span class="civ-datum">K <strong>1.6</strong></span>
+              <span class="civ-datum">TL10</span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Posbis 2114</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>100M</strong> units</span>
+              <span class="civ-datum">K <strong>1.3</strong></span>
+              <span class="civ-datum">TL10</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Orion's Arm -->
+      <article class="universe-slab">
+        <div class="universe-slab-header">
+          <h3 class="universe-name">Orion's Arm</h3>
+          <span class="universe-meta">3 Civilizations</span>
+        </div>
+        <img class="universe-image" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=800&h=400&q=80" alt="Orion's Arm universe — stellar formations" width="800" height="400" loading="lazy">
+        <div class="civ-list">
+          <div class="civ-entry">
+            <h4 class="civ-name">Terragen Sphere 10600 AT</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~3.9&times;10<sup>17</sup></strong> pop</span>
+              <span class="civ-datum">TL14</span>
+              <span class="civ-datum">K: <span class="k-null">null</span></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Solar System 10600 AT</h4>
+            <div class="civ-data">
+              <span class="civ-datum">TL13</span>
+              <span class="civ-datum">K: <span class="k-null">null</span></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Diamond Network 10600 AT</h4>
+            <div class="civ-data">
+              <span class="civ-datum">TL14</span>
+              <span class="civ-datum">K: <span class="k-null">null</span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- The Expanse -->
+      <article class="universe-slab">
+        <div class="universe-slab-header">
+          <h3 class="universe-name">The Expanse</h3>
+          <span class="universe-meta">4 Civilizations</span>
+        </div>
+        <img class="universe-image" src="https://images.unsplash.com/photo-1457364559154-aa2644600ebb?auto=format&fit=crop&w=800&h=400&q=80" alt="The Expanse universe — space station and ships" width="800" height="400" loading="lazy">
+        <div class="civ-list">
+          <div class="civ-entry">
+            <h4 class="civ-name">United Nations 2350</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~30B</strong> pop</span>
+              <span class="civ-datum">K <strong>0.89</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Mars 2350</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~4B</strong> pop</span>
+              <span class="civ-datum">K <strong>0.85</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Sol System 2350</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~35B</strong> pop</span>
+              <span class="civ-datum">K <strong>0.9</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Outer Planets Alliance 2350</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>~100M</strong> pop</span>
+              <span class="civ-datum">K <strong>0.67</strong></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Reality -->
+      <article class="universe-slab">
+        <div class="universe-slab-header">
+          <h3 class="universe-name">Reality</h3>
+          <span class="universe-meta">10 Civilizations</span>
+        </div>
+        <img class="universe-image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80" alt="Reality — Earth from orbit" width="800" height="400" loading="lazy">
+        <div class="civ-list">
+          <div class="civ-entry">
+            <h4 class="civ-name">Early Pleistocene</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>18,500</strong> pop</span>
+              <span class="civ-datum">K <strong>0.057</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Stone Age</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>50,000</strong> pop</span>
+              <span class="civ-datum">K <strong>0.1</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Bronze Age</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>20M</strong> pop</span>
+              <span class="civ-datum">K <strong>0.36</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Classic Age</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>100M</strong> pop</span>
+              <span class="civ-datum">K <strong>0.46</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Middle Ages</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>200M</strong> pop</span>
+              <span class="civ-datum">K <strong>0.48</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Age of Sail</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>800M</strong> pop</span>
+              <span class="civ-datum">K <strong>0.54</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Industrialization</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>1B</strong> pop</span>
+              <span class="civ-datum">K <strong>0.56</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">Mid 20th Century</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>1.15B</strong> pop</span>
+              <span class="civ-datum">K <strong>0.65</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">1980s</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>4B</strong> pop</span>
+              <span class="civ-datum">K <strong>0.7</strong></span>
+            </div>
+          </div>
+          <div class="civ-entry">
+            <h4 class="civ-name">2023</h4>
+            <div class="civ-data">
+              <span class="civ-datum"><strong>8.1B</strong> pop</span>
+              <span class="civ-datum">K <strong>0.73</strong></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Kardashev Monument -->
+    <div class="kardashev-monument">
+      <h3 class="kardashev-title">Kardashev Scale Monument</h3>
+      <div class="kardashev-scale" aria-hidden="true">
+        <div class="kardashev-fill" style="width: 100%"></div>
+      </div>
+      <div class="kardashev-markers" role="list" aria-label="Kardashev scale range">
+        <div class="k-marker" role="listitem">
+          <div class="k-marker-value">0.057</div>
+          <div class="k-marker-label">Early Pleistocene</div>
+        </div>
+        <div class="k-marker" role="listitem">
+          <div class="k-marker-value">0.73</div>
+          <div class="k-marker-label">Humanity 2023</div>
+        </div>
+        <div class="k-marker" role="listitem">
+          <div class="k-marker-value">1.0</div>
+          <div class="k-marker-label">Type I Threshold</div>
+        </div>
+        <div class="k-marker" role="listitem">
+          <div class="k-marker-value">2.3</div>
+          <div class="k-marker-label">The Culture</div>
+        </div>
+      </div>
+      <p style="font-size: 0.8125rem; color: var(--stone-dim); margin-top: 1.5rem; letter-spacing: 0.05em;">
+        5 civilizations have no recorded Kardashev value: Vulcans 2063, Orks M41, Terragen Sphere 10600 AT, Solar System 10600 AT, Diamond Network 10600 AT.
+      </p>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="inscription-footer">
+  <div class="inscription-mark" aria-hidden="true">MONOLITH</div>
+  <p class="inscription-text">
+    FUTR &mdash; Fictional Universe Taxonomy Research &mdash;
+    <a href="https://www.futr.space/">futr.space</a>
+  </p>
+</footer>
+
+<noscript>
+  <style>
+    .universe-slab { opacity: 1 !important; transform: none !important; }
+  </style>
+</noscript>
+
+<script>
+(function() {
+  'use strict';
+
+  // Respect reduced motion
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    // Make all slabs visible immediately
+    var slabs = document.querySelectorAll('.universe-slab');
+    for (var i = 0; i < slabs.length; i++) {
+      slabs[i].classList.add('revealed');
+    }
+    return;
+  }
+
+  // IntersectionObserver for scroll reveal
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    var slabs = document.querySelectorAll('.universe-slab');
+    slabs.forEach(function(slab) {
+      observer.observe(slab);
+    });
+  } else {
+    // Fallback: show all
+    var slabs = document.querySelectorAll('.universe-slab');
+    for (var i = 0; i < slabs.length; i++) {
+      slabs[i].classList.add('revealed');
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTR — Apex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800;900&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* === RESET & BASE === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --void: #060810;
+  --panel: #0C1018;
+  --surface: #141822;
+  --border: rgba(232, 236, 242, 0.08);
+  --platinum: #E8ECF2;
+  --platinum-dim: #94A3B8;
+  --blue: #3B82F6;
+  --blue-glow: #60A5FA;
+  --blue-deep: #1E3A5F;
+  --slate: #64748B;
+  --slate-dim: #475569;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Titillium Web', system-ui, sans-serif;
+  background: var(--void);
+  color: var(--platinum);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Noise grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.025;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* === SKIP LINK === */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 0 0 4px 4px;
+}
+.skip-link:focus-visible {
+  top: 0;
+  outline: 2px solid var(--platinum);
+  outline-offset: 2px;
+}
+
+/* === FOCUS STYLES === */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* === PAGE-LOAD ANIMATION === */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeSlideLeft {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeSlideRight {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes expandWidth {
+  from { width: 0; }
+  to { width: 80px; }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+}
+
+.hero-title-wrap { animation: fadeSlideUp 0.8s ease both; animation-delay: 0.1s; }
+.hero-subtitle { animation: fadeSlideUp 0.6s ease both; animation-delay: 0.4s; }
+.hero-stats { animation: fadeSlideUp 0.6s ease both; animation-delay: 0.6s; }
+.hero-interaction { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.9s; }
+
+/* === HERO === */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 8vw, 6rem) clamp(1.25rem, 5vw, 6rem);
+  overflow: hidden;
+}
+
+/* Geometric line pattern */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+    repeating-linear-gradient(
+      90deg,
+      transparent, transparent 79px,
+      rgba(232, 236, 242, 0.02) 79px, rgba(232, 236, 242, 0.02) 80px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent, transparent 79px,
+      rgba(232, 236, 242, 0.02) 79px, rgba(232, 236, 242, 0.02) 80px
+    );
+  pointer-events: none;
+}
+
+/* Radial glow — cold blue from top-left */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1300px;
+  width: 100%;
+}
+
+/* Oversized title — left-aligned, bleeds intent */
+.hero-title-wrap {
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+}
+
+.hero-title {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(6rem, 22vw, 18rem);
+  line-height: 0.82;
+  letter-spacing: -0.02em;
+  color: var(--platinum);
+  text-transform: uppercase;
+  margin-left: -0.06em;
+}
+
+/* Electric blue slash through the title */
+.hero-title span {
+  position: relative;
+  display: inline-block;
+}
+.hero-title span::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--blue);
+  opacity: 0.6;
+  transform: skewX(-12deg);
+}
+
+.hero-subtitle {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  letter-spacing: 0.4em;
+  color: var(--blue);
+  text-transform: uppercase;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Stats — horizontal with vertical dividers */
+.hero-stats {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-wrap: wrap;
+  border-top: 2px solid var(--blue);
+  border-bottom: 1px solid var(--border);
+  padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+  max-width: 800px;
+}
+
+.stat-block {
+  flex: 1;
+  min-width: 120px;
+  padding: 0 clamp(1rem, 2vw, 2rem);
+  border-right: 1px solid var(--border);
+}
+.stat-block:last-child { border-right: none; }
+.stat-block:first-child { padding-left: 0; }
+
+.stat-value {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  line-height: 1;
+  color: var(--platinum);
+  letter-spacing: -0.01em;
+}
+
+.stat-value .stat-accent {
+  color: var(--blue);
+}
+
+.stat-label {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-top: 0.375rem;
+}
+
+.hero-interaction {
+  margin-top: clamp(2rem, 3vw, 2.5rem);
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.hero-interaction em {
+  font-style: normal;
+  color: var(--blue);
+}
+
+/* === DIAGONAL DIVIDER === */
+.diagonal-divider {
+  height: 80px;
+  background: var(--void);
+  position: relative;
+  overflow: hidden;
+}
+.diagonal-divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--panel);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+.diagonal-divider::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  opacity: 0.3;
+}
+
+/* === SECTIONS === */
+.records-section {
+  background: var(--panel);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 6rem);
+}
+
+.section-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--platinum);
+  line-height: 0.9;
+}
+
+.section-rule {
+  flex: 1;
+  min-width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), transparent);
+  border: none;
+}
+
+/* === UNIVERSE PANELS — ALTERNATING === */
+.universe-grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.universe-panel {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Alternating slide direction */
+.universe-panel:nth-child(odd) {
+  transform: translateX(-50px);
+  border-left: 3px solid var(--blue);
+}
+.universe-panel:nth-child(even) {
+  transform: translateX(50px);
+  border-right: 3px solid var(--blue);
+}
+.universe-panel.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Panel inner layout */
+.panel-inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 200px;
+}
+
+@media (max-width: 768px) {
+  .panel-inner { grid-template-columns: 1fr; }
+}
+
+.panel-image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.panel-image {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  object-fit: cover;
+  filter: grayscale(0.4) contrast(1.1) brightness(0.7);
+  transition: filter 0.5s ease;
+}
+
+.universe-panel:hover .panel-image {
+  filter: grayscale(0.1) contrast(1.05) brightness(0.8);
+}
+
+/* Universe number badge overlapping the image */
+.panel-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--blue);
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+  padding: 0.375rem 0.75rem;
+  text-transform: uppercase;
+}
+
+.panel-content {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.panel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.universe-name {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--platinum);
+}
+
+.universe-meta {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* Civilization entries */
+.civ-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+
+.civ-entry {
+  background: rgba(232, 236, 242, 0.02);
+  border: 1px solid rgba(232, 236, 242, 0.04);
+  padding: 1rem 1.25rem;
+  border-left: 2px solid transparent;
+  transition: border-left-color 0.3s ease, background 0.3s ease;
+}
+
+.civ-entry:hover {
+  border-left-color: var(--blue);
+  background: rgba(59, 130, 246, 0.03);
+}
+
+.civ-name {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--platinum);
+  margin-bottom: 0.5rem;
+}
+
+.civ-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 1rem;
+}
+
+.civ-datum {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--platinum-dim);
+}
+
+.civ-datum strong {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.civ-datum .k-null {
+  color: var(--slate);
+  font-style: italic;
+}
+
+/* === KARDASHEV SPECTRUM === */
+.kardashev-section {
+  margin-top: clamp(3rem, 5vw, 4rem);
+  padding: clamp(2rem, 3vw, 2.5rem);
+  background: var(--void);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.kardashev-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue-deep), var(--blue), var(--blue-glow));
+}
+
+.kardashev-heading {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+}
+
+.kardashev-bar {
+  position: relative;
+  height: 48px;
+  background: rgba(232, 236, 242, 0.03);
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.kardashev-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--blue-deep), var(--blue), var(--blue-glow));
+  opacity: 0.2;
+}
+
+.kardashev-markers {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.k-marker { text-align: center; }
+
+.k-marker-value {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--platinum);
+}
+
+.k-marker-label {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--slate);
+  margin-top: 0.25rem;
+}
+
+.kardashev-note {
+  font-size: 0.8125rem;
+  color: var(--slate);
+  margin-top: 1.25rem;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+/* === FOOTER === */
+.apex-footer {
+  text-align: center;
+  padding: clamp(3rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4rem);
+  background: var(--void);
+  border-top: 1px solid var(--border);
+}
+
+.footer-mark {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(232, 236, 242, 0.05);
+  margin-bottom: 0.75rem;
+}
+
+.footer-text {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.875rem;
+  color: var(--slate);
+  letter-spacing: 0.08em;
+}
+
+.footer-text a {
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+  transition: border-color 0.3s ease;
+}
+.footer-text a:hover { border-color: var(--blue); }
+
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
+  .hero-stats { flex-direction: column; gap: 1rem; }
+  .stat-block { border-right: none; border-bottom: 1px solid var(--border); padding: 0.75rem 0; }
+  .stat-block:last-child { border-bottom: none; }
+  .stat-block:first-child { padding-top: 0; }
+  .civ-list { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; gap: 0.75rem; }
+  .panel-header { flex-direction: column; gap: 0.5rem; }
+}
+
+/* === PRINT === */
+@media print {
+  body, body::after { background: #fff; }
+  body::after { display: none; }
+  .records-section { background: #fff; }
+  .hero::before, .hero::after { display: none; }
+  .universe-panel { opacity: 1; transform: none; border-color: #ccc; background: #f8f8f8; }
+  .hero { min-height: auto; }
+  .diagonal-divider { display: none; }
+  .panel-image { filter: none; }
+}
+
+/* === NOSCRIPT === */
+noscript .universe-panel {
+  opacity: 1;
+  transform: none;
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="FUTR Apex — Fictional Universe Taxonomy Research">
+    <div class="hero-content">
+      <div class="hero-title-wrap">
+        <h1 class="hero-title"><span>FUTR</span></h1>
+      </div>
+      <p class="hero-subtitle">Fictional Universe Taxonomy Research</p>
+
+      <div class="hero-stats" role="list" aria-label="Key statistics">
+        <div class="stat-block" role="listitem">
+          <div class="stat-value">9</div>
+          <div class="stat-label">Universes</div>
+        </div>
+        <div class="stat-block" role="listitem">
+          <div class="stat-value">30</div>
+          <div class="stat-label">Civilizations</div>
+        </div>
+        <div class="stat-block" role="listitem">
+          <div class="stat-value"><span class="stat-accent">K</span>2.3</div>
+          <div class="stat-label">Max Kardashev</div>
+        </div>
+        <div class="stat-block" role="listitem">
+          <div class="stat-value"><span class="stat-accent">K</span>0.057</div>
+          <div class="stat-label">Min Kardashev</div>
+        </div>
+      </div>
+
+      <p class="hero-interaction"><em>Convene</em> &mdash; <em>Ratify</em> &mdash; <em>Archive</em></p>
+    </div>
+  </section>
+
+  <!-- DIAGONAL TRANSITION -->
+  <div class="diagonal-divider" aria-hidden="true"></div>
+
+  <!-- UNIVERSE RECORDS -->
+  <section class="records-section" aria-label="Universe records">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">Authority Records</h2>
+        <hr class="section-rule" aria-hidden="true">
+      </div>
+
+      <div class="universe-grid">
+
+        <!-- Star Trek -->
+        <article class="universe-panel">
+          <div class="panel-inner">
+            <div class="panel-image-wrap">
+              <img class="panel-image" src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&h=400&q=80" alt="Star Trek universe — deep space nebula" width="800" height="400" loading="lazy">
+              <span class="panel-badge" aria-hidden="true">4 Civs</span>
+            </div>
+            <div class="panel-content">
+              <div class="panel-header">
+                <h3 class="universe-name">Star Trek</h3>
+                <span class="universe-meta">4 Civilizations</span>
+              </div>
+              <div class="civ-list">
+                <div class="civ-entry">
+                  <h4 class="civ-name">Vulcans 2063</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>1</strong> planet</span>
+                    <span class="civ-datum">TL9</span>
+                    <span class="civ-datum">Class 10</span>
+                    <span class="civ-datum">K: <span class="k-null">null</span></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Andorian Empire 2161</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~8B</strong> pop</span>
+                    <span class="civ-datum"><strong>14</strong> planets</span>
+                    <span class="civ-datum">K <strong>0.9</strong></span>
+                    <span class="civ-datum">TL9</span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Klingon Empire 2161</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~9B</strong> pop</span>
+                    <span class="civ-datum"><strong>~20</strong> planets</span>
+                    <span class="civ-datum">K <strong>0.9</strong></span>
+                    <span class="civ-datum">TL9</span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Federation 2373</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~100B</strong> pop</span>
+                    <span class="civ-datum"><strong>~150</strong> planets</span>
+                    <span class="civ-datum">K <strong>1.0</strong></span>
+                    <span class="civ-datum">TL10</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Warhammer 40,000 -->
+        <article class="universe-panel">
+          <div class="panel-inner">
+            <div class="panel-image-wrap">
+              <img class="panel-image" src="https://images.unsplash.com/photo-1534996858221-380b92700493?auto=format&fit=crop&w=800&h=400&q=80" alt="Warhammer 40,000 universe — dark cosmic imagery" width="800" height="400" loading="lazy">
+              <span class="panel-badge" aria-hidden="true">2 Civs</span>
+            </div>
+            <div class="panel-content">
+              <div class="panel-header">
+                <h3 class="universe-name">Warhammer 40,000</h3>
+                <span class="universe-meta">2 Civilizations</span>
+              </div>
+              <div class="civ-list">
+                <div class="civ-entry">
+                  <h4 class="civ-name">Imperium of Man M41</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~1&times;10<sup>16</sup></strong> pop</span>
+                    <span class="civ-datum"><strong>~1M</strong> planets</span>
+                    <span class="civ-datum">K <strong>1.6</strong></span>
+                    <span class="civ-datum">TL10</span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Orks M41</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~5&times;10<sup>16</sup></strong> pop</span>
+                    <span class="civ-datum"><strong>~2M</strong> planets</span>
+                    <span class="civ-datum">TL10</span>
+                    <span class="civ-datum">K: <span class="k-null">null</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Firefly -->
+        <article class="universe-panel">
+          <div class="panel-inner">
+            <div class="panel-image-wrap">
+              <img class="panel-image" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&h=400&q=80" alt="Firefly universe — spacecraft and deep space" width="800" height="400" loading="lazy">
+              <span class="panel-badge" aria-hidden="true">1 Civ</span>
+            </div>
+            <div class="panel-content">
+              <div class="panel-header">
+                <h3 class="universe-name">Firefly</h3>
+                <span class="universe-meta">1 Civilization</span>
+              </div>
+              <div class="civ-list">
+                <div class="civ-entry">
+                  <h4 class="civ-name">Alliance 2517</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~303B</strong> pop</span>
+                    <span class="civ-datum"><strong>215</strong> worlds</span>
+                    <span class="civ-datum">K <strong>0.95</strong></span>
+                    <span class="civ-datum">TL7</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- The Culture -->
+        <article class="universe-panel">
+          <div class="panel-inner">
+            <div class="panel-image-wrap">
+              <img class="panel-image" src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=800&h=400&q=80" alt="The Culture universe — vast galactic structures" width="800" height="400" loading="lazy">
+              <span class="panel-badge" aria-hidden="true">1 Civ</span>
+            </div>
+            <div class="panel-content">
+              <div class="panel-header">
+                <h3 class="universe-name">The Culture</h3>
+                <span class="universe-meta">1 Civilization</span>
+              </div>
+              <div class="civ-list">
+                <div class="civ-entry">
+                  <h4 class="civ-name">Culture (pre-war)</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~30T</strong> pop</span>
+                    <span class="civ-datum"><strong>~14,000</strong> Orbitals</span>
+                    <span class="civ-datum"><strong>6</strong> Dyson Spheres</span>
+                    <span class="civ-datum">K <strong>2.3</strong></span>
+                    <span class="civ-datum">TL13</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Honorverse -->
+        <article class="universe-panel">
+          <div class="panel-inner">
+            <div class="panel-image-wrap">
+              <img class="panel-image" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=800&h=400&q=80" alt="Honorverse — space fleet formations" width="800" height="400" loading="lazy">
+              <span class="panel-badge" aria-hidden="true">2 Civs</span>
+            </div>
+            <div class="panel-content">
+              <div class="panel-header">
+                <h3 class="universe-name">Honorverse</h3>
+                <span class="universe-meta">2 Civilizations</span>
+              </div>
+              <div class="civ-list">
+                <div class="civ-entry">
+                  <h4 class="civ-name">Manticore 1903 PD</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~3.2B</strong> pop</span>
+                    <span class="civ-datum"><strong>3</strong> planets</span>
+                    <span class="civ-datum">K <strong>1.1</strong></span>
+                    <span class="civ-datum">TL9</span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Haven 1903 PD</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~200B</strong> pop</span>
+                    <span class="civ-datum"><strong>~100</strong> planets</span>
+                    <span class="civ-datum">K <strong>1.0</strong></span>
+                    <span class="civ-datum">TL9</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Perry Rhodan -->
+        <article class="universe-panel">
+          <div class="panel-inner">
+            <div class="panel-image-wrap">
+              <img class="panel-image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80" alt="Perry Rhodan universe — planet and starfield" width="800" height="400" loading="lazy">
+              <span class="panel-badge" aria-hidden="true">3 Civs</span>
+            </div>
+            <div class="panel-content">
+              <div class="panel-header">
+                <h3 class="universe-name">Perry Rhodan</h3>
+                <span class="universe-meta">3 Civilizations</span>
+              </div>
+              <div class="civ-list">
+                <div class="civ-entry">
+                  <h4 class="civ-name">Solares Imperium 2040</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~9B</strong> pop</span>
+                    <span class="civ-datum"><strong>6</strong> planets</span>
+                    <span class="civ-datum">K <strong>0.9</strong></span>
+                    <span class="civ-datum">TL9</span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Gro&szlig;es Imperium 2040</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~50T</strong> pop</span>
+                    <span class="civ-datum"><strong>50,000</strong> planets</span>
+                    <span class="civ-datum">K <strong>1.6</strong></span>
+                    <span class="civ-datum">TL10</span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Posbis 2114</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>100M</strong> units</span>
+                    <span class="civ-datum">K <strong>1.3</strong></span>
+                    <span class="civ-datum">TL10</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Orion's Arm -->
+        <article class="universe-panel">
+          <div class="panel-inner">
+            <div class="panel-image-wrap">
+              <img class="panel-image" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=800&h=400&q=80" alt="Orion's Arm universe — stellar formations" width="800" height="400" loading="lazy">
+              <span class="panel-badge" aria-hidden="true">3 Civs</span>
+            </div>
+            <div class="panel-content">
+              <div class="panel-header">
+                <h3 class="universe-name">Orion's Arm</h3>
+                <span class="universe-meta">3 Civilizations</span>
+              </div>
+              <div class="civ-list">
+                <div class="civ-entry">
+                  <h4 class="civ-name">Terragen Sphere 10600 AT</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~3.9&times;10<sup>17</sup></strong> pop</span>
+                    <span class="civ-datum">TL14</span>
+                    <span class="civ-datum">K: <span class="k-null">null</span></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Solar System 10600 AT</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum">TL13</span>
+                    <span class="civ-datum">K: <span class="k-null">null</span></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Diamond Network 10600 AT</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum">TL14</span>
+                    <span class="civ-datum">K: <span class="k-null">null</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- The Expanse -->
+        <article class="universe-panel">
+          <div class="panel-inner">
+            <div class="panel-image-wrap">
+              <img class="panel-image" src="https://images.unsplash.com/photo-1457364559154-aa2644600ebb?auto=format&fit=crop&w=800&h=400&q=80" alt="The Expanse universe — space station and ships" width="800" height="400" loading="lazy">
+              <span class="panel-badge" aria-hidden="true">4 Civs</span>
+            </div>
+            <div class="panel-content">
+              <div class="panel-header">
+                <h3 class="universe-name">The Expanse</h3>
+                <span class="universe-meta">4 Civilizations</span>
+              </div>
+              <div class="civ-list">
+                <div class="civ-entry">
+                  <h4 class="civ-name">United Nations 2350</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~30B</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.89</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Mars 2350</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~4B</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.85</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Sol System 2350</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~35B</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.9</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Outer Planets Alliance 2350</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>~100M</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.67</strong></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reality -->
+        <article class="universe-panel">
+          <div class="panel-inner">
+            <div class="panel-image-wrap">
+              <img class="panel-image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=400&q=80" alt="Reality — Earth from orbit" width="800" height="400" loading="lazy">
+              <span class="panel-badge" aria-hidden="true">10 Civs</span>
+            </div>
+            <div class="panel-content">
+              <div class="panel-header">
+                <h3 class="universe-name">Reality</h3>
+                <span class="universe-meta">10 Civilizations</span>
+              </div>
+              <div class="civ-list">
+                <div class="civ-entry">
+                  <h4 class="civ-name">Early Pleistocene</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>18,500</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.057</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Stone Age</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>50,000</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.1</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Bronze Age</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>20M</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.36</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Classic Age</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>100M</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.46</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Middle Ages</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>200M</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.48</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Age of Sail</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>800M</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.54</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Industrialization</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>1B</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.56</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">Mid 20th Century</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>1.15B</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.65</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">1980s</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>4B</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.7</strong></span>
+                  </div>
+                </div>
+                <div class="civ-entry">
+                  <h4 class="civ-name">2023</h4>
+                  <div class="civ-data">
+                    <span class="civ-datum"><strong>8.1B</strong> pop</span>
+                    <span class="civ-datum">K <strong>0.73</strong></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Kardashev Spectrum -->
+      <div class="kardashev-section">
+        <h3 class="kardashev-heading">Kardashev Spectrum</h3>
+        <div class="kardashev-bar" aria-hidden="true">
+          <div class="kardashev-fill"></div>
+        </div>
+        <div class="kardashev-markers" role="list" aria-label="Kardashev scale range">
+          <div class="k-marker" role="listitem">
+            <div class="k-marker-value">0.057</div>
+            <div class="k-marker-label">Early Pleistocene</div>
+          </div>
+          <div class="k-marker" role="listitem">
+            <div class="k-marker-value">0.73</div>
+            <div class="k-marker-label">Humanity 2023</div>
+          </div>
+          <div class="k-marker" role="listitem">
+            <div class="k-marker-value">1.0</div>
+            <div class="k-marker-label">Type I Threshold</div>
+          </div>
+          <div class="k-marker" role="listitem">
+            <div class="k-marker-value">2.3</div>
+            <div class="k-marker-label">The Culture</div>
+          </div>
+        </div>
+        <p class="kardashev-note">
+          5 civilizations have no recorded Kardashev value: Vulcans 2063, Orks M41, Terragen Sphere 10600 AT, Solar System 10600 AT, Diamond Network 10600 AT.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="apex-footer">
+  <div class="footer-mark" aria-hidden="true">APEX</div>
+  <p class="footer-text">
+    FUTR &mdash; Fictional Universe Taxonomy Research &mdash;
+    <a href="https://www.futr.space/">futr.space</a>
+  </p>
+</footer>
+
+<noscript>
+  <style>
+    .universe-panel { opacity: 1 !important; transform: none !important; }
+    .hero-title-wrap, .hero-subtitle, .hero-stats, .hero-interaction { animation: none !important; opacity: 1 !important; }
+  </style>
+</noscript>
+
+<script>
+(function() {
+  'use strict';
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
+    var panels = document.querySelectorAll('.universe-panel');
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].classList.add('revealed');
+    }
+    return;
+  }
+
+  // IntersectionObserver for alternating slide-in reveals
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    var panels = document.querySelectorAll('.universe-panel');
+    panels.forEach(function(panel) {
+      observer.observe(panel);
+    });
+  } else {
+    var panels = document.querySelectorAll('.universe-panel');
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].classList.add('revealed');
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
