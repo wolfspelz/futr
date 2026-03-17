@@ -31,11 +31,11 @@ images:
     license: "CC BY-SA 3.0"
     legal: "https://creativecommons.org/licenses/by-sa/3.0/"
 links:
-  - src: https://en.wikipedia.org/wiki/Culture_series
+  - link: https://en.wikipedia.org/wiki/Culture_series
     text: "Wikipedia: Culture series"
-  - src: https://theculture.fandom.com/wiki/The_Culture
+  - link: https://theculture.fandom.com/wiki/The_Culture
     text: "The Culture Wiki"
-  - src: https://theculture.adactio.com/
+  - link: https://theculture.adactio.com/
     text: "A Few Notes on the Culture (Banks essay)"
 sources:
   # Primary

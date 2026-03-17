@@ -36,9 +36,9 @@ images:
     license: "Public Domain"
     legal: "Public domain, NASA artwork"
 links:
-  - src: https://theculture.fandom.com/wiki/The_Culture
+  - link: https://theculture.fandom.com/wiki/The_Culture
     text: "The Culture Wiki"
-  - src: https://en.wikipedia.org/wiki/The_Culture
+  - link: https://en.wikipedia.org/wiki/The_Culture
     text: "Wikipedia: The Culture"
 editors: [anthropic-claude]
 readme: |

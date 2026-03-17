@@ -26,9 +26,9 @@ images:
     license: "CC BY-SA 4.0"
     legal: "https://creativecommons.org/licenses/by-sa/4.0/"
 links:
-  - src: https://theculture.fandom.com/wiki/Idiran-Culture_War
+  - link: https://theculture.fandom.com/wiki/Idiran-Culture_War
     text: "The Culture Wiki: Idiran-Culture War"
-  - src: https://theculture.fandom.com/wiki/Consider_Phlebas
+  - link: https://theculture.fandom.com/wiki/Consider_Phlebas
     text: "The Culture Wiki: Consider Phlebas"
 editors: [anthropic-claude]
 readme: |
