@@ -4,7 +4,7 @@
     @if (string.IsNullOrEmpty(Model.Id)) {
         ViewData["Title"] = "Metrics";
         ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - All Metrics";
-        ViewData["MetaDescription"] = "Metrics include: " + string.Join("^, ", Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order).Select(x => x.Title).ToArray());
+        ViewData["MetaDescription"] = "Metrics include: " + string.Join("^, ", Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order).ThenBy(x => x.Title).Select(x => x.Title).ToArray());
         ViewData["MetaImage"] = "/images/cover.jpg";
         ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
     } else {
@@ -19,7 +19,7 @@
 @if (string.IsNullOrEmpty(Model.Id)) {
     <h1>Metrics</h1>
     <div class="my-textblock">
-        @foreach (var metric in Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order)) {
+        @foreach (var metric in Model.List.Where(x => x.Tags.Contains("index")).OrderBy(x => x.Order).ThenBy(x => x.Title)) {
             <div>
                 <a asp-page="Metric" asp-route-id="@metric.SeoName">@metric.Title</a>
             </div>

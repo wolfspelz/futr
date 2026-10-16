@@ -13,7 +13,7 @@
                     </div>
                 }
             </div>
-            @foreach (var civilization in Model.Civilizations.OrderBy(x => x.Year)) {
+            @foreach (var civilization in Model.Civilizations.OrderBy(x => x.Year).ThenBy(x => x.Title)) {
                 <div class="my-table-row">
                     <div class="my-table-cell">
                         <a asp-page="Civilization" asp-route-id="@civilization.SeoName">@civilization.Id</a>

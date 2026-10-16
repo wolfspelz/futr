@@ -10,6 +10,7 @@ FUTR (Fictional Universe Taxonomy Research) collects and analyzes statistical da
 
 - Do NOT add "Co-Authored-By: Claude" to commit messages
 - Keep commit messages short: max 2 lines
+- NEVER commit automatically. Only commit when the user explicitly asks for it in that turn, even if an approved plan contains a commit step
 
 ## Tools
 
