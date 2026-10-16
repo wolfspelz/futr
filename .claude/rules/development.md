@@ -48,22 +48,22 @@ docker run -p 80:80 futr
 2. Load universes from `data/universes/*/info.yaml`
 3. For each universe, load civilizations (non-`_` prefixed subfolders)
 4. For each civilization, load datapoints (metric values)
-5. Load polities from `_polities/` subfolder
+5. Load powers from `_powers/` subfolder
 6. Validate all referenced metrics exist
 
 ### Model Hierarchy
 ```
 BaseModel (common fields: Id, Title, Tags, Order, Tile, Readme, Images, Links, References)
 ├── Metric (Type, Unit, Range)
-├── Universe (Civilizations dict, Polities dict, ShowcaseMetrics)
-├── Civilization (Universe ref, Polity ref, Date/Year, Datapoints dict)
-├── Polity (Universe ref)
+├── Universe (Civilizations dict, Powers dict, ShowcaseMetrics)
+├── Civilization (Universe ref, Power ref, Date/Year, Datapoints dict)
+├── Power (Universe ref)
 └── Datapoint (Civilization ref, Metric, Value, Min, Max, Confidence enum)
 ```
 
 ### Key Conventions
 - Folder names become entity IDs and URL slugs (use spaces, not underscores)
-- `_` prefix folders are special (e.g., `_polities/`)
+- `_` prefix folders are special (e.g., `_powers/`)
 - File lookup is case-insensitive
 - `readme.md` content merged into entity's Readme field
 - Images should use HTTPS URLs

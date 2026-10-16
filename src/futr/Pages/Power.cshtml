@@ -1,9 +1,9 @@
 ﻿@page "{id?}"
-@model PolityModel
+@model PowerModel
 @{
     @if (Model.Item != null) {
-        ViewData["Title"] = "Polity " + Model.Item.Title;
-        ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - Polity " + Model.Item.Title;
+        ViewData["Title"] = "Power " + Model.Item.Title;
+        ViewData["MetaTitle"] = "Fictional Universe Taxonomy Research - Power " + Model.Item.Title;
         ViewData["MetaDescription"] = Model.Item.Readme.Replace("\r", " ").Replace("\n", " ");
         ViewData["MetaImage"] = "/images/cover.jpg";
         ViewData["MetaImageAlt"] = " Fictional Universe Taxonomy Research Project cover image";
@@ -22,7 +22,7 @@
 
     @await Html.PartialAsync("_ModelTagsLinksImages", Model.Item)
 
-    @await Html.PartialAsync("_CivilizationList", (Model.Item.Universe.Civilizations.Values.Where(c => c.Polity == Model.Item), Model.Item.Universe.ShowcaseMetrics))
+    @await Html.PartialAsync("_CivilizationList", (Model.Item.Universe.Civilizations.Values.Where(c => c.Power == Model.Item), Model.Item.Universe.ShowcaseMetrics))
 
     @await Html.PartialAsync("_BaseModelReadme", Model.Item)
 }

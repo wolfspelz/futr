@@ -25,7 +25,7 @@ date: {Year}
 Full:
 ```
 date: {Year in CE}
-polity: {Polity name}
+power: {Power name}
 title: {Name to overrride the folder name}
 tags: {List of tags (new: appear in what's new, index: appear in index, e.g. [new, index]}
 order: {Numerical order controlling the position lists, float, 0 is default, -1000.0 mean show early in lists, 1000.0 means show late}

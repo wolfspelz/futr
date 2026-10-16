@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace futr.Test;
 
 [TestClass]
-public class PolityPagesTest
+public class PowerPagesTest
 {
     HttpClient _client = new();
     private static string SolutionRoot => Path.GetFullPath(
@@ -31,19 +31,19 @@ public class PolityPagesTest
     }
 
     [TestMethod]
-    [TestCategory("futr.Polity")]
-    public async Task Polity_WithInvalidId_Returns404()
+    [TestCategory("futr.Power")]
+    public async Task Power_WithInvalidId_Returns404()
     {
-        var response = await _client.GetAsync("/Polity/NonExistent");
+        var response = await _client.GetAsync("/Power/NonExistent");
         Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
     }
 
     [TestMethod]
-    [TestCategory("futr.Polity")]
-    public async Task Polity_RouteExists()
+    [TestCategory("futr.Power")]
+    public async Task Power_RouteExists()
     {
         // Verify the route is registered (may return 404 for missing data, but not 500)
-        var response = await _client.GetAsync("/Polity/Test");
+        var response = await _client.GetAsync("/Power/Test");
         Assert.IsTrue(
             response.StatusCode == HttpStatusCode.NotFound ||
             response.StatusCode == HttpStatusCode.OK,
@@ -51,7 +51,7 @@ public class PolityPagesTest
     }
 
     [TestMethod]
-    [TestCategory("futr.Polity")]
+    [TestCategory("futr.Power")]
     public async Task Universe_RouteExists()
     {
         // Verify the route is registered

@@ -6,12 +6,12 @@ argument-hint: [civilization-spec]
 
 # Add Civilization - Interactive Research Session
 
-Research and add a new civilization (polity at a point in time) to the FUTR database.
+Research and add a new civilization (power at a point in time) to the FUTR database.
 
 **IMPORTANT: At the start of every session, read `.claude/rules/content.md` for YAML schemas, directory structure, naming conventions, and image policies.**
 
 ## Input
-The user provides a **civilization specification** - a hint at universe, polity, and time frame.
+The user provides a **civilization specification** - a hint at universe, power, and time frame.
 Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at fall of Coruscant"
 
 ## Workflow
@@ -19,8 +19,8 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 ### Step 1: Identifying
 1. **Read `.claude/rules/content.md`** for schemas and structural conventions
 2. Research the specification online to verify it's unambiguous
-3. Identify: Universe, Polity, Civilization name, Date
-4. Check if the universe/polity already exists in `data/universes/`
+3. Identify: Universe, Power, Civilization name, Date
+4. Check if the universe/power already exists in `data/universes/`
 5. Ask clarifying questions if the specification is ambiguous
 6. Ask the user which language all texts (readme fields, descriptions, image captions) should be written in (e.g., English or German)
 7. Confirm the identified civilization and language with the user
@@ -44,7 +44,7 @@ Examples: "Andorians from Star Trek at Federation founding", "Galactic Empire at
 ### Step 4: Review
 1. Present all proposed data in tables:
    - New metrics (if any)
-   - Polity info
+   - Power info
    - Civilization info
    - **Datapoints table with comparisons** (see format below)
 2. Ask user to approve or adjust values
@@ -85,7 +85,7 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 
 ### Step 5: Image Research & Attribution (REQUIRED)
 1. Find images (see content.md for approved sources and proxy instructions)
-   - **Try to find 5 images for each item** (universe, polity, civilization). Search broadly: presskits, promotional material, key art, official wallpapers, concept art, production stills, poster art, maps, logos/emblems, key characters, ships/technology, book/media covers, battle scenes, cities/locations, flags/symbols, screenshots, fan art Creative Commons, etc.
+   - **Try to find 5 images for each item** (universe, power, civilization). Search broadly: presskits, promotional material, key art, official wallpapers, concept art, production stills, poster art, maps, logos/emblems, key characters, ships/technology, book/media covers, battle scenes, cities/locations, flags/symbols, screenshots, fan art Creative Commons, etc.
 2. **For EVERY image, research and document all attribution fields:**
    - `src`: Direct image URL (or `/proxy/...` path for proxied images)
    - `text`: Caption/description for the image
@@ -111,14 +111,14 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
    - Parse the JSON output (stdout) as the final selected images. The output order matches the user's chosen order — use it directly for the `images:` list in info.yaml.
    - If the tool exits with code 1, the user cancelled -- ask what they'd like to change
 7. **Only include images with complete attribution** in the image selector. If attribution is incomplete (missing author, license, or legal), do not add the image to the candidate list. Skip it silently or search for a better-attributed alternative.
-8. Write descriptions for polity and civilization readme fields
+8. Write descriptions for power and civilization readme fields
 9. Gather links to official/wiki pages
 
 ### Step 6: Implementation
 1. Create directories and info.yaml files following schemas in content.md:
    - `data/universes/{Universe}/info.yaml` (if new universe -- include `tags: [index, new]`)
    - `data/metrics/{NewMetric}/info.yaml` (if new metrics)
-   - `data/universes/{Universe}/_polities/{Polity}/info.yaml` (if new polity)
+   - `data/universes/{Universe}/_powers/{Power}/info.yaml` (if new power)
    - `data/universes/{Universe}/{Civilization}/info.yaml` (include `tags: [index, new]`)
    - `data/universes/{Universe}/{Civilization}/{Metric}/info.yaml` (datapoints)
 2. **Update `showcaseMetrics` in Universe info.yaml** (REQUIRED):
@@ -149,7 +149,7 @@ Kardashev: log10(10^24) / 10 - 0.6 = 24/10 - 0.6 = 1.8
 ## Writing Style
 - **All descriptions and readme texts MUST be written in present tense** (historisches Prasens / historical present), regardless of language. Example: "Das Imperium umfasst 50.000 Welten" (not "umfasste"), "The Empire controls 150 worlds" (not "controlled").
 - **Use em dashes (Gedankenstrich) rarely**. Prefer commas, periods, or restructured sentences.
-- **In-universe perspective**: Write all descriptions (universe, polity, civilization readmes) from an in-universe point of view, as if recorded by an accomplished historian within that universe. No publishing details, no meta-references to books, episodes, or authors. Focus on events, peoples, politics, and technology as historical facts.
+- **In-universe perspective**: Write all descriptions (universe, power, civilization readmes) from an in-universe point of view, as if recorded by an accomplished historian within that universe. No publishing details, no meta-references to books, episodes, or authors. Focus on events, peoples, politics, and technology as historical facts.
 - **Readme/description length**: Descriptions must be at least 1/4 page and at most 1 page long (roughly 75-300 words).
 - Write in the language confirmed with the user in Step 1. (Of course keep all YAML keywords in English.)
 - **After writing all readme texts, use the `humanizer` skill to refine them** before including them in YAML files.
@@ -199,7 +199,7 @@ All FUTR-tracked universes have dedicated pages:
 - https://tvtropes.org/pmwiki/pmwiki.php/Main/LostTechnology — post-collapse civilizations with degraded tech
 
 ### Class
-- https://tvtropes.org/pmwiki/pmwiki.php/Main/GalacticSuperpower — galaxy-spanning polities (Class 15+)
+- https://tvtropes.org/pmwiki/pmwiki.php/Main/GalacticSuperpower — galaxy-spanning powers (Class 15+)
 - https://tvtropes.org/pmwiki/pmwiki.php/Main/SufficientlyAdvancedAlien — godlike civilizations (highest Class)
 - https://tvtropes.org/pmwiki/pmwiki.php/Main/VestigialEmpire — declining civilizations with shrinking reach
 - https://tvtropes.org/pmwiki/pmwiki.php/Main/StandardSciFiHistory — civilization development stages

@@ -9,7 +9,7 @@ Each universe is a folder with:
   - info.yaml
   - readme.md
 - civilization folders
-- optional: a folder with polities
+- optional: a folder with powers
 
 The name of the folder becomes the name of the universe.
 

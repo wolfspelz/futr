@@ -34,7 +34,7 @@
 
     @await Html.PartialAsync("_ModelTagsLinksImages", Model.Item)
 
-    @await Html.PartialAsync("_PolityList", Model.Item.Polities.Values.AsEnumerable())
+    @await Html.PartialAsync("_PowerList", Model.Item.Powers.Values.AsEnumerable())
 
     @await Html.PartialAsync("_CivilizationList", (Model.Item.Civilizations.Values.AsEnumerable(), Model.Item.ShowcaseMetrics))
 

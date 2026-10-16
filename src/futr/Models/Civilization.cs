@@ -4,8 +4,8 @@ public class Civilization : BaseModel
 {
     public Universe Universe { get; set; }
 
-    public Polity? Polity { get; set; }
-    public string PolityId { get; private set; } = "";
+    public Power? Power { get; set; }
+    public string PowerId { get; private set; } = "";
 
     private string _date = "";
     public long Year { get; set; } = long.MinValue;
@@ -41,7 +41,7 @@ public class Civilization : BaseModel
             Editors = Universe.Editors;
         }
 
-        PolityId = node["polity"].AsString.Trim();
+        PowerId = node["power"].AsString.Trim();
         Date = node["date"].AsString.Trim();
 
         return node;

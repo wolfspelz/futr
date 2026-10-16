@@ -21,11 +21,11 @@
         </span>
     </div>
 
-    @if (Model.Item.Polity != null) {
+    @if (Model.Item.Power != null) {
         <div class="my-textblock">
-            <span>Polity</span>:
+            <span>Power</span>:
             <span>
-                <a asp-page="Polity" asp-route-id="@Model.Item.Polity.SeoName">@Model.Item.Polity.Title</a>
+                <a asp-page="Power" asp-route-id="@Model.Item.Power.SeoName">@Model.Item.Power.Title</a>
             </span>
         </div>
     }

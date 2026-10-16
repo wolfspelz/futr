@@ -10,14 +10,14 @@ public class FutrData
     public string FolderPath = ".";
     public string MetricsSubfolder = "metrics";
     public string UniversesSubfolder = "universes";
-    public string PolitiesSubfolder = "_polities";
+    public string PowersSubfolder = "_powers";
     public string YamlInfoFileName = "info.yaml";
     public string ReadmeFileName = "readme.md";
 
     public Dictionary<string, Metric> Metrics = new();
     public Dictionary<string, Universe> Universes = new();
     public Dictionary<string, Civilization> Civilizations = new();
-    public Dictionary<string, Polity> Polities = new();
+    public Dictionary<string, Power> Powers = new();
 
     public FutrData()
     {
@@ -32,8 +32,8 @@ public class FutrData
         LoadUniverses(Path.Combine(folderPath, UniversesSubfolder));
 
         ExtractCivilizations();
-        ExtractPolities();
-        LinkCivilizationsToPolities();
+        ExtractPowers();
+        LinkCivilizationsToPowers();
 
         CheckUsedMetrics();
     }
@@ -45,7 +45,7 @@ public class FutrData
         Metrics = new();
         Universes = new();
         Civilizations = new();
-        Polities = new();
+        Powers = new();
     }
 
     public void Reload()
@@ -76,21 +76,21 @@ public class FutrData
         }
     }
 
-    private void ExtractPolities()
+    private void ExtractPowers()
     {
         foreach (var universe in Universes.Values) {
-            foreach (var polity in universe.Polities.Values) {
-                Polities.Add(polity.SeoName, polity);
+            foreach (var power in universe.Powers.Values) {
+                Powers.Add(power.SeoName, power);
             }
         }
     }
 
-    private void LinkCivilizationsToPolities()
+    private void LinkCivilizationsToPowers()
     {
         foreach (var universe in Universes.Values) {
             foreach (var civilization in universe.Civilizations.Values) {
-                if (!string.IsNullOrEmpty(civilization.PolityId) && universe.Polities.TryGetValue(civilization.PolityId, out var polity)) {
-                    civilization.Polity = polity;
+                if (!string.IsNullOrEmpty(civilization.PowerId) && universe.Powers.TryGetValue(civilization.PowerId, out var power)) {
+                    civilization.Power = power;
                 }
             }
         }
@@ -179,40 +179,40 @@ public class FutrData
             }
         }
 
-        var polityFolderPath = Path.Combine(universeFolderPath, PolitiesSubfolder);
-        var politySubFolders = StructureProvider.EnumerateFolders(polityFolderPath);
-        foreach (var politySubPath in politySubFolders) {
-            var polityId = Path.GetFileName(politySubPath).Trim();
-            var polity = LoadPolity(universe, polityFolderPath, polityId);
-            if (polity != null) {
-                polity.SeoName = $"{universeId} {polityId}";
-                universe.Polities.Add(polityId, polity);
+        var powerFolderPath = Path.Combine(universeFolderPath, PowersSubfolder);
+        var powerSubFolders = StructureProvider.EnumerateFolders(powerFolderPath);
+        foreach (var powerSubPath in powerSubFolders) {
+            var powerId = Path.GetFileName(powerSubPath).Trim();
+            var power = LoadPower(universe, powerFolderPath, powerId);
+            if (power != null) {
+                power.SeoName = $"{universeId} {powerId}";
+                universe.Powers.Add(powerId, power);
             }
         }
 
         return universe;
     }
 
-    private Polity LoadPolity(Universe universe, string folderPath, string polityId)
+    private Power LoadPower(Universe universe, string folderPath, string powerId)
     {
-        Log.Info($"{folderPath}/{polityId}");
-        var polity = new Polity(polityId, universe);
+        Log.Info($"{folderPath}/{powerId}");
+        var power = new Power(powerId, universe);
 
-        var infoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, polityId, YamlInfoFileName));
+        var infoPath = FindCaseInsensitiveFile(Path.Combine(folderPath, powerId, YamlInfoFileName));
         if (DataProvider.HasData(infoPath)) {
             var infoData = DataProvider.GetData(infoPath);
-            polity.fromYaml(infoData);
+            power.fromYaml(infoData);
         } else {
-            Log.Warning($"Polity {polityId} does not have an info.yaml file.");
+            Log.Warning($"Power {powerId} does not have an info.yaml file.");
         }
 
-        var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, polityId, ReadmeFileName));
+        var readmePath = FindCaseInsensitiveFile(Path.Combine(folderPath, powerId, ReadmeFileName));
         if (DataProvider.HasData(readmePath)) {
             var readmeData = DataProvider.GetData(readmePath);
-            polity.Readme = readmeData;
+            power.Readme = readmeData;
         }
 
-        return polity;
+        return power;
     }
 
     private Civilization LoadCivilization(Universe universe, string folderPath, string civilizationId)
@@ -310,10 +310,10 @@ public class FutrData
         return null;
     }
 
-    public Polity? GetPolity(string id)
+    public Power? GetPower(string id)
     {
-        if (Polities.ContainsKey(id)) {
-            return Polities[id];
+        if (Powers.ContainsKey(id)) {
+            return Powers[id];
         }
         return null;
     }

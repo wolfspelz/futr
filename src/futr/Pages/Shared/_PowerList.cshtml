@@ -1,0 +1,12 @@
+@model IEnumerable<futr.Models.Power>
+
+@if (Model.Any()) {
+    <div class="my-textblock">
+        <h2>Powers</h2>
+        @foreach (var power in Model.OrderBy(x => x.Order)) {
+            <div>
+                <a asp-page="Power" asp-route-id="@power.SeoName">@power.Title</a>
+            </div>
+        }
+    </div>
+}

@@ -26,44 +26,44 @@ Additional context is loaded automatically based on what you're working on:
 
 ## Conceptual Model
 
-**Universes** contain **polities** (named peoples, planets, or empires). Polities can range from galaxy-spanning civilizations to a single individual. It depends on the universe, your interests, and available data.
+**Universes** contain **powers** (named peoples, planets, or empires). Powers can range from galaxy-spanning civilizations to a single individual. It depends on the universe, your interests, and available data.
 
-A **civilization** is a polity at a specific point in time. Since polities change over time, we capture snapshots as civilizations (e.g., "Federation 2373" is the Federation of Planets in the year 2373).
+A **civilization** is a power at a specific point in time. Since powers change over time, we capture snapshots as civilizations (e.g., "Federation 2373" is the Federation of Planets in the year 2373).
 
 **Metrics** describe civilizations with measurable data.
 
-**Example:** Star Trek (universe) → Federation of Planets (polity) → Federation 2373 (civilization) → 150 member worlds (datapoint using metric: Planets)
+**Example:** Star Trek (universe) → Federation of Planets (power) → Federation 2373 (civilization) → 150 member worlds (datapoint using metric: Planets)
 
 ### Entity Relationships
 ```mermaid
 graph LR
     UNIVERSE["Universes:<br/>The lore"]
-    POLITY["Polities:<br/>Named entity/group/people/organization in a universe"]
-    CIVILIZATION["Civilizations:<br/>Polity at a time in a universe"]
+    POWER["Powers:<br/>Named entity/group/people/organization in a universe"]
+    CIVILIZATION["Civilizations:<br/>Power at a time in a universe"]
     METRIC["Metrics:<br/>Definitions of available datapoints and possible values"]
     DATAPOINT["Datapoints:<br/>values"]
 
-    UNIVERSE --> POLITY
-    POLITY --> CIVILIZATION
+    UNIVERSE --> POWER
+    POWER --> CIVILIZATION
     CIVILIZATION --> DATAPOINT
     METRIC --> DATAPOINT
 ```
 
 ### Current Display Concept
 
-To make things easier and better understandable, the Polity is shown as a second class citizen and Civilizations hang directly under Universe.
+To make things easier and better understandable, the Power is shown as a second class citizen and Civilizations hang directly under Universe.
 
 ```mermaid
 graph LR
     UNIVERSE
-    POLITY
+    POWER
     CIVILIZATION
     METRIC
     DATAPOINT
 
     UNIVERSE --> CIVILIZATION
-    UNIVERSE --> POLITY
-    POLITY --> CIVILIZATION
+    UNIVERSE --> POWER
+    POWER --> CIVILIZATION
     CIVILIZATION --> DATAPOINT
     METRIC --> DATAPOINT
 ```

@@ -22,54 +22,54 @@ public class FutrDataTest
 
     [TestMethod]
     [TestCategory("futr.Data")]
-    public void StarTrek_HasPolities()
+    public void StarTrek_HasPowers()
     {
         var universe = _data.GetUniverse("Star Trek");
         Assert.IsNotNull(universe);
-        Assert.IsTrue(universe.Polities.Count > 0, "Star Trek should have polities");
-        Assert.IsTrue(universe.Polities.ContainsKey("Federation of Planets"));
+        Assert.IsTrue(universe.Powers.Count > 0, "Star Trek should have powers");
+        Assert.IsTrue(universe.Powers.ContainsKey("Federation of Planets"));
     }
 
     [TestMethod]
     [TestCategory("futr.Data")]
-    public void Polity_HasCorrectSeoName()
+    public void Power_HasCorrectSeoName()
     {
-        var polity = _data.GetPolity("Star Trek Federation of Planets");
-        Assert.IsNotNull(polity);
-        Assert.AreEqual("Star Trek Federation of Planets", polity.SeoName);
+        var power = _data.GetPower("Star Trek Federation of Planets");
+        Assert.IsNotNull(power);
+        Assert.AreEqual("Star Trek Federation of Planets", power.SeoName);
     }
 
     [TestMethod]
     [TestCategory("futr.Data")]
-    public void Federation2373_HasPolityReference()
+    public void Federation2373_HasPowerReference()
     {
         var civ = _data.GetCivilization("Star Trek Federation 2373");
         Assert.IsNotNull(civ);
-        Assert.IsNotNull(civ.Polity);
-        Assert.AreEqual("Federation of Planets", civ.Polity.Id);
+        Assert.IsNotNull(civ.Power);
+        Assert.AreEqual("Federation of Planets", civ.Power.Id);
     }
 
     [TestMethod]
     [TestCategory("futr.Data")]
-    public void GetPolity_ExistingId_ReturnsPolity()
+    public void GetPower_ExistingId_ReturnsPower()
     {
-        var polity = _data.GetPolity("Star Trek Federation of Planets");
-        Assert.IsNotNull(polity);
-        Assert.AreEqual("Federation of Planets", polity.Id);
+        var power = _data.GetPower("Star Trek Federation of Planets");
+        Assert.IsNotNull(power);
+        Assert.AreEqual("Federation of Planets", power.Id);
     }
 
     [TestMethod]
     [TestCategory("futr.Data")]
-    public void GetPolity_NonExistingId_ReturnsNull()
+    public void GetPower_NonExistingId_ReturnsNull()
     {
-        var polity = _data.GetPolity("NonExistent Polity");
-        Assert.IsNull(polity);
+        var power = _data.GetPower("NonExistent Power");
+        Assert.IsNull(power);
     }
 
     [TestMethod]
     [TestCategory("futr.Data")]
-    public void PolitiesSubfolder_HasCorrectValue()
+    public void PowersSubfolder_HasCorrectValue()
     {
-        Assert.AreEqual("_polities", _data.PolitiesSubfolder);
+        Assert.AreEqual("_powers", _data.PowersSubfolder);
     }
 }

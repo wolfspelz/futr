@@ -12,7 +12,7 @@ data/
 ├── proxy/{host}/{path}/{filename}          # Proxied images (see Image Proxy)
 └── universes/{UniverseName}/
     ├── info.yaml
-    ├── _polities/{PolityName}/info.yaml
+    ├── _powers/{PowerName}/info.yaml
     └── {CivilizationName}/
         ├── info.yaml
         └── {MetricName}/info.yaml  (datapoint)
@@ -20,8 +20,8 @@ data/
 
 ## Naming Conventions
 - **Universe folder**: Universe name (e.g., `Star Trek`, `Orions Arm`)
-- **Civilization folder**: `{PolityOrCivName} {Year}` (e.g., `Federation 2373`)
-- **Polity folder**: `_polities/{PolityName}` (e.g., `_polities/Federation of Planets`)
+- **Civilization folder**: `{PowerOrCivName} {Year}` (e.g., `Federation 2373`)
+- **Power folder**: `_powers/{PowerName}` (e.g., `_powers/Federation of Planets`)
 - **Metric datapoint folder**: Must match an existing metric name in `data/metrics/`
 - **Civilization `date` field**: Must be parseable as a year
 
@@ -113,7 +113,7 @@ readme: |                        # Optional, readme.md file prevails
   Markdown description
 ```
 
-### Polity (`data/universes/{Universe}/_polities/{PolityName}/info.yaml`)
+### Power (`data/universes/{Universe}/_powers/{PowerName}/info.yaml`)
 ```yaml
 title: Federation of Planets
 created: 2026-02-04
@@ -142,7 +142,7 @@ title: Federation 2373         # Display name (often includes year)
 created: 2026-02-04
 changed: 2026-02-04
 date: 2373                     # Year or time period (required)
-polity: Federation of Planets  # Reference to polity folder name (optional)
+power: Federation of Planets  # Reference to power folder name (optional)
 tags: [index, fav]
 order: 100.0
 images:
@@ -222,7 +222,7 @@ Ordered from most to least reliable:
 - All images MUST have complete attribution: `src`, `link`, `author`, `license`, `legal`
 
 **Adding images to existing entities:**
-- When adding images to an already existing universe, polity, or civilization, include ALL existing images together with the new candidates in the image selector
+- When adding images to an already existing universe, power, or civilization, include ALL existing images together with the new candidates in the image selector
 - This lets the user reorder, deselect old images, or interleave new ones with existing images
 - The output of the image selector replaces the entire `images:` list in info.yaml
 
