@@ -1,0 +1,55 @@
+@page
+@model ImprintModel
+@{
+    ViewData["Title"] = "Imprint";
+}
+
+<h1>
+    Impressum / Imprint
+</h1>
+
+<div id="iTarget">
+    <pre id="iSource">
+# Angaben gemäß § 5 DDG
+
+- Klaus Heinrich Wolf
+- Waterloostr. 26
+- 22769 Hamburg
+- Deutschland
+- galactic.developments@gmail.com
+
+Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Klaus Heinrich Wolf, Anschrift wie oben.
+
+# Datenschutz
+
+Siehe [Datenschutzerklärung](/Privacy).
+
+# Haftung für Inhalte
+
+Dieses Projekt sammelt und schätzt statistische Daten über fiktive Zivilisationen. Die Werte sind Recherche-, Rechen- oder Schätzergebnisse und keine offiziellen Angaben der jeweiligen Rechteinhaber. Für Richtigkeit, Vollständigkeit und Aktualität wird keine Gewähr übernommen. Alle Namen, Werke und Marken gehören ihren jeweiligen Inhabern.
+
+# Haftung für Links
+
+Die Seiten enthalten Links zu externen Webseiten Dritter, auf deren Inhalte kein Einfluss besteht. Für diese Inhalte ist stets der jeweilige Anbieter verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden solche Links umgehend entfernt.
+
+# Bildrechte und Entfernung von Inhalten (Notice and Takedown)
+
+Diese Seite verwendet, wo möglich, frei lizenzierte Bilder (Creative Commons, Public Domain) mit Angabe von Urheber, Quelle und Lizenz. Einzelne Abbildungen wie Buchcover oder Filmbilder werden als Bildzitat gemäß § 51 UrhG mit Quellenangabe gezeigt. Die Rechte daran verbleiben bei den jeweiligen Verlagen, Studios und Künstlern. Angaben zu Urheber, Quelle und Lizenz jedes Bildes sind über das Bild selbst (Tooltip) sowie in den offenen Datendateien des Projekts einsehbar.
+
+Wenn Sie Rechteinhaber eines Bildes oder Textes sind und mit der Verwendung nicht einverstanden sind, genügt eine formlose E-Mail an galactic.developments@gmail.com mit der Adresse der betroffenen Seite. Der Inhalt wird zeitnah entfernt oder ersetzt. Eine vorherige Abmahnung ist dafür nicht erforderlich.
+
+# Image credits and takedown (English)
+
+This site prefers freely licensed images (Creative Commons, Public Domain) and credits author, source and license for each one. Some images, such as book covers or film stills, are shown as pictorial quotations with attribution under German copyright law (§ 51 UrhG). All rights remain with the respective publishers, studios and artists. Credits for every image are available in its tooltip and in the project's open data files.
+
+If you hold the rights to an image or text used here and do not agree with its use, send a short e-mail to galactic.developments@gmail.com with the URL of the affected page. The content will be removed or replaced promptly. No formal legal notice is required.
+</pre>
+</div>
+
+@await Html.PartialAsync("_MarkdownConverter", new Shared._MarkdownConverter.Model
+{
+    Conversions = new Shared._MarkdownConverter.ConversionMap
+    {
+        ["iSource"] = new Shared._MarkdownConverter.Conversion("iTarget")
+    }
+})
