@@ -1,0 +1,13 @@
+created: 2026-10-18
+changed: 2026-10-18
+tags: [index]
+value: 8
+confidence: informedGuess
+editors: [anthropic-claude]
+references:
+  - link: https://expanse.fandom.com/wiki/United_Nations
+    text: Expanse Wiki - United Nations
+  - link: https://expanse.fandom.com/wiki/United_Nations_Navy
+    text: Expanse Wiki - United Nations Navy
+readme: |
+  Domain 8 Interplanetary. The UN governs Earth, Luna and holdings on the inner planets.

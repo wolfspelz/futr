@@ -1,0 +1,13 @@
+created: 2026-10-18
+changed: 2026-10-18
+tags: [index]
+value: 13
+confidence: informedGuess
+editors: [anthropic-claude]
+references:
+  - link: https://theculture.fandom.com/wiki/The_Culture
+    text: "The Culture Wiki"
+  - link: https://theculture.fandom.com/wiki/Energy_grid
+    text: "The Culture Wiki: Energy Grid"
+readme: |
+  Domain 13 Galactic Power. The Culture governs only its own Orbitals, habitats and ships, scattered through a large fraction of the galaxy: thousands of habitats, no territory.

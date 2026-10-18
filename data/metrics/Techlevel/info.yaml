@@ -1,6 +1,6 @@
 title: Techlevel
 created: 2026-02-09
-changed: 2026-02-09
+changed: 2026-10-18
 editors: [anthropic-claude]
 order: 0.1
 tags: [index]
@@ -11,13 +11,13 @@ readme: |
   # Concept
 
   Techlevel measures the difficulty and sophistication of a civilization's most advanced
-  individual technology. Complements Class (overall capability including reach) and
+  individual technology. Complements Reach (how far a power extends) and
   Kardashev Rating (energy use).
 
-  **Key principle:** Only the hardest-to-invent and/or most advanced technology matters, 
+  **Key principle:** Only the hardest-to-invent and/or most advanced technology matters,
   not the scale or reach or quantity of a civilization:
   - A Matrioshka brain built from fusion-powered processors is TL 7
-  (Fusion), unless it uses its brain power to create exotic substrates like magmatter 
+  (Fusion), unless it uses its brain power to create exotic substrates like magmatter
   (TL 11) for orbitals and ringworlds
   - A Dyson sphere is just solar panels at scale (TL 7), not a separate tech level.
   - A galactic empire with millions of planets and quadrillions of inhabitants may be
@@ -51,23 +51,31 @@ readme: |
 
   # Cross-Reference to Other Scales
 
-  | TL | GURPS | Orion's Arm | d20 Modern |
-  |---|---|---|---|
-  | 1 | sub-TL0 | - | PL0- |
-  | 2 | TL0 | Primtech | PL0 |
-  | 3 | TL1-3 | Lotech | PL1-2 |
-  | 4 | TL4 | Midtech | PL2-3 |
-  | 5 | TL5-6 | Midtech | PL4 |
-  | 6 | TL7-8 | Hitech | PL5 |
-  | 7 | TL9-10 | late Hitech | PL6 |
-  | 8 | TL10-11 | Ultratech (S0) | PL7-8 |
-  | 9 | TL12 | - (no FTL in OA) | PL7-8 |
-  | 10 | post-TL12 | S1 | PL9 |
-  | 11 | - | S2 | - |
-  | 12 | - | S3-S4 | - |
-  | 13 | - | S4-S5 | - |
-  | 14 | - | S6 | - |
-  | 15 | - | - | - |
+  GURPS (4th edition) runs TL0 to TL12 and marks "superscience" such as FTL or force
+  fields with a caret, so GURPS has no fixed level for anything above TL 8 here. d20 Future
+  Progress Levels run PL0 to PL8 with PL9 only hinted at. Orion's Arm has no FTL at all;
+  its upper tiers are tied to the toposophic level of their makers.
+
+  | TL | GURPS | d20 Future | Orion's Arm | Traveller |
+  |---|---|---|---|---|
+  | 1 | sub-TL0 | - | - | - |
+  | 2 | TL0 Stone Age | PL0 Stone Age | Primtech | TL0 |
+  | 3 | TL1-2 Bronze and Iron | PL1 Bronze/Iron | Primtech | TL1 |
+  | 4 | TL3-4 Medieval, Age of Sail | PL2-3 Middle Ages, Age of Reason | Lotech | TL2-3 |
+  | 5 | TL5-6 Industrial, Mechanized | PL4 Industrial | Midtech | TL4-5 |
+  | 6 | TL7-8 Nuclear, Digital | PL5 Information | Hitech | TL6-8 |
+  | 7 | TL9-10 Microtech, Robotic | PL6 Fusion | Hitech | TL9-10 (fusion) |
+  | 8 | TL10-11 Exotic Matter | PL6-7 | Ultratech (S0) | TL11-13 |
+  | 9 | TL^ superscience | PL7-8 Gravity, Energy | - | TL9+ (jump drive) |
+  | 10 | TL12^ | PL9 | Transapientech (S1) | TL14-15 |
+  | 11 | - | - | Transapientech (S2) | TL16+ |
+  | 12 | - | - | Transapientech (S3) | - |
+  | 13 | - | - | Godtech (S4-S5) | - |
+  | 14 | - | - | Godtech (S6) | - |
+  | 15 | - | - | - | - |
+
+  Traveller places the jump drive at TL9, below nanotech and fusion maturity, so its
+  ladder crosses ours at TL 9: a Traveller TL9 world is TL 9 here by its jump drive.
 
   # Examples by Level
 
@@ -80,96 +88,241 @@ readme: |
   - Reality: Stone Age (~50,000 BCE): fire, stone tools, language, agriculture
   - Star Wars: Tusken Raiders: nomadic, gaffi sticks, scavenged metal
   - Star Trek: Mintakans: basic tools, no metalworking
+  - Traveller: TL0 worlds: hunter-gatherer societies
 
   **3: Metal**
   - Reality: Bronze Age (~2000 BCE): bronze smelting, writing, sailing, cities
   - Reality: Classic Age (~1 CE): iron working, engineering, road networks
   - Star Wars: Ewoks: organized tribal villages, catapults, log traps
   - Star Trek: Barkonians: iron-age village
+  - Traveller: TL1-2 worlds: agricultural societies with early metals
 
   **4: Mechanical**
   - Reality: Middle Ages (~1000 CE): steel, gunpowder arriving, navigation
   - Reality: Age of Sail (~1700 CE): printing, gunpowder weapons, mills
   - Zones of Thought: Tines: castles, swords, early gunpowder
   - Star Trek: Ba'ku: deliberately abandoned higher tech
+  - Orion's Arm: To'ul'h at first contact: late agricultural, early industrial
+  - Technic Civilization: Long Night regressed worlds: former colonies that lost their technology
 
   **5: Industrial**
   - Reality: Industrialization (~1850 CE): steam, electricity, mass production
   - Zones of Thought: Spiders: early 20th-century industrial equivalent
   - Firefly: Rim Worlds: frontier settlements with 19th-century conditions
+  - Dune: Fremen by their own manufacture: stillsuits, crysknives, desert survival craft
 
   **6: Atomic**
   - Reality: 20th Century (~1950 CE): nuclear fission, electronic computing, jet aircraft
   - Reality: 1980s: nuclear power, PCs, satellites, Space Shuttle
   - Reality: 2023: internet, AI, nuclear, ISS
   - Star Trek: Earth pre-2063: nuclear weapons, computing, post-WWIII
+  - Star Trek: Malcorians: near-warp, nuclear and sublight technology
+  - Galactic Developments: late 21st century humans: early orbital economy, lunar settlements
 
   **7: Fusion**
+  - The Expanse: Sol System 2350, United Nations, Mars, Outer Planets Alliance: Epstein fusion drives, railguns, no FTL
   - Firefly: Alliance / Core Worlds: terraforming, mature system civilization, no FTL
+  - Firefly: Border Planets and Independents: fusion-era spaceflight a generation behind the Alliance
   - Galactic Developments: Early Solar era (~2090s-2200s): orbital habitats, fusion economy
+  - Galactic Developments: Mid Solar era (~2200s-2300s): mature solar system, metric impulse proof-of-concept
   - Zones of Thought: Slow Zone civilizations: capped by local physics, computers but no strong AI
+  - Known Space: Kdatlyno: spacefaring but dependent on others for interstellar travel
+  - Honorverse: Neobarb frontier worlds: single-system, limited spacefaring capability
 
   **8: Nanotech**
-  - Revelation Space: Ultras/Conjoiners: relativistic lighthuggers, advanced nanotech, no FTL
+  - Revelation Space: Ultras, Conjoiners, Demarchists: relativistic lighthuggers, advanced nanotech, neural networking, no FTL
   - Orion's Arm: Baseline humans (S0): nanotech, utility fog, antimatter, no FTL
   - Zones of Thought: Qeng Ho: sub-light traders, millennia of accumulated tech knowledge
-  - Halo: UNSC pre-war: early unreliable FTL, MAC weapons, SPARTAN augmentation
 
   **9: FTL**
+  - Star Trek: Earth 2063-2100: Warp 1, first contact era
+  - Star Trek: United Earth 2150s: Warp 5, early exploration
   - Star Trek: Andorians 2161: Warp 5+, shields, particle weapons
+  - Star Trek: Klingon Empire 2161: Warp 6, disruptors, photon torpedoes
   - Star Trek: Vulcans 2063: mature warp-capable, established interstellar presence
+  - Star Wars: Rebel Alliance, New Republic, Chiss Ascendancy, Mandalorians: hyperdrive, repulsorlift, blasters, shields
+  - Perry Rhodan: Terrans at First Contact (1971-1984): reverse-engineered Arkonide FTL
   - Perry Rhodan: Solares Imperium 2040: transition drive FTL, impulse weapons
+  - Perry Rhodan: Topsider, Blues/Gataser, Springer: interstellar drives and energy weapons
   - Honorverse: Manticore 1903 PD: hyperspace FTL, impeller wedge gravitics, no replicators
+  - Honorverse: Haven, Solarian League, Andermani, Grayson, Beowulf, Mesa, Silesia, Torch: same tech base
   - Babylon 5: Earth Alliance: FTL via jump gates, particle weapons
+  - Babylon 5: Narn Regime, Drazi, Brakiri, League of Non-Aligned Worlds: jump-capable, energy weapons
+  - Babylon 5: Centauri Republic: artificial gravity, sold jump technology to Earth
   - Babylon 5: Minbari Federation: magnetogravitic drives, stealth
+  - Dune: Great Houses (Atreides, Harkonnen, Corrino): shields, atomics, Guild transport
+  - Known Space: Kzinti Empire: gravity polarizers, no indigenous FTL
+  - Alliance-Union: Earth Company, Alliance (Pell), Union (Cyteen), the Compact species: FTL jump, cloning
+  - Traveller: Vilani First Imperium: stagnated at Jump-2 for millennia
+  - Traveller: Vargr Extents, Sword Worlds, Solomani Confederation, Aslan Hierate: jump drives
+  - Traveller: Third Imperium, Zhodani Consulate, K'kree, Hiver Federation, Darrians: Jump-6, TL15 worlds
+  - Traveller: 2300 AD humanity: hard SF, stutterwarp limited to 7.7 ly per trip
+  - Halo: UNSC pre-war: early unreliable slipspace drives, MAC weapons, SPARTAN augmentation
+  - Halo: UNSC post-war: improved slipspace drives, reverse-engineered Covenant tech
   - Halo: Covenant: plasma weapons, reverse-engineered Forerunner FTL
+  - Mass Effect: Systems Alliance: FTL via Prothean archives
   - Mass Effect: Citadel Council: mass relays, kinetic barriers
+  - EVE Online: Amarr, Caldari, Gallente, Minmatar: warp drives, jump gates
   - Warhammer 40K: Tau Empire: pulse weapons, limited FTL
+  - Warhammer 40K: Tyranids: bio-ships, synaptic networks, warp-shadow travel
+  - Uplift: Humanity/Earthclan: independently developed inferior starships
+  - Foundation: Foundation (early): hyperdrive, miniaturized nuclear tech
+  - Foundation: Galactic Empire (peak and decline), Second Foundation: hyperdrives, mentalics
+  - Technic Civilization: Polesotechnic League, Ythrians, Terran Empire: hyperdrive, gravitics
+  - Hyperion: Ousters: space-dwelling humans with genetic modifications
+  - Doctor Who: Cybermen: interstellar presence, cybernetic conversion
+  - Hitchhiker's Guide: Vogons: hyperspace fleet
+  - Galactic Developments: Interstellar Pocket era (~2300s-2500s), Interstellar era humans, Dellians, Erui, Chinti Swarms
 
   **10: Matter Mastery**
   - Star Trek: Federation 2373: replicators, transporters, holographic matter
-  - Perry Rhodan: Posbis 2114: transmitter technology, Transformkanone
+  - Star Trek: Klingon Empire, Romulan Star Empire, Cardassian Union (2370s): transporters, cloaking
+  - Star Trek: Borg Collective: nanoprobes, adaptive assimilation, transwarp
+  - Star Trek: Dominion: polaron weapons, bioengineered soldiers, transporters
+  - Star Trek: Federation 32nd century: programmable matter, personal transporters, spore drive
+  - Star Trek: Progenitors / Ancient Humanoids: galaxy-wide DNA seeding program
+  - Star Wars: Galactic Republic, Galactic Empire: Death Star superlaser (total planetary conversion), cloning
+  - Star Wars: Yuuzhan Vong: biotech worldshaping, dovin basal gravity manipulation
   - Perry Rhodan: Großes Imperium 2040: transmitter networks (matter teleportation)
+  - Perry Rhodan: Posbis 2114: transmitter technology, Transformkanone
+  - Perry Rhodan: Akonen: Sonnentransmitter builders
+  - Perry Rhodan: Terrans Solar Empire (late): Paratron shields, intergalactic Dimesexta drives
+  - Perry Rhodan: Maahks, Halutians: powerful military species with advanced specialties
+  - Perry Rhodan: Terrans NGZ era: galactic-scale operations, intergalactic expeditions
+  - Dune: Spacing Guild: foldspace FTL (prescient navigators bypass need for computers)
+  - Dune: Ixians: no-ships, no-globes, navigation machines
+  - Dune: Thinking Machines / Omnius: self-replicating probes, galaxy-spanning AI
+  - Known Space: United Nations of Earth: transfer booths (teleportation), boosterspice
+  - Known Space: Thrintun/Tnuctipun: stasis fields, galaxy-scale bioengineering
+  - Alliance-Union: Knnn: unique FTL manipulation centuries ahead of the Compact
+  - EVE Online: Jove Empire, CONCORD, Sleepers, Drifters, Triglavians, Sansha's Nation
+  - Stargate: Goa'uld: ring transporters, sarcophagi, stolen Ancient-derived technology
+  - Stargate: Replicators: self-replicating machines
   - Warhammer 40K: Imperium of Man M41: teleportarium (stagnant, barely understood)
   - Warhammer 40K: Orks M41: teleporta (WAAAGH!-powered psychic tech)
-  - Star Trek: Borg Collective: nanoprobes, adaptive assimilation, transwarp
-  - Star Wars: Galactic Empire: Death Star superlaser (total planetary conversion)
-  - Dune: Spacing Guild: foldspace FTL (prescient navigators bypass need for computers)
+  - Mass Effect: Reapers: synthetic-organic starships, built the mass relay network
+  - Uplift: Galactic patron races: Library-derived technology
+  - Galactic Developments: Kisori / Golden Empire: automated interstellar industry
+  - Star Trek: V'Ger: 82 AU energy cloud, digitizes entire planets
 
   **11: Exotic Matter**
   - Orion's Arm: S2 Transapients: monopole production, conversion power, magmatter basics
   - Orion's Arm: Hildemar's Knots: exotic-matter biology on neutron stars
   - Star Wars: Celestials: moved stars and black holes through hyperspace
+  - Star Wars: Rakata / Infinite Empire: Star Forge, system-destroying weapons
+  - Star Wars: First Order: Starkiller Base, stellar energy harvesting
+  - Star Trek: Tkon Empire: moved entire stars
+  - Star Trek: Whale Probe: system-wide power disruption
+  - Known Space: Pak Protectors: built the Ringworld, scrith manufacture
+  - Known Space: Pierson's Puppeteers: Fleet of Worlds, General Products hulls
   - Halo: Forerunners: Halo Array, Shield Worlds, slipspace mastery, stellar engineering
-  - Warhammer 40K: Necrons (War in Heaven peak): inertialess drives, Dolmen Gates
+  - Warhammer 40K: Necrons M41: living metal, World Engines, Celestial Orrery
+  - Warhammer 40K: Imperium Dark Age of Technology: Men of Iron, STCs, planet-killers
+  - Mass Effect: Leviathans: telepathic galaxy domination, created the Reapers
+  - Uplift: Senior Galactic races: billions of years of Library technology
+  - Traveller: Ancients: rosette worlds, partial Dyson spheres, nova triggers
+  - Stargate: Asgard: beaming technology, plasma beams, advanced hyperdrives
+  - Hamilton: Raiel: Dark Fortress technology, force fields containing star systems
+  - Revelation Space: Inhibitors/Wolves: can kill stars in at least 15 different ways
+  - Babylon 5: Kirishiac Lords: hyper-dense armor, gravitic weaponry
+  - Xeelee Sequence: Humans (late era): Dyson-scale structures, galactic war against Xeelee
+  - Foundation: Gaia, Galaxia: planetary and galactic group consciousness
+  - Hitchhiker's Guide: Magratheans: custom planet construction as a commercial service
+  - Hitchhiker's Guide: Galactic civilization: Infinite Improbability Drive, routine planet destruction
 
   **12: Wormhole Engineering**
   - Orion's Arm: S3-S4 Archailects: traversable wormholes, weylforge, displacement drives
   - Hyperion: TechnoCore: farcaster wormhole network
-  - Babylon 5: Vorlons/Shadows: planet killers, hyperspace pioneers
+  - Hyperion: Hegemony of Man: 200+ worlds connected by TechnoCore farcasters
+  - Hamilton: Commonwealth: CST wormhole generators, rejuvenation
+  - Hamilton: Anomine (pre-ascension): star-system-scale force fields, planetary FTL drives
+  - Star Trek: Iconians: galaxy-spanning gateway network
+  - Star Trek: Nacene / Caretaker: transports ships 70,000 light-years instantly
+  - Star Trek: Species 8472: mastery of an entire separate dimension (fluidic space)
+  - Stargate: Ancients/Alterans (pre-ascension): Stargate network, city-ships, Zero Point Energy
+  - Babylon 5: Vorlons, Shadows: planet killers, hyperspace pioneers
+  - Babylon 5: Thirdspace Aliens: interdimensional, unique shields and FTL
+  - Babylon 5: Walkers of Sigma 957: casually relocate moons
+  - Babylon 5: The Triad: construct vessels from cosmic energy by will alone
+  - Known Space: Outsiders: reactionless planetary thrusters, technology beyond hyperdrive
+  - Perry Rhodan: The Swarm: 8,000 light-year mobile megastructure
+  - Perry Rhodan: Cynos: paramodulation, 1.6 million year civilization
+  - Warhammer 40K: Necrons (War in Heaven peak): inertialess drives, Dolmen Gates
+  - Warhammer 40K: Eldar pre-Fall: wraithbone psycho-technology, Webway mastery
+  - Zones of Thought: Upper Beyond civilizations: approaching the edge of Transcendence
   - Doctor Who: Daleks: time travel, void ships
 
   **13: Spacetime Mastery**
   - The Culture: gridfire, hyperspace, effectors, displacement, Orbitals
+  - The Culture: Homomda, Gzilt: at or near Culture level
   - Orion's Arm: S4-S5 Great Archailects: W-brains, Halo drives, void bubbles
-  - Perry Rhodan: Superintelligences (ES, ESTARTU): cosmic-scale manipulation
+  - Orion's Arm: NoCoZo: ruled by S4-S5 cartel
+  - Perry Rhodan: Superintelligences (ES, ESTARTU, Kaiserin von Therm, BARDIOC, SEELENQUELL)
+  - Perry Rhodan: Seven Mighty Ones, Servants of Matter: Spore Ships, Cosmic Factories, Ultimate Matter extraction
+  - Perry Rhodan: Porleyter, Knights of the Deep: access to Kosmokraten technology
   - Zones of Thought: Powers (Transcend): manipulate zone boundaries
+  - Zones of Thought: The Blight: galaxy-threatening Power, mind-virus across civilizations
   - Star Trek: Prophets/Wormhole Aliens: non-linear time, stable wormhole creation
   - Star Trek: Organians: non-corporeal, immobilize fleets across interstellar distances
+  - Star Trek: Metrons, Thasians, Trelane's species: casual mastery of matter, energy and space
+  - Star Trek: Sphere Builders: transdimensional, reshaped physics across the Delphic Expanse
+  - Star Wars: Force Priestesses, Abeloth: dimensional existence, reality-warping Force use
+  - Warhammer 40K: Old Ones: created the Webway, engineered Eldar and Krork
+  - Warhammer 40K: C'tan pre-shattering: Star Gods, extinguish suns, bend reality
+  - Halo: Forerunners (upper end), Flood Key Minds: controlled Precursor neural physics artifacts
   - Doctor Who: Time Lords (as depicted): TARDISes, regeneration, dimensional transcendence
-  - Stargate: Ancients (ascended): higher plane, manipulate reality across spacetime
+  - Stargate: Ancients (ascended), Ori: higher plane, manipulate reality across spacetime
   - Xeelee Sequence: Xeelee: Bolder's Ring (cosmic strings, millions of light-years)
   - Xeelee Sequence: Xeelee (upper end): engineered own evolution back 13 billion years
 
   **14: Universe Engineering**
-  - Orion's Arm: S6 Greatest Archailects: pocket/basement universes, void ships
-  - Perry Rhodan: Kosmokraten: multiverse-scale, higher-dimensional
+  - Orion's Arm: S6 Greatest Archailects, Sephirotic empires, the Leviathan: pocket/basement universes, void ships
+  - Perry Rhodan: Kosmokraten, Chaotarchen, Si Kitu: multiverse-scale, higher-dimensional
   - Warhammer 40K: Chaos Gods: Immaterial pocket-universe realms
   - Doctor Who: Time Lords (peak): Eye of Harmony, Web of Time
+  - Doctor Who: Daleks (peak): Reality Bomb capable of disrupting all atomic bonds
   - Halo: Precursors: neural physics, manipulate fabric of universe
   - The Culture: Excession entity: inter-universal, pre-dates the universe
+  - The Culture: The Sublimed, Dra'Azon: higher-dimensional existence
+  - Star Wars: The Ones of Mortis: reality-warping, directed megastructure construction
+  - Babylon 5: Lorien: temporal manipulation, life/death transcendence
+  - Zones of Thought: Countermeasure: manipulates fundamental physics zones of the galaxy
+  - Xeelee Sequence: Photino Birds: dark matter beings, universal-scale stellar manipulation
+  - Hamilton: Anomine (post-physical): transcended conventional spacetime
+  - Uplift: Progenitors: believed ascended to a higher plane
+  - Hyperion: Lions, Tigers, and Bears: transcendent intelligences in the Void Which Binds
 
   **15: Transcendent**
   - Star Trek: Q Continuum: omnipotent, alter universal constants, create pocket realities
-  - Perry Rhodan: GESETZ / the LAW: the fundamental principle governing all existence
   - Star Trek: Douwd: destroyed 50 billion beings instantaneously with a thought
+  - Perry Rhodan: GESETZ / the LAW: the fundamental principle governing all existence
+  - Perry Rhodan: DORIFER, Thez: manipulate constants, closer to the Horizon of the LAW
+
+  # References
+
+  Comparison & aggregation:
+  - [Atomic Rockets: Tech Level](https://www.projectrho.com/public_html/rocket/techlevel.php) - comprehensive comparison of multiple tech level systems for hard SF worldbuilding
+  - [Frank Mitchell: Tech Levels: A Comparison](https://frank-mitchell.com/rpg/techlevels/) - side-by-side comparison of RPG tech level scales
+  - [Traveller: Tech Level Comparison Chart](https://wiki.travellerrpg.com/Tech_Level_Comparison_Chart) - cross-references Traveller TL against GURPS, d20 Future, and real-world history
+  - [TV Tropes: Technology Levels](https://tvtropes.org/pmwiki/pmwiki.php/Main/TechnologyLevels) - examples of the trope across dozens of fictional works
+
+  Tabletop RPGs:
+  - [Traveller RPG: Technology Level](https://wiki.travellerrpg.com/Technology_Level) - TL 0-33, the original sci-fi RPG tech scale (1977)
+  - [GURPS: Technology Levels (Classic)](https://gurps.fandom.com/wiki/Technology_Levels_(Classic)) - TL 0-16+, Steve Jackson Games
+  - [d20 Future: Progress Levels](https://opengamecontent.fandom.com/wiki/D20_Modern_SRD/Future_Progress_Levels) - PL 0-8, from TSR's Alternity adapted by WotC
+  - [Stars Without Number: Tech Levels](https://swansong.fandom.com/wiki/Tech_Level_System) - TL 0-5, Kevin Crawford's OSR sci-fi RPG
+  - [Doctor Who RPG: Technology Levels](https://dwaitas.proboards.com/thread/3001/technology-levels) - TL 1-10, Cubicle 7
+
+  Video games:
+  - [Stellaris: Technology](https://stellaris.fandom.com/wiki/Technology) - six tiers (T0-T5) across Engineering, Physics, Society
+  - [Civilization VI: Technology](https://civilization.fandom.com/wiki/Technology_(Civ6)) - the archetypal tech tree from Ancient to Information era
+
+  In-universe classification systems:
+  - [Halo: Technological Achievement Tiers](https://www.halopedia.org/Technological_Achievement_Tiers) - Tier 7 (Pre-Industrial) to Tier 0 (Transsentient)
+  - [Orion's Arm: Toposophic Levels](https://www.orionsarm.com/eg-topic/45b3dcfe2226a) - S0-S6, intelligence/cognitive capability classification
+  - [Orion's Arm: Technology Levels](https://orionsarm.com/eg-topic/45b6ccc415f14) - Primtech to Godtech
+  - [The Culture: Recognised Civilisationary Levels](https://theculture.fandom.com/wiki/Recognised_Civilisationary_Levels) - Iain Banks' in-universe civilization scale
+  - [Star Wars: Technology Level](https://starwars.fandom.com/wiki/Technology_level) - Legends/RPG world classification
+
+  Theoretical frameworks:
+  - [Kardashev Scale](https://en.wikipedia.org/wiki/Kardashev_scale) - Type I-III+ by energy consumption (1964), plus Barrow, Sagan, and Zubrin extensions

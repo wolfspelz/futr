@@ -1,6 +1,6 @@
 title: Reality
 created: 2023-09-24
-changed: 2023-10-09
+changed: 2026-10-18
 order: 0
 tags: [new, index]
 images:
@@ -20,4 +20,4 @@ links:
     - link: https://en.wikipedia.org/wiki/Human
       text: Human (Wikipedia)
 editors: [wolfspelz]
-showcaseMetrics: [Population, Kardashev, Techlevel, Class]
+showcaseMetrics: [Population, Kardashev, Techlevel, Domain, Reach]

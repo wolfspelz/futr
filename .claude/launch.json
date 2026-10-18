@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "futr",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "src/futr", "--launch-profile", "http"],
+      "port": 5000
+    }
+  ]
+}

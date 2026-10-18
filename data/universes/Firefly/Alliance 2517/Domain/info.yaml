@@ -1,0 +1,15 @@
+created: 2026-10-18
+changed: 2026-10-18
+tags: [index]
+value: 9
+confidence: informedGuess
+editors: [anthropic-claude]
+references:
+  - link: https://firefly.fandom.com/wiki/The_Verse
+    text: "The Verse (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Terraforming
+    text: "Terraforming (Firefly Wiki)"
+  - link: https://firefly.fandom.com/wiki/Pulse_Drive
+    text: "Pulse Drive (Firefly Wiki)"
+readme: |
+  Domain 9 System. The Alliance governs the whole Verse, one multi-star system with over 200 terraformed worlds; even the Rim is nominally under its law.

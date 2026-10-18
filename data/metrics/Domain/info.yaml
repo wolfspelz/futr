@@ -1,0 +1,78 @@
+title: Domain
+created: 2026-10-18
+changed: 2026-10-18
+editors: [anthropic-claude]
+order: 0.15
+tags: [index]
+type: number
+unit: Domain
+range: 1-20
+readme: |
+  # Description
+
+  Domain measures the realm a power actually governs as one organized whole: where its
+  law, administration or command applies. It uses the same 20-level ladder as Reach, so
+  the two can be compared directly. Reach is where a power routinely goes; Domain is what
+  it rules. Domain is never above Reach.
+
+  # Rules
+
+  - Count territory under the power's government, including client states, protectorates,
+    vassals and dependencies whose policy it controls. A protectorate is in the Domain, a
+    trading partner is not.
+  - Do not count space merely patrolled, traded in, surveyed or visited; that is Reach.
+    Outposts and bases count only with the territory they administer, not with the space
+    around them.
+  - For a power that is a whole species or humanity in a given era, rate the largest
+    coherent realm of that era, not the sum of scattered groups. Humanity in the Bronze Age
+    is Regional (Egypt), although humans lived on every continent.
+  - A power with no governed territory (a wandering fleet, a hermit entity) has the Domain
+    of what it administers, usually its own ships or habitat: Individual to System.
+  - Non-corporeal and transcendent powers are rated by what they actually rule or
+    administer, not by their presence.
+
+  # Levels
+
+  | Domain | Name | Description |
+  |---|---|---|
+  | 1 | Individual | A single being, or a crew or household acting as one. |
+  | 2 | Local | A band, tribe, village or settlement. Walking distance. |
+  | 3 | City | A single city or city-state with its hinterland, a lone habitat or arcology. |
+  | 4 | Regional | Kingdoms, a river valley, an island group, a league of cities, a modern nation state. |
+  | 5 | Continental | An empire or nation spanning a continent or a large part of a world; a planetary superpower that dominates but does not rule its world. |
+  | 6 | Global | The surface of one world: global empires, a unified planet, world-wide trade. No lasting presence off the surface. |
+  | 7 | Planetary | A world and its orbit, possibly including its moons: satellites, stations, lunar bases. |
+  | 8 | Interplanetary | Part of a star system: several planets, a belt, a Trojan swarm or part of one, the outer system, a giant planet with its rings and moons or part of that. |
+  | 9 | System | One whole star system, including multi-star systems: settled planets, moons, habitats and belts. |
+  | 10 | Multi-System | A handful to a few dozen star systems. First colonies, small interstellar states. |
+  | 11 | Interstellar Dominion | Hundreds of systems, a region of a few thousand light-years. Mature interstellar states. |
+  | 12 | Interstellar Empire | Thousands of systems, a few thousand light-years across. |
+  | 13 | Galactic Power | Tens to hundreds of thousands of systems, tens of thousands of light-years: a visible share of the galaxy. |
+  | 14 | Galactic Sector | Millions of systems: a spiral arm, a quadrant, a substantial fraction of a galaxy. |
+  | 15 | Galactic | The whole galaxy or most of it. |
+  | 16 | Intergalactic | Presence in several galaxies, routine intergalactic operations. |
+  | 17 | Supercluster | A galaxy cluster or supercluster: tens to hundreds of millions of light-years, many galaxies. |
+  | 18 | Cosmic | Universe-wide presence within this universe. |
+  | 19 | Multiverse | Existence or action beyond this universe: other universes, higher dimensions, the multiverse. |
+  | 20 | Absolute | Complete control over all of existence and non-existence, every universe, all of time, unbounded by time, the realm of forms and concepts: the creator or simulator. Theoretical maximum. |
+
+  # Typical gaps to Reach
+
+  | Pattern | Domain | Reach | Example |
+  |---|---|---|---|
+  | Sealed empire | equal | equal | Firefly Alliance, Age of Sail humanity, Imperium of Man |
+  | Trading culture | realm | trade network, one or two higher | Bronze Age Egypt, Rome and the Silk Road, Manticore and its Junction |
+  | Explorers | realm | survey range, one higher | Vulcans 2063, Federation 2373 |
+  | Probe programmes | planet | system, one higher | Humanity 1980s and 2023 (Mars landers, outer-system probes) |
+  | Faction in a shared system | its planets and stations | the whole system | Mars, United Nations and OPA in The Expanse |
+  | Outposts far beyond the realm | realm | outposts, several higher | Posbis with void bases between galaxies |
+  | Contact culture without territory | its habitats | everywhere it meddles | The Culture |
+  | Species without a single state | its largest empire | everywhere it roams | Orks |
+
+  Examples by level are listed under Reach; a power's Domain is the Reach level of the
+  territory it governs.
+
+  # References
+
+  - [Suzerainty](https://en.wikipedia.org/wiki/Suzerainty) - client states, protectorates and vassals as parts of a realm
+  - [Sphere of influence](https://en.wikipedia.org/wiki/Sphere_of_influence) - the zone a power affects without governing it, which belongs to Reach

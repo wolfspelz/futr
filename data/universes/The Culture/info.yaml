@@ -1,9 +1,9 @@
 title: The Culture
 created: 2026-02-10
-changed: 2026-02-10
+changed: 2026-10-18
 tags: [index, new]
 order: 0
-showcaseMetrics: [Population, Kardashev, Class, Techlevel, Banks Orbitals, Warships]
+showcaseMetrics: [Population, Kardashev, Domain, Reach, Techlevel, Banks Orbitals, Warships]
 images:
   - src: /proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture's_orbital.jpg
     text: A Culture Orbital, the civilization's primary habitat

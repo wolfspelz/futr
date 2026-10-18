@@ -3,7 +3,7 @@ created: 2026-02-11
 changed: 2026-10-18
 order: 0
 tags: [index, new]
-showcaseMetrics: [Population, Kardashev, Planets, Warships, Techlevel, Class, Civilization Age]
+showcaseMetrics: [Population, Kardashev, Planets, Warships, Techlevel, Domain, Reach, Civilization Age]
 images:
   - src: /proxy/static.wikia.nocookie.net/expanse/images/3/3d/MCRNTachiConceptArt.png
     text: MCRN Tachi in original military livery, concept art by Ryan Dening / North Front Studio

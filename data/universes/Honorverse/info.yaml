@@ -30,7 +30,7 @@ links:
     text: Honorverse Wiki
   - link: https://en.wikipedia.org/wiki/Honorverse
     text: Wikipedia - Honorverse
-showcaseMetrics: [Population, Planets, Star Systems, Kardashev, Warships, Techlevel, Class]
+showcaseMetrics: [Population, Planets, Star Systems, Kardashev, Warships, Techlevel, Domain, Reach]
 sources:
   # Primary wiki
   - https://honorverse.fandom.com/wiki/Republic_of_Haven  # population, territory, government, economy

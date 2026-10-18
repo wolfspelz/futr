@@ -1,0 +1,330 @@
+title: Reach
+created: 2026-10-18
+changed: 2026-10-18
+editors: [anthropic-claude]
+order: 0.2
+tags: [index]
+type: number
+unit: Reach
+range: 1-20
+readme: |
+  # Description
+
+  Reach measures how far a power routinely goes: the realm where its crews, ships,
+  traders, missions, probes and permanent installations are regularly present, including
+  outposts, dependencies and places it visits without governing them. It is a pure size
+  scale; technology does not enter into it. A sub-light civilization whose ships trade
+  across fifty systems has the same Reach as an FTL power that does the same.
+
+  Reach is the outer of two size metrics on the same ladder. Domain is the realm a power
+  actually governs. Reach is never below Domain: a power governs only what it can get to.
+  The two are equal for sealed empires and differ for traders, explorers, missionaries,
+  raiders and anyone who keeps outposts beyond its borders. Both complement Techlevel
+  (how advanced the hardest technology is), Kardashev (energy) and the counting metrics
+  Territory, Star Systems, Planets and Population, and unlike the counts they still work
+  when nothing can be counted: an individual, a nomadic fleet, a non-corporeal being.
+
+  # Rules
+
+  - Rate the realm the power is regularly present in: trade routes, patrol areas, mission
+    fields, outposts, research stations, bases, client territories, and everything it
+    governs (its Domain). Regular presence, not record distance: a single expedition or
+    probe does not count, a probe programme with permanent landers does.
+  - Robotic presence counts. Permanent landers, rovers, relay satellites and automated
+    bases extend Reach; a flyby does not.
+  - For a power that is a whole species or humanity in a given era, rate the range of its
+    largest coherent realm, including that realm's trade network.
+  - At the low levels read the names as ranges, not polity types: a hunter-gatherer band
+    whose seasonal round and trade contacts cover a region has Reach 4 Regional even though
+    it governs only its camp (Domain 2).
+  - Non-corporeal and transcendent powers are rated by the extent of their presence or
+    influence, not by what they could reach in principle.
+
+  # Levels
+
+  | Reach | Name | Description |
+  |---|---|---|
+  | 1 | Individual | A single being, or a crew or household acting as one. |
+  | 2 | Local | A band, tribe, village or settlement. Walking distance. |
+  | 3 | City | A single city or city-state with its hinterland, a lone habitat or arcology. |
+  | 4 | Regional | Kingdoms, a river valley, an island group, a league of cities, a modern nation state. |
+  | 5 | Continental | An empire or nation spanning a continent or a large part of a world; a planetary superpower that dominates but does not rule its world. |
+  | 6 | Global | The surface of one world: global empires, a unified planet, world-wide trade. No lasting presence off the surface. |
+  | 7 | Planetary | A world and its orbit, possibly including its moons: satellites, stations, lunar bases. |
+  | 8 | Interplanetary | Part of a star system: several planets, a belt, a Trojan swarm or part of one, the outer system, a giant planet with its rings and moons or part of that. |
+  | 9 | System | One whole star system, including multi-star systems: settled planets, moons, habitats and belts. |
+  | 10 | Multi-System | A handful to a few dozen star systems. First colonies, small interstellar states. |
+  | 11 | Interstellar Dominion | Hundreds of systems, a region of a few thousand light-years. Mature interstellar states. |
+  | 12 | Interstellar Empire | Thousands of systems, a few thousand light-years across. |
+  | 13 | Galactic Power | Tens to hundreds of thousands of systems, tens of thousands of light-years: a visible share of the galaxy. |
+  | 14 | Galactic Sector | Millions of systems: a spiral arm, a quadrant, a substantial fraction of a galaxy. |
+  | 15 | Galactic | The whole galaxy or most of it. |
+  | 16 | Intergalactic | Presence in several galaxies, routine intergalactic operations. |
+  | 17 | Supercluster | A galaxy cluster or supercluster: tens to hundreds of millions of light-years, many galaxies. |
+  | 18 | Cosmic | Universe-wide presence within this universe. |
+  | 19 | Multiverse | Existence or action beyond this universe: other universes, higher dimensions, the multiverse. |
+  | 20 | Absolute | Complete control over all of existence and non-existence, every universe, all of time, unbounded by time, the realm of forms and concepts: the creator or simulator. Theoretical maximum. |
+
+  # Cross-Reference to Other Scales
+
+  Few works define a size ladder explicitly; most have astrographic units whose
+  typical content gives the extent. Approximate correspondences:
+
+  | Reach | Zubrin | Traveller astrography | Star Wars | Star Trek | Perry Rhodan | Galactic Developments |
+  |---|---|---|---|---|---|---|
+  | 5-6 | Type I (homeworld) | - | - | - | - | - |
+  | 7-9 | Type II (own solar system) | single mainworld system | one system | one system | Solsystem | Aufbruch ins Sonnensystem (2050-2280), Interplanetare Zivilisation (2280-2570) |
+  | 10 | Type III (interstellar) | subsector (30-40 worlds) | a few systems | a few sectors (~20 ly each) | - | Ruf der Sterne (2570-2850) |
+  | 11 | Type III | sector (350-650 worlds), pocket empire | sector (hundreds of systems) | Federation space (8,000 ly) | - | Imperium aus der Asche (3180-3370) |
+  | 12 | Type III | domain (4 sectors) to Imperium (11,000 worlds) | several sectors | a quadrant's major powers | - | - |
+  | 13 | Type III | - | region (Core, Colonies, Inner Rim ...) | the great powers of two quadrants | Großes Imperium (150,000 systems) | - |
+  | 14 | Type III | - | several regions | a quadrant | - | - |
+  | 15 | Type III | - | the galaxy (1,024 sectors, Republic era) | the galaxy | Milchstraße | - |
+  | 16 | - | - | - | - | Lokale Gruppe | - |
+  | 17 | - | - | - | - | Mächtigkeitsballung (dozens of galaxies) | - |
+  | 18 | - | - | - | - | Universum | - |
+  | 19 | - | - | - | - | Multiversum, Horizont des GESETZES | - |
+  | 20 | - | - | - | - | das GESETZ | - |
+
+  Kardashev's scale is about energy, not extent, and is left out on purpose: a Type II
+  civilization can be a single Dyson swarm (System) or an interstellar state. Zubrin's
+  extension re-reads the three types by distance travelled from the homeworld, which is
+  the Reach idea in three steps.
+
+  # Examples by Level
+
+  Examples give the Reach. Domain is the same or lower; see the Domain metric for the usual gaps.
+
+  **1: Individual**
+  - Star Trek: Q (as an individual), Trelane, the Douwd on Delta Rana IV
+  - Babylon 5: Lorien, the first sentient being
+  - Orion's Arm: a solitary archailect or transapient hermit
+  - Known Space: a single Pak Protector on a mission
+  - Star Trek: V'Ger, the Whale Probe: single roaming entities
+  - Star Wars: Abeloth
+  - The Culture: the Excession
+
+  **2: Local**
+  - Reality: Early Pleistocene (~1.2M BCE): Homo erectus bands
+  - Reality: Stone Age (~50,000 BCE): hunter-gatherer bands, first villages
+  - Star Wars: Tusken Raider clans, Ewok villages
+  - Star Trek: Mintakan village, Ba'ku settlement
+  - Dune: a Fremen sietch
+  - Traveller: TL0 worlds: hunter-gatherer bands
+
+  **3: City**
+  - Reality: Uruk (~3000 BCE), Jericho, classical Athens, Carthage, Venice, Singapore
+  - Star Trek: Barkonian iron-age town
+  - Star Wars: Cloud City on Bespin as an independent mining colony
+  - The Expanse: Ceres Station or Tycho Station as a polity of its own
+  - Warhammer 40K: a single hive city (Hive Primus on Necromunda)
+  - Orion's Arm: a lone independent habitat or orbital
+  - Judge Dredd: Mega-City One
+
+  **4: Regional**
+  - Reality: Bronze Age (~2000 BCE): Middle Kingdom Egypt, Sumerian leagues, Indus river valley
+  - Reality: modern nation states: Germany, Japan, Brazil, a typical UN member
+  - Zones of Thought: Tines kingdoms (Woodcarver's realm, the Flenser domain)
+  - Dune: Fremen as a people, spread over one planet's deserts (4-5)
+  - Technic Civilization: Long Night regressed worlds: kingdoms on former colony planets
+  - Traveller: TL1-2 agricultural worlds, balkanized
+
+  **5: Continental**
+  - Reality: Classic Age (~1 CE): Roman Empire, Han China
+  - Reality: Middle Ages (~1000 CE): Caliphates, Song China, Holy Roman Empire
+  - Reality: planetary superpowers: British Empire at its height, USA and USSR in the Cold War, USA 2023
+  - Star Trek: Eastern Coalition before World War III
+  - Zones of Thought: Spider nations (Accord, Kindred)
+  - Orion's Arm: To'ul'h states at first contact
+
+  **6: Global**
+  - Reality: Age of Sail (~1700 CE): global colonial empires
+  - Reality: Industrialization (~1850 CE), 20th Century (~1950 CE): planet-wide economy, nothing in orbit yet
+  - Firefly: a single Rim world on its own
+  - Halo: a pre-contact colony world
+  - Zones of Thought: Spiders on the eve of spaceflight
+
+  **7: Planetary**
+  - Reality: 80s: satellites, Space Shuttle, Luna visited but not held
+  - Reality: 2023: permanent orbit (ISS), satellite constellations, no settlement beyond Earth
+  - Star Trek: Earth pre-2063, Malcorians (near-warp, orbital presence)
+  - Firefly: a Border world with its moons
+  - Known Space: Grogs, Bandersnatchi: planet-bound species
+  - Dune: Ixians, Tleilaxu: single homeworlds with galaxy-wide trade
+  - Hitchhiker's Guide: Magratheans: one world, customers everywhere
+  - Foundation: Gaia: one planet with a group consciousness
+  - Star Trek: Organians: non-corporeal, one world
+
+  **8: Interplanetary**
+  - The Expanse: Outer Planets Alliance (the Belt, Jovian and Saturnian moons), Mars Congressional Republic (Mars plus outer stations), United Nations (Earth, Luna, inner planets)
+  - Reality: a near-future Mars or Belt settlement program
+  - Star Trek: Earth right after First Contact, Mars colony and Jupiter stations
+  - Galactic Developments: early orbital economy with lunar settlements
+  - Firefly: a single Border world with its moons
+  - Firefly: Independents / Browncoats: planets on the system's edge
+  - Known Space: Kdatlyno: spacefaring within their system, carried by others beyond it
+
+  **9: System**
+  - The Expanse: Sol System 2350 as a whole
+  - Star Trek: Earth ~2100, single-system worlds on first contact
+  - Firefly: the Alliance (2517): one multi-star system, 200 terraformed worlds, no FTL
+  - Orion's Arm: Solar System (Solsys) as a realm
+  - Honorverse: neobarb single-system worlds
+  - Galactic Developments: Early and Mid Solar era
+  - Zones of Thought: Slow Zone civilizations: capped to their home system
+  - Revelation Space: Demarchists (Yellowstone system)
+  - Known Space: Pierson's Puppeteers: Fleet of Worlds, five planets travelling as one system
+  - Star Trek: Prophets / Wormhole Aliens: the Bajoran system and its wormhole
+  - Perry Rhodan: Terrans at First Contact (1971-1984): one system
+
+  **10: Multi-System**
+  - Star Trek: United Earth 2150s, Andorian Empire 2161 (~14 worlds), Klingon Empire 2161 (~20 worlds), Vulcans 2063
+  - Perry Rhodan: Solares Imperium 2040 (first colonies), Topsider (three systems)
+  - Honorverse: Star Kingdom of Manticore 1903 PD (home binary plus Basilisk), Torch, Grayson
+  - Babylon 5: Narn Regime, Earth Alliance 2258
+  - Warhammer 40K: Tau Empire (~100 worlds, upper end)
+  - Foundation: Foundation (early)
+  - Mass Effect: Systems Alliance
+  - Revelation Space: Ultras, Conjoiners: dozens of systems within lighthugger range
+  - Zones of Thought: Qeng Ho: trade among a few dozen systems
+  - Known Space: Kzinti Empire, United Nations of Earth: dozens of colonies
+  - Traveller: Sword Worlds, Darrians, Droyne, 2300 AD humanity (~30 colonies)
+  - Alliance-Union: Earth Company, Alliance (Pell)
+  - Uplift: Humanity / Earthclan: a handful of colonies
+  - Dune: Great Houses (Atreides, Harkonnen): a few fiefs each
+  - Honorverse: Beowulf, Mesa, Andermani Empire (upper end)
+  - Galactic Developments: Interstellar Pocket era (~2300s-2500s): first colonies
+
+  **11: Interstellar Dominion**
+  - Star Trek: Federation 2373 (150+ member worlds, 8,000 ly), Klingon Empire and Romulan Star Empire (2370s), Cardassian Union
+  - Honorverse: Republic of Haven 1903 PD (~200 systems), Solarian League (larger, 12-13)
+  - Perry Rhodan: Posbis 2114 (Hundertsonnenwelt plus scattered bases)
+  - Babylon 5: Centauri Republic, Minbari Federation
+  - Halo: Covenant, UNSC
+  - Hyperion: Hegemony of Man (200+ worlds)
+  - Mass Effect: Citadel Council space
+  - Alliance-Union: Union, Alliance, the Compact species
+  - Star Wars: Chiss Ascendancy (~28 worlds plus client systems), Mandalorian sector
+  - Perry Rhodan: Akonen, Blues/Gataser
+  - Technic Civilization: Polesotechnic League, Domain of Ythri
+  - Traveller: Vargr Extents, Vilani First Imperium (early)
+  - Stargate: Goa'uld System Lords
+  - Hamilton: Commonwealth (Pandora's Star era): hundreds of wormhole-linked worlds
+  - Galactic Developments: Interstellar era humans, Dellians, Erui
+  - Star Trek: Sphere Builders: the Delphic Expanse
+
+  **12: Interstellar Empire**
+  - Traveller: Third Imperium (11,000 worlds), Zhodani Consulate, Solomani Confederation, Aslan Hierate, K'kree Two Thousand Worlds, Hiver Federation
+  - Orion's Arm: Diamond Network (thousands of systems scattered through the Terragen Sphere)
+  - EVE Online: the four empires of New Eden
+  - Star Trek: Federation 32nd century (reduced), Species 8472 (fluidic space as one realm)
+  - Alliance-Union: Knnn
+  - EVE Online: Jove Empire, Triglavian Collective
+  - Hyperion: Ousters: the galactic fringe
+  - Doctor Who: Cybermen
+  - Hitchhiker's Guide: Vogons
+  - Orion's Arm: S1-S3 transapient polities within the Terragen Sphere
+  - Galactic Developments: Late era humans, Chinti Swarms
+
+  **13: Galactic Power**
+  - Perry Rhodan: Großes Imperium 2040 (150,000 systems, 50,000 inhabited worlds), Arkonides in decline, Terrans Solar Empire (late)
+  - Orion's Arm: Terragen Sphere (~14,000 ly across, tens of thousands of settled systems), the Sephirotic empires
+  - Traveller: Vilani First Imperium (peak, 15,000 worlds)
+  - Dune: the Padishah Empire's known universe
+  - Star Trek: Dominion (Gamma Quadrant holdings), Romulan Star Empire at its height
+  - Honorverse: Solarian League (upper end)
+  - Warhammer 40K: Tau Empire's ambition, the Craftworld Eldar as a scattered whole
+  - Halo: Covenant at its height
+
+  **14: Galactic Sector**
+  - Star Trek: Borg Collective (large part of the Delta Quadrant)
+  - Technic Civilization: Terran Empire (4 million systems)
+  - The Culture: the Culture before the Idiran War, a large fraction of the galaxy
+  - Star Wars: Hutt Space, the Corporate Sector, the Chiss Ascendancy's Unknown Regions
+  - Foundation: Galactic Empire in decline, the Foundation's Periphery
+  - Star Wars: First Order, Rakata Infinite Empire (at its height 15)
+  - Perry Rhodan: Maahks (Andromeda), Springer trade network
+  - Zones of Thought: Upper Beyond civilizations, the Powers of the Transcend
+  - Uplift: a typical Galactic patron race
+  - Traveller: the Ancients
+  - Babylon 5: Walkers of Sigma 957, Kirishiac Lords
+  - Hamilton: Anomine, Raiel (lower end)
+  - Galactic Developments: Kisori / Golden Empire
+  - The Culture: Homomda, Gzilt, Dra'Azon
+
+  **15: Galactic**
+  - Warhammer 40K: Imperium of Man M41 (a million worlds across the galaxy), Orks (present everywhere, no single realm)
+  - Star Wars: Galactic Republic, Galactic Empire, New Republic
+  - Foundation: Galactic Empire at its peak (25 million worlds)
+  - Mass Effect: Reapers (galaxy-wide harvest), the mass relay network
+  - Star Trek: Iconian gateway network at its height
+  - Dune: Omnius / Thinking Machines
+  - Hitchhiker's Guide: galactic civilization
+  - Star Trek: Tkon Empire, Progenitors (galaxy-wide seeding)
+  - Known Space: Thrintun / Tnuctipun, Outsiders roaming the galaxy
+  - Star Wars: Celestials / Architects
+  - Dune: Spacing Guild monopoly
+  - Babylon 5: Vorlon Empire, Shadows: galaxy-wide influence, few worlds
+  - Halo: Forerunner ecumene (3 million worlds)
+  - Warhammer 40K: Necrons (tomb worlds across the galaxy), Eldar pre-Fall, Old Ones, C'tan, Dark Age of Technology
+  - Mass Effect: Leviathans
+  - Revelation Space: Inhibitors / Wolves
+  - Hyperion: TechnoCore
+  - Xeelee Sequence: Humans (late era)
+  - Zones of Thought: the Blight, Countermeasure
+  - Foundation: Galaxia (concept)
+
+  **16: Intergalactic**
+  - Perry Rhodan: Terrans of the NGZ era, the Swarm, Cynos
+  - Warhammer 40K: Tyranids
+  - Star Wars: Yuuzhan Vong (arrived from another galaxy)
+  - Stargate: Asgard (Ida and Milky Way), Ori, Replicators
+  - Star Trek: Nacene / Caretaker
+  - Doctor Who: Daleks at their height
+  - Stargate: Ancients / Alterans (Milky Way and Pegasus), Ori (Ori galaxy and Milky Way)
+  - Perry Rhodan: Seven Mighty Ones (seeded several galaxies)
+  - Babylon 5: Thirdspace Aliens
+  - Halo: Flood Key Minds
+  - Doctor Who: Time Lords (as depicted)
+
+  **17: Supercluster**
+  - Perry Rhodan: DORIFER (50 million light-year jurisdiction), Pangalaktische Statistiker (observation across 50 million light-years), Superintelligences with Mächtigkeitsballungen of dozens of galaxies
+  - Xeelee Sequence: Xeelee builders of Bolder's Ring (millions of light-years across)
+  - Orion's Arm: the Leviathan (a galaxy converted into a mobile megastructure, roaming the cluster)
+  - Uplift: Five Galaxies civilization
+  - Perry Rhodan: Porleyter, Knights of the Deep, Servants of Matter: agents across a Mächtigkeitsballung
+  - Uplift: Senior Galactic races, the Progenitors
+
+  **18: Cosmic**
+  - Xeelee Sequence: Xeelee, Photino Birds: active across the whole universe
+  - Halo: Precursors
+  - Doctor Who: Time Lords (peak): the Web of Time
+  - Perry Rhodan: Si Kitu, the Superintelligences as a whole
+  - Star Trek: Douwd (capable anywhere, acts in one place)
+  - Zones of Thought: the Zones themselves, if read as a power
+
+  **19: Multiverse**
+  - Perry Rhodan: Kosmokraten, Chaotarchen, Thez: beyond the Horizont des GESETZES
+  - Star Trek: Q Continuum: pocket realities, alternate timelines
+  - Warhammer 40K: Chaos Gods: the Immaterium as a parallel realm
+  - The Culture: the Sublimed, the Excession (inter-universal)
+  - Hyperion: Lions, Tigers, and Bears: the Void Which Binds
+  - Doctor Who: Time Lords (peak): the Void between universes
+
+  **20: Absolute**
+  - Bible: God: creates and sustains the universe, acts anywhere at will (Genesis 1, the miracles as clarketech effects from an SF point of view)
+  - Simulation Hypothesis: the Simulator: complete read and write access to the simulated universe including its past
+  - Asimov, The Last Question: the Cosmic AC after the end of time, creating the next universe
+  - Perry Rhodan: GESETZ / the LAW: the principle governing all existence
+  - Comics: The One Above All (Marvel), The Presence (DC): author-level entities
+  - (No SF civilization is expected to reach this level; it marks the top of the scale)
+
+  # References
+
+  - [Kardashev Scale](https://en.wikipedia.org/wiki/Kardashev_scale) - Type I-III by energy, with the Zubrin extension by distance from the homeworld
+  - [Traveller: Astrography](https://wiki.travellerrpg.com/Astrography) - subsector, sector, domain as units of interstellar space
+  - [Star Wars: The Essential Atlas](https://starwars.com/news/star-wars-the-essential-atlas-mapping-a-living-book) - systems, sectors, oversectors and regions of the galaxy
+  - [Galactic Developments](https://www.galactic-developments.de/) - the eras of a future history from the solar system to an interstellar empire
+  - [Stellaris: Empire size](https://stellaris.paradoxwikis.com/Empire_size) - size as a game mechanic driven by systems, colonies and pops
+  - [Traveller: Interstellar polities](https://wiki.travellerrpg.com/Polity) - naming by size from pocket empire to galactic empire
+  - [TV Tropes: Standard Sci-Fi Setting](https://tvtropes.org/pmwiki/pmwiki.php/Main/StandardSciFiSetting) - the usual ladder from home system to galactic empire

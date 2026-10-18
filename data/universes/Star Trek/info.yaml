@@ -26,7 +26,7 @@ links:
     - link: https://en.wikipedia.org/wiki/Star_Trek
       text: Star Trek on Wikipedia
 editors: [wolfspelz]
-showcaseMetrics: [Population, Planets, Kardashev, Techlevel, Class]
+showcaseMetrics: [Population, Planets, Kardashev, Techlevel, Domain, Reach]
 sources:
   # Primary wiki
   - https://memory-alpha.fandom.com/wiki/Klingon_Empire  # territory, government, military
