@@ -220,6 +220,7 @@ Ordered from most to least reliable:
 **Image requirements:**
 - Verify the image can be embedded (test from different origin)
 - All images MUST have complete attribution: `src`, `link`, `author`, `license`, `legal`
+- Never write "Fair Use" in `legal`. For copyrighted images use the Bildzitat (§ 51 UrhG) wording from CLAUDE.md, section Image Rights
 
 **Adding images to existing entities:**
 - When adding images to an already existing universe, power, or civilization, include ALL existing images together with the new candidates in the image selector

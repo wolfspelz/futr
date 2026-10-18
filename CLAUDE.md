@@ -12,6 +12,15 @@ FUTR (Fictional Universe Taxonomy Research) collects and analyzes statistical da
 - Keep commit messages short: max 2 lines
 - NEVER commit automatically. Only commit when the user explicitly asks for it in that turn, even if an approved plan contains a commit step
 
+## Image Rights
+
+- Never write "Fair Use" in an image `legal` field. Fair Use is US law and does not apply to this German-hosted site.
+- Prefer freely licensed images (Creative Commons, Public Domain) with full attribution.
+- For copyrighted images that are unavoidable (book covers, film stills, logos) use this `legal` wording:
+  `Copyrighted <what> by <author/holder>. Shown as a pictorial quotation (Bildzitat, § 51 UrhG) with source attribution, not under a license. All rights remain with the rights holder. Rights holders can request removal via the Imprint page.`
+- Such images need a content relation on the page (the work is a source or subject of the text), not decoration only.
+- The takedown contact lives on `/Imprint` (`src/futr/Pages/Imprint.cshtml`).
+
 ## Tools
 
 Do not ask for these commands in this folder: ls, grep, find, tree

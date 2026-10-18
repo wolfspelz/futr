@@ -1,6 +1,6 @@
 title: Warhammer 40,000
 created: 2026-01-27
-changed: 2026-02-04
+changed: 2026-10-18
 order: 0
 tags: [index, new]
 showcaseMetrics: [Population, Planets, Government, Techlevel, Class]
@@ -10,26 +10,26 @@ images:
     link: https://www.warhammer-community.com/en-gb/articles/omgjr6bi/warhammer-40000-and-warhammer-age-of-sigmar-wallpapers/
     author: Games Workshop
     license: © Games Workshop
-    legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
+    legal: Copyrighted by Games Workshop. Shown as a pictorial quotation (Bildzitat, § 51 UrhG) with source attribution, not under a license. All rights remain with the rights holder. Rights holders can request removal via the Imprint page.
     tags: [main]
   - src: https://wh40k.lexicanum.com/mediawiki/images/d/dd/Horus_vs_The_Emperor.jpg
     text: The Emperor confronting Horus
     link: https://wh40k.lexicanum.com/wiki/Emperor_of_Mankind
     author: Adrian Smith
     license: © Games Workshop
-    legal: Copyrighted artwork by Adrian Smith for Games Workshop. Used for commentary and educational purposes under Fair Use.
+    legal: Copyrighted artwork by Adrian Smith for Games Workshop. Shown as a pictorial quotation (Bildzitat, § 51 UrhG) with source attribution, not under a license. All rights remain with the rights holder. Rights holders can request removal via the Imprint page.
   - src: https://wh40k.lexicanum.com/mediawiki/images/e/e8/God-Emperor.jpg
     text: The Emperor on the Golden Throne
     link: https://wh40k.lexicanum.com/wiki/Emperor_of_Mankind
     author: John Blanche
     license: © Games Workshop
-    legal: Copyrighted artwork by John Blanche for Games Workshop. Used for commentary and educational purposes under Fair Use.
+    legal: Copyrighted artwork by John Blanche for Games Workshop. Shown as a pictorial quotation (Bildzitat, § 51 UrhG) with source attribution, not under a license. All rights remain with the rights holder. Rights holders can request removal via the Imprint page.
   - src: https://wh40k.lexicanum.com/mediawiki/images/7/7c/9thEdMap.jpg
     text: Galaxy map of the Imperium
     link: https://wh40k.lexicanum.com/wiki/Imperium_of_Man
     author: Games Workshop
     license: © Games Workshop
-    legal: Copyrighted by Games Workshop. Used for commentary and educational purposes under Fair Use.
+    legal: Copyrighted by Games Workshop. Shown as a pictorial quotation (Bildzitat, § 51 UrhG) with source attribution, not under a license. All rights remain with the rights holder. Rights holders can request removal via the Imprint page.
 links:
   - link: https://warhammer40000.com/
     text: "Official Website"
