@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manticore 1903 PD — FUTR</title>
+<meta name="description" content="The Star Kingdom of Manticore in 1903 PD (Honorverse): population, planets, warships, techlevel and more, with confidence and sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+SC:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="seal-futr" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="1.2">
+      <circle cx="32" cy="32" r="30"/>
+      <circle cx="32" cy="32" r="25" stroke-dasharray="1.5 4" stroke-width=".9"/>
+      <polygon points="32,8 52.8,20 52.8,44 32,56 11.2,44 11.2,20"/>
+      <polygon points="32,20 42.4,26 42.4,38 32,44 21.6,38 21.6,26"/>
+      <path d="M32 8 L32 56 M11.2 20 L52.8 44 M11.2 44 L52.8 20" stroke-opacity=".5" stroke-width=".8"/>
+    </g>
+    <circle cx="32" cy="32" r="3" fill="currentColor"/>
+  </symbol>
+  <symbol id="orn-rule" viewBox="0 0 110 14">
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <path d="M0 7 H40 M70 7 H110"/>
+      <path d="M55 1 L61 7 L55 13 L49 7 Z"/>
+      <path d="M40 7 L44 4 L48 7 L44 10 Z M62 7 L66 4 L70 7 L66 10 Z" stroke-width=".8"/>
+    </g>
+    <circle cx="55" cy="7" r="1.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="ico-arrow" viewBox="0 0 14 14"><path d="M1 7 H12 M8 3 L12 7 L8 11" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+
+  <!-- Confidence seals: from imperial seal (Canon) down to a scribbled margin note (WildGuess) -->
+  <symbol id="conf-canon" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <circle cx="12" cy="12" r="11"/>
+      <circle cx="12" cy="12" r="8.6" stroke-width=".7"/>
+      <path d="M12 1 V3 M23 12 H21 M12 23 V21 M1 12 H3" stroke-width=".8"/>
+    </g>
+    <polygon points="12,5.5 13.53,9.9 18.18,9.99 14.47,12.8 15.82,17.26 12,14.6 8.18,17.26 9.53,12.8 5.82,9.99 10.47,9.9" fill="currentColor"/>
+  </symbol>
+  <symbol id="conf-semicanon" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <circle cx="12" cy="12" r="11"/>
+      <polygon points="12,5.5 13.53,9.9 18.18,9.99 14.47,12.8 15.82,17.26 12,14.6 8.18,17.26 9.53,12.8 5.82,9.99 10.47,9.9"/>
+    </g>
+  </symbol>
+  <symbol id="conf-calculated" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <circle cx="12" cy="12" r="11"/>
+      <path d="M12 4 L19 18 H5 Z"/>
+      <path d="M12 4 V18 M5 18 L19 18" stroke-width=".6" stroke-opacity=".6"/>
+    </g>
+    <circle cx="12" cy="13.5" r="1.3" fill="currentColor"/>
+  </symbol>
+  <symbol id="conf-informedguess" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <circle cx="12" cy="12" r="11" stroke-dasharray="3 2.5"/>
+      <circle cx="12" cy="12" r="5"/>
+    </g>
+    <circle cx="12" cy="12" r="1.4" fill="currentColor"/>
+  </symbol>
+  <symbol id="conf-calculatedguess" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <circle cx="12" cy="12" r="11" stroke-dasharray="3 2.5"/>
+      <path d="M12 5 L18 17 H6 Z" stroke-dasharray="2 1.5"/>
+    </g>
+  </symbol>
+  <symbol id="conf-wildguess" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round">
+      <path d="M4 15 C6 9 8 7 9 9 C10 11 7 16 9 16 C11 16 13 7 15 8 C17 9 14 16 16 16 C18 16 19 11 20 9"/>
+      <path d="M5 19 C9 18 15 18 19 19" stroke-opacity=".6"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="codex-header">
+  <div class="frame">
+    <a class="brand" href="index.html" aria-label="FUTR home">
+      <svg style="color:var(--gold)"><use href="#seal-futr"/></svg>
+      <span>
+        <span class="brand-word">FUTR</span>
+        <span class="brand-long" style="display:block">Fictional Universe Taxonomy Research</span>
+      </span>
+    </a>
+    <nav class="codex-nav" aria-label="Primary">
+      <a href="index.html#universes" aria-current="page">Universes</a>
+      <a href="index.html#metrics">Metrics</a>
+      <a href="#">Powers</a>
+      <a href="index.html#workshop">Contribute</a>
+      <a href="#">Discord</a>
+      <a href="https://github.com/wolfspelz/futr">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="frame">
+
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="index.html">Codex</a><span class="sep">›</span>
+    <a href="index.html#universes">Universes</a><span class="sep">›</span>
+    <a href="universe.html">Honorverse</a><span class="sep">›</span>
+    <span aria-current="page">Manticore 1903 PD</span>
+  </nav>
+
+  <header class="folio-head">
+    <div class="over">Folio II · Leaf II · Civilization</div>
+    <h1>Manticore 1903 PD</h1>
+    <div class="meta-line">
+      <span><b>Universe</b> <a href="universe.html">Honorverse</a></span>
+      <span><b>Power</b> <a href="#">Star Kingdom of Manticore</a></span>
+      <span><b>Date</b> <span class="tabular">1903 PD</span></span>
+      <span><b>Tags</b> <span class="tags"><span class="tag">index</span><span class="tag new">new</span></span></span>
+    </div>
+  </header>
+
+  <div class="spread">
+    <div class="text dropcap">
+      <p>The Star Kingdom of Manticore during the events of “The Honor of the Queen” (1903 PD), on the eve of war with the People's Republic of Haven. Captain Honor Harrington commands HMS Fearless on a diplomatic mission to Grayson, leading to the Treaty of Alliance between Manticore and the Protectorate of Grayson. This period marks Manticore's transition from peaceful trading power to wartime footing, as the expansionist People's Republic of Haven threatens the Manticoran Wormhole Junction.</p>
+
+      <div class="aside-block">
+        <h4>References</h4>
+        <ul class="refs">
+          <li><a href="https://honorverse.fandom.com/wiki/Timeline">Honorverse Timeline</a><small>fandom.com</small></li>
+          <li><a href="https://en.wikipedia.org/wiki/The_Honor_of_the_Queen">Wikipedia – The Honor of the Queen</a><small>wikipedia.org</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="side">
+      <figure class="plate-frame" style="margin:0">
+        <img src="https://www.baen.com/media/catalog/product/0/7/0743435729-med.jpg" alt="The Honor of the Queen book cover" title="David Mattingly, © Baen Books" onerror="this.onerror=null;this.src='placeholder.svg'">
+        <figcaption><b>The Honor of the Queen – book cover</b><br>David Mattingly · © Baen Books</figcaption>
+      </figure>
+    </aside>
+  </div>
+
+  <!-- ======= Register (summary) ======= -->
+  <section class="chapter register" id="register">
+    <div class="chapter-label"><span class="numeral">I</span> the register</div>
+    <h2>Measures at a Glance</h2>
+    <p class="lede">Nine datapoints are inscribed for this civilization. Each carries a seal of confidence: the imperial seal for Canon, down to a scribbled margin note for a Wild Guess. Select a row for bounds, sources and the full argument.</p>
+
+    <div class="scroll-x" style="margin-top:1.2rem">
+      <table class="ledger">
+        <thead>
+          <tr><th class="idx"></th><th>Metric</th><th class="num">Value</th><th>1σ Bounds</th><th>Confidence</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="idx">I</td><td><a class="name" href="#dp-1">Class</a></td><td class="num val" title="10">10</td><td class="rng">—</td><td><span class="conf informedguess"><svg><use href="#conf-informedguess"/></svg>Informed Guess</span></td></tr>
+          <tr><td class="idx">II</td><td><a class="name" href="#dp-2">Government</a></td><td class="num val" style="white-space:normal;min-width:14ch">Constitutional Monarchy</td><td class="rng">—</td><td><span class="conf canon"><svg><use href="#conf-canon"/></svg>Canon</span></td></tr>
+          <tr><td class="idx">III</td><td><a class="name" href="#dp-3">Kardashev</a></td><td class="num val" title="1.1">1.1</td><td class="rng tabular">1.0 – 1.2</td><td><span class="conf calculatedguess"><svg><use href="#conf-calculatedguess"/></svg>Calculated Guess</span></td></tr>
+          <tr><td class="idx">IV</td><td><a class="name" href="#dp-4">Planets</a></td><td class="num val" title="3">3</td><td class="rng">—</td><td><span class="conf canon"><svg><use href="#conf-canon"/></svg>Canon</span></td></tr>
+          <tr><td class="idx">V</td><td><a class="name" href="#dp-5">Population</a></td><td class="num val" title="3.2e9">3.2 billion</td><td class="rng tabular" title="2.8e9 – 3.5e9">2.8 – 3.5 billion</td><td><span class="conf informedguess"><svg><use href="#conf-informedguess"/></svg>Informed Guess</span></td></tr>
+          <tr><td class="idx">VI</td><td><a class="name" href="#dp-6">Star Systems</a></td><td class="num val" title="2">2</td><td class="rng">—</td><td><span class="conf canon"><svg><use href="#conf-canon"/></svg>Canon</span></td></tr>
+          <tr><td class="idx">VII</td><td><a class="name" href="#dp-7">Tech Summary</a></td><td class="num val" style="white-space:normal;min-width:14ch">FTL-capable spacefaring</td><td class="rng">—</td><td><span class="conf informedguess"><svg><use href="#conf-informedguess"/></svg>Informed Guess</span></td></tr>
+          <tr><td class="idx">VIII</td><td><a class="name" href="#dp-8">Techlevel</a></td><td class="num val" title="9">TL 9</td><td class="rng">—</td><td><span class="conf informedguess"><svg><use href="#conf-informedguess"/></svg>Informed Guess</span></td></tr>
+          <tr><td class="idx">IX</td><td><a class="name" href="#dp-9">Warships</a></td><td class="num val" title="1621">1,621</td><td class="rng tabular">1,500 – 1,700</td><td><span class="conf canon"><svg><use href="#conf-canon"/></svg>Canon</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legend" aria-label="Confidence seals, most reliable first">
+      <span class="conf canon"><svg><use href="#conf-canon"/></svg>Canon</span>
+      <span class="conf semicanon"><svg><use href="#conf-semicanon"/></svg>Semi-Canon</span>
+      <span class="conf calculated"><svg><use href="#conf-calculated"/></svg>Calculated</span>
+      <span class="conf informedguess"><svg><use href="#conf-informedguess"/></svg>Informed Guess</span>
+      <span class="conf calculatedguess"><svg><use href="#conf-calculatedguess"/></svg>Calculated Guess</span>
+      <span class="conf wildguess"><svg><use href="#conf-wildguess"/></svg>Wild Guess</span>
+    </div>
+  </section>
+
+  <div class="rule"><svg><use href="#orn-rule"/></svg></div>
+
+  <!-- ======= Datapoints ======= -->
+  <section class="chapter" id="datapoints">
+    <div class="chapter-label"><span class="numeral">II</span> the entries</div>
+    <h2>Datapoints</h2>
+
+    <div class="entries">
+
+      <!-- I Class -->
+      <article class="dp" id="dp-1">
+        <div class="numeral">I<small>entry</small></div>
+        <div>
+          <div class="dp-head">
+            <h3><a href="#" style="color:inherit">Class</a><small>1 – 20</small></h3>
+            <div class="dp-value" title="10">10 <small>Interstellar Dominion</small></div>
+          </div>
+          <div style="margin-top:.8rem"><span class="conf informedguess"><svg><use href="#conf-informedguess"/></svg>Informed Guess</span></div>
+          <div class="dp-body">
+            <p>Hyperspace FTL, impeller wedge drives, Manticoran Wormhole Junction. Multi-system polity with advanced warships. Class 10 Interstellar Dominion.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- II Government -->
+      <article class="dp" id="dp-2">
+        <div class="numeral">II<small>entry</small></div>
+        <div>
+          <div class="dp-head">
+            <h3><a href="#" style="color:inherit">Government</a><small>text</small></h3>
+            <div class="dp-value">Constitutional Monarchy</div>
+          </div>
+          <div style="margin-top:.8rem"><span class="conf canon"><svg><use href="#conf-canon"/></svg>Canon</span></div>
+          <div class="dp-body">
+            <p>The Star Kingdom operates as a constitutional monarchy established in 1485 PD when Roger Winton was crowned King Roger I. The government consists of: The Monarch (House of Winton) as head of state with Royal Prerogative powers; A bicameral Parliament with House of Lords (upper) and House of Commons (lower); A Prime Minister leading the government via parliamentary majority; The Royal Council (Cabinet) advising the Crown. The Constitution requires heirs to the throne to marry commoners to maintain connection with the people.</p>
+          </div>
+          <ul class="refs">
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Star Kingdom of Manticore</a></li>
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Parliament of Manticore</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- III Kardashev -->
+      <article class="dp" id="dp-3">
+        <div class="numeral">III<small>entry</small></div>
+        <div>
+          <div class="dp-head">
+            <h3><a href="#" style="color:inherit">Kardashev</a><small>Kardashev scale</small></h3>
+            <div class="dp-value" title="1.1">1.1</div>
+          </div>
+          <div style="margin-top:.8rem"><span class="conf calculatedguess"><svg><use href="#conf-calculatedguess"/></svg>Calculated Guess</span></div>
+          <div class="range" aria-label="Range 1.0 to 1.2, value 1.1">
+            <div class="track"><div class="band" style="left:15%;width:70%"></div><div class="mark" style="left:50%"></div></div>
+            <div class="labels"><span class="lo" style="left:15%">min 1.0</span><span class="v" style="left:50%">1.1</span><span class="hi" style="left:85%">max 1.2</span></div>
+            <div class="sigma">1σ bounds · gilded rule</div>
+          </div>
+          <div class="dp-body">
+            <p>Estimated based on economic output relative to Sol System in 1900 PD: Manticore's GSP was 78% of Sol's GSP (the highest in human space). Manticore achieved this with ~3.2 billion people vs Sol's 10+ billion. Per-capita economic output approximately 2-3x Sol's. Technology includes interstellar travel, fusion power, and advanced industry. Sol System in 1900 PD is an advanced interstellar hub, estimated at K~1.1-1.3. Manticore at 78% of that economic output with 1/3 the population indicates very high energy usage per capita. However, neither civilization harvests stellar-scale energy (not Type II), placing Manticore solidly in the Type I range at approximately K=1.1.</p>
+          </div>
+          <ul class="refs">
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Manticore Wormhole Junction</a></li>
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Gross System Product</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- IV Planets -->
+      <article class="dp" id="dp-4">
+        <div class="numeral">IV<small>entry</small></div>
+        <div>
+          <div class="dp-head">
+            <h3><a href="#" style="color:inherit">Planets</a><small>planets</small></h3>
+            <div class="dp-value" title="3">3</div>
+          </div>
+          <div style="margin-top:.8rem"><span class="conf canon"><svg><use href="#conf-canon"/></svg>Canon</span></div>
+          <div class="dp-body">
+            <p>The Manticore Binary System contains three inhabited planets: Manticore (capital world, Manticore-A III); Sphinx (Manticore-A IV, homeworld of treecats); Gryphon (Manticore-B IV, only habitable world in the B subsystem). All three were settled by the original colonists who arrived aboard the sublight colony ship Jason in 1416 PD.</p>
+          </div>
+          <ul class="refs">
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Manticore System</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- V Population -->
+      <article class="dp" id="dp-5">
+        <div class="numeral">V<small>entry</small></div>
+        <div>
+          <div class="dp-head">
+            <h3><a href="#" style="color:inherit">Population</a><small>people</small></h3>
+            <div class="dp-value" title="3.2e9">3.2 billion <small>3.2 × 10⁹</small></div>
+          </div>
+          <div style="margin-top:.8rem"><span class="conf informedguess"><svg><use href="#conf-informedguess"/></svg>Informed Guess</span></div>
+          <div class="range" aria-label="Range 2.8 billion to 3.5 billion, value 3.2 billion">
+            <div class="track"><div class="band" style="left:15%;width:70%"></div><div class="mark" style="left:55%"></div></div>
+            <div class="labels"><span class="lo" style="left:15%" title="2.8e9">min 2.8 B</span><span class="v" style="left:55%">3.2 B</span><span class="hi" style="left:85%" title="3.5e9">max 3.5 B</span></div>
+            <div class="sigma">1σ bounds · gilded rule</div>
+          </div>
+          <div class="dp-body">
+            <p>Estimated total population across the three inhabited planets of the Manticore System (Manticore, Sphinx, Gryphon) plus asteroid belt populations. By 1922 PD the system had ~3.6 billion; by 1920 PD Sphinx had 1.2 billion and Gryphon had ~575 million (planet) plus 298 million in asteroid belts. Extrapolating backward to 1903 PD suggests approximately 3.2 billion total, with most residing in the Manticore-A subsystem.</p>
+          </div>
+          <ul class="refs">
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Manticore System</a></li>
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Sphinx</a></li>
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Gryphon</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- VI Star Systems -->
+      <article class="dp" id="dp-6">
+        <div class="numeral">VI<small>entry</small></div>
+        <div>
+          <div class="dp-head">
+            <h3><a href="#" style="color:inherit">Star Systems</a><small>systems</small></h3>
+            <div class="dp-value" title="2">2</div>
+          </div>
+          <div style="margin-top:.8rem"><span class="conf canon"><svg><use href="#conf-canon"/></svg>Canon</span></div>
+          <div class="dp-body">
+            <p>By 1903 PD, the Star Kingdom of Manticore controlled two star systems: The Manticore Binary System (home system with three inhabited planets); The Basilisk System (annexed in 1865 PD to control the wormhole terminus). The Endicott System (Masada) came under military occupation during 1903 PD following the events of “Honor of the Queen,” but was not yet formally incorporated.</p>
+          </div>
+          <ul class="refs">
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Star Kingdom of Manticore</a></li>
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Basilisk System</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- VII Tech Summary -->
+      <article class="dp" id="dp-7">
+        <div class="numeral">VII<small>entry</small></div>
+        <div>
+          <div class="dp-head">
+            <h3><a href="#" style="color:inherit">Tech Summary</a><small>text</small></h3>
+            <div class="dp-value">FTL-capable spacefaring</div>
+          </div>
+          <div style="margin-top:.8rem"><span class="conf informedguess"><svg><use href="#conf-informedguess"/></svg>Informed Guess</span></div>
+          <div class="dp-body">
+            <p>Hyperspace FTL, impeller drives, wormhole junction.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- VIII Techlevel -->
+      <article class="dp" id="dp-8">
+        <div class="numeral">VIII<small>entry</small></div>
+        <div>
+          <div class="dp-head">
+            <h3><a href="#" style="color:inherit">Techlevel</a><small>TL 1 – 15</small></h3>
+            <div class="dp-value" title="9">TL 9 <small>FTL</small></div>
+          </div>
+          <div style="margin-top:.8rem"><span class="conf informedguess"><svg><use href="#conf-informedguess"/></svg>Informed Guess</span></div>
+          <div class="dp-body">
+            <p>TL 9 FTL. Hyperspace FTL, impeller wedge drives (gravitics), grav-pulse communications. Hardest tech: impeller wedge, i.e. artificial gravity manipulation for propulsion and defense. No replicators, no transporters, no matter-energy conversion technology. Manticoran Wormhole Junction is a natural phenomenon, not built technology. Advanced missile tech (multi-drive missiles) but still kinetic/energy weapons.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- IX Warships -->
+      <article class="dp" id="dp-9">
+        <div class="numeral">IX<small>entry</small></div>
+        <div>
+          <div class="dp-head">
+            <h3><a href="#" style="color:inherit">Warships</a><small>ships</small></h3>
+            <div class="dp-value" title="1621">1,621</div>
+          </div>
+          <div style="margin-top:.8rem"><span class="conf canon"><svg><use href="#conf-canon"/></svg>Canon</span></div>
+          <div class="range" aria-label="Range 1500 to 1700, value 1621">
+            <div class="track"><div class="band" style="left:15%;width:70%"></div><div class="mark" style="left:57.4%"></div></div>
+            <div class="labels"><span class="lo" style="left:15%">min 1,500</span><span class="v" style="left:57.4%">1,621</span><span class="hi" style="left:85%">max 1,700</span></div>
+            <div class="sigma">1σ bounds · gilded rule</div>
+          </div>
+          <div class="dp-body">
+            <p>Royal Manticoran Navy fleet composition prior to the First Havenite-Manticoran War:</p>
+            <div class="fleet">
+              <table class="ledger">
+                <thead><tr><th>Ship class</th><th class="num">Hulls</th></tr></thead>
+                <tbody>
+                  <tr><td>Superdreadnoughts</td><td class="num">188</td></tr>
+                  <tr><td>Dreadnoughts</td><td class="num">121</td></tr>
+                  <tr><td>Battlecruisers</td><td class="num">199</td></tr>
+                  <tr><td>Heavy Cruisers</td><td class="num">333</td></tr>
+                  <tr><td>Light Cruisers</td><td class="num">295</td></tr>
+                  <tr><td>Destroyers</td><td class="num">485</td></tr>
+                </tbody>
+                <tfoot><tr><td>Total</td><td class="num">1,621</td></tr></tfoot>
+              </table>
+            </div>
+            <p style="margin-top:1rem">Total tonnage: 2,318.6 megatons. This represents the RMN's strength just before the war began in 1905 PD, making it essentially representative of 1903 PD strength.</p>
+          </div>
+          <ul class="refs">
+            <li><a href="https://honorverse.fandom.com/">Honorverse Wiki – Royal Manticoran Navy</a></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="rule"><svg><use href="#orn-rule"/></svg></div>
+
+  <!-- ======= Comparison ======= -->
+  <section class="chapter compare" id="compare">
+    <div class="chapter-label"><span class="numeral">III</span> concordance</div>
+    <h2>Against its Neighbours</h2>
+    <p class="lede">Manticore set beside the other civilization of this universe, and two reference points from other volumes of the codex. Bars for counts use a logarithmic scale.</p>
+
+    <ul class="bars">
+      <li>
+        <div class="lbl"><span>Population</span><b>log</b></div>
+        <div class="row"><span class="who self">Manticore</span><span class="bar"><i style="width:84%"></i></span><span class="v" title="3.2e9">3.2 B</span></div>
+        <div class="row other"><span class="who">Haven</span><span class="bar"><i style="width:100%"></i></span><span class="v" title="2e11">200 B</span></div>
+      </li>
+      <li>
+        <div class="lbl"><span>Planets</span><b>log</b></div>
+        <div class="row"><span class="who self">Manticore</span><span class="bar"><i style="width:24%"></i></span><span class="v">3</span></div>
+        <div class="row other"><span class="who">Haven</span><span class="bar"><i style="width:100%"></i></span><span class="v">100</span></div>
+      </li>
+      <li>
+        <div class="lbl"><span>Star Systems</span><b>log</b></div>
+        <div class="row"><span class="who self">Manticore</span><span class="bar"><i style="width:13%"></i></span><span class="v">2</span></div>
+        <div class="row other"><span class="who">Haven</span><span class="bar"><i style="width:100%"></i></span><span class="v">200</span></div>
+      </li>
+      <li>
+        <div class="lbl"><span>Warships</span><b>log</b></div>
+        <div class="row"><span class="who self">Manticore</span><span class="bar"><i style="width:96.6%"></i></span><span class="v">1,621</span></div>
+        <div class="row other"><span class="who">Haven</span><span class="bar"><i style="width:100%"></i></span><span class="v">2,106</span></div>
+      </li>
+      <li>
+        <div class="lbl"><span>Kardashev</span><b>linear</b></div>
+        <div class="row"><span class="who self">Manticore</span><span class="bar"><i style="width:100%"></i></span><span class="v">1.1</span></div>
+        <div class="row other"><span class="who">Haven</span><span class="bar"><i style="width:91%"></i></span><span class="v">1.0</span></div>
+      </li>
+      <li>
+        <div class="lbl"><span>Techlevel · Class</span><b>linear</b></div>
+        <div class="row"><span class="who self">Manticore</span><span class="bar"><i style="width:60%"></i></span><span class="v">TL 9 · Cl 10</span></div>
+        <div class="row other"><span class="who">Haven</span><span class="bar"><i style="width:60%"></i></span><span class="v">TL 9 · Cl 10</span></div>
+      </li>
+    </ul>
+
+    <div class="scroll-x" style="margin-top:2rem">
+      <table class="ledger">
+        <thead>
+          <tr><th>Civilization</th><th>Universe</th><th class="num">Population</th><th class="num">Planets</th><th class="num">Kardashev</th><th class="num">Techlevel</th><th class="num">Class</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="self">Manticore 1903 PD</td><td class="dim">Honorverse</td><td class="num self" title="3.2e9">3.2 billion</td><td class="num self">3</td><td class="num self">1.1</td><td class="num self">9</td><td class="num self">10</td></tr>
+          <tr><td><a class="name" href="#">Haven 1903 PD</a></td><td class="dim">Honorverse</td><td class="num" title="2e11">200 billion</td><td class="num">100</td><td class="num">1.0</td><td class="num">9</td><td class="num">10</td></tr>
+          <tr><td><a class="name" href="#">Federation 2373</a></td><td class="dim">Star Trek</td><td class="num" title="1e11">100 billion</td><td class="num">150</td><td class="num">1.0</td><td class="num">10</td><td class="num">10</td></tr>
+          <tr><td><a class="name" href="#">Earth 2023</a></td><td class="dim">Reality</td><td class="num dim">—</td><td class="num dim">—</td><td class="num">0.73</td><td class="num dim">—</td><td class="num dim">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="hint">Reference rows are chosen by the archive; with more civilizations a selector lets you pick your own comparisons.</p>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="frame">
+    <svg class="seal" style="color:var(--gold-dim)"><use href="#seal-futr"/></svg>
+    <div>© 2023 <span class="sep">–</span> Fictional Universe Taxonomy Research <span class="sep">–</span> FUTR Project <span class="sep">–</span> <a href="#">Impressum</a> <span class="sep">–</span> <a href="#">Privacy</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

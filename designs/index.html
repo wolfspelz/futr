@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR Design Proposals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --line: #2a2f3a;
+    --ink: #e8eaf0;
+    --muted: #8c93a3;
+    --accent: #ffcc33;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.5;
+    padding: 32px 16px 64px;
+  }
+  header { max-width: 1480px; margin: 0 auto 28px; }
+  h1 { font-size: 1.6rem; margin: 0 0 6px; font-weight: 600; }
+  header p { margin: 0; color: var(--muted); max-width: 70ch; }
+  code { font-family: "IBM Plex Mono", monospace; font-size: 0.85em; color: var(--accent); }
+  .grid {
+    max-width: 1480px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .card .shot { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #000; }
+  .card img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .35s ease; }
+  .card:hover img { transform: scale(1.03); }
+  .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .num { font-family: "IBM Plex Mono", monospace; font-size: 0.75rem; color: var(--muted); letter-spacing: .08em; }
+  .card h2 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+  .card h2 a { color: var(--ink); text-decoration: none; }
+  .card h2 a:hover { color: var(--accent); }
+  .card p { margin: 0; font-size: 0.88rem; color: #c4c9d4; }
+  .fonts { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--muted); }
+  .pages { margin-top: auto; padding-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .pages a {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: .04em;
+    color: var(--ink); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+  }
+  .pages a:hover { border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 1280px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>FUTR Design Proposals</h1>
+  <p>Twelve start-page concepts (plus two variants) for futr.space. Each folder holds a static homepage plus a Universe page (Honorverse) and a Civilization page (Manticore 1903 PD) in the same design. Content is sample data from <code>data/</code>; all lists are built for a growing catalogue.</p>
+</header>
+
+<main class="grid">
+
+  <article class="card">
+    <a class="shot" href="01-starchart/index.html"><img src="01-starchart/preview.png" alt="Starchart homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">01</span>
+      <h2><a href="01-starchart/index.html">Starchart</a></h2>
+      <p>Astronomical atlas. Universes plotted as stars on a navigational chart, dark navy with gold leaf and serif typography.</p>
+      <span class="fonts">Cormorant Garamond · Alegreya Sans</span>
+      <nav class="pages"><a href="01-starchart/index.html">Home</a><a href="01-starchart/universe.html">Universe</a><a href="01-starchart/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="02-flightdeck/index.html"><img src="02-flightdeck/preview.png" alt="Flightdeck homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">02</span>
+      <h2><a href="02-flightdeck/index.html">Flightdeck</a></h2>
+      <p>Survey console. Light grey-blue instrument panels, orange accents, gauges and a live counter strip for the data.</p>
+      <span class="fonts">Chakra Petch · IBM Plex Sans / Mono</span>
+      <nav class="pages"><a href="02-flightdeck/index.html">Home</a><a href="02-flightdeck/universe.html">Universe</a><a href="02-flightdeck/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="03-monolith/index.html"><img src="03-monolith/preview.png" alt="Monolith homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">03</span>
+      <h2><a href="03-monolith/index.html">Monolith</a></h2>
+      <p>Brutalist typography. Oversized condensed headlines on bone-white, chartreuse highlight, monospace data tables.</p>
+      <span class="fonts">Anton · IBM Plex Mono</span>
+      <nav class="pages"><a href="03-monolith/index.html">Home</a><a href="03-monolith/universe.html">Universe</a><a href="03-monolith/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="03b-monolith-chart/index.html"><img src="03b-monolith-chart/preview.png" alt="Monolith chart variant homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">03b</span>
+      <h2><a href="03b-monolith-chart/index.html">Monolith, chart and records</a></h2>
+      <p>Variant of 03: six switchable plots (tech, energy, reach, planets, fleets) replace the orbit graphic, and a wall of record holders replaces the database counts.</p>
+      <span class="fonts">Anton &middot; IBM Plex Mono</span>
+      <nav class="pages"><a href="03b-monolith-chart/index.html">Home</a><a href="03b-monolith-chart/universe.html">Universe</a><a href="03b-monolith-chart/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="04-pulp/index.html"><img src="04-pulp/preview.png" alt="Pulp homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">04</span>
+      <h2><a href="04-pulp/index.html">Pulp</a></h2>
+      <p>Golden-age pulp magazine. Cream halftone paper, slab headlines, magazine-cover hero and starburst stickers.</p>
+      <span class="fonts">Bowlby One · Alfa Slab One · Karla</span>
+      <nav class="pages"><a href="04-pulp/index.html">Home</a><a href="04-pulp/universe.html">Universe</a><a href="04-pulp/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="05-holoscape/index.html"><img src="05-holoscape/preview.png" alt="Holoscape homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">05</span>
+      <h2><a href="05-holoscape/index.html">Holoscape</a></h2>
+      <p>Modern holographic UI. Deep space nebula background, frosted-glass panels, iridescent accents on large geometric type.</p>
+      <span class="fonts">Syne · Manrope</span>
+      <nav class="pages"><a href="05-holoscape/index.html">Home</a><a href="05-holoscape/universe.html">Universe</a><a href="05-holoscape/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="06-blueprint/index.html"><img src="06-blueprint/preview.png" alt="Blueprint homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">06</span>
+      <h2><a href="06-blueprint/index.html">Blueprint</a></h2>
+      <p>Engineering drawing. Cyanotype grid, dimension lines and callouts, title blocks for each entity. Paper-mode toggle.</p>
+      <span class="fonts">Jost · JetBrains Mono</span>
+      <nav class="pages"><a href="06-blueprint/index.html">Home</a><a href="06-blueprint/universe.html">Universe</a><a href="06-blueprint/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="06b-blueprint-color/index.html"><img src="06b-blueprint-color/preview.png" alt="Blueprint colour variant homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">06b</span>
+      <h2><a href="06b-blueprint-color/index.html">Blueprint, colour photos</a></h2>
+      <p>Variant of 06: images keep their original colours like mounted photographs, and the hero drawing is replaced by six switchable plots over all civilizations.</p>
+      <span class="fonts">Jost · JetBrains Mono</span>
+      <nav class="pages"><a href="06b-blueprint-color/index.html">Home</a><a href="06b-blueprint-color/universe.html">Universe</a><a href="06b-blueprint-color/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="07-codex/index.html"><img src="07-codex/preview.png" alt="Codex homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">07</span>
+      <h2><a href="07-codex/index.html">Codex</a></h2>
+      <p>Illuminated encyclopedia. Obsidian and bronze, drop caps, ledger tables, a volume-and-chapter structure for the catalogue.</p>
+      <span class="fonts">Cinzel Decorative · Cormorant SC · EB Garamond</span>
+      <nav class="pages"><a href="07-codex/index.html">Home</a><a href="07-codex/universe.html">Universe</a><a href="07-codex/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="08-missioncontrol/index.html"><img src="08-missioncontrol/preview.png" alt="Mission Control homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">08</span>
+      <h2><a href="08-missioncontrol/index.html">Mission Control</a></h2>
+      <p>Apollo-era control room. Warm beige consoles, CRT status screen, split-flap counters, mission clock and telemetry ticker.</p>
+      <span class="fonts">Michroma · Orbitron · Overpass · Share Tech Mono</span>
+      <nav class="pages"><a href="08-missioncontrol/index.html">Home</a><a href="08-missioncontrol/universe.html">Universe</a><a href="08-missioncontrol/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="09-solarpunk/index.html"><img src="09-solarpunk/preview.png" alt="Solarpunk homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">09</span>
+      <h2><a href="09-solarpunk/index.html">Solarpunk</a></h2>
+      <p>Orbital greenhouse. Light sage and terracotta, soft gradients, universes as seeds on orbit paths around an observatory.</p>
+      <span class="fonts">Fraunces · Nunito Sans</span>
+      <nav class="pages"><a href="09-solarpunk/index.html">Home</a><a href="09-solarpunk/universe.html">Universe</a><a href="09-solarpunk/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="10-megastructure/index.html"><img src="10-megastructure/preview.png" alt="Megastructure homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">10</span>
+      <h2><a href="10-megastructure/index.html">Megastructure</a></h2>
+      <p>Industrial dockyard. Gunmetal panels, hazard stripes, stencil headlines; universes are docking bays, civilizations are manifests.</p>
+      <span class="fonts">Big Shoulders Stencil · Barlow Condensed · Share Tech Mono</span>
+      <nav class="pages"><a href="10-megastructure/index.html">Home</a><a href="10-megastructure/universe.html">Universe</a><a href="10-megastructure/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="11-dataverse/index.html"><img src="11-dataverse/preview.png" alt="Dataverse homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">11</span>
+      <h2><a href="11-dataverse/index.html">Dataverse</a></h2>
+      <p>Data journalism. Charcoal canvas, coral accent, an interactive bubble chart of all civilizations as the hero element.</p>
+      <span class="fonts">Unbounded · Figtree</span>
+      <nav class="pages"><a href="11-dataverse/index.html">Home</a><a href="11-dataverse/universe.html">Universe</a><a href="11-dataverse/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot" href="12-chrome/index.html"><img src="12-chrome/preview.png" alt="Chrome homepage preview" loading="lazy"></a>
+    <div class="body">
+      <span class="num">12</span>
+      <h2><a href="12-chrome/index.html">Chrome</a></h2>
+      <p>Y2K chrome. Pastel gradients, liquid-metal wordmark, thick outlines and sticker badges, marquee ticker for new entries.</p>
+      <span class="fonts">Dela Gothic One · Hanken Grotesk</span>
+      <nav class="pages"><a href="12-chrome/index.html">Home</a><a href="12-chrome/universe.html">Universe</a><a href="12-chrome/civilization.html">Civilization</a></nav>
+    </div>
+  </article>
+
+</main>
+</body>
+</html>

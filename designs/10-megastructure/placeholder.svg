@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <pattern id="hz" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect width="14" height="28" fill="#d9a81e"/>
+      <rect x="14" width="14" height="28" fill="#111"/>
+    </pattern>
+    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .35 0"/></filter>
+  </defs>
+  <rect width="400" height="250" fill="#1a1e24"/>
+  <rect width="400" height="250" filter="url(#n)" opacity=".6"/>
+  <rect x="0" y="0" width="400" height="8" fill="url(#hz)"/>
+  <rect x="0" y="242" width="400" height="8" fill="url(#hz)"/>
+  <g stroke="#6b7682" stroke-width="1" fill="none">
+    <circle cx="200" cy="118" r="34"/>
+    <circle cx="200" cy="118" r="6"/>
+    <path d="M200 70v96M152 118h96"/>
+    <path d="M24 24h22M24 24v22M376 24h-22M376 24v22M24 226h22M24 226v-22M376 226h-22M376 226v-22"/>
+  </g>
+  <g fill="#4a545f">
+    <circle cx="16" cy="16" r="2.5"/><circle cx="384" cy="16" r="2.5"/><circle cx="16" cy="234" r="2.5"/><circle cx="384" cy="234" r="2.5"/>
+  </g>
+  <text x="200" y="182" text-anchor="middle" font-family="Courier New, monospace" font-size="12" letter-spacing="3" fill="#a3aeb9">NO IMAGE ON FILE</text>
+  <text x="200" y="200" text-anchor="middle" font-family="Courier New, monospace" font-size="9" letter-spacing="2" fill="#6b7682">EXTERNAL SOURCE UNREACHABLE</text>
+</svg>

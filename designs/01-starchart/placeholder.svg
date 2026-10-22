@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="45%" r="70%">
+      <stop offset="0" stop-color="#15213d"/>
+      <stop offset="1" stop-color="#070b16"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <g fill="#ebe3cf" opacity=".7">
+    <circle cx="60" cy="50" r="1.2"/><circle cx="140" cy="330" r=".9"/><circle cx="520" cy="80" r="1.1"/>
+    <circle cx="470" cy="300" r=".8"/><circle cx="90" cy="200" r=".7"/><circle cx="560" cy="200" r="1"/>
+    <circle cx="330" cy="40" r=".8"/><circle cx="250" cy="360" r="1"/><circle cx="400" cy="350" r=".7"/>
+  </g>
+  <g fill="none" stroke="#ebe3cf" stroke-opacity=".22">
+    <circle cx="300" cy="200" r="120"/><circle cx="300" cy="200" r="86"/><circle cx="300" cy="200" r="48"/>
+    <ellipse cx="300" cy="200" rx="160" ry="56" transform="rotate(-22 300 200)"/>
+  </g>
+  <g stroke="#d2ad5a" stroke-opacity=".8" stroke-width="1.2" fill="#d2ad5a">
+    <path d="M300 164 L306 194 L336 200 L306 206 L300 236 L294 206 L264 200 L294 194 Z" fill-opacity=".9"/>
+  </g>
+  <text x="300" y="300" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#ebe3cf" fill-opacity=".6">uncharted · image not available</text>
+</svg>

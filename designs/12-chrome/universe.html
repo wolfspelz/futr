@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Honorverse — FUTR</title>
+<meta name="description" content="Honorverse: civilizations, powers and statistics of David Weber's Honor Harrington universe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Hanken+Grotesk:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="FUTR home">
+      <span class="chrome" data-text="FUTR">FUTR</span>
+      <small>Fictional Universe Taxonomy Research</small>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a class="sticker peach" href="index.html#universes">Universes</a>
+      <a class="sticker lav" href="index.html#metrics">Metrics</a>
+      <a class="sticker aqua" href="#">Powers</a>
+      <a class="sticker pink" href="index.html#community">Contribute</a>
+      <a class="sticker lemon" href="#">Discord</a>
+      <a class="sticker ink" href="https://github.com/wolfspelz/futr">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero">
+  <div class="blobs" aria-hidden="true">
+    <svg style="right:-8%;top:-12%;width:clamp(240px,36vw,560px)" viewBox="0 0 600 500">
+      <defs>
+        <radialGradient id="b1" cx="0.35" cy="0.28" r="0.85">
+          <stop offset="0" stop-color="#ffffff"/><stop offset="0.22" stop-color="#e8ecf2"/>
+          <stop offset="0.5" stop-color="#8d96a6"/><stop offset="0.66" stop-color="#f6f8fb"/>
+          <stop offset="1" stop-color="#4b5261"/>
+        </radialGradient>
+      </defs>
+      <path class="float" d="M110 240c-50-90 40-190 150-180 70 6 100 60 170 50 90-13 170 50 150 140-18 85-125 130-230 115-95-13-200-30-240-125z" fill="url(#b1)" stroke="#0B0B0F" stroke-width="6"/>
+    </svg>
+    <svg style="left:-5%;bottom:-10%;width:clamp(140px,18vw,280px)" viewBox="0 0 300 300">
+      <defs>
+        <radialGradient id="b2" cx="0.35" cy="0.3" r="0.8">
+          <stop offset="0" stop-color="#fff"/><stop offset="0.3" stop-color="#ffd3b6"/>
+          <stop offset="0.55" stop-color="#b9a6ff"/><stop offset="0.72" stop-color="#fff"/>
+          <stop offset="1" stop-color="#7fe3d8"/>
+        </radialGradient>
+      </defs>
+      <circle cx="150" cy="150" r="120" fill="url(#b2)" stroke="#0B0B0F" stroke-width="6"/>
+      <ellipse class="spin" cx="150" cy="150" rx="140" ry="40" fill="none" stroke="#0B0B0F" stroke-width="4" transform="rotate(-20 150 150)"/>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a class="sticker" href="index.html">FUTR</a><span class="sep">›</span>
+      <a class="sticker peach" href="index.html#universes">Universes</a><span class="sep">›</span>
+      <span class="sticker ink">Honorverse</span>
+    </nav>
+
+    <span class="eyebrow">Universe</span>
+    <h1><span class="chrome page-title" data-text="Honorverse">Honorverse</span></h1>
+
+    <div class="tagrow">
+      <span class="sticker lav">index</span>
+      <span class="sticker pink tilt-r">new</span>
+      <span class="sticker lemon">2 powers</span>
+      <span class="sticker aqua">2 civilizations</span>
+    </div>
+
+    <div class="page-grid">
+      <div>
+        <div class="panel readme">
+          <p>David Weber's military science fiction universe, centered on the career of Honor Harrington. Set in the far future where humanity has spread across the galaxy using hyperspace travel and wormhole networks. The series draws parallels to the Age of Sail, with the Star Kingdom of Manticore echoing Imperial Britain and the People's Republic of Haven resembling Revolutionary/Napoleonic France. Features detailed space naval combat, political intrigue, and a richly developed interstellar civilization spanning thousands of worlds.</p>
+        </div>
+        <div class="linkrow">
+          <a class="btn" href="https://www.baen.com/allbooks/category/index/id/2044">Baen Books ↗</a>
+          <a class="btn aqua" href="https://honorverse.fandom.com/">Honorverse Wiki ↗</a>
+          <a class="btn pink" href="https://en.wikipedia.org/wiki/Honorverse">Wikipedia ↗</a>
+        </div>
+      </div>
+      <figure class="frame tall">
+        <span class="sticker lemon corner tilt-r">Main image</span>
+        <img src="https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png" alt="Honor Harrington - On Basilisk Station cover" onerror="this.onerror=null;this.src='placeholder.svg'">
+        <figcaption>Honor Harrington - On Basilisk Station cover <small>David Mattingly · © Baen Books</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CIVILIZATIONS TABLE ===================== -->
+<section class="section" id="civilizations">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="lead">
+        <span class="eyebrow">Snapshots in time</span>
+        <h2><span class="chrome" data-text="Civilizations">Civilizations</span></h2>
+        <p>Every row is a power at a point in time. Columns are this universe's showcase metrics; the full metric set lives on each civilization page.</p>
+      </div>
+      <div class="filterbar">
+        <label class="search">
+          <span class="visually-hidden">Filter civilizations</span>
+          <input type="search" placeholder="Filter civilizations…" data-filter="#civtable" data-count="#civcount" autocomplete="off">
+          <kbd>/</kbd>
+        </label>
+        <span class="sticker lemon"><span id="civcount">2</span>&nbsp;rows</span>
+      </div>
+    </div>
+
+    <div class="scroll">
+      <table class="data">
+        <thead>
+          <tr>
+            <th scope="col">Civilization</th>
+            <th scope="col">Population <small>People</small></th>
+            <th scope="col">Planets <small>Planets</small></th>
+            <th scope="col">Star Systems <small>Systems</small></th>
+            <th scope="col">Kardashev <small>K</small></th>
+            <th scope="col">Warships <small>Ships</small></th>
+            <th scope="col">Techlevel <small>TL 1-15</small></th>
+            <th scope="col">Class <small>1-20</small></th>
+          </tr>
+        </thead>
+        <tbody id="civtable">
+          <tr class="row-link" data-href="#" data-name="Haven 1903 PD People's Republic of Haven">
+            <td><a href="#">Haven 1903 PD <span class="arrow">→</span></a></td>
+            <td title="2e11">200 billion</td>
+            <td title="100">100</td>
+            <td title="200">200</td>
+            <td title="1.0">1.0</td>
+            <td title="2106">2,106</td>
+            <td title="9">9</td>
+            <td title="10">10</td>
+          </tr>
+          <tr class="row-link" data-href="civilization.html" data-name="Manticore 1903 PD Star Kingdom of Manticore">
+            <td><a href="civilization.html">Manticore 1903 PD <span class="arrow">→</span></a></td>
+            <td title="3.2e9">3.2 billion</td>
+            <td title="3">3</td>
+            <td title="2">2</td>
+            <td title="1.1">1.1</td>
+            <td title="1621">1,621</td>
+            <td title="9">9</td>
+            <td title="10">10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      <span>✦ Showing 2 of 2 civilizations</span>
+      <span>✦ 7 showcase metrics (configurable per universe)</span>
+      <span>✦ Hover a number for the raw value · scroll the table sideways on small screens</span>
+    </p>
+  </div>
+</section>
+
+<!-- ===================== POWERS ===================== -->
+<section class="section" id="powers">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="lead">
+        <span class="eyebrow">Persistent entities</span>
+        <h2><span class="chrome gold" data-text="Powers">Powers</span></h2>
+        <p>Powers persist through time. Their civilizations are the snapshots in the table above.</p>
+      </div>
+      <span class="sticker">2 powers · all shown</span>
+    </div>
+    <div class="powers">
+      <a class="panel lav pcard" href="#">
+        <div class="row"><span class="sticker">Power</span><span class="sticker lemon">1 snapshot</span></div>
+        <h3>Star Kingdom of Manticore</h3>
+        <p>Constitutional monarchy around the Manticore Binary System, guardian of the Manticoran Wormhole Junction. Echoes Imperial Britain.</p>
+        <div class="row"><span class="chip">Manticore 1903 PD <small>1903 PD</small></span></div>
+      </a>
+      <a class="panel peach pcard" href="#">
+        <div class="row"><span class="sticker">Power</span><span class="sticker lemon">1 snapshot</span></div>
+        <h3>People's Republic of Haven</h3>
+        <p>Expansionist star nation of some two hundred systems, echoing Revolutionary and Napoleonic France.</p>
+        <div class="row"><span class="chip">Haven 1903 PD <small>1903 PD</small></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="section" id="images">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="lead">
+        <span class="eyebrow">Images</span>
+        <h2><span class="chrome" data-text="Gallery">Gallery</span></h2>
+      </div>
+      <span class="sticker">3 images</span>
+    </div>
+    <div class="gallery">
+      <figure class="frame tall">
+        <img src="https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png" alt="Honor Harrington - On Basilisk Station cover" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'">
+        <figcaption>Honor Harrington - On Basilisk Station cover <small>David Mattingly · © Baen Books</small></figcaption>
+      </figure>
+      <figure class="frame tall">
+        <img src="https://www.baen.com/media/catalog/product/0/7/0743435710-med.jpg" alt="On Basilisk Station - first Honor Harrington novel" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'">
+        <figcaption>On Basilisk Station - first Honor Harrington novel <small>David Mattingly · © Baen Books</small></figcaption>
+      </figure>
+      <figure class="frame wide">
+        <img src="https://www.futr.space/proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG" alt="Map of the Honorverse" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'">
+        <figcaption>Map of the Honorverse <small>Michał Świerczek · CC BY-SA 3.0</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="FUTR home"><span class="chrome" data-text="FUTR">FUTR</span></a>
+    <p>© 2023 - Fictional Universe Taxonomy Research - FUTR Project - <a href="#">Impressum</a> - <a href="#">Privacy</a></p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

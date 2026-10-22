@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="h" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="#DAD5C8"/>
+      <rect width="3" height="14" fill="#111111"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#h)"/>
+  <rect x="40" y="40" width="320" height="320" fill="#ECE8DF" stroke="#111111" stroke-width="6"/>
+  <text x="200" y="215" font-family="Anton, Impact, sans-serif" font-size="84" text-anchor="middle" fill="#111111">NO IMG</text>
+  <text x="200" y="260" font-family="'IBM Plex Mono', monospace" font-size="18" text-anchor="middle" fill="#111111" letter-spacing="3">IMAGE BLOCKED</text>
+</svg>

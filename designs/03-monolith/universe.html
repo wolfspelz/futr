@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Honorverse — FUTR</title>
+<meta name="description" content="Honorverse: David Weber's military science fiction universe. Civilizations, powers and metrics in the FUTR database.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* hero with title overlapping the cover */
+  .u-hero { display: grid; grid-template-columns: minmax(0, 1fr) clamp(200px, 26vw, 360px); gap: 0 clamp(16px, 3vw, 48px); align-items: end; padding-top: clamp(20px, 3vw, 44px); position: relative; }
+  .u-hero .kicker { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-bottom: 14px; }
+  .u-hero h1 { font-size: clamp(60px, 13.5vw, 220px); line-height: 0.84; letter-spacing: -0.01em; position: relative; z-index: 2; }
+  .u-hero h1 span { display: block; }
+  .u-hero .cover { position: relative; z-index: 1; margin-left: clamp(-120px, -10vw, -40px); aspect-ratio: 2 / 3; }
+  .u-hero .cover img { object-position: top; }
+  .u-hero .intro { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) clamp(200px, 26vw, 360px); gap: 0 clamp(16px, 3vw, 48px); margin-top: 18px; }
+  .u-hero .intro .readme { font-size: clamp(15px, 1.2vw, 18px); }
+  .u-hero .intro .side { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .u-hero .intro .side dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
+  .u-hero .intro .side dt { color: var(--ink-2); }
+  .u-hero .intro .side dd { margin: 0; }
+  @media (max-width: 820px) {
+    .u-hero { grid-template-columns: 1fr; }
+    .u-hero h1 { font-size: clamp(56px, 16vw, 120px); }
+    .u-hero .cover { margin: 14px 0 0; width: min(220px, 60%); }
+    .u-hero .intro { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  /* universe key figures */
+  .u-counts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-left: var(--rule) solid var(--ink); border-top: var(--rule) solid var(--ink); }
+  .u-counts .cell { border-right: var(--rule) solid var(--ink); border-bottom: var(--rule) solid var(--ink); padding: 12px 14px 14px; min-width: 0; }
+  .u-counts .num { font-size: clamp(52px, 7vw, 120px); }
+  @media (max-width: 700px) { .u-counts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  /* civilization giant rows */
+  .civ-tools { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; padding: 12px 0; border-top: var(--rule) solid var(--ink); }
+  .civ-tools input { font: inherit; font-size: 13px; letter-spacing: 0.06em; padding: 7px 10px; border: 2px solid var(--ink); background: var(--bone); color: var(--ink); min-width: 0; width: min(100%, 280px); }
+  .civ-tools input:focus { outline: 3px solid var(--acid); outline-offset: 0; }
+  .civ-tools .sort { display: flex; flex-wrap: wrap; gap: 6px; }
+  .civ-tools button { font: inherit; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; padding: 6px 10px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+  .civ-tools button[aria-pressed="true"] { background: var(--ink); color: var(--bone); }
+  .civ-tools button:hover { background: var(--acid); color: var(--ink); }
+  .civ-tools .status { margin-left: auto; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); }
+
+  .civ-head, .civ-giant { display: grid; grid-template-columns: minmax(0, 3.2fr) repeat(7, minmax(0, 1fr)); gap: 0 10px; align-items: end; }
+  .civ-head { border-top: var(--rule) solid var(--ink); padding: 8px 0 6px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); }
+  .civ-head span:not(:first-child) { text-align: right; }
+  .civ-giant { border-top: var(--rule) solid var(--ink); padding: 14px 0 16px; min-width: 0; position: relative; }
+  .civ-giant:last-of-type { border-bottom: var(--rule) solid var(--ink); }
+  .civ-giant:hover { background: var(--acid); }
+  .civ-giant .who { min-width: 0; }
+  .civ-giant .who .power { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); display: block; margin-bottom: 6px; }
+  .civ-giant .who .name { font-family: var(--display); text-transform: uppercase; font-size: clamp(30px, 3.6vw, 56px); line-height: 0.86; display: block; overflow-wrap: anywhere; }
+  .civ-giant .who .tags { margin-top: 10px; }
+  .civ-giant .v { text-align: right; min-width: 0; }
+  .civ-giant .v .lab { display: none; }
+  .civ-giant .v .n { font-family: var(--display); font-size: clamp(26px, 2.4vw, 40px); line-height: 0.9; display: block; white-space: nowrap; }
+  .civ-giant .v .n small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-top: 4px; }
+  .civ-giant .arrow { position: absolute; right: 0; top: 10px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0; }
+  .civ-giant:hover .arrow { opacity: 1; }
+  @media (max-width: 1100px) {
+    .civ-head { display: none; }
+    .civ-giant { grid-template-columns: 1fr; gap: 14px 0; }
+    .civ-giant .vals { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px 8px; border-top: var(--rule-thin) solid var(--ink); padding-top: 10px; }
+    .civ-giant .v { text-align: left; }
+    .civ-giant .v .lab { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 4px; }
+  }
+  @media (min-width: 1101px) {
+    .civ-giant .vals { display: contents; }
+  }
+
+  /* powers */
+  .powers { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); border-left: var(--rule) solid var(--ink); border-top: var(--rule) solid var(--ink); }
+  .powers a { border-right: var(--rule) solid var(--ink); border-bottom: var(--rule) solid var(--ink); padding: 14px 16px 18px; min-width: 0; display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: end; }
+  .powers .name { font-family: var(--display); text-transform: uppercase; font-size: clamp(24px, 2.4vw, 36px); line-height: 0.9; grid-column: 1 / -1; overflow-wrap: anywhere; }
+  .powers .n { font-family: var(--display); font-size: 40px; line-height: 0.85; }
+  .powers .lab { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); }
+
+  /* gallery */
+  .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .gallery figure { margin: 0; }
+  .gallery .img-slab { aspect-ratio: 4 / 5; }
+  .gallery figcaption { font-size: 11px; letter-spacing: 0.06em; margin-top: 6px; line-height: 1.4; }
+  .gallery figcaption b { font-weight: 500; display: block; }
+  @media (max-width: 820px) { .gallery { grid-template-columns: 1fr 1fr; } .gallery figure:last-child { grid-column: 1 / -1; } .gallery figure:last-child .img-slab { aspect-ratio: 16 / 10; } }
+</style>
+</head>
+<body>
+
+<header class="site-head wrap">
+  <a class="brand" href="index.html" aria-label="FUTR home">
+    <span class="mark">FUTR</span>
+    <span class="long">Fictional Universe Taxonomy Research</span>
+  </a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="index.html#universes" class="current">Universes</a>
+    <a href="#">Powers</a>
+    <a href="index.html#metrics">Metrics</a>
+    <a href="index.html#contribute">Contribute</a>
+    <a href="#" class="ext">Discord</a>
+    <a href="https://github.com/wolfspelz/futr" class="ext">GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <nav class="crumbs wrap" aria-label="Breadcrumb">
+    <a href="index.html">Home</a><span class="sep">/</span>
+    <a href="index.html#universes">Universes</a><span class="sep">/</span>
+    <span class="here">Honorverse</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="u-hero wrap">
+    <div>
+      <div class="kicker">
+        <span class="label">Universe</span>
+        <span class="tags"><span class="stamp fill">index</span><span class="stamp acid">new</span></span>
+      </div>
+      <h1 class="display"><span>Honor</span><span>verse</span></h1>
+    </div>
+    <figure class="img-slab cover" style="margin-bottom:0">
+      <img src="https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png" alt="Honor Harrington – On Basilisk Station cover" onerror="this.onerror=null;this.src='placeholder.svg'">
+      <figcaption class="credit">On Basilisk Station · David Mattingly · © Baen Books</figcaption>
+    </figure>
+
+    <div class="intro">
+      <div class="readme">
+        <p>David Weber's military science fiction universe, centered on the career of Honor Harrington. Set in the far future where humanity has spread across the galaxy using hyperspace travel and wormhole networks. The series draws parallels to the Age of Sail, with the Star Kingdom of Manticore echoing Imperial Britain and the People's Republic of Haven resembling Revolutionary/Napoleonic France. Features detailed space naval combat, political intrigue, and a richly developed interstellar civilization spanning thousands of worlds.</p>
+      </div>
+      <div class="side">
+        <dl>
+          <dt>Author</dt><dd>David Weber</dd>
+          <dt>Era</dt><dd>1900s PD</dd>
+          <dt>FTL</dt><dd>Hyperspace, wormholes</dd>
+          <dt>Links</dt>
+          <dd class="links" style="gap:6px">
+            <a href="https://www.baen.com/allbooks/category/index/id/2044">Baen Books</a>
+            <a href="https://honorverse.fandom.com/">Honorverse Wiki</a>
+            <a href="https://en.wikipedia.org/wiki/Honorverse">Wikipedia</a>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div style="grid-column: 1 / -1; height: clamp(20px, 3vw, 40px)"></div>
+  </section>
+
+  <!-- COUNTS -->
+  <section class="wrap" aria-label="Universe counts">
+    <div class="u-counts">
+      <div class="cell figure"><span class="label">Powers</span><span class="num">2</span><span class="unit">Named entities</span></div>
+      <div class="cell figure"><span class="label">Civilizations</span><span class="num">2</span><span class="unit">Snapshots</span></div>
+      <div class="cell figure"><span class="label">Images</span><span class="num">3</span><span class="unit">Attributed</span></div>
+      <div class="cell figure"><span class="label">Showcase</span><span class="num">7</span><span class="unit">Metrics shown</span></div>
+    </div>
+  </section>
+
+  <!-- CIVILIZATIONS -->
+  <section class="wrap block-pad" id="civilizations">
+    <div class="section-head">
+      <span class="label">01 / Civilizations</span>
+      <span class="ticks"></span>
+      <span class="count">2 <span class="label">in this universe</span></span>
+    </div>
+    <div class="civ-tools">
+      <label class="sr" for="civ-filter">Filter civilizations</label>
+      <input id="civ-filter" type="search" placeholder="Filter by name or power…" autocomplete="off">
+      <div class="sort" role="group" aria-label="Sort by">
+        <button type="button" data-sort="name" aria-pressed="true">Name</button>
+        <button type="button" data-sort="population" aria-pressed="false">Population</button>
+        <button type="button" data-sort="warships" aria-pressed="false">Warships</button>
+        <button type="button" data-sort="class" aria-pressed="false">Class</button>
+      </div>
+      <span class="status" id="civ-status">Showing 2 of 2</span>
+    </div>
+
+    <div class="civ-head" aria-hidden="true">
+      <span>Civilization</span><span>Population</span><span>Planets</span><span>Star systems</span><span>Kardashev</span><span>Warships</span><span>Techlevel</span><span>Class</span>
+    </div>
+    <div id="civ-list">
+      <a class="civ-giant" href="#" data-name="Haven 1903 PD People's Republic of Haven" data-population="2e11" data-warships="2106" data-class="10">
+        <span class="arrow">Open →</span>
+        <span class="who"><span class="power">People's Republic of Haven · 1903 PD</span><span class="name">Haven 1903&nbsp;PD</span><span class="tags"><span class="stamp" style="font-size:9px;padding:3px 6px">new</span></span></span>
+        <span class="vals">
+          <span class="v"><span class="lab">Population</span><span class="n" title="2e11 people">200<small>Billion</small></span></span>
+          <span class="v"><span class="lab">Planets</span><span class="n" title="100 planets">100</span></span>
+          <span class="v"><span class="lab">Star systems</span><span class="n" title="200 systems">200</span></span>
+          <span class="v"><span class="lab">Kardashev</span><span class="n" title="Kardashev 1.0">1.0</span></span>
+          <span class="v"><span class="lab">Warships</span><span class="n" title="2106 ships">2,106</span></span>
+          <span class="v"><span class="lab">Techlevel</span><span class="n" title="TL 9">9</span></span>
+          <span class="v"><span class="lab">Class</span><span class="n" title="Class 10">10</span></span>
+        </span>
+      </a>
+      <a class="civ-giant" href="civilization.html" data-name="Manticore 1903 PD Star Kingdom of Manticore" data-population="3.2e9" data-warships="1621" data-class="10">
+        <span class="arrow">Open →</span>
+        <span class="who"><span class="power">Star Kingdom of Manticore · 1903 PD</span><span class="name">Manticore 1903&nbsp;PD</span><span class="tags"><span class="stamp fill" style="font-size:9px;padding:3px 6px">index</span><span class="stamp" style="font-size:9px;padding:3px 6px">new</span></span></span>
+        <span class="vals">
+          <span class="v"><span class="lab">Population</span><span class="n" title="3.2e9 people">3.2<small>Billion</small></span></span>
+          <span class="v"><span class="lab">Planets</span><span class="n" title="3 planets">3</span></span>
+          <span class="v"><span class="lab">Star systems</span><span class="n" title="2 systems">2</span></span>
+          <span class="v"><span class="lab">Kardashev</span><span class="n" title="Kardashev 1.1">1.1</span></span>
+          <span class="v"><span class="lab">Warships</span><span class="n" title="1621 ships">1,621</span></span>
+          <span class="v"><span class="lab">Techlevel</span><span class="n" title="TL 9">9</span></span>
+          <span class="v"><span class="lab">Class</span><span class="n" title="Class 10">10</span></span>
+        </span>
+      </a>
+    </div>
+    <p class="label muted" style="margin-top: 12px">Showcase metrics are configured per universe. Long lists: filter above, rows stay this dense.</p>
+  </section>
+
+  <!-- POWERS -->
+  <section class="wrap block block-pad" id="powers">
+    <div class="section-head">
+      <span class="label">02 / Powers</span>
+      <span class="ticks"></span>
+      <span class="count">2 <span class="label">persistent entities</span></span>
+    </div>
+    <div class="powers">
+      <a href="#"><span class="name">Star Kingdom of Manticore</span><span class="lab">Civilizations</span><span class="n">1</span></a>
+      <a href="#"><span class="name">People's Republic of Haven</span><span class="lab">Civilizations</span><span class="n">1</span></a>
+    </div>
+  </section>
+
+  <!-- IMAGES -->
+  <section class="wrap block block-pad" id="images">
+    <div class="section-head">
+      <span class="label">03 / Images</span>
+      <span class="ticks"></span>
+      <span class="count">3</span>
+    </div>
+    <div class="gallery">
+      <figure>
+        <div class="img-slab">
+          <img src="https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png" alt="Honor Harrington – On Basilisk Station cover" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'">
+          <span class="credit">Main</span>
+        </div>
+        <figcaption><b>Honor Harrington – On Basilisk Station cover</b>David Mattingly · © Baen Books</figcaption>
+      </figure>
+      <figure>
+        <div class="img-slab">
+          <img src="https://www.baen.com/media/catalog/product/0/7/0743435710-med.jpg" alt="On Basilisk Station – first Honor Harrington novel" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'">
+          <span class="credit">02</span>
+        </div>
+        <figcaption><b>On Basilisk Station – first Honor Harrington novel</b>David Mattingly · © Baen Books</figcaption>
+      </figure>
+      <figure>
+        <div class="img-slab">
+          <img src="https://www.futr.space/proxy/upload.wikimedia.org/wikipedia/commons/d/d5/The_Honor_Harrington_Universe.PNG" alt="Map of the Honorverse" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'">
+          <span class="credit">03</span>
+        </div>
+        <figcaption><b>Map of the Honorverse</b>Michał Świerczek · <a href="https://creativecommons.org/licenses/by-sa/3.0/" style="text-decoration:underline">CC BY-SA 3.0</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot wrap">
+  <span>© 2023 – Fictional Universe Taxonomy Research – FUTR Project</span>
+  <span><a href="#">Impressum</a> · <a href="#">Privacy</a></span>
+</footer>
+
+<script>
+(function () {
+  var list = document.getElementById('civ-list');
+  var rows = Array.prototype.slice.call(list.querySelectorAll('.civ-giant'));
+  var input = document.getElementById('civ-filter');
+  var status = document.getElementById('civ-status');
+  var buttons = document.querySelectorAll('.civ-tools button[data-sort]');
+  var sortKey = 'name';
+
+  function apply() {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    rows.forEach(function (r) {
+      var hit = !q || r.getAttribute('data-name').toLowerCase().indexOf(q) !== -1;
+      r.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    rows.sort(function (a, b) {
+      if (sortKey === 'name') return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'));
+      return parseFloat(b.getAttribute('data-' + sortKey)) - parseFloat(a.getAttribute('data-' + sortKey));
+    }).forEach(function (r) { list.appendChild(r); });
+    status.textContent = 'Showing ' + shown + ' of ' + rows.length;
+  }
+  input.addEventListener('input', apply);
+  Array.prototype.forEach.call(buttons, function (b) {
+    b.addEventListener('click', function () {
+      sortKey = b.getAttribute('data-sort');
+      Array.prototype.forEach.call(buttons, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>

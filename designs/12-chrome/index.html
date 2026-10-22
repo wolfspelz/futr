@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR — Fictional Universe Taxonomy Research</title>
+<meta name="description" content="Statistics about civilizations in science fiction universes. Planets, fleets, techlevels, Kardashev — compared by numbers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Hanken+Grotesk:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="FUTR home">
+      <span class="chrome" data-text="FUTR">FUTR</span>
+      <small>Fictional Universe Taxonomy Research</small>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a class="sticker peach" href="#universes">Universes</a>
+      <a class="sticker lav" href="#metrics">Metrics</a>
+      <a class="sticker aqua" href="#">Powers</a>
+      <a class="sticker pink" href="#community">Contribute</a>
+      <a class="sticker lemon" href="#">Discord</a>
+      <a class="sticker ink" href="https://github.com/wolfspelz/futr">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Scrolling ticker of newest civilizations -->
+<div class="ticker" aria-label="New civilizations">
+  <div class="label">New ✦</div>
+  <div class="track" aria-hidden="false">
+    <span><a href="#"><i>Star Trek</i> Federation 2373</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>The Expanse</i> Outer Planets Alliance 2350</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>The Expanse</i> Mars 2350</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Firefly</i> Alliance 2517</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>The Expanse</i> Sol System 2350</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>The Expanse</i> United Nations 2350</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Honorverse</i> Haven 1903 PD</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Star Trek</i> Klingon Empire 2161</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>The Culture</i> Culture (pre-war)</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Perry Rhodan</i> Posbis 2114</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Perry Rhodan</i> Großes Imperium 2040</a></span><span><em>✦</em></span>
+    <span><a href="civilization.html"><i>Honorverse</i> Manticore 1903 PD</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Perry Rhodan</i> Solares Imperium 2040</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Warhammer 40,000</i> Imperium of Man M41</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Warhammer 40,000</i> Orks M41</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Star Trek</i> Andorian Empire 2161</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Orion's Arm</i> Diamond Network</a></span><span><em>✦</em></span>
+    <span><a href="#"><i>Orion's Arm</i> Solar System</a></span><span><em>✦</em></span>
+  </div>
+</div>
+
+<main>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="blobs" aria-hidden="true">
+    <svg style="right:-6%;top:-10%;width:clamp(260px,42vw,640px)" viewBox="0 0 600 500">
+      <defs>
+        <radialGradient id="b1" cx="0.35" cy="0.28" r="0.85">
+          <stop offset="0" stop-color="#ffffff"/><stop offset="0.22" stop-color="#e8ecf2"/>
+          <stop offset="0.5" stop-color="#8d96a6"/><stop offset="0.66" stop-color="#f6f8fb"/>
+          <stop offset="1" stop-color="#4b5261"/>
+        </radialGradient>
+      </defs>
+      <path class="float" d="M110 240c-50-90 40-190 150-180 70 6 100 60 170 50 90-13 170 50 150 140-18 85-125 130-230 115-95-13-200-30-240-125z" fill="url(#b1)" stroke="#0B0B0F" stroke-width="6"/>
+    </svg>
+    <svg style="left:-4%;bottom:-8%;width:clamp(160px,22vw,340px)" viewBox="0 0 300 300">
+      <defs>
+        <radialGradient id="b2" cx="0.35" cy="0.3" r="0.8">
+          <stop offset="0" stop-color="#fff"/><stop offset="0.3" stop-color="#ffd3b6"/>
+          <stop offset="0.55" stop-color="#b9a6ff"/><stop offset="0.72" stop-color="#fff"/>
+          <stop offset="1" stop-color="#7fe3d8"/>
+        </radialGradient>
+      </defs>
+      <circle cx="150" cy="150" r="120" fill="url(#b2)" stroke="#0B0B0F" stroke-width="6"/>
+      <ellipse class="spin" cx="150" cy="150" rx="140" ry="40" fill="none" stroke="#0B0B0F" stroke-width="4" transform="rotate(-20 150 150)"/>
+    </svg>
+    <svg style="left:48%;top:6%;width:clamp(70px,8vw,120px)" viewBox="0 0 120 120">
+      <defs>
+        <radialGradient id="fl" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#fff"/><stop offset="0.4" stop-color="#fff3a6"/><stop offset="1" stop-color="#fff3a6" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="60" cy="60" r="60" fill="url(#fl)"/>
+      <path d="M60 4v112M4 60h112" stroke="#0B0B0F" stroke-width="3"/>
+      <circle cx="60" cy="60" r="10" fill="#fff" stroke="#0B0B0F" stroke-width="3"/>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <h1>
+      <span class="chrome hero-title" data-text="FUTR">FUTR</span>
+      <span class="outline hero-sub">Fictional Universe Taxonomy Research</span>
+    </h1>
+
+    <div class="hero-grid">
+      <div class="panel mission">
+        <span class="sticker pink float tilt-r">Mission</span>
+        <p>The Fictional Universe Taxonomy Research project collects statistics about civilizations in science fiction universes. How many planets do they have? How big is their fleet? Can they do time travel? What is their technological level, their life expectancy, their wealth distribution?</p>
+        <p><strong>Our mission is to characterize the fictional universes we love by numbers and make them comparable.</strong></p>
+      </div>
+      <div class="stats" aria-label="Project counters">
+        <div class="stat"><b>10</b><span>Universes</span></div>
+        <div class="stat"><b>18</b><span>Powers</span></div>
+        <div class="stat"><b>31</b><span>Civilizations</span></div>
+        <div class="stat"><b>21</b><span>Metrics</span></div>
+        <div class="stat"><b>222</b><span>Datapoints</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== UNIVERSES ===================== -->
+<section class="section" id="universes">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="lead">
+        <span class="eyebrow">All universes</span>
+        <h2><span class="chrome" data-text="Universes">Universes</span></h2>
+        <p>These are the universes. Find your favourite franchise, your world, your setting.</p>
+      </div>
+      <div class="filterbar">
+        <label class="search">
+          <span class="visually-hidden">Filter universes</span>
+          <input type="search" placeholder="Filter universes…" data-filter="#ugrid" data-count="#ucount" autocomplete="off">
+          <kbd>/</kbd>
+        </label>
+        <span class="sticker lemon"><span id="ucount">9</span>&nbsp;shown</span>
+      </div>
+    </div>
+
+    <div class="grid-universes" id="ugrid">
+      <a class="ucard" href="#" data-name="Firefly">
+        <figure><img src="https://www.futr.space/proxy/static.wikia.nocookie.net/scifi/images/d/d2/Firefly_Serie_Logo.jpg" alt="Firefly" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></figure>
+        <div class="body"><div><span class="n">Universe</span><h3>Firefly</h3></div><span class="num">01</span></div>
+      </a>
+      <a class="ucard" href="universe.html" data-name="Honorverse">
+        <span class="sticker pink tag tilt-l">new</span>
+        <figure><img src="https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png" alt="Honorverse" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></figure>
+        <div class="body"><div><span class="n">Universe</span><h3>Honorverse</h3></div><span class="num">02</span></div>
+      </a>
+      <a class="ucard" href="#" data-name="Orion's Arm">
+        <figure><img src="https://www.orionsarm.com/im_store/OA_logo_original.jpg" alt="Orion's Arm" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></figure>
+        <div class="body"><div><span class="n">Universe</span><h3>Orion's Arm</h3></div><span class="num">03</span></div>
+      </a>
+      <a class="ucard" href="#" data-name="Perry Rhodan">
+        <figure><img src="https://bilder.deutschlandfunk.de/FI/LE/_6/95/FILE_6956b8ec0aa62e22df94fb3c00647812/perry-rhodan-jpg-100-1920x1080.jpg" alt="Perry Rhodan" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></figure>
+        <div class="body"><div><span class="n">Universe</span><h3>Perry Rhodan</h3></div><span class="num">04</span></div>
+      </a>
+      <a class="ucard" href="#" data-name="Reality">
+        <figure><img src="https://github.com/wolfspelz/futr/raw/main/data/universes/Reality/earth-tile.jpg" alt="Reality" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></figure>
+        <div class="body"><div><span class="n">Universe</span><h3>Reality</h3></div><span class="num">05</span></div>
+      </a>
+      <a class="ucard" href="#" data-name="Star Trek">
+        <figure><img src="https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg" alt="Star Trek" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></figure>
+        <div class="body"><div><span class="n">Universe</span><h3>Star Trek</h3></div><span class="num">06</span></div>
+      </a>
+      <a class="ucard" href="#" data-name="The Culture">
+        <figure><img src="https://www.futr.space/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture's_orbital.jpg" alt="The Culture" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></figure>
+        <div class="body"><div><span class="n">Universe</span><h3>The Culture</h3></div><span class="num">07</span></div>
+      </a>
+      <a class="ucard" href="#" data-name="The Expanse">
+        <figure><img src="https://www.futr.space/proxy/static.wikia.nocookie.net/expanse/images/3/3d/MCRNTachiConceptArt.png" alt="The Expanse" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></figure>
+        <div class="body"><div><span class="n">Universe</span><h3>The Expanse</h3></div><span class="num">08</span></div>
+      </a>
+      <a class="ucard" href="#" data-name="Warhammer 40,000 40k">
+        <figure><img src="https://assets.warhammer-community.com/sm-desktop.jpg" alt="Warhammer 40,000" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></figure>
+        <div class="body"><div><span class="n">Universe</span><h3>Warhammer 40,000</h3></div><span class="num">09</span></div>
+      </a>
+      <a class="ucard more" href="#">
+        <span class="chrome" data-text="All →">All →</span>
+        <p>Browse every universe in the index, sorted and filterable. The list grows with every contribution.</p>
+      </a>
+    </div>
+    <p class="empty">No universe matches. Propose it on Discord or GitHub!</p>
+  </div>
+</section>
+
+<!-- ===================== NEW CIVS + METRICS ===================== -->
+<section class="section" id="civilizations">
+  <div class="wrap two-col">
+    <div>
+      <div class="section-head">
+        <div class="lead">
+          <span class="eyebrow">Fresh from the data files</span>
+          <h2><span class="chrome" data-text="New civilizations">New civilizations</span></h2>
+        </div>
+      </div>
+      <ol class="civlist">
+        <li><span class="idx">01</span><div><span class="u">Star Trek</span><a href="#">Federation 2373</a></div><span class="sticker pink">new</span></li>
+        <li><span class="idx">02</span><div><span class="u">The Expanse</span><a href="#">Outer Planets Alliance 2350</a></div><span class="sticker pink">new</span></li>
+        <li><span class="idx">03</span><div><span class="u">The Expanse</span><a href="#">Mars 2350</a></div><span class="sticker pink">new</span></li>
+        <li><span class="idx">04</span><div><span class="u">Firefly</span><a href="#">Alliance 2517</a></div><span class="sticker lav">index</span></li>
+        <li><span class="idx">05</span><div><span class="u">The Expanse</span><a href="#">Sol System 2350</a></div><span class="sticker lav">index</span></li>
+        <li><span class="idx">06</span><div><span class="u">The Expanse</span><a href="#">United Nations 2350</a></div><span class="sticker lav">index</span></li>
+        <li><span class="idx">07</span><div><span class="u">Honorverse</span><a href="#">Haven 1903 PD</a></div><span class="sticker lav">index</span></li>
+        <li><span class="idx">08</span><div><span class="u">Honorverse</span><a href="civilization.html">Manticore 1903 PD</a></div><span class="sticker lav">index</span></li>
+        <li class="more"><a href="#">and 10 more → all 31 civilizations</a></li>
+      </ol>
+    </div>
+
+    <div id="metrics">
+      <div class="section-head">
+        <div class="lead">
+          <span class="eyebrow">How we measure</span>
+          <h2><span class="chrome gold" data-text="Metrics">Metrics</span></h2>
+          <p>This is how we gauge universes, civilizations and powers. Some have many planets or ring worlds, others might be measured by their progress to higher spheres of existence. This is not a competition, though.</p>
+        </div>
+      </div>
+      <div class="chips pastel">
+        <a class="chip" href="#">Population <small>People</small></a>
+        <a class="chip" href="#">Planets <small>Planets</small></a>
+        <a class="chip" href="#">Star Systems <small>Systems</small></a>
+        <a class="chip" href="#">Kardashev <small>K</small></a>
+        <a class="chip" href="#">Warships <small>Ships</small></a>
+        <a class="chip" href="#">Techlevel <small>TL 1-15</small></a>
+        <a class="chip" href="#">Class <small>1-20</small></a>
+        <a class="chip" href="#">Civilization Age <small>Years</small></a>
+        <a class="chip" href="#">Territory <small>Light-years</small></a>
+        <a class="chip" href="#">FTL Date <small>Year</small></a>
+        <a class="chip" href="#">Government <small>Text</small></a>
+        <a class="chip" href="#">Location <small>Text</small></a>
+        <a class="chip" href="#">Tech Summary <small>Text</small></a>
+        <a class="chip" href="#">Dyson Spheres</a>
+        <a class="chip" href="#">Ringworlds</a>
+        <a class="chip" href="#">Banks Orbitals</a>
+        <a class="chip ink" href="#">+ 5 more · The metrics →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WANTED (marquee) ===================== -->
+<section class="wanted" aria-label="Universes we want">
+  <div class="track">
+    <span class="outline">Star Wars</span><span class="dot">✦</span>
+    <span class="outline">Babylon 5</span><span class="dot">✦</span>
+    <span class="outline">Dune</span><span class="dot">✦</span>
+    <span class="outline">Perryversum</span><span class="dot">✦</span>
+    <span class="outline">Known Space</span><span class="dot">✦</span>
+    <span class="outline">Eve Online</span><span class="dot">✦</span>
+    <span class="outline">Alliance–Union</span><span class="dot">✦</span>
+    <span class="outline">Technic Civilization</span><span class="dot">✦</span>
+    <span class="outline">Zones of Thought</span><span class="dot">✦</span>
+    <span class="outline">Traveller</span><span class="dot">✦</span>
+    <span class="outline">PANEC</span><span class="dot">✦</span>
+    <span class="outline">Galactic Developments</span><span class="dot">✦</span>
+  </div>
+</section>
+
+<!-- ===================== COMMUNITY ===================== -->
+<section class="section" id="community">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="lead">
+        <span class="eyebrow">Universes we want · and how to add them</span>
+        <h2><span class="chrome" data-text="Join in">Join in</span></h2>
+        <p>There is so much more. Tell us on Discord or contribute on GitHub. Which of these do we really need? All of them?</p>
+      </div>
+      <a class="btn ink" href="https://github.com/wolfspelz/futr">Open Source on GitHub</a>
+    </div>
+
+    <div class="grid-4">
+      <article class="panel peach ccard">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4 3 12l5 8M16 4l5 8-5 8M14 3l-4 18"/></svg></span>
+        <h3>An Open Source Project</h3>
+        <p>The C# IDE is our CMS. GitHub Actions is our deployment. Content in YAML and Markdown files. Built-in issue tracker.</p>
+        <div class="links">
+          <span class="sticker">dotnet</span><span class="sticker">docker</span><span class="sticker">actions</span><span class="sticker">nginx</span>
+        </div>
+        <div class="links"><a class="btn" href="https://github.com/wolfspelz/futr">Source →</a></div>
+      </article>
+
+      <article class="panel lav ccard">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v10H9l-5 4z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg></span>
+        <h3>Discord</h3>
+        <p>Talk about universes and how to measure stuff. Request new measurements and comparisons. Is there any universe still missing?</p>
+        <div class="links"><a class="btn pink" href="#">Join the server →</a></div>
+      </article>
+
+      <article class="panel aqua ccard">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12M6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 0c0 4-6 3-9 6"/></svg></span>
+        <h3>Contributing</h3>
+        <p>Missing a universe or a civilization? Check out the list of proposals. Propose a universe in Discord. Even better: fork, edit, pull-request on GitHub.</p>
+        <div class="links"><a class="btn" href="#">Proposals</a><a class="btn ink" href="https://github.com/wolfspelz/futr">Fork →</a></div>
+      </article>
+
+      <article class="panel pink ccard">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V5a1 1 0 0 1 1-1h3v16zM10 20V7h4v13zM16 20 14.5 5l3.5-.5L20 19.5z"/></svg></span>
+        <h3>Inspiration</h3>
+        <p>Here are lists for your inspiration. Which of these do we really need? All of them?</p>
+        <div class="links">
+          <a class="sticker" href="https://en.wikipedia.org/wiki/List_of_science_fiction_universes">SF Universes</a>
+          <a class="sticker" href="https://en.wikipedia.org/wiki/List_of_science_fiction_franchises">SF Franchises</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="FUTR home"><span class="chrome" data-text="FUTR">FUTR</span></a>
+    <p>© 2023 - Fictional Universe Taxonomy Research - FUTR Project - <a href="#">Impressum</a> - <a href="#">Privacy</a></p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR — Fictional Universe Taxonomy Research</title>
+<meta name="description" content="Statistics about civilizations in science fiction universes. The Galactic Codex.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+SC:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ======= Sprite: seals, sigils, ornaments ======= -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="seal-futr" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="1.2">
+      <circle cx="32" cy="32" r="30"/>
+      <circle cx="32" cy="32" r="25" stroke-dasharray="1.5 4" stroke-width=".9"/>
+      <polygon points="32,8 52.8,20 52.8,44 32,56 11.2,44 11.2,20"/>
+      <polygon points="32,20 42.4,26 42.4,38 32,44 21.6,38 21.6,26"/>
+      <path d="M32 8 L32 56 M11.2 20 L52.8 44 M11.2 44 L52.8 20" stroke-opacity=".5" stroke-width=".8"/>
+    </g>
+    <circle cx="32" cy="32" r="3" fill="currentColor"/>
+  </symbol>
+  <symbol id="orn-rule" viewBox="0 0 110 14">
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <path d="M0 7 H40 M70 7 H110"/>
+      <path d="M55 1 L61 7 L55 13 L49 7 Z"/>
+      <path d="M40 7 L44 4 L48 7 L44 10 Z M62 7 L66 4 L70 7 L66 10 Z" stroke-width=".8"/>
+    </g>
+    <circle cx="55" cy="7" r="1.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="ico-arrow" viewBox="0 0 14 14"><path d="M1 7 H12 M8 3 L12 7 L8 11" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <!-- metric sigils -->
+  <symbol id="ico-pop" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="7" r="3"/><circle cx="5.5" cy="12" r="2.4"/><circle cx="18.5" cy="12" r="2.4"/><path d="M4 20 C5 15 9 14 12 14 C15 14 19 15 20 20"/></g></symbol>
+  <symbol id="ico-planet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="12" r="6"/><ellipse cx="12" cy="12" rx="11" ry="3.5" transform="rotate(-20 12 12)"/></g></symbol>
+  <symbol id="ico-system" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5" stroke-dasharray="2 2.5"/></g><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="21" cy="12" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="ico-energy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="12" r="10"/><path d="M12 4 L19 18 H5 Z"/></g><circle cx="12" cy="13.5" r="1.5" fill="currentColor"/></symbol>
+  <symbol id="ico-ship" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M12 3 L20 20 L12 16 L4 20 Z"/><path d="M12 3 V16"/></g></symbol>
+  <symbol id="ico-tech" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><polygon points="12,2.5 20.2,7.25 20.2,16.75 12,21.5 3.8,16.75 3.8,7.25"/><polygon points="12,8 15.5,10 15.5,14 12,16 8.5,14 8.5,10"/></g></symbol>
+  <symbol id="ico-class" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="3"/></g></symbol>
+  <symbol id="ico-age" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="12" r="10"/><path d="M12 5 V12 L16.5 14.5"/></g></symbol>
+  <symbol id="ico-territory" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M3 12 H21 M12 3 V21"/><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></g></symbol>
+  <symbol id="ico-text" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M4 7 H20 M4 12 H20 M4 17 H14"/></g></symbol>
+  <symbol id="ico-dyson" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="12" r="10"/><path d="M2 12 H22" stroke-dasharray="2 2"/><path d="M12 2 C7 6 7 18 12 22 C17 18 17 6 12 2Z" stroke-dasharray="2 2"/></g><circle cx="12" cy="12" r="2" fill="currentColor"/></symbol>
+  <symbol id="ico-ring" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="7" ry="2.4"/></g><circle cx="12" cy="12" r="1.4" fill="currentColor"/></symbol>
+  <symbol id="ico-date" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M3 12 H21 M12 3 V21"/><path d="M5.6 5.6 L18.4 18.4 M18.4 5.6 L5.6 18.4" stroke-opacity=".5"/><circle cx="12" cy="12" r="4"/></g></symbol>
+  <!-- workshop icons -->
+  <symbol id="ico-code" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M8 5 L2 12 L8 19 M16 5 L22 12 L16 19 M13.5 3 L10.5 21"/></g></symbol>
+  <symbol id="ico-discord" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><polygon points="12,2.5 20.2,7.25 20.2,16.75 12,21.5 3.8,16.75 3.8,7.25"/><circle cx="8.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="15.5" cy="12" r="1.2"/></g></symbol>
+  <symbol id="ico-fork" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="6" cy="5" r="2.2"/><circle cx="18" cy="5" r="2.2"/><circle cx="12" cy="19" r="2.2"/><path d="M6 7.2 C6 13 12 11 12 16.8 M18 7.2 C18 13 12 11 12 16.8"/></g></symbol>
+  <symbol id="ico-power" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M12 2.5 L20 6 V12 C20 17 16.5 20 12 21.5 C7.5 20 4 17 4 12 V6 Z"/><path d="M12 7 L15 12 L12 17 L9 12 Z"/></g></symbol>
+</svg>
+
+<!-- ======= Header ======= -->
+<header class="codex-header">
+  <div class="frame">
+    <a class="brand" href="index.html" aria-label="FUTR home">
+      <svg style="color:var(--gold)"><use href="#seal-futr"/></svg>
+      <span>
+        <span class="brand-word">FUTR</span>
+        <span class="brand-long" style="display:block">Fictional Universe Taxonomy Research</span>
+      </span>
+    </a>
+    <nav class="codex-nav" aria-label="Primary">
+      <a href="#universes">Universes</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#">Powers</a>
+      <a href="#workshop">Contribute</a>
+      <a href="#">Discord</a>
+      <a href="https://github.com/wolfspelz/futr">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ======= Frontispiece ======= -->
+<section class="frontispiece">
+  <svg class="geometry" viewBox="0 0 1100 700" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="fade" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+        <stop offset=".55" stop-color="#fff" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      </radialGradient>
+      <mask id="m"><rect width="1100" height="700" fill="url(#fade)"/></mask>
+    </defs>
+    <g mask="url(#m)" fill="none" stroke="#c9a961" transform="translate(550 350)">
+      <circle r="330" stroke-opacity=".16"/>
+      <circle r="300" stroke-opacity=".10" stroke-dasharray="1 7"/>
+      <circle r="250" stroke-opacity=".2"/>
+      <circle r="245" stroke-opacity=".08"/>
+      <circle r="180" stroke-opacity=".14" stroke-dasharray="40 10 4 10"/>
+      <circle r="120" stroke-opacity=".18"/>
+      <polygon points="0,-250 216.5,-125 216.5,125 0,250 -216.5,125 -216.5,-125" stroke-opacity=".14"/>
+      <polygon points="0,-180 155.9,-90 155.9,90 0,180 -155.9,90 -155.9,-90" stroke-opacity=".12" transform="rotate(30)"/>
+      <polygon points="0,-120 103.9,-60 103.9,60 0,120 -103.9,60 -103.9,-60" stroke-opacity=".16"/>
+      <path d="M0 -330 V330 M-285.8 -165 L285.8 165 M-285.8 165 L285.8 -165" stroke-opacity=".08"/>
+      <path d="M-330 0 H330 M-165 -285.8 L165 285.8 M165 -285.8 L-165 285.8" stroke-opacity=".06"/>
+      <g stroke-opacity=".35">
+        <circle cx="0" cy="-250" r="3"/><circle cx="216.5" cy="-125" r="3"/><circle cx="216.5" cy="125" r="3"/>
+        <circle cx="0" cy="250" r="3"/><circle cx="-216.5" cy="125" r="3"/><circle cx="-216.5" cy="-125" r="3"/>
+      </g>
+      <g fill="#c9a961" stroke="none" fill-opacity=".5">
+        <circle cx="0" cy="-330" r="1.6"/><circle cx="330" cy="0" r="1.6"/><circle cx="0" cy="330" r="1.6"/><circle cx="-330" cy="0" r="1.6"/>
+        <circle cx="120" cy="0" r="1.6"/><circle cx="-120" cy="0" r="1.6"/><circle cx="60" cy="-103.9" r="1.6"/><circle cx="-60" cy="103.9" r="1.6"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="frame inner">
+    <div class="over">Codex of Civilizations · Volume I</div>
+    <h1>FUTR</h1>
+    <div class="sub">Fictional Universe Taxonomy Research</div>
+
+    <div class="mission">
+      <p>The Fictional Universe Taxonomy Research project collects statistics about civilizations in science fiction universes. How many planets do they have? How big is their fleet? Can they do time travel? What is their technological level, their life expectancy, their wealth distribution? Our mission is to characterize the fictional universes we love by numbers and make them comparable.</p>
+    </div>
+
+    <div class="census" aria-label="Archive census">
+      <div><b class="tabular">10</b><span>Universes</span></div>
+      <div><b class="tabular">18</b><span>Powers</span></div>
+      <div><b class="tabular">31</b><span>Civilizations</span></div>
+      <div><b class="tabular">21</b><span>Metrics</span></div>
+      <div><b class="tabular">222</b><span>Datapoints</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="frame">
+
+  <!-- ======= I. Catalogue of Universes ======= -->
+  <section id="universes" class="chapter">
+    <div class="chapter-label"><span class="numeral">I</span> catalogue of universes</div>
+    <h2>All Universes</h2>
+    <p class="lede">These are the universes. Find your favourite franchise, your world, your setting. <a href="#">Open the complete catalogue</a>.</p>
+
+    <div class="catalogue">
+      <a class="entry" href="#">
+        <div class="plate"><span class="folio">Fol. I</span><img src="https://www.futr.space/proxy/static.wikia.nocookie.net/scifi/images/d/d2/Firefly_Serie_Logo.jpg" alt="Firefly" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></div>
+        <h3>Firefly</h3><div class="meta">The Verse · Universe</div>
+      </a>
+      <a class="entry" href="universe.html">
+        <div class="plate"><span class="folio">Fol. II</span><img src="https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png" alt="Honorverse — On Basilisk Station cover, David Mattingly, © Baen Books" title="Cover art: David Mattingly, © Baen Books" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></div>
+        <h3>Honorverse</h3><div class="meta">2 Powers · 2 Civilizations</div>
+      </a>
+      <a class="entry" href="#">
+        <div class="plate"><span class="folio">Fol. III</span><img src="https://www.orionsarm.com/im_store/OA_logo_original.jpg" alt="Orion's Arm" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></div>
+        <h3>Orion's Arm</h3><div class="meta">Universe</div>
+      </a>
+      <a class="entry" href="#">
+        <div class="plate"><span class="folio">Fol. IV</span><img src="https://bilder.deutschlandfunk.de/FI/LE/_6/95/FILE_6956b8ec0aa62e22df94fb3c00647812/perry-rhodan-jpg-100-1920x1080.jpg" alt="Perry Rhodan" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></div>
+        <h3>Perry Rhodan</h3><div class="meta">Perryversum · Universe</div>
+      </a>
+      <a class="entry" href="#">
+        <div class="plate"><span class="folio">Fol. V</span><img src="https://github.com/wolfspelz/futr/raw/main/data/universes/Reality/earth-tile.jpg" alt="Reality — Earth" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></div>
+        <h3>Reality</h3><div class="meta">The Control Group</div>
+      </a>
+      <a class="entry" href="#">
+        <div class="plate"><span class="folio">Fol. VI</span><img src="https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg" alt="Star Trek" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></div>
+        <h3>Star Trek</h3><div class="meta">Universe</div>
+      </a>
+      <a class="entry" href="#">
+        <div class="plate"><span class="folio">Fol. VII</span><img src="https://www.futr.space/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture's_orbital.jpg" alt="The Culture — an Orbital" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></div>
+        <h3>The Culture</h3><div class="meta">Iain M. Banks · Universe</div>
+      </a>
+      <a class="entry" href="#">
+        <div class="plate"><span class="folio">Fol. VIII</span><img src="https://www.futr.space/proxy/static.wikia.nocookie.net/expanse/images/3/3d/MCRNTachiConceptArt.png" alt="The Expanse — MCRN Tachi concept art" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></div>
+        <h3>The Expanse</h3><div class="meta">Universe</div>
+      </a>
+      <a class="entry" href="#">
+        <div class="plate"><span class="folio">Fol. IX</span><img src="https://assets.warhammer-community.com/sm-desktop.jpg" alt="Warhammer 40,000" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg'"></div>
+        <h3>Warhammer 40,000</h3><div class="meta">Universe</div>
+      </a>
+      <a class="entry more" href="#">
+        <div class="more-inner"><b>❧</b>Complete catalogue<br><span style="color:var(--ivory-mute);font-size:.8rem">every universe, every folio</span></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="rule"><svg><use href="#orn-rule"/></svg></div>
+
+  <!-- ======= II. Recent entries ======= -->
+  <section id="new" class="chapter">
+    <div class="chapter-label"><span class="numeral">II</span> recent entries</div>
+    <h2>New Civilizations</h2>
+    <p class="lede">The latest snapshots inscribed into the archive, newest first.</p>
+
+    <ol class="recent" id="recentList">
+      <li><span class="idx">i</span><span><span class="uni">Star Trek</span><a class="civ" href="#">Federation 2373</a></span><span class="tag-new">new</span></li>
+      <li><span class="idx">ii</span><span><span class="uni">The Expanse</span><a class="civ" href="#">Outer Planets Alliance 2350</a></span><span class="tag-new">new</span></li>
+      <li><span class="idx">iii</span><span><span class="uni">The Expanse</span><a class="civ" href="#">Mars 2350</a></span><span class="tag-new">new</span></li>
+      <li><span class="idx">iv</span><span><span class="uni">Firefly</span><a class="civ" href="#">Alliance 2517</a></span><span class="tag-new">new</span></li>
+      <li><span class="idx">v</span><span><span class="uni">The Expanse</span><a class="civ" href="#">Sol System 2350</a></span><span></span></li>
+      <li><span class="idx">vi</span><span><span class="uni">The Expanse</span><a class="civ" href="#">United Nations 2350</a></span><span></span></li>
+      <li><span class="idx">vii</span><span><span class="uni">Honorverse</span><a class="civ" href="#">Haven 1903 PD</a></span><span></span></li>
+      <li><span class="idx">viii</span><span><span class="uni">Star Trek</span><a class="civ" href="#">Klingon Empire 2161</a></span><span></span></li>
+      <li class="hidden"><span class="idx">ix</span><span><span class="uni">The Culture</span><a class="civ" href="#">Culture (pre-war)</a></span><span></span></li>
+      <li class="hidden"><span class="idx">x</span><span><span class="uni">Perry Rhodan</span><a class="civ" href="#">Posbis 2114</a></span><span></span></li>
+      <li class="hidden"><span class="idx">xi</span><span><span class="uni">Perry Rhodan</span><a class="civ" href="#">Großes Imperium 2040</a></span><span></span></li>
+      <li class="hidden"><span class="idx">xii</span><span><span class="uni">Honorverse</span><a class="civ" href="civilization.html">Manticore 1903 PD</a></span><span></span></li>
+      <li class="hidden"><span class="idx">xiii</span><span><span class="uni">Perry Rhodan</span><a class="civ" href="#">Solares Imperium 2040</a></span><span></span></li>
+      <li class="hidden"><span class="idx">xiv</span><span><span class="uni">Warhammer 40,000</span><a class="civ" href="#">Imperium of Man M41</a></span><span></span></li>
+      <li class="hidden"><span class="idx">xv</span><span><span class="uni">Warhammer 40,000</span><a class="civ" href="#">Orks M41</a></span><span></span></li>
+      <li class="hidden"><span class="idx">xvi</span><span><span class="uni">Star Trek</span><a class="civ" href="#">Andorian Empire 2161</a></span><span></span></li>
+      <li class="hidden"><span class="idx">xvii</span><span><span class="uni">Orion's Arm</span><a class="civ" href="#">Diamond Network</a></span><span></span></li>
+      <li class="hidden"><span class="idx">xviii</span><span><span class="uni">Orion's Arm</span><a class="civ" href="#">Solar System</a></span><span></span></li>
+    </ol>
+    <div class="actions">
+      <button class="btn" type="button" id="unfoldRecent" aria-expanded="false" aria-controls="recentList">Unfold 10 more entries <svg><use href="#ico-arrow"/></svg></button>
+      <a class="hint" href="#">Register of all 31 civilizations →</a>
+    </div>
+  </section>
+
+  <div class="rule"><svg><use href="#orn-rule"/></svg></div>
+
+  <!-- ======= III. Measures ======= -->
+  <section id="metrics" class="chapter">
+    <div class="chapter-label"><span class="numeral">III</span> the measures</div>
+    <h2>Metrics</h2>
+    <p class="lede">This is how we gauge universes, civilizations and powers. Some have many planets or ring worlds, others might be measured by their progress to higher spheres of existence. This is not a competition, though. <a href="#">The metrics</a>.</p>
+
+    <div class="sigils">
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-pop"/></svg>Population <span class="unit">People</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-planet"/></svg>Planets <span class="unit">Planets</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-system"/></svg>Star Systems <span class="unit">Systems</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-energy"/></svg>Kardashev <span class="unit">Kardashev</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-ship"/></svg>Warships <span class="unit">Ships</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-tech"/></svg>Techlevel <span class="unit">TL 1–15</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-class"/></svg>Class <span class="unit">1–20</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-age"/></svg>Civilization Age <span class="unit">Years</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-territory"/></svg>Territory <span class="unit">Light-years</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-date"/></svg>FTL Date <span class="unit">Year</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-text"/></svg>Government <span class="unit">Text</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-text"/></svg>Location <span class="unit">Text</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-text"/></svg>Tech Summary <span class="unit">Text</span></a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-dyson"/></svg>Dyson Spheres</a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-ring"/></svg>Ringworlds</a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-ring"/></svg>Banks Orbitals</a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-pop"/></svg>Bio Population</a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-pop"/></svg>Mech Population</a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-pop"/></svg>Virtual Population</a>
+      <a class="sigil" href="#"><svg style="color:var(--gold)"><use href="#ico-pop"/></svg>Embodied Population</a>
+      <a class="sigil more" href="#">all measures →</a>
+    </div>
+  </section>
+
+  <div class="rule"><svg><use href="#orn-rule"/></svg></div>
+
+  <!-- ======= IV. Universes sought ======= -->
+  <section id="wanted" class="chapter">
+    <div class="chapter-label"><span class="numeral">IV</span> volumes yet unwritten</div>
+    <h2>Universes We Want</h2>
+    <p class="lede">There is so much more. <a href="#">Tell us here</a> or <a href="https://github.com/wolfspelz/futr">contribute on GitHub</a>.</p>
+    <ul class="wanted">
+      <li>Star Wars</li><li>Star Trek</li><li>Babylon 5</li><li>Dune</li><li>Perryversum</li>
+      <li>The Culture (Banks)</li><li>Known Space (Niven)</li><li>Honorverse</li><li>The Verse (Firefly)</li>
+      <li>Eve Online</li><li>Alliance–Union (C. J. Cherryh)</li><li>Technic Civilization (Poul Anderson)</li>
+      <li>Zones of Thought (Vernor Vinge)</li><li>TRAVELLER</li><li>PANEC</li><li>Galactic Developments</li>
+    </ul>
+    <div class="aside-block">
+      <h4>Inspiration</h4>
+      <p style="color:var(--ivory-dim)">Here are lists for your inspiration. Which of these do we really need? All of them?
+        <a href="https://en.wikipedia.org/wiki/List_of_science_fiction_universes" style="border-bottom:1px solid var(--gold-faint)">List of Science Fiction Universes (Wikipedia)</a> ·
+        <a href="https://en.wikipedia.org/wiki/List_of_science_fiction_franchises" style="border-bottom:1px solid var(--gold-faint)">Science Fiction Franchises</a></p>
+    </div>
+  </section>
+
+  <div class="rule"><svg><use href="#orn-rule"/></svg></div>
+
+  <!-- ======= V. The workshop ======= -->
+  <section id="workshop" class="chapter">
+    <div class="chapter-label"><span class="numeral">V</span> the scriptorium</div>
+    <h2>An Open Source Project</h2>
+    <div class="triptych">
+      <article class="panel">
+        <h3><svg style="color:var(--gold)"><use href="#ico-code"/></svg>Source</h3>
+        <p>The C# IDE is our CMS. GitHub Actions is our deployment. Content in YAML and Markdown files. Built-in issue tracker.</p>
+        <p><a class="inline" href="https://github.com/wolfspelz/futr">github.com/wolfspelz/futr</a></p>
+        <div class="stack">dotnet · docker · github actions · nginx</div>
+      </article>
+      <article class="panel">
+        <h3><svg style="color:var(--gold)"><use href="#ico-discord"/></svg>Discord</h3>
+        <p>Talk about universes and how to measure stuff. Request new measurements and comparisons. Is there any universe still missing?</p>
+        <p><a class="inline" href="#">Join the conversation</a></p>
+      </article>
+      <article class="panel">
+        <h3><svg style="color:var(--gold)"><use href="#ico-fork"/></svg>Contributing</h3>
+        <p>Missing a universe or a civilization? Check out the <a class="inline" href="#wanted">list of proposals</a>. Propose a universe in <a class="inline" href="#">Discord</a>. Even better: fork, edit, pull-request on <a class="inline" href="https://github.com/wolfspelz/futr">GitHub</a>.</p>
+      </article>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="colophon">
+  <div class="frame">
+    <svg class="seal" style="color:var(--gold-dim)"><use href="#seal-futr"/></svg>
+    <div>© 2023 <span class="sep">–</span> Fictional Universe Taxonomy Research <span class="sep">–</span> FUTR Project <span class="sep">–</span> <a href="#">Impressum</a> <span class="sep">–</span> <a href="#">Privacy</a></div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('unfoldRecent');
+    var list = document.getElementById('recentList');
+    if (!btn || !list) return;
+    btn.addEventListener('click', function () {
+      var hidden = list.querySelectorAll('li.hidden');
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      if (!open) {
+        hidden.forEach(function (li) { li.classList.remove('hidden'); li.setAttribute('data-unfolded', '1'); });
+        btn.setAttribute('aria-expanded', 'true');
+        btn.firstChild.nodeValue = 'Fold the ledger ';
+      } else {
+        list.querySelectorAll('li[data-unfolded]').forEach(function (li) { li.classList.add('hidden'); });
+        btn.setAttribute('aria-expanded', 'false');
+        btn.firstChild.nodeValue = 'Unfold 10 more entries ';
+      }
+    });
+  })();
+</script>
+</body>
+</html>

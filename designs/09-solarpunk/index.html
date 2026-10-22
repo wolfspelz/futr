@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR — Fictional Universe Taxonomy Research</title>
+<meta name="description" content="An orbital greenhouse cataloguing the civilizations of science fiction: planets, fleets, technology, Kardashev level. Comparable by numbers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Nunito+Sans:ital,opsz,wght@0,6..12,300..900;1,6..12,300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2c45c"/><stop offset="1" stop-color="#d9774f"/></linearGradient>
+    <symbol id="mark" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="15" fill="url(#bm)"/>
+      <path d="M24 36c-6-5-8-12-4-19 7 2 11 9 9 17-2 1-3 2-5 2z" fill="#1f3d2b"/>
+      <path d="M24 36c1-6 3-11 7-16" stroke="#f8f3e8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="24" cy="24" rx="22" ry="9" fill="none" stroke="#1f3d2b" stroke-width="1.5" transform="rotate(-25 24 24)"/>
+      <circle cx="43" cy="14" r="2.2" fill="#1f3d2b"/>
+    </symbol>
+    <symbol id="sprout" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="32" cy="32" r="26" stroke-dasharray="3 5"/>
+        <path d="M32 46V30"/>
+        <path d="M32 34c-8 0-12-6-12-12 7 0 12 5 12 12z" fill="currentColor" opacity=".4"/>
+        <path d="M32 30c8 0 12-6 12-12-7 0-12 5-12 12z" fill="currentColor" opacity=".4"/>
+        <circle cx="32" cy="48" r="3" fill="currentColor"/>
+      </g>
+    </symbol>
+    <symbol id="leaf" viewBox="0 0 24 24"><path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15z" fill="currentColor" opacity=".35"/><path d="M5 19C9 13 13 9 20 4M5 19c3-1 5-1 8-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="ext" viewBox="0 0 16 16"><path d="M6 3H3v10h10v-3M9 2h5v5M14 2 7 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="wrap site-head">
+  <a class="brand" href="index.html" aria-label="FUTR home">
+    <svg><use href="#mark"/></svg>
+    <span class="brand-long">Fictional Universe<br>Taxonomy Research<small>FUTR · the observatory</small></span>
+    <span class="brand-short">FUTR</span>
+  </a>
+  <nav aria-label="Primary">
+    <ul class="nav">
+      <li><a href="#universes" aria-current="page">Universes</a></li>
+      <li><a href="#metrics">Metrics</a></li>
+      <li><a href="#">Powers</a></li>
+      <li><a href="#contribute">Contribute</a></li>
+      <li><a href="#">Discord</a></li>
+      <li><a class="cta" href="https://github.com/wolfspelz/futr">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="wrap hero">
+  <div>
+    <p class="kicker">An orbital greenhouse for fictional worlds</p>
+    <h1>We count the <span class="accent">planets</span>, the fleets and the far futures.</h1>
+    <p class="lede mt-1">The Fictional Universe Taxonomy Research project collects statistics about civilizations in science fiction universes. How many planets do they have? How big is their fleet? Can they do time travel? What is their technological level, their life expectancy, their wealth distribution?</p>
+    <p class="lede">Our mission is to characterize the fictional universes we love by numbers and make them comparable.</p>
+    <div class="btn-row">
+      <a class="btn" href="#universes"><svg><use href="#leaf"/></svg>Walk the universes</a>
+      <a class="btn ghost" href="#metrics">How we measure</a>
+    </div>
+  </div>
+
+  <div class="hero-art" aria-label="Orbital garden: universes as seeds on orbit paths around a greenhouse station">
+    <svg viewBox="0 0 900 600" role="img">
+      <defs>
+        <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#f8e2a6"/><stop offset=".45" stop-color="#f2c45c"/><stop offset="1" stop-color="#f2c45c" stop-opacity="0"/></radialGradient>
+        <radialGradient id="glass" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#d2dec6" stop-opacity=".8"/></radialGradient>
+        <linearGradient id="seedg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2c45c"/><stop offset="1" stop-color="#d9774f"/></linearGradient>
+        <linearGradient id="seedg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b9c9aa"/><stop offset="1" stop-color="#4a7a58"/></linearGradient>
+      </defs>
+
+      <!-- sun -->
+      <circle cx="790" cy="80" r="150" fill="url(#sun)" opacity=".9"/>
+      <circle cx="790" cy="80" r="46" fill="#f8e2a6"/>
+
+      <!-- stars -->
+      <g class="star">
+        <circle cx="80" cy="60" r="2.2"/><circle cx="160" cy="120" r="1.5"/><circle cx="240" cy="40" r="1.8"/><circle cx="620" cy="60" r="1.6"/>
+        <circle cx="90" cy="480" r="1.8"/><circle cx="820" cy="420" r="2"/><circle cx="860" cy="520" r="1.4"/><circle cx="700" cy="560" r="1.8"/>
+        <circle cx="520" cy="110" r="1.4"/><circle cx="40" cy="300" r="1.5"/><circle cx="880" cy="300" r="1.6"/><circle cx="200" cy="560" r="1.5"/>
+      </g>
+
+      <!-- orbits as leaf veins -->
+      <ellipse class="orbit" cx="450" cy="310" rx="150" ry="68"/>
+      <ellipse class="orbit vein" cx="450" cy="310" rx="235" ry="110"/>
+      <ellipse class="orbit" cx="450" cy="310" rx="320" ry="155"/>
+      <ellipse class="orbit vein" cx="450" cy="310" rx="410" ry="200"/>
+      <!-- midrib -->
+      <path class="orbit vein" d="M40 310 Q450 290 860 310"/>
+
+      <!-- greenhouse station -->
+      <g>
+        <ellipse cx="450" cy="332" rx="78" ry="16" fill="#1f3d2b"/>
+        <path d="M392 322 A58 58 0 0 1 508 322 Z" fill="url(#glass)" stroke="#2f5a3e" stroke-width="2"/>
+        <path d="M450 264 V322 M412 282 Q450 300 488 282 M400 300 Q450 318 500 300" fill="none" stroke="#2f5a3e" stroke-width="1.2" opacity=".6"/>
+        <!-- plants inside -->
+        <path d="M450 322 C446 306 436 298 428 292 C438 290 448 298 450 310 C452 298 462 290 472 292 C464 298 454 306 450 322z" fill="#2f5a3e"/>
+        <path d="M450 322 V286" stroke="#1f3d2b" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="450" cy="284" r="4" fill="#d9774f"/>
+        <!-- solar wings -->
+        <path d="M372 318 L300 300 L300 322 L372 336 Z" fill="#e3a72f" stroke="#1f3d2b" stroke-width="1.5"/>
+        <path d="M528 318 L600 300 L600 322 L528 336 Z" fill="#e3a72f" stroke="#1f3d2b" stroke-width="1.5"/>
+        <path d="M318 304 L318 326 M336 308 L336 330 M354 312 L354 334 M582 304 L582 326 M564 308 L564 330 M546 312 L546 334" stroke="#1f3d2b" stroke-width="1" opacity=".6"/>
+        <!-- mast -->
+        <path d="M450 264 V240" stroke="#1f3d2b" stroke-width="2"/><circle cx="450" cy="236" r="4" fill="#b8552f"/>
+      </g>
+
+      <!-- seeds: universes -->
+      <a href="#"><g><circle class="seed-core" cx="309" cy="287" r="13" fill="url(#seedg)" stroke="#1f3d2b" stroke-width="2"/><path d="M309 274c4-6 10-8 14-8-1 6-5 10-14 8z" fill="#2f5a3e"/><text class="seed-label left" x="289" y="292">Reality</text></g></a>
+      <a href="#"><g><circle class="seed-core" cx="586" cy="339" r="13" fill="url(#seedg2)" stroke="#1f3d2b" stroke-width="2"/><path d="M586 326c4-6 10-8 14-8-1 6-5 10-14 8z" fill="#2f5a3e"/><text class="seed-label right" x="606" y="344">Star Trek</text></g></a>
+      <a href="#"><g><circle class="seed-core" cx="315" cy="400" r="13" fill="url(#seedg)" stroke="#1f3d2b" stroke-width="2"/><path d="M315 387c4-6 10-8 14-8-1 6-5 10-14 8z" fill="#2f5a3e"/><text class="seed-label left" x="295" y="405">Firefly</text></g></a>
+      <a href="universe.html"><g><circle class="seed-core" cx="567" cy="215" r="15" fill="url(#seedg)" stroke="#1f3d2b" stroke-width="2.5"/><path d="M567 200c4-6 10-8 14-8-1 6-5 10-14 8z" fill="#2f5a3e"/><circle cx="567" cy="215" r="24" fill="none" stroke="#b8552f" stroke-width="1.2" stroke-dasharray="3 4"/><text class="seed-label right" x="596" y="220">Honorverse</text></g></a>
+      <a href="#"><g><circle class="seed-core" cx="585" cy="400" r="13" fill="url(#seedg2)" stroke="#1f3d2b" stroke-width="2"/><path d="M585 387c4-6 10-8 14-8-1 6-5 10-14 8z" fill="#2f5a3e"/><text class="seed-label right" x="605" y="405">The Expanse</text></g></a>
+      <a href="#"><g><circle class="seed-core" cx="141" cy="350" r="13" fill="url(#seedg)" stroke="#1f3d2b" stroke-width="2"/><path d="M141 337c4-6 10-8 14-8-1 6-5 10-14 8z" fill="#2f5a3e"/><text class="seed-label mid" x="141" y="382">Perry Rhodan</text></g></a>
+      <a href="#"><g><circle class="seed-core" cx="759" cy="270" r="13" fill="url(#seedg2)" stroke="#1f3d2b" stroke-width="2"/><path d="M759 257c4-6 10-8 14-8-1 6-5 10-14 8z" fill="#2f5a3e"/><text class="seed-label mid" x="759" y="302">The Culture</text></g></a>
+      <a href="#"><g><circle class="seed-core" cx="315" cy="170" r="13" fill="url(#seedg2)" stroke="#1f3d2b" stroke-width="2"/><path d="M315 157c4-6 10-8 14-8-1 6-5 10-14 8z" fill="#2f5a3e"/><text class="seed-label left" x="295" y="175">Orion's Arm</text></g></a>
+      <a href="#"><g><circle class="seed-core" cx="414" cy="509" r="13" fill="url(#seedg)" stroke="#1f3d2b" stroke-width="2"/><path d="M414 496c4-6 10-8 14-8-1 6-5 10-14 8z" fill="#2f5a3e"/><text class="seed-label mid" x="414" y="541">Warhammer 40,000</text></g></a>
+      <a href="#contribute"><g><circle class="seed-core" cx="805" cy="210" r="12" fill="none" stroke="#b8552f" stroke-width="2" stroke-dasharray="4 4"/><text class="seed-label left" x="787" y="214" style="font-style:italic;font-weight:600">plant yours</text></g></a>
+    </svg>
+    <p class="hero-caption">Universes are seeds on orbit paths around the observatory. Click one to open it.</p>
+  </div>
+</section>
+
+<section class="wrap section-tight">
+  <div class="stat-row rise">
+    <div class="stat"><b>10</b><span>Universes</span></div>
+    <div class="stat"><b>18</b><span>Powers</span></div>
+    <div class="stat"><b>31</b><span>Civilizations</span></div>
+    <div class="stat"><b>21</b><span>Metrics</span></div>
+    <div class="stat"><b>222</b><span>Datapoints · growing</span></div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1200 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+    <path d="M0 24 C 150 24, 200 6, 300 24 S 450 42, 600 24 S 750 6, 900 24 S 1050 42, 1200 24"/>
+    <path d="M300 24c-14-8-20-16-8-22 10 6 10 16 8 22z" fill="currentColor" opacity=".35"/>
+    <path d="M600 24c14 8 20 16 8 22-10-6-10-16-8-22z" fill="currentColor" opacity=".35"/>
+    <path d="M900 24c-14-8-20-16-8-22 10 6 10 16 8 22z" fill="currentColor" opacity=".35"/>
+    <path d="M450 36c0-10 10-14 16-8s-4 14-16 8"/>
+    <path d="M750 12c0 10 10 14 16 8s-4-14-16-8"/>
+    <circle cx="300" cy="24" r="3.5" fill="#e3a72f" stroke="none"/><circle cx="600" cy="24" r="3.5" fill="#e3a72f" stroke="none"/><circle cx="900" cy="24" r="3.5" fill="#e3a72f" stroke="none"/>
+    <circle cx="150" cy="15" r="2" fill="currentColor" stroke="none"/><circle cx="1050" cy="33" r="2" fill="currentColor" stroke="none"/>
+  </svg>
+</div>
+
+<!-- ================= UNIVERSES ================= -->
+<section class="wrap section" id="universes">
+  <div class="sec-head">
+    <div>
+      <p class="kicker">All universes</p>
+      <h2>Find your franchise, your world, your setting.</h2>
+      <p>These are the universes. Every seed opens a universe with its powers and civilizations.</p>
+    </div>
+    <a class="more" href="#">All universes</a>
+  </div>
+
+  <div class="tools">
+    <label class="search"><svg><use href="#search"/></svg><span class="sr-only">Filter universes</span><input type="search" placeholder="Filter universes…" data-filter="#seed-grid" data-count="#uni-count"></label>
+    <span class="count"><span id="uni-count">9</span> universes shown · sorted by name</span>
+  </div>
+
+  <div class="seed-grid rise" id="seed-grid">
+    <a class="seed" href="#" data-name="Firefly">
+      <div class="pic"><img src="https://www.futr.space/proxy/static.wikia.nocookie.net/scifi/images/d/d2/Firefly_Serie_Logo.jpg" alt="Firefly series logo" loading="lazy" onerror="this.classList.add('dead')"><div class="fallback"><svg><use href="#sprout"/></svg></div></div>
+      <div class="body"><h3>Firefly</h3><div class="meta"><span>The Verse</span><i class="dot"></i><span>2517</span></div></div>
+    </a>
+    <a class="seed" href="universe.html" data-name="Honorverse">
+      <div class="pic"><img src="https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png" alt="Honor Harrington - On Basilisk Station cover" loading="lazy" onerror="this.classList.add('dead')"><div class="fallback"><svg><use href="#sprout"/></svg></div></div>
+      <div class="body"><h3>Honorverse</h3><div class="meta"><span class="tag">index</span><span class="tag new">new</span></div></div>
+    </a>
+    <a class="seed" href="#" data-name="Orion's Arm">
+      <div class="pic"><img src="https://www.orionsarm.com/im_store/OA_logo_original.jpg" alt="Orion's Arm logo" loading="lazy" onerror="this.classList.add('dead')"><div class="fallback"><svg><use href="#sprout"/></svg></div></div>
+      <div class="body"><h3>Orion's Arm</h3><div class="meta"><span>Terragen Sphere</span><i class="dot"></i><span>far future</span></div></div>
+    </a>
+    <a class="seed" href="#" data-name="Perry Rhodan">
+      <div class="pic"><img src="https://bilder.deutschlandfunk.de/FI/LE/_6/95/FILE_6956b8ec0aa62e22df94fb3c00647812/perry-rhodan-jpg-100-1920x1080.jpg" alt="Perry Rhodan" loading="lazy" onerror="this.classList.add('dead')"><div class="fallback"><svg><use href="#sprout"/></svg></div></div>
+      <div class="body"><h3>Perry Rhodan</h3><div class="meta"><span>Perryversum</span><i class="dot"></i><span>2040 – 2114</span></div></div>
+    </a>
+    <a class="seed" href="#" data-name="Reality">
+      <div class="pic"><img src="https://github.com/wolfspelz/futr/raw/main/data/universes/Reality/earth-tile.jpg" alt="Earth from orbit" loading="lazy" onerror="this.classList.add('dead')"><div class="fallback"><svg><use href="#sprout"/></svg></div></div>
+      <div class="body"><h3>Reality</h3><div class="meta"><span>Our baseline</span><i class="dot"></i><span>Earth 2023</span></div></div>
+    </a>
+    <a class="seed" href="#" data-name="Star Trek">
+      <div class="pic"><img src="https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg" alt="Starship Enterprise" loading="lazy" onerror="this.classList.add('dead')"><div class="fallback"><svg><use href="#sprout"/></svg></div></div>
+      <div class="body"><h3>Star Trek</h3><div class="meta"><span>Federation and neighbours</span><i class="dot"></i><span>2161 – 2373</span></div></div>
+    </a>
+    <a class="seed" href="#" data-name="The Culture">
+      <div class="pic"><img src="https://www.futr.space/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture's_orbital.jpg" alt="A Culture orbital" loading="lazy" onerror="this.classList.add('dead')"><div class="fallback"><svg><use href="#sprout"/></svg></div></div>
+      <div class="body"><h3>The Culture</h3><div class="meta"><span>Iain M. Banks</span><i class="dot"></i><span>pre-war</span></div></div>
+    </a>
+    <a class="seed" href="#" data-name="The Expanse">
+      <div class="pic"><img src="https://www.futr.space/proxy/static.wikia.nocookie.net/expanse/images/3/3d/MCRNTachiConceptArt.png" alt="MCRN Tachi concept art" loading="lazy" onerror="this.classList.add('dead')"><div class="fallback"><svg><use href="#sprout"/></svg></div></div>
+      <div class="body"><h3>The Expanse</h3><div class="meta"><span>Sol system, divided</span><i class="dot"></i><span>2350</span></div></div>
+    </a>
+    <a class="seed" href="#" data-name="Warhammer 40,000">
+      <div class="pic"><img src="https://assets.warhammer-community.com/sm-desktop.jpg" alt="Warhammer 40,000 Space Marine" loading="lazy" onerror="this.classList.add('dead')"><div class="fallback"><svg><use href="#sprout"/></svg></div></div>
+      <div class="body"><h3>Warhammer 40,000</h3><div class="meta"><span>Grimdark</span><i class="dot"></i><span>M41</span></div></div>
+    </a>
+    <a class="seed plant" href="#contribute">
+      <svg class="glyph" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="32" cy="32" r="26" stroke-dasharray="4 6"/><path d="M32 20v24M20 32h24"/></svg>
+      <h3>Plant a universe</h3>
+      <p class="muted small" style="margin:0">Propose it in Discord or open a pull request.</p>
+    </a>
+  </div>
+  <p class="muted small mt-2">Image credits belong to the respective publishers and artists; see each universe page for author and license.</p>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1200 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+    <path d="M0 24 C 150 24, 200 42, 300 24 S 450 6, 600 24 S 750 42, 900 24 S 1050 6, 1200 24"/>
+    <path d="M300 24c14 8 20 16 8 22-10-6-10-16-8-22z" fill="currentColor" opacity=".35"/>
+    <path d="M600 24c-14-8-20-16-8-22 10 6 10 16 8 22z" fill="currentColor" opacity=".35"/>
+    <path d="M900 24c14 8 20 16 8 22-10-6-10-16-8-22z" fill="currentColor" opacity=".35"/>
+    <path d="M450 12c0 10 10 14 16 8s-4-14-16-8"/>
+    <path d="M750 36c0-10 10-14 16-8s-4 14-16 8"/>
+    <circle cx="300" cy="24" r="3.5" fill="#e3a72f" stroke="none"/><circle cx="600" cy="24" r="3.5" fill="#e3a72f" stroke="none"/><circle cx="900" cy="24" r="3.5" fill="#e3a72f" stroke="none"/>
+  </svg>
+</div>
+
+<!-- ================= NEW CIVILIZATIONS + METRICS ================= -->
+<section class="wrap section">
+  <div class="grid-2">
+    <div class="rise">
+      <p class="kicker">Freshly planted</p>
+      <h2>New civilizations</h2>
+      <p class="muted" style="margin-top:.6rem">The latest snapshots added to the greenhouse, newest first.</p>
+      <ul class="vine mt-2" id="new-civs">
+        <li><a href="#"><span class="uni">Star Trek</span><span class="civ">Federation 2373</span></a></li>
+        <li><a href="#"><span class="uni">The Expanse</span><span class="civ">Outer Planets Alliance 2350</span></a></li>
+        <li><a href="#"><span class="uni">The Expanse</span><span class="civ">Mars 2350</span></a></li>
+        <li><a href="#"><span class="uni">Firefly</span><span class="civ">Alliance 2517</span></a></li>
+        <li><a href="#"><span class="uni">The Expanse</span><span class="civ">Sol System 2350</span></a></li>
+        <li><a href="#"><span class="uni">The Expanse</span><span class="civ">United Nations 2350</span></a></li>
+        <li><a href="#"><span class="uni">Honorverse</span><span class="civ">Haven 1903 PD</span></a></li>
+        <li><a href="#"><span class="uni">Star Trek</span><span class="civ">Klingon Empire 2161</span></a></li>
+        <li class="hidden"><a href="#"><span class="uni">The Culture</span><span class="civ">Culture (pre-war)</span></a></li>
+        <li class="hidden"><a href="#"><span class="uni">Perry Rhodan</span><span class="civ">Posbis 2114</span></a></li>
+        <li class="hidden"><a href="#"><span class="uni">Perry Rhodan</span><span class="civ">Großes Imperium 2040</span></a></li>
+        <li class="hidden"><a href="civilization.html"><span class="uni">Honorverse</span><span class="civ">Manticore 1903 PD</span></a></li>
+        <li class="hidden"><a href="#"><span class="uni">Perry Rhodan</span><span class="civ">Solares Imperium 2040</span></a></li>
+        <li class="hidden"><a href="#"><span class="uni">Warhammer 40,000</span><span class="civ">Imperium of Man M41</span></a></li>
+        <li class="hidden"><a href="#"><span class="uni">Warhammer 40,000</span><span class="civ">Orks M41</span></a></li>
+        <li class="hidden"><a href="#"><span class="uni">Star Trek</span><span class="civ">Andorian Empire 2161</span></a></li>
+        <li class="hidden"><a href="#"><span class="uni">Orion's Arm</span><span class="civ">Diamond Network</span></a></li>
+        <li class="hidden"><a href="#"><span class="uni">Orion's Arm</span><span class="civ">Solar System</span></a></li>
+      </ul>
+      <button class="reveal-btn" type="button" data-more="new-civs" aria-expanded="false" data-close-label="Show the latest eight only">… and 10 more</button>
+    </div>
+
+    <div class="rise" id="metrics">
+      <p class="kicker">The instruments</p>
+      <h2>Metrics</h2>
+      <p class="muted" style="margin-top:.6rem">This is how we gauge universes, civilizations and powers. Some have many planets or ring worlds, others might be measured by their progress to higher spheres of existence. This is not a competition, though.</p>
+      <div class="leaves mt-2" id="metric-leaves">
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Population <span class="unit">People</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Planets <span class="unit">Planets</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Star Systems <span class="unit">Systems</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Kardashev <span class="unit">Kardashev</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Warships <span class="unit">Ships</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Techlevel <span class="unit">TL 1-15</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Class <span class="unit">1-20</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Civilization Age <span class="unit">Years</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Territory <span class="unit">Light-years</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>FTL Date <span class="unit">Year</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Government <span class="unit">text</span></a>
+        <a class="leaf" href="#"><svg><use href="#leaf"/></svg>Location <span class="unit">text</span></a>
+        <a class="leaf hidden" href="#"><svg><use href="#leaf"/></svg>Tech Summary <span class="unit">text</span></a>
+        <a class="leaf hidden" href="#"><svg><use href="#leaf"/></svg>Dyson Spheres</a>
+        <a class="leaf hidden" href="#"><svg><use href="#leaf"/></svg>Ringworlds</a>
+        <a class="leaf hidden" href="#"><svg><use href="#leaf"/></svg>Banks Orbitals</a>
+        <a class="leaf hidden" href="#"><svg><use href="#leaf"/></svg>Bio Population</a>
+        <a class="leaf hidden" href="#"><svg><use href="#leaf"/></svg>Mech Population</a>
+        <a class="leaf hidden" href="#"><svg><use href="#leaf"/></svg>Virtual Population</a>
+        <a class="leaf hidden" href="#"><svg><use href="#leaf"/></svg>Embodied Population</a>
+      </div>
+      <button class="reveal-btn" type="button" data-more="metric-leaves" aria-expanded="false" data-close-label="Show the main twelve only">… and 8 more</button>
+      <div class="btn-row"><a class="btn ghost" href="#">The metrics</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WANTED ================= -->
+<section class="wrap section-tight">
+  <div class="pod sage rise">
+    <div class="feature">
+      <div>
+        <p class="kicker">Seed bank</p>
+        <h2>Universes we want</h2>
+        <p class="muted" style="margin-top:.6rem">There is so much more. Tell us <a href="#">here</a> or contribute on <a href="https://github.com/wolfspelz/futr">GitHub</a>.</p>
+        <div class="want mt-1">
+          <span>Star Wars</span><span>Star Trek</span><span>Babylon 5</span><span>Dune</span><span>Perryversum</span><span>The Culture (Banks)</span><span>Known Space (Niven)</span><span>Honorverse</span><span>The Verse (Firefly)</span><span>Eve Online</span><span>Alliance–Union (C. J. Cherryh)</span><span>Technic Civilization (Poul Anderson)</span><span>Zones of Thought (Vernor Vinge)</span><span>TRAVELLER</span><span>PANEC</span><span>Galactic Developments</span>
+        </div>
+      </div>
+      <figure class="feature-pic" style="margin:0">
+        <img src="https://www.futr.space/images/Index/new-universes.jpg" alt="Sunrise over a ringed planet" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>Image: FUTR stock, futr.space</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMMUNITY BEDS ================= -->
+<section class="wrap section" id="contribute">
+  <div class="sec-head">
+    <div>
+      <p class="kicker">Tend the garden</p>
+      <h2>Open source, open discussion, open to you.</h2>
+    </div>
+  </div>
+  <div class="beds">
+    <article class="pod bed rise">
+      <div class="pic"><img src="https://www.futr.space/images/Index/software.jpg" alt="Code on a screen" loading="lazy" onerror="this.style.display='none'"></div>
+      <h3>An open source project</h3>
+      <p>The C# IDE is our CMS. GitHub Actions is our deployment. Content in YAML and Markdown files. Built-in issue tracker.</p>
+      <div class="chips"><span class="chip">dotnet</span><span class="chip">docker</span><span class="chip">github actions</span><span class="chip">nginx</span></div>
+      <div class="btn-row"><a class="btn" href="https://github.com/wolfspelz/futr">Source on GitHub</a></div>
+    </article>
+    <article class="pod bed honey rise">
+      <div class="pic contain"><img src="https://www.futr.space/images/Index/discord.png" alt="Discord" loading="lazy" onerror="this.style.display='none'"></div>
+      <h3>Discord</h3>
+      <p>Talk about universes and how to measure stuff. Request new measurements and comparisons. Is there any universe still missing?</p>
+      <div class="btn-row"><a class="btn honey" href="#">Join the conversation</a></div>
+    </article>
+    <article class="pod bed terra rise">
+      <div class="pic"><img src="https://www.futr.space/images/Index/contribute.jpg" alt="Hands planting" loading="lazy" onerror="this.style.display='none'"></div>
+      <h3>Contributing</h3>
+      <p>Missing a universe or a civilization? Check out the <a href="#">list of proposals</a>. Propose a universe in <a href="#">Discord</a>. Even better: fork, edit, pull-request on <a href="https://github.com/wolfspelz/futr">GitHub</a>.</p>
+    </article>
+  </div>
+
+  <div class="pod forest mt-2 rise">
+    <div class="feature">
+      <div>
+        <p class="kicker" style="color:var(--honey-2)">Inspiration</p>
+        <h3>Which of these do we really need? All of them?</h3>
+        <p class="muted" style="margin-top:.6rem">Here are lists for your inspiration.</p>
+        <ul class="linklist" style="max-width:420px">
+          <li><a href="https://en.wikipedia.org/wiki/List_of_science_fiction_universes" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:var(--honey-light)"><svg><use href="#ext"/></svg><span>List of Science Fiction Universes (Wikipedia)</span></a></li>
+          <li><a href="https://en.wikipedia.org/wiki/List_of_science_fiction_franchises" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:var(--honey-light)"><svg><use href="#ext"/></svg><span>Science Fiction Franchises</span></a></li>
+        </ul>
+      </div>
+      <figure class="feature-pic" style="margin:0;border-radius:var(--blob-c)">
+        <img src="https://www.futr.space/images/Index/book-wall.jpg" alt="A wall of books" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>Image: FUTR stock, futr.space</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap inner">
+    <span class="mark"><svg><use href="#mark"/></svg><strong style="font-family:var(--display);color:var(--forest)">FUTR</strong></span>
+    <div class="copy">
+      <span>© 2023</span><span>Fictional Universe Taxonomy Research</span><span>FUTR Project</span><span><a href="#">Impressum</a></span><span><a href="#">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

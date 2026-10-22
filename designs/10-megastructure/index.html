@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUTR — Fictional Universe Taxonomy Research</title>
+<meta name="description" content="Statistics about civilizations in science fiction universes. Planets, fleets, Kardashev, techlevel — measured and made comparable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;900&family=Barlow+Condensed:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <span>FUTR // DOCK CONTROL // REG. 2023</span>
+    <div class="right">
+      <span><i class="lamp"></i> SYSTEMS NOMINAL</span>
+      <span>SECTOR: INDEX</span>
+      <span>MANIFEST REV. 2026-10-17</span>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="FUTR home">
+      <span class="mark">FUTR</span>
+      <span class="long"><b>Fictional Universe</b>Taxonomy Research</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#universes" aria-current="page">Universes</a></li>
+        <li><a href="#metrics">Metrics</a></li>
+        <li><a href="#">Powers</a></li>
+        <li><a href="#contribute">Contribute</a></li>
+        <li><a class="ext" href="#">Discord</a></li>
+        <li><a class="ext" href="https://github.com/wolfspelz/futr">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="hazard"></div>
+
+<main class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="mission">
+    <div>
+      <span class="label amber">Mission statement · Bay 00</span>
+      <h1 id="mission">Every universe <em>weighed</em> and tagged.</h1>
+      <p class="mission">The <strong>Fictional Universe Taxonomy Research</strong> project collects statistics about civilizations in science fiction universes. How many planets do they have? How big is their fleet? Can they do time travel? What is their technological level, their life expectancy, their wealth distribution? Our mission is to characterize the fictional universes we love by numbers and make them comparable.</p>
+      <div class="cta">
+        <a class="btn" href="#universes">Enter the bays <span class="arr">→</span></a>
+        <a class="btn ghost" href="#metrics">The gauges</a>
+      </div>
+    </div>
+
+    <aside class="plate dark inventory" aria-label="Inventory">
+      <div class="head">
+        <span class="label">Inventory</span>
+        <span class="live"><i class="lamp"></i> Data live</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="k">Universes</span><span class="v">10</span></div>
+        <div class="row"><span class="k">Powers</span><span class="v">18</span></div>
+        <div class="row"><span class="k">Civilizations</span><span class="v">31</span></div>
+        <div class="row"><span class="k">Metrics</span><span class="v">21</span></div>
+        <div class="row"><span class="k">Datapoints</span><span class="v">222</span></div>
+      </div>
+      <div class="foot">
+        <span>Count as of 2026-10-17</span>
+        <span class="barcode sm" aria-hidden="true"></span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- ============ UNIVERSES ============ -->
+  <div class="section" id="universes">
+    <span class="no">01</span>
+    <h2>Docking bays · Universes</h2>
+    <div class="bar hazard"></div>
+    <span class="code">SEC-01 / BERTH REGISTRY</span>
+  </div>
+
+  <div class="toolbar">
+    <p class="dim" style="margin:0;font-size:1.1rem;max-width:60ch">These are the universes. Find your favourite franchise, your world, your setting. <a href="#">All universes →</a></p>
+    <div class="status">
+      <span><b id="berthCount" style="color:var(--cold)">9</b> berths occupied</span>
+      <span class="mute">·</span>
+      <span>1 hidden from index</span>
+      <span class="field"><label for="berthFilter">Filter</label><input id="berthFilter" type="search" placeholder="universe name…" data-filter="#berths" data-count="#berthCount" data-empty="#berthEmpty" autocomplete="off"></span>
+    </div>
+  </div>
+
+  <div class="berths" id="berths">
+    <a class="plate berth" href="#" data-name="Firefly">
+      <div class="top"><span class="n">BERTH 01</span><span class="barcode sm" aria-hidden="true"></span></div>
+      <div class="frame">
+        <img src="https://www.futr.space/proxy/static.wikia.nocookie.net/scifi/images/d/d2/Firefly_Serie_Logo.jpg" alt="Firefly series logo" title="Image: Firefly series logo — scifi.fandom.com (via futr.space proxy)" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </div>
+      <div class="name">Firefly</div>
+      <div class="bottom"><span class="code">UNI-FIREFLY</span><span class="enter">ENTER ›</span></div>
+    </a>
+
+    <a class="plate berth" href="universe.html" data-name="Honorverse">
+      <div class="top"><span class="n">BERTH 02</span><span class="barcode sm" aria-hidden="true"></span></div>
+      <div class="frame">
+        <img src="https://mythcreants.com/wp-content/uploads/2017/09/Honor-Cover.png" alt="Honor Harrington, On Basilisk Station cover" title="Image: On Basilisk Station cover — David Mattingly, © Baen Books" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </div>
+      <div class="name">Honorverse</div>
+      <div class="bottom"><span class="code">UNI-HONORVERSE</span><span class="enter">ENTER ›</span></div>
+    </a>
+
+    <a class="plate berth" href="#" data-name="Orion's Arm">
+      <div class="top"><span class="n">BERTH 03</span><span class="barcode sm" aria-hidden="true"></span></div>
+      <div class="frame">
+        <img src="https://www.orionsarm.com/im_store/OA_logo_original.jpg" alt="Orion's Arm logo" title="Image: Orion's Arm logo — orionsarm.com" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </div>
+      <div class="name">Orion's Arm</div>
+      <div class="bottom"><span class="code">UNI-ORIONSARM</span><span class="enter">ENTER ›</span></div>
+    </a>
+
+    <a class="plate berth" href="#" data-name="Perry Rhodan">
+      <div class="top"><span class="n">BERTH 04</span><span class="barcode sm" aria-hidden="true"></span></div>
+      <div class="frame">
+        <img src="https://bilder.deutschlandfunk.de/FI/LE/_6/95/FILE_6956b8ec0aa62e22df94fb3c00647812/perry-rhodan-jpg-100-1920x1080.jpg" alt="Perry Rhodan" title="Image: Perry Rhodan — deutschlandfunk.de" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </div>
+      <div class="name">Perry Rhodan</div>
+      <div class="bottom"><span class="code">UNI-PERRYRHODAN</span><span class="enter">ENTER ›</span></div>
+    </a>
+
+    <a class="plate berth" href="#" data-name="Reality">
+      <div class="top"><span class="n">BERTH 05</span><span class="barcode sm" aria-hidden="true"></span></div>
+      <div class="frame">
+        <img src="https://github.com/wolfspelz/futr/raw/main/data/universes/Reality/earth-tile.jpg" alt="Earth from orbit" title="Image: Earth tile — FUTR repository" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </div>
+      <div class="name">Reality</div>
+      <div class="bottom"><span class="code">UNI-REALITY</span><span class="enter">ENTER ›</span></div>
+    </a>
+
+    <a class="plate berth" href="#" data-name="Star Trek">
+      <div class="top"><span class="n">BERTH 06</span><span class="barcode sm" aria-hidden="true"></span></div>
+      <div class="frame">
+        <img src="https://hips.hearstapps.com/pop.h-cdn.co/assets/16/26/4000x2666/gallery-1467144815-starshipenterprise.jpg" alt="Starship Enterprise" title="Image: Starship Enterprise — hearstapps.com" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </div>
+      <div class="name">Star Trek</div>
+      <div class="bottom"><span class="code">UNI-STARTREK</span><span class="enter">ENTER ›</span></div>
+    </a>
+
+    <a class="plate berth" href="#" data-name="The Culture">
+      <div class="top"><span class="n">BERTH 07</span><span class="barcode sm" aria-hidden="true"></span></div>
+      <div class="frame">
+        <img src="https://www.futr.space/proxy/upload.wikimedia.org/wikipedia/commons/0/06/Culture's_orbital.jpg" alt="A Culture orbital" title="Image: Culture's orbital — Wikimedia Commons (via futr.space proxy)" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </div>
+      <div class="name">The Culture</div>
+      <div class="bottom"><span class="code">UNI-CULTURE</span><span class="enter">ENTER ›</span></div>
+    </a>
+
+    <a class="plate berth" href="#" data-name="The Expanse">
+      <div class="top"><span class="n">BERTH 08</span><span class="barcode sm" aria-hidden="true"></span></div>
+      <div class="frame">
+        <img src="https://www.futr.space/proxy/static.wikia.nocookie.net/expanse/images/3/3d/MCRNTachiConceptArt.png" alt="MCRN Tachi concept art" title="Image: MCRN Tachi concept art — expanse.fandom.com (via futr.space proxy)" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </div>
+      <div class="name">The Expanse</div>
+      <div class="bottom"><span class="code">UNI-EXPANSE</span><span class="enter">ENTER ›</span></div>
+    </a>
+
+    <a class="plate berth" href="#" data-name="Warhammer 40,000">
+      <div class="top"><span class="n">BERTH 09</span><span class="barcode sm" aria-hidden="true"></span></div>
+      <div class="frame">
+        <img src="https://assets.warhammer-community.com/sm-desktop.jpg" alt="Space Marine" title="Image: Space Marine — warhammer-community.com" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </div>
+      <div class="name">Warhammer 40,000</div>
+      <div class="bottom"><span class="code">UNI-WH40K</span><span class="enter">ENTER ›</span></div>
+    </a>
+
+    <a class="berth more" href="#">
+      <span class="big">ALL BERTHS →</span>
+      <p>Full registry, sortable by name, size and date of arrival.</p>
+    </a>
+  </div>
+  <p class="empty" id="berthEmpty">No berth matches that name. Propose the universe on Discord.</p>
+
+  <!-- ============ NEW CIVILIZATIONS ============ -->
+  <div class="section" id="arrivals">
+    <span class="no">02</span>
+    <h2>Recent arrivals · New civilizations</h2>
+    <div class="bar hazard"></div>
+    <span class="code">SEC-02 / ARRIVAL LOG</span>
+  </div>
+
+  <div class="plate flush">
+    <div class="scroll-x">
+      <table class="manifest">
+        <thead>
+          <tr>
+            <th class="idx">No.</th>
+            <th>Civilization</th>
+            <th>Universe</th>
+            <th>Status</th>
+            <th class="num">Logged</th>
+          </tr>
+        </thead>
+        <tbody id="arrivalRows">
+          <tr><td class="idx">A-018</td><td><a class="name" href="#">Federation 2373</a></td><td class="uni"><a href="#">Star Trek</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-0</td></tr>
+          <tr><td class="idx">A-017</td><td><a class="name" href="#">Outer Planets Alliance 2350</a></td><td class="uni"><a href="#">The Expanse</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-1</td></tr>
+          <tr><td class="idx">A-016</td><td><a class="name" href="#">Mars 2350</a></td><td class="uni"><a href="#">The Expanse</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-2</td></tr>
+          <tr><td class="idx">A-015</td><td><a class="name" href="#">Alliance 2517</a></td><td class="uni"><a href="#">Firefly</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-3</td></tr>
+          <tr><td class="idx">A-014</td><td><a class="name" href="#">Sol System 2350</a></td><td class="uni"><a href="#">The Expanse</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-4</td></tr>
+          <tr><td class="idx">A-013</td><td><a class="name" href="#">United Nations 2350</a></td><td class="uni"><a href="#">The Expanse</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-5</td></tr>
+          <tr><td class="idx">A-012</td><td><a class="name" href="#">Haven 1903 PD</a></td><td class="uni"><a href="universe.html">Honorverse</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-6</td></tr>
+          <tr><td class="idx">A-011</td><td><a class="name" href="#">Klingon Empire 2161</a></td><td class="uni"><a href="#">Star Trek</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-7</td></tr>
+          <tr class="is-hidden"><td class="idx">A-010</td><td><a class="name" href="#">Culture (pre-war)</a></td><td class="uni"><a href="#">The Culture</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-8</td></tr>
+          <tr class="is-hidden"><td class="idx">A-009</td><td><a class="name" href="#">Posbis 2114</a></td><td class="uni"><a href="#">Perry Rhodan</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-9</td></tr>
+          <tr class="is-hidden"><td class="idx">A-008</td><td><a class="name" href="#">Großes Imperium 2040</a></td><td class="uni"><a href="#">Perry Rhodan</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-10</td></tr>
+          <tr class="is-hidden"><td class="idx">A-007</td><td><a class="name" href="civilization.html">Manticore 1903 PD</a></td><td class="uni"><a href="universe.html">Honorverse</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-11</td></tr>
+          <tr class="is-hidden"><td class="idx">A-006</td><td><a class="name" href="#">Solares Imperium 2040</a></td><td class="uni"><a href="#">Perry Rhodan</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-12</td></tr>
+          <tr class="is-hidden"><td class="idx">A-005</td><td><a class="name" href="#">Imperium of Man M41</a></td><td class="uni"><a href="#">Warhammer 40,000</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-13</td></tr>
+          <tr class="is-hidden"><td class="idx">A-004</td><td><a class="name" href="#">Orks M41</a></td><td class="uni"><a href="#">Warhammer 40,000</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-14</td></tr>
+          <tr class="is-hidden"><td class="idx">A-003</td><td><a class="name" href="#">Andorian Empire 2161</a></td><td class="uni"><a href="#">Star Trek</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-15</td></tr>
+          <tr class="is-hidden"><td class="idx">A-002</td><td><a class="name" href="#">Diamond Network</a></td><td class="uni"><a href="#">Orion's Arm</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-16</td></tr>
+          <tr class="is-hidden"><td class="idx">A-001</td><td><a class="name" href="#">Solar System</a></td><td class="uni"><a href="#">Orion's Arm</a></td><td><span class="stamp tag new straight">New</span></td><td class="num mute">T-17</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tablefoot">
+      <span id="arrivalNote" data-full="Showing 18 of 18 arrivals · newest first">Showing 8 of 18 arrivals · newest first</span>
+      <button type="button" data-show-more="#arrivalRows" data-note="#arrivalNote">+ Show 10 more</button>
+    </div>
+  </div>
+
+  <!-- ============ METRICS ============ -->
+  <div class="section" id="metrics">
+    <span class="no">03</span>
+    <h2>Calibrated gauges · Metrics</h2>
+    <div class="bar hazard"></div>
+    <span class="code">SEC-03 / INSTRUMENTATION</span>
+  </div>
+
+  <div class="two">
+    <div class="plate">
+      <span class="label">How we gauge</span>
+      <p class="log" style="margin-top:.6rem">This is how we gauge universes, civilizations and powers. Some have many planets or ring worlds, others might be measured by their progress to higher spheres of existence. <strong>This is not a competition, though.</strong></p>
+      <a class="btn ghost" href="#">The metrics <span class="arr">→</span></a>
+    </div>
+    <div class="plate dark">
+      <div class="toolbar" style="margin-bottom:.8rem">
+        <span class="label">21 gauges in service</span>
+        <span class="barcode sm" aria-hidden="true"></span>
+      </div>
+      <div class="gauges">
+        <a class="gauge-tag" href="#">Population <small>People</small></a>
+        <a class="gauge-tag" href="#">Planets <small>Planets</small></a>
+        <a class="gauge-tag" href="#">Star Systems <small>Systems</small></a>
+        <a class="gauge-tag" href="#">Kardashev <small>K</small></a>
+        <a class="gauge-tag" href="#">Warships <small>Ships</small></a>
+        <a class="gauge-tag" href="#">Techlevel <small>TL 1-15</small></a>
+        <a class="gauge-tag" href="#">Class <small>1-20</small></a>
+        <a class="gauge-tag" href="#">Civilization Age <small>Years</small></a>
+        <a class="gauge-tag" href="#">Territory <small>Light-years</small></a>
+        <a class="gauge-tag" href="#">FTL Date <small>Year</small></a>
+        <a class="gauge-tag" href="#">Government <small>Text</small></a>
+        <a class="gauge-tag" href="#">Location <small>Text</small></a>
+        <a class="gauge-tag" href="#">Tech Summary <small>Text</small></a>
+        <a class="gauge-tag" href="#">Dyson Spheres</a>
+        <a class="gauge-tag" href="#">Ringworlds</a>
+        <a class="gauge-tag" href="#">Banks Orbitals</a>
+        <a class="gauge-tag" href="#">Bio Population</a>
+        <a class="gauge-tag" href="#">Mech Population</a>
+        <a class="gauge-tag" href="#">Virtual Population</a>
+        <a class="gauge-tag" href="#">Embodied Population</a>
+        <a class="gauge-tag" href="#" style="color:var(--hazard)">All metrics →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ REQUISITIONS ============ -->
+  <div class="section" id="wanted">
+    <span class="no">04</span>
+    <h2>Requisitions · Universes we want</h2>
+    <div class="bar hazard"></div>
+    <span class="code">SEC-04 / REQ. FORM</span>
+  </div>
+
+  <div class="plate">
+    <div class="toolbar">
+      <span class="label">Requisition form · filled squares are already in dock</span>
+      <span class="label plain mute">16 requested · 4 fulfilled</span>
+    </div>
+    <ul class="req">
+      <li><span class="box"></span>Star Wars<span class="st">Open</span></li>
+      <li class="docked"><span class="box"></span>Star Trek<span class="st">In dock</span></li>
+      <li><span class="box"></span>Babylon 5<span class="st">Open</span></li>
+      <li><span class="box"></span>Dune<span class="st">Open</span></li>
+      <li><span class="box"></span>Perryversum<span class="st">Open</span></li>
+      <li class="docked"><span class="box"></span>The Culture (Banks)<span class="st">In dock</span></li>
+      <li><span class="box"></span>Known Space (Niven)<span class="st">Open</span></li>
+      <li class="docked"><span class="box"></span>Honorverse<span class="st">In dock</span></li>
+      <li class="docked"><span class="box"></span>The Verse (Firefly)<span class="st">In dock</span></li>
+      <li><span class="box"></span>Eve Online<span class="st">Open</span></li>
+      <li><span class="box"></span>Alliance–Union (C. J. Cherryh)<span class="st">Open</span></li>
+      <li><span class="box"></span>Technic Civilization (Poul Anderson)<span class="st">Open</span></li>
+      <li><span class="box"></span>Zones of Thought (Vernor Vinge)<span class="st">Open</span></li>
+      <li><span class="box"></span>TRAVELLER<span class="st">Open</span></li>
+      <li><span class="box"></span>PANEC<span class="st">Open</span></li>
+      <li><span class="box"></span>Galactic Developments<span class="st">Open</span></li>
+    </ul>
+    <p class="dim" style="margin:1.2rem 0 0;font-size:1.1rem">There is so much more. <a href="#">Tell us here</a> or <a href="https://github.com/wolfspelz/futr">contribute on GitHub</a>.</p>
+  </div>
+
+  <!-- ============ ENGINEERING ============ -->
+  <div class="section" id="contribute">
+    <span class="no">05</span>
+    <h2>Engineering deck · Project</h2>
+    <div class="bar hazard"></div>
+    <span class="code">SEC-05 / OPERATIONS</span>
+  </div>
+
+  <div class="panels">
+    <article class="plate panel">
+      <div class="frame">
+        <img src="https://www.futr.space/images/Index/software.jpg" alt="Software" title="Image: futr.space stock" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner br"></i>
+      </div>
+      <h3>An open source project</h3>
+      <div class="stack"><span>dotnet</span><span>docker</span><span>github actions</span><span>nginx</span></div>
+      <p>The C# IDE is our CMS. GitHub Actions is our deployment. Content in YAML and Markdown files. Built-in issue tracker.</p>
+      <div class="links"><a href="https://github.com/wolfspelz/futr">Source on GitHub ↗</a></div>
+    </article>
+
+    <article class="plate panel">
+      <div class="frame">
+        <img src="https://www.futr.space/images/Index/discord.png" alt="Discord" title="Image: futr.space stock" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner br"></i>
+      </div>
+      <h3>Discord</h3>
+      <p>Talk about universes and how to measure stuff. Request new measurements and comparisons. Is there any universe still missing?</p>
+      <div class="links"><a href="#">Join the channel ↗</a></div>
+    </article>
+
+    <article class="plate panel">
+      <div class="frame">
+        <img src="https://www.futr.space/images/Index/contribute.jpg" alt="Contribute" title="Image: futr.space stock" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner br"></i>
+      </div>
+      <h3>Contributing</h3>
+      <p>Missing a universe or a civilization? Check out the list of proposals. Propose a universe in Discord. Even better: fork, edit, pull-request on GitHub.</p>
+      <div class="links"><a href="#wanted">Proposals</a><a href="#">Discord ↗</a><a href="https://github.com/wolfspelz/futr">GitHub ↗</a></div>
+    </article>
+
+    <article class="plate panel">
+      <div class="frame">
+        <img src="https://www.futr.space/images/Index/book-shelf.jpg" alt="Book shelf" title="Image: futr.space stock" loading="lazy" onerror="this.onerror=null;this.src='placeholder.svg';this.classList.add('is-fallback')">
+        <i class="corner tl"></i><i class="corner br"></i>
+      </div>
+      <h3>Inspiration</h3>
+      <p>Here are lists for your inspiration. Which of these do we really need? All of them?</p>
+      <div class="links"><a href="https://en.wikipedia.org/wiki/List_of_science_fiction_universes">Science fiction universes ↗</a><a href="https://en.wikipedia.org/wiki/List_of_science_fiction_franchises">Science fiction franchises ↗</a></div>
+    </article>
+  </div>
+
+</main>
+
+<footer>
+  <div class="hazard"></div>
+  <div class="inner">
+    <div class="wrap">
+      <p class="copy">© 2023 <span class="sep">-</span> Fictional Universe Taxonomy Research <span class="sep">-</span> FUTR Project <span class="sep">-</span> <a href="#">Impressum</a> <span class="sep">-</span> <a href="#">Privacy</a></p>
+      <span class="plateid"><span class="barcode" aria-hidden="true"></span> PLATE FUTR-IDX-00</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

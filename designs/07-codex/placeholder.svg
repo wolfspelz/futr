@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="50%" r="60%">
+      <stop offset="0" stop-color="#2a2219"/>
+      <stop offset="1" stop-color="#0a090c"/>
+    </radialGradient>
+    <pattern id="hex" width="28" height="48.5" patternUnits="userSpaceOnUse">
+      <path d="M14 .5 L27.5 8.25 L27.5 24 L14 32 L.5 24 L.5 8.25 Z M14 24.75 L27.5 32.5 L27.5 48.25 L14 56 L.5 48.25 L.5 32.5 Z" fill="none" stroke="#c9a961" stroke-opacity=".12" stroke-width=".8"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <rect width="600" height="400" fill="url(#hex)"/>
+  <g fill="none" stroke="#c9a961" stroke-width="1" transform="translate(300 200)">
+    <circle r="110" stroke-opacity=".55"/>
+    <circle r="92" stroke-opacity=".35" stroke-dasharray="2 6"/>
+    <circle r="60" stroke-opacity=".6"/>
+    <polygon points="0,-78 67.5,-39 67.5,39 0,78 -67.5,39 -67.5,-39" stroke-opacity=".5"/>
+    <polygon points="0,-40 34.6,-20 34.6,20 0,40 -34.6,20 -34.6,-20" stroke-opacity=".8"/>
+    <path d="M0 -60 L0 60 M-52 -30 L52 30 M-52 30 L52 -30" stroke-opacity=".3"/>
+    <circle r="5" fill="#c9a961" stroke="none" opacity=".9"/>
+  </g>
+  <text x="300" y="352" text-anchor="middle" font-family="Georgia, serif" font-size="13" letter-spacing="5" fill="#8f7745">PLATE NOT RECOVERED</text>
+</svg>
